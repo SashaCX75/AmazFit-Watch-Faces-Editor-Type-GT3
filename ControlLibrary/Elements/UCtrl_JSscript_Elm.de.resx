@@ -117,43 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Dialog_Title_JS_Open" xml:space="preserve">
-    <value>Přidat soubor JS</value>
-  </data>
-  <data name="FilterJS" xml:space="preserve">
-    <value>JS soubor (*.js) | *.js</value>
-  </data>
-  <data name="Message_Del_Caption" xml:space="preserve">
-    <value>Smazat soubor</value>
-  </data>
-  <data name="Message_Error_Caption" xml:space="preserve">
-    <value>Chyba</value>
-  </data>
-  <data name="Message_JS_Del" xml:space="preserve">
-    <value>Opravdu chcete smazat soubor JS?</value>
-  </data>
-  <data name="Message_ReadScript_Error" xml:space="preserve">
-    <value>Při čtení uživatelských skriptů došlo k chybě</value>
-  </data>
-  <data name="Message_Warning_Caption" xml:space="preserve">
-    <value>Varování</value>
-  </data>
-  <data name="SystemFont" xml:space="preserve">
-    <value>Systémové písmo</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Altitude_true" xml:space="preserve">
-    <value>Symbol "-"</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
-    <value>Oddělovač desetinných míst</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Sunrise_true" xml:space="preserve">
-    <value>Oddělovač</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Year_false" xml:space="preserve">
-    <value>Přidejte úvodní nuly</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Year_true" xml:space="preserve">
-    <value>Úplný rok</value>
+  <data name="button_ElementName.Text" xml:space="preserve">
+    <value>Skript</value>
   </data>
 </root>

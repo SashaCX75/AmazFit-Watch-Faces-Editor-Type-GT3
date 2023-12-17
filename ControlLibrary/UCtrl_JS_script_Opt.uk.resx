@@ -117,42 +117,121 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="button_pause_call_Del.ToolTip" xml:space="preserve">
+    <value>Видалити *.js файл</value>
+  </data>
+  <data name="button_resume_call_Del.ToolTip" xml:space="preserve">
+    <value>Видалити *.js файл</value>
+  </data>
+  <data name="button_pause_call_Add.ToolTip" xml:space="preserve">
+    <value>Додати *.js файл</value>
+  </data>
+  <data name="button_user_script_start_Add.ToolTip" xml:space="preserve">
+    <value>Додати *.js файл</value>
+  </data>
+  <data name="button_user_script_start_Del.ToolTip" xml:space="preserve">
+    <value>Видалити *.js файл</value>
+  </data>
+  <data name="button_user_script_Add.ToolTip" xml:space="preserve">
+    <value>Додати *.js файл</value>
+  </data>
+  <data name="button_user_script_Del.ToolTip" xml:space="preserve">
+    <value>Видалити *.js файл</value>
+  </data>
+  <data name="button_user_script_end_Add.ToolTip" xml:space="preserve">
+    <value>Додати *.js файл</value>
+  </data>
+  <data name="button_user_script_end_Del.ToolTip" xml:space="preserve">
+    <value>Видалити *.js файл</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.ToolTip" xml:space="preserve">
+    <value>Додати *.js файл</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.ToolTip" xml:space="preserve">
+    <value>Видалити *.js файл</value>
+  </data>
+  <data name="button_user_functions_Add.ToolTip" xml:space="preserve">
+    <value>Додати *.js файл</value>
+  </data>
+  <data name="button_user_functions_Del.ToolTip" xml:space="preserve">
+    <value>Видалити *.js файл</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolStripMenuItem_Edit_JS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 22</value>
+  </data>
+  <data name="toolStripMenuItem_Edit_JS.Text" xml:space="preserve">
+    <value>Відкрити JS файл</value>
+  </data>
+  <data name="contextMenuStrip_Edit_JS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 26</value>
+  </data>
+  <data name="checkBox_user_functions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 48</value>
+  </data>
   <data name="checkBox_user_functions.Text" xml:space="preserve">
-    <value>Користувацькі функції (вставляються 
-перед оголошенням змінних)</value>
+    <value>Користувацькі функції 
+(вставляються перед 
+оголошенням змінних)</value>
+  </data>
+  <data name="checkBox_user_script_start.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 48</value>
   </data>
   <data name="checkBox_user_script_start.Text" xml:space="preserve">
-    <value>Користувацькі скрипти на початку 
-(вставляються перед створенням віджетів)</value>
+    <value>
+на початку 
+(вставляються перед створенням 
+віджетів)</value>
+  </data>
+  <data name="checkBox_user_script.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 48</value>
   </data>
   <data name="checkBox_user_script.Text" xml:space="preserve">
-    <value>Користувацькі скрипти 
-(вставляються в обране місце)</value>
+    <value>Користувацький скрипт 
+(положення цього віджета визначає 
+положення скрипта в коді)</value>
+  </data>
+  <data name="checkBox_user_script_end.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 48</value>
   </data>
   <data name="checkBox_user_script_end.Text" xml:space="preserve">
     <value>Користувацький скрипт наприкінці 
-(вставляються після створення віджетів, 
-перед WIDGET_DELEGATE)</value>
+(вставляються після створення 
+віджетів, перед WIDGET_DELEGATE)</value>
+  </data>
+  <data name="checkBox_user_script_beforeShortcuts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 48</value>
   </data>
   <data name="checkBox_user_script_beforeShortcuts.Text" xml:space="preserve">
-    <value>Користувацькі скрипт перед ярликами
-(вставляються перед віджетами ярликів)</value>
+    <value>Користувацький скрипт перед 
+ярликами (вставляються перед 
+віджетами ярликів)</value>
+  </data>
+  <data name="checkBox_resume_call.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 48</value>
   </data>
   <data name="checkBox_resume_call.Text" xml:space="preserve">
-    <value>Функція resume_call (вставляються в 
-resume_call віджета WIDGET_DELEGATE)</value>
+    <value>Функція resume_call (вставляються 
+в resume_call віджета 
+WIDGET_DELEGATE)</value>
+  </data>
+  <data name="checkBox_pause_call.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 48</value>
   </data>
   <data name="checkBox_pause_call.Text" xml:space="preserve">
-    <value>Функція pause_call (вставляються в 
-pause_call віджета WIDGET_DELEGATE)
+    <value>Функція pause_call (вставляються 
+в pause_call віджета 
+WIDGET_DELEGATE)
 </value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 26</value>
+    <value>238, 31</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Клік правою кнопкою на перемикачі відкриє 
 файл у програмі за замовчуванням</value>
+  </data>
+  <data name="button_resume_call_Add.ToolTip" xml:space="preserve">
+    <value>Додати *.js файл</value>
   </data>
 </root>

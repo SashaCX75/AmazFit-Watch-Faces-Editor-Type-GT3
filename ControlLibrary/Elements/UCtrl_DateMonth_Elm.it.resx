@@ -126,6 +126,9 @@
   <data name="button_Number.Text" xml:space="preserve">
     <value>Valori numerici</value>
   </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Valore per font</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_Pointer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

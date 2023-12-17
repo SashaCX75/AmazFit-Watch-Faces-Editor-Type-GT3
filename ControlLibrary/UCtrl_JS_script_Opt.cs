@@ -62,13 +62,13 @@ namespace ControlLibrary
                 checkBox_resume_call.Visible = !AOD_mode;
                 checkBox_pause_call.Visible = !AOD_mode;
 
-                splitContainer_user_functions.Visible = !AOD_mode;
-                splitContainer_user_script_start.Visible = !AOD_mode;
-                //splitContainer_user_script.Visible = !AOD_mode;
-                splitContainer_user_script_beforeShortcuts.Visible = !AOD_mode;
-                splitContainer_user_script_end.Visible = !AOD_mode;
-                splitContainer_resume_call.Visible = !AOD_mode;
-                splitContainer_pause_call.Visible = !AOD_mode;
+                panel_user_functions.Visible = !AOD_mode;
+                panel_user_script_start.Visible = !AOD_mode;
+                //panel_user_script.Visible = !AOD_mode;
+                panel_user_script_beforeShortcuts.Visible = !AOD_mode;
+                panel_user_script_end.Visible = !AOD_mode;
+                panel_resume_call.Visible = !AOD_mode;
+                panel_pause_call.Visible = !AOD_mode;
 
                 CheckScriptFile();
             }

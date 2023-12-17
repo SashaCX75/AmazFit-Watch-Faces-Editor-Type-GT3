@@ -610,8 +610,10 @@ namespace Watch_Face_Editor
                 case "ElementDigitalTime":
                     ElementDigitalTime DigitalTime = (ElementDigitalTime)element;
                     if (!DigitalTime.visible) return;
-                    int time_offsetX = -1;
-                    int time_offsetY = -1;
+                    int time_hour_offsetX = -1;
+                    int time_hour_offsetY = -1;
+                    int time_minute_offsetX = -1;
+                    int time_minute_offsetY = -1;
                     int time_spasing = 0;
                     bool am_pm = false;
                     value_lenght = 2;
@@ -630,7 +632,7 @@ namespace Watch_Face_Editor
                             int imageIndex = ListImages.IndexOf(DigitalTime.Hour.img_First);
                             int x = DigitalTime.Hour.imageX;
                             int y = DigitalTime.Hour.imageY;
-                            time_offsetY = y;
+                            time_hour_offsetY = y;
                             int spasing = DigitalTime.Hour.space;
                             time_spasing = spasing;
                             int angle = DigitalTime.Hour.angle;
@@ -651,8 +653,10 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
-                                                spasing, alignment, value, addZero, 2, separator_index, angle, BBorder, "ElementDigitalTime");
+                            time_hour_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y, spasing, alignment, value, addZero, 2, separator_index, angle, BBorder, "ElementDigitalTime");
+                            time_minute_offsetX = -1;
+                            time_minute_offsetY = -1;
+                            if (spasing != 0 && separator_index >= 0) time_hour_offsetX -= spasing;
 
                             if (DigitalTime.Hour.icon != null && DigitalTime.Hour.icon.Length > 0)
                             {
@@ -679,22 +683,24 @@ namespace Watch_Face_Editor
                             int alignment = AlignmentToInt(DigitalTime.Minute.align);
                             bool addZero = DigitalTime.Minute.zero;
                             //addZero = true;
-                            if (DigitalTime.Minute.follow && time_offsetX > -1 &&
+                            if (DigitalTime.Minute.follow && time_hour_offsetX > -1 &&
                                 DigitalTime.Minute.position > DigitalTime.Hour.position)
                             {
-                                x = time_offsetX;
+                                x = time_hour_offsetX;
                                 alignment = 0;
-                                y = time_offsetY;
+                                y = time_hour_offsetY;
                                 spasing = time_spasing;
                             }
-                            time_offsetY = y;
+                            time_minute_offsetY = y;
                             int value = WatchFacePreviewSet.Time.Minutes;
                             int separator_index = -1;
                             if (DigitalTime.Minute.unit != null && DigitalTime.Minute.unit.Length > 0)
                                 separator_index = ListImages.IndexOf(DigitalTime.Minute.unit);
 
-                            time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
-                                                spasing, alignment, value, addZero, 2, separator_index, angle, BBorder, "ElementDigitalTime");
+                            time_minute_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y, spasing, alignment, value, addZero, 2, separator_index, angle, BBorder, "ElementDigitalTime");
+                            time_hour_offsetX = -1;
+                            time_hour_offsetY = -1;
+                            if (spasing != 0 && separator_index >= 0) time_minute_offsetX -= spasing;
 
                             if (DigitalTime.Minute.icon != null && DigitalTime.Minute.icon.Length > 0)
                             {
@@ -721,22 +727,22 @@ namespace Watch_Face_Editor
                             int alignment = AlignmentToInt(DigitalTime.Second.align);
                             bool addZero = DigitalTime.Second.zero;
                             //addZero = true;
-                            if (DigitalTime.Second.follow && time_offsetX > -1 &&
+                            if (DigitalTime.Second.follow && time_minute_offsetX > -1 &&
                                 DigitalTime.Second.position > DigitalTime.Minute.position)
                             {
-                                x = time_offsetX;
+                                x = time_minute_offsetX;
                                 alignment = 0;
-                                y = time_offsetY;
+                                y = time_hour_offsetY;
                                 spasing = time_spasing;
                             }
-                            time_offsetY = y;
+                            time_hour_offsetY = y;
                             int value = WatchFacePreviewSet.Time.Seconds;
                             int separator_index = -1;
                             if (DigitalTime.Second.unit != null && DigitalTime.Second.unit.Length > 0)
                                 separator_index = ListImages.IndexOf(DigitalTime.Second.unit);
 
 
-                            time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
+                            Draw_dagital_text(gPanel, imageIndex, x, y,
                                                 spasing, alignment, value, addZero, 2, separator_index, angle, BBorder, "ElementDigitalTime");
 
                             if (DigitalTime.Second.icon != null && DigitalTime.Second.icon.Length > 0)
@@ -794,7 +800,13 @@ namespace Watch_Face_Editor
                             string align_h = number_font.align_h;
                             string align_v = number_font.align_v;
                             string text_style = number_font.text_style;
-                            string valueStr = WatchFacePreviewSet.Time.Hours.ToString();
+                            int value = WatchFacePreviewSet.Time.Hours;
+                            if (ProgramSettings.ShowIn12hourFormat && DigitalTime.AmPm != null)
+                            {
+                                if (value > 11) value -= 12;
+                                if (value == 0) value = 12;
+                            }
+                            string valueStr = value.ToString();
                             string unitStr = "hour";
                             if (number_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
                             if (number_font.unit_type > 0)

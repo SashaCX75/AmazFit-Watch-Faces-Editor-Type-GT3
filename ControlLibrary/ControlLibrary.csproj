@@ -1099,7 +1099,22 @@
     <EmbeddedResource Include="Elements\UCtrl_Image_Elm.zh.resx">
       <DependentUpon>UCtrl_Image_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_JSscript_Elm.cs.resx">
+      <DependentUpon>UCtrl_JSscript_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_JSscript_Elm.de.resx">
+      <DependentUpon>UCtrl_JSscript_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_JSscript_Elm.en.resx">
+      <DependentUpon>UCtrl_JSscript_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_JSscript_Elm.es.resx">
+      <DependentUpon>UCtrl_JSscript_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_JSscript_Elm.fr.resx">
+      <DependentUpon>UCtrl_JSscript_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_JSscript_Elm.it.resx">
       <DependentUpon>UCtrl_JSscript_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_JSscript_Elm.resx">
@@ -1993,7 +2008,22 @@
     <EmbeddedResource Include="Elements\UCtrl_Image_Elm.resx">
       <DependentUpon>UCtrl_Image_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_JS_script_Opt.cs.resx">
+      <DependentUpon>UCtrl_JS_script_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_JS_script_Opt.de.resx">
+      <DependentUpon>UCtrl_JS_script_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_JS_script_Opt.en.resx">
+      <DependentUpon>UCtrl_JS_script_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_JS_script_Opt.es.resx">
+      <DependentUpon>UCtrl_JS_script_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_JS_script_Opt.fr.resx">
+      <DependentUpon>UCtrl_JS_script_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_JS_script_Opt.it.resx">
       <DependentUpon>UCtrl_JS_script_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_JS_script_Opt.resx">
@@ -2585,6 +2615,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\JavaScript.16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\note-plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\note-edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\note-delete.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

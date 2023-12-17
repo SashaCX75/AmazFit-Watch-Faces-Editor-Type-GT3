@@ -129,6 +129,9 @@
   <data name="button_Hours_circle.Text" xml:space="preserve">
     <value>Stunden im Kreis</value>
   </data>
+  <data name="button_Hours_Font.Text" xml:space="preserve">
+    <value>Stunden mit Schriftart</value>
+  </data>
   <data name="button_Hours_rotation.Text" xml:space="preserve">
     <value>Stunden im Winkel</value>
   </data>
@@ -138,6 +141,9 @@
   <data name="button_Minutes_circle.Text" xml:space="preserve">
     <value>Minuten im Kreis</value>
   </data>
+  <data name="button_Minutes_Font.Text" xml:space="preserve">
+    <value>Minuten mit Schriftart</value>
+  </data>
   <data name="button_Minutes_rotation.Text" xml:space="preserve">
     <value>Minuten im Winkel</value>
   </data>
@@ -146,6 +152,9 @@
   </data>
   <data name="button_Seconds_circle.Text" xml:space="preserve">
     <value>Sekunden im Kreis</value>
+  </data>
+  <data name="button_Seconds_Font.Text" xml:space="preserve">
+    <value>Sekunden mit Schriftart</value>
   </data>
   <data name="button_Seconds_rotation.Text" xml:space="preserve">
     <value>Sekunden im Winkel</value>

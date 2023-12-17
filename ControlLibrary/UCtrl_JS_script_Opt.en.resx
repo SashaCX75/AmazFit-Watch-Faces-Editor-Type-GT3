@@ -117,62 +117,117 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="button_pause_call_Del.ToolTip" xml:space="preserve">
+    <value>Delete *.js file</value>
+  </data>
+  <data name="button_resume_call_Del.ToolTip" xml:space="preserve">
+    <value>Delete *.js file</value>
+  </data>
+  <data name="button_pause_call_Add.ToolTip" xml:space="preserve">
+    <value>Add *.js file</value>
+  </data>
+  <data name="button_user_script_start_Add.ToolTip" xml:space="preserve">
+    <value>Add *.js file</value>
+  </data>
+  <data name="button_user_script_start_Del.ToolTip" xml:space="preserve">
+    <value>Delete *.js file</value>
+  </data>
+  <data name="button_user_script_Add.ToolTip" xml:space="preserve">
+    <value>Add *.js file</value>
+  </data>
+  <data name="button_user_script_Del.ToolTip" xml:space="preserve">
+    <value>Delete *.js file</value>
+  </data>
+  <data name="button_user_script_end_Add.ToolTip" xml:space="preserve">
+    <value>Add *.js file</value>
+  </data>
+  <data name="button_user_script_end_Del.ToolTip" xml:space="preserve">
+    <value>Delete *.js file</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.ToolTip" xml:space="preserve">
+    <value>Add *.js file</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.ToolTip" xml:space="preserve">
+    <value>Delete *.js file</value>
+  </data>
+  <data name="button_user_functions_Add.ToolTip" xml:space="preserve">
+    <value>Add *.js file</value>
+  </data>
+  <data name="button_user_functions_Del.ToolTip" xml:space="preserve">
+    <value>Delete *.js file</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="splitContainer_user_script_end.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 273</value>
+  <data name="contextMenuStrip_Edit_JS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 26</value>
   </data>
-  <data name="splitContainer_resume_call.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 333</value>
-  </data>
-  <data name="splitContainer_pause_call.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 393</value>
+  <data name="checkBox_user_functions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 48</value>
   </data>
   <data name="checkBox_user_functions.Text" xml:space="preserve">
     <value>User-defined functions (inserted before 
 declaring variables)</value>
   </data>
+  <data name="toolStripMenuItem_Edit_JS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 22</value>
+  </data>
+  <data name="toolStripMenuItem_Edit_JS.Text" xml:space="preserve">
+    <value>Open JS file</value>
+  </data>
+  <data name="checkBox_user_script_start.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 48</value>
+  </data>
   <data name="checkBox_user_script_start.Text" xml:space="preserve">
-    <value>Custom script at the start 
+    <value>User script at the start 
 (inserted before creating widgets)</value>
   </data>
+  <data name="checkBox_user_script.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 48</value>
+  </data>
   <data name="checkBox_user_script.Text" xml:space="preserve">
-    <value>Custom script 
-(inserted in selected location)</value>
+    <value>User script (the position of this widget 
+determines the position of the script 
+in the code)</value>
   </data>
   <data name="checkBox_user_script_end.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
+    <value>200, 48</value>
   </data>
   <data name="checkBox_user_script_end.Text" xml:space="preserve">
-    <value>Custom script at the end (inserted after widgets 
-are created, before WIDGET_DELEGATE)</value>
+    <value>User script at the end (inserted after 
+widgets are created, before 
+WIDGET_DELEGATE)</value>
+  </data>
+  <data name="checkBox_user_script_beforeShortcuts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 48</value>
   </data>
   <data name="checkBox_user_script_beforeShortcuts.Text" xml:space="preserve">
-    <value>Custom script in front of shortcuts
+    <value>User script before shortcuts
 (inserted before shortcut widgets)</value>
   </data>
-  <data name="checkBox_resume_call.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 303</value>
+  <data name="checkBox_resume_call.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 48</value>
   </data>
   <data name="checkBox_resume_call.Text" xml:space="preserve">
-    <value>Function resume_call (inserted into resume_call 
-of the WIDGET_DELEGATE widget)</value>
+    <value>Function resume_call (inserted into 
+resume_call of the 
+WIDGET_DELEGATE widget)</value>
   </data>
-  <data name="checkBox_pause_call.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 363</value>
+  <data name="checkBox_pause_call.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 48</value>
   </data>
   <data name="checkBox_pause_call.Text" xml:space="preserve">
-    <value>Function pause_call (inserted into pause_call 
-of the WIDGET_DELEGATE widget)
+    <value>Function pause_call (inserted into 
+pause_call of the 
+WIDGET_DELEGATE widget)
 </value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 423</value>
-  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 26</value>
+    <value>187, 31</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Right-clicking on the switch will open 
 the file in the default programme</value>
+  </data>
+  <data name="button_resume_call_Add.ToolTip" xml:space="preserve">
+    <value>Add *.js file</value>
   </data>
 </root>
