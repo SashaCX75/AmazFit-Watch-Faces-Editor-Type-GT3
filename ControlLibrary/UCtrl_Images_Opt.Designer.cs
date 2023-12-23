@@ -49,11 +49,15 @@ namespace ControlLibrary
             this.numericUpDown_pictures_count = new System.Windows.Forms.NumericUpDown();
             this.label03 = new System.Windows.Forms.Label();
             this.checkBox_shortcut = new System.Windows.Forms.CheckBox();
+            this.context_WidgetProperty = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.копироватьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вставитьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_X.SuspendLayout();
             this.contextMenuStrip_Y.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pictures_count)).BeginInit();
+            this.context_WidgetProperty.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip_X
@@ -218,10 +222,34 @@ namespace ControlLibrary
             this.checkBox_shortcut.UseVisualStyleBackColor = true;
             this.checkBox_shortcut.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
+            // context_WidgetProperty
+            // 
+            resources.ApplyResources(this.context_WidgetProperty, "context_WidgetProperty");
+            this.context_WidgetProperty.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.копироватьСвойстваToolStripMenuItem,
+            this.вставитьСвойстваToolStripMenuItem});
+            this.context_WidgetProperty.Name = "context_WidgetProperty";
+            this.context_WidgetProperty.Opening += new System.ComponentModel.CancelEventHandler(this.context_WidgetProperty_Opening);
+            // 
+            // копироватьСвойстваToolStripMenuItem
+            // 
+            resources.ApplyResources(this.копироватьСвойстваToolStripMenuItem, "копироватьСвойстваToolStripMenuItem");
+            this.копироватьСвойстваToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.copy_prop;
+            this.копироватьСвойстваToolStripMenuItem.Name = "копироватьСвойстваToolStripMenuItem";
+            this.копироватьСвойстваToolStripMenuItem.Click += new System.EventHandler(this.копироватьСвойстваToolStripMenuItem_Click);
+            // 
+            // вставитьСвойстваToolStripMenuItem
+            // 
+            resources.ApplyResources(this.вставитьСвойстваToolStripMenuItem, "вставитьСвойстваToolStripMenuItem");
+            this.вставитьСвойстваToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.paste_prop;
+            this.вставитьСвойстваToolStripMenuItem.Name = "вставитьСвойстваToolStripMenuItem";
+            this.вставитьСвойстваToolStripMenuItem.Click += new System.EventHandler(this.вставитьСвойстваToolStripMenuItem_Click);
+            // 
             // UCtrl_Images_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ContextMenuStrip = this.context_WidgetProperty;
             this.Controls.Add(this.checkBox_shortcut);
             this.Controls.Add(this.numericUpDown_pictures_count);
             this.Controls.Add(this.label03);
@@ -238,6 +266,7 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pictures_count)).EndInit();
+            this.context_WidgetProperty.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,5 +292,8 @@ namespace ControlLibrary
         public System.Windows.Forms.NumericUpDown numericUpDown_pictures_count;
         public System.Windows.Forms.Label label03;
         public System.Windows.Forms.CheckBox checkBox_shortcut;
+        private System.Windows.Forms.ContextMenuStrip context_WidgetProperty;
+        private System.Windows.Forms.ToolStripMenuItem копироватьСвойстваToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вставитьСвойстваToolStripMenuItem;
     }
 }

@@ -2625,5 +2625,14 @@
   <ItemGroup>
     <None Include="Resources\note-delete.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy prop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paste prop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\note-text.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

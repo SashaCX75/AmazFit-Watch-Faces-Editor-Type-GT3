@@ -20,6 +20,7 @@ namespace ControlLibrary
 
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _ElementWithImages;
+        public Dictionary<string, Object> WidgetProperty = new Dictionary<string, Object>();
 
         /// <summary>Количество картинок для отображения по умолчанию</summary>
         public int ImagesCount
@@ -98,6 +99,16 @@ namespace ControlLibrary
         [Description("Происходит при изменении выбора элемента")]
         public event ValueChangedHandler ValueChanged;
         public delegate void ValueChangedHandler(object sender, EventArgs eventArgs);
+
+        [Browsable(true)]
+        [Description("Происходит при копировании свойст виджета")]
+        public event WidgetProperty_Copy_Handler WidgetProperty_Copy;
+        public delegate void WidgetProperty_Copy_Handler(object sender, EventArgs eventArgs);
+
+        [Browsable(true)]
+        [Description("Происходит при вставке свойст виджета")]
+        public event WidgetProperty_Paste_Handler WidgetProperty_Paste;
+        public delegate void WidgetProperty_Paste_Handler(object sender, EventArgs eventArgs);
 
         #region Standard events
         private void comboBox_KeyDown(object sender, KeyEventArgs e)
@@ -419,6 +430,31 @@ namespace ControlLibrary
             {
                 EventArgs eventArgs = new EventArgs();
                 ValueChanged(this, eventArgs);
+            }
+        }
+
+        private void context_WidgetProperty_Opening(object sender, CancelEventArgs e)
+        {
+            if (WidgetProperty.ContainsKey("hmUI_widget_IMG_LEVEL")) context_WidgetProperty.Items[1].Enabled = true;
+            else context_WidgetProperty.Items[1].Enabled = false;
+        }
+
+        private void копироватьСвойстваToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (WidgetProperty_Copy != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                WidgetProperty_Copy(this, eventArgs);
+            }
+        }
+
+        private void вставитьСвойстваToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Focus();
+            if (WidgetProperty_Paste != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                WidgetProperty_Paste(this, eventArgs);
             }
         }
     }

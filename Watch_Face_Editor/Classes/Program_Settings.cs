@@ -83,8 +83,8 @@ namespace Watch_Face_Editor
 
         public string model_config = @"\model_config\configurations.json";
 
-        public string CacheFonts_light = "0123456789 _-.,:;`'%°";
+        public string CacheFonts_light = "0123456789 _-.,:;`'%°\\\\/";
         public string CacheFonts_full = "0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz " +
-                "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя  ҐЄІЇґєії " + "_-.,:;`'%°";
+                "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя  ҐЄІЇґєії " + "_-.,:;`'%°\\\\/";
     }
 }

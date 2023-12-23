@@ -69,6 +69,9 @@ namespace ControlLibrary
             this.label_unit_miles = new System.Windows.Forms.Label();
             this.numericUpDown_angle = new System.Windows.Forms.NumericUpDown();
             this.label_angle = new System.Windows.Forms.Label();
+            this.context_WidgetProperty = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.копироватьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вставитьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageX)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).BeginInit();
@@ -77,6 +80,7 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_iconY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_spacing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_angle)).BeginInit();
+            this.context_WidgetProperty.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox_image
@@ -425,10 +429,34 @@ namespace ControlLibrary
             resources.ApplyResources(this.label_angle, "label_angle");
             this.label_angle.Name = "label_angle";
             // 
+            // context_WidgetProperty
+            // 
+            resources.ApplyResources(this.context_WidgetProperty, "context_WidgetProperty");
+            this.context_WidgetProperty.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.копироватьСвойстваToolStripMenuItem,
+            this.вставитьСвойстваToolStripMenuItem});
+            this.context_WidgetProperty.Name = "context_WidgetProperty";
+            this.context_WidgetProperty.Opening += new System.ComponentModel.CancelEventHandler(this.context_WidgetProperty_Opening);
+            // 
+            // копироватьСвойстваToolStripMenuItem
+            // 
+            resources.ApplyResources(this.копироватьСвойстваToolStripMenuItem, "копироватьСвойстваToolStripMenuItem");
+            this.копироватьСвойстваToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.copy_prop;
+            this.копироватьСвойстваToolStripMenuItem.Name = "копироватьСвойстваToolStripMenuItem";
+            this.копироватьСвойстваToolStripMenuItem.Click += new System.EventHandler(this.копироватьСвойстваToolStripMenuItem_Click);
+            // 
+            // вставитьСвойстваToolStripMenuItem
+            // 
+            resources.ApplyResources(this.вставитьСвойстваToolStripMenuItem, "вставитьСвойстваToolStripMenuItem");
+            this.вставитьСвойстваToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.paste_prop;
+            this.вставитьСвойстваToolStripMenuItem.Name = "вставитьСвойстваToolStripMenuItem";
+            this.вставитьСвойстваToolStripMenuItem.Click += new System.EventHandler(this.вставитьСвойстваToolStripMenuItem_Click);
+            // 
             // UCtrl_Text_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ContextMenuStrip = this.context_WidgetProperty;
             this.Controls.Add(this.numericUpDown_angle);
             this.Controls.Add(this.label_angle);
             this.Controls.Add(this.comboBox_unit_miles);
@@ -468,6 +496,7 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_iconY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_spacing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_angle)).EndInit();
+            this.context_WidgetProperty.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -513,5 +542,8 @@ namespace ControlLibrary
         public System.Windows.Forms.NumericUpDown numericUpDown_spacing;
         public System.Windows.Forms.NumericUpDown numericUpDown_angle;
         private System.Windows.Forms.Label label_angle;
+        private System.Windows.Forms.ContextMenuStrip context_WidgetProperty;
+        private System.Windows.Forms.ToolStripMenuItem копироватьСвойстваToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вставитьСвойстваToolStripMenuItem;
     }
 }

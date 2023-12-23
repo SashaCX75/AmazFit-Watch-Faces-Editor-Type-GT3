@@ -117,408 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="button_pause_call_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="button_pause_call_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button_pause_call_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
-  </data>
-  <data name="button_pause_call_Del.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 22</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="button_pause_call_Del.TabIndex" type="System.Int32, mscorlib">
-    <value>167</value>
-  </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>206, 17</value>
-  </metadata>
-  <data name="button_pause_call_Del.ToolTip" xml:space="preserve">
-    <value>Удалить *.js файл</value>
-  </data>
-  <data name="&gt;&gt;button_pause_call_Del.Name" xml:space="preserve">
-    <value>button_pause_call_Del</value>
-  </data>
-  <data name="&gt;&gt;button_pause_call_Del.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_pause_call_Del.Parent" xml:space="preserve">
-    <value>panel_pause_call_buttons</value>
-  </data>
-  <data name="&gt;&gt;button_pause_call_Del.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="button_resume_call_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="button_resume_call_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_resume_call_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
-  </data>
-  <data name="button_resume_call_Del.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 22</value>
-  </data>
-  <data name="button_resume_call_Del.TabIndex" type="System.Int32, mscorlib">
-    <value>167</value>
-  </data>
-  <data name="button_resume_call_Del.ToolTip" xml:space="preserve">
-    <value>Удалить *.js файл</value>
-  </data>
-  <data name="&gt;&gt;button_resume_call_Del.Name" xml:space="preserve">
-    <value>button_resume_call_Del</value>
-  </data>
-  <data name="&gt;&gt;button_resume_call_Del.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_resume_call_Del.Parent" xml:space="preserve">
-    <value>panel_resume_call_buttons</value>
-  </data>
-  <data name="&gt;&gt;button_resume_call_Del.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="button_pause_call_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_pause_call_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_pause_call_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="button_pause_call_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 22</value>
-  </data>
-  <data name="button_pause_call_Add.TabIndex" type="System.Int32, mscorlib">
-    <value>166</value>
-  </data>
-  <data name="button_pause_call_Add.ToolTip" xml:space="preserve">
-    <value>Добавить *.js файл</value>
-  </data>
-  <data name="&gt;&gt;button_pause_call_Add.Name" xml:space="preserve">
-    <value>button_pause_call_Add</value>
-  </data>
-  <data name="&gt;&gt;button_pause_call_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_pause_call_Add.Parent" xml:space="preserve">
-    <value>panel_pause_call_buttons</value>
-  </data>
-  <data name="&gt;&gt;button_pause_call_Add.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="button_user_script_start_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_user_script_start_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_user_script_start_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="button_user_script_start_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 22</value>
-  </data>
-  <data name="button_user_script_start_Add.TabIndex" type="System.Int32, mscorlib">
-    <value>167</value>
-  </data>
-  <data name="button_user_script_start_Add.ToolTip" xml:space="preserve">
-    <value>Добавить *.js файл</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Add.Name" xml:space="preserve">
-    <value>button_user_script_start_Add</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Add.Parent" xml:space="preserve">
-    <value>panel_user_script_start_buttons</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Add.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="button_user_script_start_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="button_user_script_start_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_user_script_start_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
-  </data>
-  <data name="button_user_script_start_Del.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 22</value>
-  </data>
-  <data name="button_user_script_start_Del.TabIndex" type="System.Int32, mscorlib">
-    <value>168</value>
-  </data>
-  <data name="button_user_script_start_Del.ToolTip" xml:space="preserve">
-    <value>Удалить *.js файл</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Del.Name" xml:space="preserve">
-    <value>button_user_script_start_Del</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Del.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Del.Parent" xml:space="preserve">
-    <value>panel_user_script_start_buttons</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Del.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="button_user_script_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_user_script_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_user_script_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="button_user_script_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 22</value>
-  </data>
-  <data name="button_user_script_Add.TabIndex" type="System.Int32, mscorlib">
-    <value>166</value>
-  </data>
-  <data name="button_user_script_Add.ToolTip" xml:space="preserve">
-    <value>Добавить *.js файл</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Add.Name" xml:space="preserve">
-    <value>button_user_script_Add</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Add.Parent" xml:space="preserve">
-    <value>panel_user_script_buttons</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Add.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="button_user_script_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="button_user_script_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_user_script_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
-  </data>
-  <data name="button_user_script_Del.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 22</value>
-  </data>
-  <data name="button_user_script_Del.TabIndex" type="System.Int32, mscorlib">
-    <value>167</value>
-  </data>
-  <data name="button_user_script_Del.ToolTip" xml:space="preserve">
-    <value>Удалить *.js файл</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Del.Name" xml:space="preserve">
-    <value>button_user_script_Del</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Del.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Del.Parent" xml:space="preserve">
-    <value>panel_user_script_buttons</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Del.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="button_user_script_end_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_user_script_end_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_user_script_end_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="button_user_script_end_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 22</value>
-  </data>
-  <data name="button_user_script_end_Add.TabIndex" type="System.Int32, mscorlib">
-    <value>166</value>
-  </data>
-  <data name="button_user_script_end_Add.ToolTip" xml:space="preserve">
-    <value>Добавить *.js файл</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Add.Name" xml:space="preserve">
-    <value>button_user_script_end_Add</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Add.Parent" xml:space="preserve">
-    <value>panel_user_script_end_buttons</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Add.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="button_user_script_end_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="button_user_script_end_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_user_script_end_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
-  </data>
-  <data name="button_user_script_end_Del.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 22</value>
-  </data>
-  <data name="button_user_script_end_Del.TabIndex" type="System.Int32, mscorlib">
-    <value>167</value>
-  </data>
-  <data name="button_user_script_end_Del.ToolTip" xml:space="preserve">
-    <value>Удалить *.js файл</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Del.Name" xml:space="preserve">
-    <value>button_user_script_end_Del</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Del.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Del.Parent" xml:space="preserve">
-    <value>panel_user_script_end_buttons</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Del.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 22</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Add.TabIndex" type="System.Int32, mscorlib">
-    <value>166</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Add.ToolTip" xml:space="preserve">
-    <value>Добавить *.js файл</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.Name" xml:space="preserve">
-    <value>button_user_script_beforeShortcuts_Add</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.Parent" xml:space="preserve">
-    <value>panel_user_script_beforeShortcuts_buttons</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Del.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 22</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Del.TabIndex" type="System.Int32, mscorlib">
-    <value>167</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Del.ToolTip" xml:space="preserve">
-    <value>Удалить *.js файл</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.Name" xml:space="preserve">
-    <value>button_user_script_beforeShortcuts_Del</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.Parent" xml:space="preserve">
-    <value>panel_user_script_beforeShortcuts_buttons</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="button_user_functions_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_user_functions_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_user_functions_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="button_user_functions_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 22</value>
-  </data>
-  <data name="button_user_functions_Add.TabIndex" type="System.Int32, mscorlib">
-    <value>166</value>
-  </data>
-  <data name="button_user_functions_Add.ToolTip" xml:space="preserve">
-    <value>Добавить *.js файл</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Add.Name" xml:space="preserve">
-    <value>button_user_functions_Add</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Add.Parent" xml:space="preserve">
-    <value>panel_user_functions_buttons</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Add.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="button_user_functions_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="button_user_functions_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_user_functions_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
-  </data>
-  <data name="button_user_functions_Del.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 22</value>
-  </data>
-  <data name="button_user_functions_Del.TabIndex" type="System.Int32, mscorlib">
-    <value>167</value>
-  </data>
-  <data name="button_user_functions_Del.ToolTip" xml:space="preserve">
-    <value>Удалить *.js файл</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Del.Name" xml:space="preserve">
-    <value>button_user_functions_Del</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Del.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Del.Parent" xml:space="preserve">
-    <value>panel_user_functions_buttons</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Del.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="checkBox_user_functions.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <metadata name="contextMenuStrip_Edit_JS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="toolStripMenuItem_Edit_JS.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
   </data>
@@ -534,6 +140,7 @@
   <data name="&gt;&gt;contextMenuStrip_Edit_JS.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="checkBox_user_functions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
@@ -835,6 +442,99 @@ WIDGET_DELEGATE)
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="button_user_functions_Create.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_user_functions_Create.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_functions_Create.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 4</value>
+  </data>
+  <data name="button_user_functions_Create.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_functions_Create.TabIndex" type="System.Int32, mscorlib">
+    <value>168</value>
+  </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>206, 17</value>
+  </metadata>
+  <data name="button_user_functions_Create.ToolTip" xml:space="preserve">
+    <value>Создать *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Create.Name" xml:space="preserve">
+    <value>button_user_functions_Create</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Create.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Create.Parent" xml:space="preserve">
+    <value>panel_user_functions_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Create.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button_user_functions_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_user_functions_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_functions_Del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="button_user_functions_Del.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_functions_Del.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="button_user_functions_Del.ToolTip" xml:space="preserve">
+    <value>Удалить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Del.Name" xml:space="preserve">
+    <value>button_user_functions_Del</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Del.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Del.Parent" xml:space="preserve">
+    <value>panel_user_functions_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Del.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="button_user_functions_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="button_user_functions_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_functions_Add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="button_user_functions_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_functions_Add.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="button_user_functions_Add.ToolTip" xml:space="preserve">
+    <value>Добавить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Add.Name" xml:space="preserve">
+    <value>button_user_functions_Add</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Add.Parent" xml:space="preserve">
+    <value>panel_user_functions_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Add.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="panel_user_functions_buttons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
@@ -912,6 +612,96 @@ WIDGET_DELEGATE)
   </data>
   <data name="&gt;&gt;panel_user_functions.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="button_user_script_start_Create.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_user_script_start_Create.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_start_Create.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 4</value>
+  </data>
+  <data name="button_user_script_start_Create.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_start_Create.TabIndex" type="System.Int32, mscorlib">
+    <value>169</value>
+  </data>
+  <data name="button_user_script_start_Create.ToolTip" xml:space="preserve">
+    <value>Создать *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Create.Name" xml:space="preserve">
+    <value>button_user_script_start_Create</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Create.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Create.Parent" xml:space="preserve">
+    <value>panel_user_script_start_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Create.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button_user_script_start_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_user_script_start_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_start_Del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="button_user_script_start_Del.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_start_Del.TabIndex" type="System.Int32, mscorlib">
+    <value>168</value>
+  </data>
+  <data name="button_user_script_start_Del.ToolTip" xml:space="preserve">
+    <value>Удалить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Del.Name" xml:space="preserve">
+    <value>button_user_script_start_Del</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Del.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Del.Parent" xml:space="preserve">
+    <value>panel_user_script_start_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Del.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="button_user_script_start_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="button_user_script_start_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_start_Add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="button_user_script_start_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_start_Add.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="button_user_script_start_Add.ToolTip" xml:space="preserve">
+    <value>Добавить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Add.Name" xml:space="preserve">
+    <value>button_user_script_start_Add</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Add.Parent" xml:space="preserve">
+    <value>panel_user_script_start_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Add.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="panel_user_script_start_buttons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -991,6 +781,96 @@ WIDGET_DELEGATE)
   <data name="&gt;&gt;panel_user_script_start.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="button_user_script_Create.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_user_script_Create.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_Create.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 4</value>
+  </data>
+  <data name="button_user_script_Create.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_Create.TabIndex" type="System.Int32, mscorlib">
+    <value>170</value>
+  </data>
+  <data name="button_user_script_Create.ToolTip" xml:space="preserve">
+    <value>Создать *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Create.Name" xml:space="preserve">
+    <value>button_user_script_Create</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Create.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Create.Parent" xml:space="preserve">
+    <value>panel_user_script_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Create.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button_user_script_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_user_script_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_Del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="button_user_script_Del.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_Del.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="button_user_script_Del.ToolTip" xml:space="preserve">
+    <value>Удалить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Del.Name" xml:space="preserve">
+    <value>button_user_script_Del</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Del.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Del.Parent" xml:space="preserve">
+    <value>panel_user_script_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Del.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="button_user_script_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="button_user_script_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_Add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="button_user_script_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_Add.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="button_user_script_Add.ToolTip" xml:space="preserve">
+    <value>Добавить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Add.Name" xml:space="preserve">
+    <value>button_user_script_Add</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Add.Parent" xml:space="preserve">
+    <value>panel_user_script_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Add.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="panel_user_script_buttons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
@@ -1068,6 +948,96 @@ WIDGET_DELEGATE)
   </data>
   <data name="&gt;&gt;panel_user_script.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Create.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Create.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Create.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 4</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Create.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Create.TabIndex" type="System.Int32, mscorlib">
+    <value>170</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Create.ToolTip" xml:space="preserve">
+    <value>Создать *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Create.Name" xml:space="preserve">
+    <value>button_user_script_beforeShortcuts_Create</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Create.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Create.Parent" xml:space="preserve">
+    <value>panel_user_script_beforeShortcuts_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Create.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.ToolTip" xml:space="preserve">
+    <value>Удалить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.Name" xml:space="preserve">
+    <value>button_user_script_beforeShortcuts_Del</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.Parent" xml:space="preserve">
+    <value>panel_user_script_beforeShortcuts_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.ToolTip" xml:space="preserve">
+    <value>Добавить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.Name" xml:space="preserve">
+    <value>button_user_script_beforeShortcuts_Add</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.Parent" xml:space="preserve">
+    <value>panel_user_script_beforeShortcuts_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="panel_user_script_beforeShortcuts_buttons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -1147,6 +1117,96 @@ WIDGET_DELEGATE)
   <data name="&gt;&gt;panel_user_script_beforeShortcuts.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="button_user_script_end_Create.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_user_script_end_Create.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_end_Create.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 4</value>
+  </data>
+  <data name="button_user_script_end_Create.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_end_Create.TabIndex" type="System.Int32, mscorlib">
+    <value>170</value>
+  </data>
+  <data name="button_user_script_end_Create.ToolTip" xml:space="preserve">
+    <value>Создать *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Create.Name" xml:space="preserve">
+    <value>button_user_script_end_Create</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Create.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Create.Parent" xml:space="preserve">
+    <value>panel_user_script_end_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Create.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button_user_script_end_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_user_script_end_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_end_Del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="button_user_script_end_Del.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_end_Del.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="button_user_script_end_Del.ToolTip" xml:space="preserve">
+    <value>Удалить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Del.Name" xml:space="preserve">
+    <value>button_user_script_end_Del</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Del.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Del.Parent" xml:space="preserve">
+    <value>panel_user_script_end_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Del.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="button_user_script_end_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="button_user_script_end_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_end_Add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="button_user_script_end_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_end_Add.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="button_user_script_end_Add.ToolTip" xml:space="preserve">
+    <value>Добавить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Add.Name" xml:space="preserve">
+    <value>button_user_script_end_Add</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Add.Parent" xml:space="preserve">
+    <value>panel_user_script_end_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Add.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="panel_user_script_end_buttons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
@@ -1225,6 +1285,66 @@ WIDGET_DELEGATE)
   <data name="&gt;&gt;panel_user_script_end.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="button_resume_call_Create.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_resume_call_Create.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_resume_call_Create.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 4</value>
+  </data>
+  <data name="button_resume_call_Create.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_resume_call_Create.TabIndex" type="System.Int32, mscorlib">
+    <value>170</value>
+  </data>
+  <data name="button_resume_call_Create.ToolTip" xml:space="preserve">
+    <value>Создать *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Create.Name" xml:space="preserve">
+    <value>button_resume_call_Create</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Create.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Create.Parent" xml:space="preserve">
+    <value>panel_resume_call_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Create.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button_resume_call_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_resume_call_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_resume_call_Del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="button_resume_call_Del.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_resume_call_Del.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="button_resume_call_Del.ToolTip" xml:space="preserve">
+    <value>Удалить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Del.Name" xml:space="preserve">
+    <value>button_resume_call_Del</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Del.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Del.Parent" xml:space="preserve">
+    <value>panel_resume_call_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Del.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="button_resume_call_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -1253,7 +1373,7 @@ WIDGET_DELEGATE)
     <value>panel_resume_call_buttons</value>
   </data>
   <data name="&gt;&gt;button_resume_call_Add.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="panel_resume_call_buttons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -1332,6 +1452,96 @@ WIDGET_DELEGATE)
   </data>
   <data name="&gt;&gt;panel_resume_call.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="button_pause_call_Create.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_pause_call_Create.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_pause_call_Create.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 4</value>
+  </data>
+  <data name="button_pause_call_Create.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_pause_call_Create.TabIndex" type="System.Int32, mscorlib">
+    <value>170</value>
+  </data>
+  <data name="button_pause_call_Create.ToolTip" xml:space="preserve">
+    <value>Создать *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Create.Name" xml:space="preserve">
+    <value>button_pause_call_Create</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Create.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Create.Parent" xml:space="preserve">
+    <value>panel_pause_call_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Create.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button_pause_call_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_pause_call_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_pause_call_Del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="button_pause_call_Del.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_pause_call_Del.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="button_pause_call_Del.ToolTip" xml:space="preserve">
+    <value>Удалить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Del.Name" xml:space="preserve">
+    <value>button_pause_call_Del</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Del.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Del.Parent" xml:space="preserve">
+    <value>panel_pause_call_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Del.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="button_pause_call_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="button_pause_call_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_pause_call_Add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="button_pause_call_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_pause_call_Add.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="button_pause_call_Add.ToolTip" xml:space="preserve">
+    <value>Добавить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Add.Name" xml:space="preserve">
+    <value>button_pause_call_Add</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Add.Parent" xml:space="preserve">
+    <value>panel_pause_call_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Add.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="panel_pause_call_buttons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
