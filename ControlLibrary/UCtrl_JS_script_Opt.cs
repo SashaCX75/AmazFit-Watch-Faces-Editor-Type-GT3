@@ -11,6 +11,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace ControlLibrary
 {
@@ -91,13 +92,15 @@ namespace ControlLibrary
             {
                 checkBox_user_functions.Enabled = true;
                 button_user_functions_Add.Enabled = false;
-                button_user_functions_Del.Enabled = true;
+                button_user_functions_Del.Visible = true;
+                button_user_functions_Create.Visible = false;
             }
             else
             {
                 checkBox_user_functions.Enabled = false;
                 button_user_functions_Add.Enabled = true;
-                button_user_functions_Del.Enabled = false;
+                button_user_functions_Del.Visible = false;
+                button_user_functions_Create.Visible = true;
             }
 
             fileName = "user_script_start.js";
@@ -107,13 +110,15 @@ namespace ControlLibrary
             {
                 checkBox_user_script_start.Enabled = true;
                 button_user_script_start_Add.Enabled = false;
-                button_user_script_start_Del.Enabled = true;
+                button_user_script_start_Del.Visible = true;
+                button_user_script_start_Create.Visible = false;
             }
             else
             {
                 checkBox_user_script_start.Enabled = false;
                 button_user_script_start_Add.Enabled = true;
-                button_user_script_start_Del.Enabled = false;
+                button_user_script_start_Del.Visible = false;
+                button_user_script_start_Create.Visible = true;
             }
 
             fileName = "user_script.js";
@@ -123,13 +128,15 @@ namespace ControlLibrary
             {
                 checkBox_user_script.Enabled = true;
                 button_user_script_Add.Enabled = false;
-                button_user_script_Del.Enabled = true;
+                button_user_script_Del.Visible = true;
+                button_user_script_Create.Visible = false;
             }
             else
             {
                 checkBox_user_script.Enabled = false;
                 button_user_script_Add.Enabled = true;
-                button_user_script_Del.Enabled = false;
+                button_user_script_Del.Visible = false;
+                button_user_script_Create.Visible = true;
             }
 
             fileName = "user_script_beforeShortcuts.js";
@@ -139,13 +146,15 @@ namespace ControlLibrary
             {
                 checkBox_user_script_beforeShortcuts.Enabled = true;
                 button_user_script_beforeShortcuts_Add.Enabled = false;
-                button_user_script_beforeShortcuts_Del.Enabled = true;
+                button_user_script_beforeShortcuts_Del.Visible = true;
+                button_user_script_beforeShortcuts_Create.Visible = false;
             }
             else
             {
                 checkBox_user_script_beforeShortcuts.Enabled = false;
                 button_user_script_beforeShortcuts_Add.Enabled = true;
-                button_user_script_beforeShortcuts_Del.Enabled = false;
+                button_user_script_beforeShortcuts_Del.Visible = false;
+                button_user_script_beforeShortcuts_Create.Visible = true;
             }
 
             fileName = "user_script_end.js";
@@ -155,13 +164,15 @@ namespace ControlLibrary
             {
                 checkBox_user_script_end.Enabled = true;
                 button_user_script_end_Add.Enabled = false;
-                button_user_script_end_Del.Enabled = true;
+                button_user_script_end_Del.Visible = true;
+                button_user_script_end_Create.Visible = false;
             }
             else
             {
                 checkBox_user_script_end.Enabled = false;
                 button_user_script_end_Add.Enabled = true;
-                button_user_script_end_Del.Enabled = false;
+                button_user_script_end_Del.Visible = false;
+                button_user_script_end_Create.Visible = true;
             }
 
             fileName = "resume_call.js";
@@ -171,13 +182,15 @@ namespace ControlLibrary
             {
                 checkBox_resume_call.Enabled = true;
                 button_resume_call_Add.Enabled = false;
-                button_resume_call_Del.Enabled = true;
+                button_resume_call_Del.Visible = true;
+                button_resume_call_Create.Visible = false;
             }
             else
             {
                 checkBox_resume_call.Enabled = false;
                 button_resume_call_Add.Enabled = true;
-                button_resume_call_Del.Enabled = false;
+                button_resume_call_Del.Visible = false;
+                button_resume_call_Create.Visible = true;
             }
 
             fileName = "pause_call.js";
@@ -187,13 +200,15 @@ namespace ControlLibrary
             {
                 checkBox_pause_call.Enabled = true;
                 button_pause_call_Add.Enabled = false;
-                button_pause_call_Del.Enabled = true;
+                button_pause_call_Del.Visible = true;
+                button_pause_call_Create.Visible = false;
             }
             else
             {
                 checkBox_pause_call.Enabled = false;
                 button_pause_call_Add.Enabled = true;
-                button_pause_call_Del.Enabled = false;
+                button_pause_call_Del.Visible = false;
+                button_pause_call_Create.Visible = true;
             }
             //}
         }
@@ -296,6 +311,82 @@ namespace ControlLibrary
                         MessageBox.Show(ex.Message, Properties.Strings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     CheckScriptFile();
+                }
+            }
+        }
+
+        private void button_Create_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            string destFileName = "";
+            switch (button.Name)
+            {
+                case "button_user_functions_Create":
+                    destFileName = "user_functions.js";
+                    break;
+                case "button_user_script_start_Create":
+                    destFileName = "user_script_start.js";
+                    break;
+                case "button_user_script_Create":
+                    destFileName = "user_script.js";
+                    break;
+                case "button_user_script_beforeShortcuts_Create":
+                    destFileName = "user_script_beforeShortcuts.js";
+                    break;
+                case "button_user_script_end_Create":
+                    destFileName = "user_script_end.js";
+                    break;
+                case "button_resume_call_Create":
+                    destFileName = "resume_call.js";
+                    break;
+                case "button_pause_call_Create":
+                    destFileName = "pause_call.js";
+                    break;
+            }
+            if (destFileName.Length > 3)
+            {
+                if (AOD) destFileName = "AOD_" + destFileName;
+                string jsDir = Path.Combine(ProjectDir, "JS");
+                string jsFileName = Path.Combine(jsDir, destFileName);
+                try
+                {
+                    if (!Directory.Exists(jsDir)) Directory.CreateDirectory(jsDir);
+                    string js_string = "";
+                    File.WriteAllText(jsFileName, js_string, Encoding.UTF8);
+                    switch (button.Name)
+                    {
+                        case "button_user_functions_Create":
+                            checkBox_user_functions.Checked = true;
+                            break;
+                        case "button_user_script_start_Create":
+                            checkBox_user_script_start.Checked = true;
+                            break;
+                        case "button_user_script_Create":
+                            checkBox_user_script.Checked = true;
+                            break;
+                        case "button_user_script_beforeShortcuts_Create":
+                            checkBox_user_script_beforeShortcuts.Checked = true;
+                            break;
+                        case "button_user_script_end_Create":
+                            checkBox_user_script_end.Checked = true;
+                            break;
+                        case "button_resume_call_Create":
+                            checkBox_resume_call.Checked = true;
+                            break;
+                        case "button_pause_call_Create":
+                            checkBox_pause_call.Checked = true;
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Properties.Strings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                CheckScriptFile();
+
+                if (File.Exists(jsFileName))
+                {
+                    Process.Start(jsFileName);
                 }
             }
         }
@@ -422,6 +513,7 @@ namespace ControlLibrary
                                 //proc.StartInfo.FileName = commandText;
                                 //proc.StartInfo.UseShellExecute = true;
                                 //proc.Start();
+
                                 Process.Start(fileFullName);
 
                             }
@@ -436,6 +528,7 @@ namespace ControlLibrary
 
                 cms.Close();
             }
+            e.Cancel = true;
         }
 
         private void contextMenuStrip_Edit_JS_Opened(object sender, EventArgs e)
@@ -443,6 +536,5 @@ namespace ControlLibrary
             ContextMenuStrip cms = sender as ContextMenuStrip;
             if (cms != null) cms.Close();
         }
-
     }
 }

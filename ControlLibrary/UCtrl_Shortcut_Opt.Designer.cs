@@ -51,20 +51,24 @@ namespace ControlLibrary
             this.label06 = new System.Windows.Forms.Label();
             this.label07 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.context_WidgetProperty = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.копироватьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вставитьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageX)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).BeginInit();
             this.contextMenuStrip_Y.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_width)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_height)).BeginInit();
+            this.context_WidgetProperty.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox_Image
             // 
+            resources.ApplyResources(this.comboBox_Image, "comboBox_Image");
             this.comboBox_Image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_Image.DropDownWidth = 135;
             this.comboBox_Image.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox_Image, "comboBox_Image");
             this.comboBox_Image.Name = "comboBox_Image";
             this.comboBox_Image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_Image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -74,8 +78,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_imageX
             // 
-            this.numericUpDown_imageX.ContextMenuStrip = this.contextMenuStrip_X;
             resources.ApplyResources(this.numericUpDown_imageX, "numericUpDown_imageX");
+            this.numericUpDown_imageX.ContextMenuStrip = this.contextMenuStrip_X;
             this.numericUpDown_imageX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -93,13 +97,13 @@ namespace ControlLibrary
             // 
             // contextMenuStrip_X
             // 
+            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_X.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуХToolStripMenuItem,
             this.копироватьToolStripMenuItemX,
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
-            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
@@ -122,8 +126,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_imageY
             // 
-            this.numericUpDown_imageY.ContextMenuStrip = this.contextMenuStrip_Y;
             resources.ApplyResources(this.numericUpDown_imageY, "numericUpDown_imageY");
+            this.numericUpDown_imageY.ContextMenuStrip = this.contextMenuStrip_Y;
             this.numericUpDown_imageY.Maximum = new decimal(new int[] {
             999,
             0,
@@ -141,13 +145,13 @@ namespace ControlLibrary
             // 
             // contextMenuStrip_Y
             // 
+            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_Y.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуYToolStripMenuItem,
             this.копироватьToolStripMenuItemY,
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
-            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem
@@ -239,10 +243,34 @@ namespace ControlLibrary
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
+            // context_WidgetProperty
+            // 
+            resources.ApplyResources(this.context_WidgetProperty, "context_WidgetProperty");
+            this.context_WidgetProperty.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.копироватьСвойстваToolStripMenuItem,
+            this.вставитьСвойстваToolStripMenuItem});
+            this.context_WidgetProperty.Name = "context_WidgetProperty";
+            this.context_WidgetProperty.Opening += new System.ComponentModel.CancelEventHandler(this.context_WidgetProperty_Opening);
+            // 
+            // копироватьСвойстваToolStripMenuItem
+            // 
+            resources.ApplyResources(this.копироватьСвойстваToolStripMenuItem, "копироватьСвойстваToolStripMenuItem");
+            this.копироватьСвойстваToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.copy_prop;
+            this.копироватьСвойстваToolStripMenuItem.Name = "копироватьСвойстваToolStripMenuItem";
+            this.копироватьСвойстваToolStripMenuItem.Click += new System.EventHandler(this.копироватьСвойстваToolStripMenuItem_Click);
+            // 
+            // вставитьСвойстваToolStripMenuItem
+            // 
+            resources.ApplyResources(this.вставитьСвойстваToolStripMenuItem, "вставитьСвойстваToolStripMenuItem");
+            this.вставитьСвойстваToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.paste_prop;
+            this.вставитьСвойстваToolStripMenuItem.Name = "вставитьСвойстваToolStripMenuItem";
+            this.вставитьСвойстваToolStripMenuItem.Click += new System.EventHandler(this.вставитьСвойстваToolStripMenuItem_Click);
+            // 
             // UCtrl_Shortcut_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ContextMenuStrip = this.context_WidgetProperty;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDown_width);
             this.Controls.Add(this.numericUpDown_height);
@@ -262,6 +290,7 @@ namespace ControlLibrary
             this.contextMenuStrip_Y.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_width)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_height)).EndInit();
+            this.context_WidgetProperty.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,5 +318,8 @@ namespace ControlLibrary
         private System.Windows.Forms.Label label06;
         private System.Windows.Forms.Label label07;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ContextMenuStrip context_WidgetProperty;
+        private System.Windows.Forms.ToolStripMenuItem копироватьСвойстваToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вставитьСвойстваToolStripMenuItem;
     }
 }

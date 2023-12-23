@@ -839,6 +839,7 @@ namespace Watch_Face_Editor
                     img_number.dot_image = null;
                 }
             }
+            uCtrl_Text_Opt.WidgetProperty = WidgetProperty;
 
             //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || 
             //    ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
@@ -3773,6 +3774,624 @@ namespace Watch_Face_Editor
                 visibleList.Add(button.visible);
             }
             return visibleList;
+        }
+
+        private void uCtrl_Text_Opt_WidgetProperty_Copy(object sender, EventArgs eventArgs)
+        {
+            if (WidgetProperty.ContainsKey("hmUI_widget_IMG_NUMBER")) WidgetProperty.Remove("hmUI_widget_IMG_NUMBER");
+            hmUI_widget_IMG_NUMBER img_number = new hmUI_widget_IMG_NUMBER();
+
+            img_number.align = uCtrl_Text_Opt.GetAlignment();
+            img_number.follow = uCtrl_Text_Opt.checkBox_follow.Checked;
+            img_number.icon = uCtrl_Text_Opt.GetIcon();
+            img_number.iconPosX = (int)uCtrl_Text_Opt.numericUpDown_iconX.Value;
+            img_number.iconPosY = (int)uCtrl_Text_Opt.numericUpDown_iconY.Value;
+            img_number.img_First = uCtrl_Text_Opt.GetImage();
+            img_number.imageX = (int)uCtrl_Text_Opt.numericUpDown_imageX.Value;
+            img_number.imageY = (int)uCtrl_Text_Opt.numericUpDown_imageY.Value;
+            img_number.space = (int)uCtrl_Text_Opt.numericUpDown_spacing.Value;
+            img_number.angle = (int)uCtrl_Text_Opt.numericUpDown_angle.Value;
+            if (!uCtrl_Text_Opt.Altitude) img_number.dot_image = uCtrl_Text_Opt.GetImageDecimalPoint();
+            else img_number.negative_image = uCtrl_Text_Opt.GetImageDecimalPoint();
+            img_number.unit = uCtrl_Text_Opt.GetUnit();
+            img_number.imperial_unit = uCtrl_Text_Opt.GetUnitMile();
+            img_number.invalid_image = uCtrl_Text_Opt.GetImageError();
+            img_number.zero = uCtrl_Text_Opt.checkBox_addZero.Checked;
+
+            WidgetProperty.Add("hmUI_widget_IMG_NUMBER", img_number);
+            uCtrl_Text_Opt.WidgetProperty = WidgetProperty;
+        }
+
+        private void uCtrl_Text_Opt_WidgetProperty_Paste(object sender, EventArgs eventArgs)
+        {
+            if (!WidgetProperty.ContainsKey("hmUI_widget_IMG_NUMBER")) return;
+            Object obj = null;
+            WidgetProperty.TryGetValue("hmUI_widget_IMG_NUMBER", out obj);
+            if (obj == null) return;
+            hmUI_widget_IMG_NUMBER img_number = (hmUI_widget_IMG_NUMBER)obj;
+
+            PreviewView = false;
+
+            //bool _dastance = uCtrl_Text_Opt.Distance;
+            //bool sunrise = uCtrl_Text_Opt.Sunrise;
+            bool _altitude = uCtrl_Text_Opt.Altitude;
+            bool _follow = uCtrl_Text_Opt.Follow;
+            bool _imageError = uCtrl_Text_Opt.ImageError;
+            bool _optionalSymbol = uCtrl_Text_Opt.OptionalSymbol;
+            bool _padingZero = uCtrl_Text_Opt.PaddingZero;
+            bool _angleVisible = uCtrl_Text_Opt.AngleVisible;
+
+            if (img_number.img_First != null) uCtrl_Text_Opt.SetImage(img_number.img_First);
+            uCtrl_Text_Opt.numericUpDown_imageX.Value = img_number.imageX;
+            uCtrl_Text_Opt.numericUpDown_imageY.Value = img_number.imageY;
+
+            uCtrl_Text_Opt.SetIcon(img_number.icon);
+            uCtrl_Text_Opt.numericUpDown_iconX.Value = img_number.iconPosX;
+            uCtrl_Text_Opt.numericUpDown_iconY.Value = img_number.iconPosY;
+
+            uCtrl_Text_Opt.SetUnit(img_number.unit);
+            uCtrl_Text_Opt.SetUnitMile(img_number.imperial_unit);
+            if (_imageError) uCtrl_Text_Opt.SetImageError(img_number.invalid_image);
+            if (_optionalSymbol)
+            {
+                if (!_altitude) uCtrl_Text_Opt.SetImageDecimalPoint(img_number.dot_image);
+                else uCtrl_Text_Opt.SetImageDecimalPoint(img_number.negative_image); 
+            }
+            uCtrl_Text_Opt.numericUpDown_spacing.Value = img_number.space;
+            if (_angleVisible && SelectedModel.versionOS >= 2) uCtrl_Text_Opt.numericUpDown_angle.Value = img_number.angle;
+
+            uCtrl_Text_Opt.SetAlignment(img_number.align);
+
+            if (_padingZero) uCtrl_Text_Opt.checkBox_addZero.Checked = img_number.zero;
+            if (_follow) uCtrl_Text_Opt.checkBox_follow.Checked = img_number.follow;
+
+            PreviewView = true;
+            uCtrl_Text_Opt_ValueChanged(sender, eventArgs);
+        }
+
+        private void uCtrl_Pointer_Opt_WidgetProperty_Copy(object sender, EventArgs eventArgs)
+        {
+            if (WidgetProperty.ContainsKey("hmUI_widget_IMG_POINTER")) WidgetProperty.Remove("hmUI_widget_IMG_POINTER");
+            hmUI_widget_IMG_POINTER img_pointer = new hmUI_widget_IMG_POINTER();
+
+            img_pointer.src = uCtrl_Pointer_Opt.GetPointerImage();
+            img_pointer.center_x = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_X.Value;
+            img_pointer.center_y = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_Y.Value;
+
+            img_pointer.pos_x = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_offset_X.Value;
+            img_pointer.pos_y = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_offset_Y.Value;
+
+            img_pointer.start_angle = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_startAngle.Value;
+            img_pointer.end_angle = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_endAngle.Value;
+
+            img_pointer.cover_path = uCtrl_Pointer_Opt.GetPointerImageCentr();
+            img_pointer.cover_x = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_centr_X.Value;
+            img_pointer.cover_y = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_centr_Y.Value;
+
+            img_pointer.scale = uCtrl_Pointer_Opt.GetPointerImageBackground();
+            img_pointer.scale_x = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_background_X.Value;
+            img_pointer.scale_y = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_background_Y.Value;
+
+            WidgetProperty.Add("hmUI_widget_IMG_POINTER", img_pointer);
+            uCtrl_Pointer_Opt.WidgetProperty = WidgetProperty;
+        }
+
+        private void uCtrl_Pointer_Opt_WidgetProperty_Paste(object sender, EventArgs eventArgs)
+        {
+            if (!WidgetProperty.ContainsKey("hmUI_widget_IMG_POINTER")) return;
+            Object obj = null;
+            WidgetProperty.TryGetValue("hmUI_widget_IMG_POINTER", out obj);
+            if (obj == null) return;
+            hmUI_widget_IMG_POINTER img_pointer = (hmUI_widget_IMG_POINTER)obj;
+
+            PreviewView = false;
+
+            if (img_pointer == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            if (img_pointer.src != null)
+                uCtrl_Pointer_Opt.SetPointerImage(img_pointer.src);
+            uCtrl_Pointer_Opt.numericUpDown_pointer_X.Value = img_pointer.center_x;
+            uCtrl_Pointer_Opt.numericUpDown_pointer_Y.Value = img_pointer.center_y;
+            uCtrl_Pointer_Opt.numericUpDown_pointer_offset_X.Value = img_pointer.pos_x;
+            uCtrl_Pointer_Opt.numericUpDown_pointer_offset_Y.Value = img_pointer.pos_y;
+
+            if (img_pointer.cover_path != null)
+                uCtrl_Pointer_Opt.SetPointerImageCentr(img_pointer.cover_path);
+            uCtrl_Pointer_Opt.numericUpDown_pointer_centr_X.Value = img_pointer.cover_x;
+            uCtrl_Pointer_Opt.numericUpDown_pointer_centr_Y.Value = img_pointer.cover_y;
+
+            if (img_pointer.scale != null)
+                uCtrl_Pointer_Opt.SetPointerImageBackground(img_pointer.scale);
+            uCtrl_Pointer_Opt.numericUpDown_pointer_background_X.Value = img_pointer.scale_x;
+            uCtrl_Pointer_Opt.numericUpDown_pointer_background_Y.Value = img_pointer.scale_y;
+
+            uCtrl_Pointer_Opt.numericUpDown_pointer_startAngle.Value = img_pointer.start_angle;
+            uCtrl_Pointer_Opt.numericUpDown_pointer_endAngle.Value = img_pointer.end_angle;
+
+            PreviewView = true;
+            uCtrl_Pointer_Opt_ValueChanged(sender, eventArgs);
+        }
+
+        private void uCtrl_Images_Opt_WidgetProperty_Copy(object sender, EventArgs eventArgs)
+        {
+            if (WidgetProperty.ContainsKey("hmUI_widget_IMG_LEVEL")) WidgetProperty.Remove("hmUI_widget_IMG_LEVEL");
+            hmUI_widget_IMG_LEVEL img_level = new hmUI_widget_IMG_LEVEL();
+
+            img_level.img_First = uCtrl_Images_Opt.GetImage();
+            img_level.X = (int)uCtrl_Images_Opt.numericUpDown_imageX.Value;
+            img_level.Y = (int)uCtrl_Images_Opt.numericUpDown_imageY.Value;
+            img_level.image_length = (int)uCtrl_Images_Opt.numericUpDown_pictures_count.Value;
+            img_level.shortcut = uCtrl_Images_Opt.checkBox_shortcut.Checked;
+
+            WidgetProperty.Add("hmUI_widget_IMG_LEVEL", img_level);
+            uCtrl_Images_Opt.WidgetProperty = WidgetProperty;
+        }
+
+        private void uCtrl_Images_Opt_WidgetProperty_Paste(object sender, EventArgs eventArgs)
+        {
+            if (!WidgetProperty.ContainsKey("hmUI_widget_IMG_LEVEL")) return;
+            Object obj = null;
+            WidgetProperty.TryGetValue("hmUI_widget_IMG_LEVEL", out obj);
+            if (obj == null) return;
+            hmUI_widget_IMG_LEVEL img_level = (hmUI_widget_IMG_LEVEL)obj;
+
+            PreviewView = false;
+
+            if (img_level == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            if (img_level.img_First != null)
+                uCtrl_Images_Opt.SetImage(img_level.img_First);
+            uCtrl_Images_Opt.numericUpDown_imageX.Value = img_level.X;
+            uCtrl_Images_Opt.numericUpDown_imageY.Value = img_level.Y;
+            if (img_level.image_length > 0)
+                uCtrl_Images_Opt.numericUpDown_pictures_count.Value = img_level.image_length;
+            //if (!imagesCountEnable) uCtrl_Images_Opt.numericUpDown_pictures_count.Value = imagesCount;
+
+            uCtrl_Images_Opt.checkBox_shortcut.Checked = img_level.shortcut;
+
+            PreviewView = true;
+            uCtrl_Images_Opt_ValueChanged(sender, eventArgs);
+        }
+
+        private void uCtrl_Circle_Scale_Opt_WidgetProperty_Copy(object sender, EventArgs eventArgs)
+        {
+            if (WidgetProperty.ContainsKey("Circle_Scale")) WidgetProperty.Remove("Circle_Scale");
+            Circle_Scale circle_scale = new Circle_Scale();
+
+            circle_scale.center_x = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircleX.Value;
+            circle_scale.center_y = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircleY.Value;
+
+            circle_scale.radius = (int)(int)Math.Abs(uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_radius.Value);
+            circle_scale.line_width = (int)(int)Math.Abs(uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_width.Value);
+
+            circle_scale.start_angle = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_startAngle.Value;
+            circle_scale.end_angle = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_endAngle.Value;
+
+            circle_scale.line_cap = uCtrl_Circle_Scale_Opt.GetLineCap();
+
+            circle_scale.color = ColorToString(uCtrl_Circle_Scale_Opt.GetColorScale());
+
+            circle_scale.mirror = uCtrl_Circle_Scale_Opt.checkBox_mirror.Checked;
+            circle_scale.inversion = uCtrl_Circle_Scale_Opt.checkBox_inversion.Checked;
+
+            WidgetProperty.Add("Circle_Scale", circle_scale);
+            uCtrl_Circle_Scale_Opt.WidgetProperty = WidgetProperty;
+        }
+
+        private void uCtrl_Circle_Scale_Opt_WidgetProperty_Paste(object sender, EventArgs eventArgs)
+        {
+            if (!WidgetProperty.ContainsKey("Circle_Scale")) return;
+            Object obj = null;
+            WidgetProperty.TryGetValue("Circle_Scale", out obj);
+            if (obj == null) return;
+            Circle_Scale circle_scale = (Circle_Scale)obj;
+
+            PreviewView = false;
+
+            if (circle_scale == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircleX.Value = circle_scale.center_x;
+            uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircleY.Value = circle_scale.center_y;
+            uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_radius.Value = circle_scale.radius;
+            uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_width.Value = circle_scale.line_width;
+
+            uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_startAngle.Value = circle_scale.start_angle;
+            uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_endAngle.Value = circle_scale.end_angle;
+
+            uCtrl_Circle_Scale_Opt.SetLineCap(circle_scale.line_cap);
+
+            uCtrl_Circle_Scale_Opt.SetColorScale(StringToColor(circle_scale.color));
+
+            uCtrl_Circle_Scale_Opt.checkBox_mirror.Checked = circle_scale.mirror;
+            uCtrl_Circle_Scale_Opt.checkBox_inversion.Checked = circle_scale.inversion;
+
+            PreviewView = true;
+            uCtrl_Circle_Scale_Opt_ValueChanged(sender, eventArgs);
+        }
+
+        private void uCtrl_Linear_Scale_Opt_WidgetProperty_Copy(object sender, EventArgs eventArgs)
+        {
+            if (WidgetProperty.ContainsKey("Linear_Scale")) WidgetProperty.Remove("Linear_Scale");
+            Linear_Scale linear_scale = new Linear_Scale();
+
+            linear_scale.pointer = uCtrl_Linear_Scale_Opt.GetImagePointer();
+            linear_scale.color = ColorToString(uCtrl_Linear_Scale_Opt.GetColorScale());
+
+            linear_scale.start_x = (int)uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinearX.Value;
+            linear_scale.start_y = (int)uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinearY.Value;
+
+            linear_scale.lenght = (int)uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinear_length.Value;
+            linear_scale.line_width = (int)Math.Abs(uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinear_width.Value);
+            linear_scale.line_cap = uCtrl_Linear_Scale_Opt.GetLineCap();
+
+            linear_scale.vertical = uCtrl_Linear_Scale_Opt.radioButton_vertical.Checked;
+
+            linear_scale.mirror = uCtrl_Linear_Scale_Opt.checkBox_mirror.Checked;
+            linear_scale.inversion = uCtrl_Linear_Scale_Opt.checkBox_inversion.Checked;
+
+            WidgetProperty.Add("Linear_Scale", linear_scale);
+            uCtrl_Linear_Scale_Opt.WidgetProperty = WidgetProperty;
+        }
+
+        private void uCtrl_Linear_Scale_Opt_WidgetProperty_Paste(object sender, EventArgs eventArgs)
+        {
+            if (!WidgetProperty.ContainsKey("Linear_Scale")) return;
+            Object obj = null;
+            WidgetProperty.TryGetValue("Linear_Scale", out obj);
+            if (obj == null) return;
+            Linear_Scale linear_scale = (Linear_Scale)obj;
+
+            PreviewView = false;
+
+            if (linear_scale == null)
+            {
+                PreviewView = true;
+                return;
+            }
+
+            if (linear_scale.color != null)
+            {
+                uCtrl_Linear_Scale_Opt.SetColorScale(StringToColor(linear_scale.color));
+            }
+            if (linear_scale.pointer != null)
+            {
+                uCtrl_Linear_Scale_Opt.SetImagePointer(linear_scale.pointer);
+            }
+
+            uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinearX.Value = linear_scale.start_x;
+            uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinearY.Value = linear_scale.start_y;
+
+            uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinear_length.Value = linear_scale.lenght;
+            uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinear_width.Value = linear_scale.line_width;
+            uCtrl_Linear_Scale_Opt.SetLineCap(linear_scale.line_cap);
+
+            uCtrl_Linear_Scale_Opt.SetColorScale(StringToColor(linear_scale.color));
+
+            uCtrl_Linear_Scale_Opt.checkBox_mirror.Checked = linear_scale.mirror;
+            uCtrl_Linear_Scale_Opt.checkBox_inversion.Checked = linear_scale.inversion;
+
+            uCtrl_Linear_Scale_Opt.radioButton_horizontal.Checked = !linear_scale.vertical;
+            uCtrl_Linear_Scale_Opt.radioButton_vertical.Checked = linear_scale.vertical;
+
+            PreviewView = true;
+            uCtrl_Linear_Scale_Opt_ValueChanged(sender, eventArgs);
+        }
+
+        private void uCtrl_Shortcut_Opt_WidgetProperty_Copy(object sender, EventArgs eventArgs)
+        {
+            if (WidgetProperty.ContainsKey("hmUI_widget_IMG_CLICK")) WidgetProperty.Remove("hmUI_widget_IMG_CLICK");
+            hmUI_widget_IMG_CLICK shortcut = new hmUI_widget_IMG_CLICK();
+
+            shortcut.src = uCtrl_Shortcut_Opt.GetImage();
+            shortcut.x = (int)uCtrl_Shortcut_Opt.numericUpDown_imageX.Value;
+            shortcut.y = (int)uCtrl_Shortcut_Opt.numericUpDown_imageY.Value;
+            shortcut.h = (int)uCtrl_Shortcut_Opt.numericUpDown_height.Value;
+            shortcut.w = (int)uCtrl_Shortcut_Opt.numericUpDown_width.Value;
+
+            WidgetProperty.Add("hmUI_widget_IMG_CLICK", shortcut);
+            uCtrl_Shortcut_Opt.WidgetProperty = WidgetProperty;
+        }
+
+        private void uCtrl_Shortcut_Opt_WidgetProperty_Paste(object sender, EventArgs eventArgs)
+        {
+            if (!WidgetProperty.ContainsKey("hmUI_widget_IMG_CLICK")) return;
+            Object obj = null;
+            WidgetProperty.TryGetValue("hmUI_widget_IMG_CLICK", out obj);
+            if (obj == null) return;
+            hmUI_widget_IMG_CLICK img_click = (hmUI_widget_IMG_CLICK)obj;
+
+            PreviewView = false;
+
+            if (img_click == null)
+            {
+                PreviewView = true;
+                return;
+            }
+
+            if (img_click.src != null)
+                uCtrl_Shortcut_Opt.SetImage(img_click.src);
+            uCtrl_Shortcut_Opt.numericUpDown_imageX.Value = img_click.x;
+            uCtrl_Shortcut_Opt.numericUpDown_imageY.Value = img_click.y;
+            uCtrl_Shortcut_Opt.numericUpDown_width.Value = img_click.w;
+            uCtrl_Shortcut_Opt.numericUpDown_height.Value = img_click.h;
+
+            PreviewView = true;
+            uCtrl_Shortcut_Opt_ValueChanged(sender, eventArgs);
+        }
+
+        private void uCtrl_Text_Weather_Opt_WidgetProperty_Copy(object sender, EventArgs eventArgs)
+        {
+            if (WidgetProperty.ContainsKey("hmUI_widget_IMG_NUMBER")) WidgetProperty.Remove("hmUI_widget_IMG_NUMBER");
+            hmUI_widget_IMG_NUMBER img_number = new hmUI_widget_IMG_NUMBER();
+
+            img_number.align = uCtrl_Text_Weather_Opt.GetAlignment();
+            img_number.follow = uCtrl_Text_Weather_Opt.checkBox_follow.Checked;
+            img_number.icon = uCtrl_Text_Weather_Opt.GetIcon();
+            img_number.iconPosX = (int)uCtrl_Text_Weather_Opt.numericUpDown_iconX.Value;
+            img_number.iconPosY = (int)uCtrl_Text_Weather_Opt.numericUpDown_iconY.Value;
+            img_number.img_First = uCtrl_Text_Weather_Opt.GetImage();
+            img_number.imageX = (int)uCtrl_Text_Weather_Opt.numericUpDown_imageX.Value;
+            img_number.imageY = (int)uCtrl_Text_Weather_Opt.numericUpDown_imageY.Value;
+            img_number.space = (int)uCtrl_Text_Weather_Opt.numericUpDown_spacing.Value;
+            img_number.angle = (int)uCtrl_Text_Weather_Opt.numericUpDown_angle.Value;
+            img_number.unit = uCtrl_Text_Weather_Opt.GetUnit_C();
+            img_number.imperial_unit = uCtrl_Text_Weather_Opt.GetUnit_F();
+            img_number.negative_image = uCtrl_Text_Weather_Opt.GetImageMinus();
+            img_number.invalid_image = uCtrl_Text_Weather_Opt.GetImageError();
+            img_number.zero = uCtrl_Text_Weather_Opt.checkBox_addZero.Checked;
+
+            WidgetProperty.Add("hmUI_widget_IMG_NUMBER", img_number);
+            uCtrl_Text_Weather_Opt.WidgetProperty = WidgetProperty;
+        }
+
+        private void uCtrl_Text_Weather_Opt_WidgetProperty_Paste(object sender, EventArgs eventArgs)
+        {
+            if (!WidgetProperty.ContainsKey("hmUI_widget_IMG_NUMBER")) return;
+            Object obj = null;
+            WidgetProperty.TryGetValue("hmUI_widget_IMG_NUMBER", out obj);
+            if (obj == null) return;
+            hmUI_widget_IMG_NUMBER img_number = (hmUI_widget_IMG_NUMBER)obj;
+
+            PreviewView = false;
+
+            if (img_number == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            if (img_number.img_First != null)
+                uCtrl_Text_Weather_Opt.SetImage(img_number.img_First);
+            uCtrl_Text_Weather_Opt.numericUpDown_imageX.Value = img_number.imageX;
+            uCtrl_Text_Weather_Opt.numericUpDown_imageY.Value = img_number.imageY;
+
+            uCtrl_Text_Weather_Opt.SetIcon(img_number.icon);
+            uCtrl_Text_Weather_Opt.numericUpDown_iconX.Value = img_number.iconPosX;
+            uCtrl_Text_Weather_Opt.numericUpDown_iconY.Value = img_number.iconPosY;
+
+            uCtrl_Text_Weather_Opt.SetUnit_C(img_number.unit);
+            uCtrl_Text_Weather_Opt.SetUnit_F(img_number.imperial_unit);
+            uCtrl_Text_Weather_Opt.SetImageError(img_number.invalid_image);
+            uCtrl_Text_Weather_Opt.SetImageMinus(img_number.negative_image);
+            uCtrl_Text_Weather_Opt.numericUpDown_spacing.Value = img_number.space;
+            uCtrl_Text_Weather_Opt.numericUpDown_angle.Value = img_number.angle;
+
+            uCtrl_Text_Weather_Opt.SetAlignment(img_number.align);
+
+            uCtrl_Text_Weather_Opt.checkBox_addZero.Checked = img_number.zero;
+            uCtrl_Text_Weather_Opt.checkBox_follow.Checked = img_number.follow;
+
+            PreviewView = true;
+            uCtrl_Text_Weather_Opt_ValueChanged(sender, eventArgs);
+        }
+
+        private void uCtrl_Text_SystemFont_Opt_WidgetProperty_Copy(object sender, EventArgs eventArgs)
+        {
+            if (WidgetProperty.ContainsKey("hmUI_widget_TEXT")) WidgetProperty.Remove("hmUI_widget_TEXT");
+            hmUI_widget_TEXT systemFont = new hmUI_widget_TEXT();
+
+            systemFont.x = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_X.Value;
+            systemFont.y = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_Y.Value;
+            systemFont.h = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_Height.Value;
+            systemFont.w = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_Width.Value;
+
+            systemFont.text_size = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_Size.Value;
+            systemFont.char_space = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_Spacing.Value;
+            systemFont.line_space = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_LineSpace.Value;
+
+            systemFont.color = ColorToString(uCtrl_Text_SystemFont_Opt.GetColorText());
+
+            systemFont.align_h = uCtrl_Text_SystemFont_Opt.GetHorizontalAlignment();
+            systemFont.align_v = uCtrl_Text_SystemFont_Opt.GetVerticalAlignment();
+            systemFont.text_style = uCtrl_Text_SystemFont_Opt.GetTextStyle();
+
+            systemFont.centreHorizontally = uCtrl_Text_SystemFont_Opt.checkBox_CentreHorizontally.Checked;
+            systemFont.centreVertically = uCtrl_Text_SystemFont_Opt.checkBox_CentreVertically.Checked;
+
+            systemFont.font = uCtrl_Text_SystemFont_Opt.GetFont();
+
+            systemFont.padding = uCtrl_Text_SystemFont_Opt.checkBox_addZero.Checked;
+            systemFont.unit_type = uCtrl_Text_SystemFont_Opt.GetUnitType();
+
+            WidgetProperty.Add("hmUI_widget_TEXT", systemFont);
+            uCtrl_Text_SystemFont_Opt.WidgetProperty = WidgetProperty;
+        }
+
+        private void uCtrl_Text_SystemFont_Opt_WidgetProperty_Paste(object sender, EventArgs eventArgs)
+        {
+            if (!WidgetProperty.ContainsKey("hmUI_widget_TEXT")) return;
+            Object obj = null;
+            WidgetProperty.TryGetValue("hmUI_widget_TEXT", out obj);
+            if (obj == null) return;
+            hmUI_widget_TEXT system_font = (hmUI_widget_TEXT)obj;
+
+            PreviewView = false;
+
+            uCtrl_Text_SystemFont_Opt.numericUpDown_X.Value = system_font.x;
+            uCtrl_Text_SystemFont_Opt.numericUpDown_Y.Value = system_font.y;
+            uCtrl_Text_SystemFont_Opt.numericUpDown_Width.Value = system_font.w;
+            uCtrl_Text_SystemFont_Opt.numericUpDown_Height.Value = system_font.h;
+
+            uCtrl_Text_SystemFont_Opt.numericUpDown_Size.Value = system_font.text_size;
+            uCtrl_Text_SystemFont_Opt.numericUpDown_Spacing.Value = system_font.char_space;
+            uCtrl_Text_SystemFont_Opt.numericUpDown_LineSpace.Value = system_font.line_space;
+
+            uCtrl_Text_SystemFont_Opt.SetColorText(StringToColor(system_font.color));
+
+            uCtrl_Text_SystemFont_Opt.SetHorizontalAlignment(system_font.align_h);
+            uCtrl_Text_SystemFont_Opt.SetVerticalAlignment(system_font.align_v);
+            uCtrl_Text_SystemFont_Opt.SetTextStyle(system_font.text_style);
+
+            uCtrl_Text_SystemFont_Opt.checkBox_CentreHorizontally.Checked = system_font.centreHorizontally;
+            uCtrl_Text_SystemFont_Opt.checkBox_CentreVertically.Checked = system_font.centreVertically;
+
+            uCtrl_Text_SystemFont_Opt.SetFont(system_font.font);
+
+            uCtrl_Text_SystemFont_Opt.checkBox_addZero.Checked = system_font.padding;
+            uCtrl_Text_SystemFont_Opt.SetUnitType(system_font.unit_type);
+
+            PreviewView = true;
+            uCtrl_Text_SystemFont_Opt_ValueChanged(sender, eventArgs);
+        }
+
+        private void uCtrl_Text_Circle_Opt_WidgetProperty_Copy(object sender, EventArgs eventArgs)
+        {
+            if (WidgetProperty.ContainsKey("Text_Circle")) WidgetProperty.Remove("Text_Circle");
+            Text_Circle text_circle = new Text_Circle();
+
+            text_circle.img_First = uCtrl_Text_Circle_Opt.GetImage();
+            text_circle.unit = uCtrl_Text_Circle_Opt.GetUnit();
+            text_circle.imperial_unit = uCtrl_Text_Circle_Opt.GetUnitImperial();
+            text_circle.dot_image = uCtrl_Text_Circle_Opt.GetImageDecimalPoint();
+            text_circle.error_image = uCtrl_Text_Circle_Opt.GetImageError();
+
+            text_circle.circle_center_X = (int)uCtrl_Text_Circle_Opt.numericUpDown_centr_X.Value;
+            text_circle.circle_center_Y = (int)uCtrl_Text_Circle_Opt.numericUpDown_centr_Y.Value;
+            text_circle.radius = (int)uCtrl_Text_Circle_Opt.numericUpDown_radius.Value;
+            text_circle.angle = (int)uCtrl_Text_Circle_Opt.numericUpDown_angle.Value;
+            text_circle.char_space_angle = (int)uCtrl_Text_Circle_Opt.numericUpDown_spacing.Value;
+
+            text_circle.zero = uCtrl_Text_Circle_Opt.checkBox_addZero.Checked;
+            text_circle.reverse_direction = uCtrl_Text_Circle_Opt.checkBox_reverse_direction.Checked;
+            text_circle.unit_in_alignment = uCtrl_Text_Circle_Opt.checkBox_unit_in_alignment.Checked;
+
+            text_circle.vertical_alignment = uCtrl_Text_Circle_Opt.GetVerticalAlignment();
+            text_circle.horizontal_alignment = uCtrl_Text_Circle_Opt.GetHorizontalAlignment();
+
+            //text_circle.image_width = uCtrl_Text_Circle_Opt.image_width;
+            //text_circle.image_height = uCtrl_Text_Circle_Opt.image_height;
+            //text_circle.unit_width = uCtrl_Text_Circle_Opt.unit_width;
+            //text_circle.error_width = uCtrl_Text_Circle_Opt.error_width;
+
+            WidgetProperty.Add("Text_Circle", text_circle);
+            uCtrl_Text_Circle_Opt.WidgetProperty = WidgetProperty;
+        }
+
+        private void uCtrl_Text_Circle_Opt_WidgetProperty_Paste(object sender, EventArgs eventArgs)
+        {
+            if (!WidgetProperty.ContainsKey("Text_Circle")) return;
+            Object obj = null;
+            WidgetProperty.TryGetValue("Text_Circle", out obj);
+            if (obj == null) return;
+            Text_Circle text_circle = (Text_Circle)obj;
+
+            PreviewView = false;
+
+            if (text_circle == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            if (text_circle.img_First != null)
+                uCtrl_Text_Circle_Opt.SetImage(text_circle.img_First);
+            uCtrl_Text_Circle_Opt.numericUpDown_centr_X.Value = text_circle.circle_center_X;
+            uCtrl_Text_Circle_Opt.numericUpDown_centr_Y.Value = text_circle.circle_center_Y;
+
+            uCtrl_Text_Circle_Opt.numericUpDown_angle.Value = text_circle.angle;
+            uCtrl_Text_Circle_Opt.numericUpDown_radius.Value = text_circle.radius;
+            uCtrl_Text_Circle_Opt.numericUpDown_spacing.Value = text_circle.char_space_angle;
+
+            uCtrl_Text_Circle_Opt.SetUnit(text_circle.unit);
+            uCtrl_Text_Circle_Opt.SetUnitImperial(text_circle.imperial_unit);
+            uCtrl_Text_Circle_Opt.SetImageError(text_circle.error_image);
+            uCtrl_Text_Circle_Opt.SetImageDecimalPoint(text_circle.dot_image);
+
+            uCtrl_Text_Circle_Opt.SetHorizontalAlignment(text_circle.horizontal_alignment);
+            uCtrl_Text_Circle_Opt.SetVerticalAlignment(text_circle.vertical_alignment);
+
+            uCtrl_Text_Circle_Opt.checkBox_addZero.Checked = text_circle.zero;
+            uCtrl_Text_Circle_Opt.checkBox_reverse_direction.Checked = text_circle.reverse_direction;
+            uCtrl_Text_Circle_Opt.checkBox_unit_in_alignment.Checked = text_circle.unit_in_alignment;
+
+
+            PreviewView = true;
+            uCtrl_Text_Circle_Opt_ValueChanged(sender, eventArgs);
+        }
+
+        private void uCtrl_Text_Rotate_Opt_WidgetProperty_Copy(object sender, EventArgs eventArgs)
+        {
+            if (WidgetProperty.ContainsKey("hmUI_widget_IMG_NUMBER")) WidgetProperty.Remove("hmUI_widget_IMG_NUMBER");
+            hmUI_widget_IMG_NUMBER img_number = new hmUI_widget_IMG_NUMBER();
+
+            img_number.align = uCtrl_Text_Rotate_Opt.GetAlignment();
+            img_number.unit_in_alignment = uCtrl_Text_Rotate_Opt.checkBox_unit_in_alignment.Checked;
+            img_number.img_First = uCtrl_Text_Rotate_Opt.GetImage();
+            img_number.imageX = (int)uCtrl_Text_Rotate_Opt.numericUpDown_imageX.Value;
+            img_number.imageY = (int)uCtrl_Text_Rotate_Opt.numericUpDown_imageY.Value;
+            img_number.space = (int)uCtrl_Text_Rotate_Opt.numericUpDown_spacing.Value;
+            img_number.angle = (int)uCtrl_Text_Rotate_Opt.numericUpDown_angle.Value;
+            img_number.unit = uCtrl_Text_Rotate_Opt.GetUnit();
+            img_number.imperial_unit = uCtrl_Text_Rotate_Opt.GetUnitMile();
+            img_number.dot_image = uCtrl_Text_Rotate_Opt.GetImageDecimalPointOrMinus();
+            img_number.invalid_image = uCtrl_Text_Rotate_Opt.GetImageError();
+            img_number.zero = uCtrl_Text_Rotate_Opt.checkBox_addZero.Checked;
+
+            WidgetProperty.Add("hmUI_widget_IMG_NUMBER", img_number);
+            uCtrl_Text_Rotate_Opt.WidgetProperty = WidgetProperty;
+        }
+
+        private void uCtrl_Text_Rotate_Opt_WidgetProperty_Paste(object sender, EventArgs eventArgs)
+        {
+            if (!WidgetProperty.ContainsKey("hmUI_widget_IMG_NUMBER")) return;
+            Object obj = null;
+            WidgetProperty.TryGetValue("hmUI_widget_IMG_NUMBER", out obj);
+            if (obj == null) return;
+            hmUI_widget_IMG_NUMBER img_number = (hmUI_widget_IMG_NUMBER)obj;
+            PreviewView = false;
+
+            if (img_number == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            if (img_number.img_First != null)
+                uCtrl_Text_Rotate_Opt.SetImage(img_number.img_First);
+            uCtrl_Text_Rotate_Opt.numericUpDown_imageX.Value = img_number.imageX;
+            uCtrl_Text_Rotate_Opt.numericUpDown_imageY.Value = img_number.imageY;
+
+            uCtrl_Text_Rotate_Opt.SetUnit(img_number.unit);
+            uCtrl_Text_Rotate_Opt.SetUnitMile(img_number.imperial_unit);
+            uCtrl_Text_Rotate_Opt.SetImageError(img_number.invalid_image);
+            uCtrl_Text_Rotate_Opt.SetImageDecimalPointOrMinus(img_number.dot_image);
+            //uCtrl_Text_Rotate_Opt.SetImageDecimalPointOrMinus
+            uCtrl_Text_Rotate_Opt.numericUpDown_spacing.Value = img_number.space;
+            uCtrl_Text_Rotate_Opt.numericUpDown_angle.Value = img_number.angle;
+
+            uCtrl_Text_Rotate_Opt.SetAlignment(img_number.align);
+
+            uCtrl_Text_Rotate_Opt.checkBox_addZero.Checked = img_number.zero;
+            uCtrl_Text_Rotate_Opt.checkBox_unit_in_alignment.Checked = img_number.unit_in_alignment;
+
+            PreviewView = true;
+            uCtrl_Text_Rotate_Opt_ValueChanged(sender, eventArgs);
         }
 
     }

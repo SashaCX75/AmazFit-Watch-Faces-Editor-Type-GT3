@@ -121,6 +121,9 @@
     <value>Зображення вказівника</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 82</value>
+  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -186,7 +189,7 @@
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Вставити</value>
   </data>
-  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 82</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -254,9 +257,6 @@
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Вставити</value>
   </data>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 82</value>
-  </data>
   <data name="label01.Text" xml:space="preserve">
     <value>Координати початку шкали</value>
   </data>
@@ -269,6 +269,9 @@
   <data name="label07.Text" xml:space="preserve">
     <value>Колір</value>
   </data>
+  <data name="groupBox_Orientation.Text" xml:space="preserve">
+    <value>Орієнтація</value>
+  </data>
   <data name="radioButton_vertical.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 17</value>
   </data>
@@ -280,9 +283,6 @@
   </data>
   <data name="radioButton_horizontal.Text" xml:space="preserve">
     <value>Горизонтальна</value>
-  </data>
-  <data name="groupBox_Orientation.Text" xml:space="preserve">
-    <value>Орієнтація</value>
   </data>
   <data name="checkBox_mirror.Size" type="System.Drawing.Size, System.Drawing">
     <value>242, 17</value>
@@ -312,5 +312,20 @@
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Закінчення лінії</value>
+  </data>
+  <data name="копироватьСвойстваToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 22</value>
+  </data>
+  <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Копіювати властивості</value>
+  </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 22</value>
+  </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Вставити властивості</value>
+  </data>
+  <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 48</value>
   </data>
 </root>

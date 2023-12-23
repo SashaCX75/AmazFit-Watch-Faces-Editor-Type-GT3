@@ -18,6 +18,7 @@ namespace ControlLibrary
         private bool setValue; // режим задания параметров
         public Object _ElementWithSystemFont;
         //public string fonts_path; // папка со шрифтами
+        public Dictionary<string, Object> WidgetProperty = new Dictionary<string, Object>();
 
         private bool Font_mode;
         //private bool Number_mode = true;
@@ -410,6 +411,16 @@ namespace ControlLibrary
         [Description("Происходит при нажатии кнопки удаления шрифта")]
         public event DelFont_ClickHandler DelFont_Click;
         public delegate void DelFont_ClickHandler(object sender, EventArgs eventArgs, string fontName);
+
+        [Browsable(true)]
+        [Description("Происходит при копировании свойст виджета")]
+        public event WidgetProperty_Copy_Handler WidgetProperty_Copy;
+        public delegate void WidgetProperty_Copy_Handler(object sender, EventArgs eventArgs);
+
+        [Browsable(true)]
+        [Description("Происходит при вставке свойст виджета")]
+        public event WidgetProperty_Paste_Handler WidgetProperty_Paste;
+        public delegate void WidgetProperty_Paste_Handler(object sender, EventArgs eventArgs);
 
 
         #region Standard events
@@ -850,6 +861,31 @@ namespace ControlLibrary
             {
                 EventArgs eventArgs = new EventArgs();
                 ValueChanged(this, eventArgs);
+            }
+        }
+
+        private void context_WidgetProperty_Opening(object sender, CancelEventArgs e)
+        {
+            if (WidgetProperty.ContainsKey("hmUI_widget_TEXT")) context_WidgetProperty.Items[1].Enabled = true;
+            else context_WidgetProperty.Items[1].Enabled = false;
+        }
+
+        private void копироватьСвойстваToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (WidgetProperty_Copy != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                WidgetProperty_Copy(this, eventArgs);
+            }
+        }
+
+        private void вставитьСвойстваToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Focus();
+            if (WidgetProperty_Paste != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                WidgetProperty_Paste(this, eventArgs);
             }
         }
     }

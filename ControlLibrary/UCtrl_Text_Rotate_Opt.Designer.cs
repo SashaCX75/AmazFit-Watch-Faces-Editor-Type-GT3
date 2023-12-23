@@ -62,12 +62,16 @@
             this.label1085 = new System.Windows.Forms.Label();
             this.checkBox_unit_in_alignment = new System.Windows.Forms.CheckBox();
             this.label_minus_image = new System.Windows.Forms.Label();
+            this.context_WidgetProperty = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.копироватьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вставитьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_angle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_spacing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageX)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).BeginInit();
             this.contextMenuStrip_Y.SuspendLayout();
+            this.context_WidgetProperty.SuspendLayout();
             this.SuspendLayout();
             // 
             // numericUpDown_angle
@@ -349,10 +353,34 @@
             resources.ApplyResources(this.label_minus_image, "label_minus_image");
             this.label_minus_image.Name = "label_minus_image";
             // 
+            // context_WidgetProperty
+            // 
+            resources.ApplyResources(this.context_WidgetProperty, "context_WidgetProperty");
+            this.context_WidgetProperty.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.копироватьСвойстваToolStripMenuItem,
+            this.вставитьСвойстваToolStripMenuItem});
+            this.context_WidgetProperty.Name = "context_WidgetProperty";
+            this.context_WidgetProperty.Opening += new System.ComponentModel.CancelEventHandler(this.context_WidgetProperty_Opening);
+            // 
+            // копироватьСвойстваToolStripMenuItem
+            // 
+            resources.ApplyResources(this.копироватьСвойстваToolStripMenuItem, "копироватьСвойстваToolStripMenuItem");
+            this.копироватьСвойстваToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.copy_prop;
+            this.копироватьСвойстваToolStripMenuItem.Name = "копироватьСвойстваToolStripMenuItem";
+            this.копироватьСвойстваToolStripMenuItem.Click += new System.EventHandler(this.копироватьСвойстваToolStripMenuItem_Click);
+            // 
+            // вставитьСвойстваToolStripMenuItem
+            // 
+            resources.ApplyResources(this.вставитьСвойстваToolStripMenuItem, "вставитьСвойстваToolStripMenuItem");
+            this.вставитьСвойстваToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.paste_prop;
+            this.вставитьСвойстваToolStripMenuItem.Name = "вставитьСвойстваToolStripMenuItem";
+            this.вставитьСвойстваToolStripMenuItem.Click += new System.EventHandler(this.вставитьСвойстваToolStripMenuItem_Click);
+            // 
             // UCtrl_Text_Rotate_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ContextMenuStrip = this.context_WidgetProperty;
             this.Controls.Add(this.label_minus_image);
             this.Controls.Add(this.checkBox_unit_in_alignment);
             this.Controls.Add(this.numericUpDown_angle);
@@ -384,6 +412,7 @@
             this.contextMenuStrip_X.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).EndInit();
             this.contextMenuStrip_Y.ResumeLayout(false);
+            this.context_WidgetProperty.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -423,5 +452,8 @@
         protected System.Windows.Forms.Label label1085;
         public System.Windows.Forms.CheckBox checkBox_unit_in_alignment;
         private System.Windows.Forms.Label label_minus_image;
+        private System.Windows.Forms.ContextMenuStrip context_WidgetProperty;
+        private System.Windows.Forms.ToolStripMenuItem копироватьСвойстваToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вставитьСвойстваToolStripMenuItem;
     }
 }

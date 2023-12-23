@@ -60,6 +60,9 @@ namespace ControlLibrary
             this.label08 = new System.Windows.Forms.Label();
             this.comboBox_scaleLinear_lineCap = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.context_WidgetProperty = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.копироватьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вставитьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_scaleLinearX)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_scaleLinearY)).BeginInit();
@@ -67,6 +70,7 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_scaleLinear_length)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_scaleLinear_width)).BeginInit();
             this.groupBox_Orientation.SuspendLayout();
+            this.context_WidgetProperty.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox_scaleLinear_image_pointer
@@ -324,10 +328,34 @@ namespace ControlLibrary
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
+            // context_WidgetProperty
+            // 
+            resources.ApplyResources(this.context_WidgetProperty, "context_WidgetProperty");
+            this.context_WidgetProperty.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.копироватьСвойстваToolStripMenuItem,
+            this.вставитьСвойстваToolStripMenuItem});
+            this.context_WidgetProperty.Name = "context_WidgetProperty";
+            this.context_WidgetProperty.Opening += new System.ComponentModel.CancelEventHandler(this.context_WidgetProperty_Opening);
+            // 
+            // копироватьСвойстваToolStripMenuItem
+            // 
+            resources.ApplyResources(this.копироватьСвойстваToolStripMenuItem, "копироватьСвойстваToolStripMenuItem");
+            this.копироватьСвойстваToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.copy_prop;
+            this.копироватьСвойстваToolStripMenuItem.Name = "копироватьСвойстваToolStripMenuItem";
+            this.копироватьСвойстваToolStripMenuItem.Click += new System.EventHandler(this.копироватьСвойстваToolStripMenuItem_Click);
+            // 
+            // вставитьСвойстваToolStripMenuItem
+            // 
+            resources.ApplyResources(this.вставитьСвойстваToolStripMenuItem, "вставитьСвойстваToolStripMenuItem");
+            this.вставитьСвойстваToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.paste_prop;
+            this.вставитьСвойстваToolStripMenuItem.Name = "вставитьСвойстваToolStripMenuItem";
+            this.вставитьСвойстваToolStripMenuItem.Click += new System.EventHandler(this.вставитьСвойстваToolStripMenuItem_Click);
+            // 
             // UCtrl_Linear_Scale_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ContextMenuStrip = this.context_WidgetProperty;
             this.Controls.Add(this.comboBox_scaleLinear_lineCap);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label08);
@@ -356,6 +384,7 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_scaleLinear_width)).EndInit();
             this.groupBox_Orientation.ResumeLayout(false);
             this.groupBox_Orientation.PerformLayout();
+            this.context_WidgetProperty.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,5 +421,8 @@ namespace ControlLibrary
         public System.Windows.Forms.CheckBox checkBox_inversion;
         private System.Windows.Forms.ComboBox comboBox_scaleLinear_lineCap;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ContextMenuStrip context_WidgetProperty;
+        private System.Windows.Forms.ToolStripMenuItem копироватьСвойстваToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вставитьСвойстваToolStripMenuItem;
     }
 }

@@ -50,6 +50,7 @@ namespace Watch_Face_Editor
         List<Color> colorMapList = new List<Color>(); // карта цветов для конвертации изображений
         int ImageWidth; // ширина изображения для конвертации изображений
         Dictionary<string, string> FontsList = new Dictionary<string, string>();  // список имен шрифтов во временной папке
+        Dictionary<string, Object> WidgetProperty = new Dictionary<string, Object>();
 
         // Доступные конфигурации
         Dictionary<string, Classes.AmazfitPlatform> AvailableConfigurations = new Dictionary<string, Classes.AmazfitPlatform>();
@@ -2412,6 +2413,7 @@ namespace Watch_Face_Editor
             {
                 comboBox_watch_model.Text = GetNewFormatDeviceName(Watch_Face.WatchFace_Info.DeviceName);
             }
+            WidgetProperty.Clear();
             PreviewView = true;
 
             JSON_Modified = false;

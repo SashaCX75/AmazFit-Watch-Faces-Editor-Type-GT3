@@ -30,19 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_JS_script_Opt));
-            this.button_pause_call_Del = new System.Windows.Forms.Button();
-            this.button_resume_call_Del = new System.Windows.Forms.Button();
-            this.button_pause_call_Add = new System.Windows.Forms.Button();
-            this.button_user_script_start_Add = new System.Windows.Forms.Button();
-            this.button_user_script_start_Del = new System.Windows.Forms.Button();
-            this.button_user_script_Add = new System.Windows.Forms.Button();
-            this.button_user_script_Del = new System.Windows.Forms.Button();
-            this.button_user_script_end_Add = new System.Windows.Forms.Button();
-            this.button_user_script_end_Del = new System.Windows.Forms.Button();
-            this.button_user_script_beforeShortcuts_Add = new System.Windows.Forms.Button();
-            this.button_user_script_beforeShortcuts_Del = new System.Windows.Forms.Button();
-            this.button_user_functions_Add = new System.Windows.Forms.Button();
-            this.button_user_functions_Del = new System.Windows.Forms.Button();
             this.checkBox_user_functions = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip_Edit_JS = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem_Edit_JS = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,27 +42,47 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel_user_functions_draw = new System.Windows.Forms.Panel();
             this.panel_user_functions_buttons = new System.Windows.Forms.Panel();
+            this.button_user_functions_Create = new System.Windows.Forms.Button();
+            this.button_user_functions_Del = new System.Windows.Forms.Button();
+            this.button_user_functions_Add = new System.Windows.Forms.Button();
             this.panel_user_functions = new System.Windows.Forms.Panel();
             this.panel_user_script_start = new System.Windows.Forms.Panel();
             this.panel_user_script_start_draw = new System.Windows.Forms.Panel();
             this.panel_user_script_start_buttons = new System.Windows.Forms.Panel();
+            this.button_user_script_start_Create = new System.Windows.Forms.Button();
+            this.button_user_script_start_Del = new System.Windows.Forms.Button();
+            this.button_user_script_start_Add = new System.Windows.Forms.Button();
             this.panel_user_script = new System.Windows.Forms.Panel();
             this.panel_user_script_draw = new System.Windows.Forms.Panel();
             this.panel_user_script_buttons = new System.Windows.Forms.Panel();
+            this.button_user_script_Del = new System.Windows.Forms.Button();
+            this.button_user_script_Add = new System.Windows.Forms.Button();
             this.panel_user_script_beforeShortcuts = new System.Windows.Forms.Panel();
             this.panel_user_script_beforeShortcuts_draw = new System.Windows.Forms.Panel();
             this.panel_user_script_beforeShortcuts_buttons = new System.Windows.Forms.Panel();
+            this.button_user_script_beforeShortcuts_Del = new System.Windows.Forms.Button();
+            this.button_user_script_beforeShortcuts_Add = new System.Windows.Forms.Button();
             this.panel_user_script_end = new System.Windows.Forms.Panel();
             this.panel_user_script_end_draw = new System.Windows.Forms.Panel();
             this.panel_user_script_end_buttons = new System.Windows.Forms.Panel();
+            this.button_user_script_end_Del = new System.Windows.Forms.Button();
+            this.button_user_script_end_Add = new System.Windows.Forms.Button();
             this.panel_resume_call = new System.Windows.Forms.Panel();
             this.panel_resume_call_draw = new System.Windows.Forms.Panel();
             this.panel_resume_call_buttons = new System.Windows.Forms.Panel();
+            this.button_resume_call_Del = new System.Windows.Forms.Button();
             this.button_resume_call_Add = new System.Windows.Forms.Button();
             this.panel_pause_call = new System.Windows.Forms.Panel();
             this.panel_pause_call_draw = new System.Windows.Forms.Panel();
             this.panel_pause_call_buttons = new System.Windows.Forms.Panel();
+            this.button_pause_call_Del = new System.Windows.Forms.Button();
+            this.button_pause_call_Add = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.button_user_script_Create = new System.Windows.Forms.Button();
+            this.button_user_script_beforeShortcuts_Create = new System.Windows.Forms.Button();
+            this.button_user_script_end_Create = new System.Windows.Forms.Button();
+            this.button_resume_call_Create = new System.Windows.Forms.Button();
+            this.button_pause_call_Create = new System.Windows.Forms.Button();
             this.contextMenuStrip_Edit_JS.SuspendLayout();
             this.panel_user_functions_draw.SuspendLayout();
             this.panel_user_functions_buttons.SuspendLayout();
@@ -99,123 +106,6 @@
             this.panel_pause_call_draw.SuspendLayout();
             this.panel_pause_call_buttons.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button_pause_call_Del
-            // 
-            resources.ApplyResources(this.button_pause_call_Del, "button_pause_call_Del");
-            this.button_pause_call_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
-            this.button_pause_call_Del.Name = "button_pause_call_Del";
-            this.toolTip1.SetToolTip(this.button_pause_call_Del, resources.GetString("button_pause_call_Del.ToolTip"));
-            this.button_pause_call_Del.UseVisualStyleBackColor = true;
-            this.button_pause_call_Del.Click += new System.EventHandler(this.button_Del_Click);
-            // 
-            // button_resume_call_Del
-            // 
-            resources.ApplyResources(this.button_resume_call_Del, "button_resume_call_Del");
-            this.button_resume_call_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
-            this.button_resume_call_Del.Name = "button_resume_call_Del";
-            this.toolTip1.SetToolTip(this.button_resume_call_Del, resources.GetString("button_resume_call_Del.ToolTip"));
-            this.button_resume_call_Del.UseVisualStyleBackColor = true;
-            this.button_resume_call_Del.Click += new System.EventHandler(this.button_Del_Click);
-            // 
-            // button_pause_call_Add
-            // 
-            resources.ApplyResources(this.button_pause_call_Add, "button_pause_call_Add");
-            this.button_pause_call_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
-            this.button_pause_call_Add.Name = "button_pause_call_Add";
-            this.toolTip1.SetToolTip(this.button_pause_call_Add, resources.GetString("button_pause_call_Add.ToolTip"));
-            this.button_pause_call_Add.UseVisualStyleBackColor = true;
-            this.button_pause_call_Add.Click += new System.EventHandler(this.button_Add_Click);
-            // 
-            // button_user_script_start_Add
-            // 
-            resources.ApplyResources(this.button_user_script_start_Add, "button_user_script_start_Add");
-            this.button_user_script_start_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
-            this.button_user_script_start_Add.Name = "button_user_script_start_Add";
-            this.toolTip1.SetToolTip(this.button_user_script_start_Add, resources.GetString("button_user_script_start_Add.ToolTip"));
-            this.button_user_script_start_Add.UseVisualStyleBackColor = true;
-            this.button_user_script_start_Add.Click += new System.EventHandler(this.button_Add_Click);
-            // 
-            // button_user_script_start_Del
-            // 
-            resources.ApplyResources(this.button_user_script_start_Del, "button_user_script_start_Del");
-            this.button_user_script_start_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
-            this.button_user_script_start_Del.Name = "button_user_script_start_Del";
-            this.toolTip1.SetToolTip(this.button_user_script_start_Del, resources.GetString("button_user_script_start_Del.ToolTip"));
-            this.button_user_script_start_Del.UseVisualStyleBackColor = true;
-            this.button_user_script_start_Del.Click += new System.EventHandler(this.button_Del_Click);
-            // 
-            // button_user_script_Add
-            // 
-            resources.ApplyResources(this.button_user_script_Add, "button_user_script_Add");
-            this.button_user_script_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
-            this.button_user_script_Add.Name = "button_user_script_Add";
-            this.toolTip1.SetToolTip(this.button_user_script_Add, resources.GetString("button_user_script_Add.ToolTip"));
-            this.button_user_script_Add.UseVisualStyleBackColor = true;
-            this.button_user_script_Add.Click += new System.EventHandler(this.button_Add_Click);
-            // 
-            // button_user_script_Del
-            // 
-            resources.ApplyResources(this.button_user_script_Del, "button_user_script_Del");
-            this.button_user_script_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
-            this.button_user_script_Del.Name = "button_user_script_Del";
-            this.toolTip1.SetToolTip(this.button_user_script_Del, resources.GetString("button_user_script_Del.ToolTip"));
-            this.button_user_script_Del.UseVisualStyleBackColor = true;
-            this.button_user_script_Del.Click += new System.EventHandler(this.button_Del_Click);
-            // 
-            // button_user_script_end_Add
-            // 
-            resources.ApplyResources(this.button_user_script_end_Add, "button_user_script_end_Add");
-            this.button_user_script_end_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
-            this.button_user_script_end_Add.Name = "button_user_script_end_Add";
-            this.toolTip1.SetToolTip(this.button_user_script_end_Add, resources.GetString("button_user_script_end_Add.ToolTip"));
-            this.button_user_script_end_Add.UseVisualStyleBackColor = true;
-            this.button_user_script_end_Add.Click += new System.EventHandler(this.button_Add_Click);
-            // 
-            // button_user_script_end_Del
-            // 
-            resources.ApplyResources(this.button_user_script_end_Del, "button_user_script_end_Del");
-            this.button_user_script_end_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
-            this.button_user_script_end_Del.Name = "button_user_script_end_Del";
-            this.toolTip1.SetToolTip(this.button_user_script_end_Del, resources.GetString("button_user_script_end_Del.ToolTip"));
-            this.button_user_script_end_Del.UseVisualStyleBackColor = true;
-            this.button_user_script_end_Del.Click += new System.EventHandler(this.button_Del_Click);
-            // 
-            // button_user_script_beforeShortcuts_Add
-            // 
-            resources.ApplyResources(this.button_user_script_beforeShortcuts_Add, "button_user_script_beforeShortcuts_Add");
-            this.button_user_script_beforeShortcuts_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
-            this.button_user_script_beforeShortcuts_Add.Name = "button_user_script_beforeShortcuts_Add";
-            this.toolTip1.SetToolTip(this.button_user_script_beforeShortcuts_Add, resources.GetString("button_user_script_beforeShortcuts_Add.ToolTip"));
-            this.button_user_script_beforeShortcuts_Add.UseVisualStyleBackColor = true;
-            this.button_user_script_beforeShortcuts_Add.Click += new System.EventHandler(this.button_Add_Click);
-            // 
-            // button_user_script_beforeShortcuts_Del
-            // 
-            resources.ApplyResources(this.button_user_script_beforeShortcuts_Del, "button_user_script_beforeShortcuts_Del");
-            this.button_user_script_beforeShortcuts_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
-            this.button_user_script_beforeShortcuts_Del.Name = "button_user_script_beforeShortcuts_Del";
-            this.toolTip1.SetToolTip(this.button_user_script_beforeShortcuts_Del, resources.GetString("button_user_script_beforeShortcuts_Del.ToolTip"));
-            this.button_user_script_beforeShortcuts_Del.UseVisualStyleBackColor = true;
-            this.button_user_script_beforeShortcuts_Del.Click += new System.EventHandler(this.button_Del_Click);
-            // 
-            // button_user_functions_Add
-            // 
-            resources.ApplyResources(this.button_user_functions_Add, "button_user_functions_Add");
-            this.button_user_functions_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
-            this.button_user_functions_Add.Name = "button_user_functions_Add";
-            this.toolTip1.SetToolTip(this.button_user_functions_Add, resources.GetString("button_user_functions_Add.ToolTip"));
-            this.button_user_functions_Add.UseVisualStyleBackColor = true;
-            this.button_user_functions_Add.Click += new System.EventHandler(this.button_Add_Click);
-            // 
-            // button_user_functions_Del
-            // 
-            resources.ApplyResources(this.button_user_functions_Del, "button_user_functions_Del");
-            this.button_user_functions_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
-            this.button_user_functions_Del.Name = "button_user_functions_Del";
-            this.toolTip1.SetToolTip(this.button_user_functions_Del, resources.GetString("button_user_functions_Del.ToolTip"));
-            this.button_user_functions_Del.UseVisualStyleBackColor = true;
-            this.button_user_functions_Del.Click += new System.EventHandler(this.button_Del_Click);
             // 
             // checkBox_user_functions
             // 
@@ -303,10 +193,38 @@
             // 
             // panel_user_functions_buttons
             // 
+            this.panel_user_functions_buttons.Controls.Add(this.button_user_functions_Create);
             this.panel_user_functions_buttons.Controls.Add(this.button_user_functions_Del);
             this.panel_user_functions_buttons.Controls.Add(this.button_user_functions_Add);
             resources.ApplyResources(this.panel_user_functions_buttons, "panel_user_functions_buttons");
             this.panel_user_functions_buttons.Name = "panel_user_functions_buttons";
+            // 
+            // button_user_functions_Create
+            // 
+            resources.ApplyResources(this.button_user_functions_Create, "button_user_functions_Create");
+            this.button_user_functions_Create.Image = global::ControlLibrary.Properties.Resources.note_text;
+            this.button_user_functions_Create.Name = "button_user_functions_Create";
+            this.toolTip1.SetToolTip(this.button_user_functions_Create, resources.GetString("button_user_functions_Create.ToolTip"));
+            this.button_user_functions_Create.UseVisualStyleBackColor = true;
+            this.button_user_functions_Create.Click += new System.EventHandler(this.button_Create_Click);
+            // 
+            // button_user_functions_Del
+            // 
+            resources.ApplyResources(this.button_user_functions_Del, "button_user_functions_Del");
+            this.button_user_functions_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
+            this.button_user_functions_Del.Name = "button_user_functions_Del";
+            this.toolTip1.SetToolTip(this.button_user_functions_Del, resources.GetString("button_user_functions_Del.ToolTip"));
+            this.button_user_functions_Del.UseVisualStyleBackColor = true;
+            this.button_user_functions_Del.Click += new System.EventHandler(this.button_Del_Click);
+            // 
+            // button_user_functions_Add
+            // 
+            resources.ApplyResources(this.button_user_functions_Add, "button_user_functions_Add");
+            this.button_user_functions_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
+            this.button_user_functions_Add.Name = "button_user_functions_Add";
+            this.toolTip1.SetToolTip(this.button_user_functions_Add, resources.GetString("button_user_functions_Add.ToolTip"));
+            this.button_user_functions_Add.UseVisualStyleBackColor = true;
+            this.button_user_functions_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
             // panel_user_functions
             // 
@@ -330,10 +248,38 @@
             // 
             // panel_user_script_start_buttons
             // 
+            this.panel_user_script_start_buttons.Controls.Add(this.button_user_script_start_Create);
             this.panel_user_script_start_buttons.Controls.Add(this.button_user_script_start_Del);
             this.panel_user_script_start_buttons.Controls.Add(this.button_user_script_start_Add);
             resources.ApplyResources(this.panel_user_script_start_buttons, "panel_user_script_start_buttons");
             this.panel_user_script_start_buttons.Name = "panel_user_script_start_buttons";
+            // 
+            // button_user_script_start_Create
+            // 
+            resources.ApplyResources(this.button_user_script_start_Create, "button_user_script_start_Create");
+            this.button_user_script_start_Create.Image = global::ControlLibrary.Properties.Resources.note_text;
+            this.button_user_script_start_Create.Name = "button_user_script_start_Create";
+            this.toolTip1.SetToolTip(this.button_user_script_start_Create, resources.GetString("button_user_script_start_Create.ToolTip"));
+            this.button_user_script_start_Create.UseVisualStyleBackColor = true;
+            this.button_user_script_start_Create.Click += new System.EventHandler(this.button_Create_Click);
+            // 
+            // button_user_script_start_Del
+            // 
+            resources.ApplyResources(this.button_user_script_start_Del, "button_user_script_start_Del");
+            this.button_user_script_start_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
+            this.button_user_script_start_Del.Name = "button_user_script_start_Del";
+            this.toolTip1.SetToolTip(this.button_user_script_start_Del, resources.GetString("button_user_script_start_Del.ToolTip"));
+            this.button_user_script_start_Del.UseVisualStyleBackColor = true;
+            this.button_user_script_start_Del.Click += new System.EventHandler(this.button_Del_Click);
+            // 
+            // button_user_script_start_Add
+            // 
+            resources.ApplyResources(this.button_user_script_start_Add, "button_user_script_start_Add");
+            this.button_user_script_start_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
+            this.button_user_script_start_Add.Name = "button_user_script_start_Add";
+            this.toolTip1.SetToolTip(this.button_user_script_start_Add, resources.GetString("button_user_script_start_Add.ToolTip"));
+            this.button_user_script_start_Add.UseVisualStyleBackColor = true;
+            this.button_user_script_start_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
             // panel_user_script
             // 
@@ -351,10 +297,29 @@
             // 
             // panel_user_script_buttons
             // 
+            this.panel_user_script_buttons.Controls.Add(this.button_user_script_Create);
             this.panel_user_script_buttons.Controls.Add(this.button_user_script_Del);
             this.panel_user_script_buttons.Controls.Add(this.button_user_script_Add);
             resources.ApplyResources(this.panel_user_script_buttons, "panel_user_script_buttons");
             this.panel_user_script_buttons.Name = "panel_user_script_buttons";
+            // 
+            // button_user_script_Del
+            // 
+            resources.ApplyResources(this.button_user_script_Del, "button_user_script_Del");
+            this.button_user_script_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
+            this.button_user_script_Del.Name = "button_user_script_Del";
+            this.toolTip1.SetToolTip(this.button_user_script_Del, resources.GetString("button_user_script_Del.ToolTip"));
+            this.button_user_script_Del.UseVisualStyleBackColor = true;
+            this.button_user_script_Del.Click += new System.EventHandler(this.button_Del_Click);
+            // 
+            // button_user_script_Add
+            // 
+            resources.ApplyResources(this.button_user_script_Add, "button_user_script_Add");
+            this.button_user_script_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
+            this.button_user_script_Add.Name = "button_user_script_Add";
+            this.toolTip1.SetToolTip(this.button_user_script_Add, resources.GetString("button_user_script_Add.ToolTip"));
+            this.button_user_script_Add.UseVisualStyleBackColor = true;
+            this.button_user_script_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
             // panel_user_script_beforeShortcuts
             // 
@@ -372,10 +337,29 @@
             // 
             // panel_user_script_beforeShortcuts_buttons
             // 
+            this.panel_user_script_beforeShortcuts_buttons.Controls.Add(this.button_user_script_beforeShortcuts_Create);
             this.panel_user_script_beforeShortcuts_buttons.Controls.Add(this.button_user_script_beforeShortcuts_Del);
             this.panel_user_script_beforeShortcuts_buttons.Controls.Add(this.button_user_script_beforeShortcuts_Add);
             resources.ApplyResources(this.panel_user_script_beforeShortcuts_buttons, "panel_user_script_beforeShortcuts_buttons");
             this.panel_user_script_beforeShortcuts_buttons.Name = "panel_user_script_beforeShortcuts_buttons";
+            // 
+            // button_user_script_beforeShortcuts_Del
+            // 
+            resources.ApplyResources(this.button_user_script_beforeShortcuts_Del, "button_user_script_beforeShortcuts_Del");
+            this.button_user_script_beforeShortcuts_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
+            this.button_user_script_beforeShortcuts_Del.Name = "button_user_script_beforeShortcuts_Del";
+            this.toolTip1.SetToolTip(this.button_user_script_beforeShortcuts_Del, resources.GetString("button_user_script_beforeShortcuts_Del.ToolTip"));
+            this.button_user_script_beforeShortcuts_Del.UseVisualStyleBackColor = true;
+            this.button_user_script_beforeShortcuts_Del.Click += new System.EventHandler(this.button_Del_Click);
+            // 
+            // button_user_script_beforeShortcuts_Add
+            // 
+            resources.ApplyResources(this.button_user_script_beforeShortcuts_Add, "button_user_script_beforeShortcuts_Add");
+            this.button_user_script_beforeShortcuts_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
+            this.button_user_script_beforeShortcuts_Add.Name = "button_user_script_beforeShortcuts_Add";
+            this.toolTip1.SetToolTip(this.button_user_script_beforeShortcuts_Add, resources.GetString("button_user_script_beforeShortcuts_Add.ToolTip"));
+            this.button_user_script_beforeShortcuts_Add.UseVisualStyleBackColor = true;
+            this.button_user_script_beforeShortcuts_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
             // panel_user_script_end
             // 
@@ -393,10 +377,29 @@
             // 
             // panel_user_script_end_buttons
             // 
+            this.panel_user_script_end_buttons.Controls.Add(this.button_user_script_end_Create);
             this.panel_user_script_end_buttons.Controls.Add(this.button_user_script_end_Del);
             this.panel_user_script_end_buttons.Controls.Add(this.button_user_script_end_Add);
             resources.ApplyResources(this.panel_user_script_end_buttons, "panel_user_script_end_buttons");
             this.panel_user_script_end_buttons.Name = "panel_user_script_end_buttons";
+            // 
+            // button_user_script_end_Del
+            // 
+            resources.ApplyResources(this.button_user_script_end_Del, "button_user_script_end_Del");
+            this.button_user_script_end_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
+            this.button_user_script_end_Del.Name = "button_user_script_end_Del";
+            this.toolTip1.SetToolTip(this.button_user_script_end_Del, resources.GetString("button_user_script_end_Del.ToolTip"));
+            this.button_user_script_end_Del.UseVisualStyleBackColor = true;
+            this.button_user_script_end_Del.Click += new System.EventHandler(this.button_Del_Click);
+            // 
+            // button_user_script_end_Add
+            // 
+            resources.ApplyResources(this.button_user_script_end_Add, "button_user_script_end_Add");
+            this.button_user_script_end_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
+            this.button_user_script_end_Add.Name = "button_user_script_end_Add";
+            this.toolTip1.SetToolTip(this.button_user_script_end_Add, resources.GetString("button_user_script_end_Add.ToolTip"));
+            this.button_user_script_end_Add.UseVisualStyleBackColor = true;
+            this.button_user_script_end_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
             // panel_resume_call
             // 
@@ -414,10 +417,20 @@
             // 
             // panel_resume_call_buttons
             // 
+            this.panel_resume_call_buttons.Controls.Add(this.button_resume_call_Create);
             this.panel_resume_call_buttons.Controls.Add(this.button_resume_call_Del);
             this.panel_resume_call_buttons.Controls.Add(this.button_resume_call_Add);
             resources.ApplyResources(this.panel_resume_call_buttons, "panel_resume_call_buttons");
             this.panel_resume_call_buttons.Name = "panel_resume_call_buttons";
+            // 
+            // button_resume_call_Del
+            // 
+            resources.ApplyResources(this.button_resume_call_Del, "button_resume_call_Del");
+            this.button_resume_call_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
+            this.button_resume_call_Del.Name = "button_resume_call_Del";
+            this.toolTip1.SetToolTip(this.button_resume_call_Del, resources.GetString("button_resume_call_Del.ToolTip"));
+            this.button_resume_call_Del.UseVisualStyleBackColor = true;
+            this.button_resume_call_Del.Click += new System.EventHandler(this.button_Del_Click);
             // 
             // button_resume_call_Add
             // 
@@ -444,10 +457,74 @@
             // 
             // panel_pause_call_buttons
             // 
+            this.panel_pause_call_buttons.Controls.Add(this.button_pause_call_Create);
             this.panel_pause_call_buttons.Controls.Add(this.button_pause_call_Del);
             this.panel_pause_call_buttons.Controls.Add(this.button_pause_call_Add);
             resources.ApplyResources(this.panel_pause_call_buttons, "panel_pause_call_buttons");
             this.panel_pause_call_buttons.Name = "panel_pause_call_buttons";
+            // 
+            // button_pause_call_Del
+            // 
+            resources.ApplyResources(this.button_pause_call_Del, "button_pause_call_Del");
+            this.button_pause_call_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
+            this.button_pause_call_Del.Name = "button_pause_call_Del";
+            this.toolTip1.SetToolTip(this.button_pause_call_Del, resources.GetString("button_pause_call_Del.ToolTip"));
+            this.button_pause_call_Del.UseVisualStyleBackColor = true;
+            this.button_pause_call_Del.Click += new System.EventHandler(this.button_Del_Click);
+            // 
+            // button_pause_call_Add
+            // 
+            resources.ApplyResources(this.button_pause_call_Add, "button_pause_call_Add");
+            this.button_pause_call_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
+            this.button_pause_call_Add.Name = "button_pause_call_Add";
+            this.toolTip1.SetToolTip(this.button_pause_call_Add, resources.GetString("button_pause_call_Add.ToolTip"));
+            this.button_pause_call_Add.UseVisualStyleBackColor = true;
+            this.button_pause_call_Add.Click += new System.EventHandler(this.button_Add_Click);
+            // 
+            // button_user_script_Create
+            // 
+            resources.ApplyResources(this.button_user_script_Create, "button_user_script_Create");
+            this.button_user_script_Create.Image = global::ControlLibrary.Properties.Resources.note_text;
+            this.button_user_script_Create.Name = "button_user_script_Create";
+            this.toolTip1.SetToolTip(this.button_user_script_Create, resources.GetString("button_user_script_Create.ToolTip"));
+            this.button_user_script_Create.UseVisualStyleBackColor = true;
+            this.button_user_script_Create.Click += new System.EventHandler(this.button_Create_Click);
+            // 
+            // button_user_script_beforeShortcuts_Create
+            // 
+            resources.ApplyResources(this.button_user_script_beforeShortcuts_Create, "button_user_script_beforeShortcuts_Create");
+            this.button_user_script_beforeShortcuts_Create.Image = global::ControlLibrary.Properties.Resources.note_text;
+            this.button_user_script_beforeShortcuts_Create.Name = "button_user_script_beforeShortcuts_Create";
+            this.toolTip1.SetToolTip(this.button_user_script_beforeShortcuts_Create, resources.GetString("button_user_script_beforeShortcuts_Create.ToolTip"));
+            this.button_user_script_beforeShortcuts_Create.UseVisualStyleBackColor = true;
+            this.button_user_script_beforeShortcuts_Create.Click += new System.EventHandler(this.button_Create_Click);
+            // 
+            // button_user_script_end_Create
+            // 
+            resources.ApplyResources(this.button_user_script_end_Create, "button_user_script_end_Create");
+            this.button_user_script_end_Create.Image = global::ControlLibrary.Properties.Resources.note_text;
+            this.button_user_script_end_Create.Name = "button_user_script_end_Create";
+            this.toolTip1.SetToolTip(this.button_user_script_end_Create, resources.GetString("button_user_script_end_Create.ToolTip"));
+            this.button_user_script_end_Create.UseVisualStyleBackColor = true;
+            this.button_user_script_end_Create.Click += new System.EventHandler(this.button_Create_Click);
+            // 
+            // button_resume_call_Create
+            // 
+            resources.ApplyResources(this.button_resume_call_Create, "button_resume_call_Create");
+            this.button_resume_call_Create.Image = global::ControlLibrary.Properties.Resources.note_text;
+            this.button_resume_call_Create.Name = "button_resume_call_Create";
+            this.toolTip1.SetToolTip(this.button_resume_call_Create, resources.GetString("button_resume_call_Create.ToolTip"));
+            this.button_resume_call_Create.UseVisualStyleBackColor = true;
+            this.button_resume_call_Create.Click += new System.EventHandler(this.button_Create_Click);
+            // 
+            // button_pause_call_Create
+            // 
+            resources.ApplyResources(this.button_pause_call_Create, "button_pause_call_Create");
+            this.button_pause_call_Create.Image = global::ControlLibrary.Properties.Resources.note_text;
+            this.button_pause_call_Create.Name = "button_pause_call_Create";
+            this.toolTip1.SetToolTip(this.button_pause_call_Create, resources.GetString("button_pause_call_Create.ToolTip"));
+            this.button_pause_call_Create.UseVisualStyleBackColor = true;
+            this.button_pause_call_Create.Click += new System.EventHandler(this.button_Create_Click);
             // 
             // UCtrl_JS_script_Opt
             // 
@@ -544,5 +621,12 @@
         private System.Windows.Forms.Panel panel_pause_call_buttons;
         private System.Windows.Forms.Button button_resume_call_Add;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button button_user_functions_Create;
+        private System.Windows.Forms.Button button_user_script_start_Create;
+        private System.Windows.Forms.Button button_user_script_Create;
+        private System.Windows.Forms.Button button_user_script_beforeShortcuts_Create;
+        private System.Windows.Forms.Button button_user_script_end_Create;
+        private System.Windows.Forms.Button button_resume_call_Create;
+        private System.Windows.Forms.Button button_pause_call_Create;
     }
 }
