@@ -117,25 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Type 1 - Ne fonctionne pas sur modèles avec ZeppOS 2</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Type 2 - Méthode universelle. Fonctionnement moins fluide
-de la trotteuse (cela n'a aucun sens de définir des fps
-au dessus de 6).</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Type 3 - Fonctionne plus facilement que le type 2, uniquement sur
-modèles avec ZeppOS 2. Ne fonctionne pas sur AOD.
-L'angle de départ doit être 0, l'angle final 360.
-Lorsqu'il est activé, il y a des problèmes avec la mise à jour
-d'autres éléments de temps.</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Type 4 - Fonctionne uniquement sur les modèles avec ZeppOS 2.
-Ne fonctionne pas en mode AOD.</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="radioButton_type1.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 17</value>
@@ -155,11 +136,17 @@ Ne fonctionne pas en mode AOD.</value>
   <data name="radioButton_type2.ToolTip" xml:space="preserve">
     <value>Méthode universelle. Fonctionnement moins fluide de la trotteuse (cela n'a aucun sens de régler l'IPS au-dessus de 6).</value>
   </data>
+  <data name="radioButton_type3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 17</value>
+  </data>
   <data name="radioButton_type3.Text" xml:space="preserve">
     <value>Type 3</value>
   </data>
   <data name="radioButton_type3.ToolTip" xml:space="preserve">
     <value>Fonctionne plus facilement que le type 2, uniquement sur les modèles avec ZeppOS 2. Ne fonctionne pas en mode AOD</value>
+  </data>
+  <data name="radioButton_type4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 17</value>
   </data>
   <data name="radioButton_type4.Text" xml:space="preserve">
     <value>Type 4</value>
@@ -168,5 +155,38 @@ Ne fonctionne pas en mode AOD.</value>
     <value>Fonctionne uniquement sur les modèles avec ZeppOS 2. 
 Ne fonctionne pas en mode AOD.
 L'angle de départ doit être égal à 0 et se terminer à 360.</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 36</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Type 1 - Ne fonctionne pas sur modèles avec 
+ZeppOS 2</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 49</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Type 2 - Méthode universelle. Fonctionnement 
+moins fluide de la trotteuse (cela n'a aucun sens 
+de définir des fps au dessus de 6).</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 88</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Type 3 - Fonctionne plus facilement que le type 2, 
+uniquement sur modèles avec ZeppOS 2. Ne 
+fonctionne pas sur AOD. L'angle de départ doit 
+être 0, l'angle final 360. Lorsqu'il est activé, il y a des 
+problèmes avec la mise à jour d'autres éléments 
+de temps.</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>249, 36</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Type 4 - Fonctionne uniquement sur les modèles 
+avec ZeppOS 2. Ne fonctionne pas en mode AOD.</value>
   </data>
 </root>

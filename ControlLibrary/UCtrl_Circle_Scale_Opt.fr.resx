@@ -306,4 +306,10 @@ lectures diminuera la quantité de progrès.</value>
   <data name="label2.Text" xml:space="preserve">
     <value>Fin de ligne</value>
   </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Insérer les propriétés</value>
+  </data>
+  <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copier les propriétés</value>
+  </data>
 </root>

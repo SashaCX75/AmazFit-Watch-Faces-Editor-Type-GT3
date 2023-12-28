@@ -367,4 +367,10 @@ vertikálně</value>
   <data name="label8.Text" xml:space="preserve">
     <value>!!! Některá data se nemusí zobrazit (v závislosti na modelu hodinek). Zkontrolujte možnost zobrazení dat na reálném zařízení.</value>
   </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Vložit vlastnosti</value>
+  </data>
+  <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Kopírovat vlastnosti</value>
+  </data>
 </root>

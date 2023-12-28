@@ -117,45 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_pause_call_Del.ToolTip" xml:space="preserve">
-    <value>Delete *.js file</value>
-  </data>
-  <data name="button_resume_call_Del.ToolTip" xml:space="preserve">
-    <value>Delete *.js file</value>
-  </data>
-  <data name="button_pause_call_Add.ToolTip" xml:space="preserve">
-    <value>Add *.js file</value>
-  </data>
-  <data name="button_user_script_start_Add.ToolTip" xml:space="preserve">
-    <value>Add *.js file</value>
-  </data>
-  <data name="button_user_script_start_Del.ToolTip" xml:space="preserve">
-    <value>Delete *.js file</value>
-  </data>
-  <data name="button_user_script_Add.ToolTip" xml:space="preserve">
-    <value>Add *.js file</value>
-  </data>
-  <data name="button_user_script_Del.ToolTip" xml:space="preserve">
-    <value>Delete *.js file</value>
-  </data>
-  <data name="button_user_script_end_Add.ToolTip" xml:space="preserve">
-    <value>Add *.js file</value>
-  </data>
-  <data name="button_user_script_end_Del.ToolTip" xml:space="preserve">
-    <value>Delete *.js file</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Add.ToolTip" xml:space="preserve">
-    <value>Add *.js file</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Del.ToolTip" xml:space="preserve">
-    <value>Delete *.js file</value>
-  </data>
-  <data name="button_user_functions_Add.ToolTip" xml:space="preserve">
-    <value>Add *.js file</value>
-  </data>
-  <data name="button_user_functions_Del.ToolTip" xml:space="preserve">
-    <value>Delete *.js file</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="contextMenuStrip_Edit_JS.Size" type="System.Drawing.Size, System.Drawing">
     <value>136, 26</value>
@@ -227,7 +188,67 @@ WIDGET_DELEGATE widget)
     <value>Right-clicking on the switch will open 
 the file in the default programme</value>
   </data>
+  <data name="button_user_functions_Create.ToolTip" xml:space="preserve">
+    <value>Create *.js file</value>
+  </data>
+  <data name="button_user_functions_Del.ToolTip" xml:space="preserve">
+    <value>Delete *.js file</value>
+  </data>
+  <data name="button_user_functions_Add.ToolTip" xml:space="preserve">
+    <value>Add *.js file</value>
+  </data>
+  <data name="button_user_script_start_Create.ToolTip" xml:space="preserve">
+    <value>Create *.js file</value>
+  </data>
+  <data name="button_user_script_start_Del.ToolTip" xml:space="preserve">
+    <value>Delete *.js file</value>
+  </data>
+  <data name="button_user_script_start_Add.ToolTip" xml:space="preserve">
+    <value>Add *.js file</value>
+  </data>
+  <data name="button_user_script_Create.ToolTip" xml:space="preserve">
+    <value>Create *.js file</value>
+  </data>
+  <data name="button_user_script_Del.ToolTip" xml:space="preserve">
+    <value>Delete *.js file</value>
+  </data>
+  <data name="button_user_script_Add.ToolTip" xml:space="preserve">
+    <value>Add *.js file</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Create.ToolTip" xml:space="preserve">
+    <value>Create *.js file</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.ToolTip" xml:space="preserve">
+    <value>Delete *.js file</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.ToolTip" xml:space="preserve">
+    <value>Add *.js file</value>
+  </data>
+  <data name="button_user_script_end_Create.ToolTip" xml:space="preserve">
+    <value>Create *.js file</value>
+  </data>
+  <data name="button_user_script_end_Del.ToolTip" xml:space="preserve">
+    <value>Delete *.js file</value>
+  </data>
+  <data name="button_user_script_end_Add.ToolTip" xml:space="preserve">
+    <value>Add *.js file</value>
+  </data>
+  <data name="button_resume_call_Create.ToolTip" xml:space="preserve">
+    <value>Create *.js file</value>
+  </data>
+  <data name="button_resume_call_Del.ToolTip" xml:space="preserve">
+    <value>Delete *.js file</value>
+  </data>
   <data name="button_resume_call_Add.ToolTip" xml:space="preserve">
+    <value>Add *.js file</value>
+  </data>
+  <data name="button_pause_call_Create.ToolTip" xml:space="preserve">
+    <value>Create *.js file</value>
+  </data>
+  <data name="button_pause_call_Del.ToolTip" xml:space="preserve">
+    <value>Delete *.js file</value>
+  </data>
+  <data name="button_pause_call_Add.ToolTip" xml:space="preserve">
     <value>Add *.js file</value>
   </data>
 </root>
