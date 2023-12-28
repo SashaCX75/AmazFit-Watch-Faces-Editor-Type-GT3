@@ -312,4 +312,10 @@ velikosti měřítka čtení se sníží.</value>
   <data name="label2.Text" xml:space="preserve">
     <value>Konec řádku</value>
   </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Vložit vlastnosti</value>
+  </data>
+  <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Kopírovat vlastnosti</value>
+  </data>
 </root>

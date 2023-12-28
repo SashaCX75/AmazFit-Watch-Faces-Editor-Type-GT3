@@ -272,4 +272,10 @@
   <data name="checkBox_shortcut.Text" xml:space="preserve">
     <value>Zkratka</value>
   </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Vložit vlastnosti</value>
+  </data>
+  <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Kopírovat vlastnosti</value>
+  </data>
 </root>

@@ -367,4 +367,10 @@ verticalmente</value>
   <data name="label8.Text" xml:space="preserve">
     <value>!!! Es posible que algunos datos no se muestren (según el modelo de reloj). Compruebe si los datos se pueden mostrar en el dispositivo real.</value>
   </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Insertar propiedades</value>
+  </data>
+  <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copiar propiedades</value>
+  </data>
 </root>

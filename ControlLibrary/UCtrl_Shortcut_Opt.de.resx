@@ -281,4 +281,10 @@ Bei älterer Firmware wird das Bild auf der
 Uhr nur in dem Moment angezeigt, in dem Sie 
 auf die Verknüpfung klicken.</value>
   </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Eigenschaften einfügen</value>
+  </data>
+  <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Eigenschaften kopieren</value>
+  </data>
 </root>
