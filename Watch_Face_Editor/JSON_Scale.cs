@@ -490,6 +490,7 @@ namespace Watch_Face_Editor
                     Scale_IMG_NUMBER(elementWind.Number, scale);
                     Scale_TEXT(elementWind.Number_Font, scale);
                     Scale_IMG_POINTER(elementWind.Pointer, scale);
+                    Scale_IMG_LEVEL(elementWind.Direction, scale);
                     Scale_IMG(elementWind.Icon, scale);
                     break;
                 case "ElementMoon":
