@@ -720,6 +720,12 @@ namespace Watch_Face_Editor
         /// <summary>Отображение единиц измерения: 0 - не отобрадать; 1 - отображать строчными буквами; 2 - отображать прописными буквами</summary>
         public int unit_type { get; set; }
 
+        /// <summary>Строка для единиц измерения</summary>
+        public string unit_string { get; set; } = "";
+
+        /// <summary>am/pm в конце</summary>
+        public bool unit_end { get; set; } = false;
+
         /// <summary>Центрировать горизонтально</summary>
         public bool centreHorizontally { get; set; } = false;
 

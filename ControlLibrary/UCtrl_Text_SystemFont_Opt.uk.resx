@@ -349,6 +349,9 @@
   <data name="label8.Text" xml:space="preserve">
     <value>!!! Деякі дані можуть не відображатися (залежить від моделі годинника). Перевіряйте можливість відображення даних на реальному пристрої.</value>
   </data>
+  <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 48</value>
+  </data>
   <data name="копироватьСвойстваToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 22</value>
   </data>
@@ -361,7 +364,10 @@
   <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>Вставити властивості</value>
   </data>
-  <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 48</value>
+  <data name="checkBox_inEnd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 17</value>
+  </data>
+  <data name="checkBox_inEnd.Text" xml:space="preserve">
+    <value>Наприкінці</value>
   </data>
 </root>

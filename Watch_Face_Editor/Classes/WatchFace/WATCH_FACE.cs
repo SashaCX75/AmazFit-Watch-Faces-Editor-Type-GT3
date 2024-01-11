@@ -180,12 +180,16 @@ namespace Watch_Face_Editor
         public bool visible = true;
 
         public hmUI_widget_IMG_NUMBER Second { get; set; }
-        public hmUI_widget_TEXT Second_Font { get; set; }
         public hmUI_widget_IMG_NUMBER Minute { get; set; }
-        public hmUI_widget_TEXT Minute_Font { get; set; }
         public hmUI_widget_IMG_NUMBER Hour { get; set; }
-        public hmUI_widget_TEXT Hour_Font { get; set; }
         public hmUI_widget_IMG_TIME_am_pm AmPm { get; set; }
+
+        public hmUI_widget_TEXT Second_Font { get; set; }
+        public hmUI_widget_TEXT Minute_Font { get; set; }
+        public hmUI_widget_TEXT Hour_Font { get; set; }
+        public hmUI_widget_TEXT Hour_min_Font { get; set; }
+        public hmUI_widget_TEXT Hour_min_sec_Font { get; set; }
+
         public hmUI_widget_IMG_NUMBER Second_rotation { get; set; }
         public hmUI_widget_IMG_NUMBER Minute_rotation { get; set; }
         public hmUI_widget_IMG_NUMBER Hour_rotation { get; set; }
@@ -360,6 +364,62 @@ namespace Watch_Face_Editor
                     visible = this.Hour_Font.visible,
                     show_level = this.Hour_Font.show_level,
                     type = this.Hour_Font.type,
+                };
+            }
+
+            hmUI_widget_TEXT Hour_min_Font = null;
+            if (this.Hour_min_Font != null)
+            {
+                Hour_min_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Hour_min_Font.x,
+                    y = this.Hour_min_Font.y,
+                    w = this.Hour_min_Font.w,
+                    h = this.Hour_min_Font.h,
+                    color = this.Hour_min_Font.color,
+                    align_h = this.Hour_min_Font.align_h,
+                    align_v = this.Hour_min_Font.align_v,
+                    text_size = this.Hour_min_Font.text_size,
+                    text_style = this.Hour_min_Font.text_style,
+                    line_space = this.Hour_min_Font.line_space,
+                    char_space = this.Hour_min_Font.char_space,
+                    font = this.Hour_min_Font.font,
+                    padding = this.Hour_min_Font.padding,
+                    unit_type = this.Hour_min_Font.unit_type,
+                    unit_end = this.Hour_min_Font.unit_end,
+
+                    position = this.Hour_min_Font.position,
+                    visible = this.Hour_min_Font.visible,
+                    show_level = this.Hour_min_Font.show_level,
+                    type = this.Hour_min_Font.type,
+                };
+            }
+
+            hmUI_widget_TEXT Hour_min_sec_Font = null;
+            if (this.Hour_min_sec_Font != null)
+            {
+                Hour_min_sec_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Hour_min_sec_Font.x,
+                    y = this.Hour_min_sec_Font.y,
+                    w = this.Hour_min_sec_Font.w,
+                    h = this.Hour_min_sec_Font.h,
+                    color = this.Hour_min_sec_Font.color,
+                    align_h = this.Hour_min_sec_Font.align_h,
+                    align_v = this.Hour_min_sec_Font.align_v,
+                    text_size = this.Hour_min_sec_Font.text_size,
+                    text_style = this.Hour_min_sec_Font.text_style,
+                    line_space = this.Hour_min_sec_Font.line_space,
+                    char_space = this.Hour_min_sec_Font.char_space,
+                    font = this.Hour_min_sec_Font.font,
+                    padding = this.Hour_min_sec_Font.padding,
+                    unit_type = this.Hour_min_sec_Font.unit_type,
+                    unit_end = this.Hour_min_Font.unit_end,
+
+                    position = this.Hour_min_sec_Font.position,
+                    visible = this.Hour_min_sec_Font.visible,
+                    show_level = this.Hour_min_sec_Font.show_level,
+                    type = this.Hour_min_sec_Font.type,
                 };
             }
 
@@ -568,6 +628,8 @@ namespace Watch_Face_Editor
                 Second_Font = Second_Font,
                 Minute_Font = Minute_Font,
                 Hour_Font = Hour_Font,
+                Hour_min_Font = Hour_min_Font,
+                Hour_min_sec_Font = Hour_min_sec_Font,
 
                 Second_rotation = Second_rotation,
                 Minute_rotation = Minute_rotation,

@@ -31,6 +31,12 @@ namespace ControlLibrary
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_DigitalTime_Elm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_Hour_min_sec_Font = new System.Windows.Forms.Panel();
+            this.button_Hour_min_sec_Font = new System.Windows.Forms.Button();
+            this.checkBox_Hour_min_sec_Font = new System.Windows.Forms.CheckBox();
+            this.panel_Hour_min_Font = new System.Windows.Forms.Panel();
+            this.button_Hour_min_Font = new System.Windows.Forms.Button();
+            this.checkBox_Hour_min_Font = new System.Windows.Forms.CheckBox();
             this.panel_Hours_Font = new System.Windows.Forms.Panel();
             this.button_Hours_Font = new System.Windows.Forms.Button();
             this.checkBox_Hours_Font = new System.Windows.Forms.CheckBox();
@@ -77,6 +83,8 @@ namespace ControlLibrary
             this.pictureBox_Arrow_Down = new System.Windows.Forms.PictureBox();
             this.button_ElementName = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel_Hour_min_sec_Font.SuspendLayout();
+            this.panel_Hour_min_Font.SuspendLayout();
             this.panel_Hours_Font.SuspendLayout();
             this.panel_Minutes_Font.SuspendLayout();
             this.panel_Seconds_Font.SuspendLayout();
@@ -101,15 +109,17 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.AllowDrop = true;
+            this.tableLayoutPanel1.Controls.Add(this.panel_Hour_min_sec_Font, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Hour_min_Font, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.panel_Hours_Font, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.panel_Minutes_Font, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.panel_Seconds_Font, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Hours_circle, 0, 12);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Minutes_circle, 0, 11);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Seconds_circle, 0, 10);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Hours_rotation, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Minutes_rotation, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Seconds_rotation, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Hours_circle, 0, 14);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Minutes_circle, 0, 13);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Seconds_circle, 0, 12);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Hours_rotation, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Minutes_rotation, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Seconds_rotation, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.panel_Minutes, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel_AmPm, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel_Hours, 0, 2);
@@ -117,6 +127,72 @@ namespace ControlLibrary
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragDrop);
             this.tableLayoutPanel1.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
+            // 
+            // panel_Hour_min_sec_Font
+            // 
+            resources.ApplyResources(this.panel_Hour_min_sec_Font, "panel_Hour_min_sec_Font");
+            this.panel_Hour_min_sec_Font.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Hour_min_sec_Font.Controls.Add(this.button_Hour_min_sec_Font);
+            this.panel_Hour_min_sec_Font.Controls.Add(this.checkBox_Hour_min_sec_Font);
+            this.panel_Hour_min_sec_Font.Name = "panel_Hour_min_sec_Font";
+            this.panel_Hour_min_sec_Font.Click += new System.EventHandler(this.panel_Hour_min_sec_Font_Click);
+            this.panel_Hour_min_sec_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Hour_min_sec_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Hour_min_sec_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Hour_min_sec_Font
+            // 
+            resources.ApplyResources(this.button_Hour_min_sec_Font, "button_Hour_min_sec_Font");
+            this.button_Hour_min_sec_Font.FlatAppearance.BorderSize = 0;
+            this.button_Hour_min_sec_Font.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Hour_min_sec_Font.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_Hour_min_sec_Font.Image = global::ControlLibrary.Properties.Resources.text_fields;
+            this.button_Hour_min_sec_Font.Name = "button_Hour_min_sec_Font";
+            this.button_Hour_min_sec_Font.UseVisualStyleBackColor = true;
+            this.button_Hour_min_sec_Font.Click += new System.EventHandler(this.panel_Hour_min_sec_Font_Click);
+            this.button_Hour_min_sec_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Hour_min_sec_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Hour_min_sec_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Hour_min_sec_Font
+            // 
+            resources.ApplyResources(this.checkBox_Hour_min_sec_Font, "checkBox_Hour_min_sec_Font");
+            this.checkBox_Hour_min_sec_Font.Name = "checkBox_Hour_min_sec_Font";
+            this.checkBox_Hour_min_sec_Font.UseVisualStyleBackColor = true;
+            this.checkBox_Hour_min_sec_Font.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
+            // 
+            // panel_Hour_min_Font
+            // 
+            resources.ApplyResources(this.panel_Hour_min_Font, "panel_Hour_min_Font");
+            this.panel_Hour_min_Font.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Hour_min_Font.Controls.Add(this.button_Hour_min_Font);
+            this.panel_Hour_min_Font.Controls.Add(this.checkBox_Hour_min_Font);
+            this.panel_Hour_min_Font.Name = "panel_Hour_min_Font";
+            this.panel_Hour_min_Font.Click += new System.EventHandler(this.panel_Hour_min_Font_Click);
+            this.panel_Hour_min_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Hour_min_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Hour_min_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Hour_min_Font
+            // 
+            resources.ApplyResources(this.button_Hour_min_Font, "button_Hour_min_Font");
+            this.button_Hour_min_Font.FlatAppearance.BorderSize = 0;
+            this.button_Hour_min_Font.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Hour_min_Font.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_Hour_min_Font.Image = global::ControlLibrary.Properties.Resources.text_fields;
+            this.button_Hour_min_Font.Name = "button_Hour_min_Font";
+            this.button_Hour_min_Font.UseVisualStyleBackColor = true;
+            this.button_Hour_min_Font.Click += new System.EventHandler(this.panel_Hour_min_Font_Click);
+            this.button_Hour_min_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Hour_min_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Hour_min_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Hour_min_Font
+            // 
+            resources.ApplyResources(this.checkBox_Hour_min_Font, "checkBox_Hour_min_Font");
+            this.checkBox_Hour_min_Font.Name = "checkBox_Hour_min_Font";
+            this.checkBox_Hour_min_Font.UseVisualStyleBackColor = true;
+            this.checkBox_Hour_min_Font.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // panel_Hours_Font
             // 
@@ -607,6 +683,10 @@ namespace ControlLibrary
             this.Controls.Add(this.button_ElementName);
             this.Name = "UCtrl_DigitalTime_Elm";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel_Hour_min_sec_Font.ResumeLayout(false);
+            this.panel_Hour_min_sec_Font.PerformLayout();
+            this.panel_Hour_min_Font.ResumeLayout(false);
+            this.panel_Hour_min_Font.PerformLayout();
             this.panel_Hours_Font.ResumeLayout(false);
             this.panel_Hours_Font.PerformLayout();
             this.panel_Minutes_Font.ResumeLayout(false);
@@ -691,5 +771,11 @@ namespace ControlLibrary
         private System.Windows.Forms.Panel panel_Hours_Font;
         private System.Windows.Forms.Button button_Hours_Font;
         public System.Windows.Forms.CheckBox checkBox_Hours_Font;
+        private System.Windows.Forms.Panel panel_Hour_min_sec_Font;
+        private System.Windows.Forms.Button button_Hour_min_sec_Font;
+        public System.Windows.Forms.CheckBox checkBox_Hour_min_sec_Font;
+        private System.Windows.Forms.Panel panel_Hour_min_Font;
+        private System.Windows.Forms.Button button_Hour_min_Font;
+        public System.Windows.Forms.CheckBox checkBox_Hour_min_Font;
     }
 }
