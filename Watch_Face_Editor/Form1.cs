@@ -2072,6 +2072,24 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Hour_min_Font":
+                        if (uCtrl_DigitalTime_Elm.checkBox_Hour_min_Font.Checked)
+                        {
+                            text = digitalTime.Hour_min_Font;
+                            Read_Text_Options(text, true, true, true, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Hour_min_sec_Font":
+                        if (uCtrl_DigitalTime_Elm.checkBox_Hour_min_sec_Font.Checked)
+                        {
+                            text = digitalTime.Hour_min_sec_Font;
+                            Read_Text_Options(text, true, true, true, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
 
                     case "Hour_rotation":
                         if (uCtrl_DigitalTime_Elm.checkBox_Hours_rotation.Checked)
@@ -5165,6 +5183,18 @@ namespace Watch_Face_Editor
                                 uCtrl_DigitalTime_Elm.checkBox_Hours_Font.Checked = DigitalTime.Hour_Font.visible;
                                 elementOptions.Add(DigitalTime.Hour_Font.position, "Hour_Font");
                             }
+                            if (DigitalTime.Hour_min_Font != null && !elementOptions.ContainsKey(DigitalTime.Hour_min_Font.position) &&
+                                !elementOptions.ContainsValue("Hour_min_Font"))
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Hour_min_Font.Checked = DigitalTime.Hour_min_Font.visible;
+                                elementOptions.Add(DigitalTime.Hour_min_Font.position, "Hour_min_Font");
+                            }
+                            if (DigitalTime.Hour_min_sec_Font != null && !elementOptions.ContainsKey(DigitalTime.Hour_min_sec_Font.position) &&
+                                !elementOptions.ContainsValue("Hour_min_sec_Font"))
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Hour_min_sec_Font.Checked = DigitalTime.Hour_min_sec_Font.visible;
+                                elementOptions.Add(DigitalTime.Hour_min_sec_Font.position, "Hour_min_sec_Font");
+                            }
 
                             if (DigitalTime.Second_rotation != null && !elementOptions.ContainsKey(DigitalTime.Second_rotation.position) &&
                                 !elementOptions.ContainsValue("Second_rotation"))
@@ -7208,6 +7238,8 @@ namespace Watch_Face_Editor
                 if (digitalTime.Hour_Font == null) digitalTime.Hour_Font = new hmUI_widget_TEXT();
                 if (digitalTime.Minute_Font == null) digitalTime.Minute_Font = new hmUI_widget_TEXT();
                 if (digitalTime.Second_Font == null) digitalTime.Second_Font = new hmUI_widget_TEXT();
+                if (digitalTime.Hour_min_Font == null) digitalTime.Hour_min_Font = new hmUI_widget_TEXT();
+                if (digitalTime.Hour_min_sec_Font == null) digitalTime.Hour_min_sec_Font = new hmUI_widget_TEXT();
 
                 if (digitalTime.Hour_rotation == null) digitalTime.Hour_rotation = new hmUI_widget_IMG_NUMBER();
                 if (digitalTime.Minute_rotation == null) digitalTime.Minute_rotation = new hmUI_widget_IMG_NUMBER();
@@ -7226,6 +7258,8 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Hour_Font")) digitalTime.Hour_Font.position = elementOptions["Hour_Font"];
                 if (elementOptions.ContainsKey("Minute_Font")) digitalTime.Minute_Font.position = elementOptions["Minute_Font"];
                 if (elementOptions.ContainsKey("Second_Font")) digitalTime.Second_Font.position = elementOptions["Second_Font"];
+                if (elementOptions.ContainsKey("Hour_min_Font")) digitalTime.Hour_min_Font.position = elementOptions["Hour_min_Font"];
+                if (elementOptions.ContainsKey("Hour_min_sec_Font")) digitalTime.Hour_min_sec_Font.position = elementOptions["Hour_min_sec_Font"];
 
                 if (elementOptions.ContainsKey("Hour_rotation")) digitalTime.Hour_rotation.position = elementOptions["Hour_rotation"];
                 if (elementOptions.ContainsKey("Minute_rotation")) digitalTime.Minute_rotation.position = elementOptions["Minute_rotation"];
@@ -7260,6 +7294,12 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Seconds_Font":
                         digitalTime.Second_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Hour_min_sec_Font":
+                        digitalTime.Hour_min_sec_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Hour_min_Font":
+                        digitalTime.Hour_min_Font.visible = checkBox.Checked;
                         break;
 
                     case "checkBox_Hours_rotation":
@@ -7331,6 +7371,8 @@ namespace Watch_Face_Editor
                 if (digitalTime.Hour_Font == null) digitalTime.Hour_Font = new hmUI_widget_TEXT();
                 if (digitalTime.Minute_Font == null) digitalTime.Minute_Font = new hmUI_widget_TEXT();
                 if (digitalTime.Second_Font == null) digitalTime.Second_Font = new hmUI_widget_TEXT();
+                if (digitalTime.Hour_min_Font == null) digitalTime.Hour_min_Font = new hmUI_widget_TEXT();
+                if (digitalTime.Hour_min_sec_Font == null) digitalTime.Hour_min_sec_Font = new hmUI_widget_TEXT();
 
                 if (digitalTime.Hour_rotation == null) digitalTime.Hour_rotation = new hmUI_widget_IMG_NUMBER();
                 if (digitalTime.Minute_rotation == null) digitalTime.Minute_rotation = new hmUI_widget_IMG_NUMBER();
@@ -7349,6 +7391,8 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Hour_Font")) digitalTime.Hour_Font.position = elementOptions["Hour_Font"];
                 if (elementOptions.ContainsKey("Minute_Font")) digitalTime.Minute_Font.position = elementOptions["Minute_Font"];
                 if (elementOptions.ContainsKey("Second_Font")) digitalTime.Second_Font.position = elementOptions["Second_Font"];
+                if (elementOptions.ContainsKey("Hour_min_Font")) digitalTime.Hour_min_Font.position = elementOptions["Hour_min_Font"];
+                if (elementOptions.ContainsKey("Hour_min_sec_Font")) digitalTime.Hour_min_sec_Font.position = elementOptions["Hour_min_sec_Font"];
 
                 if (elementOptions.ContainsKey("Hour_rotation")) digitalTime.Hour_rotation.position = elementOptions["Hour_rotation"];
                 if (elementOptions.ContainsKey("Minute_rotation")) digitalTime.Minute_rotation.position = elementOptions["Minute_rotation"];

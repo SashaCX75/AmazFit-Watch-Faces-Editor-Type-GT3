@@ -623,7 +623,7 @@ namespace Watch_Face_Editor
                         DigitalTime.AmPm.am_img != null && DigitalTime.AmPm.am_img.Length > 0 && 
                         DigitalTime.AmPm.pm_img != null && DigitalTime.AmPm.pm_img.Length > 0) am_pm = true;
 
-                    for (int index = 1; index <= 15; index++)
+                    for (int index = 1; index <= 20; index++)
                     {
                         if (DigitalTime.Hour != null && DigitalTime.Hour.img_First != null
                             && DigitalTime.Hour.img_First.Length > 0 &&
@@ -945,6 +945,180 @@ namespace Watch_Face_Editor
                             {
                                 if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
                                 valueStr += unitStr;
+                            }
+
+                            if (number_font.centreHorizontally)
+                            {
+                                x = (SelectedModel.background.w - w) / 2;
+                                align_h = "CENTER_H";
+                            }
+                            if (number_font.centreVertically)
+                            {
+                                y = (SelectedModel.background.h - h) / 2;
+                                align_v = "CENTER_V";
+                            }
+
+                            if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                            {
+                                string font_fileName = FontsList[number_font.font];
+                                //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                                if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                {
+                                    Font drawFont = null;
+                                    using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                    {
+                                        fonts.AddFontFile(font_fileName);
+                                        drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                    }
+
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                    align_h, align_v, text_style, BBorder);
+                                }
+                                else
+                                {
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                }
+
+                            }
+                            else
+                            {
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            }
+                        }
+
+                        if (DigitalTime.Hour_min_Font != null && index == DigitalTime.Hour_min_Font.position && DigitalTime.Hour_min_Font.visible)
+                        {
+                            hmUI_widget_TEXT number_font = DigitalTime.Hour_min_Font;
+                            int x = number_font.x;
+                            int y = number_font.y;
+                            int h = number_font.h;
+                            int w = number_font.w;
+
+                            int size = number_font.text_size;
+                            int space_h = number_font.char_space;
+                            int space_v = number_font.line_space;
+
+                            Color color = StringToColor(number_font.color);
+                            //int align_h = AlignmentToInt(number_font.align_h);
+                            //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                            string align_h = number_font.align_h;
+                            string align_v = number_font.align_v;
+                            string text_style = number_font.text_style;
+                            string unitStr = "Am";
+                            int value = WatchFacePreviewSet.Time.Hours;
+                            if (ProgramSettings.ShowIn12hourFormat)
+                            {
+                                if (value > 11)
+                                {
+                                    value -= 12;
+                                    unitStr = "Pm";
+                                }
+                                if (value == 0) value = 12;
+                            }
+                            string valueHourStr = value.ToString();
+                            if (number_font.padding) valueHourStr = valueHourStr.PadLeft(value_lenght, '0');
+                            string valueMinStr = WatchFacePreviewSet.Time.Minutes.ToString();
+                            valueMinStr = valueMinStr.PadLeft(value_lenght, '0');
+
+                            string delimeter = ":";
+                            if (number_font.unit_string != null && number_font.unit_string.Length > 0) delimeter = number_font.unit_string;
+
+                            string valueStr = "";
+                            if (number_font.unit_type == 0) unitStr = unitStr.ToLower();
+                            if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                            valueStr = valueHourStr + delimeter + valueMinStr;
+                            if (checkBox_ShowIn12hourFormat.Checked)
+                            {
+                                if (number_font.unit_end) valueStr = valueStr + " " + unitStr;
+                                else valueStr = unitStr + " " + valueStr; 
+                            }
+
+                            if (number_font.centreHorizontally)
+                            {
+                                x = (SelectedModel.background.w - w) / 2;
+                                align_h = "CENTER_H";
+                            }
+                            if (number_font.centreVertically)
+                            {
+                                y = (SelectedModel.background.h - h) / 2;
+                                align_v = "CENTER_V";
+                            }
+
+                            if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                            {
+                                string font_fileName = FontsList[number_font.font];
+                                //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                                if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                {
+                                    Font drawFont = null;
+                                    using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                    {
+                                        fonts.AddFontFile(font_fileName);
+                                        drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                    }
+
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                    align_h, align_v, text_style, BBorder);
+                                }
+                                else
+                                {
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                }
+
+                            }
+                            else
+                            {
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            }
+                        }
+
+                        if (DigitalTime.Hour_min_sec_Font != null && index == DigitalTime.Hour_min_sec_Font.position && DigitalTime.Hour_min_sec_Font.visible)
+                        {
+                            hmUI_widget_TEXT number_font = DigitalTime.Hour_min_sec_Font;
+                            int x = number_font.x;
+                            int y = number_font.y;
+                            int h = number_font.h;
+                            int w = number_font.w;
+
+                            int size = number_font.text_size;
+                            int space_h = number_font.char_space;
+                            int space_v = number_font.line_space;
+
+                            Color color = StringToColor(number_font.color);
+                            //int align_h = AlignmentToInt(number_font.align_h);
+                            //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                            string align_h = number_font.align_h;
+                            string align_v = number_font.align_v;
+                            string text_style = number_font.text_style;
+                            string unitStr = "Am";
+                            int value = WatchFacePreviewSet.Time.Hours;
+                            if (ProgramSettings.ShowIn12hourFormat)
+                            {
+                                if (value > 11)
+                                {
+                                    value -= 12;
+                                    unitStr = "Pm";
+                                }
+                                if (value == 0) value = 12;
+                            }
+                            string valueHourStr = value.ToString();
+                            if (number_font.padding) valueHourStr = valueHourStr.PadLeft(value_lenght, '0');
+                            string valueMinStr = WatchFacePreviewSet.Time.Minutes.ToString();
+                            valueMinStr = valueMinStr.PadLeft(value_lenght, '0');
+                            string valueSecStr = WatchFacePreviewSet.Time.Seconds.ToString();
+                            valueSecStr = valueSecStr.PadLeft(value_lenght, '0');
+
+                            string delimeter = ":";
+                            if (number_font.unit_string != null && number_font.unit_string.Length > 0) delimeter = number_font.unit_string;
+
+                            string valueStr = "";
+                            if (number_font.unit_type == 0) unitStr = unitStr.ToLower();
+                            if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                            valueStr = valueHourStr + delimeter + valueMinStr + delimeter + valueSecStr;
+                            if (checkBox_ShowIn12hourFormat.Checked)
+                            {
+                                if (number_font.unit_end) valueStr = valueStr + " " + unitStr;
+                                else valueStr = unitStr + " " + valueStr;
                             }
 
                             if (number_font.centreHorizontally)

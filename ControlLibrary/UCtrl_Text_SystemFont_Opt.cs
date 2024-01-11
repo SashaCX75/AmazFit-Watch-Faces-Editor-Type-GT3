@@ -25,6 +25,8 @@ namespace ControlLibrary
         private bool Unit_mode = true;
         private bool Zero_mode = true;
         private bool Year_mode = false;
+        private bool AmPm_mode = false;
+        private bool UnitStr_mode = false;
 
         public UCtrl_Text_SystemFont_Opt()
         {
@@ -273,6 +275,18 @@ namespace ControlLibrary
             return unit_type;
         }
 
+        /// <summary>Устанавливаем место отображения am/pm</summary>
+        public void SetUnitEnd(bool unit_end)
+        {
+            checkBox_inEnd.Checked = unit_end;
+        }
+
+        /// <summary>Возвращает место отображения am/pm</summary>
+        public bool GetUnitEnd()
+        {  
+            return checkBox_inEnd.Checked;
+        }
+
         /// <summary>Возвращает имя файла выбраного шрифта</summary>
         public string GetFont()
         {
@@ -394,6 +408,46 @@ namespace ControlLibrary
                 {
                     checkBox_addZero.Text = Properties.Strings.UCtrl_Text_Opt_Year_false;
                 }
+            }
+        }
+
+        /// <summary>Режим отображения Am/Pm</summary>
+        [Description("Режим отображения Am/Pm")]
+        public virtual bool AmPm
+        {
+            get
+            {
+                return AmPm_mode;
+            }
+            set
+            {
+                AmPm_mode = value;
+                if (AmPm_mode)
+                {
+                    checkBox_unit.Text = Properties.Strings.UCtrl_Text_Opt_AmPm_true;
+                    checkBox_inEnd.Visible = true;
+                }
+                else
+                {
+                    checkBox_unit.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_false;
+                    checkBox_inEnd.Visible = false;
+                }
+            }
+        }
+
+        /// <summary>Режим отображения строки для единиц измерения</summary>
+        [Description("Режим отображения строки для единиц измерения")]
+        public virtual bool UnitStrMode
+        {
+            get
+            {
+                return UnitStr_mode;
+            }
+            set
+            {
+                UnitStr_mode = value;
+                label_unit_string.Visible = UnitStr_mode;
+                textBox_unit_string.Visible = UnitStr_mode;
             }
         }
 
@@ -698,6 +752,16 @@ namespace ControlLibrary
             return comboBox_Color.BackColor;
         }
 
+        public void SetText(string text)
+        {
+            textBox_unit_string.Text = text;
+        }
+
+        public string GetText()
+        {
+            return textBox_unit_string.Text;
+        }
+
         #region Settings Set/Clear
 
         /// <summary>Очищает выпадающие списки с картинками, сбрасывает данные на значения по умолчанию</summary>
@@ -712,6 +776,7 @@ namespace ControlLibrary
             //comboBox_fonts.Items.Clear();
             //comboBox_fonts.Items.Add(Properties.Strings.SystemFont);
             comboBox_fonts.SelectedIndex = 0;
+            textBox_unit_string.Text = "";
 
             numericUpDown_X.Enabled = true;
             comboBox_alignmentHorizontal.Enabled = true;
@@ -720,11 +785,14 @@ namespace ControlLibrary
 
             checkBox_unit.CheckState = CheckState.Unchecked;
             checkBox_addZero.Checked = false;
+            checkBox_inEnd.Checked = false;
 
             UserFont = false;
             UnitMode = true;
             ZeroMode = true;
             Year = false;
+            AmPm = false;
+            UnitStrMode = false;
 
             setValue = false;
         }
@@ -888,6 +956,16 @@ namespace ControlLibrary
                 WidgetProperty_Paste(this, eventArgs);
             }
         }
+
+        private void textBox_unit_string_TextChanged(object sender, EventArgs e)
+        {
+            if (ValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ValueChanged(this, eventArgs);
+            }
+        }
+
     }
 }
 

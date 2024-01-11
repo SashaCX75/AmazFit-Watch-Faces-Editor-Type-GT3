@@ -1699,7 +1699,7 @@ namespace Watch_Face_Editor
             PreviewView = true;
         }
 
-        private void Read_Text_Options(hmUI_widget_TEXT system_font, bool unitMode, bool zeroMode)
+        private void Read_Text_Options(hmUI_widget_TEXT system_font, bool unitMode, bool zeroMode, bool unitStrMode = false, bool AmPmMode = false)
         {
             PreviewView = false;
 
@@ -1709,6 +1709,8 @@ namespace Watch_Face_Editor
             //uCtrl_Text_SystemFont_Opt.NumberValue = numberValue;
             uCtrl_Text_SystemFont_Opt.UnitMode = unitMode;
             uCtrl_Text_SystemFont_Opt.ZeroMode = zeroMode;
+            uCtrl_Text_SystemFont_Opt.UnitStrMode = unitStrMode;
+            uCtrl_Text_SystemFont_Opt.AmPm = AmPmMode;
 
             uCtrl_Text_SystemFont_Opt._ElementWithSystemFont = system_font;
             //uCtrl_Text_SystemFont_Opt.fonts_path = ProjectDir + @"\assets\fonts\";
@@ -1734,8 +1736,11 @@ namespace Watch_Face_Editor
 
             uCtrl_Text_SystemFont_Opt.SetFont(system_font.font);
 
+            uCtrl_Text_SystemFont_Opt.SetText(system_font.unit_string);
+
             uCtrl_Text_SystemFont_Opt.checkBox_addZero.Checked = system_font.padding;
             uCtrl_Text_SystemFont_Opt.SetUnitType(system_font.unit_type);
+            uCtrl_Text_SystemFont_Opt.SetUnitEnd(system_font.unit_end);
 
             PreviewView = true;
         }
@@ -2375,9 +2380,11 @@ namespace Watch_Face_Editor
             systemFont.centreVertically = uCtrl_Text_SystemFont_Opt.checkBox_CentreVertically.Checked;
 
             systemFont.font = uCtrl_Text_SystemFont_Opt.GetFont();
+            systemFont.unit_string = uCtrl_Text_SystemFont_Opt.GetText();
 
             systemFont.padding = uCtrl_Text_SystemFont_Opt.checkBox_addZero.Checked;
             systemFont.unit_type = uCtrl_Text_SystemFont_Opt.GetUnitType();
+            systemFont.unit_end = uCtrl_Text_SystemFont_Opt.GetUnitEnd();
 
             JSON_Modified = true;
             PreviewImage();
@@ -4217,9 +4224,11 @@ namespace Watch_Face_Editor
             systemFont.centreVertically = uCtrl_Text_SystemFont_Opt.checkBox_CentreVertically.Checked;
 
             systemFont.font = uCtrl_Text_SystemFont_Opt.GetFont();
+            systemFont.unit_string = uCtrl_Text_SystemFont_Opt.GetText();
 
             systemFont.padding = uCtrl_Text_SystemFont_Opt.checkBox_addZero.Checked;
             systemFont.unit_type = uCtrl_Text_SystemFont_Opt.GetUnitType();
+            systemFont.unit_end = uCtrl_Text_SystemFont_Opt.GetUnitEnd();
 
             WidgetProperty.Add("hmUI_widget_TEXT", systemFont);
             uCtrl_Text_SystemFont_Opt.WidgetProperty = WidgetProperty;
@@ -4254,9 +4263,11 @@ namespace Watch_Face_Editor
             uCtrl_Text_SystemFont_Opt.checkBox_CentreVertically.Checked = system_font.centreVertically;
 
             uCtrl_Text_SystemFont_Opt.SetFont(system_font.font);
+            uCtrl_Text_SystemFont_Opt.SetText(system_font.unit_string);
 
             uCtrl_Text_SystemFont_Opt.checkBox_addZero.Checked = system_font.padding;
             uCtrl_Text_SystemFont_Opt.SetUnitType(system_font.unit_type);
+            uCtrl_Text_SystemFont_Opt.SetUnitEnd(system_font.unit_end);
 
             PreviewView = true;
             uCtrl_Text_SystemFont_Opt_ValueChanged(sender, eventArgs);

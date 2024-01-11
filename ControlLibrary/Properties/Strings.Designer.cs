@@ -142,6 +142,24 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Единицы измерения.
+        /// </summary>
+        internal static string UCtrl_Text_Opt_AmPm_false {
+            get {
+                return ResourceManager.GetString("UCtrl_Text_Opt_AmPm_false", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Am / Pm.
+        /// </summary>
+        internal static string UCtrl_Text_Opt_AmPm_true {
+            get {
+                return ResourceManager.GetString("UCtrl_Text_Opt_AmPm_true", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Десятичный разделитель.
         /// </summary>
         internal static string UCtrl_Text_Opt_Sunrise_false {

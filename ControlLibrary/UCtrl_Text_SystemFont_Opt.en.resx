@@ -379,4 +379,10 @@ vertically</value>
   <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 48</value>
   </data>
+  <data name="checkBox_inEnd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 17</value>
+  </data>
+  <data name="checkBox_inEnd.Text" xml:space="preserve">
+    <value>At the end</value>
+  </data>
 </root>

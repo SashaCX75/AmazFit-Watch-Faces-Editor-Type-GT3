@@ -17,12 +17,17 @@ namespace ControlLibrary
         bool highlight_minutes = false;
         bool highlight_seconds = false;
         bool highlight_am_pm = false;
+
         bool highlight_hours_font = false;
         bool highlight_minutes_font = false;
         bool highlight_seconds_font = false;
+        bool highlight_hour_min_font = false;
+        bool highlight_hour_min_sec_font = false;
+
         bool highlight_hours_rotate = false;
         bool highlight_minutes_rotate = false;
         bool highlight_seconds_rotate = false;
+
         bool highlight_hours_circle = false;
         bool highlight_minutes_circle = false;
         bool highlight_seconds_circle = false;
@@ -104,6 +109,8 @@ namespace ControlLibrary
             highlight_hours_font = false;
             highlight_minutes_font = false;
             highlight_seconds_font = false;
+            highlight_hour_min_font = false;
+            highlight_hour_min_sec_font = false;
             highlight_hours_rotate = false;
             highlight_minutes_rotate = false;
             highlight_seconds_rotate = false;
@@ -207,6 +214,32 @@ namespace ControlLibrary
                 button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
+            if (highlight_hour_min_font)
+            {
+                panel_Hour_min_Font.BackColor = SystemColors.ActiveCaption;
+                button_Hour_min_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Hour_min_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Hour_min_Font.BackColor = SystemColors.Control;
+                button_Hour_min_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Hour_min_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_hour_min_sec_font)
+            {
+                panel_Hour_min_sec_Font.BackColor = SystemColors.ActiveCaption;
+                button_Hour_min_sec_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Hour_min_sec_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Hour_min_sec_Font.BackColor = SystemColors.Control;
+                button_Hour_min_sec_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Hour_min_sec_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
             if (highlight_hours_rotate)
             {
                 panel_Hours_rotation.BackColor = SystemColors.ActiveCaption;
@@ -297,6 +330,8 @@ namespace ControlLibrary
             highlight_hours_font = false;
             highlight_minutes_font = false;
             highlight_seconds_font = false;
+            highlight_hour_min_font = false;
+            highlight_hour_min_sec_font = false;
             highlight_hours_rotate = false;
             highlight_minutes_rotate = false;
             highlight_seconds_rotate = false;
@@ -324,6 +359,8 @@ namespace ControlLibrary
             highlight_hours_font = false;
             highlight_minutes_font = false;
             highlight_seconds_font = false;
+            highlight_hour_min_font = false;
+            highlight_hour_min_sec_font = false;
             highlight_hours_rotate = false;
             highlight_minutes_rotate = false;
             highlight_seconds_rotate = false;
@@ -351,6 +388,8 @@ namespace ControlLibrary
             highlight_hours_font = false;
             highlight_minutes_font = false;
             highlight_seconds_font = false;
+            highlight_hour_min_font = false;
+            highlight_hour_min_sec_font = false;
             highlight_hours_rotate = false;
             highlight_minutes_rotate = false;
             highlight_seconds_rotate = false;
@@ -378,6 +417,8 @@ namespace ControlLibrary
             highlight_hours_font = false;
             highlight_minutes_font = false;
             highlight_seconds_font = false;
+            highlight_hour_min_font = false;
+            highlight_hour_min_sec_font = false;
             highlight_hours_rotate = false;
             highlight_minutes_rotate = false;
             highlight_seconds_rotate = false;
@@ -405,6 +446,8 @@ namespace ControlLibrary
             highlight_hours_font = true;
             highlight_minutes_font = false;
             highlight_seconds_font = false;
+            highlight_hour_min_font = false;
+            highlight_hour_min_sec_font = false;
             highlight_hours_rotate = false;
             highlight_minutes_rotate = false;
             highlight_seconds_rotate = false;
@@ -432,6 +475,8 @@ namespace ControlLibrary
             highlight_hours_font = false;
             highlight_minutes_font = true;
             highlight_seconds_font = false;
+            highlight_hour_min_font = false;
+            highlight_hour_min_sec_font = false;
             highlight_hours_rotate = false;
             highlight_minutes_rotate = false;
             highlight_seconds_rotate = false;
@@ -459,6 +504,66 @@ namespace ControlLibrary
             highlight_hours_font = false;
             highlight_minutes_font = false;
             highlight_seconds_font = true;
+            highlight_hour_min_font = false;
+            highlight_hour_min_sec_font = false;
+            highlight_hours_rotate = false;
+            highlight_minutes_rotate = false;
+            highlight_seconds_rotate = false;
+            highlight_hours_circle = false;
+            highlight_minutes_circle = false;
+            highlight_seconds_circle = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Hour_min_Font_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Hour_min_Font";
+
+            highlight_hours = false;
+            highlight_minutes = false;
+            highlight_seconds = false;
+            highlight_am_pm = false;
+            highlight_hours_font = false;
+            highlight_minutes_font = false;
+            highlight_seconds_font = false;
+            highlight_hour_min_font = true;
+            highlight_hour_min_sec_font = false;
+            highlight_hours_rotate = false;
+            highlight_minutes_rotate = false;
+            highlight_seconds_rotate = false;
+            highlight_hours_circle = false;
+            highlight_minutes_circle = false;
+            highlight_seconds_circle = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Hour_min_sec_Font_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Hour_min_sec_Font";
+
+            highlight_hours = false;
+            highlight_minutes = false;
+            highlight_seconds = false;
+            highlight_am_pm = false;
+            highlight_hours_font = false;
+            highlight_minutes_font = false;
+            highlight_seconds_font = false;
+            highlight_hour_min_font = false;
+            highlight_hour_min_sec_font = true;
             highlight_hours_rotate = false;
             highlight_minutes_rotate = false;
             highlight_seconds_rotate = false;
@@ -486,6 +591,8 @@ namespace ControlLibrary
             highlight_hours_font = false;
             highlight_minutes_font = false;
             highlight_seconds_font = false;
+            highlight_hour_min_font = false;
+            highlight_hour_min_sec_font = false;
             highlight_hours_rotate = false;
             highlight_minutes_rotate = false;
             highlight_seconds_rotate = true;
@@ -513,6 +620,8 @@ namespace ControlLibrary
             highlight_hours_font = false;
             highlight_minutes_font = false;
             highlight_seconds_font = false;
+            highlight_hour_min_font = false;
+            highlight_hour_min_sec_font = false;
             highlight_hours_rotate = false;
             highlight_minutes_rotate = true;
             highlight_seconds_rotate = false;
@@ -540,6 +649,8 @@ namespace ControlLibrary
             highlight_hours_font = false;
             highlight_minutes_font = false;
             highlight_seconds_font = false;
+            highlight_hour_min_font = false;
+            highlight_hour_min_sec_font = false;
             highlight_hours_rotate = true;
             highlight_minutes_rotate = false;
             highlight_seconds_rotate = false;
@@ -567,6 +678,8 @@ namespace ControlLibrary
             highlight_hours_font = false;
             highlight_minutes_font = false;
             highlight_seconds_font = false;
+            highlight_hour_min_font = false;
+            highlight_hour_min_sec_font = false;
             highlight_hours_rotate = false;
             highlight_minutes_rotate = false;
             highlight_seconds_rotate = false;
@@ -594,6 +707,8 @@ namespace ControlLibrary
             highlight_hours_font = false;
             highlight_minutes_font = false;
             highlight_seconds_font = false;
+            highlight_hour_min_font = false;
+            highlight_hour_min_sec_font = false;
             highlight_hours_rotate = false;
             highlight_minutes_rotate = false;
             highlight_seconds_rotate = false;
@@ -621,6 +736,8 @@ namespace ControlLibrary
             highlight_hours_font = false;
             highlight_minutes_font = false;
             highlight_seconds_font = false;
+            highlight_hour_min_font = false;
+            highlight_hour_min_sec_font = false;
             highlight_hours_rotate = false;
             highlight_minutes_rotate = false;
             highlight_seconds_rotate = false;
@@ -785,9 +902,9 @@ namespace ControlLibrary
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
 
-            if (tableLayoutPanel1.Height > 410)
+            if (tableLayoutPanel1.Height > 470)
             {
-                float currentDPI = tableLayoutPanel1.Height / 326f;
+                float currentDPI = tableLayoutPanel1.Height / 376f;
                 button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 
@@ -906,6 +1023,12 @@ namespace ControlLibrary
                 case "Second_Font":
                     checkBox_Seconds_Font.Checked = status;
                     break;
+                case "Hour_min_Font":
+                    checkBox_Hour_min_Font.Checked = status;
+                    break;
+                case "Hour_min_sec_Font":
+                    checkBox_Hour_min_sec_Font.Checked = status;
+                    break;
 
                 case "Hour_rotation":
                     checkBox_Hours_rotation.Checked = status;
@@ -963,6 +1086,12 @@ namespace ControlLibrary
                             break;
                         case "Second_Font":
                             panel = panel_Seconds_Font;
+                            break;
+                        case "Hour_min_Font":
+                            panel = panel_Hour_min_Font;
+                            break;
+                        case "Hour_min_sec_Font":
+                            panel = panel_Hour_min_sec_Font;
                             break;
 
                         case "Hour_rotation":
@@ -1049,6 +1178,12 @@ namespace ControlLibrary
                     case "panel_Seconds_Font":
                         elementOptions.Add("Second_Font", count - i);
                         break;
+                    case "panel_Hour_min_Font":
+                        elementOptions.Add("Hour_min_Font", count - i);
+                        break;
+                    case "panel_Hour_min_sec_Font":
+                        elementOptions.Add("Hour_min_sec_Font", count - i);
+                        break;
 
                     case "panel_Hours_rotation":
                         elementOptions.Add("Hour_rotation", count - i);
@@ -1090,6 +1225,8 @@ namespace ControlLibrary
             elementOptions.Add(index++, "Hour_Font");
             elementOptions.Add(index++, "Minute_Font");
             elementOptions.Add(index++, "Second_Font");
+            elementOptions.Add(index++, "Hour_min_sec_Font");
+            elementOptions.Add(index++, "Hour_min_Font");
             elementOptions.Add(index++, "AmPm");
             elementOptions.Add(index++, "Hour");
             elementOptions.Add(index++, "Minute");
@@ -1105,6 +1242,8 @@ namespace ControlLibrary
             checkBox_Hours_Font.Checked = false;
             checkBox_Minutes_Font.Checked = false;
             checkBox_Seconds_Font.Checked = false;
+            checkBox_Hour_min_Font.Checked = false;
+            checkBox_Hour_min_sec_Font.Checked = false;
 
             checkBox_Hours_rotation.Checked = false;
             checkBox_Minutes_rotation.Checked = false;
@@ -1125,6 +1264,5 @@ namespace ControlLibrary
 
             setValue = false;
         }
-
     }
 }

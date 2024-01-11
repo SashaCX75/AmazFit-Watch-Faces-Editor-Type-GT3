@@ -117,45 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_pause_call_Del.ToolTip" xml:space="preserve">
-    <value>Supprimer le fichier *.js</value>
-  </data>
-  <data name="button_resume_call_Del.ToolTip" xml:space="preserve">
-    <value>Supprimer le fichier *.js</value>
-  </data>
-  <data name="button_pause_call_Add.ToolTip" xml:space="preserve">
-    <value>Ajouter un fichier *.js</value>
-  </data>
-  <data name="button_user_script_start_Add.ToolTip" xml:space="preserve">
-    <value>Ajouter un fichier *.js</value>
-  </data>
-  <data name="button_user_script_start_Del.ToolTip" xml:space="preserve">
-    <value>Supprimer le fichier *.js</value>
-  </data>
-  <data name="button_user_script_Add.ToolTip" xml:space="preserve">
-    <value>Ajouter un fichier *.js</value>
-  </data>
-  <data name="button_user_script_Del.ToolTip" xml:space="preserve">
-    <value>Supprimer le fichier *.js</value>
-  </data>
-  <data name="button_user_script_end_Add.ToolTip" xml:space="preserve">
-    <value>Ajouter un fichier *.js</value>
-  </data>
-  <data name="button_user_script_end_Del.ToolTip" xml:space="preserve">
-    <value>Supprimer le fichier *.js</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Add.ToolTip" xml:space="preserve">
-    <value>Ajouter un fichier *.js</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Del.ToolTip" xml:space="preserve">
-    <value>Supprimer le fichier *.js</value>
-  </data>
-  <data name="button_user_functions_Add.ToolTip" xml:space="preserve">
-    <value>Ajouter un fichier *.js</value>
-  </data>
-  <data name="button_user_functions_Del.ToolTip" xml:space="preserve">
-    <value>Supprimer le fichier *.js</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="toolStripMenuItem_Edit_JS.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 22</value>
@@ -166,6 +127,9 @@
   <data name="contextMenuStrip_Edit_JS.Size" type="System.Drawing.Size, System.Drawing">
     <value>169, 26</value>
   </data>
+  <data name="contextMenuStrip_Edit_JS.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBox_user_functions.Size" type="System.Drawing.Size, System.Drawing">
     <value>208, 48</value>
   </data>
@@ -173,12 +137,18 @@
     <value>Fonctions personnalisées
 (inséré avant déclaration de variables)</value>
   </data>
+  <data name="checkBox_user_functions.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBox_user_script_start.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 48</value>
   </data>
   <data name="checkBox_user_script_start.Text" xml:space="preserve">
     <value>Script utilisateur au début
 (inséré avant la création widgets)</value>
+  </data>
+  <data name="checkBox_user_script_start.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBox_user_script.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 48</value>
@@ -188,6 +158,9 @@
 (la position du widget détermine
 position du script dans le code)</value>
   </data>
+  <data name="checkBox_user_script.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBox_user_script_end.Size" type="System.Drawing.Size, System.Drawing">
     <value>186, 48</value>
   </data>
@@ -196,12 +169,18 @@ position du script dans le code)</value>
 (inséré après la création widgets, 
 avant WIDGET_DELEGATE)</value>
   </data>
+  <data name="checkBox_user_script_end.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBox_user_script_beforeShortcuts.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 48</value>
   </data>
   <data name="checkBox_user_script_beforeShortcuts.Text" xml:space="preserve">
     <value>Script personnalisé avant étiquettes 
 (insérées avant widgets de raccourci)</value>
+  </data>
+  <data name="checkBox_user_script_beforeShortcuts.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBox_resume_call.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 48</value>
@@ -211,6 +190,9 @@ avant WIDGET_DELEGATE)</value>
 dans le widget CV_appel
 WIDGET_DELEGATE)</value>
   </data>
+  <data name="checkBox_resume_call.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBox_pause_call.Size" type="System.Drawing.Size, System.Drawing">
     <value>174, 48</value>
   </data>
@@ -219,6 +201,9 @@ WIDGET_DELEGATE)</value>
 dans le widget pause_appel
 WIDGET_DELEGATE)</value>
   </data>
+  <data name="checkBox_pause_call.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 31</value>
   </data>
@@ -226,7 +211,136 @@ WIDGET_DELEGATE)</value>
     <value>Clic droit sur l'interrupteur pour ouvrir 
 le fichier dans le programme par défaut</value>
   </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button_user_functions_Create.ToolTip" xml:space="preserve">
+    <value>Сréer le fichier *.јs</value>
+  </data>
+  <data name="button_user_functions_Del.ToolTip" xml:space="preserve">
+    <value>Supprimer le fichier *.js</value>
+  </data>
+  <data name="button_user_functions_Add.ToolTip" xml:space="preserve">
+    <value>Ajouter un fichier *.js</value>
+  </data>
+  <data name="panel_user_functions_buttons.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_user_functions_draw.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_user_functions.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button_user_script_start_Create.ToolTip" xml:space="preserve">
+    <value>Сréer le fichier *.јs</value>
+  </data>
+  <data name="button_user_script_start_Del.ToolTip" xml:space="preserve">
+    <value>Supprimer le fichier *.js</value>
+  </data>
+  <data name="button_user_script_start_Add.ToolTip" xml:space="preserve">
+    <value>Ajouter un fichier *.js</value>
+  </data>
+  <data name="panel_user_script_start_buttons.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_user_script_start_draw.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_user_script_start.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button_user_script_Create.ToolTip" xml:space="preserve">
+    <value>Сréer le fichier *.јs</value>
+  </data>
+  <data name="button_user_script_Del.ToolTip" xml:space="preserve">
+    <value>Supprimer le fichier *.js</value>
+  </data>
+  <data name="button_user_script_Add.ToolTip" xml:space="preserve">
+    <value>Ajouter un fichier *.js</value>
+  </data>
+  <data name="panel_user_script_buttons.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_user_script_draw.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_user_script.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button_user_script_beforeShortcuts_Create.ToolTip" xml:space="preserve">
+    <value>Сréer le fichier *.јs</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.ToolTip" xml:space="preserve">
+    <value>Supprimer le fichier *.js</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.ToolTip" xml:space="preserve">
+    <value>Ajouter un fichier *.js</value>
+  </data>
+  <data name="panel_user_script_beforeShortcuts_buttons.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_user_script_beforeShortcuts_draw.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_user_script_beforeShortcuts.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button_user_script_end_Create.ToolTip" xml:space="preserve">
+    <value>Сréer le fichier *.јs</value>
+  </data>
+  <data name="button_user_script_end_Del.ToolTip" xml:space="preserve">
+    <value>Supprimer le fichier *.js</value>
+  </data>
+  <data name="button_user_script_end_Add.ToolTip" xml:space="preserve">
+    <value>Ajouter un fichier *.js</value>
+  </data>
+  <data name="panel_user_script_end_buttons.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_user_script_end_draw.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_user_script_end.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button_resume_call_Create.ToolTip" xml:space="preserve">
+    <value>Сréer le fichier *.јs</value>
+  </data>
+  <data name="button_resume_call_Del.ToolTip" xml:space="preserve">
+    <value>Supprimer le fichier *.js</value>
+  </data>
   <data name="button_resume_call_Add.ToolTip" xml:space="preserve">
     <value>Ajouter un fichier *.js</value>
+  </data>
+  <data name="panel_resume_call_buttons.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_resume_call_draw.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_resume_call.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button_pause_call_Create.ToolTip" xml:space="preserve">
+    <value>Сréer le fichier *.јs</value>
+  </data>
+  <data name="button_pause_call_Del.ToolTip" xml:space="preserve">
+    <value>Supprimer le fichier *.js</value>
+  </data>
+  <data name="button_pause_call_Add.ToolTip" xml:space="preserve">
+    <value>Ajouter un fichier *.js</value>
+  </data>
+  <data name="panel_pause_call_buttons.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_pause_call_draw.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_pause_call.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>
