@@ -1242,6 +1242,7 @@ namespace ControlLibrary
             checkBox_Hours_Font.Checked = false;
             checkBox_Minutes_Font.Checked = false;
             checkBox_Seconds_Font.Checked = false;
+
             checkBox_Hour_min_Font.Checked = false;
             checkBox_Hour_min_sec_Font.Checked = false;
 

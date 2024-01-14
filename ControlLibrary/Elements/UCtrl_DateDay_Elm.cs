@@ -15,6 +15,8 @@ namespace ControlLibrary
         private bool setValue; // режим задания параметров
         bool highlight_number = false;
         bool highlight_number_font = false;
+        bool highlight_day_month_font = false;
+        bool highlight_day_month_year_font = false;
         bool highlight_pointer = false;
         bool highlight_text_rotation = false;
         bool highlight_text_circle = false;
@@ -91,6 +93,8 @@ namespace ControlLibrary
 
             highlight_number = false;
             highlight_number_font = false;
+            highlight_day_month_font = false;
+            highlight_day_month_year_font = false;
             highlight_pointer = false;
             highlight_text_rotation = false;
             highlight_text_circle = false;
@@ -124,6 +128,32 @@ namespace ControlLibrary
                 panel_Number_Font.BackColor = SystemColors.Control;
                 button_Number_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Number_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_day_month_font)
+            {
+                panel_Day_Month_Font.BackColor = SystemColors.ActiveCaption;
+                button_Day_Month_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Day_Month_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Day_Month_Font.BackColor = SystemColors.Control;
+                button_Day_Month_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Day_Month_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_day_month_year_font)
+            {
+                panel_Day_Month_Year_Font.BackColor = SystemColors.ActiveCaption;
+                button_Day_Month_Year_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Day_Month_Year_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Day_Month_Year_Font.BackColor = SystemColors.Control;
+                button_Day_Month_Year_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Day_Month_Year_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (highlight_text_rotation)
@@ -172,6 +202,8 @@ namespace ControlLibrary
 
             highlight_number = true;
             highlight_number_font = false;
+            highlight_day_month_font = false;
+            highlight_day_month_year_font = false;
             highlight_text_rotation = false;
             highlight_text_circle = false;
             highlight_pointer = false;
@@ -191,6 +223,50 @@ namespace ControlLibrary
 
             highlight_number = false;
             highlight_number_font = true;
+            highlight_day_month_font = false;
+            highlight_day_month_year_font = false;
+            highlight_text_rotation = false;
+            highlight_text_circle = false;
+            highlight_pointer = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Day_Month_Font_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Day_Month_Font";
+
+            highlight_number = false;
+            highlight_number_font = false;
+            highlight_day_month_font = true;
+            highlight_day_month_year_font = false;
+            highlight_text_rotation = false;
+            highlight_text_circle = false;
+            highlight_pointer = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Day_Month_Year_Font_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Day_Month_Year_Font";
+
+            highlight_number = false;
+            highlight_number_font = false;
+            highlight_day_month_font = false;
+            highlight_day_month_year_font = true;
             highlight_text_rotation = false;
             highlight_text_circle = false;
             highlight_pointer = false;
@@ -210,6 +286,8 @@ namespace ControlLibrary
 
             highlight_number = false;
             highlight_number_font = false;
+            highlight_day_month_font = false;
+            highlight_day_month_year_font = false;
             highlight_text_rotation = true;
             highlight_text_circle = false;
             highlight_pointer = false;
@@ -229,6 +307,8 @@ namespace ControlLibrary
 
             highlight_number = false;
             highlight_number_font = false;
+            highlight_day_month_font = false;
+            highlight_day_month_year_font = false;
             highlight_text_rotation = false;
             highlight_text_circle = true;
             highlight_pointer = false;
@@ -248,6 +328,8 @@ namespace ControlLibrary
 
             highlight_number = false;
             highlight_number_font = false;
+            highlight_day_month_font = false;
+            highlight_day_month_year_font = false;
             highlight_text_rotation = false;
             highlight_text_circle = false;
             highlight_pointer = true;
@@ -391,9 +473,9 @@ namespace ControlLibrary
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
 
-            if (tableLayoutPanel1.Height > 160)
+            if (tableLayoutPanel1.Height > 220)
             {
-                float currentDPI = tableLayoutPanel1.Height / 126f;
+                float currentDPI = tableLayoutPanel1.Height / 176f;
                 button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 
@@ -496,6 +578,12 @@ namespace ControlLibrary
                 case "Number_Font":
                     checkBox_Number_Font.Checked = status;
                     break;
+                case "Day_Month_Font":
+                    checkBox_Day_Month_Font.Checked = status;
+                    break;
+                case "Day_Month_Year_Font":
+                    checkBox_Day_Month_Year_Font.Checked = status;
+                    break;
                 case "Text_rotation":
                     checkBox_Text_rotation.Checked = status;
                     break;
@@ -526,6 +614,12 @@ namespace ControlLibrary
                             break;
                         case "Number_Font":
                             panel = panel_Number_Font;
+                            break;
+                        case "Day_Month_Font":
+                            panel = panel_Day_Month_Font;
+                            break;
+                        case "Day_Month_Year_Font":
+                            panel = panel_Day_Month_Year_Font;
                             break;
                         case "Text_rotation":
                             panel = panel_Text_rotation;
@@ -584,6 +678,12 @@ namespace ControlLibrary
                     case "panel_Number_Font":
                         elementOptions.Add("Number_Font", count - i);
                         break;
+                    case "panel_Day_Month_Font":
+                        elementOptions.Add("Day_Month_Font", count - i);
+                        break;
+                    case "panel_Day_Month_Year_Font":
+                        elementOptions.Add("Day_Month_Year_Font", count - i);
+                        break;
                     case "panel_Text_rotation":
                         elementOptions.Add("Text_rotation", count - i);
                         break;
@@ -607,12 +707,16 @@ namespace ControlLibrary
             elementOptions.Add(index++, "Pointer");
             elementOptions.Add(index++, "Text_circle");
             elementOptions.Add(index++, "Text_rotation");
+            elementOptions.Add(index++, "Day_Month_Year_Font");
+            elementOptions.Add(index++, "Day_Month_Font");
             elementOptions.Add(index++, "Number_Font");
             elementOptions.Add(index++, "Number");
             SetOptionsPosition(elementOptions);
 
             checkBox_Number.Checked = false;
             checkBox_Number_Font.Checked = false;
+            checkBox_Day_Month_Font.Checked = false;
+            checkBox_Day_Month_Year_Font.Checked = false;
             checkBox_Text_rotation.Checked = false;
             checkBox_Text_circle.Checked = false;
             checkBox_Pointer.Checked = false;

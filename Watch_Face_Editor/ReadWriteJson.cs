@@ -1428,11 +1428,15 @@ namespace Watch_Face_Editor
                             if (SelectedModel.versionOS >= 2 && DigitalTime.Hour_Font.font != null && DigitalTime.Hour_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + DigitalTime.Hour_Font.font + "; FontSize: " + DigitalTime.Hour_Font.text_size.ToString();
+                                bool cachFull = false;
                                 if (DigitalTime.Hour_Font.unit_type > 0)
+                                {
                                     cacheName = "// FontName: " + DigitalTime.Hour_Font.font + "; FontSize: " + DigitalTime.Hour_Font.text_size.ToString() + "; Cache: full";
+                                    cachFull = true;
+                                }
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    string fontCacheOptions = TEXT_Cache_Options(DigitalTime.Hour_Font, true);
+                                    string fontCacheOptions = TEXT_Cache_Options(DigitalTime.Hour_Font, cachFull);
                                     if (fontCacheOptions.Length > 5)
                                     {
                                         fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
@@ -1447,13 +1451,6 @@ namespace Watch_Face_Editor
 
                             if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
                                 items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
-                            //if (items.IndexOf("timeSensor.addEventListener(timeSensor.event.DAYCHANGE, function() {") < 0)
-                            //{
-                            //    items += Environment.NewLine + TabInString(6) + "timeSensor.addEventListener(timeSensor.event.DAYCHANGE, function() {";
-                            //    items += Environment.NewLine + TabInString(7) + "time_update(true);";
-                            //    items += Environment.NewLine + TabInString(6) + "});" + Environment.NewLine;
-                            //}
-                            //AddListener(ref variables, ref items, "", "hour", "", ref resume_call, ref pause_call, optionNameStart);
 
                             #region add listenet update time
                             if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
@@ -1477,7 +1474,9 @@ namespace Watch_Face_Editor
                                 }
                                 resume_call += TabInString(9) + "if (!" + timerName + ") {" + Environment.NewLine;
                                 resume_call += TabInString(10) + timerName + " = timer.createTimer(0, 1000, (function (option) {" + Environment.NewLine;
-                                resume_call += TabInString(11) + "time_update(true, true);" + Environment.NewLine;
+                                resume_call += TabInString(11) + "let updateHour = timeSensor.hour == 0;" + Environment.NewLine;
+                                resume_call += TabInString(11) + "let updateMinute = timeSensor.minute == 0;" + Environment.NewLine;
+                                resume_call += TabInString(11) + "time_update(updateHour, updateMinute);" + Environment.NewLine;
                                 resume_call += TabInString(10) + "}));  // end timer " + Environment.NewLine;
                                 resume_call += TabInString(9) + "};  // end timer check" + Environment.NewLine;
                                 resume_call += TabInString(8) + "};  // end screenType" + Environment.NewLine + Environment.NewLine;
@@ -1523,11 +1522,15 @@ namespace Watch_Face_Editor
                             if (SelectedModel.versionOS >= 2 && DigitalTime.Minute_Font.font != null && DigitalTime.Minute_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + DigitalTime.Minute_Font.font + "; FontSize: " + DigitalTime.Minute_Font.text_size.ToString();
+                                bool cachFull = false;
                                 if (DigitalTime.Minute_Font.unit_type > 0)
+                                { 
                                     cacheName = "// FontName: " + DigitalTime.Minute_Font.font + "; FontSize: " + DigitalTime.Minute_Font.text_size.ToString() + "; Cache: full";
+                                    cachFull = true;
+                                }
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    string fontCacheOptions = TEXT_Cache_Options(DigitalTime.Minute_Font, true);
+                                    string fontCacheOptions = TEXT_Cache_Options(DigitalTime.Minute_Font, cachFull);
                                     if (fontCacheOptions.Length > 5)
                                     {
                                         fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
@@ -1542,13 +1545,6 @@ namespace Watch_Face_Editor
 
                             if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
                                 items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
-                            //if (items.IndexOf("timeSensor.addEventListener(timeSensor.event.DAYCHANGE, function() {") < 0)
-                            //{
-                            //    items += Environment.NewLine + TabInString(6) + "timeSensor.addEventListener(timeSensor.event.DAYCHANGE, function() {";
-                            //    items += Environment.NewLine + TabInString(7) + "time_update(true);";
-                            //    items += Environment.NewLine + TabInString(6) + "});" + Environment.NewLine;
-                            //}
-                            //AddListener(ref variables, ref items, "", "minute", "", ref resume_call, ref pause_call, optionNameStart);
 
                             #region add listenet update time
                             if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
@@ -1572,7 +1568,9 @@ namespace Watch_Face_Editor
                                 }
                                 resume_call += TabInString(9) + "if (!" + timerName + ") {" + Environment.NewLine;
                                 resume_call += TabInString(10) + timerName + " = timer.createTimer(0, 1000, (function (option) {" + Environment.NewLine;
-                                resume_call += TabInString(11) + "time_update(true, true);" + Environment.NewLine;
+                                resume_call += TabInString(11) + "let updateHour = timeSensor.hour == 0;" + Environment.NewLine;
+                                resume_call += TabInString(11) + "let updateMinute = timeSensor.minute == 0;" + Environment.NewLine;
+                                resume_call += TabInString(11) + "time_update(updateHour, updateMinute);" + Environment.NewLine;
                                 resume_call += TabInString(10) + "}));  // end timer " + Environment.NewLine;
                                 resume_call += TabInString(9) + "};  // end timer check" + Environment.NewLine;
                                 resume_call += TabInString(8) + "};  // end screenType" + Environment.NewLine + Environment.NewLine;
@@ -1610,11 +1608,15 @@ namespace Watch_Face_Editor
                             if (SelectedModel.versionOS >= 2 && DigitalTime.Second_Font.font != null && DigitalTime.Second_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + DigitalTime.Second_Font.font + "; FontSize: " + DigitalTime.Second_Font.text_size.ToString();
+                                bool cachFull = false;
                                 if (DigitalTime.Second_Font.unit_type > 0)
+                                {
                                     cacheName = "// FontName: " + DigitalTime.Second_Font.font + "; FontSize: " + DigitalTime.Second_Font.text_size.ToString() + "; Cache: full";
+                                    cachFull = true;
+                                }
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    string fontCacheOptions = TEXT_Cache_Options(DigitalTime.Second_Font, true);
+                                    string fontCacheOptions = TEXT_Cache_Options(DigitalTime.Second_Font, cachFull);
                                     if (fontCacheOptions.Length > 5)
                                     {
                                         fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
@@ -1629,13 +1631,6 @@ namespace Watch_Face_Editor
 
                             if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
                                 items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
-                            //if (items.IndexOf("timeSensor.addEventListener(timeSensor.event.DAYCHANGE, function() {") < 0)
-                            //{
-                            //    items += Environment.NewLine + TabInString(6) + "timeSensor.addEventListener(timeSensor.event.DAYCHANGE, function() {";
-                            //    items += Environment.NewLine + TabInString(7) + "time_update(true);";
-                            //    items += Environment.NewLine + TabInString(6) + "});" + Environment.NewLine;
-                            //}
-                            //AddListener(ref variables, ref items, "", "second", "", ref resume_call, ref pause_call, optionNameStart);
 
                             #region add listenet update time
                             if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
@@ -1659,7 +1654,9 @@ namespace Watch_Face_Editor
                                 }
                                 resume_call += TabInString(9) + "if (!" + timerName + ") {" + Environment.NewLine;
                                 resume_call += TabInString(10) + timerName + " = timer.createTimer(0, 1000, (function (option) {" + Environment.NewLine;
-                                resume_call += TabInString(11) + "time_update(true, true);" + Environment.NewLine;
+                                resume_call += TabInString(11) + "let updateHour = timeSensor.hour == 0;" + Environment.NewLine;
+                                resume_call += TabInString(11) + "let updateMinute = timeSensor.minute == 0;" + Environment.NewLine;
+                                resume_call += TabInString(11) + "time_update(updateHour, updateMinute);" + Environment.NewLine;
                                 resume_call += TabInString(10) + "}));  // end timer " + Environment.NewLine;
                                 resume_call += TabInString(9) + "};  // end timer check" + Environment.NewLine;
                                 resume_call += TabInString(8) + "};  // end screenType" + Environment.NewLine + Environment.NewLine;
@@ -1698,11 +1695,11 @@ namespace Watch_Face_Editor
                             if (SelectedModel.versionOS >= 2 && DigitalTime.Hour_min_Font.font != null && DigitalTime.Hour_min_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + DigitalTime.Hour_min_Font.font + "; FontSize: " + DigitalTime.Hour_min_Font.text_size.ToString();
-                                if (DigitalTime.Hour_min_Font.unit_type > 0)
-                                    cacheName = "// FontName: " + DigitalTime.Hour_min_Font.font + "; FontSize: " + DigitalTime.Hour_min_Font.text_size.ToString() + "; Cache: full";
+                                //if (DigitalTime.Hour_min_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + DigitalTime.Hour_min_Font.font + "; FontSize: " + DigitalTime.Hour_min_Font.text_size.ToString() + "; Cache: full";
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    string fontCacheOptions = TEXT_Cache_Options(DigitalTime.Hour_min_Font, true);
+                                    string fontCacheOptions = TEXT_Cache_Options(DigitalTime.Hour_min_Font, false);
                                     if (fontCacheOptions.Length > 5)
                                     {
                                         fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
@@ -1740,7 +1737,9 @@ namespace Watch_Face_Editor
                                 }
                                 resume_call += TabInString(9) + "if (!" + timerName + ") {" + Environment.NewLine;
                                 resume_call += TabInString(10) + timerName + " = timer.createTimer(0, 1000, (function (option) {" + Environment.NewLine;
-                                resume_call += TabInString(11) + "time_update(true, true);" + Environment.NewLine;
+                                resume_call += TabInString(11) + "let updateHour = timeSensor.hour == 0;" + Environment.NewLine;
+                                resume_call += TabInString(11) + "let updateMinute = timeSensor.minute == 0;" + Environment.NewLine;
+                                resume_call += TabInString(11) + "time_update(updateHour, updateMinute);" + Environment.NewLine;
                                 resume_call += TabInString(10) + "}));  // end timer " + Environment.NewLine;
                                 resume_call += TabInString(9) + "};  // end timer check" + Environment.NewLine;
                                 resume_call += TabInString(8) + "};  // end screenType" + Environment.NewLine + Environment.NewLine;
@@ -1800,11 +1799,11 @@ namespace Watch_Face_Editor
                             if (SelectedModel.versionOS >= 2 && DigitalTime.Hour_min_sec_Font.font != null && DigitalTime.Hour_min_sec_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + DigitalTime.Hour_min_sec_Font.font + "; FontSize: " + DigitalTime.Hour_min_sec_Font.text_size.ToString();
-                                if (DigitalTime.Hour_min_sec_Font.unit_type > 0)
-                                    cacheName = "// FontName: " + DigitalTime.Hour_min_sec_Font.font + "; FontSize: " + DigitalTime.Hour_min_sec_Font.text_size.ToString() + "; Cache: full";
+                                //if (DigitalTime.Hour_min_sec_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + DigitalTime.Hour_min_sec_Font.font + "; FontSize: " + DigitalTime.Hour_min_sec_Font.text_size.ToString() + "; Cache: full";
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    string fontCacheOptions = TEXT_Cache_Options(DigitalTime.Hour_min_sec_Font, true);
+                                    string fontCacheOptions = TEXT_Cache_Options(DigitalTime.Hour_min_sec_Font, false);
                                     if (fontCacheOptions.Length > 5)
                                     {
                                         fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
@@ -1842,7 +1841,9 @@ namespace Watch_Face_Editor
                                 }
                                 resume_call += TabInString(9) + "if (!" + timerName + ") {" + Environment.NewLine;
                                 resume_call += TabInString(10) + timerName + " = timer.createTimer(0, 1000, (function (option) {" + Environment.NewLine;
-                                resume_call += TabInString(11) + "time_update(true, true);" + Environment.NewLine;
+                                resume_call += TabInString(11) + "let updateHour = timeSensor.hour == 0;" + Environment.NewLine;
+                                resume_call += TabInString(11) + "let updateMinute = timeSensor.minute == 0;" + Environment.NewLine;
+                                resume_call += TabInString(11) + "time_update(updateHour, updateMinute);" + Environment.NewLine;
                                 resume_call += TabInString(10) + "}));  // end timer " + Environment.NewLine;
                                 resume_call += TabInString(9) + "};  // end timer check" + Environment.NewLine;
                                 resume_call += TabInString(8) + "};  // end screenType" + Environment.NewLine + Environment.NewLine;
@@ -1864,7 +1865,8 @@ namespace Watch_Face_Editor
                             if (DigitalTime.Hour_min_sec_Font.padding) time_update += Environment.NewLine + TabInString(8) + HourMinSecStr + " = " + HourMinSecStr + ".padStart(2, '0');";
                             string delimeter = ":";
                             if (DigitalTime.Hour_min_sec_Font.unit_string.Length > 0) delimeter = DigitalTime.Hour_min_sec_Font.unit_string;
-                            time_update += Environment.NewLine + TabInString(8) + HourMinSecStr + " = " + HourMinSecStr + " + '" + delimeter + "' + minute.toString().padStart(2, '0')";
+                            time_update += Environment.NewLine + TabInString(8) + HourMinSecStr + " = " + HourMinSecStr + " + '" + delimeter +
+                                "' + minute.toString().padStart(2, '0') + '" + delimeter + "' + second.toString().padStart(2, '0');";
                             string unitAmStr = "Am";
                             string unitPmStr = "Pm";
                             if (DigitalTime.Hour_min_sec_Font.unit_type == 0)
@@ -2066,7 +2068,8 @@ namespace Watch_Face_Editor
                             if (items.IndexOf("timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {") < 0)
                             {
                                 items += Environment.NewLine + TabInString(6) + "timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {";
-                                items += Environment.NewLine + TabInString(7) + "time_update(true, true);";
+                                items += Environment.NewLine + TabInString(7) + "let updateHour = timeSensor.hour == 0;" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(7) + "time_update(UpdateHour, true);";
                                 items += Environment.NewLine + TabInString(6) + "});" + Environment.NewLine;
                             }
 
@@ -2132,7 +2135,8 @@ namespace Watch_Face_Editor
                                 if (items.IndexOf("timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {") < 0)
                                 {
                                     items += Environment.NewLine + TabInString(6) + "timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {";
-                                    items += Environment.NewLine + TabInString(7) + "time_update(true, true);";
+                                    items += Environment.NewLine + TabInString(7) + "let updateHour = timeSensor.hour == 0;" + Environment.NewLine;
+                                    items += Environment.NewLine + TabInString(7) + "time_update(UpdateHour, true);";
                                     items += Environment.NewLine + TabInString(6) + "});" + Environment.NewLine;
                                 }
 
@@ -2175,10 +2179,13 @@ namespace Watch_Face_Editor
                                 }
                                 else  // если такой таймер уже есть
                                 {
-                                    int strInden = resume_call.IndexOf(timerName + " = timer.createTimer");
-                                    strInden = resume_call.IndexOf("time_update(false, false);", strInden);
-                                    resume_call.Remove(strInden, "time_update(false, false);".Length);
-                                    resume_call.Insert(strInden, "time_update(false, true);");
+                                    int strIndex = resume_call.IndexOf(timerName + " = timer.createTimer");
+                                    strIndex = resume_call.IndexOf("time_update(false, false);", strIndex);
+                                    if (strIndex > 0)
+                                    {
+                                        resume_call.Remove(strIndex, "time_update(false, false);".Length);
+                                        resume_call.Insert(strIndex, "time_update(false, true);"); 
+                                    }
                                 }
 
                                 time_update += Environment.NewLine + TabInString(8) +
@@ -2528,8 +2535,12 @@ namespace Watch_Face_Editor
                     if (!DateDay.visible) return;
                     int pointerPositionDay = 99;
                     int numberPositionDay = 99;
+                    int numberPositionDayMonth = 99;
+                    int numberPositionDayMonthYear = 99;
                     string optionsPointerDay = "";
                     string optionsNumberDay = "";
+                    string dayMonthFontOptions = "";
+                    string dayMonthYearFontOptions = "";
                     string optionsNumberDay_separator = "";
                     if (DateDay.Pointer != null && DateDay.Pointer.visible)
                     {
@@ -2551,6 +2562,19 @@ namespace Watch_Face_Editor
                         numberFontPosition = DateDay.Number_Font.position;
                         hmUI_widget_TEXT text = DateDay.Number_Font;
                         numberFontOptions = TEXT_Options(text, show_level);
+                    }
+
+                    if (DateDay.Day_Month_Font != null && DateDay.Day_Month_Font.visible)
+                    {
+                        numberPositionDayMonth = DateDay.Day_Month_Font.position;
+                        hmUI_widget_TEXT text = DateDay.Day_Month_Font;
+                        dayMonthFontOptions = TEXT_Options(text, show_level);
+                    }
+                    if (DateDay.Day_Month_Year_Font != null && DateDay.Day_Month_Year_Font.visible)
+                    {
+                        numberPositionDayMonthYear = DateDay.Day_Month_Year_Font.position;
+                        hmUI_widget_TEXT text = DateDay.Day_Month_Year_Font;
+                        dayMonthYearFontOptions = TEXT_Options(text, show_level);
                     }
 
                     if (DateDay.Text_rotation != null && DateDay.Text_rotation.visible)
@@ -2605,11 +2629,15 @@ namespace Watch_Face_Editor
                             if (SelectedModel.versionOS >= 2 && DateDay.Number_Font.font != null && DateDay.Number_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + DateDay.Number_Font.font + "; FontSize: " + DateDay.Number_Font.text_size.ToString();
+                                bool cachFull = false;
                                 if (DateDay.Number_Font.unit_type > 0)
+                                {
                                     cacheName = "// FontName: " + DateDay.Number_Font.font + "; FontSize: " + DateDay.Number_Font.text_size.ToString() + "; Cache: full";
+                                    cachFull = true;
+                                }
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    string fontCacheOptions = TEXT_Cache_Options(DateDay.Number_Font, true);
+                                    string fontCacheOptions = TEXT_Cache_Options(DateDay.Number_Font, cachFull);
                                     if (fontCacheOptions.Length > 5)
                                     {
                                         fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
@@ -2634,6 +2662,7 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) + variableName + " = hmUI.createWidget(hmUI.widget.TEXT, {" +
                                     numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            time_update += Environment.NewLine + TabInString(7) + "console.log('day font');";
                             time_update += Environment.NewLine + TabInString(7) + "if (updateHour) {";
                             string dayStr = optionNameStart + "dayStr";
                             time_update += Environment.NewLine + TabInString(8) + "let " + dayStr + " = timeSensor.day.toString();";
@@ -2646,6 +2675,217 @@ namespace Watch_Face_Editor
 
                             }
                             time_update += Environment.NewLine + TabInString(8) + variableName + ".setProperty(hmUI.prop.TEXT, " + dayStr + " );";
+
+                            time_update += Environment.NewLine + TabInString(7) + "};" + Environment.NewLine;
+
+                        }
+                       
+                        // Day_Month_Font
+                        if (index == numberPositionDayMonth && dayMonthFontOptions.Length > 5)
+                        {
+                            if (SelectedModel.versionOS >= 2 && DateDay.Day_Month_Font.font != null && DateDay.Day_Month_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + DateDay.Day_Month_Font.font + "; FontSize: " + DateDay.Day_Month_Font.text_size.ToString();
+                                //if (DateDay.Day_Month_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + DateDay.Day_Month_Font.font + "; FontSize: " + DateDay.Day_Month_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    string fontCacheOptions = TEXT_Cache_Options(DateDay.Day_Month_Font, false);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            string variableName = optionNameStart + "day_month_font";
+                            variables += TabInString(4) + "let " + variableName + " = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
+
+                            #region add listenet update time
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            string timerName = optionNameStart + "timerTimeUpdate";
+                            if (resume_call.IndexOf(timerName + " = timer.createTimer") < 0)
+                            {
+
+                                if (optionNameStart == "normal_")
+                                {
+                                    resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {" + Environment.NewLine;
+
+                                }
+                                else
+                                {
+                                    resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                }
+                                if (variables.IndexOf("let " + timerName + " =") < 0)
+                                {
+                                    variables += TabInString(4) + "let " + timerName + " = undefined;" + Environment.NewLine;
+                                }
+                                resume_call += TabInString(9) + "if (!" + timerName + ") {" + Environment.NewLine;
+                                resume_call += TabInString(10) + timerName + " = timer.createTimer(0, 1000, (function (option) {" + Environment.NewLine;
+                                resume_call += TabInString(11) + "let updateHour = timeSensor.hour == 0;" + Environment.NewLine;
+                                resume_call += TabInString(11) + "let updateMinute = timeSensor.minute == 0;" + Environment.NewLine;
+                                resume_call += TabInString(11) + "time_update(updateHour, updateMinute);" + Environment.NewLine;
+                                resume_call += TabInString(10) + "}));  // end timer " + Environment.NewLine;
+                                resume_call += TabInString(9) + "};  // end timer check" + Environment.NewLine;
+                                resume_call += TabInString(8) + "};  // end screenType" + Environment.NewLine + Environment.NewLine;
+
+                                pause_call += TabInString(8) + "if (" + timerName + ") {" + Environment.NewLine;
+                                pause_call += TabInString(9) + "timer.stopTimer(" + timerName + ");" + Environment.NewLine;
+                                pause_call += TabInString(9) + timerName + " = undefined;" + Environment.NewLine;
+                                pause_call += TabInString(8) + "}" + Environment.NewLine;
+                            }
+                            #endregion
+
+                            items += Environment.NewLine + TabInString(6) + variableName + " = hmUI.createWidget(hmUI.widget.TEXT, {" +
+                                    dayMonthFontOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            time_update += Environment.NewLine + TabInString(7) + "console.log('day/month font');";
+                            time_update += Environment.NewLine + TabInString(7) + "if (updateHour) {";
+                            string DayStr = optionNameStart + "DayStr";
+                            string MonthStr = optionNameStart + "MonthStr";
+                            string DayMonthStr = optionNameStart + "DayMonthStr";
+                            time_update += Environment.NewLine + TabInString(8) + "let " + DayStr + " = timeSensor.day.toString();";
+                            time_update += Environment.NewLine + TabInString(8) + "let " + MonthStr + " = timeSensor.month.toString();";
+                            if (DateDay.Day_Month_Font.padding) 
+                            {
+                                time_update += Environment.NewLine + TabInString(8) + DayStr + " = " + DayStr + ".padStart(2, '0');";
+                                time_update += Environment.NewLine + TabInString(8) + MonthStr + " = " + MonthStr + ".padStart(2, '0');";
+                            }
+                            time_update += Environment.NewLine + TabInString(8) + "let " + DayMonthStr + " = '--';";
+                            string delimeter = ":";
+                            if (DateDay.Day_Month_Font.unit_string.Length > 0) delimeter = DateDay.Day_Month_Font.unit_string;
+
+                            time_update += Environment.NewLine + TabInString(8) + "const dateFormat = hmSetting.getDateFormat();";
+                            time_update += Environment.NewLine + TabInString(8) + "if (dateFormat == 0 || dateFormat == 2) {";
+                            time_update += Environment.NewLine + TabInString(9) + DayMonthStr + " = " + MonthStr + " + '" + delimeter + "' + " + DayStr + ";";
+                            time_update += Environment.NewLine + TabInString(8) + "}";
+
+                            time_update += Environment.NewLine + TabInString(8) + "if (dateFormat == 1) {";
+                            time_update += Environment.NewLine + TabInString(9) + DayMonthStr + " = " + DayStr + " + '" + delimeter + "' + " + MonthStr + ";";
+                            time_update += Environment.NewLine + TabInString(8) + "}";
+
+                            //time_update += Environment.NewLine + TabInString(8) + "if (dateFormat == 2) {";
+                            //time_update += Environment.NewLine + TabInString(9) + DayMonthStr + " = " + MonthStr + " + '" + delimeter + "' + " + DayStr + " + ";";
+                            //time_update += Environment.NewLine + TabInString(8) + "}";
+
+                            time_update += Environment.NewLine + TabInString(8) + variableName + ".setProperty(hmUI.prop.TEXT, " + DayMonthStr + " );";
+
+                            time_update += Environment.NewLine + TabInString(7) + "};" + Environment.NewLine;
+
+                        }
+                        // Day_Month_Year_Font
+                        if (index == numberPositionDayMonthYear && dayMonthYearFontOptions.Length > 5)
+                        {
+                            if (SelectedModel.versionOS >= 2 && DateDay.Day_Month_Year_Font.font != null && DateDay.Day_Month_Year_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + DateDay.Day_Month_Year_Font.font + "; FontSize: " + DateDay.Day_Month_Year_Font.text_size.ToString();
+                                //if (DateDay.Day_Month_Year_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + DateDay.Day_Month_Year_Font.font + "; FontSize: " + DateDay.Day_Month_Year_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    string fontCacheOptions = TEXT_Cache_Options(DateDay.Day_Month_Year_Font, false);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            string variableName = optionNameStart + "day_month_year_font";
+                            variables += TabInString(4) + "let " + variableName + " = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
+
+                            #region add listenet update time
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            string timerName = optionNameStart + "timerTimeUpdate";
+                            if (resume_call.IndexOf(timerName + " = timer.createTimer") < 0)
+                            {
+
+                                if (optionNameStart == "normal_")
+                                {
+                                    resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {" + Environment.NewLine;
+
+                                }
+                                else
+                                {
+                                    resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                }
+                                if (variables.IndexOf("let " + timerName + " =") < 0)
+                                {
+                                    variables += TabInString(4) + "let " + timerName + " = undefined;" + Environment.NewLine;
+                                }
+                                resume_call += TabInString(9) + "if (!" + timerName + ") {" + Environment.NewLine;
+                                resume_call += TabInString(10) + timerName + " = timer.createTimer(0, 1000, (function (option) {" + Environment.NewLine;
+                                resume_call += TabInString(11) + "let updateHour = timeSensor.hour == 0;" + Environment.NewLine;
+                                resume_call += TabInString(11) + "let updateMinute = timeSensor.minute == 0;" + Environment.NewLine;
+                                resume_call += TabInString(11) + "time_update(updateHour, updateMinute);" + Environment.NewLine;
+                                resume_call += TabInString(10) + "}));  // end timer " + Environment.NewLine;
+                                resume_call += TabInString(9) + "};  // end timer check" + Environment.NewLine;
+                                resume_call += TabInString(8) + "};  // end screenType" + Environment.NewLine + Environment.NewLine;
+
+                                pause_call += TabInString(8) + "if (" + timerName + ") {" + Environment.NewLine;
+                                pause_call += TabInString(9) + "timer.stopTimer(" + timerName + ");" + Environment.NewLine;
+                                pause_call += TabInString(9) + timerName + " = undefined;" + Environment.NewLine;
+                                pause_call += TabInString(8) + "}" + Environment.NewLine;
+                            }
+                            #endregion
+
+                            items += Environment.NewLine + TabInString(6) + variableName + " = hmUI.createWidget(hmUI.widget.TEXT, {" +
+                                    dayMonthYearFontOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            time_update += Environment.NewLine + TabInString(7) + "console.log('day/month/year font');";
+                            time_update += Environment.NewLine + TabInString(7) + "if (updateHour) {";
+                            string DayStr = optionNameStart + "DayStr";
+                            string MonthStr = optionNameStart + "MonthStr";
+                            string YearStr = optionNameStart + "YearStr";
+                            string DayMonthYearStr = optionNameStart + "DayMonthYearStr";
+                            time_update += Environment.NewLine + TabInString(8) + "let " + DayStr + " = timeSensor.day.toString();";
+                            time_update += Environment.NewLine + TabInString(8) + "let " + MonthStr + " = timeSensor.month.toString();";
+                            if (DateDay.Day_Month_Year_Font.unit_type == 1 || (DateDay.Day_Month_Year_Font.unit_type == 2 && DateDay.Day_Month_Year_Font.padding))
+                            {
+                                time_update += Environment.NewLine + TabInString(8) + "let " + YearStr + " = timeSensor.year.toString();";
+                            }
+                            else
+                            {
+                                time_update += Environment.NewLine + TabInString(8) + "let " + YearStr + " = (timeSensor.year % 100).toString();";
+                            }
+                            if (DateDay.Day_Month_Year_Font.padding)
+                            {
+                                time_update += Environment.NewLine + TabInString(8) + DayStr + " = " + DayStr + ".padStart(2, '0');";
+                                time_update += Environment.NewLine + TabInString(8) + MonthStr + " = " + MonthStr + ".padStart(2, '0');";
+                            }
+                            time_update += Environment.NewLine + TabInString(8) + "let " + DayMonthYearStr + " = '--';";
+                            string delimeter = ":";
+                            if (DateDay.Day_Month_Year_Font.unit_string.Length > 0) delimeter = DateDay.Day_Month_Year_Font.unit_string;
+
+                            time_update += Environment.NewLine + TabInString(8) + "const dateFormat = hmSetting.getDateFormat();";
+                            time_update += Environment.NewLine + TabInString(8) + "if (dateFormat == 0) {";
+                            time_update += Environment.NewLine + TabInString(9) + DayMonthYearStr + " = " + YearStr + " + '" + delimeter +
+                                "' + " + MonthStr + " + '" + delimeter + "' + " + DayStr + ";";
+                            time_update += Environment.NewLine + TabInString(8) + "}";
+
+                            time_update += Environment.NewLine + TabInString(8) + "if (dateFormat == 1) {";
+                            time_update += Environment.NewLine + TabInString(9) + DayMonthYearStr + " = " + DayStr + " + '" + delimeter +
+                                "' + " + MonthStr + " + '" + delimeter + "' + " + YearStr + ";";
+                            time_update += Environment.NewLine + TabInString(8) + "}";
+
+                            time_update += Environment.NewLine + TabInString(8) + "if (dateFormat == 2) {";
+                            time_update += Environment.NewLine + TabInString(9) + DayMonthYearStr + " = " + MonthStr + " + '" + delimeter +
+                                "' + " + DayStr + " + '" + delimeter + "' + " + YearStr + ";";
+                            time_update += Environment.NewLine + TabInString(8) + "}";
+
+                            time_update += Environment.NewLine + TabInString(8) + variableName + ".setProperty(hmUI.prop.TEXT, " + DayMonthYearStr + " );";
 
                             time_update += Environment.NewLine + TabInString(7) + "};" + Environment.NewLine;
 
@@ -2790,6 +3030,7 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) + variableName + " = hmUI.createWidget(hmUI.widget.TEXT, {" +
                                     numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            time_update += Environment.NewLine + TabInString(7) + "console.log('month font');";
                             time_update += Environment.NewLine + TabInString(7) + "if (updateHour) {";
                             string monthStr = optionNameStart + "monthStr";
                             time_update += Environment.NewLine + TabInString(8) + "let " + monthStr + " = timeSensor.month.toString();";
@@ -2905,11 +3146,15 @@ namespace Watch_Face_Editor
                             if (SelectedModel.versionOS >= 2 && DateYear.Number_Font.font != null && DateYear.Number_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + DateYear.Number_Font.font + "; FontSize: " + DateYear.Number_Font.text_size.ToString();
+                                bool cachFull = false;
                                 if (DateYear.Number_Font.unit_type > 0)
+                                {
                                     cacheName = "// FontName: " + DateYear.Number_Font.font + "; FontSize: " + DateYear.Number_Font.text_size.ToString() + "; Cache: full";
+                                    cachFull = true;
+                                }
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    string fontCacheOptions = TEXT_Cache_Options(DateYear.Number_Font, true);
+                                    string fontCacheOptions = TEXT_Cache_Options(DateYear.Number_Font, cachFull);
                                     if (fontCacheOptions.Length > 5)
                                     {
                                         fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
@@ -2934,6 +3179,7 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) + variableName + " = hmUI.createWidget(hmUI.widget.TEXT, {" +
                                     numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            time_update += Environment.NewLine + TabInString(7) + "console.log('year font');";
                             time_update += Environment.NewLine + TabInString(7) + "if (updateHour) {";
                             //string yearStr = optionNameStart + "yearStr";
                             //time_update += Environment.NewLine + TabInString(8) + "let " + yearStr + " = timeSensor.year.toString();";
@@ -19148,6 +19394,8 @@ namespace Watch_Face_Editor
                                     {
                                         int offsetNumber = 1;
                                         if (dateDay.Number_Font != null) offsetNumber++;
+                                        if (dateDay.Day_Month_Font != null) offsetNumber++;
+                                        if (dateDay.Day_Month_Year_Font != null) offsetNumber++;
                                         if (dateDay.Pointer != null) offsetNumber++;
                                         if (dateDay.Text_rotation != null) offsetNumber++;
                                         if (dateDay.Text_circle != null) offsetNumber++;
@@ -19258,6 +19506,8 @@ namespace Watch_Face_Editor
                                 int offsetPointer = 1;
                                 if (dateDay.Number != null) offsetPointer++;
                                 if (dateDay.Number_Font != null) offsetPointer++;
+                                if (dateDay.Day_Month_Font != null) offsetPointer++;
+                                if (dateDay.Day_Month_Year_Font != null) offsetPointer++;
                                 if (dateDay.Text_rotation != null) offsetPointer++;
                                 if (dateDay.Text_circle != null) offsetPointer++;
 
@@ -21655,6 +21905,9 @@ namespace Watch_Face_Editor
                                 if (minute.Minute_Font != null) offset++;
                                 if (minute.Second_Font != null) offset++;
 
+                                if (minute.Hour_min_Font != null) offset++;
+                                if (minute.Hour_min_sec_Font != null) offset++;
+
                                 if (minute.Hour_rotation != null) offset++;
                                 //if (minute.Minute_rotation != null) offset++;
                                 if (minute.Second_rotation != null) offset++;
@@ -21702,6 +21955,9 @@ namespace Watch_Face_Editor
                                 if (second.Minute_Font != null) offset++;
                                 if (second.Second_Font != null) offset++;
 
+                                if (second.Hour_min_Font != null) offset++;
+                                if (second.Hour_min_sec_Font != null) offset++;
+
                                 if (second.Hour_rotation != null) offset++;
                                 if (second.Minute_rotation != null) offset++;
                                 //if (second.Second_rotation != null) offset++;
@@ -21742,6 +21998,8 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (day.Number != null) offset++;
                                 if (day.Number_Font != null) offset++;
+                                if (day.Day_Month_Font != null) offset++;
+                                if (day.Day_Month_Year_Font != null) offset++;
                                 //if (day.Text_rotation != null) offset++;
                                 if (day.Text_circle != null) offset++;
                                 if (day.Pointer != null) offset++;
@@ -22651,9 +22909,14 @@ namespace Watch_Face_Editor
                                 if (minute.Minute != null) offset++;
                                 if (minute.Second != null) offset++;
                                 if (minute.AmPm != null) offset++;
+
                                 if (minute.Hour_rotation != null) offset++;
                                 if (minute.Minute_rotation != null) offset++;
                                 if (minute.Second_rotation != null) offset++;
+
+                                if (minute.Hour_min_Font != null) offset++;
+                                if (minute.Hour_min_sec_Font != null) offset++;
+
                                 if (minute.Hour_circle != null) offset++;
                                 //if (minute.Minute_circle != null) offset++;
                                 if (minute.Second_circle != null) offset++;
@@ -22694,9 +22957,14 @@ namespace Watch_Face_Editor
                                 if (second.Minute != null) offset++;
                                 if (second.Second != null) offset++;
                                 if (second.AmPm != null) offset++;
+
                                 if (second.Hour_rotation != null) offset++;
                                 if (second.Minute_rotation != null) offset++;
                                 if (second.Second_rotation != null) offset++;
+
+                                if (second.Hour_min_Font != null) offset++;
+                                if (second.Hour_min_sec_Font != null) offset++;
+
                                 if (second.Hour_circle != null) offset++;
                                 if (second.Minute_circle != null) offset++;
                                 //if (hour.Second_circle != null) offset++;
@@ -22735,6 +23003,8 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (day.Number != null) offset++;
                                 if (day.Number_Font != null) offset++;
+                                if (day.Day_Month_Font != null) offset++;
+                                if (day.Day_Month_Year_Font != null) offset++;
                                 if (day.Text_rotation != null) offset++;
                                 //if (day.Text_circle != null) offset++;
                                 if (day.Pointer != null) offset++;
@@ -25016,6 +25286,8 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (dateDay.Number != null) offset++;
                                 //if (dateDay.Number_Font != null) offset++;
+                                if (dateDay.Day_Month_Font != null) offset++;
+                                if (dateDay.Day_Month_Year_Font != null) offset++;
                                 if (dateDay.Pointer != null) offset++;
                                 if (dateDay.Text_circle != null) offset++;
                                 if (dateDay.Text_rotation != null) offset++;
@@ -25043,6 +25315,96 @@ namespace Watch_Face_Editor
 
                                 dateDay.Number_Font.visible = true;
                                 dateDay.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (objectName.EndsWith("day_month_font"))
+                        {
+                            ElementDateDay dateDay = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
+                            if (dateDay == null)
+                            {
+                                elementsList.Add(new ElementDateDay());
+                                dateDay = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
+                            }
+                            if (dateDay != null)
+                            {
+                                int offset = 1;
+                                if (dateDay.Number != null) offset++;
+                                if (dateDay.Number_Font != null) offset++;
+                                //if (dateDay.Day_Month_Font != null) offset++;
+                                if (dateDay.Day_Month_Year_Font != null) offset++;
+                                if (dateDay.Pointer != null) offset++;
+                                if (dateDay.Text_circle != null) offset++;
+                                if (dateDay.Text_rotation != null) offset++;
+
+                                dateDay.Day_Month_Font = new hmUI_widget_TEXT();
+                                dateDay.Day_Month_Font.x = text.x;
+                                dateDay.Day_Month_Font.y = text.y;
+                                dateDay.Day_Month_Font.w = text.w;
+                                dateDay.Day_Month_Font.h = text.h;
+
+                                dateDay.Day_Month_Font.color = text.color;
+
+                                dateDay.Day_Month_Font.font = text.font;
+
+                                dateDay.Day_Month_Font.text_size = text.text_size;
+                                dateDay.Day_Month_Font.char_space = text.char_space;
+                                dateDay.Day_Month_Font.line_space = text.line_space;
+
+                                dateDay.Day_Month_Font.align_h = text.align_h;
+                                dateDay.Day_Month_Font.align_v = text.align_v;
+                                dateDay.Day_Month_Font.text_style = text.text_style;
+
+                                dateDay.Day_Month_Font.padding = text.padding;
+                                dateDay.Day_Month_Font.unit_type = text.unit_type;
+
+                                dateDay.Day_Month_Font.visible = true;
+                                dateDay.Day_Month_Font.position = offset;
+                            }
+                        }
+
+                        if (objectName.EndsWith("day_month_year_font"))
+                        {
+                            ElementDateDay dateDay = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
+                            if (dateDay == null)
+                            {
+                                elementsList.Add(new ElementDateDay());
+                                dateDay = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
+                            }
+                            if (dateDay != null)
+                            {
+                                int offset = 1;
+                                if (dateDay.Number != null) offset++;
+                                if (dateDay.Number_Font != null) offset++;
+                                if (dateDay.Day_Month_Font != null) offset++;
+                                //if (dateDay.Day_Month_Year_Font != null) offset++;
+                                if (dateDay.Pointer != null) offset++;
+                                if (dateDay.Text_circle != null) offset++;
+                                if (dateDay.Text_rotation != null) offset++;
+
+                                dateDay.Day_Month_Year_Font = new hmUI_widget_TEXT();
+                                dateDay.Day_Month_Year_Font.x = text.x;
+                                dateDay.Day_Month_Year_Font.y = text.y;
+                                dateDay.Day_Month_Year_Font.w = text.w;
+                                dateDay.Day_Month_Year_Font.h = text.h;
+
+                                dateDay.Day_Month_Year_Font.color = text.color;
+
+                                dateDay.Day_Month_Year_Font.font = text.font;
+
+                                dateDay.Day_Month_Year_Font.text_size = text.text_size;
+                                dateDay.Day_Month_Year_Font.char_space = text.char_space;
+                                dateDay.Day_Month_Year_Font.line_space = text.line_space;
+
+                                dateDay.Day_Month_Year_Font.align_h = text.align_h;
+                                dateDay.Day_Month_Year_Font.align_v = text.align_v;
+                                dateDay.Day_Month_Year_Font.text_style = text.text_style;
+
+                                dateDay.Day_Month_Year_Font.padding = text.padding;
+                                dateDay.Day_Month_Year_Font.unit_type = text.unit_type;
+
+                                dateDay.Day_Month_Year_Font.visible = true;
+                                dateDay.Day_Month_Year_Font.position = offset;
                             }
                         }
 

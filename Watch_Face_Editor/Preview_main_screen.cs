@@ -1708,6 +1708,151 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        if (DateDay.Day_Month_Font != null && index == DateDay.Day_Month_Font.position && DateDay.Day_Month_Font.visible)
+                        {
+                            hmUI_widget_TEXT number_font = DateDay.Day_Month_Font;
+                            int x = number_font.x;
+                            int y = number_font.y;
+                            int h = number_font.h;
+                            int w = number_font.w;
+
+                            int size = number_font.text_size;
+                            int space_h = number_font.char_space;
+                            int space_v = number_font.line_space;
+
+                            Color color = StringToColor(number_font.color);
+                            //int align_h = AlignmentToInt(number_font.align_h);
+                            //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                            string align_h = number_font.align_h;
+                            string align_v = number_font.align_v;
+                            string text_style = number_font.text_style;
+                            string valueDayStr = WatchFacePreviewSet.Date.Day.ToString();
+                            string valueMonthStr = WatchFacePreviewSet.Date.Month.ToString();
+                            string delimeter = "/";
+                            if (number_font.unit_string != null && number_font.unit_string.Length > 0) delimeter = number_font.unit_string;
+
+                            if (number_font.padding)
+                            {
+                                valueDayStr = valueDayStr.PadLeft(2, '0');
+                                valueMonthStr = valueMonthStr.PadLeft(2, '0');
+                            }
+
+                            if (number_font.centreHorizontally)
+                            {
+                                x = (SelectedModel.background.w - w) / 2;
+                                align_h = "CENTER_H";
+                            }
+                            if (number_font.centreVertically)
+                            {
+                                y = (SelectedModel.background.h - h) / 2;
+                                align_v = "CENTER_V";
+                            }
+
+                            string valueStr = valueDayStr + delimeter + valueMonthStr;
+
+                            if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                            {
+                                string font_fileName = FontsList[number_font.font];
+                                //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                                if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                {
+                                    Font drawFont = null;
+                                    using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                    {
+                                        fonts.AddFontFile(font_fileName);
+                                        drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                    }
+
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                    align_h, align_v, text_style, BBorder);
+                                }
+                                else
+                                {
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                }
+
+                            }
+                            else
+                            {
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            }
+                        }
+
+                        if (DateDay.Day_Month_Year_Font != null && index == DateDay.Day_Month_Year_Font.position && DateDay.Day_Month_Year_Font.visible)
+                        {
+                            hmUI_widget_TEXT number_font = DateDay.Day_Month_Year_Font;
+                            int x = number_font.x;
+                            int y = number_font.y;
+                            int h = number_font.h;
+                            int w = number_font.w;
+
+                            int size = number_font.text_size;
+                            int space_h = number_font.char_space;
+                            int space_v = number_font.line_space;
+                            bool yearFull = false;
+                            if (number_font.unit_type == 1) yearFull = true;
+
+                            Color color = StringToColor(number_font.color);
+                            //int align_h = AlignmentToInt(number_font.align_h);
+                            //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                            string align_h = number_font.align_h;
+                            string align_v = number_font.align_v;
+                            string text_style = number_font.text_style;
+                            string valueDayStr = WatchFacePreviewSet.Date.Day.ToString();
+                            string valueMonthStr = WatchFacePreviewSet.Date.Month.ToString();
+                            string valueYearStr = (WatchFacePreviewSet.Date.Year % 100).ToString();
+                            string delimeter = "/";
+                            if (number_font.unit_string != null && number_font.unit_string.Length > 0) delimeter = number_font.unit_string;
+
+                            if (number_font.padding) 
+                            {
+                                valueDayStr = valueDayStr.PadLeft(2, '0');
+                                valueMonthStr = valueMonthStr.PadLeft(2, '0');
+                                if (number_font.unit_type == 2) yearFull = true;
+                            }
+                            if (yearFull) valueYearStr = WatchFacePreviewSet.Date.Year.ToString();
+
+                            if (number_font.centreHorizontally)
+                            {
+                                x = (SelectedModel.background.w - w) / 2;
+                                align_h = "CENTER_H";
+                            }
+                            if (number_font.centreVertically)
+                            {
+                                y = (SelectedModel.background.h - h) / 2;
+                                align_v = "CENTER_V";
+                            }
+
+                            string valueStr = valueDayStr + delimeter + valueMonthStr + delimeter + valueYearStr;
+
+                            if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                            {
+                                string font_fileName = FontsList[number_font.font];
+                                //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                                if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                {
+                                    Font drawFont = null;
+                                    using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                    {
+                                        fonts.AddFontFile(font_fileName);
+                                        drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                    }
+
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                    align_h, align_v, text_style, BBorder);
+                                }
+                                else
+                                {
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                }
+
+                            }
+                            else
+                            {
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            }
+                        }
+
                         if (DateDay.Text_rotation != null && DateDay.Text_rotation.img_First != null && DateDay.Text_rotation.img_First.Length > 0 &&
                             index == DateDay.Text_rotation.position && DateDay.Text_rotation.visible)
                         {
