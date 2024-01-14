@@ -25,6 +25,7 @@ namespace ControlLibrary
         private bool Unit_mode = true;
         private bool Zero_mode = true;
         private bool Year_mode = false;
+        private bool DayMonthYear_mode = false;
         private bool AmPm_mode = false;
         private bool UnitStr_mode = false;
 
@@ -343,22 +344,6 @@ namespace ControlLibrary
             }
         }
 
-        ///// <summary>Отображение настроек доступных для числовых данных</summary>
-        //[Description("Отображение настроек доступных для числовых данных")]
-        //public virtual bool NumberValue
-        //{
-        //    get
-        //    {
-        //        return Number_mode;
-        //    }
-        //    set
-        //    {
-        //        Number_mode = value;
-        //        checkBox_addZero.Enabled = Number_mode;
-        //        checkBox_unit.Enabled = Number_mode;
-        //    }
-        //}
-
         /// <summary>Отображение настроек единиц измерения</summary>
         [Description("Отображение настроек единиц измерения")]
         public virtual bool UnitMode
@@ -429,8 +414,41 @@ namespace ControlLibrary
                 }
                 else
                 {
-                    checkBox_unit.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_false;
+                    if (DayMonthYear_mode) checkBox_unit.Text = Properties.Strings.UCtrl_Text_Opt_Year_true;
+                    else checkBox_unit.Text = Properties.Strings.UCtrl_Text_Opt_AmPm_false;
                     checkBox_inEnd.Visible = false;
+                }
+            }
+        }
+
+        /// <summary>Режим отображения для дня/месяца/года</summary>
+        [Description("Режим отображения для дня/месяца/года")]
+        public virtual bool DayMonthYear
+        {
+            get
+            {
+                return DayMonthYear_mode;
+            }
+            set
+            {
+                DayMonthYear_mode = value;
+                if (DayMonthYear_mode)
+                {
+                    checkBox_unit.Text = Properties.Strings.UCtrl_Text_Opt_Year_true;
+                    checkBox_inEnd.Visible = false;
+                }
+                else
+                {
+                    if (AmPm_mode)
+                    {
+                        checkBox_unit.Text = Properties.Strings.UCtrl_Text_Opt_AmPm_true;
+                        checkBox_inEnd.Visible = true;
+                    }
+                    else
+                    {
+                        checkBox_unit.Text = Properties.Strings.UCtrl_Text_Opt_AmPm_false;
+                        checkBox_inEnd.Visible = false;
+                    }
                 }
             }
         }
@@ -792,6 +810,7 @@ namespace ControlLibrary
             ZeroMode = true;
             Year = false;
             AmPm = false;
+            DayMonthYear = false;
             UnitStrMode = false;
 
             setValue = false;

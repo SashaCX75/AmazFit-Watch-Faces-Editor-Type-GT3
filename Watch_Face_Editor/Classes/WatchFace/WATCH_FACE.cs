@@ -931,6 +931,8 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_POINTER Pointer { get; set; }
         public hmUI_widget_IMG_NUMBER Number { get; set; }
         public hmUI_widget_TEXT Number_Font { get; set; }
+        public hmUI_widget_TEXT Day_Month_Font { get; set; }
+        public hmUI_widget_TEXT Day_Month_Year_Font { get; set; }
         public hmUI_widget_IMG_NUMBER Text_rotation { get; set; }
         public Text_Circle Text_circle { get; set; }
 
@@ -1018,6 +1020,60 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_TEXT Day_Month_Font = null;
+            if (this.Day_Month_Font != null)
+            {
+                Day_Month_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Day_Month_Font.x,
+                    y = this.Day_Month_Font.y,
+                    w = this.Day_Month_Font.w,
+                    h = this.Day_Month_Font.h,
+                    color = this.Day_Month_Font.color,
+                    align_h = this.Day_Month_Font.align_h,
+                    align_v = this.Day_Month_Font.align_v,
+                    text_size = this.Day_Month_Font.text_size,
+                    text_style = this.Day_Month_Font.text_style,
+                    line_space = this.Day_Month_Font.line_space,
+                    char_space = this.Day_Month_Font.char_space,
+                    font = this.Day_Month_Font.font,
+                    padding = this.Day_Month_Font.padding,
+                    unit_type = this.Day_Month_Font.unit_type,
+
+                    position = this.Day_Month_Font.position,
+                    visible = this.Day_Month_Font.visible,
+                    show_level = this.Day_Month_Font.show_level,
+                    type = this.Day_Month_Font.type,
+                };
+            }
+
+            hmUI_widget_TEXT Day_Month_Year_Font = null;
+            if (this.Day_Month_Year_Font != null)
+            {
+                Day_Month_Year_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Day_Month_Year_Font.x,
+                    y = this.Day_Month_Year_Font.y,
+                    w = this.Day_Month_Year_Font.w,
+                    h = this.Day_Month_Year_Font.h,
+                    color = this.Day_Month_Year_Font.color,
+                    align_h = this.Day_Month_Year_Font.align_h,
+                    align_v = this.Day_Month_Year_Font.align_v,
+                    text_size = this.Day_Month_Year_Font.text_size,
+                    text_style = this.Day_Month_Year_Font.text_style,
+                    line_space = this.Day_Month_Year_Font.line_space,
+                    char_space = this.Day_Month_Year_Font.char_space,
+                    font = this.Day_Month_Year_Font.font,
+                    padding = this.Day_Month_Year_Font.padding,
+                    unit_type = this.Day_Month_Year_Font.unit_type,
+
+                    position = this.Day_Month_Year_Font.position,
+                    visible = this.Day_Month_Year_Font.visible,
+                    show_level = this.Day_Month_Year_Font.show_level,
+                    type = this.Day_Month_Year_Font.type,
+                };
+            }
+
             hmUI_widget_IMG_NUMBER Text_rotation = null;
             if (this.Text_rotation != null)
             {
@@ -1083,6 +1139,8 @@ namespace Watch_Face_Editor
                 Pointer = Pointer,
                 Number = Number,
                 Number_Font = Number_Font,
+                Day_Month_Font = Day_Month_Font,
+                Day_Month_Year_Font = Day_Month_Year_Font,
                 Text_rotation = Text_rotation,
                 Text_circle = Text_circle,
             };

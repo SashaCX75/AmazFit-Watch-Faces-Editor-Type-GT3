@@ -5334,6 +5334,16 @@ namespace Watch_Face_Editor
                                 uCtrl_DateDay_Elm.checkBox_Number_Font.Checked = DateDay.Number_Font.visible;
                                 elementOptions.Add(DateDay.Number_Font.position, "Number_Font");
                             }
+                            if (DateDay.Day_Month_Font != null)
+                            {
+                                uCtrl_DateDay_Elm.checkBox_Day_Month_Font.Checked = DateDay.Day_Month_Font.visible;
+                                elementOptions.Add(DateDay.Day_Month_Font.position, "Day_Month_Font");
+                            }
+                            if (DateDay.Day_Month_Year_Font != null)
+                            {
+                                uCtrl_DateDay_Elm.checkBox_Day_Month_Year_Font.Checked = DateDay.Day_Month_Year_Font.visible;
+                                elementOptions.Add(DateDay.Day_Month_Year_Font.position, "Day_Month_Year_Font");
+                            }
                             if (DateDay.Text_rotation != null)
                             {
                                 uCtrl_DateDay_Elm.checkBox_Text_rotation.Checked = DateDay.Text_rotation.visible;
@@ -10356,6 +10366,26 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Day_Month_Font":
+                        if (uCtrl_DateDay_Elm.checkBox_Day_Month_Font.Checked)
+                        {
+                            text = dateDay.Day_Month_Font;
+                            Read_Text_Options(text, false, true, true);
+                            uCtrl_Text_SystemFont_Opt.DayMonthYear = true;
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Day_Month_Year_Font":
+                        if (uCtrl_DateDay_Elm.checkBox_Day_Month_Year_Font.Checked)
+                        {
+                            text = dateDay.Day_Month_Year_Font;
+                            Read_Text_Options(text, true, true, true);
+                            uCtrl_Text_SystemFont_Opt.DayMonthYear = true;
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "Text_rotation":
                         if (uCtrl_DateDay_Elm.checkBox_Text_rotation.Checked)
                         {
@@ -13414,6 +13444,8 @@ namespace Watch_Face_Editor
             {
                 if (dateDay.Number == null) dateDay.Number = new hmUI_widget_IMG_NUMBER();
                 if (dateDay.Number_Font == null) dateDay.Number_Font = new hmUI_widget_TEXT();
+                if (dateDay.Day_Month_Font == null) dateDay.Day_Month_Font = new hmUI_widget_TEXT();
+                if (dateDay.Day_Month_Year_Font == null) dateDay.Day_Month_Year_Font = new hmUI_widget_TEXT();
                 if (dateDay.Text_rotation == null) dateDay.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (dateDay.Text_circle == null) dateDay.Text_circle = new Text_Circle();
                 if (dateDay.Pointer == null) dateDay.Pointer = new hmUI_widget_IMG_POINTER();
@@ -13421,6 +13453,8 @@ namespace Watch_Face_Editor
                 Dictionary<string, int> elementOptions = uCtrl_DateDay_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Number")) dateDay.Number.position = elementOptions["Number"];
                 if (elementOptions.ContainsKey("Number_Font")) dateDay.Number_Font.position = elementOptions["Number_Font"];
+                if (elementOptions.ContainsKey("Day_Month_Font")) dateDay.Day_Month_Font.position = elementOptions["Day_Month_Font"];
+                if (elementOptions.ContainsKey("Day_Month_Year_Font")) dateDay.Day_Month_Year_Font.position = elementOptions["Day_Month_Year_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) dateDay.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) dateDay.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) dateDay.Pointer.position = elementOptions["Pointer"];
@@ -13437,6 +13471,12 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number_Font":
                         dateDay.Number_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Day_Month_Font":
+                        dateDay.Day_Month_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Day_Month_Year_Font":
+                        dateDay.Day_Month_Year_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Text_rotation":
                         dateDay.Text_rotation.visible = checkBox.Checked;
@@ -13698,6 +13738,8 @@ namespace Watch_Face_Editor
             {
                 if (dateDay.Number == null) dateDay.Number = new hmUI_widget_IMG_NUMBER();
                 if (dateDay.Number_Font == null) dateDay.Number_Font = new hmUI_widget_TEXT();
+                if (dateDay.Day_Month_Font == null) dateDay.Day_Month_Font = new hmUI_widget_TEXT();
+                if (dateDay.Day_Month_Year_Font == null) dateDay.Day_Month_Year_Font = new hmUI_widget_TEXT();
                 if (dateDay.Text_rotation == null) dateDay.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (dateDay.Text_circle == null) dateDay.Text_circle = new Text_Circle();
                 if (dateDay.Pointer == null) dateDay.Pointer = new hmUI_widget_IMG_POINTER();
@@ -13705,6 +13747,8 @@ namespace Watch_Face_Editor
                 //Dictionary<string, int> elementOptions = uCtrl_AnalogTime_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Number")) dateDay.Number.position = elementOptions["Number"];
                 if (elementOptions.ContainsKey("Number_Font")) dateDay.Number_Font.position = elementOptions["Number_Font"];
+                if (elementOptions.ContainsKey("Day_Month_Font")) dateDay.Day_Month_Font.position = elementOptions["Day_Month_Font"];
+                if (elementOptions.ContainsKey("Day_Month_Year_Font")) dateDay.Day_Month_Year_Font.position = elementOptions["Day_Month_Year_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) dateDay.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) dateDay.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) dateDay.Pointer.position = elementOptions["Pointer"];

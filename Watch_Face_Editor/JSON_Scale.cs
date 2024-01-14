@@ -215,6 +215,9 @@ namespace Watch_Face_Editor
                     Scale_TEXT(elementDigitalTime.Minute_Font, scale);
                     Scale_TEXT(elementDigitalTime.Second_Font, scale);
 
+                    Scale_TEXT(elementDigitalTime.Hour_min_Font, scale);
+                    Scale_TEXT(elementDigitalTime.Hour_min_sec_Font, scale);
+
                     Scale_IMG_NUMBER(elementDigitalTime.Hour_rotation, scale);
                     Scale_IMG_NUMBER(elementDigitalTime.Minute_rotation, scale);
                     Scale_IMG_NUMBER(elementDigitalTime.Second_rotation, scale);
@@ -239,6 +242,8 @@ namespace Watch_Face_Editor
                     ElementDateDay elementDateDay = (ElementDateDay)elements;
                     Scale_IMG_NUMBER(elementDateDay.Number, scale);
                     Scale_TEXT(elementDateDay.Number_Font, scale);
+                    Scale_TEXT(elementDateDay.Day_Month_Font, scale);
+                    Scale_TEXT(elementDateDay.Day_Month_Year_Font, scale);
                     Scale_IMG_NUMBER(elementDateDay.Text_rotation, scale);
                     Scale_Text_Circle(elementDateDay.Text_circle, scale);
                     Scale_IMG_POINTER(elementDateDay.Pointer, scale);
