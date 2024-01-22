@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Wochentag</value>
+  <data name="button_DOW_Font.Text" xml:space="preserve">
+    <value>Wochentag mit Schriftart</value>
   </data>
   <data name="button_Images.Text" xml:space="preserve">
     <value>Bilder</value>
@@ -140,5 +140,8 @@
   </data>
   <data name="button_Pointer.Text" xml:space="preserve">
     <value>Zeiger</value>
+  </data>
+  <data name="button_ElementName.Text" xml:space="preserve">
+    <value>Wochentag</value>
   </data>
 </root>

@@ -260,6 +260,9 @@
   <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 82</value>
   </data>
+  <data name="numericUpDown_Size.ToolTip" xml:space="preserve">
+    <value>Ne pas définir une taille supérieure à 150.</value>
+  </data>
   <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 13</value>
   </data>
@@ -367,10 +370,34 @@ verticalement</value>
   <data name="label8.Text" xml:space="preserve">
     <value>!!! Certaines données peuvent ne pas être affichées (selon le modèle de montre). Vérifiez la possibilité d'afficher les données sur un appareil réel.</value>
   </data>
-  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
-    <value>Insérer les propriétés</value>
+  <data name="копироватьСвойстваToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 22</value>
   </data>
   <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>Copier les propriétés</value>
+  </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 22</value>
+  </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Insérer les propriétés</value>
+  </data>
+  <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 48</value>
+  </data>
+  <data name="label_unit_string.Text" xml:space="preserve">
+    <value>Séparateur</value>
+  </data>
+  <data name="checkBox_inEnd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 17</value>
+  </data>
+  <data name="checkBox_inEnd.Text" xml:space="preserve">
+    <value>À la fin</value>
+  </data>
+  <data name="textBox_DOW.ToolTip" xml:space="preserve">
+    <value>Noms des jours de la semaine, commençant par lundi, séparés par des virgules.</value>
+  </data>
+  <data name="label_DOW.Text" xml:space="preserve">
+    <value>Nom des jours de semaine</value>
   </data>
 </root>

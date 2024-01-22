@@ -257,6 +257,9 @@ namespace ControlLibrary
                 case "hmApp.startApp({url: 'RespirationwidgetScreen', native: true });":
                     functinName = Properties.ButtonFunctions.Respiration;
                     break;
+                case "hmApp.startApp({url: 'RespirationControlScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.RespirationControl;
+                    break;
                 case "hmApp.startApp({url: 'SportListScreen', native: true });":
                     functinName = Properties.ButtonFunctions.SportList;
                     break;
@@ -268,6 +271,12 @@ namespace ControlLibrary
                     break;
                 case "hmApp.startApp({url: 'SportStatusScreen', native: true });":
                     functinName = Properties.ButtonFunctions.SportStatus;
+                    break;
+                case "hmApp.startApp({url: 'activityWeekShowScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.WeekActivity;
+                    break;
+                case "hmApp.startApp({url: 'oneKeyNightMonitorScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.NightMonitor;
                     break;
                 #endregion
 
@@ -350,6 +359,12 @@ namespace ControlLibrary
                 case "hmApp.startApp({url: 'DialCallScreen', native: true });":
                     functinName = Properties.ButtonFunctions.DialCall;
                     break;
+                case "hmApp.startApp({url: 'BodyCompositionResultScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.BodyComposition;
+                    break;
+                case "hmApp.startApp({url: 'readinessAppScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.Readiness;
+                    break;
 
                 #endregion
 
@@ -395,6 +410,15 @@ namespace ControlLibrary
                     break;
                 case "hmApp.startApp({url: 'FindPhoneScreen', native: true });":
                     functinName = Properties.ButtonFunctions.FindPhone;
+                    break;
+                case "hmApp.startApp({url: 'ControlCenterEditScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.ControlCenter;
+                    break;
+                case "hmApp.startApp({url: 'WidgetEditScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.WidgetEdit;
+                    break;
+                case "hmApp.startApp({url: 'Settings_permissionAppsScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.AppPermission;
                     break;
                 case "hmApp.startApp({url: 'Test1Screen', native: true });":
                     functinName = Properties.ButtonFunctions.Test1;

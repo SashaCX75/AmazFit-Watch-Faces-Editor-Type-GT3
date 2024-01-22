@@ -120,6 +120,9 @@
   <data name="Dialog_Title_JS_Open" xml:space="preserve">
     <value>Add a JS file</value>
   </data>
+  <data name="DOW_StrArray" xml:space="preserve">
+    <value>Mo, Tu, We, Th, Fr, Sa, Su</value>
+  </data>
   <data name="FilterJS" xml:space="preserve">
     <value>JS files (*.js) | *.js</value>
   </data>
@@ -143,6 +146,12 @@
   </data>
   <data name="UCtrl_Text_Opt_Altitude_true" xml:space="preserve">
     <value>Symbol "-"</value>
+  </data>
+  <data name="UCtrl_Text_Opt_AmPm_false" xml:space="preserve">
+    <value>Units</value>
+  </data>
+  <data name="UCtrl_Text_Opt_AmPm_true" xml:space="preserve">
+    <value>Am / Pm</value>
   </data>
   <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
     <value>Decimal separator</value>

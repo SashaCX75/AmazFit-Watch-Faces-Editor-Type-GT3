@@ -70,6 +70,15 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Пн, Вт, Ср, Чт, Пт, Сб, Вс.
+        /// </summary>
+        internal static string DOW_StrArray {
+            get {
+                return ResourceManager.GetString("DOW_StrArray", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на JS файлы (*.js) | *.js.
         /// </summary>
         internal static string FilterJS {

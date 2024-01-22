@@ -145,6 +145,13 @@
     <value>hmApp.startApp({url: 'AppListScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
+  <data name="AppPermission" xml:space="preserve">
+    <value>Разрешения программ *</value>
+  </data>
+  <data name="AppPermission_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'Settings_permissionAppsScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
   <data name="Baro" xml:space="preserve">
     <value>Барометр</value>
   </data>
@@ -157,6 +164,13 @@
   </data>
   <data name="BatteryManager_function" xml:space="preserve">
     <value>hmApp.startApp({url: 'Settings_batteryManagerScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="BodyComposition" xml:space="preserve">
+    <value>Состав тела *</value>
+  </data>
+  <data name="BodyComposition_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'BodyCompositionResultScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
   <data name="Camera" xml:space="preserve">
@@ -185,6 +199,13 @@
   </data>
   <data name="Contacts_function" xml:space="preserve">
     <value>hmApp.startApp({url: 'PhoneContactsScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="ControlCenter" xml:space="preserve">
+    <value>Настройки шторки *</value>
+  </data>
+  <data name="ControlCenter_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'ControlCenterEditScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
   <data name="CountDown" xml:space="preserve">
@@ -278,6 +299,13 @@
     <value>hmApp.startApp({url: 'MorningGreetingNewsScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
+  <data name="NightMonitor" xml:space="preserve">
+    <value>Мониторинг здоровья во сне *</value>
+  </data>
+  <data name="NightMonitor_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'oneKeyNightMonitorScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
   <data name="OneKey" xml:space="preserve">
     <value>Измерение одним касанием</value>
   </data>
@@ -313,6 +341,13 @@
     <value>hmApp.startApp({url: 'PowerSaveHintScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
+  <data name="Readiness" xml:space="preserve">
+    <value>Готовность *</value>
+  </data>
+  <data name="Readiness_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'readinessAppScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
   <data name="RecentCall" xml:space="preserve">
     <value>Последние вызовы *</value>
   </data>
@@ -322,6 +357,13 @@
   </data>
   <data name="Respiration" xml:space="preserve">
     <value>Дыхание</value>
+  </data>
+  <data name="RespirationControl" xml:space="preserve">
+    <value>Дыхание *</value>
+  </data>
+  <data name="RespirationControl_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'RespirationControlScreen', native: true });</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="Respiration_function" xml:space="preserve">
     <value>hmApp.startApp({url: 'RespirationwidgetScreen', native: true });</value>
@@ -486,6 +528,20 @@
   </data>
   <data name="Weather_function" xml:space="preserve">
     <value>hmApp.startApp({url: 'WeatherScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="WeekActivity" xml:space="preserve">
+    <value>Активность за неделю *</value>
+  </data>
+  <data name="WeekActivity_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'activityWeekShowScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="WidgetEdit" xml:space="preserve">
+    <value>Настройки виджетов *</value>
+  </data>
+  <data name="WidgetEdit_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'WidgetEditScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
   <data name="WorldClock" xml:space="preserve">

@@ -2399,6 +2399,72 @@ namespace Watch_Face_Editor
                                 //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                             }
                         }
+
+                        if (DateWeek.DayOfWeek_Font != null && index == DateWeek.DayOfWeek_Font.position && DateWeek.DayOfWeek_Font.visible)
+                        {
+                            hmUI_widget_TEXT dow_font = DateWeek.DayOfWeek_Font;
+                            string[] dowArrey = dow_font.unit_string.Split(',');
+
+                            if (dowArrey.Length == 7)
+                            {
+                                int strIndex = WatchFacePreviewSet.Date.WeekDay - 1;
+                                string valueStr = dowArrey[strIndex].Trim();
+
+                                int x = dow_font.x;
+                                int y = dow_font.y;
+                                int h = dow_font.h;
+                                int w = dow_font.w;
+
+                                int size = dow_font.text_size;
+                                int space_h = dow_font.char_space;
+                                int space_v = dow_font.line_space;
+
+                                Color color = StringToColor(dow_font.color);
+                                //int align_h = AlignmentToInt(number_font.align_h);
+                                //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                                string align_h = dow_font.align_h;
+                                string align_v = dow_font.align_v;
+                                string text_style = dow_font.text_style;
+
+                                if (dow_font.centreHorizontally)
+                                {
+                                    x = (SelectedModel.background.w - w) / 2;
+                                    align_h = "CENTER_H";
+                                }
+                                if (dow_font.centreVertically)
+                                {
+                                    y = (SelectedModel.background.h - h) / 2;
+                                    align_v = "CENTER_V";
+                                }
+
+                                if (dow_font.font != null && dow_font.font.Length > 3 && FontsList.ContainsKey(dow_font.font))
+                                {
+                                    string font_fileName = FontsList[dow_font.font];
+                                    //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                                    if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                    {
+                                        Font drawFont = null;
+                                        using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                        {
+                                            fonts.AddFontFile(font_fileName);
+                                            drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                        }
+
+                                        Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                        align_h, align_v, text_style, BBorder);
+                                    }
+                                    else
+                                    {
+                                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    }
+
+                                }
+                                else
+                                {
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                } 
+                            }
+                        }
                     }
 
                     break;

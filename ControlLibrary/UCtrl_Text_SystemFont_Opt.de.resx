@@ -373,4 +373,19 @@ zentrieren</value>
   <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>Eigenschaften kopieren</value>
   </data>
+  <data name="checkBox_inEnd.Text" xml:space="preserve">
+    <value>Am Ende</value>
+  </data>
+  <data name="label_DOW.Text" xml:space="preserve">
+    <value>Bezeichnung der Wochentage</value>
+  </data>
+  <data name="label_unit_string.Text" xml:space="preserve">
+    <value>Trennzeichen</value>
+  </data>
+  <data name="numericUpDown_Size.ToolTip" xml:space="preserve">
+    <value>Eine Größe von über 150 wird nicht empfohlen.</value>
+  </data>
+  <data name="textBox_DOW.ToolTip" xml:space="preserve">
+    <value>Die Namen der Wochentage, beginnend mit Montag, getrennt durch ein Komma.</value>
+  </data>
 </root>

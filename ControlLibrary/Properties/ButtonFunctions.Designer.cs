@@ -133,6 +133,24 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Разрешения программ *.
+        /// </summary>
+        internal static string AppPermission {
+            get {
+                return ResourceManager.GetString("AppPermission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;Settings_permissionAppsScreen&apos;, native: true });.
+        /// </summary>
+        internal static string AppPermission_function {
+            get {
+                return ResourceManager.GetString("AppPermission_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Барометр.
         /// </summary>
         internal static string Baro {
@@ -165,6 +183,24 @@ namespace ControlLibrary.Properties {
         internal static string BatteryManager_function {
             get {
                 return ResourceManager.GetString("BatteryManager_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Состав тела *.
+        /// </summary>
+        internal static string BodyComposition {
+            get {
+                return ResourceManager.GetString("BodyComposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;BodyCompositionResultScreen&apos;, native: true });.
+        /// </summary>
+        internal static string BodyComposition_function {
+            get {
+                return ResourceManager.GetString("BodyComposition_function", resourceCulture);
             }
         }
         
@@ -237,6 +273,24 @@ namespace ControlLibrary.Properties {
         internal static string Contacts_function {
             get {
                 return ResourceManager.GetString("Contacts_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Настройки шторки *.
+        /// </summary>
+        internal static string ControlCenter {
+            get {
+                return ResourceManager.GetString("ControlCenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;ControlCenterEditScreen&apos;, native: true });.
+        /// </summary>
+        internal static string ControlCenter_function {
+            get {
+                return ResourceManager.GetString("ControlCenter_function", resourceCulture);
             }
         }
         
@@ -475,6 +529,24 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Мониторинг здоровья во сне *.
+        /// </summary>
+        internal static string NightMonitor {
+            get {
+                return ResourceManager.GetString("NightMonitor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;oneKeyNightMonitorScreen&apos;, native: true });.
+        /// </summary>
+        internal static string NightMonitor_function {
+            get {
+                return ResourceManager.GetString("NightMonitor_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Измерение одним касанием.
         /// </summary>
         internal static string OneKey {
@@ -565,6 +637,24 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Готовность *.
+        /// </summary>
+        internal static string Readiness {
+            get {
+                return ResourceManager.GetString("Readiness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;readinessAppScreen&apos;, native: true });.
+        /// </summary>
+        internal static string Readiness_function {
+            get {
+                return ResourceManager.GetString("Readiness_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Последние вызовы *.
         /// </summary>
         internal static string RecentCall {
@@ -597,6 +687,24 @@ namespace ControlLibrary.Properties {
         internal static string Respiration_function {
             get {
                 return ResourceManager.GetString("Respiration_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Дыхание *.
+        /// </summary>
+        internal static string RespirationControl {
+            get {
+                return ResourceManager.GetString("RespirationControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;RespirationControlScreen&apos;, native: true });.
+        /// </summary>
+        internal static string RespirationControl_function {
+            get {
+                return ResourceManager.GetString("RespirationControl_function", resourceCulture);
             }
         }
         
@@ -1011,6 +1119,42 @@ namespace ControlLibrary.Properties {
         internal static string Weather_function {
             get {
                 return ResourceManager.GetString("Weather_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Активность за неделю *.
+        /// </summary>
+        internal static string WeekActivity {
+            get {
+                return ResourceManager.GetString("WeekActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;activityWeekShowScreen&apos;, native: true });.
+        /// </summary>
+        internal static string WeekActivity_function {
+            get {
+                return ResourceManager.GetString("WeekActivity_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Настройки виджетов *.
+        /// </summary>
+        internal static string WidgetEdit {
+            get {
+                return ResourceManager.GetString("WidgetEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;WidgetEditScreen&apos;, native: true });.
+        /// </summary>
+        internal static string WidgetEdit_function {
+            get {
+                return ResourceManager.GetString("WidgetEdit_function", resourceCulture);
             }
         }
         

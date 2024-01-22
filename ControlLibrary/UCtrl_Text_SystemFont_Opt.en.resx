@@ -260,6 +260,9 @@
   <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 82</value>
   </data>
+  <data name="numericUpDown_Size.ToolTip" xml:space="preserve">
+    <value>It is not recommended to set a size larger than 150</value>
+  </data>
   <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 13</value>
   </data>
@@ -387,5 +390,11 @@ vertically</value>
   </data>
   <data name="checkBox_inEnd.Text" xml:space="preserve">
     <value>At the end</value>
+  </data>
+  <data name="textBox_DOW.ToolTip" xml:space="preserve">
+    <value>The names of the days of the week, starting with Monday, separated by a comma.</value>
+  </data>
+  <data name="label_DOW.Text" xml:space="preserve">
+    <value>Name of the days of the week</value>
   </data>
 </root>

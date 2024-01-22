@@ -117,11 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="numericUpDown_Width.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericUpDown_Height.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label08.Text" xml:space="preserve">
     <value>Altezza</value>
   </data>
+  <data name="label08.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label07.Text" xml:space="preserve">
     <value>Larghezza</value>
+  </data>
+  <data name="label07.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -192,6 +204,12 @@
   <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 82</value>
   </data>
+  <data name="contextMenuStrip_X.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericUpDown_X.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -260,17 +278,44 @@
   <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 82</value>
   </data>
+  <data name="contextMenuStrip_Y.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericUpDown_Y.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericUpDown_Size.ToolTip" xml:space="preserve">
+    <value>Non è consigliabile impostare una dimensione superiore a 150</value>
+  </data>
+  <data name="numericUpDown_Spacing.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 13</value>
   </data>
   <data name="label01.Text" xml:space="preserve">
     <value>Coordinate</value>
   </data>
+  <data name="label01.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label04.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label03.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label06.Text" xml:space="preserve">
     <value>Spaziatura</value>
   </data>
+  <data name="label06.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label05.Text" xml:space="preserve">
     <value>Dimensione</value>
+  </data>
+  <data name="label05.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="comboBox_alignmentHorizontal.Items" xml:space="preserve">
     <value>Sinistra</value>
@@ -281,8 +326,14 @@
   <data name="comboBox_alignmentHorizontal.Items2" xml:space="preserve">
     <value>Destra</value>
   </data>
+  <data name="comboBox_alignmentHorizontal.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label09.Text" xml:space="preserve">
     <value>Allineamento orizzontale</value>
+  </data>
+  <data name="label09.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="comboBox_alignmentVertical.Items" xml:space="preserve">
     <value>Alto</value>
@@ -293,14 +344,32 @@
   <data name="comboBox_alignmentVertical.Items2" xml:space="preserve">
     <value>Basso</value>
   </data>
+  <data name="comboBox_alignmentVertical.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Allineamento verticale</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="comboBox_Color.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Colore</value>
   </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericUpDown_LineSpace.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Interlinea</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="comboBox_textStyle.Items" xml:space="preserve">
     <value>Testo scorrevole</value>
@@ -311,8 +380,14 @@
   <data name="comboBox_textStyle.Items2" xml:space="preserve">
     <value>Singola riga</value>
   </data>
+  <data name="comboBox_textStyle.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Disposizione del testo</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 488</value>
@@ -323,11 +398,23 @@
   <data name="label5.Text" xml:space="preserve">
     <value>* La dimensione e la posizione del testo possono differire dalla realtà. Controlla il testo sul dispositivo.</value>
   </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="comboBox_fonts.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Font</value>
   </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="button_AddFont.Text" xml:space="preserve">
     <value>Aggiungere</value>
+  </data>
+  <data name="button_AddFont.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 39</value>
@@ -335,8 +422,14 @@
   <data name="label7.Text" xml:space="preserve">
     <value>** Quando si utilizza un carattere di terze parti, si consiglia di riavviare l'orologio dopo aver installato il quadrante.</value>
   </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="button_DelFont.Text" xml:space="preserve">
     <value>Eliminare</value>
+  </data>
+  <data name="button_DelFont.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBox_CentreHorizontally.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 30</value>
@@ -345,6 +438,9 @@
     <value>Centrare 
 orizzontalmente</value>
   </data>
+  <data name="checkBox_CentreHorizontally.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBox_CentreVertically.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 30</value>
   </data>
@@ -352,11 +448,17 @@ orizzontalmente</value>
     <value>Centrare 
 verticalmente</value>
   </data>
+  <data name="checkBox_CentreVertically.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBox_addZero.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 17</value>
   </data>
   <data name="checkBox_addZero.Text" xml:space="preserve">
     <value>Aggiungi zeri iniziali</value>
+  </data>
+  <data name="checkBox_addZero.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBox_unit.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 17</value>
@@ -364,11 +466,65 @@ verticalmente</value>
   <data name="checkBox_unit.Text" xml:space="preserve">
     <value>Unità</value>
   </data>
+  <data name="checkBox_unit.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>239, 65</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>
 !!! Alcuni dati potrebbero non essere visualizzati (a seconda del modello di orologio). Verificare se i dati possono essere visualizzati sul dispositivo reale.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="копироватьСвойстваToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 22</value>
+  </data>
+  <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copia proprietà</value>
+  </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 22</value>
+  </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Inserire Proprietà</value>
+  </data>
+  <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 48</value>
+  </data>
+  <data name="context_WidgetProperty.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox_unit_string.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label_unit_string.Text" xml:space="preserve">
+    <value>Separatore</value>
+  </data>
+  <data name="label_unit_string.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBox_inEnd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 17</value>
+  </data>
+  <data name="checkBox_inEnd.Text" xml:space="preserve">
+    <value>Alla fine</value>
+  </data>
+  <data name="checkBox_inEnd.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox_DOW.ToolTip" xml:space="preserve">
+    <value>I nomi dei giorni della settimana, a partire da lunedì, separati da una virgola.</value>
+  </data>
+  <data name="label_DOW.Text" xml:space="preserve">
+    <value>Nome del giorno della settimana</value>
+  </data>
+  <data name="label_DOW.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

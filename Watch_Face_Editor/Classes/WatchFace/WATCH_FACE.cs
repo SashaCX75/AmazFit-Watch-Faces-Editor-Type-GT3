@@ -1511,6 +1511,7 @@ namespace Watch_Face_Editor
 
         public hmUI_widget_IMG_POINTER Pointer { get; set; }
         public hmUI_widget_IMG_LEVEL Images { get; set; }
+        public hmUI_widget_TEXT DayOfWeek_Font { get; set; }
 
         public object Clone()
         {
@@ -1557,12 +1558,41 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_TEXT DayOfWeek_Font = null;
+            if (this.DayOfWeek_Font != null)
+            {
+                DayOfWeek_Font = new hmUI_widget_TEXT
+                {
+                    x = this.DayOfWeek_Font.x,
+                    y = this.DayOfWeek_Font.y,
+                    w = this.DayOfWeek_Font.w,
+                    h = this.DayOfWeek_Font.h,
+                    color = this.DayOfWeek_Font.color,
+                    align_h = this.DayOfWeek_Font.align_h,
+                    align_v = this.DayOfWeek_Font.align_v,
+                    text_size = this.DayOfWeek_Font.text_size,
+                    text_style = this.DayOfWeek_Font.text_style,
+                    line_space = this.DayOfWeek_Font.line_space,
+                    char_space = this.DayOfWeek_Font.char_space,
+                    font = this.DayOfWeek_Font.font,
+                    padding = this.DayOfWeek_Font.padding,
+                    unit_type = this.DayOfWeek_Font.unit_type,
+
+                    position = this.DayOfWeek_Font.position,
+                    visible = this.DayOfWeek_Font.visible,
+                    show_level = this.DayOfWeek_Font.show_level,
+                    type = this.DayOfWeek_Font.type,
+                };
+            }
+
+
             return new ElementDateWeek
             {
                 elementName = this.elementName,
                 visible = this.visible,
                 Pointer = Pointer,
                 Images = Images,
+                DayOfWeek_Font = DayOfWeek_Font,
             };
         }
     }

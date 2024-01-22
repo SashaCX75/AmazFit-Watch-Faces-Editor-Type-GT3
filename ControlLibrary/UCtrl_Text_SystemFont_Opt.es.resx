@@ -260,6 +260,9 @@
   <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 82</value>
   </data>
+  <data name="numericUpDown_Size.ToolTip" xml:space="preserve">
+    <value>No se recomienda establecer un tamaño superior a 150</value>
+  </data>
   <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 13</value>
   </data>
@@ -367,10 +370,34 @@ verticalmente</value>
   <data name="label8.Text" xml:space="preserve">
     <value>!!! Es posible que algunos datos no se muestren (según el modelo de reloj). Compruebe si los datos se pueden mostrar en el dispositivo real.</value>
   </data>
-  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
-    <value>Insertar propiedades</value>
+  <data name="копироватьСвойстваToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 22</value>
   </data>
   <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>Copiar propiedades</value>
+  </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 22</value>
+  </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>Insertar propiedades</value>
+  </data>
+  <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 48</value>
+  </data>
+  <data name="label_unit_string.Text" xml:space="preserve">
+    <value>Separador</value>
+  </data>
+  <data name="checkBox_inEnd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 17</value>
+  </data>
+  <data name="checkBox_inEnd.Text" xml:space="preserve">
+    <value>Al final</value>
+  </data>
+  <data name="textBox_DOW.ToolTip" xml:space="preserve">
+    <value>Los nombres de los días de la semana, comenzando por el lunes, separados por coma.</value>
+  </data>
+  <data name="label_DOW.Text" xml:space="preserve">
+    <value>Nombre días de la semana.</value>
   </data>
 </root>

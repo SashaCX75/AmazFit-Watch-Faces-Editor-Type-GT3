@@ -28,6 +28,7 @@ namespace ControlLibrary
         private bool DayMonthYear_mode = false;
         private bool AmPm_mode = false;
         private bool UnitStr_mode = false;
+        private bool DOW_mode = false;
 
         public UCtrl_Text_SystemFont_Opt()
         {
@@ -469,6 +470,22 @@ namespace ControlLibrary
             }
         }
 
+        /// <summary>Режим отображения названий дней недели</summary>
+        [Description("Режим отображения названий дней недели")]
+        public virtual bool DOWMode
+        {
+            get
+            {
+                return DOW_mode;
+            }
+            set
+            {
+                DOW_mode = value;
+                label_DOW.Visible = DOW_mode;
+                textBox_DOW.Visible = DOW_mode;
+            }
+        }
+
         [Browsable(true)]
         [Description("Происходит при изменении выбора элемента")]
         public event ValueChangedHandler ValueChanged;
@@ -770,14 +787,16 @@ namespace ControlLibrary
             return comboBox_Color.BackColor;
         }
 
-        public void SetText(string text)
+        public void SetUnitText(string text)
         {
-            textBox_unit_string.Text = text;
+            if (!DOWMode) textBox_unit_string.Text = text; 
+            else if (text.Length > 0) textBox_DOW.Text = text;
         }
 
-        public string GetText()
+        public string GetUnitText()
         {
-            return textBox_unit_string.Text;
+            if (!DOWMode) return textBox_unit_string.Text; 
+            else return textBox_DOW.Text;
         }
 
         #region Settings Set/Clear
@@ -795,6 +814,7 @@ namespace ControlLibrary
             //comboBox_fonts.Items.Add(Properties.Strings.SystemFont);
             comboBox_fonts.SelectedIndex = 0;
             textBox_unit_string.Text = "";
+            textBox_DOW.Text = Properties.Strings.DOW_StrArray;
 
             numericUpDown_X.Enabled = true;
             comboBox_alignmentHorizontal.Enabled = true;
@@ -812,6 +832,7 @@ namespace ControlLibrary
             AmPm = false;
             DayMonthYear = false;
             UnitStrMode = false;
+            DOWMode = false;
 
             setValue = false;
         }
@@ -978,6 +999,21 @@ namespace ControlLibrary
 
         private void textBox_unit_string_TextChanged(object sender, EventArgs e)
         {
+            if (ValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ValueChanged(this, eventArgs);
+            }
+        }
+
+        private void numericUpDown_Size_ValueChanged(object sender, EventArgs e)
+        {
+            if(numericUpDown_Size.Value > 150) 
+            {
+                string text = toolTip1.GetToolTip(numericUpDown_Size);
+                Point p = new Point(MouseСoordinates.X, MouseСoordinates.Y); 
+                toolTip1.Show(text, numericUpDown_Size, p, 1500);
+            }
             if (ValueChanged != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
