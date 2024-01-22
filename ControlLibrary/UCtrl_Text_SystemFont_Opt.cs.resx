@@ -373,4 +373,19 @@ vertikálně</value>
   <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>Kopírovat vlastnosti</value>
   </data>
+  <data name="checkBox_inEnd.Text" xml:space="preserve">
+    <value>Nakonec</value>
+  </data>
+  <data name="label_DOW.Text" xml:space="preserve">
+    <value>Názvy dnů v týdnu</value>
+  </data>
+  <data name="label_unit_string.Text" xml:space="preserve">
+    <value>Oddělovač</value>
+  </data>
+  <data name="numericUpDown_Size.ToolTip" xml:space="preserve">
+    <value>Nedoporučuje se nastavovat velikost větší než 150</value>
+  </data>
+  <data name="textBox_DOW.ToolTip" xml:space="preserve">
+    <value>Názvy dnů v týdnu, počínaje pondělím, oddělené čárkami.</value>
+  </data>
 </root>

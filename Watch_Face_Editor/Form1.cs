@@ -3005,36 +3005,6 @@ namespace Watch_Face_Editor
             //if (panel_Preview.Height < 300) scale = 0.5f;
             #region BackgroundImage
             Logger.WriteLine("BackgroundImage");
-            //Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-            //switch (ProgramSettings.Watch_Model)
-            //{
-            //    case "GTR 3 Pro":
-            //        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
-            //        break;
-            //    case "GTS 3":
-            //    case "GTS 4":
-            //        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
-            //        break;
-            //    case "GTR 4":
-            //        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
-            //        break;
-            //    case "Amazfit Band 7":
-            //        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
-            //        break;
-            //    case "GTS 4 mini":
-            //        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
-            //        break;
-            //    case "Falcon":
-            //    case "GTR mini":
-            //        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
-            //        break;
-            //}
-            /*// StartBlock :: Kartun
-            Logger.WriteLine($"* PreviewImage for {ProgramSettings.Watch_Model}");
-            Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
-            Logger.WriteLine($"Loaded configuration: {currPlatform}");
-            bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
-            // EndBlock :: Kartun*/
             Bitmap bitmap = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
             Graphics gPanel = Graphics.FromImage(bitmap);
             #endregion
@@ -5472,6 +5442,11 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_DateWeek_Elm.checkBox_Images.Checked = DateWeek.Images.visible;
                                 elementOptions.Add(DateWeek.Images.position, "Images");
+                            }
+                            if (DateWeek.DayOfWeek_Font != null)
+                            {
+                                uCtrl_DateWeek_Elm.checkBox_DOW_Font.Checked = DateWeek.DayOfWeek_Font.visible;
+                                elementOptions.Add(DateWeek.DayOfWeek_Font.position, "DOW");
                             }
 
                             uCtrl_DateWeek_Elm.SetOptionsPosition(elementOptions);
@@ -10628,6 +10603,7 @@ namespace Watch_Face_Editor
             {
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 hmUI_widget_IMG_LEVEL img_level = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -10646,6 +10622,15 @@ namespace Watch_Face_Editor
                             img_pointer = dateWeek.Pointer;
                             Read_ImgPointer_Options(img_pointer, true);
                             ShowElemenrOptions("Pointer");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "DOW":
+                        if (uCtrl_DateWeek_Elm.checkBox_DOW_Font.Checked)
+                        {
+                            text = dateWeek.DayOfWeek_Font;
+                            Read_Text_Options(text, false, false, false, false, true);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -13679,10 +13664,12 @@ namespace Watch_Face_Editor
             {
                 if (dateWeek.Pointer == null) dateWeek.Pointer = new hmUI_widget_IMG_POINTER();
                 if (dateWeek.Images == null) dateWeek.Images = new hmUI_widget_IMG_LEVEL();
+                if (dateWeek.DayOfWeek_Font == null) dateWeek.DayOfWeek_Font = new hmUI_widget_TEXT();
 
                 Dictionary<string, int> elementOptions = uCtrl_DateWeek_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Pointer")) dateWeek.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Images")) dateWeek.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("DOW")) dateWeek.DayOfWeek_Font.position = elementOptions["DOW"];
 
                 CheckBox checkBox = (CheckBox)sender;
                 string name = checkBox.Name;
@@ -13693,6 +13680,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Images":
                         dateWeek.Images.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_DOW_Font":
+                        dateWeek.DayOfWeek_Font.visible = checkBox.Checked;
                         break;
                 }
 
@@ -13897,10 +13887,12 @@ namespace Watch_Face_Editor
             {
                 if (dateWeek.Pointer == null) dateWeek.Pointer = new hmUI_widget_IMG_POINTER();
                 if (dateWeek.Images == null) dateWeek.Images = new hmUI_widget_IMG_LEVEL();
+                if (dateWeek.DayOfWeek_Font == null) dateWeek.DayOfWeek_Font = new hmUI_widget_TEXT();
 
                 //Dictionary<string, int> elementOptions = uCtrl_AnalogTime_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Pointer")) dateWeek.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Images")) dateWeek.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("DOW")) dateWeek.DayOfWeek_Font.position = elementOptions["DOW"];
 
             }
 

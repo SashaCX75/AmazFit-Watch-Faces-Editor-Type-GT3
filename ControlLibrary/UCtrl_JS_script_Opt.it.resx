@@ -230,4 +230,25 @@ si aprirà il file nel programma predefinito</value>
   <data name="button_resume_call_Add.ToolTip" xml:space="preserve">
     <value>Aggiungi file *.js</value>
   </data>
+  <data name="button_pause_call_Create.ToolTip" xml:space="preserve">
+    <value>Create file *.js</value>
+  </data>
+  <data name="button_resume_call_Create.ToolTip" xml:space="preserve">
+    <value>Create file *.js</value>
+  </data>
+  <data name="button_user_functions_Create.ToolTip" xml:space="preserve">
+    <value>Create file *.js</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Create.ToolTip" xml:space="preserve">
+    <value>Create file *.js</value>
+  </data>
+  <data name="button_user_script_Create.ToolTip" xml:space="preserve">
+    <value>Create file *.js</value>
+  </data>
+  <data name="button_user_script_end_Create.ToolTip" xml:space="preserve">
+    <value>Create file *.js</value>
+  </data>
+  <data name="button_user_script_start_Create.ToolTip" xml:space="preserve">
+    <value>Create file *.js</value>
+  </data>
 </root>

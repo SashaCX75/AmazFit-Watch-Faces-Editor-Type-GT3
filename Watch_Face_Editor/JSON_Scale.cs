@@ -269,6 +269,7 @@ namespace Watch_Face_Editor
                     ElementDateWeek elementDateWeek = (ElementDateWeek)elements;
                     Scale_IMG_POINTER(elementDateWeek.Pointer, scale);
                     Scale_IMG_LEVEL(elementDateWeek.Images, scale);
+                    Scale_TEXT(elementDateWeek.DayOfWeek_Font, scale);
                     break;
                 case "ElementStatuses":
                     ElementStatuses elementStatuses = (ElementStatuses)elements;

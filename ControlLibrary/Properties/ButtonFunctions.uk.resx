@@ -129,11 +129,17 @@
   <data name="AppList" xml:space="preserve">
     <value>Список програм</value>
   </data>
+  <data name="AppPermission" xml:space="preserve">
+    <value>Дозволи програм *</value>
+  </data>
   <data name="Baro" xml:space="preserve">
     <value>Барометр</value>
   </data>
   <data name="BatteryManager" xml:space="preserve">
     <value>Статистика використання *</value>
+  </data>
+  <data name="BodyComposition" xml:space="preserve">
+    <value>Склад тіла *</value>
   </data>
   <data name="Camera" xml:space="preserve">
     <value>Керування камерою</value>
@@ -146,6 +152,9 @@
   </data>
   <data name="Contacts" xml:space="preserve">
     <value>Контакти *</value>
+  </data>
+  <data name="ControlCenter" xml:space="preserve">
+    <value>Налаштування шторки *</value>
   </data>
   <data name="CountDown" xml:space="preserve">
     <value>Зворотний відлік</value>
@@ -186,6 +195,9 @@
   <data name="MorningNews" xml:space="preserve">
     <value>Ранкове привітання *</value>
   </data>
+  <data name="NightMonitor" xml:space="preserve">
+    <value>Моніторинг здоров'я уві сні *</value>
+  </data>
   <data name="OneKey" xml:space="preserve">
     <value>Вимірювання одним дотиком</value>
   </data>
@@ -201,11 +213,17 @@
   <data name="PowerHint" xml:space="preserve">
     <value>Енергоспоживання</value>
   </data>
+  <data name="Readiness" xml:space="preserve">
+    <value>Готовність *</value>
+  </data>
   <data name="RecentCall" xml:space="preserve">
     <value>Останні виклики *</value>
   </data>
   <data name="Respiration" xml:space="preserve">
     <value>Дихання</value>
+  </data>
+  <data name="RespirationControl" xml:space="preserve">
+    <value>Дихання *</value>
   </data>
   <data name="ReStart" xml:space="preserve">
     <value>Вимкнути</value>
@@ -275,6 +293,12 @@
   </data>
   <data name="Weather" xml:space="preserve">
     <value>Погода</value>
+  </data>
+  <data name="WeekActivity" xml:space="preserve">
+    <value>Активність за тиждень *</value>
+  </data>
+  <data name="WidgetEdit" xml:space="preserve">
+    <value>Налаштування віджетів *</value>
   </data>
   <data name="WorldClock" xml:space="preserve">
     <value>Світовий час</value>

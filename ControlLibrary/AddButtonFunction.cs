@@ -62,11 +62,14 @@ namespace ControlLibrary
             comboBox_Activity.Items.Add(Properties.ButtonFunctions.SPO2);
             comboBox_Activity.Items.Add(Properties.ButtonFunctions.OneKey);
             comboBox_Activity.Items.Add(Properties.ButtonFunctions.Respiration);
+            comboBox_Activity.Items.Add(Properties.ButtonFunctions.RespirationControl);
             //comboBox_Activity.Items.Add(Properties.ButtonFunctions.Menstrual);
             comboBox_Activity.Items.Add(Properties.ButtonFunctions.SportList);
             comboBox_Activity.Items.Add(Properties.ButtonFunctions.Sport);
             comboBox_Activity.Items.Add(Properties.ButtonFunctions.SportRecord);
             comboBox_Activity.Items.Add(Properties.ButtonFunctions.SportStatus);
+            comboBox_Activity.Items.Add(Properties.ButtonFunctions.WeekActivity);
+            comboBox_Activity.Items.Add(Properties.ButtonFunctions.NightMonitor);
 
             comboBox_App.Items.Add(Properties.Buttons.comboBox_App);
             comboBox_App.Items.Add(Properties.ButtonFunctions.Alarm);
@@ -95,6 +98,8 @@ namespace ControlLibrary
             comboBox_App.Items.Add(Properties.ButtonFunctions.Contacts);
             comboBox_App.Items.Add(Properties.ButtonFunctions.RecentCall);
             comboBox_App.Items.Add(Properties.ButtonFunctions.DialCall);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.BodyComposition);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.Readiness);
 
             comboBox_System.Items.Add(Properties.Buttons.comboBox_System);
             comboBox_System.Items.Add(Properties.ButtonFunctions.Settings);
@@ -111,6 +116,9 @@ namespace ControlLibrary
             comboBox_System.Items.Add(Properties.ButtonFunctions.System);
             comboBox_System.Items.Add(Properties.ButtonFunctions.ReStart);
             comboBox_System.Items.Add(Properties.ButtonFunctions.FindPhone);
+            comboBox_System.Items.Add(Properties.ButtonFunctions.ControlCenter);
+            comboBox_System.Items.Add(Properties.ButtonFunctions.WidgetEdit);
+            comboBox_System.Items.Add(Properties.ButtonFunctions.AppPermission);
             comboBox_System.Items.Add(Properties.ButtonFunctions.Test1);
             comboBox_System.Items.Add(Properties.ButtonFunctions.Test2);
 
@@ -209,19 +217,23 @@ namespace ControlLibrary
         private void comboBox_Activity_DropDownClosed(object sender, EventArgs e)
         {
             string script = "";
-            if (comboBox_Activity.SelectedIndex == 0) script = Properties.ButtonFunctions.Steps_function;
-            if (comboBox_Activity.SelectedIndex == 1) script = Properties.ButtonFunctions.HeartRete_function;
-            if (comboBox_Activity.SelectedIndex == 2) script = Properties.ButtonFunctions.PAI_function;
-            if (comboBox_Activity.SelectedIndex == 3) script = Properties.ButtonFunctions.Sleep_function;
-            if (comboBox_Activity.SelectedIndex == 4) script = Properties.ButtonFunctions.Stress_function;
-            if (comboBox_Activity.SelectedIndex == 5) script = Properties.ButtonFunctions.SPO2_function;
-            if (comboBox_Activity.SelectedIndex == 6) script = Properties.ButtonFunctions.OneKey_function;
-            if (comboBox_Activity.SelectedIndex == 7) script = Properties.ButtonFunctions.Respiration_function;
-            //if (comboBox_Activity.SelectedIndex == 8) script = Properties.ButtonFunctions.Menstrual_function;
-            if (comboBox_Activity.SelectedIndex == 8) script = Properties.ButtonFunctions.SportList_function;
-            if (comboBox_Activity.SelectedIndex == 9) script = Properties.ButtonFunctions.Sport_function;
-            if (comboBox_Activity.SelectedIndex == 10) script = Properties.ButtonFunctions.SportRecord_function;
-            if (comboBox_Activity.SelectedIndex == 11) script = Properties.ButtonFunctions.SportStatus_function;
+            int index = 0;
+            if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.Steps_function;
+            if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.HeartRete_function;
+            if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.PAI_function;
+            if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.Sleep_function;
+            if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.Stress_function;
+            if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.SPO2_function;
+            if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.OneKey_function;
+            if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.Respiration_function;
+            if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.RespirationControl_function;
+            //if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.Menstrual_function;
+            if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.SportList_function;
+            if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.Sport_function;
+            if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.SportRecord_function;
+            if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.SportStatus_function;
+            if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.WeekActivity_function;
+            if (comboBox_Activity.SelectedIndex == index++) script = Properties.ButtonFunctions.NightMonitor_function;
 
             comboBox_Activity.Items.Insert(0, Properties.Buttons.comboBox_Activity);
             comboBox_Activity.SelectedIndex = 0;
@@ -236,32 +248,35 @@ namespace ControlLibrary
         private void comboBox_App_DropDownClosed(object sender, EventArgs e)
         {
             string script = "";
-            if (comboBox_App.SelectedIndex == 0) script = Properties.ButtonFunctions.Alarm_function;
-            if (comboBox_App.SelectedIndex == 1) script = Properties.ButtonFunctions.Schedule_function;
-            if (comboBox_App.SelectedIndex == 2) script = Properties.ButtonFunctions.WorldClock_function;
-            if (comboBox_App.SelectedIndex == 3) script = Properties.ButtonFunctions.ScheduleList_function;
-            if (comboBox_App.SelectedIndex == 4) script = Properties.ButtonFunctions.ToDoList_function;
-            if (comboBox_App.SelectedIndex == 5) script = Properties.ButtonFunctions.PhoneMusic_function;
-            if (comboBox_App.SelectedIndex == 6) script = Properties.ButtonFunctions.LocalMusic_function;
-            if (comboBox_App.SelectedIndex == 7) script = Properties.ButtonFunctions.Weather_function;
-            if (comboBox_App.SelectedIndex == 8) script = Properties.ButtonFunctions.Sunset_function;
-            if (comboBox_App.SelectedIndex == 9) script = Properties.ButtonFunctions.Compass_function;
-            if (comboBox_App.SelectedIndex == 10) script = Properties.ButtonFunctions.Baro_function;
-            if (comboBox_App.SelectedIndex == 11) script = Properties.ButtonFunctions.ClubCards_function;
-            if (comboBox_App.SelectedIndex == 12) script = Properties.ButtonFunctions.StopWatch_function;
-            if (comboBox_App.SelectedIndex == 13) script = Properties.ButtonFunctions.CountDown_function;
-            if (comboBox_App.SelectedIndex == 14) script = Properties.ButtonFunctions.Timer_function;
-            if (comboBox_App.SelectedIndex == 15) script = Properties.ButtonFunctions.AppList_function;
-            if (comboBox_App.SelectedIndex == 16) script = Properties.ButtonFunctions.DragList_function;
-            if (comboBox_App.SelectedIndex == 17) script = Properties.ButtonFunctions.MoreList_function;
-            if (comboBox_App.SelectedIndex == 18) script = Properties.ButtonFunctions.MorningNews_function;
-            if (comboBox_App.SelectedIndex == 19) script = Properties.ButtonFunctions.VoiceMemo_function;
-            if (comboBox_App.SelectedIndex == 20) script = Properties.ButtonFunctions.Camera_function;
-            if (comboBox_App.SelectedIndex == 21) script = Properties.ButtonFunctions.Menstrual_function;
-            if (comboBox_App.SelectedIndex == 22) script = Properties.ButtonFunctions.Phone_function;
-            if (comboBox_App.SelectedIndex == 23) script = Properties.ButtonFunctions.Contacts_function;
-            if (comboBox_App.SelectedIndex == 24) script = Properties.ButtonFunctions.RecentCall_function;
-            if (comboBox_App.SelectedIndex == 25) script = Properties.ButtonFunctions.DialCall_function;
+            int index = 0;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Alarm_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Schedule_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.WorldClock_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.ScheduleList_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.ToDoList_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.PhoneMusic_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.LocalMusic_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Weather_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Sunset_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Compass_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Baro_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.ClubCards_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.StopWatch_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.CountDown_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Timer_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.AppList_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.DragList_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.MoreList_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.MorningNews_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.VoiceMemo_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Camera_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Menstrual_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Phone_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Contacts_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.RecentCall_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.DialCall_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.BodyComposition_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Readiness_function;
 
             comboBox_App.Items.Insert(0, Properties.Buttons.comboBox_App);
             comboBox_App.SelectedIndex = 0;
@@ -276,22 +291,26 @@ namespace ControlLibrary
         private void comboBox_System_DropDownClosed(object sender, EventArgs e)
         {
             string script = "";
-            if (comboBox_System.SelectedIndex == 0) script = Properties.ButtonFunctions.Settings_function;
-            if (comboBox_System.SelectedIndex == 1) script = Properties.ButtonFunctions.LowBattery_function;
-            if (comboBox_System.SelectedIndex == 2) script = Properties.ButtonFunctions.PowerHint_function;
-            if (comboBox_System.SelectedIndex == 3) script = Properties.ButtonFunctions.BatteryManager_function;
-            if (comboBox_System.SelectedIndex == 4) script = Properties.ButtonFunctions.SaveMode_function;
-            if (comboBox_System.SelectedIndex == 5) script = Properties.ButtonFunctions.Light_function;
-            if (comboBox_System.SelectedIndex == 6) script = Properties.ButtonFunctions.Display_function;
-            if (comboBox_System.SelectedIndex == 7) script = Properties.ButtonFunctions.AODStyle_function;
-            if (comboBox_System.SelectedIndex == 8) script = Properties.ButtonFunctions.AOD_function;
-            if (comboBox_System.SelectedIndex == 9) script = Properties.ButtonFunctions.DND_function;
-            if (comboBox_System.SelectedIndex == 10) script = Properties.ButtonFunctions.WatchFace_function;
-            if (comboBox_System.SelectedIndex == 11) script = Properties.ButtonFunctions.System_function;
-            if (comboBox_System.SelectedIndex == 12) script = Properties.ButtonFunctions.ReStart_function;
-            if (comboBox_System.SelectedIndex == 13) script = Properties.ButtonFunctions.FindPhone_function;
-            if (comboBox_System.SelectedIndex == 14) script = Properties.ButtonFunctions.Test1_function;
-            if (comboBox_System.SelectedIndex == 15) script = Properties.ButtonFunctions.Test2_function;
+            int index = 0;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.Settings_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.LowBattery_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.PowerHint_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.BatteryManager_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.SaveMode_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.Light_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.Display_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.AODStyle_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.AOD_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.DND_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.WatchFace_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.System_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.ReStart_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.FindPhone_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.ControlCenter_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.WidgetEdit_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.AppPermission_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.Test1_function;
+            if (comboBox_System.SelectedIndex == index++) script = Properties.ButtonFunctions.Test2_function;
 
             comboBox_System.Items.Insert(0, Properties.Buttons.comboBox_System);
             comboBox_System.SelectedIndex = 0;

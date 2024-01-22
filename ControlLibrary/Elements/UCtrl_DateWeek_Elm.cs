@@ -15,6 +15,7 @@ namespace ControlLibrary
         private bool setValue; // режим задания параметров
         bool highlight_images = false;
         bool highlight_pointer = false;
+        bool highlight_dow = false;
 
         bool visibility_elements = false; // развернут список с элементами
         bool visibilityElement = true; // элемент оторажается на предпросмотре
@@ -94,7 +95,13 @@ namespace ControlLibrary
 
             highlight_images = false;
             highlight_pointer = false;
+            highlight_dow = false;
 
+            SelectElement();
+        }
+
+        private void SelectElement()
+        {
             if (highlight_images)
             {
                 panel_Images.BackColor = SystemColors.ActiveCaption;
@@ -120,8 +127,21 @@ namespace ControlLibrary
                 button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
-        }
 
+            if (highlight_dow)
+            {
+                panel_DOW_Font.BackColor = SystemColors.ActiveCaption;
+                button_DOW_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_DOW_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_DOW_Font.BackColor = SystemColors.Control;
+                button_DOW_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_DOW_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+        }
 
         private void panel_Images_Click(object sender, EventArgs e)
         {
@@ -129,32 +149,9 @@ namespace ControlLibrary
 
             highlight_images = true;
             highlight_pointer = false;
+            highlight_dow = false;
 
-            if (highlight_images)
-            {
-                panel_Images.BackColor = SystemColors.ActiveCaption;
-                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Images.BackColor = SystemColors.Control;
-                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_pointer)
-            {
-                panel_Pointer.BackColor = SystemColors.ActiveCaption;
-                button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Pointer.BackColor = SystemColors.Control;
-                button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
+            SelectElement();
 
             if (SelectChanged != null)
             {
@@ -169,32 +166,26 @@ namespace ControlLibrary
 
             highlight_images = false;
             highlight_pointer = true;
+            highlight_dow = false;
 
-            if (highlight_images)
-            {
-                panel_Images.BackColor = SystemColors.ActiveCaption;
-                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Images.BackColor = SystemColors.Control;
-                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
+            SelectElement();
 
-            if (highlight_pointer)
+            if (SelectChanged != null)
             {
-                panel_Pointer.BackColor = SystemColors.ActiveCaption;
-                button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
             }
-            else
-            {
-                panel_Pointer.BackColor = SystemColors.Control;
-                button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
+        }
+
+        private void panel_DOW_Font_Click(object sender, EventArgs e)
+        {
+            selectedElement = "DOW";
+
+            highlight_images = false;
+            highlight_pointer = false;
+            highlight_dow = true;
+
+            SelectElement();
 
             if (SelectChanged != null)
             {
@@ -333,9 +324,9 @@ namespace ControlLibrary
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
 
-            if (tableLayoutPanel1.Height > 65)
+            if (tableLayoutPanel1.Height > 95)
             {
-                float currentDPI = tableLayoutPanel1.Height / 51f;
+                float currentDPI = tableLayoutPanel1.Height / 76f;
                 button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 
@@ -438,6 +429,9 @@ namespace ControlLibrary
                 case "Pointer":
                     checkBox_Pointer.Checked = status;
                     break;
+                case "DOW":
+                    checkBox_DOW_Font.Checked = status;
+                    break;
             }
             setValue = false;
         }
@@ -459,6 +453,9 @@ namespace ControlLibrary
                             break;
                         case "Pointer":
                             panel = panel_Pointer;
+                            break;
+                        case "DOW":
+                            panel = panel_DOW_Font;
                             break;
                     }
                 }
@@ -508,6 +505,9 @@ namespace ControlLibrary
                     case "panel_Pointer":
                         elementOptions.Add("Pointer", count - i);
                         break;
+                    case "panel_DOW_Font":
+                        elementOptions.Add("DOW", count - i);
+                        break;
                 }
             }
             return elementOptions;
@@ -518,12 +518,15 @@ namespace ControlLibrary
             setValue = true;
 
             Dictionary<int, string> elementOptions = new Dictionary<int, string>();
-            elementOptions.Add(2, "Pointer");
-            elementOptions.Add(1, "Images");
+            int index = 1;
+            elementOptions.Add(index++, "DOW");
+            elementOptions.Add(index++, "Images");
+            elementOptions.Add(index++, "Pointer");
             SetOptionsPosition(elementOptions);
 
             checkBox_Images.Checked = false;
             checkBox_Pointer.Checked = false;
+            checkBox_DOW_Font.Checked = false;
 
             visibility_elements = false;
             tableLayoutPanel1.Visible = visibility_elements;

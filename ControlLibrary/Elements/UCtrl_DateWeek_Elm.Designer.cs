@@ -31,6 +31,9 @@ namespace ControlLibrary
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_DateWeek_Elm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_DOW_Font = new System.Windows.Forms.Panel();
+            this.button_DOW_Font = new System.Windows.Forms.Button();
+            this.checkBox_DOW_Font = new System.Windows.Forms.CheckBox();
             this.panel_Images = new System.Windows.Forms.Panel();
             this.checkBox_Images = new System.Windows.Forms.CheckBox();
             this.button_Images = new System.Windows.Forms.Button();
@@ -44,6 +47,7 @@ namespace ControlLibrary
             this.pictureBox_Del = new System.Windows.Forms.PictureBox();
             this.button_ElementName = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel_DOW_Font.SuspendLayout();
             this.panel_Images.SuspendLayout();
             this.panel_Pointer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Down)).BeginInit();
@@ -57,11 +61,45 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.AllowDrop = true;
+            this.tableLayoutPanel1.Controls.Add(this.panel_DOW_Font, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel_Images, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel_Pointer, 0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragDrop);
             this.tableLayoutPanel1.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
+            // 
+            // panel_DOW_Font
+            // 
+            resources.ApplyResources(this.panel_DOW_Font, "panel_DOW_Font");
+            this.panel_DOW_Font.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_DOW_Font.Controls.Add(this.button_DOW_Font);
+            this.panel_DOW_Font.Controls.Add(this.checkBox_DOW_Font);
+            this.panel_DOW_Font.Name = "panel_DOW_Font";
+            this.panel_DOW_Font.Click += new System.EventHandler(this.panel_DOW_Font_Click);
+            this.panel_DOW_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_DOW_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_DOW_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_DOW_Font
+            // 
+            resources.ApplyResources(this.button_DOW_Font, "button_DOW_Font");
+            this.button_DOW_Font.FlatAppearance.BorderSize = 0;
+            this.button_DOW_Font.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_DOW_Font.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_DOW_Font.Image = global::ControlLibrary.Properties.Resources.text_fields;
+            this.button_DOW_Font.Name = "button_DOW_Font";
+            this.button_DOW_Font.UseVisualStyleBackColor = true;
+            this.button_DOW_Font.Click += new System.EventHandler(this.panel_DOW_Font_Click);
+            this.button_DOW_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_DOW_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_DOW_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_DOW_Font
+            // 
+            resources.ApplyResources(this.checkBox_DOW_Font, "checkBox_DOW_Font");
+            this.checkBox_DOW_Font.Name = "checkBox_DOW_Font";
+            this.checkBox_DOW_Font.UseVisualStyleBackColor = true;
+            this.checkBox_DOW_Font.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // panel_Images
             // 
@@ -194,6 +232,8 @@ namespace ControlLibrary
             this.Controls.Add(this.button_ElementName);
             this.Name = "UCtrl_DateWeek_Elm";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel_DOW_Font.ResumeLayout(false);
+            this.panel_DOW_Font.PerformLayout();
             this.panel_Images.ResumeLayout(false);
             this.panel_Images.PerformLayout();
             this.panel_Pointer.ResumeLayout(false);
@@ -223,5 +263,8 @@ namespace ControlLibrary
         private System.Windows.Forms.Button button_Pointer;
         public System.Windows.Forms.CheckBox checkBox_Pointer;
         private System.Windows.Forms.Button button_ElementName;
+        private System.Windows.Forms.Panel panel_DOW_Font;
+        private System.Windows.Forms.Button button_DOW_Font;
+        public System.Windows.Forms.CheckBox checkBox_DOW_Font;
     }
 }

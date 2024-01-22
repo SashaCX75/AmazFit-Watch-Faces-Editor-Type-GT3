@@ -129,11 +129,17 @@
   <data name="AppList" xml:space="preserve">
     <value>Seznam programů</value>
   </data>
+  <data name="AppPermission" xml:space="preserve">
+    <value>Oprávnění programu *</value>
+  </data>
   <data name="Baro" xml:space="preserve">
     <value>Barometr</value>
   </data>
   <data name="BatteryManager" xml:space="preserve">
     <value>Statistiky využití *</value>
+  </data>
+  <data name="BodyComposition" xml:space="preserve">
+    <value>Složení těla *</value>
   </data>
   <data name="Camera" xml:space="preserve">
     <value>Ovládání kamery</value>
@@ -146,6 +152,9 @@
   </data>
   <data name="Contacts" xml:space="preserve">
     <value>Kontakty *</value>
+  </data>
+  <data name="ControlCenter" xml:space="preserve">
+    <value>Nastavení ovládacího centra *</value>
   </data>
   <data name="CountDown" xml:space="preserve">
     <value>Odpočítávání</value>
@@ -186,6 +195,9 @@
   <data name="MorningNews" xml:space="preserve">
     <value>Ranní pozdrav *</value>
   </data>
+  <data name="NightMonitor" xml:space="preserve">
+    <value>Monitorování zdraví spánku*</value>
+  </data>
   <data name="OneKey" xml:space="preserve">
     <value>Měření jedním dotykem</value>
   </data>
@@ -201,11 +213,17 @@
   <data name="PowerHint" xml:space="preserve">
     <value>Spotřeba energie</value>
   </data>
+  <data name="Readiness" xml:space="preserve">
+    <value>Připravenost *</value>
+  </data>
   <data name="RecentCall" xml:space="preserve">
     <value>Poslední hovory *</value>
   </data>
   <data name="Respiration" xml:space="preserve">
     <value>Dech</value>
+  </data>
+  <data name="RespirationControl" xml:space="preserve">
+    <value>Dýchání *</value>
   </data>
   <data name="ReStart" xml:space="preserve">
     <value>Vypnout</value>
@@ -275,6 +293,12 @@
   </data>
   <data name="Weather" xml:space="preserve">
     <value>Počasí</value>
+  </data>
+  <data name="WeekActivity" xml:space="preserve">
+    <value>Týdenní aktivita *</value>
+  </data>
+  <data name="WidgetEdit" xml:space="preserve">
+    <value>Nastavení widgetu *</value>
   </data>
   <data name="WorldClock" xml:space="preserve">
     <value>Světový čas</value>

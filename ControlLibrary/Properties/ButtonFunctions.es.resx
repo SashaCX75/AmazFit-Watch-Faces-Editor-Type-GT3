@@ -129,11 +129,17 @@
   <data name="AppList" xml:space="preserve">
     <value>Lista de aplicaciones</value>
   </data>
+  <data name="AppPermission" xml:space="preserve">
+    <value>Permisos de la aplicación *</value>
+  </data>
   <data name="Baro" xml:space="preserve">
     <value>Barómetro</value>
   </data>
   <data name="BatteryManager" xml:space="preserve">
     <value>Estadísticas de uso *</value>
+  </data>
+  <data name="BodyComposition" xml:space="preserve">
+    <value>Composición corporal *</value>
   </data>
   <data name="Camera" xml:space="preserve">
     <value>Control de cámara</value>
@@ -146,6 +152,9 @@
   </data>
   <data name="Contacts" xml:space="preserve">
     <value>Contactos *</value>
+  </data>
+  <data name="ControlCenter" xml:space="preserve">
+    <value>Config del centro de control *</value>
   </data>
   <data name="CountDown" xml:space="preserve">
     <value>Cuenta regresiva</value>
@@ -186,6 +195,9 @@
   <data name="MorningNews" xml:space="preserve">
     <value>Saludo matutino *</value>
   </data>
+  <data name="NightMonitor" xml:space="preserve">
+    <value>Monitoreo de la salud del sueño *</value>
+  </data>
   <data name="OneKey" xml:space="preserve">
     <value>Medición con un solo toque</value>
   </data>
@@ -201,11 +213,17 @@
   <data name="PowerHint" xml:space="preserve">
     <value>Consumo de energía</value>
   </data>
+  <data name="Readiness" xml:space="preserve">
+    <value>Preparación</value>
+  </data>
   <data name="RecentCall" xml:space="preserve">
     <value>Últimas llamadas *</value>
   </data>
   <data name="Respiration" xml:space="preserve">
     <value>Respiración</value>
+  </data>
+  <data name="RespirationControl" xml:space="preserve">
+    <value>Respiración *</value>
   </data>
   <data name="ReStart" xml:space="preserve">
     <value>Apagado</value>
@@ -275,6 +293,12 @@
   </data>
   <data name="Weather" xml:space="preserve">
     <value>Clima</value>
+  </data>
+  <data name="WeekActivity" xml:space="preserve">
+    <value>Actividad de la semana *</value>
+  </data>
+  <data name="WidgetEdit" xml:space="preserve">
+    <value>Config de widgets *</value>
   </data>
   <data name="WorldClock" xml:space="preserve">
     <value>Hora mundial</value>
