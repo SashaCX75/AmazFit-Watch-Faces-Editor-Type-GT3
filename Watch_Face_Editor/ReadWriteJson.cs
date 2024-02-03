@@ -3270,7 +3270,7 @@ namespace Watch_Face_Editor
                         DOW_Array = DateWeek.DayOfWeek_Font.unit_string.Split(',');
                     }
 
-                    for (int index = 1; index <= 2; index++)
+                    for (int index = 1; index <= 5; index++)
                     {
                         if (index == pointerPositionWeek && optionsPointerWeek.Length > 5)
                         {
