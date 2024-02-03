@@ -818,8 +818,10 @@ namespace ControlLibrary
 
             numericUpDown_X.Enabled = true;
             comboBox_alignmentHorizontal.Enabled = true;
+            checkBox_CentreHorizontally.Checked = false;
             numericUpDown_Y.Enabled = true;
             comboBox_alignmentVertical.Enabled = true;
+            checkBox_CentreVertically.Checked = false;
 
             checkBox_unit.CheckState = CheckState.Unchecked;
             checkBox_addZero.Checked = false;
