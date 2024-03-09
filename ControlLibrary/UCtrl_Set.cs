@@ -209,6 +209,7 @@ namespace ControlLibrary
             Air.Add("Humidity", (int)numericUpDown_Humidity_Set.Value);
             Air.Add("WindForce", (int)numericUpDown_WindForce.Value);
             Air.Add("WindDirection", comboBox_WindDirection.SelectedIndex);
+            Air.Add("CompassDirection", (int)numericUpDown_Compass_Set.Value);
             Air.Add("Altitude", (int)numericUpDown_Altitude_Set.Value);
             Air.Add("AirPressure", (int)numericUpDown_AirPressure_Set.Value);
 
@@ -287,6 +288,8 @@ namespace ControlLibrary
             Air.TryGetValue("WindForce", out windForce);
             int windDirection;
             Air.TryGetValue("WindDirection", out windDirection);
+            int compassDirection;
+            Air.TryGetValue("CompassDirection", out compassDirection);
             int altitude;
             Air.TryGetValue("Altitude", out altitude);
             int airPressure;
@@ -336,6 +339,7 @@ namespace ControlLibrary
                 numericUpDown_Humidity_Set.Value = humidity;
                 numericUpDown_WindForce.Value = windForce;
                 comboBox_WindDirection.SelectedIndex = windDirection;
+                numericUpDown_Compass_Set.Value = compassDirection;
                 numericUpDown_Altitude_Set.Value = altitude;
                 numericUpDown_AirPressure_Set.Value = airPressure;
 
@@ -395,6 +399,7 @@ namespace ControlLibrary
             numericUpDown_Humidity_Set.Value = rnd.Next(30, 100);
             numericUpDown_WindForce.Value = rnd.Next(0, 13);
             comboBox_WindDirection.SelectedIndex = rnd.Next(0, 8);
+            numericUpDown_Compass_Set.Value = rnd.Next(0, 360);
             numericUpDown_Altitude_Set.Value = rnd.Next(-100, 300);
             numericUpDown_AirPressure_Set.Value = rnd.Next(800, 1200);
 

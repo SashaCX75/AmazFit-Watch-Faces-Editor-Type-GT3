@@ -437,6 +437,7 @@ namespace ControlLibrary
             visibilityElement = false;
             pictureBox_Show.Visible = false;
             pictureBox_NotShow.Visible = true;
+            SetColorActive();
 
             if (VisibleElementChanged != null)
             {
@@ -450,6 +451,7 @@ namespace ControlLibrary
             visibilityElement = true;
             pictureBox_Show.Visible = true;
             pictureBox_NotShow.Visible = false;
+            SetColorActive();
 
             if (VisibleElementChanged != null)
             {
@@ -482,6 +484,7 @@ namespace ControlLibrary
             visibilityElement = status;
             pictureBox_NotShow.Visible = !visibilityElement;
             pictureBox_Show.Visible = visibilityElement;
+            SetColorActive();
 
         }
 
@@ -626,8 +629,23 @@ namespace ControlLibrary
             visibilityElement = true;
             pictureBox_Show.Visible = visibilityElement;
             pictureBox_NotShow.Visible = !visibilityElement;
+            SetColorActive();
 
             setValue = false;
+        }
+
+        private void SetColorActive()
+        {
+            if (visibilityElement)
+            {
+                button_ElementName.ForeColor = SystemColors.ControlText;
+                button_ElementName.BackColor = SystemColors.Control;
+            }
+            else
+            {
+                button_ElementName.ForeColor = SystemColors.GrayText;
+                button_ElementName.BackColor = SystemColors.ControlLight;
+            }
         }
     }
 }

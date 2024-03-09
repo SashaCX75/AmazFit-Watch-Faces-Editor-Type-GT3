@@ -126,6 +126,12 @@
   <data name="FilterJS" xml:space="preserve">
     <value>JS файли (*.js) | *.js</value>
   </data>
+  <data name="Hint_DOW" xml:space="preserve">
+    <value>Назви днів тижня, починаючи з понеділка, розділені комою.</value>
+  </data>
+  <data name="Hint_Month" xml:space="preserve">
+    <value>Назви місяців шрифтом, розділені комою.</value>
+  </data>
   <data name="Message_Del_Caption" xml:space="preserve">
     <value>Видалити файл</value>
   </data>
@@ -151,7 +157,7 @@
     <value>Одиниці виміру</value>
   </data>
   <data name="UCtrl_Text_Opt_AmPm_true" xml:space="preserve">
-    <value>Am / Pm</value>
+    <value>Стиль Am/Pm</value>
   </data>
   <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
     <value>Десятковий роздільник</value>

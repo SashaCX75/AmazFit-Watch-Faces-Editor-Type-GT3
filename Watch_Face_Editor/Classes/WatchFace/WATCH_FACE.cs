@@ -1160,6 +1160,7 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_POINTER Pointer { get; set; }
         public hmUI_widget_IMG_NUMBER Number { get; set; }
         public hmUI_widget_TEXT Number_Font { get; set; }
+        public hmUI_widget_TEXT Month_Font { get; set; }
         public hmUI_widget_IMG_NUMBER Text_rotation { get; set; }
         public Text_Circle Text_circle { get; set; }
         public hmUI_widget_IMG_LEVEL Images { get; set; }
@@ -1248,6 +1249,34 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_TEXT Month_Font = null;
+            if (this.Month_Font != null)
+            {
+                Month_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Month_Font.x,
+                    y = this.Month_Font.y,
+                    w = this.Month_Font.w,
+                    h = this.Month_Font.h,
+                    color = this.Month_Font.color,
+                    align_h = this.Month_Font.align_h,
+                    align_v = this.Month_Font.align_v,
+                    text_size = this.Month_Font.text_size,
+                    text_style = this.Month_Font.text_style,
+                    line_space = this.Month_Font.line_space,
+                    char_space = this.Month_Font.char_space,
+                    font = this.Month_Font.font,
+                    padding = this.Month_Font.padding,
+                    unit_type = this.Month_Font.unit_type,
+                    unit_string = this.Month_Font.unit_string,
+
+                    position = this.Month_Font.position,
+                    visible = this.Month_Font.visible,
+                    show_level = this.Month_Font.show_level,
+                    type = this.Month_Font.type,
+                };
+            }
+
             hmUI_widget_IMG_NUMBER Text_rotation = null;
             if (this.Text_rotation != null)
             {
@@ -1330,6 +1359,7 @@ namespace Watch_Face_Editor
                 Pointer = Pointer,
                 Number = Number,
                 Number_Font = Number_Font,
+                Month_Font = Month_Font,
                 Text_rotation = Text_rotation,
                 Text_circle = Text_circle,
                 Images = Images,
@@ -1577,6 +1607,7 @@ namespace Watch_Face_Editor
                     font = this.DayOfWeek_Font.font,
                     padding = this.DayOfWeek_Font.padding,
                     unit_type = this.DayOfWeek_Font.unit_type,
+                    unit_string = this.DayOfWeek_Font.unit_string,
 
                     position = this.DayOfWeek_Font.position,
                     visible = this.DayOfWeek_Font.visible,
@@ -7230,6 +7261,218 @@ namespace Watch_Face_Editor
                 //Sunset_rotation = Sunset_rotation,
                 //Sunset_circle = Sunset_circle,
                 Sunset_Sunrise = Sunset_Sunrise,
+                Pointer = Pointer,
+                Icon = Icon,
+            };
+        }
+    }
+
+    public class ElementCompass : ICloneable
+    {
+        public string elementName = "ElementCompass";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_LEVEL Images { get; set; }
+        public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_TEXT Number_Font { get; set; }
+        public hmUI_widget_IMG_NUMBER Text_rotation { get; set; }
+        public Text_Circle Text_circle { get; set; }
+        public hmUI_widget_IMG_POINTER Pointer { get; set; }
+        public hmUI_widget_IMG Icon { get; set; }
+
+        public object Clone()
+        {
+
+            hmUI_widget_IMG_LEVEL Images = null;
+            if (this.Images != null)
+            {
+                Images = new hmUI_widget_IMG_LEVEL
+                {
+                    X = this.Images.X,
+                    Y = this.Images.Y,
+                    img_First = this.Images.img_First,
+                    image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
+
+                    position = this.Images.position,
+                    visible = this.Images.visible,
+                    show_level = this.Images.show_level,
+                    type = this.Images.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Number = null;
+            if (this.Number != null)
+            {
+                Number = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number.imageX,
+                    imageY = this.Number.imageY,
+                    space = this.Number.space,
+                    angle = this.Number.angle,
+                    zero = this.Number.zero,
+                    align = this.Number.align,
+                    img_First = this.Number.img_First,
+                    unit = this.Number.unit,
+                    imperial_unit = this.Number.imperial_unit,
+                    icon = this.Number.icon,
+                    iconPosX = this.Number.iconPosX,
+                    iconPosY = this.Number.iconPosY,
+                    negative_image = this.Number.negative_image,
+                    invalid_image = this.Number.invalid_image,
+                    dot_image = this.Number.dot_image,
+                    follow = this.Number.follow,
+
+                    position = this.Number.position,
+                    visible = this.Number.visible,
+                    show_level = this.Number.show_level,
+                    type = this.Number.type,
+                };
+            }
+
+            hmUI_widget_TEXT Number_Font = null;
+            if (this.Number_Font != null)
+            {
+                Number_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Font.x,
+                    y = this.Number_Font.y,
+                    w = this.Number_Font.w,
+                    h = this.Number_Font.h,
+                    color = this.Number_Font.color,
+                    align_h = this.Number_Font.align_h,
+                    align_v = this.Number_Font.align_v,
+                    text_size = this.Number_Font.text_size,
+                    text_style = this.Number_Font.text_style,
+                    line_space = this.Number_Font.line_space,
+                    char_space = this.Number_Font.char_space,
+                    font = this.Number_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
+
+                    position = this.Number_Font.position,
+                    visible = this.Number_Font.visible,
+                    show_level = this.Number_Font.show_level,
+                    type = this.Number_Font.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Text_rotation = null;
+            if (this.Text_rotation != null)
+            {
+                Text_rotation = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Text_rotation.imageX,
+                    imageY = this.Text_rotation.imageY,
+                    space = this.Text_rotation.space,
+                    angle = this.Text_rotation.angle,
+                    zero = this.Text_rotation.zero,
+                    align = this.Text_rotation.align,
+                    img_First = this.Text_rotation.img_First,
+                    unit = this.Text_rotation.unit,
+                    imperial_unit = this.Text_rotation.imperial_unit,
+                    icon = this.Text_rotation.icon,
+                    iconPosX = this.Text_rotation.iconPosX,
+                    iconPosY = this.Text_rotation.iconPosY,
+                    negative_image = this.Text_rotation.negative_image,
+                    invalid_image = this.Text_rotation.invalid_image,
+                    dot_image = this.Text_rotation.dot_image,
+                    unit_in_alignment = this.Text_rotation.unit_in_alignment,
+
+                    position = this.Text_rotation.position,
+                    visible = this.Text_rotation.visible,
+                    show_level = this.Text_rotation.show_level,
+                    type = this.Text_rotation.type,
+                };
+            }
+
+            Text_Circle Text_circle = null;
+            if (this.Text_circle != null)
+            {
+                Text_circle = new Text_Circle
+                {
+                    circle_center_X = this.Text_circle.circle_center_X,
+                    circle_center_Y = this.Text_circle.circle_center_Y,
+                    radius = this.Text_circle.radius,
+                    angle = this.Text_circle.angle,
+                    char_space_angle = this.Text_circle.char_space_angle,
+                    zero = this.Text_circle.zero,
+                    img_First = this.Text_circle.img_First,
+                    unit = this.Text_circle.unit,
+                    imperial_unit = this.Text_circle.imperial_unit,
+                    dot_image = this.Text_circle.dot_image,
+                    error_image = this.Text_circle.error_image,
+                    //error_width = this.Text_circle.error_width,
+                    vertical_alignment = this.Text_circle.vertical_alignment,
+                    horizontal_alignment = this.Text_circle.horizontal_alignment,
+                    reverse_direction = this.Text_circle.reverse_direction,
+                    unit_in_alignment = this.Text_circle.unit_in_alignment,
+
+                    position = this.Text_circle.position,
+                    visible = this.Text_circle.visible,
+                    show_level = this.Text_circle.show_level,
+                    type = this.Text_circle.type,
+                };
+            }
+
+            hmUI_widget_IMG_POINTER Pointer = null;
+            if (this.Pointer != null)
+            {
+                Pointer = new hmUI_widget_IMG_POINTER
+                {
+                    src = this.Pointer.src,
+                    center_x = this.Pointer.center_x,
+                    center_y = this.Pointer.center_y,
+                    pos_x = this.Pointer.pos_x,
+                    pos_y = this.Pointer.pos_y,
+                    start_angle = this.Pointer.start_angle,
+                    end_angle = this.Pointer.end_angle,
+                    cover_path = this.Pointer.cover_path,
+                    cover_x = this.Pointer.cover_x,
+                    cover_y = this.Pointer.cover_y,
+                    scale = this.Pointer.scale,
+                    scale_x = this.Pointer.scale_x,
+                    scale_y = this.Pointer.scale_y,
+
+                    position = this.Pointer.position,
+                    visible = this.Pointer.visible,
+                    show_level = this.Pointer.show_level,
+                    type = this.Pointer.type,
+                };
+            }
+
+            hmUI_widget_IMG Icon = null;
+            if (this.Icon != null)
+            {
+                Icon = new hmUI_widget_IMG
+                {
+                    x = this.Icon.x,
+                    y = this.Icon.y,
+                    w = this.Icon.w,
+                    h = this.Icon.h,
+                    src = this.Icon.src,
+
+                    position = this.Icon.position,
+                    visible = this.Icon.visible,
+                    show_level = this.Icon.show_level,
+                };
+            }
+
+            return new ElementCompass
+            {
+                elementName = this.elementName,
+                visible = this.visible,
+
+                Images = Images,
+                Number = Number,
+                Number_Font = Number_Font,
+                Text_rotation = Text_rotation,
+                Text_circle = Text_circle,
                 Pointer = Pointer,
                 Icon = Icon,
             };

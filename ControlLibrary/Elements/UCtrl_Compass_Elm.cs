@@ -10,13 +10,14 @@ using System.Windows.Forms;
 
 namespace ControlLibrary
 {
-    public partial class UCtrl_Altimeter_Elm : UserControl
+    public partial class UCtrl_Compass_Elm : UserControl
     {
         private bool setValue; // режим задания параметров
+        bool highlight_images = false;
         bool highlight_number = false;
         bool highlight_number_font = false;
-        bool highlight_number_target = false;
-        bool highlight_number_target_font = false;
+        bool highlight_text_rotation = false;
+        bool highlight_text_circle = false;
         bool highlight_pointer = false;
         bool highlight_icon = false;
 
@@ -27,8 +28,8 @@ namespace ControlLibrary
         public string selectedElement; // название выбраного элемента
 
         Point cursorPos = new Point(0, 0);
-
-        public UCtrl_Altimeter_Elm()
+    
+        public UCtrl_Compass_Elm()
         {
             InitializeComponent();
             setValue = false;
@@ -90,10 +91,11 @@ namespace ControlLibrary
         {
             selectedElement = "";
 
+            highlight_images = false;
             highlight_number = false;
             highlight_number_font = false;
-            highlight_number_target = false;
-            highlight_number_target_font = false;
+            highlight_text_rotation = false;
+            highlight_text_circle = false;
             highlight_pointer = false;
             highlight_icon = false;
 
@@ -102,6 +104,19 @@ namespace ControlLibrary
 
         private void SelectElement()
         {
+            if (highlight_images)
+            {
+                panel_Images.BackColor = SystemColors.ActiveCaption;
+                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Images.BackColor = SystemColors.Control;
+                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
             if (highlight_number)
             {
                 panel_Number.BackColor = SystemColors.ActiveCaption;
@@ -128,30 +143,30 @@ namespace ControlLibrary
                 button_Number_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
-            if (highlight_number_target)
+            if (highlight_text_rotation)
             {
-                panel_Number_Target.BackColor = SystemColors.ActiveCaption;
-                button_Number_Target.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Number_Target.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                panel_Text_rotation.BackColor = SystemColors.ActiveCaption;
+                button_Text_rotation.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Text_rotation.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             }
             else
             {
-                panel_Number_Target.BackColor = SystemColors.Control;
-                button_Number_Target.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Number_Target.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+                panel_Text_rotation.BackColor = SystemColors.Control;
+                button_Text_rotation.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Text_rotation.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
-            if (highlight_number_target_font)
+            if (highlight_text_circle)
             {
-                panel_Number_Target_Font.BackColor = SystemColors.ActiveCaption;
-                button_Number_Target_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Number_Target_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                panel_Text_circle.BackColor = SystemColors.ActiveCaption;
+                button_Text_circle.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Text_circle.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             }
             else
             {
-                panel_Number_Target_Font.BackColor = SystemColors.Control;
-                button_Number_Target_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Number_Target_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+                panel_Text_circle.BackColor = SystemColors.Control;
+                button_Text_circle.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Text_circle.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (highlight_pointer)
@@ -181,14 +196,36 @@ namespace ControlLibrary
             }
         }
 
+        private void panel_Images_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Images";
+
+            highlight_images = true;
+            highlight_number = false;
+            highlight_number_font = false;
+            highlight_text_rotation = false;
+            highlight_text_circle = false;
+            highlight_pointer = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
         private void panel_Number_Click(object sender, EventArgs e)
         {
             selectedElement = "Number";
 
+            highlight_images = false;
             highlight_number = true;
             highlight_number_font = false;
-            highlight_number_target = false;
-            highlight_number_target_font = false;
+            highlight_text_rotation = false;
+            highlight_text_circle = false;
             highlight_pointer = false;
             highlight_icon = false;
 
@@ -205,10 +242,11 @@ namespace ControlLibrary
         {
             selectedElement = "Number_Font";
 
+            highlight_images = false;
             highlight_number = false;
             highlight_number_font = true;
-            highlight_number_target = false;
-            highlight_number_target_font = false;
+            highlight_text_rotation = false;
+            highlight_text_circle = false;
             highlight_pointer = false;
             highlight_icon = false;
 
@@ -221,14 +259,15 @@ namespace ControlLibrary
             }
         }
 
-        private void panel_Number_Target_Click(object sender, EventArgs e)
+        private void panel_Text_rotation_Click(object sender, EventArgs e)
         {
-            selectedElement = "Number_Target";
+            selectedElement = "Text_rotation";
 
+            highlight_images = false;
             highlight_number = false;
             highlight_number_font = false;
-            highlight_number_target = true;
-            highlight_number_target_font = false;
+            highlight_text_rotation = true;
+            highlight_text_circle = false;
             highlight_pointer = false;
             highlight_icon = false;
 
@@ -241,15 +280,15 @@ namespace ControlLibrary
             }
         }
 
-        private void panel_Number_Target_Font_Click(object sender, EventArgs e)
+        private void panel_Text_circle_Click(object sender, EventArgs e)
         {
-            selectedElement = "Number_Target_Font";
+            selectedElement = "Text_circle";
 
+            highlight_images = false;
             highlight_number = false;
             highlight_number_font = false;
-            highlight_number_target = false;
-            highlight_number_target_font = true;
-            highlight_pointer = false;
+            highlight_text_rotation = false;
+            highlight_text_circle = true;
             highlight_icon = false;
 
             SelectElement();
@@ -265,10 +304,11 @@ namespace ControlLibrary
         {
             selectedElement = "Pointer";
 
+            highlight_images = false;
             highlight_number = false;
             highlight_number_font = false;
-            highlight_number_target = false;
-            highlight_number_target_font = false;
+            highlight_text_rotation = false;
+            highlight_text_circle = false;
             highlight_pointer = true;
             highlight_icon = false;
 
@@ -285,10 +325,11 @@ namespace ControlLibrary
         {
             selectedElement = "Icon";
 
+            highlight_images = false;
             highlight_number = false;
             highlight_number_font = false;
-            highlight_number_target = false;
-            highlight_number_target_font = false;
+            highlight_text_rotation = false;
+            highlight_text_circle = false;
             highlight_pointer = false;
             highlight_icon = true;
 
@@ -431,9 +472,9 @@ namespace ControlLibrary
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
 
-            if (tableLayoutPanel1.Height > 185)
+            if (tableLayoutPanel1.Height > 220)
             {
-                float currentDPI = tableLayoutPanel1.Height / 151f;
+                float currentDPI = tableLayoutPanel1.Height / 176f;
                 button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 
@@ -533,17 +574,20 @@ namespace ControlLibrary
             setValue = true;
             switch (name)
             {
+                case "Images":
+                    checkBox_Images.Checked = status;
+                    break;
                 case "Number":
                     checkBox_Number.Checked = status;
                     break;
                 case "Number_Font":
                     checkBox_Number_Font.Checked = status;
                     break;
-                case "Number_Target":
-                    checkBox_Number_Target.Checked = status;
+                case "Text_rotation":
+                    checkBox_Text_rotation.Checked = status;
                     break;
-                case "Number_Target_Font":
-                    checkBox_Number_Target_Font.Checked = status;
+                case "Text_circle":
+                    checkBox_Text_circle.Checked = status;
                     break;
                 case "Pointer":
                     checkBox_Pointer.Checked = status;
@@ -567,17 +611,20 @@ namespace ControlLibrary
                     string name = elementOptions[elementCount - key];
                     switch (name)
                     {
+                        case "Images":
+                            panel = panel_Images;
+                            break;
                         case "Number":
                             panel = panel_Number;
                             break;
                         case "Number_Font":
                             panel = panel_Number_Font;
                             break;
-                        case "Number_Target":
-                            panel = panel_Number_Target;
+                        case "Text_rotation":
+                            panel = panel_Text_rotation;
                             break;
-                        case "Number_Target_Font":
-                            panel = panel_Number_Target_Font;
+                        case "Text_circle":
+                            panel = panel_Text_circle;
                             break;
                         case "Pointer":
                             panel = panel_Pointer;
@@ -627,17 +674,20 @@ namespace ControlLibrary
                 Control panel = tableLayoutPanel1.GetControlFromPosition(0, i);
                 switch (panel.Name)
                 {
+                    case "panel_Images":
+                        elementOptions.Add("Images", count - i);
+                        break;
                     case "panel_Number":
                         elementOptions.Add("Number", count - i);
                         break;
                     case "panel_Number_Font":
                         elementOptions.Add("Number_Font", count - i);
                         break;
-                    case "panel_Number_Target":
-                        elementOptions.Add("Number_Target", count - i);
+                    case "panel_Text_rotation":
+                        elementOptions.Add("Text_rotation", count - i);
                         break;
-                    case "panel_Number_Target_Font":
-                        elementOptions.Add("Number_Target_Font", count - i);
+                    case "panel_Text_circle":
+                        elementOptions.Add("Text_circle", count - i);
                         break;
                     case "panel_Pointer":
                         elementOptions.Add("Pointer", count - i);
@@ -658,16 +708,18 @@ namespace ControlLibrary
             int index = 1;
             elementOptions.Add(index++, "Icon");
             elementOptions.Add(index++, "Pointer");
-            elementOptions.Add(index++, "Number_Target_Font");
-            elementOptions.Add(index++, "Number_Target");
+            elementOptions.Add(index++, "Text_circle");
+            elementOptions.Add(index++, "Text_rotation");
             elementOptions.Add(index++, "Number_Font");
             elementOptions.Add(index++, "Number");
+            elementOptions.Add(index++, "Images");
             SetOptionsPosition(elementOptions);
 
+            checkBox_Images.Checked = false;
             checkBox_Number.Checked = false;
             checkBox_Number_Font.Checked = false;
-            checkBox_Number_Target.Checked = false;
-            checkBox_Number_Target_Font.Checked = false;
+            checkBox_Text_rotation.Checked = false;
+            checkBox_Text_circle.Checked = false;
             checkBox_Pointer.Checked = false;
             checkBox_Icon.Checked = false;
 

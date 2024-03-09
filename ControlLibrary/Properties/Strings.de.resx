@@ -150,9 +150,6 @@
   <data name="UCtrl_Text_Opt_AmPm_false" xml:space="preserve">
     <value>Einheiten</value>
   </data>
-  <data name="UCtrl_Text_Opt_AmPm_true" xml:space="preserve">
-    <value>Am / Pm</value>
-  </data>
   <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
     <value>Dezimaltrennzeichen</value>
   </data>

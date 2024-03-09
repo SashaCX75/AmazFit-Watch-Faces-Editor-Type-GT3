@@ -121,9 +121,6 @@
     <value>Висота</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 82</value>
-  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -189,7 +186,7 @@
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Вставити</value>
   </data>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 82</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -256,6 +253,9 @@
   </data>
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Вставити</value>
+  </data>
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 82</value>
   </data>
   <data name="numericUpDown_Size.ToolTip" xml:space="preserve">
     <value>Не рекомендується встановлювати розмір більше 150</value>
@@ -352,9 +352,6 @@
   <data name="label8.Text" xml:space="preserve">
     <value>!!! Деякі дані можуть не відображатися (залежить від моделі годинника). Перевіряйте можливість відображення даних на реальному пристрої.</value>
   </data>
-  <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 48</value>
-  </data>
   <data name="копироватьСвойстваToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 22</value>
   </data>
@@ -367,6 +364,9 @@
   <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>Вставити властивості</value>
   </data>
+  <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 48</value>
+  </data>
   <data name="label_unit_string.Text" xml:space="preserve">
     <value>Роздільник</value>
   </data>
@@ -377,9 +377,12 @@
     <value>Наприкінці</value>
   </data>
   <data name="textBox_DOW.ToolTip" xml:space="preserve">
-    <value>Названия дней недели, начиная с понедельника, разделенные запятой.</value>
+    <value>Назви днів тижня, починаючи з понеділка, розділені комою.</value>
   </data>
   <data name="label_DOW.Text" xml:space="preserve">
     <value>Назва днів тижня</value>
+  </data>
+  <data name="label_Month.Text" xml:space="preserve">
+    <value>Назви місяців шрифтом</value>
   </data>
 </root>

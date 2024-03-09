@@ -150,9 +150,6 @@
   <data name="UCtrl_Text_Opt_AmPm_false" xml:space="preserve">
     <value>Unités</value>
   </data>
-  <data name="UCtrl_Text_Opt_AmPm_true" xml:space="preserve">
-    <value>AM / PM</value>
-  </data>
   <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
     <value>Séparateur décimal</value>
   </data>

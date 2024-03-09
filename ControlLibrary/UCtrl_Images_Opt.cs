@@ -17,6 +17,7 @@ namespace ControlLibrary
         private int imagesCount = 10;
         private bool imagesCountEnable = true;
         private bool shortcutEnable;
+        private bool ImageError_mode;
 
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _ElementWithImages;
@@ -68,6 +69,22 @@ namespace ControlLibrary
             }
         }
 
+        /// <summary>Отображение выбора изображения ошибки</summary>
+        [Description("Отображение выбора изображения ошибки")]
+        public virtual bool ErrorMode
+        {
+            get
+            {
+                return ImageError_mode;
+            }
+            set
+            {
+                ImageError_mode = value;
+                comboBox_error.Visible = ImageError_mode;
+                label_error.Visible = ImageError_mode;
+            }
+        }
+
         public UCtrl_Images_Opt()
         {
             InitializeComponent();
@@ -93,6 +110,27 @@ namespace ControlLibrary
         public int GetSelectedIndexImage()
         {
             return comboBox_image.SelectedIndex;
+        }
+
+
+        /// <summary>Задает название выбранной картинки при ошибке</summary>
+        public void SetImageError(string value)
+        {
+            comboBox_error.Text = value;
+            if (comboBox_error.SelectedIndex < 0) comboBox_error.Text = "";
+        }
+
+        /// <summary>Возвращает название выбранной картинки при ошибке</summary>
+        public string GetImageError()
+        {
+            if (comboBox_error.SelectedIndex < 0) return "";
+            return comboBox_error.Text;
+        }
+
+        /// <summary>Возвращает SelectedIndex выпадающего списка озображения ошибки</summary>
+        public int GetSelectedIndexImageError()
+        {
+            return comboBox_error.SelectedIndex;
         }
 
         [Browsable(true)]
@@ -191,8 +229,10 @@ namespace ControlLibrary
         public void ComboBoxAddItems(List<string> ListImages, List<string> _ListImagesFullName)
         {
             comboBox_image.Items.Clear();
+            comboBox_error.Items.Clear();
 
             comboBox_image.Items.AddRange(ListImages.ToArray());
+            comboBox_error.Items.AddRange(ListImages.ToArray());
 
             ListImagesFullName = _ListImagesFullName;
 
@@ -200,14 +240,17 @@ namespace ControlLibrary
             if (count == 0)
             {
                 comboBox_image.DropDownHeight = 1;
+                comboBox_error.DropDownHeight = 1;
             }
             else if (count < 5)
             {
                 comboBox_image.DropDownHeight = 35 * count + 1;
+                comboBox_error.DropDownHeight = 35 * count + 1;
             }
             else
             {
                 comboBox_image.DropDownHeight = 106;
+                comboBox_error.DropDownHeight = 106;
             }
         }
 
@@ -217,11 +260,14 @@ namespace ControlLibrary
             setValue = true;
 
             comboBox_image.Text = null;
+            comboBox_error.Text = null;
 
             numericUpDown_imageX.Value = 0;
             numericUpDown_imageY.Value = 0;
 
             numericUpDown_pictures_count.Value = imagesCount;
+
+            ErrorMode = false;
 
             setValue = false;
         }

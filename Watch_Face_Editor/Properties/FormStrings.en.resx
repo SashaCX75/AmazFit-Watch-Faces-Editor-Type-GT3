@@ -372,6 +372,9 @@
   <data name="Message_Wrong_Preview_Exists" xml:space="preserve">
     <value>Failed to create preview image. Perhaps such an image is already available.</value>
   </data>
+  <data name="Month_StrArray" xml:space="preserve">
+    <value>Jan,Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec</value>
+  </data>
   <data name="Tip_Background" xml:space="preserve">
     <value>Background </value>
   </data>

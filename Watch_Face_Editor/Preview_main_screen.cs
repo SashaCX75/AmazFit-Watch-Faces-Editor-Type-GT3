@@ -2048,6 +2048,72 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        if (DateMonth.Month_Font != null && index == DateMonth.Month_Font.position && DateMonth.Month_Font.visible)
+                        {
+                            hmUI_widget_TEXT month_font = DateMonth.Month_Font;
+                            string[] dowArrey = month_font.unit_string.Split(',');
+
+                            if (dowArrey.Length == 12)
+                            {
+                                int strIndex = WatchFacePreviewSet.Date.Month - 1;
+                                string valueStr = dowArrey[strIndex].Trim();
+
+                                int x = month_font.x;
+                                int y = month_font.y;
+                                int h = month_font.h;
+                                int w = month_font.w;
+
+                                int size = month_font.text_size;
+                                int space_h = month_font.char_space;
+                                int space_v = month_font.line_space;
+
+                                Color color = StringToColor(month_font.color);
+                                //int align_h = AlignmentToInt(number_font.align_h);
+                                //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                                string align_h = month_font.align_h;
+                                string align_v = month_font.align_v;
+                                string text_style = month_font.text_style;
+
+                                if (month_font.centreHorizontally)
+                                {
+                                    x = (SelectedModel.background.w - w) / 2;
+                                    align_h = "CENTER_H";
+                                }
+                                if (month_font.centreVertically)
+                                {
+                                    y = (SelectedModel.background.h - h) / 2;
+                                    align_v = "CENTER_V";
+                                }
+
+                                if (month_font.font != null && month_font.font.Length > 3 && FontsList.ContainsKey(month_font.font))
+                                {
+                                    string font_fileName = FontsList[month_font.font];
+                                    //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                                    if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                    {
+                                        Font drawFont = null;
+                                        using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                        {
+                                            fonts.AddFontFile(font_fileName);
+                                            drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                        }
+
+                                        Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                        align_h, align_v, text_style, BBorder);
+                                    }
+                                    else
+                                    {
+                                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    }
+
+                                }
+                                else
+                                {
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                }
+                            }
+                        }
+
                         if (DateMonth.Text_rotation != null && DateMonth.Text_rotation.img_First != null && DateMonth.Text_rotation.img_First.Length > 0 &&
                             index == DateMonth.Text_rotation.position && DateMonth.Text_rotation.visible)
                         {
@@ -3461,6 +3527,41 @@ namespace Watch_Face_Editor
                     break;
                 #endregion
 
+                #region ElementCompass
+                case "ElementCompass":
+                    ElementCompass activityElementCompass = (ElementCompass)element;
+                    if (!activityElementCompass.visible) return;
+
+                    img_level = activityElementCompass.Images;
+                    img_number = activityElementCompass.Number;
+                    font_number = activityElementCompass.Number_Font;
+                    text_rotation = activityElementCompass.Text_rotation;
+                    text_circle = activityElementCompass.Text_circle;
+                    img_pointer = activityElementCompass.Pointer;
+                    icon = activityElementCompass.Icon;
+
+                    elementValue = WatchFacePreviewSet.Weather.CompassDirection;
+                    value_lenght = 3;
+                    goal = 360;
+                    progress = (float)elementValue / 360;
+
+                    if (img_level != null && img_level.image_length > 0)
+                    {
+                        imgCount = img_level.image_length;
+                        int temp_value = 45/2 + elementValue;
+                        valueImgIndex = (int)(temp_value / 45);
+                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                    }
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, font_number, text_rotation, text_circle, img_number_target, font_number_target,
+                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementCompass");
+
+
+                    break;
+                #endregion
+
                 #region ElementAnimation
                 case "ElementAnimation":
                     ElementAnimation elementAnimation = (ElementAnimation)element;
@@ -4168,6 +4269,9 @@ namespace Watch_Face_Editor
                 case "ElementAltimeter":
                     unit = "hpa";
                     break;
+                case "ElementCompass":
+                    unit = "°";
+                    break;
             }
 
             for (int index = 1; index <= 25; index++)
@@ -4287,6 +4391,36 @@ namespace Watch_Face_Editor
                     if (number_font.unit_type > 0)
                     {
                         if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                        if (number_font.unit_type == 2 && elementName == "ElementCompass")
+                        {
+                            switch (valueImgIndex)
+                            {
+                                case 0:
+                                    unitStr += " N";
+                                    break;
+                                case 1:
+                                    unitStr += " NE";
+                                    break;
+                                case 2:
+                                    unitStr += " E";
+                                    break;
+                                case 3:
+                                    unitStr += " SE";
+                                    break;
+                                case 4:
+                                    unitStr += " W";
+                                    break;
+                                case 5:
+                                    unitStr += " SW";
+                                    break;
+                                case 6:
+                                    unitStr += " W";
+                                    break;
+                                case 7:
+                                    unitStr += " NW";
+                                    break;
+                            }
+                        }
                         valueStr += unitStr; 
                     }
 
@@ -7416,14 +7550,14 @@ namespace Watch_Face_Editor
 
             }
             DateLenghtReal -= spacing;
-            if (spacing != 0)
-            {
-                if (separator_index > -1)
-                {
-                    if(elementName != "ElementDigitalTime" && elementName != "ElementDateDay" && 
-                        elementName != "ElementDateMonth" && elementName != "ElementDateYear") DateLenghtReal += spacing;
-                }
-            }
+            //if (spacing != 0)
+            //{
+            //    if (separator_index > -1)
+            //    {
+            //        if (elementName != "ElementDigitalTime" && elementName != "ElementDateDay" &&
+            //            elementName != "ElementDateMonth" && elementName != "ElementDateYear") DateLenghtReal += spacing;
+            //    }
+            //}
 
 
             int PointX = x;

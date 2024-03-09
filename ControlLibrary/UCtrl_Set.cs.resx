@@ -147,10 +147,6 @@
   <data name="label22.Text" xml:space="preserve">
     <value>Maximální teplota</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="numericUpDown_WeatherSet_Temp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 50</value>
-  </data>
   <data name="comboBox_WeatherSet_Icon.Items" xml:space="preserve">
     <value>Zataženo</value>
   </data>
@@ -238,12 +234,6 @@
   <data name="comboBox_WeatherSet_Icon.Items28" xml:space="preserve">
     <value>Jasná noc</value>
   </data>
-  <data name="comboBox_WeatherSet_Icon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 22</value>
-  </data>
-  <data name="checkBox_WeatherSet_Temp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 17</value>
-  </data>
   <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
     <value>Aktuální teplota</value>
   </data>
@@ -268,9 +258,6 @@
   <data name="label15.Text" xml:space="preserve">
     <value>Uv index</value>
   </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 13</value>
-  </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Ikona počasí</value>
   </data>
@@ -280,20 +267,11 @@
   <data name="groupBox_Activity.Text" xml:space="preserve">
     <value>Aktivity</value>
   </data>
-  <data name="checkBox_DND_Set.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 34</value>
-  </data>
   <data name="checkBox_DND_Set.Text" xml:space="preserve">
     <value>Nerušit - DND</value>
   </data>
-  <data name="checkBox_Lock_Set.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 18</value>
-  </data>
   <data name="checkBox_Lock_Set.Text" xml:space="preserve">
     <value>Zámek</value>
-  </data>
-  <data name="checkBox_Alarm_Set.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 18</value>
   </data>
   <data name="checkBox_Alarm_Set.Text" xml:space="preserve">
     <value>Alarm</value>
@@ -315,12 +293,6 @@
   </data>
   <data name="label06.Text" xml:space="preserve">
     <value>Vzdálenost</value>
-  </data>
-  <data name="label05.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 50</value>
-  </data>
-  <data name="label05.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 28</value>
   </data>
   <data name="label05.Text" xml:space="preserve">
     <value>Tepová frekvence</value>

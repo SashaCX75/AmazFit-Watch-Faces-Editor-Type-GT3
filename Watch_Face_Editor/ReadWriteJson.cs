@@ -13,6 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Drawing;
 using System.Windows.Forms.VisualStyles;
 using static System.Net.Mime.MediaTypeNames;
+using static Microsoft.WindowsAPICodePack.Shell.PropertySystem.SystemProperties.System;
 
 namespace Watch_Face_Editor
 {
@@ -29,6 +30,8 @@ namespace Watch_Face_Editor
             string time_update = "";
             string text_update = "";
             string fonts_cache = "";
+            string compass_update = "";
+            string compass_error = "";
             if (Watch_Face == null) return;
 
             // элементы основного экрана
@@ -279,7 +282,7 @@ namespace Watch_Face_Editor
                     foreach(Object element in Watch_Face.ScreenNormal.Elements)
                     {
                         AddElementToJS(element, "ONLY_NORMAL", ref variables, ref items, ref scale_update_function,
-                            ref resume_call, ref pause_call, ref time_update, ref text_update, ref fonts_cache);
+                            ref resume_call, ref pause_call, ref time_update, ref text_update, ref fonts_cache, ref compass_update, ref compass_error);
                     }
                 }
             }
@@ -315,7 +318,7 @@ namespace Watch_Face_Editor
                     foreach (Object element in Watch_Face.ScreenAOD.Elements)
                     {
                         AddElementToJS(element, "ONLY_AOD", ref variables, ref items, ref scale_update_function,
-                            ref resume_call, ref pause_call, ref time_update, ref text_update, ref fonts_cache);
+                            ref resume_call, ref pause_call, ref time_update, ref text_update, ref fonts_cache, ref compass_update, ref compass_error);
                     }
                 }
             }
@@ -832,7 +835,7 @@ namespace Watch_Face_Editor
             {
                 items += TabInString(6) + "console.log('Watch_Face.Shortcuts');" + Environment.NewLine;
                 AddElementToJS(Watch_Face.Shortcuts, "ONLY_NORMAL", ref variables, ref items, ref scale_update_function,
-                    ref resume_call, ref pause_call, ref time_update, ref text_update, ref fonts_cache);
+                    ref resume_call, ref pause_call, ref time_update, ref text_update, ref fonts_cache, ref compass_update, ref compass_error);
             }
 
             // кнопки
@@ -840,8 +843,7 @@ namespace Watch_Face_Editor
             {
                 items += Environment.NewLine + TabInString(6) + "console.log('Watch_Face.Buttons');";
                 AddElementToJS(Watch_Face.Buttons, "ONLY_NORMAL", ref variables, ref items, ref scale_update_function,
-                    ref resume_call, ref pause_call, ref time_update,
-                    ref text_update, ref fonts_cache);
+                    ref resume_call, ref pause_call, ref time_update, ref text_update, ref fonts_cache, ref compass_update, ref compass_error);
             }
 
             if (items.IndexOf("timeSensor =") >= 0) variables += TabInString(4) + "let timeSensor = ''" + Environment.NewLine;
@@ -1052,6 +1054,44 @@ namespace Watch_Face_Editor
                 items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine;
             }
 
+            if (compass_update.Length > 5)
+            {
+                if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                    items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+
+                items += Environment.NewLine + TabInString(6) + "console.log('compass_update()');";
+                items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.WATCHFACE){";
+
+                items += Environment.NewLine + TabInString(7) + "compass = hmSensor.createSensor(hmSensor.id.COMPASS);";
+                items += Environment.NewLine + TabInString(7) + "compass.start();" + Environment.NewLine;
+                items += Environment.NewLine + TabInString(7) + "if (compass.direction_angle && compass.direction  && compass.direction_angle != 'INVALID') { // initial data";
+                items += Environment.NewLine + compass_update;
+                items += Environment.NewLine + TabInString(7) + "} else { // error data";
+                items += Environment.NewLine + compass_error;
+                items += Environment.NewLine + TabInString(7) + "}" + Environment.NewLine;
+
+                compass_update = compass_update.Replace("compass.", "compass_res.");
+                compass_error = compass_error.Replace("compass.", "compass_res.");
+                //string[] tempStrArr = compass_update.Split(';');
+                //for (int i = 0; i < tempStrArr.Length; i++)
+                //{
+                //    tempStrArr[i] = TabInString(1) + tempStrArr[i];
+                //}
+                //compass_update = tempStrArr.
+                compass_update = compass_update.Replace(TabInString(7), TabInString(8));
+                compass_error = compass_error.Replace(TabInString(7), TabInString(8));
+
+                items += Environment.NewLine + TabInString(7) + "compass.addEventListener(hmSensor.event.CHANGE, function (compass_res) { // change values when changing direction" + Environment.NewLine;
+                items += Environment.NewLine + TabInString(8) + "if (compass_res.calibration_status) {";
+                items += Environment.NewLine + compass_update;
+                items += Environment.NewLine + TabInString(8) + "} else { // error data";
+                items += Environment.NewLine + compass_error;
+                items += Environment.NewLine + TabInString(8) + "}" + Environment.NewLine;
+                items += Environment.NewLine + TabInString(7) + "}); // Listener end" + Environment.NewLine;
+
+                items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine;
+            }
+
             if (scale_update_function.Length > 5 || resume_call.Length > 0 || pause_call.Length > 0 || time_update.Length > 5 || text_update.Length > 5)
             {
                 if (scale_update_function.Length > 5)
@@ -1104,7 +1144,7 @@ namespace Watch_Face_Editor
         /// <param name="pause_call">Код для обновления при выключении циферблата</param>
         /// <param name="time_update">Код для обновления времени</param>
         private void AddElementToJS(Object element, string show_level, ref string variables, ref string items, ref string scale_update_function, 
-            ref string resume_call, ref string pause_call, ref string time_update, ref string text_update, ref string fonts_cache)
+            ref string resume_call, ref string pause_call, ref string time_update, ref string text_update, ref string fonts_cache, ref string compass_update, ref string compass_error)
         {
             string optionNameStart = "normal_";
             if (show_level == "ONLY_AOD") optionNameStart = "idle_";
@@ -2758,7 +2798,7 @@ namespace Watch_Face_Editor
                                 time_update += Environment.NewLine + TabInString(8) + MonthStr + " = " + MonthStr + ".padStart(2, '0');";
                             }
                             time_update += Environment.NewLine + TabInString(8) + "let " + DayMonthStr + " = '--';";
-                            string delimeter = ":";
+                            string delimeter = "/";
                             if (DateDay.Day_Month_Font.unit_string.Length > 0) delimeter = DateDay.Day_Month_Font.unit_string;
 
                             time_update += Environment.NewLine + TabInString(8) + "const dateFormat = hmSetting.getDateFormat();";
@@ -2866,7 +2906,7 @@ namespace Watch_Face_Editor
                                 time_update += Environment.NewLine + TabInString(8) + MonthStr + " = " + MonthStr + ".padStart(2, '0');";
                             }
                             time_update += Environment.NewLine + TabInString(8) + "let " + DayMonthYearStr + " = '--';";
-                            string delimeter = ":";
+                            string delimeter = "/";
                             if (DateDay.Day_Month_Year_Font.unit_string.Length > 0) delimeter = DateDay.Day_Month_Year_Font.unit_string;
 
                             time_update += Environment.NewLine + TabInString(8) + "const dateFormat = hmSetting.getDateFormat();";
@@ -2915,10 +2955,13 @@ namespace Watch_Face_Editor
                     int pointerPositionMonth = 99;
                     int numberPositionMonth = 99;
                     int imagesPositionMonth = 99;
+                    int monthFontPosition = 99;
                     string optionsPointerMonth = "";
                     string optionsNumberMonth = "";
                     string optionsNumberMonth_separator = "";
                     string optionsImagesMonth = "";
+                    string monthFontOptions = "";
+                    string[] Month_Array = null;
 
                     if (DateMonth.Pointer != null && DateMonth.Pointer.visible)
                     {
@@ -2940,6 +2983,14 @@ namespace Watch_Face_Editor
                         numberFontPosition = DateMonth.Number_Font.position;
                         hmUI_widget_TEXT text = DateMonth.Number_Font;
                         numberFontOptions = TEXT_Options(text, show_level);
+                    }
+
+                    if (DateMonth.Month_Font != null && DateMonth.Month_Font.visible)
+                    {
+                        monthFontPosition = DateMonth.Month_Font.position;
+                        hmUI_widget_TEXT text = DateMonth.Month_Font;
+                        monthFontOptions = TEXT_Options(text, show_level);
+                        Month_Array = DateMonth.Month_Font.unit_string.Split(',');
                     }
 
                     if (DateMonth.Text_rotation != null && DateMonth.Text_rotation.visible)
@@ -3047,6 +3098,56 @@ namespace Watch_Face_Editor
 
                             }
                             time_update += Environment.NewLine + TabInString(8) + variableName + ".setProperty(hmUI.prop.TEXT, " + monthStr + " );";
+
+                            time_update += Environment.NewLine + TabInString(7) + "};" + Environment.NewLine;
+
+                        }
+
+                        // Month_Font
+                        if (index == monthFontPosition && monthFontOptions.Length > 5 && Month_Array.Length == 12)
+                        {
+                            if (SelectedModel.versionOS >= 2 && DateMonth.Month_Font.font != null && DateMonth.Month_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + DateMonth.Month_Font.font + "; FontSize: " + DateMonth.Month_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    string fontCacheOptions = TEXT_Cache_Options(DateMonth.Month_Font, true);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            string variableName = optionNameStart + "month_name_font";
+                            variables += TabInString(4) + "let " + variableName + " = ''" + Environment.NewLine;
+                            variables += TabInString(4) + "let " + optionNameStart + "Month_Array = [";
+                            foreach (string str in Month_Array)
+                            {
+                                variables += "'" + str.Trim() + "', ";
+                            }
+                            variables += "];" + Environment.NewLine;
+
+
+                            if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
+                            if (items.IndexOf("timeSensor.addEventListener(timeSensor.event.DAYCHANGE, function() {") < 0)
+                            {
+                                items += Environment.NewLine + TabInString(6) + "timeSensor.addEventListener(timeSensor.event.DAYCHANGE, function() {";
+                                items += Environment.NewLine + TabInString(7) + "time_update(true);";
+                                items += Environment.NewLine + TabInString(6) + "});" + Environment.NewLine;
+                            }
+
+                            items += Environment.NewLine + TabInString(6) + variableName + " = hmUI.createWidget(hmUI.widget.TEXT, {" +
+                                    monthFontOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            time_update += Environment.NewLine + TabInString(7) + "console.log('month font');";
+                            time_update += Environment.NewLine + TabInString(7) + "if (updateHour) {";
+                            string Month_Str = optionNameStart + "Month_Str";
+                            time_update += Environment.NewLine + TabInString(8) + "let " + Month_Str + " = " + optionNameStart + "Month_Array[timeSensor.month-1];";
+                            time_update += Environment.NewLine + TabInString(8) + variableName + ".setProperty(hmUI.prop.TEXT, " + Month_Str + " );";
 
                             time_update += Environment.NewLine + TabInString(7) + "};" + Environment.NewLine;
 
@@ -9323,6 +9424,327 @@ namespace Watch_Face_Editor
                     break;
                 #endregion
 
+                #region ElementCompass
+                case "ElementCompass":
+                    ElementCompass Compass = (ElementCompass)element;
+
+                    if (!Compass.visible) return;
+                    string readOptionsCustomPointer = "";
+                    string coverPointer = "";
+                    if (Compass.Images != null && Compass.Images.visible)
+                    {
+                        imagesPosition = Compass.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Compass.Images;
+                        //imagesOptions = IMG_IMAGES_Options(img_images, "Compass", show_level);
+                        hmUI_widget_IMG img = new hmUI_widget_IMG();
+                        img.x = img_images.X; 
+                        img.y = img_images.Y;
+                        img.src = img_images.img_First;
+                        imagesOptions = IMG_Options(img, show_level);
+                    }
+
+                    if (Compass.Number != null && Compass.Number.visible)
+                    {
+                        numberPosition = Compass.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Compass.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "COMPASS", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Compass.Number_Font != null && Compass.Number_Font.visible)
+                    {
+                        numberFontPosition = Compass.Number_Font.position;
+                        hmUI_widget_TEXT text = Compass.Number_Font;
+                        //numberFontOptions = TEXT_FONT_Options(text, "COMPASS", show_level);
+                        numberFontOptions = TEXT_Options(text, show_level);
+                    }
+                    if (Compass.Text_rotation != null && Compass.Text_rotation.visible)
+                    {
+                        textRotatePosition = Compass.Text_rotation.position;
+                        text_rotate = Compass.Text_rotation;
+
+                        textRotateOptions = Text_Rotate_Options(text_rotate, "COMPASS", show_level, false);
+                    }
+                    if (Compass.Text_circle != null && Compass.Text_circle.visible)
+                    {
+                        textCirclePosition = Compass.Text_circle.position;
+                        text_circle = Compass.Text_circle;
+
+                        textCircleOptions = Text_Circle_Options(text_circle, "COMPASS", show_level, false);
+                    }
+
+                    if (Compass.Pointer != null && Compass.Pointer.visible)
+                    {
+                        pointerPosition = Compass.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Compass.Pointer;
+                        //pointerOptions = IMG_POINTER_Options(img_pointer, "Compass", show_level);
+                        pointerOptions = TIME_PRO_POINTER_Options(img_pointer, show_level);
+                        readOptionsCustomPointer = CUSTOM_POINTER_OptionsRead(img_pointer, optionNameStart, "COMPASS", show_level);
+
+                        coverPointer = IMG_Pointer_Cover_Options(img_pointer, show_level);
+                    }
+
+                    if (Compass.Icon != null && Compass.Icon.visible)
+                    {
+                        iconPosition = Compass.Icon.position;
+                        hmUI_widget_IMG img_icon = Compass.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 20; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart + "compass_direction_img_level = ''" + Environment.NewLine;
+                            string arr_name = optionNameStart + "compass_direction_arr";
+                            string compass_direction_arr = "";
+                            int imageIndex = ListImages.IndexOf(Compass.Images.img_First);
+                            for (int i = imageIndex; i < imageIndex + 8; i++)
+                            {
+                                string src = "\"" + ListImages[i] + ".png\"";
+                                if (compass_direction_arr.Length > 1) compass_direction_arr += ", ";
+                                compass_direction_arr += src;
+                            }
+                            variables += TabInString(4) + "let " + arr_name + " = [" + compass_direction_arr + "];" + Environment.NewLine;
+
+                            if (Compass.Images.img_error.Length > 1)
+                                imagesOptions += TabInString(7) + "// img_error: '" + Compass.Images.img_error + ".png'," + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "compass_direction_img_level = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            compass_update += TabInString(8) + "// Compass Images" + Environment.NewLine;
+                            if (compass_update.IndexOf("compass_direction_angle = parseInt") < 0)
+                                compass_update += TabInString(8) + "let compass_direction_angle = parseInt(compass.direction_angle);" + Environment.NewLine;
+
+                            if (compass_update.IndexOf("let compass_direction_index") < 0)
+                            {
+                                compass_update += TabInString(8) + "let compass_direction_angle_img = compass_direction_angle + 45 / 2;" + Environment.NewLine;
+                                compass_update += TabInString(8) + "let compass_direction_index = parseInt(compass_direction_angle_img/45);" + Environment.NewLine;
+                                compass_update += TabInString(8) + "if (compass_direction_index > 7) compass_direction_index = 0;" + Environment.NewLine;
+                            }
+
+                            compass_update += TabInString(8) + optionNameStart + 
+                                "compass_direction_img_level.setProperty(hmUI.prop.SRC, " + arr_name + "[compass_direction_index]);" + Environment.NewLine;
+                            if (Compass.Images.img_error.Length > 1)
+                            {
+                                compass_error += TabInString(8) + optionNameStart + "compass_direction_img_level.setProperty(hmUI.prop.SRC, '" + Compass.Images.img_error + ".png');" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                compass_error += TabInString(8) + optionNameStart + "compass_direction_img_level.setProperty(hmUI.prop.SRC, " + arr_name + "[0]);" + Environment.NewLine; 
+                            }
+
+                            if (resume_call.IndexOf("compass.start()") < 0)
+                                resume_call += TabInString(8) + "if (compass && screenType == hmSetting.screen_type.WATCHFACE) compass.start();" + Environment.NewLine;
+                            if (pause_call.IndexOf("compass.stop()") < 0)
+                                pause_call += TabInString(8) + "if (compass) compass.stop();" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "compass_text_img = ''" + Environment.NewLine;
+                            numberOptions = numberOptions.Replace("type: hmUI.data_type.COMPASS,", "// type: hmUI.data_type.COMPASS,");
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "compass_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            compass_update += TabInString(8) + "// Compass Number" + Environment.NewLine;
+                            if (compass_update.IndexOf("compass_direction_angle = parseInt") < 0)
+                                compass_update += TabInString(8) + "let compass_direction_angle = parseInt(compass.direction_angle);" + Environment.NewLine;
+
+                            if(Compass.Number.zero)
+                                compass_update += TabInString(8) + "let " + optionNameStart + "compass_direction_angle_text = compass_direction_angle.toString().padStart(3, '0');" + Environment.NewLine;
+                            else compass_update += TabInString(8) + "let " + optionNameStart + "compass_direction_angle_text = compass_direction_angle.toString();" + Environment.NewLine;
+                            compass_update += TabInString(8) + optionNameStart + "compass_text_img.setProperty(hmUI.prop.TEXT, " + optionNameStart + "compass_direction_angle_text);" + Environment.NewLine;
+                            compass_error += TabInString(8) + optionNameStart + "compass_text_img.setProperty(hmUI.prop.TEXT, '-');" + Environment.NewLine;
+
+                            if (resume_call.IndexOf("compass.start()") < 0)
+                                resume_call += TabInString(8) + "if (compass && screenType == hmSetting.screen_type.WATCHFACE) compass.start();" + Environment.NewLine;
+                            if (resume_call.IndexOf("compass.stop()") < 0)
+                                pause_call += TabInString(8) + "if (compass) compass.stop();" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "compass_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "compass_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (SelectedModel.versionOS >= 2 && Compass.Number_Font.font != null && Compass.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Compass.Number_Font.font + "; FontSize: " + Compass.Number_Font.text_size.ToString();
+                                if (Compass.Number_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + Compass.Number_Font.font + "; FontSize: " + Compass.Number_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    bool fullCache = Compass.Number_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(Compass.Number_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "compass_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "compass_text_font = hmUI.createWidget(hmUI.widget.TEXT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            compass_update += TabInString(8) + "// Compass Font" + Environment.NewLine;
+                            if (compass_update.IndexOf("compass_direction_angle = parseInt") < 0)
+                                compass_update += TabInString(8) + "let compass_direction_angle = parseInt(compass.direction_angle);" + Environment.NewLine;
+
+                            if (Compass.Number_Font.padding)
+                                compass_update += TabInString(8) + "let " + optionNameStart + "compass_direction_angle_font = compass_direction_angle.toString().padStart(3, '0');" + Environment.NewLine;
+                            else compass_update += TabInString(8) + "let " + optionNameStart + "compass_direction_angle_font = compass_direction_angle.toString();" + Environment.NewLine;
+
+                            if (Compass.Number_Font.unit_type > 0)
+                            {
+                                if (compass_update.IndexOf("let compass_font_unit") < 0) compass_update += TabInString(8) + "let compass_font_unit = '°';" + Environment.NewLine;
+
+                                if (Compass.Number_Font.unit_type == 2)
+                                {
+                                    if (compass_update.IndexOf("let compass_direction_index") < 0)
+                                    {
+                                        compass_update += TabInString(8) + "let compass_direction_angle_img = compass_direction_angle + 45 / 2;" + Environment.NewLine;
+                                        compass_update += TabInString(8) + "let compass_direction_index = parseInt(compass_direction_angle_img/45);" + Environment.NewLine;
+                                        compass_update += TabInString(8) + "if (compass_direction_index > 7) compass_direction_index = 0;" + Environment.NewLine; 
+                                    }
+
+                                    if (compass_update.IndexOf("let compass_direction_font") < 0)
+                                    {
+                                        compass_update += TabInString(8) + "let compass_direction_font = '';" + Environment.NewLine;
+                                        compass_update += TabInString(8) + "switch (compass_direction_index) {" + Environment.NewLine;
+
+                                        compass_update += TabInString(9) + "case 0:" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "compass_direction_font += ' N';" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "break;" + Environment.NewLine;
+
+                                        compass_update += TabInString(9) + "case 1:" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "compass_direction_font += ' NE';" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "break;" + Environment.NewLine;
+
+                                        compass_update += TabInString(9) + "case 2:" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "compass_direction_font += ' E';" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "break;" + Environment.NewLine;
+
+                                        compass_update += TabInString(9) + "case 3:" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "compass_direction_font += ' SE';" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "break;" + Environment.NewLine;
+
+                                        compass_update += TabInString(9) + "case 4:" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "compass_direction_font += ' S';" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "break;" + Environment.NewLine;
+
+                                        compass_update += TabInString(9) + "case 5:" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "compass_direction_font += ' SW';" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "break;" + Environment.NewLine;
+
+                                        compass_update += TabInString(9) + "case 6:" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "compass_direction_font += ' W';" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "break;" + Environment.NewLine;
+
+                                        compass_update += TabInString(9) + "case 7:" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "compass_direction_font += ' NW';" + Environment.NewLine;
+                                        compass_update += TabInString(10) + "break;" + Environment.NewLine;
+
+                                        compass_update += TabInString(8) + "};" + Environment.NewLine;
+                                        compass_update += TabInString(8) + "compass_font_unit += compass_direction_font;" + Environment.NewLine;
+                                    }
+                                    compass_update += TabInString(8) + optionNameStart + "compass_direction_angle_font += compass_font_unit;" + Environment.NewLine;
+                                }
+                            } 
+                            
+                            compass_update += TabInString(8) + optionNameStart + "compass_text_font.setProperty(hmUI.prop.TEXT, " + optionNameStart + "compass_direction_angle_font);" + Environment.NewLine;
+                            compass_error += TabInString(8) + optionNameStart + "compass_text_font.setProperty(hmUI.prop.TEXT, '-');" + Environment.NewLine;
+
+                            if (resume_call.IndexOf("compass.start()") < 0)
+                                resume_call += TabInString(8) + "if (compass && screenType == hmSetting.screen_type.WATCHFACE) compass.start();" + Environment.NewLine;
+                            if (resume_call.IndexOf("compass.stop()") < 0)
+                                pause_call += TabInString(8) + "if (compass) compass.stop();" + Environment.NewLine;
+                        }
+
+                        // Text_Rotate
+                        if (index == textRotatePosition && textRotateOptions.Length > 5)
+                        {
+                            AddTextRotationJS(Compass.Text_rotation, optionNameStart, "step_", ref variables, ref items, ref text_update,
+                                textRotateOptions, show_level, "step", "STEP", "valueStep", "current", 5, ref resume_call, ref pause_call);
+
+                        }
+
+                        // Text_Circle
+                        if (index == textCirclePosition && textCircleOptions.Length > 5)
+                        {
+                            AddTextCircleJS(Compass.Text_circle, optionNameStart, "step_", ref variables, ref items, ref text_update,
+                                textCircleOptions, show_level, "step", "STEP", "valueStep", "current", 5, ref resume_call, ref pause_call);
+
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "compass_direction_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
+
+                            items += Environment.NewLine + TabInString(6) + readOptionsCustomPointer  + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "compass_direction_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            compass_update += TabInString(8) + "// Compass Pointer" + Environment.NewLine;
+                            if (compass_update.IndexOf("compass_direction_angle = parseInt") < 0)
+                                compass_update += TabInString(8) + "let compass_direction_angle = parseInt(compass.direction_angle);" + Environment.NewLine;
+
+                            compass_update += TabInString(8) + optionNameStart + "compass_direction_pointer_img.setProperty(hmUI.prop.ANGLE, -compass_direction_angle);" + Environment.NewLine;
+                            compass_error += TabInString(8) + optionNameStart + "compass_direction_pointer_img.setProperty(hmUI.prop.ANGLE, 0);" + Environment.NewLine;
+
+                            if (resume_call.IndexOf("compass.start()") < 0) 
+                                resume_call += TabInString(8) + "if (compass && screenType == hmSetting.screen_type.WATCHFACE) compass.start();" + Environment.NewLine;
+                            if (resume_call.IndexOf("compass.stop()") < 0) 
+                                pause_call += TabInString(8) + "if (compass) compass.stop();" + Environment.NewLine;
+
+                            if (coverPointer.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "compass_direction_cover_pointer_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "compass_direction_cover_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    coverPointer + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "compass_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "compass_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
                 #region ElementAnimation
                 case "ElementAnimation":
                     ElementAnimation Anim = (ElementAnimation)element;
@@ -13430,6 +13852,53 @@ namespace Watch_Face_Editor
             return options;
         }
 
+        private string CUSTOM_POINTER_OptionsRead(hmUI_widget_IMG_POINTER img_pointer, string optionName, string type,
+            string show_level, int tabOffset = 0)
+        {
+            string options = Environment.NewLine;
+            if (img_pointer == null) return options;
+            if (img_pointer.src != null && img_pointer.src.Length > 0)
+            {
+                options += TabInString(6 + tabOffset) + "// " + optionName + type.ToLower() +
+                    "_custom_pointer_img = hmUI.createWidget(hmUI.widget.CUSTOM_POINTER, {" + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// src: '" + img_pointer.src + ".png'," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// center_x: " + img_pointer.center_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// center_y: " + img_pointer.center_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// x: " + img_pointer.pos_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// y: " + img_pointer.pos_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// start_angle: " + img_pointer.start_angle.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// end_angle: " + img_pointer.end_angle.ToString() + "," + Environment.NewLine;
+
+                if (img_pointer.scale != null && img_pointer.scale.Length > 0)
+                {
+                    options += TabInString(7 + tabOffset) + "// scale_sc: '" + img_pointer.scale + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "// scale_tc: '" + img_pointer.scale + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "// scale_en: '" + img_pointer.scale + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "// scale_x: " + img_pointer.scale_x.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "// scale_y: " + img_pointer.scale_y.ToString() + "," + Environment.NewLine;
+                }
+
+                if (img_pointer.cover_path != null && img_pointer.cover_path.Length > 0)
+                {
+                    options += TabInString(7 + tabOffset) + "// cover_path: '" + img_pointer.cover_path + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "// cover_x: " + img_pointer.cover_x.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "// cover_y: " + img_pointer.cover_y.ToString() + "," + Environment.NewLine;
+                }
+
+                if (type.Length > 0)
+                {
+                    options += TabInString(7 + tabOffset) + "// type: hmUI.data_type." + type + "," + Environment.NewLine;
+                }
+
+                if (show_level.Length > 0)
+                {
+                    options += TabInString(7 + tabOffset) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                }
+                options += TabInString(6 + tabOffset) + "// });" + Environment.NewLine;
+            }
+            return options;
+        }
+
         private string TIME_PRO_SMOOTH_POINTER_OptionsRead(Smooth_Second smooth_second, string optionNameStart, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
@@ -15023,10 +15492,16 @@ namespace Watch_Face_Editor
         {
             string options = Environment.NewLine;
             if (text == null) return options;
-            options += TabInString(7 + tabOffset) + "x: " + text.x.ToString() + "," + Environment.NewLine;
-            options += TabInString(7 + tabOffset) + "y: " + text.y.ToString() + "," + Environment.NewLine;
-            options += TabInString(7 + tabOffset) + "w: " + text.w.ToString() + "," + Environment.NewLine;
-            options += TabInString(7 + tabOffset) + "h: " + text.h.ToString() + "," + Environment.NewLine;
+            int x = text.x;
+            int y = text.y;
+            int w = text.w;
+            int h = text.h;
+            if (text.centreHorizontally) x = (SelectedModel.background.w - w) / 2;
+            if (text.centreVertically) y = (SelectedModel.background.h - h) / 2;
+            options += TabInString(7 + tabOffset) + "x: " + x.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "y: " + y.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "w: " + w.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "h: " + h.ToString() + "," + Environment.NewLine;
 
             options += TabInString(7 + tabOffset) + "text_size: " + text.text_size.ToString() + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "char_space: " + text.char_space.ToString() + "," + Environment.NewLine;
@@ -19485,6 +19960,7 @@ namespace Watch_Face_Editor
                                     {
                                         int offsetNumber = 1;
                                         if (dateMonth.Number_Font != null) offsetNumber++;
+                                        if (dateMonth.Month_Font != null) offsetNumber++;
                                         if (dateMonth.Pointer != null) offsetNumber++;
                                         if (dateMonth.Images != null) offsetNumber++;
                                         if (dateMonth.Text_rotation != null) offsetNumber++;
@@ -19538,6 +20014,7 @@ namespace Watch_Face_Editor
                                         if (dateMonth.Pointer != null) offsetNumber++;
                                         if (dateMonth.Number != null) offsetNumber++;
                                         if (dateMonth.Number_Font != null) offsetNumber++;
+                                        if (dateMonth.Month_Font != null) offsetNumber++;
                                         if (dateMonth.Text_rotation != null) offsetNumber++;
                                         if (dateMonth.Text_circle != null) offsetNumber++;
 
@@ -19596,6 +20073,7 @@ namespace Watch_Face_Editor
                                 int offsetPointer = 1;
                                 if (dateMonth.Number != null) offsetPointer++;
                                 if (dateMonth.Number_Font != null) offsetPointer++;
+                                if (dateMonth.Month_Font != null) offsetPointer++;
                                 if (dateMonth.Images != null) offsetPointer++;
                                 if (dateMonth.Text_rotation != null) offsetPointer++;
                                 if (dateMonth.Text_circle != null) offsetPointer++;
@@ -22104,6 +22582,7 @@ namespace Watch_Face_Editor
                                 if (month.Images != null) offset++;
                                 if (month.Number != null) offset++;
                                 if (month.Number_Font != null) offset++;
+                                if (month.Month_Font != null) offset++;
                                 //if (month.Text_rotation != null) offset++;
                                 if (month.Text_circle != null) offset++;
                                 if (month.Pointer != null) offset++;
@@ -23111,6 +23590,7 @@ namespace Watch_Face_Editor
                                 if (month.Images != null) offset++;
                                 if (month.Number != null) offset++;
                                 if (month.Number_Font != null) offset++;
+                                if (month.Month_Font != null) offset++;
                                 if (month.Text_rotation != null) offset++;
                                 //if (month.Text_circle != null) offset++;
                                 if (month.Pointer != null) offset++;
@@ -25492,6 +25972,7 @@ namespace Watch_Face_Editor
                                 if (dateMonth.Images != null) offset++;
                                 if (dateMonth.Number != null) offset++;
                                 //if (dateMonth.Number_Font != null) offset++;
+                                if (dateMonth.Month_Font != null) offset++;
                                 if (dateMonth.Pointer != null) offset++;
                                 if (dateMonth.Text_circle != null) offset++;
                                 if (dateMonth.Text_rotation != null) offset++;
@@ -25520,6 +26001,52 @@ namespace Watch_Face_Editor
 
                                 dateMonth.Number_Font.visible = true;
                                 dateMonth.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (objectName.EndsWith("month_name_font"))
+                        {
+                            ElementDateMonth dateMonth = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
+                            if (dateMonth == null)
+                            {
+                                elementsList.Add(new ElementDateMonth());
+                                dateMonth = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
+                            }
+                            if (dateMonth != null)
+                            {
+                                int offset = 1;
+                                if (dateMonth.Images != null) offset++;
+                                if (dateMonth.Number != null) offset++;
+                                if (dateMonth.Number_Font != null) offset++;
+                                //if (dateMonth.Month_Font != null) offset++;
+                                if (dateMonth.Pointer != null) offset++;
+                                if (dateMonth.Text_circle != null) offset++;
+                                if (dateMonth.Text_rotation != null) offset++;
+
+                                dateMonth.Month_Font = new hmUI_widget_TEXT();
+                                dateMonth.Month_Font.x = text.x;
+                                dateMonth.Month_Font.y = text.y;
+                                dateMonth.Month_Font.w = text.w;
+                                dateMonth.Month_Font.h = text.h;
+
+                                dateMonth.Month_Font.color = text.color;
+
+                                dateMonth.Month_Font.font = text.font;
+
+                                dateMonth.Month_Font.text_size = text.text_size;
+                                dateMonth.Month_Font.char_space = text.char_space;
+                                dateMonth.Month_Font.line_space = text.line_space;
+
+                                dateMonth.Month_Font.align_h = text.align_h;
+                                dateMonth.Month_Font.align_v = text.align_v;
+                                dateMonth.Month_Font.text_style = text.text_style;
+
+                                dateMonth.Month_Font.padding = text.padding;
+                                dateMonth.Month_Font.unit_type = text.unit_type;
+                                dateMonth.Month_Font.unit_string = text.unit_string;
+
+                                dateMonth.Month_Font.visible = true;
+                                dateMonth.Month_Font.position = offset;
                             }
                         }
 

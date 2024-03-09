@@ -29,6 +29,7 @@ namespace ControlLibrary
         private bool AmPm_mode = false;
         private bool UnitStr_mode = false;
         private bool DOW_mode = false;
+        private bool Month_mode = false;
 
         public UCtrl_Text_SystemFont_Opt()
         {
@@ -482,7 +483,27 @@ namespace ControlLibrary
             {
                 DOW_mode = value;
                 label_DOW.Visible = DOW_mode;
-                textBox_DOW.Visible = DOW_mode;
+                bool unitVisible = DOW_mode || Month_mode;
+                textBox_DOW.Visible = unitVisible;
+                if (DOW_mode) toolTip1.SetToolTip(textBox_DOW, Properties.Strings.Hint_DOW);
+            }
+        }
+
+        /// <summary>Режим отображения названий месяцев шрифтом</summary>
+        [Description("Режим отображения названий месяцев шрифтом")]
+        public virtual bool MonthMode
+        {
+            get
+            {
+                return Month_mode;
+            }
+            set
+            {
+                Month_mode = value;
+                label_Month.Visible = Month_mode;
+                bool unitVisible = DOW_mode || Month_mode;
+                textBox_DOW.Visible = unitVisible;
+                if (Month_mode) toolTip1.SetToolTip(textBox_DOW, Properties.Strings.Hint_Month);
             }
         }
 
@@ -789,13 +810,13 @@ namespace ControlLibrary
 
         public void SetUnitText(string text)
         {
-            if (!DOWMode) textBox_unit_string.Text = text; 
+            if (!DOWMode && !MonthMode) textBox_unit_string.Text = text; 
             else if (text.Length > 0) textBox_DOW.Text = text;
         }
 
         public string GetUnitText()
         {
-            if (!DOWMode) return textBox_unit_string.Text; 
+            if (!DOWMode && !MonthMode) return textBox_unit_string.Text; 
             else return textBox_DOW.Text;
         }
 
@@ -835,6 +856,7 @@ namespace ControlLibrary
             DayMonthYear = false;
             UnitStrMode = false;
             DOWMode = false;
+            MonthMode = false;
 
             setValue = false;
         }

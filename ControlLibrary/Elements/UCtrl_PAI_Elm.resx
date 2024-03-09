@@ -148,7 +148,7 @@
     <value>4</value>
   </data>
   <data name="button_Number_Target_Font.Text" xml:space="preserve">
-    <value>Данные шрифтом (цель)</value>
+    <value>Данные шрифтом (неделя)</value>
   </data>
   <data name="button_Number_Target_Font.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>

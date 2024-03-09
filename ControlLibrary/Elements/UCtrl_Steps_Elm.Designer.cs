@@ -103,8 +103,8 @@ namespace ControlLibrary
             // 
             // tableLayoutPanel1
             // 
-            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.AllowDrop = true;
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.panel_Number_Target_Font, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.panel_Number_Font, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel_Text_rotation_Target, 0, 8);
@@ -125,10 +125,10 @@ namespace ControlLibrary
             // 
             // panel_Number_Target_Font
             // 
-            resources.ApplyResources(this.panel_Number_Target_Font, "panel_Number_Target_Font");
             this.panel_Number_Target_Font.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Number_Target_Font.Controls.Add(this.button_Number_Target_Font);
             this.panel_Number_Target_Font.Controls.Add(this.checkBox_Number_Target_Font);
+            resources.ApplyResources(this.panel_Number_Target_Font, "panel_Number_Target_Font");
             this.panel_Number_Target_Font.Name = "panel_Number_Target_Font";
             this.panel_Number_Target_Font.Click += new System.EventHandler(this.panel_Number_Target_Font_Click);
             this.panel_Number_Target_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -137,10 +137,10 @@ namespace ControlLibrary
             // 
             // button_Number_Target_Font
             // 
-            resources.ApplyResources(this.button_Number_Target_Font, "button_Number_Target_Font");
             this.button_Number_Target_Font.FlatAppearance.BorderSize = 0;
             this.button_Number_Target_Font.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Number_Target_Font.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Number_Target_Font, "button_Number_Target_Font");
             this.button_Number_Target_Font.Image = global::ControlLibrary.Properties.Resources.text_fields;
             this.button_Number_Target_Font.Name = "button_Number_Target_Font";
             this.button_Number_Target_Font.UseVisualStyleBackColor = true;
@@ -158,10 +158,10 @@ namespace ControlLibrary
             // 
             // panel_Number_Font
             // 
-            resources.ApplyResources(this.panel_Number_Font, "panel_Number_Font");
             this.panel_Number_Font.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Number_Font.Controls.Add(this.button_Number_Font);
             this.panel_Number_Font.Controls.Add(this.checkBox_Number_Font);
+            resources.ApplyResources(this.panel_Number_Font, "panel_Number_Font");
             this.panel_Number_Font.Name = "panel_Number_Font";
             this.panel_Number_Font.Click += new System.EventHandler(this.panel_Number_Font_Click);
             this.panel_Number_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -170,10 +170,10 @@ namespace ControlLibrary
             // 
             // button_Number_Font
             // 
-            resources.ApplyResources(this.button_Number_Font, "button_Number_Font");
             this.button_Number_Font.FlatAppearance.BorderSize = 0;
             this.button_Number_Font.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Number_Font.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Number_Font, "button_Number_Font");
             this.button_Number_Font.Image = global::ControlLibrary.Properties.Resources.text_fields;
             this.button_Number_Font.Name = "button_Number_Font";
             this.button_Number_Font.UseVisualStyleBackColor = true;
@@ -191,10 +191,10 @@ namespace ControlLibrary
             // 
             // panel_Text_rotation_Target
             // 
-            resources.ApplyResources(this.panel_Text_rotation_Target, "panel_Text_rotation_Target");
             this.panel_Text_rotation_Target.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Text_rotation_Target.Controls.Add(this.button_Text_rotation_Target);
             this.panel_Text_rotation_Target.Controls.Add(this.checkBox_Text_rotation_Target);
+            resources.ApplyResources(this.panel_Text_rotation_Target, "panel_Text_rotation_Target");
             this.panel_Text_rotation_Target.Name = "panel_Text_rotation_Target";
             this.panel_Text_rotation_Target.Click += new System.EventHandler(this.panel_Text_rotation_Target_Click);
             this.panel_Text_rotation_Target.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -203,10 +203,10 @@ namespace ControlLibrary
             // 
             // button_Text_rotation_Target
             // 
-            resources.ApplyResources(this.button_Text_rotation_Target, "button_Text_rotation_Target");
             this.button_Text_rotation_Target.FlatAppearance.BorderSize = 0;
             this.button_Text_rotation_Target.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Text_rotation_Target.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Text_rotation_Target, "button_Text_rotation_Target");
             this.button_Text_rotation_Target.Name = "button_Text_rotation_Target";
             this.button_Text_rotation_Target.UseVisualStyleBackColor = true;
             this.button_Text_rotation_Target.Click += new System.EventHandler(this.panel_Text_rotation_Target_Click);
@@ -223,10 +223,10 @@ namespace ControlLibrary
             // 
             // panel_Text_circle_Target
             // 
-            resources.ApplyResources(this.panel_Text_circle_Target, "panel_Text_circle_Target");
             this.panel_Text_circle_Target.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Text_circle_Target.Controls.Add(this.button_Text_circle_Target);
             this.panel_Text_circle_Target.Controls.Add(this.checkBox_Text_circle_Target);
+            resources.ApplyResources(this.panel_Text_circle_Target, "panel_Text_circle_Target");
             this.panel_Text_circle_Target.Name = "panel_Text_circle_Target";
             this.panel_Text_circle_Target.Click += new System.EventHandler(this.panel_Text_circle_Target_Click);
             this.panel_Text_circle_Target.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -235,10 +235,10 @@ namespace ControlLibrary
             // 
             // button_Text_circle_Target
             // 
-            resources.ApplyResources(this.button_Text_circle_Target, "button_Text_circle_Target");
             this.button_Text_circle_Target.FlatAppearance.BorderSize = 0;
             this.button_Text_circle_Target.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Text_circle_Target.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Text_circle_Target, "button_Text_circle_Target");
             this.button_Text_circle_Target.Name = "button_Text_circle_Target";
             this.button_Text_circle_Target.UseVisualStyleBackColor = true;
             this.button_Text_circle_Target.Click += new System.EventHandler(this.panel_Text_circle_Target_Click);
@@ -255,10 +255,10 @@ namespace ControlLibrary
             // 
             // panel_Text_circle
             // 
-            resources.ApplyResources(this.panel_Text_circle, "panel_Text_circle");
             this.panel_Text_circle.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Text_circle.Controls.Add(this.button_Text_circle);
             this.panel_Text_circle.Controls.Add(this.checkBox_Text_circle);
+            resources.ApplyResources(this.panel_Text_circle, "panel_Text_circle");
             this.panel_Text_circle.Name = "panel_Text_circle";
             this.panel_Text_circle.Click += new System.EventHandler(this.panel_Text_circle_Click);
             this.panel_Text_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -267,10 +267,10 @@ namespace ControlLibrary
             // 
             // button_Text_circle
             // 
-            resources.ApplyResources(this.button_Text_circle, "button_Text_circle");
             this.button_Text_circle.FlatAppearance.BorderSize = 0;
             this.button_Text_circle.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Text_circle.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Text_circle, "button_Text_circle");
             this.button_Text_circle.Name = "button_Text_circle";
             this.button_Text_circle.UseVisualStyleBackColor = true;
             this.button_Text_circle.Click += new System.EventHandler(this.panel_Text_circle_Click);
@@ -287,10 +287,10 @@ namespace ControlLibrary
             // 
             // panel_Text_rotation
             // 
-            resources.ApplyResources(this.panel_Text_rotation, "panel_Text_rotation");
             this.panel_Text_rotation.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Text_rotation.Controls.Add(this.button_Text_rotation);
             this.panel_Text_rotation.Controls.Add(this.checkBox_Text_rotation);
+            resources.ApplyResources(this.panel_Text_rotation, "panel_Text_rotation");
             this.panel_Text_rotation.Name = "panel_Text_rotation";
             this.panel_Text_rotation.Click += new System.EventHandler(this.panel_Text_rotation_Click);
             this.panel_Text_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -299,10 +299,10 @@ namespace ControlLibrary
             // 
             // button_Text_rotation
             // 
-            resources.ApplyResources(this.button_Text_rotation, "button_Text_rotation");
             this.button_Text_rotation.FlatAppearance.BorderSize = 0;
             this.button_Text_rotation.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Text_rotation.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Text_rotation, "button_Text_rotation");
             this.button_Text_rotation.Name = "button_Text_rotation";
             this.button_Text_rotation.UseVisualStyleBackColor = true;
             this.button_Text_rotation.Click += new System.EventHandler(this.panel_Text_rotation_Click);
@@ -319,10 +319,10 @@ namespace ControlLibrary
             // 
             // panel_Linear_Scale
             // 
-            resources.ApplyResources(this.panel_Linear_Scale, "panel_Linear_Scale");
             this.panel_Linear_Scale.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Linear_Scale.Controls.Add(this.button_Linear_Scale);
             this.panel_Linear_Scale.Controls.Add(this.checkBox_Linear_Scale);
+            resources.ApplyResources(this.panel_Linear_Scale, "panel_Linear_Scale");
             this.panel_Linear_Scale.Name = "panel_Linear_Scale";
             this.panel_Linear_Scale.Click += new System.EventHandler(this.panel_Linear_Scale_Click);
             this.panel_Linear_Scale.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -331,10 +331,10 @@ namespace ControlLibrary
             // 
             // button_Linear_Scale
             // 
-            resources.ApplyResources(this.button_Linear_Scale, "button_Linear_Scale");
             this.button_Linear_Scale.FlatAppearance.BorderSize = 0;
             this.button_Linear_Scale.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Linear_Scale.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Linear_Scale, "button_Linear_Scale");
             this.button_Linear_Scale.Image = global::ControlLibrary.Properties.Resources.linear_scale_18;
             this.button_Linear_Scale.Name = "button_Linear_Scale";
             this.button_Linear_Scale.UseVisualStyleBackColor = true;
@@ -352,10 +352,10 @@ namespace ControlLibrary
             // 
             // panel_Images
             // 
-            resources.ApplyResources(this.panel_Images, "panel_Images");
             this.panel_Images.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Images.Controls.Add(this.checkBox_Images);
             this.panel_Images.Controls.Add(this.button_Images);
+            resources.ApplyResources(this.panel_Images, "panel_Images");
             this.panel_Images.Name = "panel_Images";
             this.panel_Images.Click += new System.EventHandler(this.panel_Images_Click);
             this.panel_Images.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -371,10 +371,10 @@ namespace ControlLibrary
             // 
             // button_Images
             // 
-            resources.ApplyResources(this.button_Images, "button_Images");
             this.button_Images.FlatAppearance.BorderSize = 0;
             this.button_Images.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Images.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Images, "button_Images");
             this.button_Images.Image = global::ControlLibrary.Properties.Resources.images_18;
             this.button_Images.Name = "button_Images";
             this.button_Images.UseVisualStyleBackColor = true;
@@ -385,10 +385,10 @@ namespace ControlLibrary
             // 
             // panel_Segments
             // 
-            resources.ApplyResources(this.panel_Segments, "panel_Segments");
             this.panel_Segments.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Segments.Controls.Add(this.checkBox_Segments);
             this.panel_Segments.Controls.Add(this.button_Segments);
+            resources.ApplyResources(this.panel_Segments, "panel_Segments");
             this.panel_Segments.Name = "panel_Segments";
             this.panel_Segments.Click += new System.EventHandler(this.panel_Segments_Click);
             this.panel_Segments.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -404,10 +404,10 @@ namespace ControlLibrary
             // 
             // button_Segments
             // 
-            resources.ApplyResources(this.button_Segments, "button_Segments");
             this.button_Segments.FlatAppearance.BorderSize = 0;
             this.button_Segments.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Segments.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Segments, "button_Segments");
             this.button_Segments.Image = global::ControlLibrary.Properties.Resources.segment_18;
             this.button_Segments.Name = "button_Segments";
             this.button_Segments.UseVisualStyleBackColor = true;
@@ -418,10 +418,10 @@ namespace ControlLibrary
             // 
             // panel_Number
             // 
-            resources.ApplyResources(this.panel_Number, "panel_Number");
             this.panel_Number.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Number.Controls.Add(this.button_Number);
             this.panel_Number.Controls.Add(this.checkBox_Number);
+            resources.ApplyResources(this.panel_Number, "panel_Number");
             this.panel_Number.Name = "panel_Number";
             this.panel_Number.Click += new System.EventHandler(this.panel_Number_Click);
             this.panel_Number.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -430,10 +430,10 @@ namespace ControlLibrary
             // 
             // button_Number
             // 
-            resources.ApplyResources(this.button_Number, "button_Number");
             this.button_Number.FlatAppearance.BorderSize = 0;
             this.button_Number.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Number.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Number, "button_Number");
             this.button_Number.Image = global::ControlLibrary.Properties.Resources.text_icon;
             this.button_Number.Name = "button_Number";
             this.button_Number.UseVisualStyleBackColor = true;
@@ -451,10 +451,10 @@ namespace ControlLibrary
             // 
             // panel_Number_Target
             // 
-            resources.ApplyResources(this.panel_Number_Target, "panel_Number_Target");
             this.panel_Number_Target.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Number_Target.Controls.Add(this.button_Number_Target);
             this.panel_Number_Target.Controls.Add(this.checkBox_Number_Target);
+            resources.ApplyResources(this.panel_Number_Target, "panel_Number_Target");
             this.panel_Number_Target.Name = "panel_Number_Target";
             this.panel_Number_Target.Click += new System.EventHandler(this.panel_Number_Target_Click);
             this.panel_Number_Target.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -463,10 +463,10 @@ namespace ControlLibrary
             // 
             // button_Number_Target
             // 
-            resources.ApplyResources(this.button_Number_Target, "button_Number_Target");
             this.button_Number_Target.FlatAppearance.BorderSize = 0;
             this.button_Number_Target.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Number_Target.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Number_Target, "button_Number_Target");
             this.button_Number_Target.Image = global::ControlLibrary.Properties.Resources.text_icon;
             this.button_Number_Target.Name = "button_Number_Target";
             this.button_Number_Target.UseVisualStyleBackColor = true;
@@ -484,10 +484,10 @@ namespace ControlLibrary
             // 
             // panel_Pointer
             // 
-            resources.ApplyResources(this.panel_Pointer, "panel_Pointer");
             this.panel_Pointer.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Pointer.Controls.Add(this.button_Pointer);
             this.panel_Pointer.Controls.Add(this.checkBox_Pointer);
+            resources.ApplyResources(this.panel_Pointer, "panel_Pointer");
             this.panel_Pointer.Name = "panel_Pointer";
             this.panel_Pointer.Click += new System.EventHandler(this.panel_Pointer_Click);
             this.panel_Pointer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -496,10 +496,10 @@ namespace ControlLibrary
             // 
             // button_Pointer
             // 
-            resources.ApplyResources(this.button_Pointer, "button_Pointer");
             this.button_Pointer.FlatAppearance.BorderSize = 0;
             this.button_Pointer.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Pointer.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Pointer, "button_Pointer");
             this.button_Pointer.Name = "button_Pointer";
             this.button_Pointer.UseVisualStyleBackColor = true;
             this.button_Pointer.Click += new System.EventHandler(this.panel_Pointer_Click);
@@ -516,10 +516,10 @@ namespace ControlLibrary
             // 
             // panel_Circle_Scale
             // 
-            resources.ApplyResources(this.panel_Circle_Scale, "panel_Circle_Scale");
             this.panel_Circle_Scale.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Circle_Scale.Controls.Add(this.button_Circle_Scale);
             this.panel_Circle_Scale.Controls.Add(this.checkBox_Circle_Scale);
+            resources.ApplyResources(this.panel_Circle_Scale, "panel_Circle_Scale");
             this.panel_Circle_Scale.Name = "panel_Circle_Scale";
             this.panel_Circle_Scale.Click += new System.EventHandler(this.panel_Circle_Scale_Click);
             this.panel_Circle_Scale.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -528,10 +528,10 @@ namespace ControlLibrary
             // 
             // button_Circle_Scale
             // 
-            resources.ApplyResources(this.button_Circle_Scale, "button_Circle_Scale");
             this.button_Circle_Scale.FlatAppearance.BorderSize = 0;
             this.button_Circle_Scale.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Circle_Scale.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Circle_Scale, "button_Circle_Scale");
             this.button_Circle_Scale.Image = global::ControlLibrary.Properties.Resources.circle_scale;
             this.button_Circle_Scale.Name = "button_Circle_Scale";
             this.button_Circle_Scale.UseVisualStyleBackColor = true;
@@ -549,10 +549,10 @@ namespace ControlLibrary
             // 
             // panel_Icon
             // 
-            resources.ApplyResources(this.panel_Icon, "panel_Icon");
             this.panel_Icon.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Icon.Controls.Add(this.button_Icon);
             this.panel_Icon.Controls.Add(this.checkBox_Icon);
+            resources.ApplyResources(this.panel_Icon, "panel_Icon");
             this.panel_Icon.Name = "panel_Icon";
             this.panel_Icon.Click += new System.EventHandler(this.panel_Icon_Click);
             this.panel_Icon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -561,10 +561,10 @@ namespace ControlLibrary
             // 
             // button_Icon
             // 
-            resources.ApplyResources(this.button_Icon, "button_Icon");
             this.button_Icon.FlatAppearance.BorderSize = 0;
             this.button_Icon.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Icon.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Icon, "button_Icon");
             this.button_Icon.Image = global::ControlLibrary.Properties.Resources.wallpaper_18;
             this.button_Icon.Name = "button_Icon";
             this.button_Icon.UseVisualStyleBackColor = true;
@@ -582,8 +582,8 @@ namespace ControlLibrary
             // 
             // pictureBox_Arrow_Down
             // 
-            resources.ApplyResources(this.pictureBox_Arrow_Down, "pictureBox_Arrow_Down");
             this.pictureBox_Arrow_Down.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_down;
+            resources.ApplyResources(this.pictureBox_Arrow_Down, "pictureBox_Arrow_Down");
             this.pictureBox_Arrow_Down.Name = "pictureBox_Arrow_Down";
             this.pictureBox_Arrow_Down.TabStop = false;
             this.pictureBox_Arrow_Down.Click += new System.EventHandler(this.button_ElementName_Click);
@@ -598,8 +598,8 @@ namespace ControlLibrary
             // 
             // pictureBox_Arrow_Right
             // 
-            resources.ApplyResources(this.pictureBox_Arrow_Right, "pictureBox_Arrow_Right");
             this.pictureBox_Arrow_Right.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_right;
+            resources.ApplyResources(this.pictureBox_Arrow_Right, "pictureBox_Arrow_Right");
             this.pictureBox_Arrow_Right.Name = "pictureBox_Arrow_Right";
             this.pictureBox_Arrow_Right.TabStop = false;
             this.pictureBox_Arrow_Right.Click += new System.EventHandler(this.button_ElementName_Click);
@@ -614,16 +614,16 @@ namespace ControlLibrary
             // 
             // pictureBox_Del
             // 
-            resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
             this.pictureBox_Del.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_delete_forever_black_24;
+            resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
             this.pictureBox_Del.Name = "pictureBox_Del";
             this.pictureBox_Del.TabStop = false;
             this.pictureBox_Del.Click += new System.EventHandler(this.pictureBox_Del_Click);
             // 
             // button_ElementName
             // 
-            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.steps;
             this.button_ElementName.Name = "button_ElementName";
             this.button_ElementName.UseVisualStyleBackColor = false;

@@ -235,10 +235,6 @@ del viento</value>
   <data name="comboBox_WeatherSet_Icon.Items28" xml:space="preserve">
     <value>Noche clara</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBox_WeatherSet_Temp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 17</value>
-  </data>
   <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
     <value>Temperatura actual</value>
   </data>
@@ -274,14 +270,8 @@ del viento</value>
   <data name="checkBox_DND_Set.Text" xml:space="preserve">
     <value>No molestar</value>
   </data>
-  <data name="checkBox_Lock_Set.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 18</value>
-  </data>
   <data name="checkBox_Lock_Set.Text" xml:space="preserve">
     <value>Bloqueo</value>
-  </data>
-  <data name="checkBox_Alarm_Set.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 18</value>
   </data>
   <data name="checkBox_Alarm_Set.Text" xml:space="preserve">
     <value>Alarma</value>

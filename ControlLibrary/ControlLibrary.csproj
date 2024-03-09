@@ -341,6 +341,12 @@
     <Compile Include="Elements\UCtrl_DateYear_Elm.Designer.cs">
       <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\UCtrl_Compass_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Compass_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_DisconnectAlert_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -798,6 +804,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Calories_Elm.zh.resx">
       <DependentUpon>UCtrl_Calories_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.en.resx">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.uk.resx">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DateDay_Elm.cs.resx">
       <DependentUpon>UCtrl_DateDay_Elm.cs</DependentUpon>
@@ -1834,6 +1846,9 @@
     <EmbeddedResource Include="Elements\UCtrl_DateYear_Elm.resx">
       <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.resx">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_DisconnectAlert_Opt.cs.resx">
       <DependentUpon>UCtrl_DisconnectAlert_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -2633,6 +2648,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\note-text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\compass.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

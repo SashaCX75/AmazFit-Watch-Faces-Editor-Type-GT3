@@ -405,7 +405,7 @@ namespace Watch_Face_Editor
             radioButton_ARGB_forced.Checked = ProgramSettings.ARGB_encoding_forced;
 
             if (ProgramSettings.language.Length > 1) comboBox_Language.Text = ProgramSettings.language;
-
+            checkBox_CreateZPK.Checked = ProgramSettings.CreateZPK;
 
             Settings_Load = false;
             JSON_Modified = false;
@@ -671,6 +671,7 @@ namespace Watch_Face_Editor
             //ProgramSettings.language = comboBox_Language.Text;
 
             if (comboBox_watch_model.SelectedIndex != -1) ProgramSettings.Watch_Model = comboBox_watch_model.Text;
+            ProgramSettings.CreateZPK = checkBox_CreateZPK.Checked;
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
             {
@@ -949,6 +950,8 @@ namespace Watch_Face_Editor
             Air.TryGetValue("WindForce", out WindForce);
             int WindDirection;
             Air.TryGetValue("WindDirection", out WindDirection);
+            int CompassDirection;
+            Air.TryGetValue("CompassDirection", out CompassDirection);
             int Altitude;
             Air.TryGetValue("Altitude", out Altitude);
             int AirPressure;
@@ -1008,6 +1011,7 @@ namespace Watch_Face_Editor
             WatchFacePreviewSet.Weather.Humidity = Humidity;
             WatchFacePreviewSet.Weather.WindForce = WindForce;
             WatchFacePreviewSet.Weather.WindDirection = WindDirection;
+            WatchFacePreviewSet.Weather.CompassDirection = CompassDirection;
             WatchFacePreviewSet.Weather.Altitude = Altitude;
             WatchFacePreviewSet.Weather.AirPressure = AirPressure;
             WatchFacePreviewSet.SetNumber = userControl_Set.SetNumber;
@@ -1313,6 +1317,7 @@ namespace Watch_Face_Editor
             if (e.Data.GetDataPresent(typeof(UCtrl_Wind_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_Moon_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_Image_Elm))) typeReturn = false;
+            if (e.Data.GetDataPresent(typeof(UCtrl_Compass_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_JSscript_Elm))) typeReturn = false;
             //if (typeReturn) return;
             int dY = tableLayoutPanel_ElemetsWatchFace.PointToScreen(Point.Empty).Y;
@@ -1583,6 +1588,14 @@ namespace Watch_Face_Editor
                             (ElementImage)Elements.Find(e1 => e1.GetType().Name == "ElementImage");
                         index = Elements.IndexOf(image);
                         draggedUCtrl_Elm = (UCtrl_Image_Elm)e.Data.GetData(typeof(UCtrl_Image_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+
+                    case "ControlLibrary.UCtrl_Compass_Elm":
+                        ElementCompass compass =
+                            (ElementCompass)Elements.Find(e1 => e1.GetType().Name == "ElementCompass");
+                        index = Elements.IndexOf(compass);
+                        draggedUCtrl_Elm = (UCtrl_Compass_Elm)e.Data.GetData(typeof(UCtrl_Compass_Elm));
                         if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                         break;
 
@@ -1864,6 +1877,7 @@ namespace Watch_Face_Editor
             if (selectElementName != "Moon") uCtrl_Moon_Elm.ResetHighlightState();
             if (selectElementName != "Image") uCtrl_Image_Elm.ResetHighlightState();
             if (selectElementName != "Script") uCtrl_JSscript_Elm.ResetHighlightState();
+            if (selectElementName != "Compass") uCtrl_Compass_Elm.ResetHighlightState();
 
             if (selectElementName != "DisconnectAlert") uCtrl_DisconnectAlert_Elm.ResetHighlightState();
             if (selectElementName != "RepeatingAlert") uCtrl_RepeatingAlert_Elm.ResetHighlightState();
@@ -1931,6 +1945,7 @@ namespace Watch_Face_Editor
             uCtrl_Wind_Elm.SettingsClear();
             uCtrl_Moon_Elm.SettingsClear();
             uCtrl_Image_Elm.SettingsClear();
+            uCtrl_Compass_Elm.SettingsClear();
 
             uCtrl_DisconnectAlert_Elm.SettingsClear();
             uCtrl_RepeatingAlert_Elm.SettingsClear();
@@ -3755,6 +3770,17 @@ namespace Watch_Face_Editor
                     Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
                     panel_WatchfaceElements.VerticalScroll.Maximum);
             }
+            if (comboBox_AddSystem.SelectedIndex == 11)
+            {
+                AddCompass();
+                ShowElemetsWatchFace();
+                JSON_Modified = true;
+                FormText();
+
+                panel_WatchfaceElements.AutoScrollPosition = new Point(
+                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
 
             PreviewView = false;
             //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
@@ -4999,6 +5025,37 @@ namespace Watch_Face_Editor
             uCtrl_JS_script_Opt.SettingsClear(ProjectDir);
         }
 
+        /// <summary>Добавляем компас в циферблат</summary>
+        private void AddCompass()
+        {
+            if (!PreviewView) return;
+            List<object> Elements = new List<object>();
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                Elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+                Elements = Watch_Face.ScreenAOD.Elements;
+
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            ElementCompass compass = new ElementCompass();
+            compass.visible = true;
+            //digitalTime.position = Elements.Count;
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementCompass"); // проверяем что такого элемента нет
+            if (!exists) Elements.Insert(0, compass);
+            uCtrl_Compass_Elm.SettingsClear();
+        }
+
+
 
 
         /// <summary>Отображаем элемынты в соответствии с json файлом</summary>
@@ -5044,7 +5101,9 @@ namespace Watch_Face_Editor
             uCtrl_Sunrise_Elm.Visible = false;
             uCtrl_Wind_Elm.Visible = false;
             uCtrl_Moon_Elm.Visible = false;
+            uCtrl_Compass_Elm.Visible = false;
             uCtrl_Image_Elm.Visible = false;
+            uCtrl_Compass_Elm.Visible = false;
 
             uCtrl_DisconnectAlert_Elm.Visible = false;
             uCtrl_RepeatingAlert_Elm.Visible = false;
@@ -5352,6 +5411,11 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_DateMonth_Elm.checkBox_Number_Font.Checked = DateMonth.Number_Font.visible;
                                 elementOptions.Add(DateMonth.Number_Font.position, "Number_Font");
+                            }
+                            if (DateMonth.Month_Font != null)
+                            {
+                                uCtrl_DateMonth_Elm.checkBox_Month_Font.Checked = DateMonth.Month_Font.visible;
+                                elementOptions.Add(DateMonth.Month_Font.position, "Month_Font");
                             }
                             if (DateMonth.Text_rotation != null)
                             {
@@ -6691,6 +6755,55 @@ namespace Watch_Face_Editor
                             SetElementPositionInGUI(type, count - i - 2);
                             //SetElementPositionInGUI(type, i + 1);
                             break;
+                        #endregion
+
+                        #region ElementCompass
+                        case "ElementCompass":
+                            ElementCompass Compass = (ElementCompass)element;
+                            uCtrl_Compass_Elm.SetVisibilityElementStatus(Compass.visible);
+                            elementOptions = new Dictionary<int, string>();
+                            if (Compass.Images != null)
+                            {
+                                uCtrl_Compass_Elm.checkBox_Images.Checked = Compass.Images.visible;
+                                elementOptions.Add(Compass.Images.position, "Images");
+                            }
+                            if (Compass.Number != null)
+                            {
+                                uCtrl_Compass_Elm.checkBox_Number.Checked = Compass.Number.visible;
+                                elementOptions.Add(Compass.Number.position, "Number");
+                            }
+                            if (Compass.Number_Font != null)
+                            {
+                                uCtrl_Compass_Elm.checkBox_Number_Font.Checked = Compass.Number_Font.visible;
+                                elementOptions.Add(Compass.Number_Font.position, "Number_Font");
+                            }
+                            if (Compass.Text_rotation != null)
+                            {
+                                uCtrl_Compass_Elm.checkBox_Text_rotation.Checked = Compass.Text_rotation.visible;
+                                elementOptions.Add(Compass.Text_rotation.position, "Text_rotation");
+                            }
+                            if (Compass.Text_circle != null)
+                            {
+                                uCtrl_Compass_Elm.checkBox_Text_circle.Checked = Compass.Text_circle.visible;
+                                elementOptions.Add(Compass.Text_circle.position, "Text_circle");
+                            }
+                            if (Compass.Pointer != null)
+                            {
+                                uCtrl_Compass_Elm.checkBox_Pointer.Checked = Compass.Pointer.visible;
+                                elementOptions.Add(Compass.Pointer.position, "Pointer");
+                            }
+                            if (Compass.Icon != null)
+                            {
+                                uCtrl_Compass_Elm.checkBox_Icon.Checked = Compass.Icon.visible;
+                                elementOptions.Add(Compass.Icon.position, "Icon");
+                            }
+
+                            uCtrl_Compass_Elm.SetOptionsPosition(elementOptions);
+
+                            uCtrl_Compass_Elm.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
                             #endregion
                     }
                 }
@@ -6948,6 +7061,9 @@ namespace Watch_Face_Editor
                 case "ElementImage":
                     panel = panel_UC_Image;
                     break;
+                case "ElementCompass":
+                    panel = panel_UC_Compass;
+                    break;
                 case "Buttons":
                     panel = panel_UC_Buttons;
                     break;
@@ -7129,6 +7245,8 @@ namespace Watch_Face_Editor
 
             //ProgramSettings.language = comboBox_Language.Text;
             if (comboBox_watch_model.SelectedIndex != -1) ProgramSettings.Watch_Model = comboBox_watch_model.Text;
+
+            ProgramSettings.CreateZPK = checkBox_CreateZPK.Checked;
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
             {
@@ -7523,7 +7641,10 @@ namespace Watch_Face_Editor
                     break; 
                 case "UCtrl_Image_Elm":
                     objectName = "ElementImage";
-                    break; 
+                    break;
+                case "UCtrl_Compass_Elm":
+                    objectName = "ElementCompass";
+                    break;
                 case "UCtrl_JSscript_Elm":
                     objectName = "ElementScript";
                     break;
@@ -7852,6 +7973,7 @@ namespace Watch_Face_Editor
             int UVindex = rnd.Next(0, 13);
             int windForce = rnd.Next(0, 13);
             int windDirection = rnd.Next(0, 8);
+            int compassDirection = rnd.Next(0, 360);
 
             WatchFacePreviewSet.Date.Year = year;
             WatchFacePreviewSet.Date.Month = month;
@@ -7891,6 +8013,7 @@ namespace Watch_Face_Editor
             WatchFacePreviewSet.Weather.UVindex = UVindex;
             WatchFacePreviewSet.Weather.WindForce = windForce;
             WatchFacePreviewSet.Weather.WindDirection = windDirection;
+            WatchFacePreviewSet.Weather.CompassDirection = compassDirection;
             PreviewImage();
         }
 
@@ -8555,8 +8678,6 @@ namespace Watch_Face_Editor
             string imagesFolder = ProjectDir + @"\assets";
             DirectoryInfo Folder;
             Folder = new DirectoryInfo(imagesFolder);
-            //FileInfo[] Images;
-            //FileInfo[] Images = Folder.GetFiles("*.png");
 
             // читаем подпапки в папках
             List<string> allDirs = GetRecursDirectories(ProjectDir + @"\assets", 5, ProjectDir + @"\assets");
@@ -8589,14 +8710,6 @@ namespace Watch_Face_Editor
                 }
             }
 
-            //foreach (FileInfo file in Images)
-            //{
-            //    progressBar1.Value++;
-            //    //string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets", fix_color, fix_size);
-            //    //if (fileNameFull != null) ImageFix(fileNameFull, fix_color);
-            //    ImageAutoDetectWriteFormat(file.FullName, tempDir + @"\assets", fix_size, fix_color);
-            //}
-
             foreach (string imgFileName in allImagesFiles)
             {
                 //File.Copy(tempDir + @"\assets" + fileNames, projectPath + @"\assets" + fileNames);
@@ -8604,21 +8717,6 @@ namespace Watch_Face_Editor
                 string newDir = Path.GetDirectoryName(tempDir + @"\assets" + imgFileName);
                 ImageAutoDetectWriteFormat(ProjectDir + @"\assets" + imgFileName, newDir, fix_size, fix_color);
             }
-
-            //imagesFolder = ProjectDir + @"\assets\animation";
-            //if (Directory.Exists(imagesFolder))
-            //{
-            //    Folder = new DirectoryInfo(imagesFolder);
-            //    Images = Folder.GetFiles("*.png");
-            //    progressBar1.Maximum = progressBar1.Maximum + Images.Length;
-            //    foreach (FileInfo file in Images)
-            //    {
-            //        progressBar1.Value++;
-            //        //string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets\animation", fix_color, fix_size);
-            //        //if (fileNameFull != null) ImageFix(fileNameFull, fix_color);
-            //        ImageAutoDetectWriteFormat(file.FullName, tempDir + @"\assets\animation", fix_size, fix_color);
-            //    }
-            //}
 
             App_WatchFace app = new App_WatchFace();
             app.app.appName = Path.GetFileNameWithoutExtension(FileName);
@@ -8639,8 +8737,6 @@ namespace Watch_Face_Editor
             if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null)
             {
                 List<object> Elements = Watch_Face.ScreenNormal.Elements;
-                //bool exists = Elements.Exists(el => el.GetType().Name == "ElementAnimation"); // проверяем чтотакой элемент есть
-                //if (exists) app.module.watchface.hightCost = 1;
                 ElementAnimation animation = (ElementAnimation)Watch_Face.ScreenNormal.Elements.Find(ea => ea.GetType().Name == "ElementAnimation");
                 if (animation != null)
                 {
@@ -8692,7 +8788,6 @@ namespace Watch_Face_Editor
             // преобразуем настройки в текстовый файл
             string variables = "";
             string items = "";
-            //string widgetDelegate = "";
 
             JsonToJS(out variables, out items);
             
@@ -8710,8 +8805,6 @@ namespace Watch_Face_Editor
             int pos_destory = indexText.IndexOf("heart_rate.addEventListener");
             if (pos_destory > 0)
             {
-                //pos_destory = indexText.IndexOf("console.log('index page.js on destory invoke')");
-                //pos_destory = indexText.IndexOf("n.log(\"index page.js on destroy invoke\")");
                 pos_destory = indexText.IndexOf("logger.log(\"index page.js on destroy invoke\")");
                 if (pos_destory > 0)
                 {
@@ -8725,13 +8818,17 @@ namespace Watch_Face_Editor
             //link:
             // объединяем все в архив
             string startPath = tempDir;
-            //string zipPath = ProjectDir + @"\" + Path.GetFileNameWithoutExtension(FileName) + ".zip";
-            //if (File.Exists(zipPath)) File.Delete(zipPath);
             using (Ionic.Zip.ZipFile zip = new Ionic.Zip.ZipFile())
             {
                 zip.AddDirectory(startPath);
                 zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression;
                 zip.Save(zipPath);
+            }
+
+            if (ProgramSettings.CreateZPK && File.Exists(zipPath))
+            {
+                string zpkPath = CreateZPK(zipPath);
+                if (zpkPath.Length > 0 && File.Exists(zpkPath)) zipPath = zpkPath;
             }
 
             // открываем файл если создали его
@@ -8757,6 +8854,58 @@ namespace Watch_Face_Editor
             if (Directory.Exists(tempDir)) DeleteDirectory(tempDir);
 #endif
             progressBar1.Visible = false;
+        }
+
+        // Создаем ZPK файл
+        private string CreateZPK(string fullFileName)
+        {
+            if (!File.Exists(fullFileName)) return null;
+            string tempDir = Path.Combine(Application.StartupPath, "Temp");
+            string tempZip = Path.Combine(tempDir, "device.zip");
+            string zpkFileName = Path.Combine(Path.GetDirectoryName(fullFileName), Path.GetFileNameWithoutExtension(fullFileName) + ".zpk");
+            //ZipArchive zip = System.IO.Compression.ZipFile.OpenRead(fullFileName);
+            //List<ZipArchiveEntry> fileList = zip.Entries.ToList();
+            if (!IsWatchFace(fullFileName))
+            {
+                MessageBox.Show("Perhaps the file is not a watch face.");
+                return "";
+            }
+            if (File.Exists(zpkFileName)) File.Delete(zpkFileName);
+            if (File.Exists(tempZip)) File.Delete(tempZip);
+            File.Copy(fullFileName, tempZip, true);
+
+            //Directory.CreateDirectory(tempDir);
+            string templatesFileDir = Application.StartupPath + @"\File_templates";
+            string WatchFaceZpk = templatesFileDir + @"\WatchFace.zpk";
+            using (Ionic.Zip.ZipFile zpk = new Ionic.Zip.ZipFile(WatchFaceZpk))
+            {
+                zpk.AddFile(tempZip, "");
+                //zpk.Save(@"D:\test.zpk");
+                zpk.Save(zpkFileName);
+            }
+            //zip.Dispose();
+            return zpkFileName;
+        }
+
+        // Проверяем что есть необходимые файлы для циферблата
+        private bool IsWatchFace(string fullFileName)
+        {
+            ZipArchive zip = System.IO.Compression.ZipFile.OpenRead(fullFileName);
+            List<ZipArchiveEntry> fileList = zip.Entries.ToList();
+
+            bool appJs = false;
+            bool appJson = false;
+            bool assets = false;
+            foreach (ZipArchiveEntry item in fileList)
+            {
+                if (item.FullName == "app.js") appJs = true;
+                if (item.FullName == "app.bin") appJs = true;
+                if (item.FullName == "app.json") appJson = true;
+                if (item.FullName == "assets/") assets = true;
+                if (appJs && appJson && assets) return true;
+            }
+            zip.Dispose();
+            return false;
         }
 
         private async void RunImageAutoDetect(FileInfo[] Images, string targetFolder, bool fix_size, int fix_color)
@@ -10451,6 +10600,15 @@ namespace Watch_Face_Editor
                         {
                             text = dateMonth.Number_Font;
                             Read_Text_Options(text, true, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Month_Font":
+                        if (uCtrl_DateMonth_Elm.checkBox_Month_Font.Checked)
+                        {
+                            text = dateMonth.Month_Font;
+                            Read_Text_Options(text, false, false, false, false, false, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -13267,6 +13425,110 @@ namespace Watch_Face_Editor
             }
         }
 
+        private void uCtrl_Compass_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            string selectElement = uCtrl_Compass_Elm.selectedElement;
+            if (selectElement.Length == 0) HideAllElemenrOptions();
+            ResetHighlightState("Compass");
+
+            ElementCompass compass = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    compass = (ElementCompass)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementCompass");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    compass = (ElementCompass)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementCompass");
+                }
+            }
+            if (compass != null)
+            {
+                hmUI_widget_IMG_LEVEL img_level = null;
+                hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
+                hmUI_widget_IMG_POINTER img_pointer = null;
+                hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
+
+                switch (selectElement)
+                {
+                    case "Images":
+                        if (uCtrl_Compass_Elm.checkBox_Images.Checked)
+                        {
+                            img_level = compass.Images;
+                            Read_ImgLevel_Options(img_level, 8, false, false, true);
+                            ShowElemenrOptions("Images");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number":
+                        if (uCtrl_Compass_Elm.checkBox_Number.Checked)
+                        {
+                            img_number = compass.Number;
+                            Read_ImgNumber_Options(img_number, false, false, "", true, false, true, true, false, false, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Font":
+                        if (uCtrl_Compass_Elm.checkBox_Number_Font.Checked)
+                        {
+                            text = compass.Number_Font;
+                            Read_Text_Options(text, true, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_rotation":
+                        if (uCtrl_Compass_Elm.checkBox_Text_rotation.Checked)
+                        {
+                            text_rotation = compass.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle":
+                        if (uCtrl_Compass_Elm.checkBox_Text_circle.Checked)
+                        {
+                            text_circle = compass.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Pointer":
+                        if (uCtrl_Compass_Elm.checkBox_Pointer.Checked)
+                        {
+                            img_pointer = compass.Pointer;
+                            Read_ImgPointer_Options(img_pointer, false);
+                            ShowElemenrOptions("Pointer");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Icon":
+                        if (uCtrl_Compass_Elm.checkBox_Icon.Checked)
+                        {
+                            icon = compass.Icon;
+                            Read_Icon_Options(icon);
+                            ShowElemenrOptions("Icon");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
+
+            }
+        }
+
         private void uCtrl_Image_Elm_SelectChanged(object sender, EventArgs eventArgs)
         {
             ResetHighlightState("Image");
@@ -13517,10 +13779,16 @@ namespace Watch_Face_Editor
                 if (dateMonth.Text_circle == null) dateMonth.Text_circle = new Text_Circle();
                 if (dateMonth.Pointer == null) dateMonth.Pointer = new hmUI_widget_IMG_POINTER();
                 if (dateMonth.Images == null) dateMonth.Images = new hmUI_widget_IMG_LEVEL();
+                if (dateMonth.Month_Font == null)
+                {
+                    dateMonth.Month_Font = new hmUI_widget_TEXT();
+                    dateMonth.Month_Font.unit_string = Properties.FormStrings.Month_StrArray;
+                }
 
                 Dictionary<string, int> elementOptions = uCtrl_DateMonth_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Number")) dateMonth.Number.position = elementOptions["Number"];
                 if (elementOptions.ContainsKey("Number_Font")) dateMonth.Number_Font.position = elementOptions["Number_Font"];
+                if (elementOptions.ContainsKey("Month_Font")) dateMonth.Month_Font.position = elementOptions["Month_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) dateMonth.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) dateMonth.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) dateMonth.Pointer.position = elementOptions["Pointer"];
@@ -13538,6 +13806,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number_Font":
                         dateMonth.Number_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Month_Font":
+                        dateMonth.Month_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Text_rotation":
                         dateMonth.Text_rotation.visible = checkBox.Checked;
@@ -13787,10 +14058,16 @@ namespace Watch_Face_Editor
                 if (dateMonth.Text_circle == null) dateMonth.Text_circle = new Text_Circle();
                 if (dateMonth.Pointer == null) dateMonth.Pointer = new hmUI_widget_IMG_POINTER();
                 if (dateMonth.Images == null) dateMonth.Images = new hmUI_widget_IMG_LEVEL();
+                if (dateMonth.Month_Font == null)
+                {
+                    dateMonth.Month_Font = new hmUI_widget_TEXT();
+                    dateMonth.Month_Font.unit_string = Properties.FormStrings.Month_StrArray;
+                }
 
                 //Dictionary<string, int> elementOptions = uCtrl_AnalogTime_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Number")) dateMonth.Number.position = elementOptions["Number"];
                 if (elementOptions.ContainsKey("Number_Font")) dateMonth.Number_Font.position = elementOptions["Number_Font"];
+                if (elementOptions.ContainsKey("Month_Font")) dateMonth.Month_Font.position = elementOptions["Month_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) dateMonth.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) dateMonth.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) dateMonth.Pointer.position = elementOptions["Pointer"];
@@ -14118,6 +14395,13 @@ namespace Watch_Face_Editor
                             Watch_Face.ScreenAOD.Elements.Add((ElementImage)imageElement.Clone());
                             break;
                         #endregion
+
+                        #region ElementCompass
+                        case "ElementCompass":
+                            ElementCompass compassElement = (ElementCompass)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementCompass)compassElement.Clone());
+                            break;
+                            #endregion
                     }
                 }
 
@@ -15368,6 +15652,58 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        private void uCtrl_Compass_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementCompass compass = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementCompass");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementCompass());
+                    compass = (ElementCompass)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementCompass");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementCompass");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementCompass());
+                    compass = (ElementCompass)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementCompass");
+                }
+            }
+
+            if (compass != null)
+            {
+                if (compass.Images == null) compass.Images = new hmUI_widget_IMG_LEVEL();
+                if (compass.Number == null) compass.Number = new hmUI_widget_IMG_NUMBER();
+                if (compass.Number_Font == null) compass.Number_Font = new hmUI_widget_TEXT();
+                if (compass.Text_rotation == null) compass.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (compass.Text_circle == null) compass.Text_circle = new Text_Circle();
+                if (compass.Pointer == null) compass.Pointer = new hmUI_widget_IMG_POINTER();
+                if (compass.Icon == null) compass.Icon = new hmUI_widget_IMG();
+
+                if (elementOptions.ContainsKey("Images")) compass.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("Number")) compass.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) compass.Number_Font.position = elementOptions["Number_Font"];
+                if (elementOptions.ContainsKey("Text_rotation")) compass.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) compass.Text_circle.position = elementOptions["Text_circle"];
+                if (elementOptions.ContainsKey("Pointer")) compass.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Icon")) compass.Icon.position = elementOptions["Icon"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
         #endregion
 
         private void uCtrl_Shortcuts_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
@@ -15999,6 +16335,35 @@ namespace Watch_Face_Editor
             if (moon != null)
             {
                 moon.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Compass_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementCompass compass = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    compass = (ElementCompass)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementCompass");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    compass = (ElementCompass)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementCompass");
+                }
+            }
+            if (compass != null)
+            {
+                compass.visible = visible;
             }
 
             JSON_Modified = true;
@@ -18162,6 +18527,88 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        private void uCtrl_Compass_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementCompass compass = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementCompass");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementCompass());
+                    compass = (ElementCompass)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementCompass");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementCompass");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementCompass());
+                    compass = (ElementCompass)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementCompass");
+                }
+            }
+
+            if (compass != null)
+            {
+                if (compass.Images == null) compass.Images = new hmUI_widget_IMG_LEVEL();
+                if (compass.Number == null) compass.Number = new hmUI_widget_IMG_NUMBER();
+                if (compass.Number_Font == null) compass.Number_Font = new hmUI_widget_TEXT();
+                if (compass.Text_rotation == null) compass.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (compass.Text_circle == null) compass.Text_circle = new Text_Circle();
+                if (compass.Pointer == null) compass.Pointer = new hmUI_widget_IMG_POINTER();
+                if (compass.Icon == null) compass.Icon = new hmUI_widget_IMG();
+
+                Dictionary<string, int> elementOptions = uCtrl_Steps_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Images")) compass.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("Number")) compass.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) compass.Number_Font.position = elementOptions["Number_Font"];
+                if (elementOptions.ContainsKey("Text_rotation")) compass.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) compass.Text_circle.position = elementOptions["Text_circle"];
+                if (elementOptions.ContainsKey("Pointer")) compass.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Icon")) compass.Icon.position = elementOptions["Icon"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Images":
+                        compass.Images.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number":
+                        compass.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Font":
+                        compass.Number_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_rotation":
+                        compass.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle":
+                        compass.Text_circle.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Pointer":
+                        compass.Pointer.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Icon":
+                        compass.Icon.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_Compass_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
         #endregion
 
         private void button_SavePNG_Click(object sender, EventArgs e)
@@ -19639,6 +20086,8 @@ namespace Watch_Face_Editor
                 }
             }
         }
+
+        
 
     }
 }

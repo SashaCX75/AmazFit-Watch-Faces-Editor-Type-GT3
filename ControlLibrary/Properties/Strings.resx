@@ -126,6 +126,12 @@
   <data name="FilterJS" xml:space="preserve">
     <value>JS файлы (*.js) | *.js</value>
   </data>
+  <data name="Hint_DOW" xml:space="preserve">
+    <value>Названия дней недели, начиная с понедельника, разделенные запятой.</value>
+  </data>
+  <data name="Hint_Month" xml:space="preserve">
+    <value>Названия месяцев шрифтом, разделенные запятой.</value>
+  </data>
   <data name="Message_Del_Caption" xml:space="preserve">
     <value>Удалить файл</value>
   </data>
@@ -151,7 +157,7 @@
     <value>Единицы измерения</value>
   </data>
   <data name="UCtrl_Text_Opt_AmPm_true" xml:space="preserve">
-    <value>Am / Pm</value>
+    <value>Стиль Am/Pm</value>
   </data>
   <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
     <value>Десятичный разделитель</value>

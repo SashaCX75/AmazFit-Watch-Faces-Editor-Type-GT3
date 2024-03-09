@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_Month_Font.Text" xml:space="preserve">
-    <value>Month in font</value>
+  <data name="button_Icon.Text" xml:space="preserve">
+    <value>Іконка</value>
   </data>
   <data name="button_Number_Font.Text" xml:space="preserve">
-    <value>Value in font</value>
+    <value>Дані шрифтом</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_Text_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -141,7 +141,7 @@
 </value>
   </data>
   <data name="button_Text_circle.Text" xml:space="preserve">
-    <value>Value on a circle</value>
+    <value>Дані по колу</value>
   </data>
   <data name="button_Text_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -160,26 +160,13 @@
 </value>
   </data>
   <data name="button_Text_rotation.Text" xml:space="preserve">
-    <value>Value at angle</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="button_Number.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_Number.Text" xml:space="preserve">
-    <value>Numerical values</value>
-  </data>
-  <data name="checkBox_Number.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBox_Images.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_Images.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+    <value>Дані під кутом</value>
   </data>
   <data name="button_Images.Text" xml:space="preserve">
-    <value>Images</value>
+    <value>Зображення</value>
+  </data>
+  <data name="button_Number.Text" xml:space="preserve">
+    <value>Цифрові значення</value>
   </data>
   <data name="button_Pointer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -195,34 +182,7 @@
         iPeuhskzxIDw3tUw4faNM7i5iXU7AR+D/8oPVDlNAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="button_Pointer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="button_Pointer.Text" xml:space="preserve">
-    <value>Pointer</value>
-  </data>
-  <data name="checkBox_Pointer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pictureBox_Arrow_Down.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pictureBox_NotShow.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pictureBox_Arrow_Right.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pictureBox_Show.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pictureBox_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_ElementName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Month</value>
+    <value>Стрілочний вказівник</value>
   </data>
 </root>

@@ -147,10 +147,6 @@
   <data name="label22.Text" xml:space="preserve">
     <value>Température maximale</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="numericUpDown_WeatherSet_Temp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 50</value>
-  </data>
   <data name="comboBox_WeatherSet_Icon.Items" xml:space="preserve">
     <value>Nuageux</value>
   </data>
@@ -238,20 +234,11 @@
   <data name="comboBox_WeatherSet_Icon.Items28" xml:space="preserve">
     <value>Nuit claire</value>
   </data>
-  <data name="checkBox_WeatherSet_Temp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 17</value>
-  </data>
   <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
     <value>Température actuelle</value>
   </data>
   <data name="label21.Text" xml:space="preserve">
     <value>Température minimale</value>
-  </data>
-  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 73</value>
-  </data>
-  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 28</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
     <value>Pression atmosphérique</value>
@@ -273,9 +260,6 @@ de l'air</value>
   <data name="label15.Text" xml:space="preserve">
     <value>Indice UV</value>
   </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 13</value>
-  </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Icône météo</value>
   </data>
@@ -285,14 +269,8 @@ de l'air</value>
   <data name="checkBox_DND_Set.Text" xml:space="preserve">
     <value>Ne pas déranger</value>
   </data>
-  <data name="checkBox_Lock_Set.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 18</value>
-  </data>
   <data name="checkBox_Lock_Set.Text" xml:space="preserve">
     <value>Verrouillage</value>
-  </data>
-  <data name="checkBox_Alarm_Set.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 18</value>
   </data>
   <data name="checkBox_Alarm_Set.Text" xml:space="preserve">
     <value>Alarme</value>
@@ -315,12 +293,6 @@ de pas</value>
   </data>
   <data name="label06.Text" xml:space="preserve">
     <value>Distance</value>
-  </data>
-  <data name="label05.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 50</value>
-  </data>
-  <data name="label05.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 28</value>
   </data>
   <data name="label05.Text" xml:space="preserve">
     <value>Pulsations cardiaques</value>
