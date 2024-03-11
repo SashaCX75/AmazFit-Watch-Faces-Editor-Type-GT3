@@ -171,4 +171,10 @@
   <data name="button_Text_rotation_Target.Text" xml:space="preserve">
     <value>角度值（目标）</value>
   </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>字体值</value>
+  </data>
+  <data name="button_Number_Target_Font.Text" xml:space="preserve">
+    <value>字体值（目标）</value>
+  </data>
 </root>

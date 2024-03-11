@@ -172,4 +172,7 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>星期</value>
   </data>
+  <data name="button_DOW_Font.Text" xml:space="preserve">
+    <value>字体中的星期几</value>
+  </data>
 </root>

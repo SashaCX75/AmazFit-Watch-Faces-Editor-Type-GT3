@@ -296,4 +296,48 @@
   <data name="label6.Text" xml:space="preserve">
     <value>字体</value>
   </data>
+  <data name="button_DelFont.Text" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="checkBox_addZero.Text" xml:space="preserve">
+    <value>前面加0</value>
+  </data>
+  <data name="checkBox_CentreHorizontally.Text" xml:space="preserve">
+    <value>中心
+水平地</value>
+  </data>
+  <data name="checkBox_CentreVertically.Text" xml:space="preserve">
+    <value>中心
+垂直</value>
+  </data>
+  <data name="checkBox_inEnd.Text" xml:space="preserve">
+    <value>在最后</value>
+  </data>
+  <data name="checkBox_unit.Text" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>** 使用第三方字体时，建议安装表盘后重启手表。</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>!!! 部分数据可能无法显示（取决于手表型号）。 检查数据是否可以在实际设备上显示。</value>
+  </data>
+  <data name="label_DOW.Text" xml:space="preserve">
+    <value>一周中各天的名称</value>
+  </data>
+  <data name="label_unit_string.Text" xml:space="preserve">
+    <value>分隔符</value>
+  </data>
+  <data name="numericUpDown_Size.ToolTip" xml:space="preserve">
+    <value>不建议设置大于150的尺寸</value>
+  </data>
+  <data name="textBox_DOW.ToolTip" xml:space="preserve">
+    <value>一周中各天的名称，从星期一开始，以逗号分隔。</value>
+  </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>插入属性</value>
+  </data>
+  <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>复制属性</value>
+  </data>
 </root>
