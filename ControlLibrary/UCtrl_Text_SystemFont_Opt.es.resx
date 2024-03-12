@@ -400,4 +400,7 @@ verticalmente</value>
   <data name="label_DOW.Text" xml:space="preserve">
     <value>Nombre días de la semana.</value>
   </data>
+  <data name="label_Month.Text" xml:space="preserve">
+    <value>Nombres de meses en fuente</value>
+  </data>
 </root>

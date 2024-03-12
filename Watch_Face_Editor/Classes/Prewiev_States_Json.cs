@@ -31,6 +31,7 @@ namespace Watch_Face_Editor
         public int Humidity { get; set; }
         public int WindForce = 7;
         public int WindDirection = 3;
+        public int CompassDirection { get; set; }
         public int Altitude = 1000;
         public int AirPressure = 1000;
 

@@ -1657,6 +1657,9 @@ namespace Watch_Face_Editor
                 uCtrl_Images_Opt.numericUpDown_pictures_count.Value = img_level.image_length;
             if (!imagesCountEnable) uCtrl_Images_Opt.numericUpDown_pictures_count.Value = imagesCount;
 
+            if (error_mode && img_level.img_error != null)
+                uCtrl_Images_Opt.SetImageError(img_level.img_error);
+
             uCtrl_Images_Opt.checkBox_shortcut.Checked = img_level.shortcut;
 
             PreviewView = true;

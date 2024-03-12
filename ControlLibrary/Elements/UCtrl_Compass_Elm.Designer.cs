@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Compass_Elm));
             this.pictureBox_Arrow_Down = new System.Windows.Forms.PictureBox();
             this.pictureBox_NotShow = new System.Windows.Forms.PictureBox();
@@ -57,6 +58,7 @@
             this.button_Icon = new System.Windows.Forms.Button();
             this.checkBox_Icon = new System.Windows.Forms.CheckBox();
             this.button_ElementName = new System.Windows.Forms.Button();
+            this.toolTip_Compass = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Down)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_NotShow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Right)).BeginInit();
@@ -78,6 +80,7 @@
             this.pictureBox_Arrow_Down.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_down;
             this.pictureBox_Arrow_Down.Name = "pictureBox_Arrow_Down";
             this.pictureBox_Arrow_Down.TabStop = false;
+            this.toolTip_Compass.SetToolTip(this.pictureBox_Arrow_Down, resources.GetString("pictureBox_Arrow_Down.ToolTip"));
             this.pictureBox_Arrow_Down.Click += new System.EventHandler(this.button_ElementName_Click);
             // 
             // pictureBox_NotShow
@@ -86,6 +89,7 @@
             this.pictureBox_NotShow.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_visibility_off_black_24;
             this.pictureBox_NotShow.Name = "pictureBox_NotShow";
             this.pictureBox_NotShow.TabStop = false;
+            this.toolTip_Compass.SetToolTip(this.pictureBox_NotShow, resources.GetString("pictureBox_NotShow.ToolTip"));
             this.pictureBox_NotShow.Click += new System.EventHandler(this.pictureBox_NotShow_Click);
             // 
             // pictureBox_Arrow_Right
@@ -94,6 +98,7 @@
             this.pictureBox_Arrow_Right.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_right;
             this.pictureBox_Arrow_Right.Name = "pictureBox_Arrow_Right";
             this.pictureBox_Arrow_Right.TabStop = false;
+            this.toolTip_Compass.SetToolTip(this.pictureBox_Arrow_Right, resources.GetString("pictureBox_Arrow_Right.ToolTip"));
             this.pictureBox_Arrow_Right.Click += new System.EventHandler(this.button_ElementName_Click);
             // 
             // pictureBox_Show
@@ -102,6 +107,7 @@
             this.pictureBox_Show.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_visibility_black_24;
             this.pictureBox_Show.Name = "pictureBox_Show";
             this.pictureBox_Show.TabStop = false;
+            this.toolTip_Compass.SetToolTip(this.pictureBox_Show, resources.GetString("pictureBox_Show.ToolTip"));
             this.pictureBox_Show.Click += new System.EventHandler(this.pictureBox_Show_Click);
             // 
             // pictureBox_Del
@@ -110,6 +116,7 @@
             this.pictureBox_Del.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_delete_forever_black_24;
             this.pictureBox_Del.Name = "pictureBox_Del";
             this.pictureBox_Del.TabStop = false;
+            this.toolTip_Compass.SetToolTip(this.pictureBox_Del, resources.GetString("pictureBox_Del.ToolTip"));
             this.pictureBox_Del.Click += new System.EventHandler(this.pictureBox_Del_Click);
             // 
             // tableLayoutPanel1
@@ -124,6 +131,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel_Pointer, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.panel_Icon, 0, 6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.toolTip_Compass.SetToolTip(this.tableLayoutPanel1, resources.GetString("tableLayoutPanel1.ToolTip"));
             this.tableLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragDrop);
             this.tableLayoutPanel1.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
             // 
@@ -134,6 +142,7 @@
             this.panel_Number_Font.Controls.Add(this.button_Number_Font);
             this.panel_Number_Font.Controls.Add(this.checkBox_Number_Font);
             this.panel_Number_Font.Name = "panel_Number_Font";
+            this.toolTip_Compass.SetToolTip(this.panel_Number_Font, resources.GetString("panel_Number_Font.ToolTip"));
             this.panel_Number_Font.Click += new System.EventHandler(this.panel_Number_Font_Click);
             this.panel_Number_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.panel_Number_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
@@ -147,6 +156,7 @@
             this.button_Number_Font.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.button_Number_Font.Image = global::ControlLibrary.Properties.Resources.text_fields;
             this.button_Number_Font.Name = "button_Number_Font";
+            this.toolTip_Compass.SetToolTip(this.button_Number_Font, resources.GetString("button_Number_Font.ToolTip"));
             this.button_Number_Font.UseVisualStyleBackColor = true;
             this.button_Number_Font.Click += new System.EventHandler(this.panel_Number_Font_Click);
             this.button_Number_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -157,6 +167,7 @@
             // 
             resources.ApplyResources(this.checkBox_Number_Font, "checkBox_Number_Font");
             this.checkBox_Number_Font.Name = "checkBox_Number_Font";
+            this.toolTip_Compass.SetToolTip(this.checkBox_Number_Font, resources.GetString("checkBox_Number_Font.ToolTip"));
             this.checkBox_Number_Font.UseVisualStyleBackColor = true;
             this.checkBox_Number_Font.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
@@ -167,6 +178,7 @@
             this.panel_Text_circle.Controls.Add(this.button_Text_circle);
             this.panel_Text_circle.Controls.Add(this.checkBox_Text_circle);
             this.panel_Text_circle.Name = "panel_Text_circle";
+            this.toolTip_Compass.SetToolTip(this.panel_Text_circle, resources.GetString("panel_Text_circle.ToolTip"));
             this.panel_Text_circle.Click += new System.EventHandler(this.panel_Text_circle_Click);
             this.panel_Text_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.panel_Text_circle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
@@ -179,6 +191,7 @@
             this.button_Text_circle.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Text_circle.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.button_Text_circle.Name = "button_Text_circle";
+            this.toolTip_Compass.SetToolTip(this.button_Text_circle, resources.GetString("button_Text_circle.ToolTip"));
             this.button_Text_circle.UseVisualStyleBackColor = true;
             this.button_Text_circle.Click += new System.EventHandler(this.panel_Text_circle_Click);
             this.button_Text_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -189,6 +202,7 @@
             // 
             resources.ApplyResources(this.checkBox_Text_circle, "checkBox_Text_circle");
             this.checkBox_Text_circle.Name = "checkBox_Text_circle";
+            this.toolTip_Compass.SetToolTip(this.checkBox_Text_circle, resources.GetString("checkBox_Text_circle.ToolTip"));
             this.checkBox_Text_circle.UseVisualStyleBackColor = true;
             this.checkBox_Text_circle.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
@@ -199,6 +213,7 @@
             this.panel_Text_rotation.Controls.Add(this.button_Text_rotation);
             this.panel_Text_rotation.Controls.Add(this.checkBox_Text_rotation);
             this.panel_Text_rotation.Name = "panel_Text_rotation";
+            this.toolTip_Compass.SetToolTip(this.panel_Text_rotation, resources.GetString("panel_Text_rotation.ToolTip"));
             this.panel_Text_rotation.Click += new System.EventHandler(this.panel_Text_rotation_Click);
             this.panel_Text_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.panel_Text_rotation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
@@ -211,6 +226,7 @@
             this.button_Text_rotation.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Text_rotation.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.button_Text_rotation.Name = "button_Text_rotation";
+            this.toolTip_Compass.SetToolTip(this.button_Text_rotation, resources.GetString("button_Text_rotation.ToolTip"));
             this.button_Text_rotation.UseVisualStyleBackColor = true;
             this.button_Text_rotation.Click += new System.EventHandler(this.panel_Text_rotation_Click);
             this.button_Text_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -221,6 +237,7 @@
             // 
             resources.ApplyResources(this.checkBox_Text_rotation, "checkBox_Text_rotation");
             this.checkBox_Text_rotation.Name = "checkBox_Text_rotation";
+            this.toolTip_Compass.SetToolTip(this.checkBox_Text_rotation, resources.GetString("checkBox_Text_rotation.ToolTip"));
             this.checkBox_Text_rotation.UseVisualStyleBackColor = true;
             this.checkBox_Text_rotation.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
@@ -231,6 +248,7 @@
             this.panel_Images.Controls.Add(this.checkBox_Images);
             this.panel_Images.Controls.Add(this.button_Images);
             this.panel_Images.Name = "panel_Images";
+            this.toolTip_Compass.SetToolTip(this.panel_Images, resources.GetString("panel_Images.ToolTip"));
             this.panel_Images.Click += new System.EventHandler(this.panel_Images_Click);
             this.panel_Images.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.panel_Images.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
@@ -240,6 +258,7 @@
             // 
             resources.ApplyResources(this.checkBox_Images, "checkBox_Images");
             this.checkBox_Images.Name = "checkBox_Images";
+            this.toolTip_Compass.SetToolTip(this.checkBox_Images, resources.GetString("checkBox_Images.ToolTip"));
             this.checkBox_Images.UseVisualStyleBackColor = true;
             this.checkBox_Images.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
@@ -251,6 +270,7 @@
             this.button_Images.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.button_Images.Image = global::ControlLibrary.Properties.Resources.images_18;
             this.button_Images.Name = "button_Images";
+            this.toolTip_Compass.SetToolTip(this.button_Images, resources.GetString("button_Images.ToolTip"));
             this.button_Images.UseVisualStyleBackColor = true;
             this.button_Images.Click += new System.EventHandler(this.panel_Images_Click);
             this.button_Images.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -264,6 +284,7 @@
             this.panel_Number.Controls.Add(this.button_Number);
             this.panel_Number.Controls.Add(this.checkBox_Number);
             this.panel_Number.Name = "panel_Number";
+            this.toolTip_Compass.SetToolTip(this.panel_Number, resources.GetString("panel_Number.ToolTip"));
             this.panel_Number.Click += new System.EventHandler(this.panel_Number_Click);
             this.panel_Number.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.panel_Number.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
@@ -277,6 +298,7 @@
             this.button_Number.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.button_Number.Image = global::ControlLibrary.Properties.Resources.text_icon;
             this.button_Number.Name = "button_Number";
+            this.toolTip_Compass.SetToolTip(this.button_Number, resources.GetString("button_Number.ToolTip"));
             this.button_Number.UseVisualStyleBackColor = true;
             this.button_Number.Click += new System.EventHandler(this.panel_Number_Click);
             this.button_Number.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -287,6 +309,7 @@
             // 
             resources.ApplyResources(this.checkBox_Number, "checkBox_Number");
             this.checkBox_Number.Name = "checkBox_Number";
+            this.toolTip_Compass.SetToolTip(this.checkBox_Number, resources.GetString("checkBox_Number.ToolTip"));
             this.checkBox_Number.UseVisualStyleBackColor = true;
             this.checkBox_Number.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
@@ -297,6 +320,7 @@
             this.panel_Pointer.Controls.Add(this.button_Pointer);
             this.panel_Pointer.Controls.Add(this.checkBox_Pointer);
             this.panel_Pointer.Name = "panel_Pointer";
+            this.toolTip_Compass.SetToolTip(this.panel_Pointer, resources.GetString("panel_Pointer.ToolTip"));
             this.panel_Pointer.Click += new System.EventHandler(this.panel_Pointer_Click);
             this.panel_Pointer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.panel_Pointer.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
@@ -309,6 +333,7 @@
             this.button_Pointer.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Pointer.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.button_Pointer.Name = "button_Pointer";
+            this.toolTip_Compass.SetToolTip(this.button_Pointer, resources.GetString("button_Pointer.ToolTip"));
             this.button_Pointer.UseVisualStyleBackColor = true;
             this.button_Pointer.Click += new System.EventHandler(this.panel_Pointer_Click);
             this.button_Pointer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -319,6 +344,7 @@
             // 
             resources.ApplyResources(this.checkBox_Pointer, "checkBox_Pointer");
             this.checkBox_Pointer.Name = "checkBox_Pointer";
+            this.toolTip_Compass.SetToolTip(this.checkBox_Pointer, resources.GetString("checkBox_Pointer.ToolTip"));
             this.checkBox_Pointer.UseVisualStyleBackColor = true;
             this.checkBox_Pointer.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
@@ -329,6 +355,7 @@
             this.panel_Icon.Controls.Add(this.button_Icon);
             this.panel_Icon.Controls.Add(this.checkBox_Icon);
             this.panel_Icon.Name = "panel_Icon";
+            this.toolTip_Compass.SetToolTip(this.panel_Icon, resources.GetString("panel_Icon.ToolTip"));
             this.panel_Icon.Click += new System.EventHandler(this.panel_Icon_Click);
             this.panel_Icon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.panel_Icon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
@@ -342,6 +369,7 @@
             this.button_Icon.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.button_Icon.Image = global::ControlLibrary.Properties.Resources.wallpaper_18;
             this.button_Icon.Name = "button_Icon";
+            this.toolTip_Compass.SetToolTip(this.button_Icon, resources.GetString("button_Icon.ToolTip"));
             this.button_Icon.UseVisualStyleBackColor = true;
             this.button_Icon.Click += new System.EventHandler(this.panel_Icon_Click);
             this.button_Icon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -352,6 +380,7 @@
             // 
             resources.ApplyResources(this.checkBox_Icon, "checkBox_Icon");
             this.checkBox_Icon.Name = "checkBox_Icon";
+            this.toolTip_Compass.SetToolTip(this.checkBox_Icon, resources.GetString("checkBox_Icon.ToolTip"));
             this.checkBox_Icon.UseVisualStyleBackColor = true;
             this.checkBox_Icon.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
@@ -361,6 +390,7 @@
             this.button_ElementName.BackColor = System.Drawing.SystemColors.Control;
             this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.compass;
             this.button_ElementName.Name = "button_ElementName";
+            this.toolTip_Compass.SetToolTip(this.button_ElementName, resources.GetString("button_ElementName.ToolTip"));
             this.button_ElementName.UseVisualStyleBackColor = false;
             this.button_ElementName.SizeChanged += new System.EventHandler(this.button_ElementName_SizeChanged);
             this.button_ElementName.Click += new System.EventHandler(this.button_ElementName_Click);
@@ -380,6 +410,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button_ElementName);
             this.Name = "UCtrl_Compass_Elm";
+            this.toolTip_Compass.SetToolTip(this, resources.GetString("$this.ToolTip"));
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Down)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_NotShow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Right)).EndInit();
@@ -435,5 +466,6 @@
         private System.Windows.Forms.Button button_Icon;
         public System.Windows.Forms.CheckBox checkBox_Icon;
         protected System.Windows.Forms.Button button_ElementName;
+        private System.Windows.Forms.ToolTip toolTip_Compass;
     }
 }

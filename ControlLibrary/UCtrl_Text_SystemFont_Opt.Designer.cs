@@ -29,18 +29,19 @@ namespace ControlLibrary
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Text_SystemFont_Opt));
             this.numericUpDown_Width = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown_Height = new System.Windows.Forms.NumericUpDown();
             this.label08 = new System.Windows.Forms.Label();
             this.label07 = new System.Windows.Forms.Label();
             this.numericUpDown_X = new System.Windows.Forms.NumericUpDown();
-            this.contextMenuStrip_X = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip_X = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.вставитьКоординатуХToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
             this.numericUpDown_Y = new System.Windows.Forms.NumericUpDown();
-            this.contextMenuStrip_Y = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip_Y = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.вставитьКоординатуYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,14 +73,14 @@ namespace ControlLibrary
             this.checkBox_addZero = new System.Windows.Forms.CheckBox();
             this.checkBox_unit = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.context_WidgetProperty = new System.Windows.Forms.ContextMenuStrip();
+            this.context_WidgetProperty = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.копироватьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox_unit_string = new System.Windows.Forms.TextBox();
             this.label_unit_string = new System.Windows.Forms.Label();
             this.checkBox_inEnd = new System.Windows.Forms.CheckBox();
             this.textBox_DOW = new System.Windows.Forms.TextBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label_DOW = new System.Windows.Forms.Label();
             this.label_Month = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Width)).BeginInit();

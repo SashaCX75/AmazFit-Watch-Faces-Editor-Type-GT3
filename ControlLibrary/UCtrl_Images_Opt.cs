@@ -82,6 +82,7 @@ namespace ControlLibrary
                 ImageError_mode = value;
                 comboBox_error.Visible = ImageError_mode;
                 label_error.Visible = ImageError_mode;
+                checkBox_shortcut.Visible = !ImageError_mode;
             }
         }
 

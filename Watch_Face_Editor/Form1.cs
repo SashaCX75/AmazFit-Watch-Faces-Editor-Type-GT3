@@ -3772,14 +3772,19 @@ namespace Watch_Face_Editor
             }
             if (comboBox_AddSystem.SelectedIndex == 11)
             {
-                AddCompass();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (radioButton_ScreenNormal.Checked)
+                {
+                    AddCompass();
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
+                else MessageBox.Show(Properties.FormStrings.Message_ElementAOD_Text, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             PreviewView = false;
@@ -8222,6 +8227,7 @@ namespace Watch_Face_Editor
                     Air.Add("Humidity", ps.Humidity);
                     Air.Add("WindForce", ps.WindForce);
                     Air.Add("WindDirection", ps.WindDirection);
+                    Air.Add("CompassDirection", ps.CompassDirection);
                     Air.Add("Altitude", ps.Altitude);
                     Air.Add("AirPressure", ps.AirPressure);
 
@@ -8447,6 +8453,7 @@ namespace Watch_Face_Editor
                     ps.Humidity = Air["Humidity"];
                     ps.WindForce = Air["WindForce"];
                     ps.WindDirection = Air["WindDirection"];
+                    ps.CompassDirection = Air["CompassDirection"];
                     ps.Altitude = Air["Altitude"];
                     ps.AirPressure = Air["AirPressure"];
 
@@ -8890,21 +8897,32 @@ namespace Watch_Face_Editor
         // Проверяем что есть необходимые файлы для циферблата
         private bool IsWatchFace(string fullFileName)
         {
-            ZipArchive zip = System.IO.Compression.ZipFile.OpenRead(fullFileName);
-            List<ZipArchiveEntry> fileList = zip.Entries.ToList();
-
             bool appJs = false;
             bool appJson = false;
             bool assets = false;
-            foreach (ZipArchiveEntry item in fileList)
+
+            using (Ionic.Zip.ZipFile zip = new Ionic.Zip.ZipFile(fullFileName))
             {
-                if (item.FullName == "app.js") appJs = true;
-                if (item.FullName == "app.bin") appJs = true;
-                if (item.FullName == "app.json") appJson = true;
-                if (item.FullName == "assets/") assets = true;
+                //ICollection<Ionic.Zip.ZipEntry> entries = zip.Entries;
+                if (zip.ContainsEntry("app.js")) appJs = true;
+                if (zip.ContainsEntry("app.bin")) appJs = true;
+                if (zip.ContainsEntry("app.json")) appJson = true;
+                if (zip.ContainsEntry("assets/")) assets = true;
                 if (appJs && appJson && assets) return true;
             }
-            zip.Dispose();
+
+            //ZipArchive zip = System.IO.Compression.ZipFile.OpenRead(fullFileName);
+            //List<ZipArchiveEntry> fileList = zip.Entries.ToList();
+
+            //foreach (ZipArchiveEntry item in fileList)
+            //{
+            //    if (item.FullName == "app.js") appJs = true;
+            //    if (item.FullName == "app.bin") appJs = true;
+            //    if (item.FullName == "app.json") appJson = true;
+            //    if (item.FullName == "assets/") assets = true;
+            //    if (appJs && appJson && assets) return true;
+            //}
+            //zip.Dispose();
             return false;
         }
 
@@ -9804,53 +9822,57 @@ namespace Watch_Face_Editor
                         string jsDir = Path.Combine(projectPath, "JS");
                         if (!Directory.Exists(jsDir)) Directory.CreateDirectory(jsDir);
 
-                        if (user_functions.Length > 5)
+                        if (script != null)
                         {
-                            string user_script_fileName = Path.Combine(projectPath, "JS", "user_functions.js");
-                            File.WriteAllText(user_script_fileName, user_functions, Encoding.UTF8);
-                            script.user_functions = true;
+                            if (user_functions.Length > 5)
+                            {
+                                string user_script_fileName = Path.Combine(projectPath, "JS", "user_functions.js");
+                                File.WriteAllText(user_script_fileName, user_functions, Encoding.UTF8);
+                                script.user_functions = true;
+                            }
+                            if (user_script_start.Length > 5)
+                            {
+                                string user_script_fileName = Path.Combine(projectPath, "JS", "user_script_start.js");
+                                File.WriteAllText(user_script_fileName, user_script_start, Encoding.UTF8);
+                                script.user_script_start = true;
+                            }
+                            if (user_script.Length > 5)
+                            {
+                                string user_script_fileName = Path.Combine(projectPath, "JS", "user_script.js");
+                                File.WriteAllText(user_script_fileName, user_script, Encoding.UTF8);
+                                script.user_script = true;
+                            }
+                            if (user_script_beforeShortcuts.Length > 5)
+                            {
+                                string user_script_fileName = Path.Combine(projectPath, "JS", "user_script_beforeShortcuts.js");
+                                File.WriteAllText(user_script_fileName, user_script_beforeShortcuts, Encoding.UTF8);
+                                script.user_script_beforeShortcuts = true;
+                            }
+                            if (user_script_end.Length > 5)
+                            {
+                                string user_script_fileName = Path.Combine(projectPath, "JS", "user_script_end.js");
+                                File.WriteAllText(user_script_fileName, user_script_end, Encoding.UTF8);
+                                script.user_script_end = true;
+                            }
+                            if (resume_call.Length > 5)
+                            {
+                                string user_script_fileName = Path.Combine(projectPath, "JS", "resume_call.js");
+                                File.WriteAllText(user_script_fileName, resume_call, Encoding.UTF8);
+                                script.resume_call = true;
+                            }
+                            if (pause_call.Length > 5)
+                            {
+                                string user_script_fileName = Path.Combine(projectPath, "JS", "pause_call.js");
+                                File.WriteAllText(user_script_fileName, pause_call, Encoding.UTF8);
+                                script.pause_call = true;
+                            } 
                         }
-                        if (user_script_start.Length > 5)
-                        {
-                            string user_script_fileName = Path.Combine(projectPath, "JS", "user_script_start.js");
-                            File.WriteAllText(user_script_fileName, user_script_start, Encoding.UTF8);
-                            script.user_script_start = true;
-                        }
-                        if (user_script.Length > 5)
-                        {
-                            string user_script_fileName = Path.Combine(projectPath, "JS", "user_script.js");
-                            File.WriteAllText(user_script_fileName, user_script, Encoding.UTF8);
-                            script.user_script = true;
-                        }
-                        if (user_script_AOD.Length > 5)
+
+                        if (script_AOD != null && user_script_AOD.Length > 5)
                         {
                             string user_script_fileName = Path.Combine(projectPath, "JS", "AOD_user_script.js");
                             File.WriteAllText(user_script_fileName, user_script_AOD, Encoding.UTF8);
                             script_AOD.user_script = true;
-                        }
-                        if (user_script_beforeShortcuts.Length > 5)
-                        {
-                            string user_script_fileName = Path.Combine(projectPath, "JS", "user_script_beforeShortcuts.js");
-                            File.WriteAllText(user_script_fileName, user_script_beforeShortcuts, Encoding.UTF8);
-                            script.user_script_beforeShortcuts = true;
-                        }
-                        if (user_script_end.Length > 5)
-                        {
-                            string user_script_fileName = Path.Combine(projectPath, "JS", "user_script_end.js");
-                            File.WriteAllText(user_script_fileName, user_script_end, Encoding.UTF8);
-                            script.user_script_end = true;
-                        }
-                        if (resume_call.Length > 5)
-                        {
-                            string user_script_fileName = Path.Combine(projectPath, "JS", "resume_call.js");
-                            File.WriteAllText(user_script_fileName, resume_call, Encoding.UTF8);
-                            script.resume_call = true;
-                        }
-                        if (pause_call.Length > 5)
-                        {
-                            string user_script_fileName = Path.Combine(projectPath, "JS", "pause_call.js");
-                            File.WriteAllText(user_script_fileName, pause_call, Encoding.UTF8);
-                            script.pause_call = true;
                         }
                     }
                     #endregion
@@ -14396,12 +14418,12 @@ namespace Watch_Face_Editor
                             break;
                         #endregion
 
-                        #region ElementCompass
+                        /*#region ElementCompass
                         case "ElementCompass":
                             ElementCompass compassElement = (ElementCompass)element;
                             Watch_Face.ScreenAOD.Elements.Add((ElementCompass)compassElement.Clone());
                             break;
-                            #endregion
+                        #endregion*/
                     }
                 }
 

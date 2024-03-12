@@ -121,6 +121,12 @@
     <value>Dirección 
 del viento</value>
   </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Temperatura máxima</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Calidad del aire</value>
+  </data>
   <data name="comboBox_WindDirection.Items" xml:space="preserve">
     <value>N - norte</value>
   </data>
@@ -144,9 +150,6 @@ del viento</value>
   </data>
   <data name="comboBox_WindDirection.Items7" xml:space="preserve">
     <value>NW - noroeste</value>
-  </data>
-  <data name="label22.Text" xml:space="preserve">
-    <value>Temperatura máxima</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items" xml:space="preserve">
     <value>Nublado</value>
@@ -235,43 +238,56 @@ del viento</value>
   <data name="comboBox_WeatherSet_Icon.Items28" xml:space="preserve">
     <value>Noche clara</value>
   </data>
-  <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
-    <value>Temperatura actual</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>Temperatura mínima</value>
-  </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Presión 
-del aire</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Altitud</value>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Índice UV</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
     <value>Fuerza 
 del viento</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="checkBox_WeatherSet_Temp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 17</value>
+  </data>
+  <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
+    <value>Temperatura actual</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Brújula</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Altitud</value>
+  </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Humedad</value>
   </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Calidad del aire</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Índice UV</value>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Temperatura mínima</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Icono del tiempo</value>
   </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Presión 
+del aire</value>
+  </data>
   <data name="groupBox_Air.Text" xml:space="preserve">
     <value>Tiempo</value>
+  </data>
+  <data name="groupBox_Activity.Text" xml:space="preserve">
+    <value>Actividades</value>
   </data>
   <data name="checkBox_DND_Set.Text" xml:space="preserve">
     <value>No molestar</value>
   </data>
+  <data name="checkBox_Lock_Set.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 18</value>
+  </data>
   <data name="checkBox_Lock_Set.Text" xml:space="preserve">
     <value>Bloqueo</value>
+  </data>
+  <data name="checkBox_Alarm_Set.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 18</value>
   </data>
   <data name="checkBox_Alarm_Set.Text" xml:space="preserve">
     <value>Alarma</value>
@@ -296,6 +312,12 @@ de pasos</value>
   <data name="label06.Text" xml:space="preserve">
     <value>Distancia</value>
   </data>
+  <data name="label05.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 50</value>
+  </data>
+  <data name="label05.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 28</value>
+  </data>
   <data name="label05.Text" xml:space="preserve">
     <value>Ritmo cardiaco</value>
   </data>
@@ -310,9 +332,6 @@ de pasos</value>
   </data>
   <data name="label01.Text" xml:space="preserve">
     <value>Fecha</value>
-  </data>
-  <data name="groupBox_Activity.Text" xml:space="preserve">
-    <value>Actividades</value>
   </data>
   <data name="button_Set.Text" xml:space="preserve">
     <value>Valores</value>

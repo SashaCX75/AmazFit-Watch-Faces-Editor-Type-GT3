@@ -29,12 +29,13 @@ namespace ControlLibrary
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Images_Opt));
-            this.contextMenuStrip_X = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip_X = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.вставитьКоординатуХToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip_Y = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip_Y = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.вставитьКоординатуYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +49,7 @@ namespace ControlLibrary
             this.numericUpDown_pictures_count = new System.Windows.Forms.NumericUpDown();
             this.label03 = new System.Windows.Forms.Label();
             this.checkBox_shortcut = new System.Windows.Forms.CheckBox();
-            this.context_WidgetProperty = new System.Windows.Forms.ContextMenuStrip();
+            this.context_WidgetProperty = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.копироватьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBox_error = new System.Windows.Forms.ComboBox();

@@ -373,7 +373,7 @@
     <value>Не вдалося створити зображення попереднього перегляду. Можливо, це зображення вже існує.</value>
   </data>
   <data name="Month_StrArray" xml:space="preserve">
-    <value>Січ,Лют, Бер, Квіт, Трав, Черв, Лип, Серп, Вер, Жовт, Лист, Груд</value>
+    <value>Січ, Лют, Бер, Квіт, Трав, Черв, Лип, Серп, Вер, Жовт, Лист, Груд</value>
   </data>
   <data name="Tip_Background" xml:space="preserve">
     <value>Фон</value>

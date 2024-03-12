@@ -120,6 +120,12 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Windrichtung</value>
   </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Max Temperatur</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Luftqualität</value>
+  </data>
   <data name="comboBox_WindDirection.Items" xml:space="preserve">
     <value>N - Norden</value>
   </data>
@@ -144,8 +150,9 @@
   <data name="comboBox_WindDirection.Items7" xml:space="preserve">
     <value>NW - Nordwesten</value>
   </data>
-  <data name="label22.Text" xml:space="preserve">
-    <value>Max Temperatur</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="comboBox_WindDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>320, 106</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items" xml:space="preserve">
     <value>Bewölkt</value>
@@ -234,32 +241,41 @@
   <data name="comboBox_WeatherSet_Icon.Items28" xml:space="preserve">
     <value>Klare Nacht</value>
   </data>
-  <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
-    <value>Jetzige Temperatur</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>Min Temperatur</value>
-  </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Luftdruck</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Höhe</value>
-  </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Windstärke</value>
-  </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>Luftfeuchtigkeit</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Luftqualität</value>
+  <data name="comboBox_WeatherSet_Icon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 22</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>UV-Index</value>
   </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Windstärke</value>
+  </data>
+  <data name="checkBox_WeatherSet_Temp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 17</value>
+  </data>
+  <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
+    <value>Jetzige Temperatur</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Kompass</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Höhe</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Luftfeuchtigkeit</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Min Temperatur</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 13</value>
+  </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Wetter-Symbol</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Luftdruck</value>
   </data>
   <data name="groupBox_Air.Text" xml:space="preserve">
     <value>Atmosphäre</value>
@@ -267,8 +283,14 @@
   <data name="checkBox_DND_Set.Text" xml:space="preserve">
     <value>DND</value>
   </data>
+  <data name="checkBox_Lock_Set.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 18</value>
+  </data>
   <data name="checkBox_Lock_Set.Text" xml:space="preserve">
     <value>Sperre</value>
+  </data>
+  <data name="checkBox_Alarm_Set.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 18</value>
   </data>
   <data name="checkBox_Alarm_Set.Text" xml:space="preserve">
     <value>Alarm</value>
