@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Index.HeaderText" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="Button.HeaderText" xml:space="preserve">
+    <value>名字</value>
+  </data>
+  <data name="button_add.Text" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="button_del.Text" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="label06.Text" xml:space="preserve">
+    <value>按钮高度</value>
+  </data>
+  <data name="label07.Text" xml:space="preserve">
+    <value>按钮宽度</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -254,73 +272,46 @@
   <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 82</value>
   </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>起始图像</value>
-  </data>
   <data name="label02.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 13</value>
   </data>
   <data name="label02.Text" xml:space="preserve">
     <value>坐标</value>
   </data>
-  <data name="label04.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>按下状态</value>
   </data>
-  <data name="label04.Text" xml:space="preserve">
-    <value>图标</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>正常状态</value>
   </data>
-  <data name="label05.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 13</value>
+  <data name="groupBox_image.Text" xml:space="preserve">
+    <value>图像</value>
   </data>
-  <data name="label05.Text" xml:space="preserve">
-    <value>图标坐标</value>
+  <data name="label5.Text" xml:space="preserve">
+    <value>按下状态</value>
   </data>
-  <data name="comboBox_alignment.Items" xml:space="preserve">
-    <value>左对齐</value>
+  <data name="label4.Text" xml:space="preserve">
+    <value>半径</value>
   </data>
-  <data name="comboBox_alignment.Items1" xml:space="preserve">
-    <value>居中对齐</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>正常状态</value>
   </data>
-  <data name="comboBox_alignment.Items2" xml:space="preserve">
-    <value>右对齐</value>
+  <data name="groupBox_color.Text" xml:space="preserve">
+    <value>颜色</value>
   </data>
-  <data name="label_unit.Text" xml:space="preserve">
-    <value>单位</value>
+  <data name="label6.Text" xml:space="preserve">
+    <value>文字大小</value>
   </data>
-  <data name="label09.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
+  <data name="label7.Text" xml:space="preserve">
+    <value>文字</value>
   </data>
-  <data name="label09.Text" xml:space="preserve">
-    <value>对齐</value>
+  <data name="label8.Text" xml:space="preserve">
+    <value>文字颜色</value>
   </data>
-  <data name="checkBox_addZero.Text" xml:space="preserve">
-    <value>前面加0</value>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 26</value>
   </data>
-  <data name="label03.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
-  </data>
-  <data name="label03.Text" xml:space="preserve">
-    <value>间隔</value>
-  </data>
-  <data name="label_imageError.Text" xml:space="preserve">
-    <value>错误图像</value>
-  </data>
-  <data name="label_imageDecimalPoint.Text" xml:space="preserve">
-    <value>小数分隔符</value>
-  </data>
-  <data name="label_unit_miles.Text" xml:space="preserve">
-    <value>单位（毫升）</value>
-  </data>
-  <data name="checkBox_follow.Text" xml:space="preserve">
-    <value>跟随</value>
-  </data>
-  <data name="label_angle.Text" xml:space="preserve">
-    <value>角度</value>
-  </data>
-  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
-    <value>插入属性</value>
-  </data>
-  <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
-    <value>复制属性</value>
+  <data name="label9.Text" xml:space="preserve">
+    <value>* 要在按下按钮时添加功能，请双击带有按钮的行</value>
   </data>
 </root>

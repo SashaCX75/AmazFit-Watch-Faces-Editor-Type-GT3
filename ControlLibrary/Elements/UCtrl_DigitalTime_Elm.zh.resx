@@ -193,4 +193,19 @@
   <data name="button_Seconds_rotation.Text" xml:space="preserve">
     <value>角度下的秒钟数</value>
   </data>
+  <data name="button_Hours_Font.Text" xml:space="preserve">
+    <value>小时字体</value>
+  </data>
+  <data name="button_Hour_min_Font.Text" xml:space="preserve">
+    <value>时 : 分</value>
+  </data>
+  <data name="button_Hour_min_sec_Font.Text" xml:space="preserve">
+    <value>时 : 分 : 秒</value>
+  </data>
+  <data name="button_Minutes_Font.Text" xml:space="preserve">
+    <value>分钟字体</value>
+  </data>
+  <data name="button_Seconds_Font.Text" xml:space="preserve">
+    <value>秒钟字体</value>
+  </data>
 </root>

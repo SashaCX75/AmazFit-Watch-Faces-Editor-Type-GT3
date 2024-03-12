@@ -163,4 +163,13 @@
   <data name="button_Text_rotation.Text" xml:space="preserve">
     <value>角度值</value>
   </data>
+  <data name="button_Day_Month_Font.Text" xml:space="preserve">
+    <value>按字体显示日期/月份</value>
+  </data>
+  <data name="button_Day_Month_Year_Font.Text" xml:space="preserve">
+    <value>按字体显示日/月/年</value>
+  </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>按字体显示的值</value>
+  </data>
 </root>

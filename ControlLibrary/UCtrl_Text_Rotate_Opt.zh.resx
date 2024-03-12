@@ -311,4 +311,10 @@
   <data name="label_minus_image.Text" xml:space="preserve">
     <value>符号 "-"</value>
   </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>插入属性</value>
+  </data>
+  <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>复制属性</value>
+  </data>
 </root>

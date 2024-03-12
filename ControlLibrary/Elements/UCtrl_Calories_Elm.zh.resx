@@ -164,7 +164,7 @@
         xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
         ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
         FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
-        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsOAAALDgFAvuFB
+        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsNAAALDQHtB8As
         AAAA2UlEQVQ4T52TARGDMAxFwQESJmESkDAJSKiESZiESZgEJEwCEnDQ/d9LemlIx265e3fwm/w2oQw5
         54KPcRxX8AaTSE3UusgARReQhVXkJs4MXsaALLJUo2uA5OSKCQ0nImmxARKuYAfegHAedSY9AyZExZZ7
         aICFxSX22HsGfnDfmCMDfnebxFk8nKakXww4UE7eakpoYFt4sk+G05WwBTvEJPXUeYrNrG3UDwaSrG2U
@@ -186,5 +186,11 @@
   </data>
   <data name="button_Text_rotation_Target.Text" xml:space="preserve">
     <value>角度值（目标）</value>
+  </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>字体值</value>
+  </data>
+  <data name="button_Number_Target_Font.Text" xml:space="preserve">
+    <value>字体值（目标）</value>
   </data>
 </root>

@@ -164,7 +164,7 @@
         xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
         ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
         FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
-        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsPAAALDwGS+QOl
+        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsOAAALDgFAvuFB
         AAACFklEQVQ4T6VTOUtcYRS982bf93mzL2/GWd6bmQdTvDI/w0JERDDYRazs0mWQIGmnsBBCGhuxSCOB
         hLTpRLBwIQQC+QEJpDEv53zMiIWFYnHhbt+55y6fuK77LJHBYCC9Xk9qtZokEglpNptimqbyKzEHks1m
         RfNoUq1WlR4Oh1+IyGG5XF5RSf1+Xz1MpVLSbrfFsqw7AGtoSaFQQL6IYRjS6XRor/p8PpSXCxkOh6qi
@@ -185,5 +185,8 @@
   </data>
   <data name="button_Text_rotation_Target.Text" xml:space="preserve">
     <value>角度值（周）</value>
+  </data>
+  <data name="button_Number_Target_Font.Text" xml:space="preserve">
+    <value>字体值（周）</value>
   </data>
 </root>

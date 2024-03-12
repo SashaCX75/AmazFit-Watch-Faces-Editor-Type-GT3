@@ -687,7 +687,7 @@ PayPal: sashacx75@gmail.com</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
-        DQAAAk1TRnQBSQFMAgEBBgEAAVQBKAFYASgBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAVQBKAFcASgBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -2010,5 +2010,44 @@ PayPal: sashacx75@gmail.com</value>
         AAAAAAAAAAAAAO+BPCbvgT1I74I+SO+BPSYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8PwAA4AcAAMAD
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
+  </data>
+  <data name="button_SavePNG_button.Text" xml:space="preserve">
+    <value>保存按钮预览</value>
+  </data>
+  <data name="checkBox_Buttons_Area.Text" xml:space="preserve">
+    <value>点状网格</value>
+  </data>
+  <data name="checkBox_Buttons_Border.Text" xml:space="preserve">
+    <value>显示按钮周围的边框</value>
+  </data>
+  <data name="checkBox_Buttons_In_Gif.Text" xml:space="preserve">
+    <value>保存 gif 文件时突出显示按钮</value>
+  </data>
+  <data name="checkBox_Show_Buttons.Text" xml:space="preserve">
+    <value>突出显示按钮区域</value>
+  </data>
+  <data name="checkBox_Use_ARGB.Text" xml:space="preserve">
+    <value>将图像转换为 ARGB 格式</value>
+  </data>
+  <data name="comboBox_AddAir.Items7" xml:space="preserve">
+    <value>月相</value>
+  </data>
+  <data name="comboBox_AddSystem.Items10" xml:space="preserve">
+    <value>按钮</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>按钮高亮类型</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>转换图像而不损失质量</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>该程序使用代码来转换实用程序中的图像：</value>
+  </data>
+  <data name="radioButton_ARGB_color.Text" xml:space="preserve">
+    <value>仅具有指定数量的颜色</value>
+  </data>
+  <data name="radioButton_ARGB_forced.Text" xml:space="preserve">
+    <value>强制使用ARGB格式</value>
   </data>
 </root>
