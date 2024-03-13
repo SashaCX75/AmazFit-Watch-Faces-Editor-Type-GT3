@@ -256,4 +256,10 @@
   <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
     <value>复制</value>
   </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>插入属性</value>
+  </data>
+  <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>复制属性</value>
+  </data>
 </root>

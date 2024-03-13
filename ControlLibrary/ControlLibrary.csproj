@@ -86,6 +86,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Properties\ButtonFunctions.zh.Designer.cs">
+      <DependentUpon>ButtonFunctions.zh.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Properties\ButtonFunctions.uk.Designer.cs">
       <DependentUpon>ButtonFunctions.uk.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -597,6 +602,9 @@
     <EmbeddedResource Include="AddButtonFunction.uk.resx">
       <DependentUpon>AddButtonFunction.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddButtonFunction.zh.resx">
+      <DependentUpon>AddButtonFunction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Activity_Elm.cs.resx">
       <DependentUpon>UCtrl_Activity_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -778,6 +786,9 @@
       <DependentUpon>UCtrl_Buttons_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Buttons_Elm.it.resx">
+      <DependentUpon>UCtrl_Buttons_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Buttons_Elm.zh.resx">
       <DependentUpon>UCtrl_Buttons_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Calories_Elm.cs.resx">
@@ -1136,6 +1147,9 @@
       <DependentUpon>UCtrl_JSscript_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_JSscript_Elm.resx">
+      <DependentUpon>UCtrl_JSscript_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_JSscript_Elm.zh.resx">
       <DependentUpon>UCtrl_JSscript_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Moon_Elm.cs.resx">
@@ -1499,6 +1513,10 @@
     <EmbeddedResource Include="Properties\ButtonFunctions.es.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ButtonFunctions.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ButtonFunctions.zh.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ButtonFunctions.zh.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\ButtonFunctions.uk.resx">
       <Generator>ResXFileCodeGenerator</Generator>

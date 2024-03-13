@@ -281,4 +281,10 @@
   <data name="label14.Text" xml:space="preserve">
     <value>背景图</value>
   </data>
+  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>插入属性</value>
+  </data>
+  <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
+    <value>复制属性</value>
+  </data>
 </root>

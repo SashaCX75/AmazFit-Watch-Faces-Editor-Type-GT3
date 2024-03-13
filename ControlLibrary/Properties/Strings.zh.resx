@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Message_JS_Del" xml:space="preserve">
+    <value>您确实要删除 JS 文件吗？</value>
+  </data>
+  <data name="Message_ReadScript_Error" xml:space="preserve">
+    <value>读取用户脚本时出错</value>
+  </data>
+  <data name="Message_Warning_Caption" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="SystemFont" xml:space="preserve">
+    <value>系统字体</value>
+  </data>
+  <data name="UCtrl_Text_Opt_Altitude_true" xml:space="preserve">
+    <value>符号“-”</value>
+  </data>
+  <data name="UCtrl_Text_Opt_AmPm_false" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="UCtrl_Text_Opt_AmPm_true" xml:space="preserve">
+    <value>Am / Pm</value>
+  </data>
   <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
     <value>小数分隔符</value>
   </data>

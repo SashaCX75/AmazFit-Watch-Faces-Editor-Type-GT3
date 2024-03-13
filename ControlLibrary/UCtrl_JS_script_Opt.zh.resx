@@ -118,54 +118,124 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button_Text_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
-        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
-        z2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZ
-        xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
-        ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
-        FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
-        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
-        AAAA50lEQVQ4T6XSPWoCQQDF8YG1C+IFVHIHtfAEeoGks5EIIqbICTyBvZW9WAlpPUKwsI5HsDARG2X9
-        v1lW1nFn/Xrwk92R91gXTRiGT0k9vEf0YUwJM3TwooNbkhyo6R6/2GCECjKTHFAW+EQTc+iLH3SRx0Xc
-        gR5WCOydMVPsccAWbziLO1DAP94xhMotvEJPlkMDO6jUdweUMf4Ql91UsYZ3oA4dDOzdeeKyXnQbH2kD
-        yhLf0eUpyXJZByTwDej3TqJLm7SyjW9AfyS9MMVbVnwDcTLLStZAEZll5doTfMFbVk4DjwvNEZW8Chyw
-        KOoAAAAAAElFTkSuQmCC
-</value>
+  <data name="contextMenuStrip_Edit_JS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 26</value>
   </data>
-  <data name="button_Text_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
-        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
-        z2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZ
-        xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
-        ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
-        FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
-        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
-        AAABAUlEQVQ4T5WSDRHCMBSDJ2ESkIADkIADkIADkIADkDIH4IA5GA5Gvrdm10G3g9xl17VN3k9flaPv
-        +6DQ8StuE1l36azmUwIHL5FbrXgRVyL7Z7ERw0hcixPY9SAeh2URZEOQiQliNhD/AoSYPMXaNfNZMnAp
-        xk6UNLThRs1zQEyGdzE3eYhkEdFpWAlkdRVpIoEwM9iLFGhMfmAg5oID5NFBlMFiI34a+BAS+evZhNHA
-        EQzXvCQGNzEM/CSGJ29JDGh8W3pGap3ri8Gwjc+IgGj/DBJKnnGEO4zJflgWEZHFYnnOhAsMzSntUQqz
-        4MYSebY3darLRvTCTW3TmbMVquoNr1ZmWoWICBcAAAAASUVORK5CYII=
-</value>
+  <data name="checkBox_user_functions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 48</value>
   </data>
-  <data name="button_ElementName.Text" xml:space="preserve">
-    <value>距离</value>
+  <data name="checkBox_user_functions.Text" xml:space="preserve">
+    <value>用户定义函数（在声明变量之前插入）</value>
   </data>
-  <data name="button_Icon.Text" xml:space="preserve">
-    <value>图标</value>
+  <data name="toolStripMenuItem_Edit_JS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 22</value>
   </data>
-  <data name="button_Number.Text" xml:space="preserve">
-    <value>数值</value>
+  <data name="toolStripMenuItem_Edit_JS.Text" xml:space="preserve">
+    <value>打开 JS 文件</value>
   </data>
-  <data name="button_Text_circle.Text" xml:space="preserve">
-    <value>圆上值</value>
+  <data name="checkBox_user_script_start.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 48</value>
   </data>
-  <data name="button_Text_rotation.Text" xml:space="preserve">
-    <value>角度值</value>
+  <data name="checkBox_user_script_start.Text" xml:space="preserve">
+    <value>开头的用户脚本（在创建小部件之前插入）</value>
   </data>
-  <data name="button_Number_Font.Text" xml:space="preserve">
-    <value>字体值</value>
+  <data name="checkBox_user_script.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 48</value>
+  </data>
+  <data name="checkBox_user_script.Text" xml:space="preserve">
+    <value>用户脚本（该小部件的位置决定了脚本在代码中的位置）</value>
+  </data>
+  <data name="checkBox_user_script_end.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 48</value>
+  </data>
+  <data name="checkBox_user_script_end.Text" xml:space="preserve">
+    <value>最后的用户脚本（在创建小部件之后插入，在 WIDGET_DELEGATE 之前）</value>
+  </data>
+  <data name="checkBox_user_script_beforeShortcuts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 48</value>
+  </data>
+  <data name="checkBox_user_script_beforeShortcuts.Text" xml:space="preserve">
+    <value>快捷方式之前的用户脚本（插入快捷方式小部件之前）</value>
+  </data>
+  <data name="checkBox_resume_call.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 48</value>
+  </data>
+  <data name="checkBox_resume_call.Text" xml:space="preserve">
+    <value>函数resume_call（插入到WIDGET_DELEGATE小部件的resume_call中）</value>
+  </data>
+  <data name="checkBox_pause_call.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 48</value>
+  </data>
+  <data name="checkBox_pause_call.Text" xml:space="preserve">
+    <value>函数pause_call（插入到WIDGET_DELEGATE小部件的pause_call中）</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 31</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>右键单击开关将在默认程序中打开文件</value>
+  </data>
+  <data name="button_user_functions_Create.ToolTip" xml:space="preserve">
+    <value>创建 *.js 文件</value>
+  </data>
+  <data name="button_user_functions_Del.ToolTip" xml:space="preserve">
+    <value>删除 *.js 文件</value>
+  </data>
+  <data name="button_user_functions_Add.ToolTip" xml:space="preserve">
+    <value>添加 *.js 文件</value>
+  </data>
+  <data name="button_user_script_start_Create.ToolTip" xml:space="preserve">
+    <value>创建 *.js 文件</value>
+  </data>
+  <data name="button_user_script_start_Del.ToolTip" xml:space="preserve">
+    <value>删除 *.js 文件</value>
+  </data>
+  <data name="button_user_script_start_Add.ToolTip" xml:space="preserve">
+    <value>添加 *.js 文件</value>
+  </data>
+  <data name="button_user_script_Create.ToolTip" xml:space="preserve">
+    <value>创建 *.js 文件</value>
+  </data>
+  <data name="button_user_script_Del.ToolTip" xml:space="preserve">
+    <value>删除 *.js 文件</value>
+  </data>
+  <data name="button_user_script_Add.ToolTip" xml:space="preserve">
+    <value>添加 *.js 文件</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Create.ToolTip" xml:space="preserve">
+    <value>创建 *.js 文件</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.ToolTip" xml:space="preserve">
+    <value>删除 *.js 文件</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.ToolTip" xml:space="preserve">
+    <value>添加 *.js 文件</value>
+  </data>
+  <data name="button_user_script_end_Create.ToolTip" xml:space="preserve">
+    <value>创建 *.js 文件</value>
+  </data>
+  <data name="button_user_script_end_Del.ToolTip" xml:space="preserve">
+    <value>删除 *.js 文件</value>
+  </data>
+  <data name="button_user_script_end_Add.ToolTip" xml:space="preserve">
+    <value>添加 *.js 文件</value>
+  </data>
+  <data name="button_resume_call_Create.ToolTip" xml:space="preserve">
+    <value>创建 *.js 文件</value>
+  </data>
+  <data name="button_resume_call_Del.ToolTip" xml:space="preserve">
+    <value>删除 *.js 文件</value>
+  </data>
+  <data name="button_resume_call_Add.ToolTip" xml:space="preserve">
+    <value>添加 *.js 文件</value>
+  </data>
+  <data name="button_pause_call_Create.ToolTip" xml:space="preserve">
+    <value>创建 *.js 文件</value>
+  </data>
+  <data name="button_pause_call_Del.ToolTip" xml:space="preserve">
+    <value>删除 *.js 文件</value>
+  </data>
+  <data name="button_pause_call_Add.ToolTip" xml:space="preserve">
+    <value>添加 *.js 文件</value>
   </data>
 </root>
