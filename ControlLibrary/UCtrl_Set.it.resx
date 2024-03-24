@@ -120,6 +120,12 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Direzione del vento</value>
   </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Temperatura massima</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Qualità dell'aria</value>
+  </data>
   <data name="comboBox_WindDirection.Items" xml:space="preserve">
     <value>N - nord</value>
   </data>
@@ -144,8 +150,9 @@
   <data name="comboBox_WindDirection.Items7" xml:space="preserve">
     <value>NW - nord-ovest</value>
   </data>
-  <data name="label22.Text" xml:space="preserve">
-    <value>Temperatura massima</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="comboBox_WindDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>320, 106</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items" xml:space="preserve">
     <value>Nuvoloso</value>
@@ -234,33 +241,32 @@
   <data name="comboBox_WeatherSet_Icon.Items28" xml:space="preserve">
     <value>Notte serena</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="comboBox_WeatherSet_Icon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 22</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Indice UV</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Vento</value>
+  </data>
   <data name="checkBox_WeatherSet_Temp.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 17</value>
   </data>
   <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
     <value>Temperatura attuale</value>
   </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>Temperatura minima</value>
-  </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Pressione atmosferica</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Bussola</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Altitudine</value>
   </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Vento</value>
-  </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Umidità</value>
   </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Qualità dell'aria</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Indice UV</value>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Temperatura minima</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 13</value>
@@ -268,14 +274,11 @@
   <data name="label14.Text" xml:space="preserve">
     <value>Icona del meteo</value>
   </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Pressione atmosferica</value>
+  </data>
   <data name="groupBox_Air.Text" xml:space="preserve">
     <value>Ambiente</value>
-  </data>
-  <data name="checkBox_DND_Set.Location" type="System.Drawing.Point, System.Drawing">
-    <value>337, 123</value>
-  </data>
-  <data name="checkBox_DND_Set.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 34</value>
   </data>
   <data name="checkBox_DND_Set.Text" xml:space="preserve">
     <value>Non disturbare</value>
@@ -311,10 +314,10 @@
     <value>Distanza</value>
   </data>
   <data name="label05.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 50</value>
+    <value>0, 50</value>
   </data>
   <data name="label05.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 28</value>
+    <value>60, 28</value>
   </data>
   <data name="label05.Text" xml:space="preserve">
     <value>Pulsazioni</value>

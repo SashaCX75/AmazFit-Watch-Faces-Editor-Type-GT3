@@ -697,6 +697,26 @@ namespace Watch_Face_Editor
                         break;
                     #endregion
 
+                    #region ElementCompass
+                    case "ElementCompass":
+                        ElementCompass Compass = null;
+                        try
+                        {
+                            Compass = JsonConvert.DeserializeObject<ElementCompass>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Compass != null) NewElements.Add(Compass);
+                        break;
+                    #endregion
+
                     #region ElementScript
                     case "ElementScript":
                         ElementScript Script = null;
@@ -815,7 +835,7 @@ namespace Watch_Face_Editor
         /// <param name="_sunrise">Режим отображения для восхода/заката</param>
         /// <param name="_angleVisible">Видимость настроек угла</param>
         private void Read_ImgNumber_Options(hmUI_widget_IMG_NUMBER img_number, bool _dastance, bool _follow, string _followText,
-            bool _imageError, bool _optionalSymbol, bool _padingZero, bool _angleVisible, bool _sunrise = false, bool _altitude = false)
+            bool _imageError, bool _optionalSymbol, bool _padingZero, bool _angleVisible, bool _sunrise = false, bool _altitude = false, bool _compass = false)
         {
             PreviewView = false;
 
@@ -824,6 +844,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Opt.Distance = _dastance;
             uCtrl_Text_Opt.Sunrise = _sunrise;
             uCtrl_Text_Opt.Altitude = _altitude;
+            uCtrl_Text_Opt._Compass = _compass;
             uCtrl_Text_Opt.Follow = _follow;
             uCtrl_Text_Opt.FollowText = _followText;
             uCtrl_Text_Opt.ImageError = _imageError;
@@ -841,8 +862,6 @@ namespace Watch_Face_Editor
             }
             uCtrl_Text_Opt.WidgetProperty = WidgetProperty;
 
-            //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || 
-            //    ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
             if (SelectedModel.versionOS >= 2) uCtrl_Text_Opt.Angle = true;
 
             uCtrl_Text_Opt._ElementWithText = img_number;
@@ -863,7 +882,8 @@ namespace Watch_Face_Editor
 
             uCtrl_Text_Opt.SetUnit(img_number.unit);
             uCtrl_Text_Opt.SetUnitMile(img_number.imperial_unit);
-            uCtrl_Text_Opt.SetImageError(img_number.invalid_image);
+            if (!_compass) uCtrl_Text_Opt.SetImageError(img_number.invalid_image);
+            else uCtrl_Text_Opt.SetImageError(img_number.negative_image);
             if (!_altitude) uCtrl_Text_Opt.SetImageDecimalPoint(img_number.dot_image);
             else uCtrl_Text_Opt.SetImageDecimalPoint(img_number.negative_image);
             //uCtrl_Text_Opt.SetImageDecimalPointOrMinus
@@ -871,7 +891,6 @@ namespace Watch_Face_Editor
             uCtrl_Text_Opt.numericUpDown_angle.Value = img_number.angle;
 
             uCtrl_Text_Opt.SetAlignment(img_number.align);
-            //uCtrl_Text_Opt.SetImageError
 
             uCtrl_Text_Opt.checkBox_addZero.Checked = img_number.zero;
             uCtrl_Text_Opt.checkBox_follow.Checked = img_number.follow;
@@ -1608,7 +1627,7 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Читаем настройки для отображения набора картинок</summary>
-        private void Read_ImgLevel_Options(hmUI_widget_IMG_LEVEL img_level, int imagesCount, bool imagesCountEnable, bool shortcut = false)
+        private void Read_ImgLevel_Options(hmUI_widget_IMG_LEVEL img_level, int imagesCount, bool imagesCountEnable, bool shortcut = false, bool error_mode = false)
         {
             PreviewView = false;
 
@@ -1617,6 +1636,7 @@ namespace Watch_Face_Editor
             uCtrl_Images_Opt.ImagesCount = imagesCount;
             uCtrl_Images_Opt.ImagesCountEnable = imagesCountEnable;
             uCtrl_Images_Opt.Shortcut = shortcut;
+            uCtrl_Images_Opt.ErrorMode = error_mode;
 
             uCtrl_Images_Opt._ElementWithImages = img_level;
 
@@ -1636,6 +1656,9 @@ namespace Watch_Face_Editor
             if (img_level.image_length > 0)
                 uCtrl_Images_Opt.numericUpDown_pictures_count.Value = img_level.image_length;
             if (!imagesCountEnable) uCtrl_Images_Opt.numericUpDown_pictures_count.Value = imagesCount;
+
+            if (error_mode && img_level.img_error != null)
+                uCtrl_Images_Opt.SetImageError(img_level.img_error);
 
             uCtrl_Images_Opt.checkBox_shortcut.Checked = img_level.shortcut;
 
@@ -1699,7 +1722,7 @@ namespace Watch_Face_Editor
             PreviewView = true;
         }
 
-        private void Read_Text_Options(hmUI_widget_TEXT system_font, bool unitMode, bool zeroMode, bool unitStrMode = false, bool AmPmMode = false, bool DOWMode = false)
+        private void Read_Text_Options(hmUI_widget_TEXT system_font, bool unitMode, bool zeroMode, bool unitStrMode = false, bool AmPmMode = false, bool DOWMode = false, bool MonthMode = false)
         {
             PreviewView = false;
 
@@ -1712,6 +1735,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_SystemFont_Opt.UnitStrMode = unitStrMode;
             uCtrl_Text_SystemFont_Opt.AmPm = AmPmMode;
             uCtrl_Text_SystemFont_Opt.DOWMode = DOWMode;
+            uCtrl_Text_SystemFont_Opt.MonthMode = MonthMode;
 
             uCtrl_Text_SystemFont_Opt._ElementWithSystemFont = system_font;
             //uCtrl_Text_SystemFont_Opt.fonts_path = ProjectDir + @"\assets\fonts\";
@@ -2011,53 +2035,6 @@ namespace Watch_Face_Editor
                 {
                     if (background.Editable_Background == null)
                         background.Editable_Background = new Editable_Background();
-                    /*switch (ProgramSettings.Watch_Model)
-                    {
-                        case "GTR 3":
-                            background.Editable_Background.h = 454;
-                            background.Editable_Background.w = 454;
-                            break;
-                        case "GTR 3 Pro":
-                            background.Editable_Background.h = 480;
-                            background.Editable_Background.w = 480;
-                            break;
-                        case "GTS 3":
-                            background.Editable_Background.h = 450;
-                            background.Editable_Background.w = 390;
-                            break;
-                        case "T-Rex 2":
-                            background.Editable_Background.h = 454;
-                            background.Editable_Background.w = 454;
-                            break;
-                        case "T-Rex Ultra":
-                            background.Editable_Background.h = 454;
-                            background.Editable_Background.w = 454;
-                            break;
-                        case "GTR 4":
-                            background.Editable_Background.h = 466;
-                            background.Editable_Background.w = 466;
-                            break;
-                        case "Amazfit Band 7":
-                            background.Editable_Background.h = 368;
-                            background.Editable_Background.w = 194;
-                            break;
-                        case "GTS 4 mini":
-                            background.Editable_Background.h = 384;
-                            background.Editable_Background.w = 336;
-                            break;
-                        case "Falcon":
-                            background.Editable_Background.h = 416;
-                            background.Editable_Background.w = 416;
-                            break;
-                        case "GTR mini":
-                            background.Editable_Background.h = 416;
-                            background.Editable_Background.w = 416;
-                            break;
-                        case "GTS 4":
-                            background.Editable_Background.h = 450;
-                            background.Editable_Background.w = 390;
-                            break;
-                    }*/
                     background.Editable_Background.h = SelectedModel.background.h;
                     background.Editable_Background.w = SelectedModel.background.w;
 
@@ -2124,7 +2101,8 @@ namespace Watch_Face_Editor
             else img_number.negative_image = uCtrl_Text_Opt.GetImageDecimalPoint();
             img_number.unit = uCtrl_Text_Opt.GetUnit();
             img_number.imperial_unit = uCtrl_Text_Opt.GetUnitMile();
-            img_number.invalid_image = uCtrl_Text_Opt.GetImageError();
+            if (!uCtrl_Text_Opt._Compass) img_number.invalid_image = uCtrl_Text_Opt.GetImageError();
+            else img_number.negative_image = uCtrl_Text_Opt.GetImageError();
             img_number.zero = uCtrl_Text_Opt.checkBox_addZero.Checked;
 
 
@@ -2224,6 +2202,7 @@ namespace Watch_Face_Editor
             img_level.Y = (int)uCtrl_Images_Opt.numericUpDown_imageY.Value;
             img_level.image_length = (int)uCtrl_Images_Opt.numericUpDown_pictures_count.Value;
             img_level.shortcut = uCtrl_Images_Opt.checkBox_shortcut.Checked;
+            img_level.img_error = uCtrl_Images_Opt.GetImageError();
 
             JSON_Modified = true;
             PreviewImage();

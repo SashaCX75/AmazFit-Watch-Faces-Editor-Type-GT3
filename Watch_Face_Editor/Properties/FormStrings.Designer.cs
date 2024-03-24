@@ -835,6 +835,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Янв, Фев, Мрт, Апр, Май, Июн, Июл, Авг, Сен, Окт, Ноя, Дек.
+        /// </summary>
+        internal static string Month_StrArray {
+            get {
+                return ResourceManager.GetString("Month_StrArray", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Фон .
         /// </summary>
         internal static string Tip_Background {

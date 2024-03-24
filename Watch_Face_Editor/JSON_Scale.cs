@@ -252,6 +252,7 @@ namespace Watch_Face_Editor
                     ElementDateMonth elementDateMonth = (ElementDateMonth)elements;
                     Scale_IMG_NUMBER(elementDateMonth.Number, scale);
                     Scale_TEXT(elementDateMonth.Number_Font, scale);
+                    Scale_TEXT(elementDateMonth.Month_Font, scale);
                     Scale_IMG_NUMBER(elementDateMonth.Text_rotation, scale);
                     Scale_Text_Circle(elementDateMonth.Text_circle, scale);
                     Scale_IMG_POINTER(elementDateMonth.Pointer, scale);
@@ -526,6 +527,16 @@ namespace Watch_Face_Editor
                 case "ElementImage":
                     ElementImage elementImage = (ElementImage)elements;
                     Scale_IMG(elementImage.Icon, scale);
+                    break;
+                case "ElementCompass":
+                    ElementCompass elementCompass = (ElementCompass)elements;
+                    Scale_IMG_LEVEL(elementCompass.Images, scale);
+                    Scale_IMG_NUMBER(elementCompass.Number, scale);
+                    Scale_TEXT(elementCompass.Number_Font, scale);
+                    Scale_IMG_NUMBER(elementCompass.Text_rotation, scale);
+                    Scale_Text_Circle(elementCompass.Text_circle, scale);
+                    Scale_IMG_POINTER(elementCompass.Pointer, scale);
+                    Scale_IMG(elementCompass.Icon, scale);
                     break;
             }
         }

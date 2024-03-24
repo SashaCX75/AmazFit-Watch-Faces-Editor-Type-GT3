@@ -71,11 +71,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Properties\ButtonFunctions.zh.Designer.cs">
-      <DependentUpon>ButtonFunctions.zh.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Properties\ButtonFunctions.fr.Designer.cs">
       <DependentUpon>ButtonFunctions.fr.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -88,6 +83,11 @@
     </Compile>
     <Compile Include="Properties\ButtonFunctions.es.Designer.cs">
       <DependentUpon>ButtonFunctions.es.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\ButtonFunctions.zh.Designer.cs">
+      <DependentUpon>ButtonFunctions.zh.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -113,11 +113,6 @@
     </Compile>
     <Compile Include="Properties\Buttons.cs.Designer.cs">
       <DependentUpon>Buttons.cs.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Properties\Buttons.zh.Designer.cs">
-      <DependentUpon>Buttons.zh.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -351,6 +346,12 @@
     <Compile Include="Elements\UCtrl_DateYear_Elm.Designer.cs">
       <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\UCtrl_Compass_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Compass_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_DisconnectAlert_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -556,7 +557,9 @@
     <Compile Include="UCtrl_Text_Weather_Opt.Designer.cs">
       <DependentUpon>UCtrl_Text_Weather_Opt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Elements\UCtrl_UVIndex_Elm.cs" />
+    <Compile Include="Elements\UCtrl_UVIndex_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Elements\UCtrl_UVIndex_Elm.Designer.cs">
       <DependentUpon>UCtrl_UVIndex_Elm.cs</DependentUpon>
     </Compile>
@@ -812,6 +815,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Calories_Elm.zh.resx">
       <DependentUpon>UCtrl_Calories_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.cs.resx">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.de.resx">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.en.resx">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.es.resx">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.fr.resx">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.it.resx">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.uk.resx">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DateDay_Elm.cs.resx">
       <DependentUpon>UCtrl_DateDay_Elm.cs</DependentUpon>
@@ -1487,10 +1511,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ButtonFunctions.cs.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\ButtonFunctions.zh.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ButtonFunctions.zh.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\ButtonFunctions.fr.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ButtonFunctions.fr.Designer.cs</LastGenOutput>
@@ -1502,6 +1522,10 @@
     <EmbeddedResource Include="Properties\ButtonFunctions.es.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ButtonFunctions.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ButtonFunctions.zh.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ButtonFunctions.zh.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\ButtonFunctions.uk.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -1522,10 +1546,6 @@
     <EmbeddedResource Include="Properties\Buttons.cs.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Buttons.cs.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Buttons.zh.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Buttons.zh.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Buttons.fr.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -1813,9 +1833,6 @@
     <EmbeddedResource Include="UCtrl_Button_Opt.uk.resx">
       <DependentUpon>UCtrl_Button_Opt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_Button_Opt.zh.resx">
-      <DependentUpon>UCtrl_Button_Opt.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Circle_Scale_Opt.cs.resx">
       <DependentUpon>UCtrl_Circle_Scale_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -1861,6 +1878,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DateYear_Elm.resx">
       <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.resx">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_DisconnectAlert_Opt.cs.resx">
       <DependentUpon>UCtrl_DisconnectAlert_Opt.cs</DependentUpon>
@@ -2058,9 +2078,6 @@
       <DependentUpon>UCtrl_JS_script_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_JS_script_Opt.uk.resx">
-      <DependentUpon>UCtrl_JS_script_Opt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_JS_script_Opt.zh.resx">
       <DependentUpon>UCtrl_JS_script_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Linear_Scale_Opt.cs.resx">
@@ -2664,6 +2681,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\note-text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\compass.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

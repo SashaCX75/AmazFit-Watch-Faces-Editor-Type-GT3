@@ -120,6 +120,12 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Směr větru</value>
   </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Maximální teplota</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Kvalita vzduchu</value>
+  </data>
   <data name="comboBox_WindDirection.Items" xml:space="preserve">
     <value>N - sever</value>
   </data>
@@ -144,12 +150,9 @@
   <data name="comboBox_WindDirection.Items7" xml:space="preserve">
     <value>SZ - severozápad</value>
   </data>
-  <data name="label22.Text" xml:space="preserve">
-    <value>Maximální teplota</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="numericUpDown_WeatherSet_Temp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 50</value>
+  <data name="comboBox_WindDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>320, 106</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items" xml:space="preserve">
     <value>Zataženo</value>
@@ -239,7 +242,13 @@
     <value>Jasná noc</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 22</value>
+    <value>76, 22</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Uv index</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Síla větru</value>
   </data>
   <data name="checkBox_WeatherSet_Temp.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 17</value>
@@ -247,26 +256,17 @@
   <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
     <value>Aktuální teplota</value>
   </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>Minimální teplota</value>
-  </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Tlak</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Kompas</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Nadmořská výška</value>
   </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Síla větru</value>
-  </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Vlhkost vzduchu</value>
   </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Kvalita vzduchu</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Uv index</value>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Minimální teplota</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 13</value>
@@ -274,14 +274,11 @@
   <data name="label14.Text" xml:space="preserve">
     <value>Ikona počasí</value>
   </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Tlak</value>
+  </data>
   <data name="groupBox_Air.Text" xml:space="preserve">
     <value>Atmosféra</value>
-  </data>
-  <data name="groupBox_Activity.Text" xml:space="preserve">
-    <value>Aktivity</value>
-  </data>
-  <data name="checkBox_DND_Set.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 34</value>
   </data>
   <data name="checkBox_DND_Set.Text" xml:space="preserve">
     <value>Nerušit - DND</value>
@@ -317,10 +314,10 @@
     <value>Vzdálenost</value>
   </data>
   <data name="label05.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 50</value>
+    <value>3, 50</value>
   </data>
   <data name="label05.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 28</value>
+    <value>55, 28</value>
   </data>
   <data name="label05.Text" xml:space="preserve">
     <value>Tepová frekvence</value>
@@ -336,6 +333,9 @@
   </data>
   <data name="label01.Text" xml:space="preserve">
     <value>Datum</value>
+  </data>
+  <data name="groupBox_Activity.Text" xml:space="preserve">
+    <value>Aktivity</value>
   </data>
   <data name="button_Set.Text" xml:space="preserve">
     <value>Sada parametrů</value>

@@ -88,6 +88,24 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Названия дней недели, начиная с понедельника, разделенные запятой..
+        /// </summary>
+        internal static string Hint_DOW {
+            get {
+                return ResourceManager.GetString("Hint_DOW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Названия месяцев шрифтом, разделенные запятой..
+        /// </summary>
+        internal static string Hint_Month {
+            get {
+                return ResourceManager.GetString("Hint_Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Удалить файл.
         /// </summary>
         internal static string Message_Del_Caption {
@@ -160,7 +178,7 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Am / Pm.
+        ///   Ищет локализованную строку, похожую на Стиль Am/Pm.
         /// </summary>
         internal static string UCtrl_Text_Opt_AmPm_true {
             get {

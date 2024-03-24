@@ -126,6 +126,12 @@
   <data name="FilterJS" xml:space="preserve">
     <value>JS soubor (*.js) | *.js</value>
   </data>
+  <data name="Hint_DOW" xml:space="preserve">
+    <value>Názvy dnů v týdnu počínaje pondělím oddělené čárkou.</value>
+  </data>
+  <data name="Hint_Month" xml:space="preserve">
+    <value>Názvy měsíců - písmem oddělené čárkou.</value>
+  </data>
   <data name="Message_Del_Caption" xml:space="preserve">
     <value>Smazat soubor</value>
   </data>
@@ -151,7 +157,7 @@
     <value>Jednotky</value>
   </data>
   <data name="UCtrl_Text_Opt_AmPm_true" xml:space="preserve">
-    <value>Am / Pm</value>
+    <value>Styl Am/Pm</value>
   </data>
   <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
     <value>Oddělovač desetinných míst</value>

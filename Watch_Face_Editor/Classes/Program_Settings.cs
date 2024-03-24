@@ -62,6 +62,7 @@ namespace Watch_Face_Editor
         public bool DrawAllWidgets = false;
 
         public bool ShowIn12hourFormat = true;
+        public bool CreateZPK = false;
 
         public int[] CustomColors = { };
 

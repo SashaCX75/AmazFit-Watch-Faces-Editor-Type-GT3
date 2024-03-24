@@ -153,4 +153,7 @@
   <data name="button_Number_Font.Text" xml:space="preserve">
     <value>Data ve fontu</value>
   </data>
+  <data name="button_Month_Font.Text" xml:space="preserve">
+    <value>Měsíc písmem</value>
+  </data>
 </root>

@@ -126,6 +126,12 @@
   <data name="FilterJS" xml:space="preserve">
     <value>JS files (*.js) | *.js</value>
   </data>
+  <data name="Hint_DOW" xml:space="preserve">
+    <value>The names of the days of the week, starting with Monday, separated by a comma.</value>
+  </data>
+  <data name="Hint_Month" xml:space="preserve">
+    <value>Month names in font, separated by a comma.</value>
+  </data>
   <data name="Message_Del_Caption" xml:space="preserve">
     <value>Delete file</value>
   </data>
@@ -151,7 +157,7 @@
     <value>Units</value>
   </data>
   <data name="UCtrl_Text_Opt_AmPm_true" xml:space="preserve">
-    <value>Am / Pm</value>
+    <value>Style Am/Pm</value>
   </data>
   <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
     <value>Decimal separator</value>

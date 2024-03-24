@@ -123,6 +123,9 @@
   <data name="button_Images.Text" xml:space="preserve">
     <value>Immagini</value>
   </data>
+  <data name="button_Month_Font.Text" xml:space="preserve">
+    <value>Mese in Font</value>
+  </data>
   <data name="button_Number.Text" xml:space="preserve">
     <value>Valori numerici</value>
   </data>

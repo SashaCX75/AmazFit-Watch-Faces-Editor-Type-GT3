@@ -374,6 +374,9 @@ Il numero di immagini per la frequenza cardiaca dovrebbe essere 6.</value>
   <data name="Message_Wrong_Preview_Exists" xml:space="preserve">
     <value>Impossibile creare l'immagine di anteprima. Forse un'immagine simile esiste già.</value>
   </data>
+  <data name="Month_StrArray" xml:space="preserve">
+    <value>Gen,Feb,Mar,Apr,Mag,Giu,Lug,Ago,Set,Ott,Nov,Dic</value>
+  </data>
   <data name="Tip_Background" xml:space="preserve">
     <value>Sfondo</value>
   </data>

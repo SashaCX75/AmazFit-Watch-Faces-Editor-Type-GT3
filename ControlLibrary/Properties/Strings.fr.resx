@@ -126,6 +126,12 @@
   <data name="FilterJS" xml:space="preserve">
     <value>Fichier JS (*.js) | *.js</value>
   </data>
+  <data name="Hint_DOW" xml:space="preserve">
+    <value>Noms des jours de la semaine, commençant par lundi, séparés par des virgules.</value>
+  </data>
+  <data name="Hint_Month" xml:space="preserve">
+    <value>Noms des mois en police, séparés par une virgule.</value>
+  </data>
   <data name="Message_Del_Caption" xml:space="preserve">
     <value>Supprimer fichier</value>
   </data>
@@ -151,7 +157,7 @@
     <value>Unités</value>
   </data>
   <data name="UCtrl_Text_Opt_AmPm_true" xml:space="preserve">
-    <value>AM / PM</value>
+    <value>Style Am/Pm</value>
   </data>
   <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
     <value>Séparateur décimal</value>

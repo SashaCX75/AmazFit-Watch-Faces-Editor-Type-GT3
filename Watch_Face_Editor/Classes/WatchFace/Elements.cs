@@ -284,6 +284,9 @@ namespace Watch_Face_Editor
         /// <summary>Количество картинок в наборе</summary>
         public int image_length { get; set; }
 
+        /// <summary>Изображение ошибки</summary>
+        public string img_error { get; set; }
+
         /// <summary>Тип активности</summary>
         public string type { get; set; }
 

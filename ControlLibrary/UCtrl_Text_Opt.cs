@@ -39,6 +39,7 @@ namespace ControlLibrary
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _ElementWithText;
         public Dictionary<string, Object> WidgetProperty = new Dictionary<string, Object>();
+        public bool _Compass;
 
         public UCtrl_Text_Opt()
         {

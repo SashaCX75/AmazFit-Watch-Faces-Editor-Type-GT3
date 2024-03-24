@@ -120,6 +120,12 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Напрямок вітру</value>
   </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Максимальна температура</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Якість повітря</value>
+  </data>
   <data name="comboBox_WindDirection.Items" xml:space="preserve">
     <value>N - північ</value>
   </data>
@@ -143,9 +149,6 @@
   </data>
   <data name="comboBox_WindDirection.Items7" xml:space="preserve">
     <value>NW - північний захід</value>
-  </data>
-  <data name="label22.Text" xml:space="preserve">
-    <value>Максимальна температура</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items" xml:space="preserve">
     <value>Хмарно</value>
@@ -231,6 +234,12 @@
   <data name="comboBox_WeatherSet_Icon.Items28" xml:space="preserve">
     <value>Ясно вночі</value>
   </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>УФ індекс</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Сила вітру</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="checkBox_WeatherSet_Temp.Size" type="System.Drawing.Size, System.Drawing">
     <value>136, 17</value>
@@ -238,32 +247,23 @@
   <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
     <value>Поточна температура</value>
   </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>Мінімальна температура</value>
-  </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Тиск</value>
-  </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Висота</value>
-  </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Сила вітру</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Вологість</value>
   </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Якість повітря</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>УФ індекс</value>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Мінімальна температура</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 13</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Іконка погоди</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Тиск</value>
   </data>
   <data name="checkBox_DND_Set.Text" xml:space="preserve">
     <value>Не турбувати</value>
@@ -273,12 +273,6 @@
   </data>
   <data name="checkBox_Lock_Set.Text" xml:space="preserve">
     <value>Блокування</value>
-  </data>
-  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>407, 50</value>
-  </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 28</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>Жироспалювання</value>

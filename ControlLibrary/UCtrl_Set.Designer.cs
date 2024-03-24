@@ -31,27 +31,29 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Set));
             this.groupBox_Air = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox_WindDirection = new System.Windows.Forms.ComboBox();
+            this.numericUpDown_Compass_Set = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
+            this.numericUpDown_AirQuality_Set = new System.Windows.Forms.NumericUpDown();
+            this.label16 = new System.Windows.Forms.Label();
+            this.comboBox_WindDirection = new System.Windows.Forms.ComboBox();
+            this.numericUpDown_WeatherSet_Temp = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown_AirPressure_Set = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_WeatherSet_MinTemp = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_Humidity_Set = new System.Windows.Forms.NumericUpDown();
+            this.comboBox_WeatherSet_Icon = new System.Windows.Forms.ComboBox();
             this.numericUpDown_Altitude_Set = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown_WindForce = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_Humidity_Set = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_AirQuality_Set = new System.Windows.Forms.NumericUpDown();
             this.numericUp_UVindex_Set = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_WeatherSet_Temp = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_WeatherSet_MinTemp = new System.Windows.Forms.NumericUpDown();
-            this.comboBox_WeatherSet_Icon = new System.Windows.Forms.ComboBox();
-            this.numericUpDown_WeatherSet_MaxTemp = new System.Windows.Forms.NumericUpDown();
-            this.checkBox_WeatherSet_Temp = new System.Windows.Forms.CheckBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.numericUpDown_WeatherSet_MaxTemp = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
+            this.checkBox_WeatherSet_Temp = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.groupBox_Activity = new System.Windows.Forms.GroupBox();
             this.checkBox_DND_Set = new System.Windows.Forms.CheckBox();
             this.checkBox_Lock_Set = new System.Windows.Forms.CheckBox();
@@ -83,14 +85,15 @@
             this.label01 = new System.Windows.Forms.Label();
             this.button_Set = new System.Windows.Forms.Button();
             this.groupBox_Air.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Compass_Set)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_AirQuality_Set)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_WeatherSet_Temp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_AirPressure_Set)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_WeatherSet_MinTemp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Humidity_Set)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Altitude_Set)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_WindForce)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Humidity_Set)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_AirQuality_Set)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUp_UVindex_Set)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_WeatherSet_Temp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_WeatherSet_MinTemp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_WeatherSet_MaxTemp)).BeginInit();
             this.groupBox_Activity.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_FatBurning_Set)).BeginInit();
@@ -107,29 +110,31 @@
             // 
             // groupBox_Air
             // 
-            resources.ApplyResources(this.groupBox_Air, "groupBox_Air");
             this.groupBox_Air.Controls.Add(this.label1);
-            this.groupBox_Air.Controls.Add(this.comboBox_WindDirection);
+            this.groupBox_Air.Controls.Add(this.numericUpDown_Compass_Set);
             this.groupBox_Air.Controls.Add(this.label22);
+            this.groupBox_Air.Controls.Add(this.numericUpDown_AirQuality_Set);
+            this.groupBox_Air.Controls.Add(this.label16);
+            this.groupBox_Air.Controls.Add(this.comboBox_WindDirection);
+            this.groupBox_Air.Controls.Add(this.numericUpDown_WeatherSet_Temp);
             this.groupBox_Air.Controls.Add(this.numericUpDown_AirPressure_Set);
+            this.groupBox_Air.Controls.Add(this.numericUpDown_WeatherSet_MinTemp);
+            this.groupBox_Air.Controls.Add(this.numericUpDown_Humidity_Set);
+            this.groupBox_Air.Controls.Add(this.comboBox_WeatherSet_Icon);
             this.groupBox_Air.Controls.Add(this.numericUpDown_Altitude_Set);
             this.groupBox_Air.Controls.Add(this.numericUpDown_WindForce);
-            this.groupBox_Air.Controls.Add(this.numericUpDown_Humidity_Set);
-            this.groupBox_Air.Controls.Add(this.numericUpDown_AirQuality_Set);
             this.groupBox_Air.Controls.Add(this.numericUp_UVindex_Set);
-            this.groupBox_Air.Controls.Add(this.numericUpDown_WeatherSet_Temp);
-            this.groupBox_Air.Controls.Add(this.numericUpDown_WeatherSet_MinTemp);
-            this.groupBox_Air.Controls.Add(this.comboBox_WeatherSet_Icon);
-            this.groupBox_Air.Controls.Add(this.numericUpDown_WeatherSet_MaxTemp);
-            this.groupBox_Air.Controls.Add(this.checkBox_WeatherSet_Temp);
-            this.groupBox_Air.Controls.Add(this.label21);
-            this.groupBox_Air.Controls.Add(this.label20);
-            this.groupBox_Air.Controls.Add(this.label19);
-            this.groupBox_Air.Controls.Add(this.label18);
-            this.groupBox_Air.Controls.Add(this.label17);
-            this.groupBox_Air.Controls.Add(this.label16);
             this.groupBox_Air.Controls.Add(this.label15);
+            this.groupBox_Air.Controls.Add(this.numericUpDown_WeatherSet_MaxTemp);
+            this.groupBox_Air.Controls.Add(this.label18);
+            this.groupBox_Air.Controls.Add(this.checkBox_WeatherSet_Temp);
+            this.groupBox_Air.Controls.Add(this.label2);
+            this.groupBox_Air.Controls.Add(this.label19);
+            this.groupBox_Air.Controls.Add(this.label17);
+            this.groupBox_Air.Controls.Add(this.label21);
             this.groupBox_Air.Controls.Add(this.label14);
+            this.groupBox_Air.Controls.Add(this.label20);
+            resources.ApplyResources(this.groupBox_Air, "groupBox_Air");
             this.groupBox_Air.Name = "groupBox_Air";
             this.groupBox_Air.TabStop = false;
             this.groupBox_Air.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
@@ -139,87 +144,26 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // comboBox_WindDirection
+            // numericUpDown_Compass_Set
             // 
-            resources.ApplyResources(this.comboBox_WindDirection, "comboBox_WindDirection");
-            this.comboBox_WindDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_WindDirection.DropDownWidth = 135;
-            this.comboBox_WindDirection.FormattingEnabled = true;
-            this.comboBox_WindDirection.Items.AddRange(new object[] {
-            resources.GetString("comboBox_WindDirection.Items"),
-            resources.GetString("comboBox_WindDirection.Items1"),
-            resources.GetString("comboBox_WindDirection.Items2"),
-            resources.GetString("comboBox_WindDirection.Items3"),
-            resources.GetString("comboBox_WindDirection.Items4"),
-            resources.GetString("comboBox_WindDirection.Items5"),
-            resources.GetString("comboBox_WindDirection.Items6"),
-            resources.GetString("comboBox_WindDirection.Items7")});
-            this.comboBox_WindDirection.Name = "comboBox_WindDirection";
-            this.comboBox_WindDirection.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
+            resources.ApplyResources(this.numericUpDown_Compass_Set, "numericUpDown_Compass_Set");
+            this.numericUpDown_Compass_Set.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.numericUpDown_Compass_Set.Name = "numericUpDown_Compass_Set";
+            this.numericUpDown_Compass_Set.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.numericUpDown_Compass_Set.ValueChanged += new System.EventHandler(this.numericUpDown_Set_ValueChanged);
             // 
             // label22
             // 
             resources.ApplyResources(this.label22, "label22");
             this.label22.Name = "label22";
-            // 
-            // numericUpDown_AirPressure_Set
-            // 
-            resources.ApplyResources(this.numericUpDown_AirPressure_Set, "numericUpDown_AirPressure_Set");
-            this.numericUpDown_AirPressure_Set.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.numericUpDown_AirPressure_Set.Name = "numericUpDown_AirPressure_Set";
-            this.numericUpDown_AirPressure_Set.Value = new decimal(new int[] {
-            1005,
-            0,
-            0,
-            0});
-            this.numericUpDown_AirPressure_Set.ValueChanged += new System.EventHandler(this.numericUpDown_Set_ValueChanged);
-            // 
-            // numericUpDown_Altitude_Set
-            // 
-            resources.ApplyResources(this.numericUpDown_Altitude_Set, "numericUpDown_Altitude_Set");
-            this.numericUpDown_Altitude_Set.Maximum = new decimal(new int[] {
-            3000,
-            0,
-            0,
-            0});
-            this.numericUpDown_Altitude_Set.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown_Altitude_Set.Name = "numericUpDown_Altitude_Set";
-            this.numericUpDown_Altitude_Set.Value = new decimal(new int[] {
-            23,
-            0,
-            0,
-            0});
-            this.numericUpDown_Altitude_Set.ValueChanged += new System.EventHandler(this.numericUpDown_Set_ValueChanged);
-            // 
-            // numericUpDown_WindForce
-            // 
-            resources.ApplyResources(this.numericUpDown_WindForce, "numericUpDown_WindForce");
-            this.numericUpDown_WindForce.Name = "numericUpDown_WindForce";
-            this.numericUpDown_WindForce.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDown_WindForce.ValueChanged += new System.EventHandler(this.numericUpDown_Set_ValueChanged);
-            // 
-            // numericUpDown_Humidity_Set
-            // 
-            resources.ApplyResources(this.numericUpDown_Humidity_Set, "numericUpDown_Humidity_Set");
-            this.numericUpDown_Humidity_Set.Name = "numericUpDown_Humidity_Set";
-            this.numericUpDown_Humidity_Set.Value = new decimal(new int[] {
-            65,
-            0,
-            0,
-            0});
-            this.numericUpDown_Humidity_Set.ValueChanged += new System.EventHandler(this.numericUpDown_Set_ValueChanged);
             // 
             // numericUpDown_AirQuality_Set
             // 
@@ -237,21 +181,28 @@
             0});
             this.numericUpDown_AirQuality_Set.ValueChanged += new System.EventHandler(this.numericUpDown_Set_ValueChanged);
             // 
-            // numericUp_UVindex_Set
+            // label16
             // 
-            resources.ApplyResources(this.numericUp_UVindex_Set, "numericUp_UVindex_Set");
-            this.numericUp_UVindex_Set.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUp_UVindex_Set.Name = "numericUp_UVindex_Set";
-            this.numericUp_UVindex_Set.Value = new decimal(new int[] {
-            75,
-            0,
-            0,
-            0});
-            this.numericUp_UVindex_Set.ValueChanged += new System.EventHandler(this.numericUpDown_Set_ValueChanged);
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            // 
+            // comboBox_WindDirection
+            // 
+            this.comboBox_WindDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_WindDirection.DropDownWidth = 135;
+            this.comboBox_WindDirection.FormattingEnabled = true;
+            this.comboBox_WindDirection.Items.AddRange(new object[] {
+            resources.GetString("comboBox_WindDirection.Items"),
+            resources.GetString("comboBox_WindDirection.Items1"),
+            resources.GetString("comboBox_WindDirection.Items2"),
+            resources.GetString("comboBox_WindDirection.Items3"),
+            resources.GetString("comboBox_WindDirection.Items4"),
+            resources.GetString("comboBox_WindDirection.Items5"),
+            resources.GetString("comboBox_WindDirection.Items6"),
+            resources.GetString("comboBox_WindDirection.Items7")});
+            resources.ApplyResources(this.comboBox_WindDirection, "comboBox_WindDirection");
+            this.comboBox_WindDirection.Name = "comboBox_WindDirection";
+            this.comboBox_WindDirection.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
             // numericUpDown_WeatherSet_Temp
             // 
@@ -274,6 +225,22 @@
             -2147483648});
             this.numericUpDown_WeatherSet_Temp.ValueChanged += new System.EventHandler(this.numericUpDown_Set_ValueChanged);
             // 
+            // numericUpDown_AirPressure_Set
+            // 
+            resources.ApplyResources(this.numericUpDown_AirPressure_Set, "numericUpDown_AirPressure_Set");
+            this.numericUpDown_AirPressure_Set.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDown_AirPressure_Set.Name = "numericUpDown_AirPressure_Set";
+            this.numericUpDown_AirPressure_Set.Value = new decimal(new int[] {
+            1005,
+            0,
+            0,
+            0});
+            this.numericUpDown_AirPressure_Set.ValueChanged += new System.EventHandler(this.numericUpDown_Set_ValueChanged);
+            // 
             // numericUpDown_WeatherSet_MinTemp
             // 
             resources.ApplyResources(this.numericUpDown_WeatherSet_MinTemp, "numericUpDown_WeatherSet_MinTemp");
@@ -295,9 +262,19 @@
             -2147483648});
             this.numericUpDown_WeatherSet_MinTemp.ValueChanged += new System.EventHandler(this.numericUpDown_Set_ValueChanged);
             // 
+            // numericUpDown_Humidity_Set
+            // 
+            resources.ApplyResources(this.numericUpDown_Humidity_Set, "numericUpDown_Humidity_Set");
+            this.numericUpDown_Humidity_Set.Name = "numericUpDown_Humidity_Set";
+            this.numericUpDown_Humidity_Set.Value = new decimal(new int[] {
+            65,
+            0,
+            0,
+            0});
+            this.numericUpDown_Humidity_Set.ValueChanged += new System.EventHandler(this.numericUpDown_Set_ValueChanged);
+            // 
             // comboBox_WeatherSet_Icon
             // 
-            resources.ApplyResources(this.comboBox_WeatherSet_Icon, "comboBox_WeatherSet_Icon");
             this.comboBox_WeatherSet_Icon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_WeatherSet_Icon.DropDownWidth = 135;
             this.comboBox_WeatherSet_Icon.FormattingEnabled = true;
@@ -331,8 +308,62 @@
             resources.GetString("comboBox_WeatherSet_Icon.Items26"),
             resources.GetString("comboBox_WeatherSet_Icon.Items27"),
             resources.GetString("comboBox_WeatherSet_Icon.Items28")});
+            resources.ApplyResources(this.comboBox_WeatherSet_Icon, "comboBox_WeatherSet_Icon");
             this.comboBox_WeatherSet_Icon.Name = "comboBox_WeatherSet_Icon";
             this.comboBox_WeatherSet_Icon.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
+            // 
+            // numericUpDown_Altitude_Set
+            // 
+            resources.ApplyResources(this.numericUpDown_Altitude_Set, "numericUpDown_Altitude_Set");
+            this.numericUpDown_Altitude_Set.Maximum = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            0});
+            this.numericUpDown_Altitude_Set.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown_Altitude_Set.Name = "numericUpDown_Altitude_Set";
+            this.numericUpDown_Altitude_Set.Value = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+            this.numericUpDown_Altitude_Set.ValueChanged += new System.EventHandler(this.numericUpDown_Set_ValueChanged);
+            // 
+            // numericUpDown_WindForce
+            // 
+            resources.ApplyResources(this.numericUpDown_WindForce, "numericUpDown_WindForce");
+            this.numericUpDown_WindForce.Name = "numericUpDown_WindForce";
+            this.numericUpDown_WindForce.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDown_WindForce.ValueChanged += new System.EventHandler(this.numericUpDown_Set_ValueChanged);
+            // 
+            // numericUp_UVindex_Set
+            // 
+            resources.ApplyResources(this.numericUp_UVindex_Set, "numericUp_UVindex_Set");
+            this.numericUp_UVindex_Set.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUp_UVindex_Set.Name = "numericUp_UVindex_Set";
+            this.numericUp_UVindex_Set.Value = new decimal(new int[] {
+            75,
+            0,
+            0,
+            0});
+            this.numericUp_UVindex_Set.ValueChanged += new System.EventHandler(this.numericUpDown_Set_ValueChanged);
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
             // 
             // numericUpDown_WeatherSet_MaxTemp
             // 
@@ -355,6 +386,11 @@
             0});
             this.numericUpDown_WeatherSet_MaxTemp.ValueChanged += new System.EventHandler(this.numericUpDown_Set_ValueChanged);
             // 
+            // label18
+            // 
+            resources.ApplyResources(this.label18, "label18");
+            this.label18.Name = "label18";
+            // 
             // checkBox_WeatherSet_Temp
             // 
             resources.ApplyResources(this.checkBox_WeatherSet_Temp, "checkBox_WeatherSet_Temp");
@@ -365,49 +401,38 @@
             this.checkBox_WeatherSet_Temp.CheckedChanged += new System.EventHandler(this.checkBox_WeatherSet_Temp_CheckedChanged);
             this.checkBox_WeatherSet_Temp.Click += new System.EventHandler(this.checkBox_Click);
             // 
-            // label21
+            // label2
             // 
-            resources.ApplyResources(this.label21, "label21");
-            this.label21.Name = "label21";
-            // 
-            // label20
-            // 
-            resources.ApplyResources(this.label20, "label20");
-            this.label20.Name = "label20";
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
             // 
             // label19
             // 
             resources.ApplyResources(this.label19, "label19");
             this.label19.Name = "label19";
             // 
-            // label18
-            // 
-            resources.ApplyResources(this.label18, "label18");
-            this.label18.Name = "label18";
-            // 
             // label17
             // 
             resources.ApplyResources(this.label17, "label17");
             this.label17.Name = "label17";
             // 
-            // label16
+            // label21
             // 
-            resources.ApplyResources(this.label16, "label16");
-            this.label16.Name = "label16";
-            // 
-            // label15
-            // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.Name = "label15";
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
             // 
             // label14
             // 
             resources.ApplyResources(this.label14, "label14");
             this.label14.Name = "label14";
             // 
+            // label20
+            // 
+            resources.ApplyResources(this.label20, "label20");
+            this.label20.Name = "label20";
+            // 
             // groupBox_Activity
             // 
-            resources.ApplyResources(this.groupBox_Activity, "groupBox_Activity");
             this.groupBox_Activity.Controls.Add(this.checkBox_DND_Set);
             this.groupBox_Activity.Controls.Add(this.checkBox_Lock_Set);
             this.groupBox_Activity.Controls.Add(this.checkBox_Alarm_Set);
@@ -436,15 +461,16 @@
             this.groupBox_Activity.Controls.Add(this.label03);
             this.groupBox_Activity.Controls.Add(this.label02);
             this.groupBox_Activity.Controls.Add(this.label01);
+            resources.ApplyResources(this.groupBox_Activity, "groupBox_Activity");
             this.groupBox_Activity.Name = "groupBox_Activity";
             this.groupBox_Activity.TabStop = false;
             this.groupBox_Activity.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
             // 
             // checkBox_DND_Set
             // 
-            resources.ApplyResources(this.checkBox_DND_Set, "checkBox_DND_Set");
             this.checkBox_DND_Set.Checked = true;
             this.checkBox_DND_Set.CheckState = System.Windows.Forms.CheckState.Checked;
+            resources.ApplyResources(this.checkBox_DND_Set, "checkBox_DND_Set");
             this.checkBox_DND_Set.Name = "checkBox_DND_Set";
             this.checkBox_DND_Set.UseVisualStyleBackColor = true;
             this.checkBox_DND_Set.Click += new System.EventHandler(this.checkBox_Click);
@@ -618,8 +644,8 @@
             // 
             // dateTimePicker_Time_Set
             // 
-            resources.ApplyResources(this.dateTimePicker_Time_Set, "dateTimePicker_Time_Set");
             this.dateTimePicker_Time_Set.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            resources.ApplyResources(this.dateTimePicker_Time_Set, "dateTimePicker_Time_Set");
             this.dateTimePicker_Time_Set.Name = "dateTimePicker_Time_Set";
             this.dateTimePicker_Time_Set.ShowUpDown = true;
             this.dateTimePicker_Time_Set.Value = new System.DateTime(2021, 3, 22, 21, 10, 35, 0);
@@ -627,8 +653,8 @@
             // 
             // dateTimePicker_Date_Set
             // 
-            resources.ApplyResources(this.dateTimePicker_Date_Set, "dateTimePicker_Date_Set");
             this.dateTimePicker_Date_Set.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            resources.ApplyResources(this.dateTimePicker_Date_Set, "dateTimePicker_Date_Set");
             this.dateTimePicker_Date_Set.Name = "dateTimePicker_Date_Set";
             this.dateTimePicker_Date_Set.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             // 
@@ -709,14 +735,15 @@
             this.Name = "UCtrl_Set";
             this.groupBox_Air.ResumeLayout(false);
             this.groupBox_Air.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Compass_Set)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_AirQuality_Set)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_WeatherSet_Temp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_AirPressure_Set)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_WeatherSet_MinTemp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Humidity_Set)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Altitude_Set)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_WindForce)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Humidity_Set)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_AirQuality_Set)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUp_UVindex_Set)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_WeatherSet_Temp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_WeatherSet_MinTemp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_WeatherSet_MaxTemp)).EndInit();
             this.groupBox_Activity.ResumeLayout(false);
             this.groupBox_Activity.PerformLayout();
@@ -789,5 +816,7 @@
         private System.Windows.Forms.Button button_Set;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox_WindDirection;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Compass_Set;
+        private System.Windows.Forms.Label label2;
     }
 }

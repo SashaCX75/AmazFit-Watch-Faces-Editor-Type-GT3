@@ -68,7 +68,7 @@ namespace ControlLibrary
             highlight_element = true;
             panel2.Visible = true;
             if (highlight_element) button_ElementName.BackColor = SystemColors.ActiveCaption;
-            else button_ElementName.BackColor = SystemColors.Control;
+            else SetColorActive();
 
             if (SelectChanged != null)
             {
@@ -87,7 +87,7 @@ namespace ControlLibrary
             highlight_element = false;
             panel2.Visible = false;
             if (highlight_element) button_ElementName.BackColor = SystemColors.ActiveCaption;
-            else button_ElementName.BackColor = SystemColors.Control;
+            else SetColorActive();
         }
 
         private void button_ElementName_MouseDown(object sender, MouseEventArgs e)
@@ -137,6 +137,7 @@ namespace ControlLibrary
             visibilityElement = !visibilityElement;
             pictureBox_NotShow.Visible = !visibilityElement;
             pictureBox_Show.Visible = visibilityElement;
+            SetColorActive();
 
             if (VisibleElementChanged != null && !setValue)
             {
@@ -150,6 +151,7 @@ namespace ControlLibrary
             visibilityElement = status;
             pictureBox_NotShow.Visible = !visibilityElement;
             pictureBox_Show.Visible = visibilityElement;
+            SetColorActive();
         }
 
         private void pictureBox_Del_Click(object sender, EventArgs e)
@@ -168,8 +170,23 @@ namespace ControlLibrary
             visibilityElement = true;
             pictureBox_NotShow.Visible = !visibilityElement;
             pictureBox_Show.Visible = visibilityElement;
+            SetColorActive();
 
             setValue = false;
+        }
+
+        private void SetColorActive()
+        {
+            if (visibilityElement)
+            {
+                button_ElementName.ForeColor = SystemColors.ControlText;
+                button_ElementName.BackColor = SystemColors.Control;
+            }
+            else
+            {
+                button_ElementName.ForeColor = SystemColors.GrayText;
+                button_ElementName.BackColor = SystemColors.ControlLight;
+            }
         }
 
         private void UCtrl_TopImage_Elm_Load(object sender, EventArgs e)

@@ -520,7 +520,7 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;MorningGreetingNewsScreen&apos;, native: true });.
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;MorningGreetingCoverScreen&apos;, native: true });.
         /// </summary>
         internal static string MorningNews_function {
             get {

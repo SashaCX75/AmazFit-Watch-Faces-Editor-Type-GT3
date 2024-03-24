@@ -82,6 +82,7 @@ namespace ControlLibrary
             this.textBox_DOW = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label_DOW = new System.Windows.Forms.Label();
+            this.label_Month = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Width)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Height)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_X)).BeginInit();
@@ -560,11 +561,18 @@ namespace ControlLibrary
             this.label_DOW.Name = "label_DOW";
             this.toolTip1.SetToolTip(this.label_DOW, resources.GetString("label_DOW.ToolTip"));
             // 
+            // label_Month
+            // 
+            resources.ApplyResources(this.label_Month, "label_Month");
+            this.label_Month.Name = "label_Month";
+            this.toolTip1.SetToolTip(this.label_Month, resources.GetString("label_Month.ToolTip"));
+            // 
             // UCtrl_Text_SystemFont_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ContextMenuStrip = this.context_WidgetProperty;
+            this.Controls.Add(this.label_Month);
             this.Controls.Add(this.label_DOW);
             this.Controls.Add(this.textBox_DOW);
             this.Controls.Add(this.checkBox_inEnd);
@@ -674,5 +682,6 @@ namespace ControlLibrary
         private System.Windows.Forms.TextBox textBox_DOW;
         private System.Windows.Forms.ToolTip toolTip1;
         protected System.Windows.Forms.Label label_DOW;
+        protected System.Windows.Forms.Label label_Month;
     }
 }

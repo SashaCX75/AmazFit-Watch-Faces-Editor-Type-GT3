@@ -287,4 +287,7 @@
   <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 48</value>
   </data>
+  <data name="label_error.Text" xml:space="preserve">
+    <value>Error image</value>
+  </data>
 </root>

@@ -119,37 +119,16 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="radioButton_click.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 17</value>
+    <value>73, 17</value>
   </data>
   <data name="radioButton_click.Text" xml:space="preserve">
     <value>单击按钮</value>
   </data>
-  <data name="radioButton_click.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="radioButton_londPress.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 17</value>
+    <value>73, 17</value>
   </data>
   <data name="radioButton_londPress.Text" xml:space="preserve">
     <value>长按按钮</value>
-  </data>
-  <data name="radioButton_londPress.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_Activity.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_App.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_System.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_UserScript.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="pictureBox4.ToolTip" xml:space="preserve">
     <value>要添加您自己的函数脚本集，请创建一个文件夹“user_scripts”
@@ -157,62 +136,26 @@
 显示在下拉列表中。 文件的内容将作为函数添加
 当您在下拉列表中选择它时，会显示代码。</value>
   </data>
-  <data name="pictureBox_IconSystem.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBox_selectScript.Text" xml:space="preserve">
     <value>从一组功能中选择</value>
-  </data>
-  <data name="groupBox_selectScript.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="button_Cancel.Text" xml:space="preserve">
     <value>取消</value>
   </data>
-  <data name="button_Cancel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_Save.Text" xml:space="preserve">
     <value>保存</value>
-  </data>
-  <data name="button_Save.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="richTextBox_click.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="groupBox_click.Text" xml:space="preserve">
     <value>单击按钮时的功能代码</value>
   </data>
-  <data name="groupBox_click.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="richTextBox_longPress.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBox_longPress.Text" xml:space="preserve">
     <value>长按按钮的功能代码</value>
   </data>
-  <data name="groupBox_longPress.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 13</value>
+    <value>230, 13</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>* 部分功能可能无法使用（取决于手表型号）</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2373,8 +2316,5 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>编辑按钮功能</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

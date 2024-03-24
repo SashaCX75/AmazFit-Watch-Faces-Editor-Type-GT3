@@ -474,6 +474,9 @@
     <None Include="File_templates\app.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="File_templates\WatchFace.zpk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -495,6 +498,7 @@
     <None Include="Resources\tips_ru.rtf" />
     <None Include="Resources\tips_uk.rtf" />
     <None Include="Resources\tips_zh.rtf" />
+    <None Include="Resources\WatchFace.zpk" />
     <None Include="Skin\WatchSkin_Amazfit_Band_7.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
