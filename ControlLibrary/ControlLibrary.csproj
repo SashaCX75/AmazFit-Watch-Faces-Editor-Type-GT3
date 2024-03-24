@@ -816,6 +816,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Calories_Elm.zh.resx">
       <DependentUpon>UCtrl_Calories_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.cs.resx">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.de.resx">
       <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -823,6 +826,12 @@
       <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.es.resx">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.fr.resx">
+      <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.it.resx">
       <DependentUpon>UCtrl_Compass_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Compass_Elm.uk.resx">

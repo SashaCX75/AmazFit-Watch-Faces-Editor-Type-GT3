@@ -13533,6 +13533,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = compass.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
+                            uCtrl_Pointer_Opt.TimeMode = true;
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();

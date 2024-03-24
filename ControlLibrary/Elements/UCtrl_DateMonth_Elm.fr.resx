@@ -153,4 +153,7 @@
   <data name="button_Number_Font.Text" xml:space="preserve">
     <value>Valeur en police</value>
   </data>
+  <data name="button_Month_Font.Text" xml:space="preserve">
+    <value>Mois en police</value>
+  </data>
 </root>

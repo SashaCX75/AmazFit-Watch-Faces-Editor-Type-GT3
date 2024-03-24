@@ -117,8 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label1.Text" xml:space="preserve">
+    <value>风向</value>
+  </data>
   <data name="label22.Text" xml:space="preserve">
     <value>最高温度</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>空气质量</value>
+  </data>
+  <data name="comboBox_WindDirection.Items" xml:space="preserve">
+    <value>N-北</value>
+  </data>
+  <data name="comboBox_WindDirection.Items1" xml:space="preserve">
+    <value>NE-东北</value>
+  </data>
+  <data name="comboBox_WindDirection.Items2" xml:space="preserve">
+    <value>E-东</value>
+  </data>
+  <data name="comboBox_WindDirection.Items3" xml:space="preserve">
+    <value>SE-东南</value>
+  </data>
+  <data name="comboBox_WindDirection.Items4" xml:space="preserve">
+    <value>S-南</value>
+  </data>
+  <data name="comboBox_WindDirection.Items5" xml:space="preserve">
+    <value>SW-西南</value>
+  </data>
+  <data name="comboBox_WindDirection.Items6" xml:space="preserve">
+    <value>W-西</value>
+  </data>
+  <data name="comboBox_WindDirection.Items7" xml:space="preserve">
+    <value>NW-西北</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items" xml:space="preserve">
     <value>多云</value>
@@ -207,32 +237,36 @@
   <data name="comboBox_WeatherSet_Icon.Items28" xml:space="preserve">
     <value>夜间晴</value>
   </data>
-  <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
-    <value>当前温度</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>最低温度</value>
-  </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>空气压力</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>高度</value>
+  <data name="label15.Text" xml:space="preserve">
+    <value>紫外线指数</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
     <value>风力</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="checkBox_WeatherSet_Temp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 17</value>
+  </data>
+  <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
+    <value>当前温度</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>高度</value>
+  </data>
   <data name="label17.Text" xml:space="preserve">
     <value>湿度</value>
   </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>空气质量</value>
+  <data name="label21.Text" xml:space="preserve">
+    <value>最低温度</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>紫外线指数</value>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>天气图标</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>空气压力</value>
   </data>
   <data name="groupBox_Air.Text" xml:space="preserve">
     <value>天气预览</value>
@@ -240,11 +274,23 @@
   <data name="checkBox_DND_Set.Text" xml:space="preserve">
     <value>勿扰</value>
   </data>
+  <data name="checkBox_Lock_Set.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 18</value>
+  </data>
   <data name="checkBox_Lock_Set.Text" xml:space="preserve">
     <value>锁屏</value>
   </data>
+  <data name="checkBox_Alarm_Set.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 18</value>
+  </data>
   <data name="checkBox_Alarm_Set.Text" xml:space="preserve">
     <value>闹铃</value>
+  </data>
+  <data name="checkBox_Bluetooth_Set.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 18</value>
+  </data>
+  <data name="checkBox_Bluetooth_Set.Text" xml:space="preserve">
+    <value>蓝牙</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>燃烧脂肪</value>
@@ -284,38 +330,5 @@
   </data>
   <data name="button_Set.Text" xml:space="preserve">
     <value>值</value>
-  </data>
-  <data name="checkBox_Bluetooth_Set.Text" xml:space="preserve">
-    <value>蓝牙</value>
-  </data>
-  <data name="label09.Text" xml:space="preserve">
-    <value>PAI</value>
-  </data>
-  <data name="comboBox_WindDirection.Items" xml:space="preserve">
-    <value>N-北</value>
-  </data>
-  <data name="comboBox_WindDirection.Items1" xml:space="preserve">
-    <value>NE-东北</value>
-  </data>
-  <data name="comboBox_WindDirection.Items2" xml:space="preserve">
-    <value>E-东</value>
-  </data>
-  <data name="comboBox_WindDirection.Items3" xml:space="preserve">
-    <value>SE-东南</value>
-  </data>
-  <data name="comboBox_WindDirection.Items4" xml:space="preserve">
-    <value>S-南</value>
-  </data>
-  <data name="comboBox_WindDirection.Items5" xml:space="preserve">
-    <value>SW-西南</value>
-  </data>
-  <data name="comboBox_WindDirection.Items6" xml:space="preserve">
-    <value>W-西</value>
-  </data>
-  <data name="comboBox_WindDirection.Items7" xml:space="preserve">
-    <value>NW-西北</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>风向</value>
   </data>
 </root>

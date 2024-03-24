@@ -251,4 +251,7 @@
   <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>Copia proprietà</value>
   </data>
+  <data name="label_error.Text" xml:space="preserve">
+    <value>Immagine in caso di errore</value>
+  </data>
 </root>

@@ -9667,8 +9667,8 @@ namespace Watch_Face_Editor
                                         compass_update += TabInString(8) + "};" + Environment.NewLine;
                                         compass_update += TabInString(8) + "compass_font_unit += compass_direction_font;" + Environment.NewLine;
                                     }
-                                    compass_update += TabInString(8) + optionNameStart + "compass_direction_angle_font += compass_font_unit;" + Environment.NewLine;
                                 }
+                                compass_update += TabInString(8) + optionNameStart + "compass_direction_angle_font += compass_font_unit;" + Environment.NewLine;
                             } 
                             
                             compass_update += TabInString(8) + optionNameStart + "compass_text_font.setProperty(hmUI.prop.TEXT, " + optionNameStart + "compass_direction_angle_font);" + Environment.NewLine;

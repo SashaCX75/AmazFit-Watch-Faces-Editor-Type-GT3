@@ -182,7 +182,7 @@
     <value>Kruhová data (cíl)</value>
   </data>
   <data name="button_Text_rotation.Text" xml:space="preserve">
-    <value>Hodnota v úhlu</value>
+    <value>Údaje v úhlu</value>
   </data>
   <data name="button_Text_rotation_Target.Text" xml:space="preserve">
     <value>Data úhlu (cíl)</value>
