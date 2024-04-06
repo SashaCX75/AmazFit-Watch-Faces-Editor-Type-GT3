@@ -5716,6 +5716,268 @@ namespace Watch_Face_Editor
         }
     }
 
+    public class ElementWeather_v2 : ICloneable
+    {
+        public string elementName = "ElementWeather_v2";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public WeatherGroup Group_Current { get; set; }
+        public WeatherGroup Group_Min { get; set; }
+        public WeatherGroup Group_Max { get; set; }
+        public WeatherGroup Group_Max_Min { get; set; }
+
+        public hmUI_widget_IMG_LEVEL Images { get; set; }
+        public hmUI_widget_TEXT City_Name { get; set; }
+        public hmUI_widget_IMG Icon { get; set; }
+
+        public object Clone()
+        {
+            WeatherGroup Group_Current = new WeatherGroup();
+            if(Group_Current != null)
+            {
+                Group_Current = (WeatherGroup)this.Group_Current.Clone();
+            }
+
+            WeatherGroup Group_Min = new WeatherGroup();
+            if (Group_Min != null)
+            {
+                Group_Min = (WeatherGroup)this.Group_Min.Clone();
+            }
+
+            WeatherGroup Group_Max = new WeatherGroup();
+            if (Group_Max != null)
+            {
+                Group_Max = (WeatherGroup)this.Group_Max.Clone();
+            }
+
+            WeatherGroup Group_Max_Min = new WeatherGroup();
+            if (Group_Max_Min != null)
+            {
+                Group_Max_Min = (WeatherGroup)this.Group_Max_Min.Clone();
+            }
+
+            hmUI_widget_IMG_LEVEL Images = null;
+            if (this.Images != null)
+            {
+                Images = new hmUI_widget_IMG_LEVEL
+                {
+                    X = this.Images.X,
+                    Y = this.Images.Y,
+                    img_First = this.Images.img_First,
+                    image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
+
+                    position = this.Images.position,
+                    visible = this.Images.visible,
+                    show_level = this.Images.show_level,
+                    type = this.Images.type,
+                };
+            }
+
+            hmUI_widget_TEXT City_Name = null;
+            if (this.City_Name != null)
+            {
+                City_Name = new hmUI_widget_TEXT
+                {
+                    x = this.City_Name.x,
+                    y = this.City_Name.y,
+                    w = this.City_Name.w,
+                    h = this.City_Name.h,
+                    color = this.City_Name.color,
+                    align_h = this.City_Name.align_h,
+                    align_v = this.City_Name.align_v,
+                    text_size = this.City_Name.text_size,
+                    text_style = this.City_Name.text_style,
+                    line_space = this.City_Name.line_space,
+                    char_space = this.City_Name.char_space,
+                    font = this.City_Name.font,
+
+                    position = this.City_Name.position,
+                    visible = this.City_Name.visible,
+                    show_level = this.City_Name.show_level,
+                    type = this.City_Name.type,
+                };
+            }
+
+            hmUI_widget_IMG Icon = null;
+            if (this.Icon != null)
+            {
+                Icon = new hmUI_widget_IMG
+                {
+                    x = this.Icon.x,
+                    y = this.Icon.y,
+                    w = this.Icon.w,
+                    h = this.Icon.h,
+                    src = this.Icon.src,
+
+                    position = this.Icon.position,
+                    visible = this.Icon.visible,
+                    show_level = this.Icon.show_level,
+                };
+            }
+
+            return new ElementWeather_v2
+            {
+                elementName = this.elementName,
+                visible = this.visible,
+
+                Group_Current = Group_Current,
+                Group_Min = Group_Min,
+                Group_Max = Group_Max,
+                Group_Max_Min = Group_Max_Min,
+
+                Images = Images,
+                City_Name = City_Name,
+                Icon = Icon,
+            };
+        }
+    }
+
+    public class WeatherGroup : ICloneable
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+
+        public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_TEXT Number_Font { get; set; }
+        public hmUI_widget_IMG_NUMBER Text_rotation { get; set; }
+        public Text_Circle Text_circle { get; set; }
+
+        public object Clone()
+        {
+            hmUI_widget_IMG_NUMBER Number = null;
+            if (this.Number != null)
+            {
+                Number = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number.imageX,
+                    imageY = this.Number.imageY,
+                    space = this.Number.space,
+                    angle = this.Number.angle,
+                    zero = this.Number.zero,
+                    align = this.Number.align,
+                    img_First = this.Number.img_First,
+                    unit = this.Number.unit,
+                    imperial_unit = this.Number.imperial_unit,
+                    icon = this.Number.icon,
+                    iconPosX = this.Number.iconPosX,
+                    iconPosY = this.Number.iconPosY,
+                    negative_image = this.Number.negative_image,
+                    invalid_image = this.Number.invalid_image,
+                    dot_image = this.Number.dot_image,
+                    follow = this.Number.follow,
+
+                    position = this.Number.position,
+                    visible = this.Number.visible,
+                    show_level = this.Number.show_level,
+                    type = this.Number.type,
+                };
+            }
+
+            hmUI_widget_TEXT Number_Font = null;
+            if (this.Number_Font != null)
+            {
+                Number_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Font.x,
+                    y = this.Number_Font.y,
+                    w = this.Number_Font.w,
+                    h = this.Number_Font.h,
+                    color = this.Number_Font.color,
+                    align_h = this.Number_Font.align_h,
+                    align_v = this.Number_Font.align_v,
+                    text_size = this.Number_Font.text_size,
+                    text_style = this.Number_Font.text_style,
+                    line_space = this.Number_Font.line_space,
+                    char_space = this.Number_Font.char_space,
+                    font = this.Number_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
+
+                    position = this.Number_Font.position,
+                    visible = this.Number_Font.visible,
+                    show_level = this.Number_Font.show_level,
+                    type = this.Number_Font.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Text_rotation = null;
+            if (this.Text_rotation != null)
+            {
+                Text_rotation = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Text_rotation.imageX,
+                    imageY = this.Text_rotation.imageY,
+                    space = this.Text_rotation.space,
+                    angle = this.Text_rotation.angle,
+                    zero = this.Text_rotation.zero,
+                    align = this.Text_rotation.align,
+                    img_First = this.Text_rotation.img_First,
+                    unit = this.Text_rotation.unit,
+                    imperial_unit = this.Text_rotation.imperial_unit,
+                    icon = this.Text_rotation.icon,
+                    iconPosX = this.Text_rotation.iconPosX,
+                    iconPosY = this.Text_rotation.iconPosY,
+                    negative_image = this.Text_rotation.negative_image,
+                    invalid_image = this.Text_rotation.invalid_image,
+                    dot_image = this.Text_rotation.dot_image,
+                    unit_in_alignment = this.Text_rotation.unit_in_alignment,
+
+                    position = this.Text_rotation.position,
+                    visible = this.Text_rotation.visible,
+                    show_level = this.Text_rotation.show_level,
+                    type = this.Text_rotation.type,
+                };
+            }
+
+            Text_Circle Text_circle = null;
+            if (this.Text_circle != null)
+            {
+                Text_circle = new Text_Circle
+                {
+                    circle_center_X = this.Text_circle.circle_center_X,
+                    circle_center_Y = this.Text_circle.circle_center_Y,
+                    radius = this.Text_circle.radius,
+                    angle = this.Text_circle.angle,
+                    char_space_angle = this.Text_circle.char_space_angle,
+                    zero = this.Text_circle.zero,
+                    img_First = this.Text_circle.img_First,
+                    //image_width = this.Text_circle.image_width,
+                    //image_height = this.Text_circle.image_height,
+                    unit = this.Text_circle.unit,
+                    //unit_width = this.Text_circle.unit_width,
+                    imperial_unit = this.Text_circle.imperial_unit,
+                    dot_image = this.Text_circle.dot_image,
+                    //dot_image_width = this.Text_circle.dot_image_width,
+                    error_image = this.Text_circle.error_image,
+                    //error_width = this.Text_circle.error_width,
+                    vertical_alignment = this.Text_circle.vertical_alignment,
+                    horizontal_alignment = this.Text_circle.horizontal_alignment,
+                    reverse_direction = this.Text_circle.reverse_direction,
+                    unit_in_alignment = this.Text_circle.unit_in_alignment,
+
+                    position = this.Text_circle.position,
+                    visible = this.Text_circle.visible,
+                    show_level = this.Text_circle.show_level,
+                    type = this.Text_circle.type,
+                };
+            }
+
+            return new WeatherGroup
+            {
+                position = this.position,
+                Number = Number,
+                Number_Font = Number_Font,
+                Text_rotation = Text_rotation,
+                Text_circle = Text_circle,
+            };
+        }
+    }
     public class ElementUVIndex : ICloneable
     {
         public string elementName = "ElementUVIndex";

@@ -130,6 +130,9 @@
   <data name="bluetooth" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bluetooth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="battery" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\battery.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="barometer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\barometer1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,17 +166,11 @@
   <data name="analog_time_18" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\analog_time_18.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Background-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Background-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="segment_18" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\segment_18.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="week_18" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\week_18.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="direction" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\direction.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="humidity" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\humidity.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,8 +199,8 @@
   <data name="weatherIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\weatherIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="button" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="temp_min" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\temp_min.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="stress" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stress1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -231,6 +228,9 @@
   </data>
   <data name="calories" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\calories.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="weather" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\weather.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="stand_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stand_icon2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -274,6 +274,9 @@
   <data name="text-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="table_row_delete_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\table_row_delete_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -286,17 +289,26 @@
   <data name="arrow_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="compass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\compass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rotate_anim" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rotate_anim.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="launch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\launch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shortcut" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shortcut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="temp_max" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\temp_max.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="copy prop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\copy prop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="rotate_anim" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rotate_anim.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="direction" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\direction.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Files_Copy_File_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Files_Copy_File_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -307,8 +319,8 @@
   <data name="SpO2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpO2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="battery" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\battery.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Background-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Background-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="JavaScript.16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\JavaScript.16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -331,7 +343,7 @@
   <data name="Script" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Script.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="compass" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\compass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="temp_max_min" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\temp_max_min.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

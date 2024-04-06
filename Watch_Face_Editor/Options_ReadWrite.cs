@@ -537,6 +537,26 @@ namespace Watch_Face_Editor
                     #endregion
 
 
+                    //#region ElementWeather
+                    //case "ElementWeather":
+                    //    ElementWeather Weather = null;
+                    //    try
+                    //    {
+                    //        Weather = JsonConvert.DeserializeObject<ElementWeather>(elementStr, new JsonSerializerSettings
+                    //        {
+                    //            //DefaultValueHandling = DefaultValueHandling.Ignore,
+                    //            NullValueHandling = NullValueHandling.Ignore
+                    //        });
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //        MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                    //            Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //    }
+                    //    if (Weather != null) NewElements.Add(Weather);
+                    //    break;
+                    //#endregion
+
                     #region ElementWeather
                     case "ElementWeather":
                         ElementWeather Weather = null;
@@ -553,7 +573,120 @@ namespace Watch_Face_Editor
                             MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
                                 Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        if (Weather != null) NewElements.Add(Weather);
+                        if (Weather != null) 
+                        {
+                            ElementWeather_v2 Weather_v2_temp = new ElementWeather_v2();
+                            List<String> list = new List<String>();
+
+                            if(Weather.Number != null)
+                            {
+                                if (Weather_v2_temp.Group_Current == null) Weather_v2_temp.Group_Current = new WeatherGroup();
+                                Weather_v2_temp.Group_Current.Number = Weather.Number;
+                                Weather_v2_temp.Group_Current.position = Weather.Number.position;
+                            }
+                            if (Weather.Number_Font != null)
+                            {
+                                if (Weather_v2_temp.Group_Current == null) Weather_v2_temp.Group_Current = new WeatherGroup();
+                                Weather_v2_temp.Group_Current.Number_Font = Weather.Number_Font;
+                                Weather_v2_temp.Group_Current.position = Weather.Number_Font.position;
+                            }
+
+                            if (Weather.Number_Min != null)
+                            {
+                                if (Weather_v2_temp.Group_Min == null) Weather_v2_temp.Group_Min = new WeatherGroup();
+                                Weather_v2_temp.Group_Min.Number = Weather.Number_Min;
+                                Weather_v2_temp.Group_Min.position = Weather.Number_Min.position;
+                            }
+                            if (Weather.Number_Min_Font != null)
+                            {
+                                if (Weather_v2_temp.Group_Min == null) Weather_v2_temp.Group_Min = new WeatherGroup();
+                                Weather_v2_temp.Group_Min.Number_Font = Weather.Number_Min_Font;
+                                Weather_v2_temp.Group_Min.position = Weather.Number_Min_Font.position;
+                            }
+                            if (Weather.Text_Min_rotation != null)
+                            {
+                                if (Weather_v2_temp.Group_Min == null) Weather_v2_temp.Group_Min = new WeatherGroup();
+                                Weather_v2_temp.Group_Min.Text_rotation = Weather.Text_Min_rotation;
+                                Weather_v2_temp.Group_Min.position = Weather.Text_Min_rotation.position;
+                            }
+                            if (Weather.Text_Min_circle != null)
+                            {
+                                if (Weather_v2_temp.Group_Min == null) Weather_v2_temp.Group_Min = new WeatherGroup();
+                                Weather_v2_temp.Group_Min.Text_circle = Weather.Text_Min_circle;
+                                Weather_v2_temp.Group_Min.position = Weather.Text_Min_circle.position;
+                            }
+
+                            if (Weather.Number_Max != null)
+                            {
+                                if (Weather_v2_temp.Group_Max == null) Weather_v2_temp.Group_Max = new WeatherGroup();
+                                Weather_v2_temp.Group_Max.Number = Weather.Number_Max;
+                                Weather_v2_temp.Group_Max.position = Weather.Number_Max.position;
+                            }
+                            if (Weather.Number_Max_Font != null)
+                            {
+                                if (Weather_v2_temp.Group_Max == null) Weather_v2_temp.Group_Max = new WeatherGroup();
+                                Weather_v2_temp.Group_Max.Number_Font = Weather.Number_Max_Font;
+                                Weather_v2_temp.Group_Max.position = Weather.Number_Max_Font.position;
+                            }
+                            if (Weather.Text_Max_rotation != null)
+                            {
+                                if (Weather_v2_temp.Group_Max == null) Weather_v2_temp.Group_Max = new WeatherGroup();
+                                Weather_v2_temp.Group_Max.Text_rotation = Weather.Text_Max_rotation;
+                                Weather_v2_temp.Group_Max.position = Weather.Text_Max_rotation.position;
+                            }
+                            if (Weather.Text_Max_circle != null)
+                            {
+                                if (Weather_v2_temp.Group_Max == null) Weather_v2_temp.Group_Max = new WeatherGroup();
+                                Weather_v2_temp.Group_Max.Text_circle = Weather.Text_Max_circle;
+                                Weather_v2_temp.Group_Max.position = Weather.Text_Max_circle.position;
+                            }
+
+
+                            if (Weather.Number_Min_Max_Font != null)
+                            {
+                                if (Weather_v2_temp.Group_Max_Min == null) Weather_v2_temp.Group_Max_Min = new WeatherGroup();
+                                Weather_v2_temp.Group_Max_Min.Number_Font = Weather.Number_Min_Max_Font;
+                                Weather_v2_temp.Group_Max_Min.position = Weather.Number_Min_Max_Font.position;
+                            }
+
+                            if (Weather.Images != null) Weather_v2_temp.Images = Weather.Images;
+                            if (Weather.City_Name != null) Weather_v2_temp.City_Name = Weather.City_Name;
+                            if (Weather.Icon != null) Weather_v2_temp.Icon = Weather.Icon;
+
+                            int index = 1;
+                            for (int i = 0; i < 25; i++)
+                            {
+                                if (Weather_v2_temp.Group_Current != null && Weather_v2_temp.Group_Current.position == i) Weather_v2_temp.Group_Current.position = index++;
+                                if (Weather_v2_temp.Group_Min != null && Weather_v2_temp.Group_Min.position == i) Weather_v2_temp.Group_Min.position = index++;
+                                if (Weather_v2_temp.Group_Max != null && Weather_v2_temp.Group_Max.position == i) Weather_v2_temp.Group_Max.position = index++;
+                                if (Weather_v2_temp.Group_Max_Min != null && Weather_v2_temp.Group_Max_Min.position == i) Weather_v2_temp.Group_Max_Min.position = index++;
+                                if (Weather_v2_temp.Images != null && Weather_v2_temp.Images.position == i) Weather_v2_temp.Images.position = index++;
+                                if (Weather_v2_temp.City_Name != null && Weather_v2_temp.City_Name.position == i) Weather_v2_temp.City_Name.position = index++;
+                                if (Weather_v2_temp.Icon != null && Weather_v2_temp.Icon.position == i) Weather_v2_temp.Icon.position = index++;
+                            }
+
+                            NewElements.Add(Weather_v2_temp);
+                        }
+                        break;
+                    #endregion
+
+                    #region ElementWeather_v2
+                    case "ElementWeather_v2":
+                        ElementWeather_v2 Weather_v2 = null;
+                        try
+                        {
+                            Weather_v2 = JsonConvert.DeserializeObject<ElementWeather_v2>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Weather_v2 != null) NewElements.Add(Weather_v2);
                         break;
                     #endregion
 
@@ -941,7 +1074,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Rotate_Opt.SetUnitMile(img_number.imperial_unit);
             uCtrl_Text_Rotate_Opt.SetImageError(img_number.invalid_image);
             uCtrl_Text_Rotate_Opt.SetImageDecimalPointOrMinus(img_number.dot_image);
-            //uCtrl_Text_Rotate_Opt.SetImageDecimalPointOrMinus
+            uCtrl_Text_Rotate_Opt.SetSeparator(img_number.separator_image); // разделитель для макс/мин температуры
             uCtrl_Text_Rotate_Opt.numericUpDown_spacing.Value = img_number.space;
             uCtrl_Text_Rotate_Opt.numericUpDown_angle.Value = img_number.angle;
 
@@ -1007,6 +1140,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Circle_Opt.SetUnitImperial(text_circle.imperial_unit);
             uCtrl_Text_Circle_Opt.SetImageError(text_circle.error_image);
             uCtrl_Text_Circle_Opt.SetImageDecimalPoint(text_circle.dot_image);
+            uCtrl_Text_Circle_Opt.SetSeparator(text_circle.separator_image);
 
             uCtrl_Text_Circle_Opt.SetHorizontalAlignment(text_circle.horizontal_alignment);
             uCtrl_Text_Circle_Opt.SetVerticalAlignment(text_circle.vertical_alignment);
@@ -1027,10 +1161,10 @@ namespace Watch_Face_Editor
 
             uCtrl_Text_Weather_Opt.SettingsClear();
 
-            uCtrl_Text_Weather_Opt.Follow = _follow;
+            //uCtrl_Text_Weather_Opt.Follow = _follow;
             uCtrl_Text_Weather_Opt.FollowText = _followText;
             uCtrl_Text_Weather_Opt.ImageError = _imageError;
-            uCtrl_Text_Weather_Opt.PaddingZero = _padingZero;
+            //uCtrl_Text_Weather_Opt.PaddingZero = _padingZero;
             uCtrl_Text_Weather_Opt.Visible = true;
 
             //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
@@ -1056,6 +1190,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Weather_Opt.SetUnit_F(img_number.imperial_unit);
             uCtrl_Text_Weather_Opt.SetImageError(img_number.invalid_image);
             uCtrl_Text_Weather_Opt.SetImageMinus(img_number.negative_image);
+            uCtrl_Text_Weather_Opt.SetSeparator(img_number.dot_image);
             uCtrl_Text_Weather_Opt.numericUpDown_spacing.Value = img_number.space;
             uCtrl_Text_Weather_Opt.numericUpDown_angle.Value = img_number.angle;
 
@@ -2132,6 +2267,7 @@ namespace Watch_Face_Editor
             img_number.imperial_unit = uCtrl_Text_Weather_Opt.GetUnit_F();
             img_number.negative_image = uCtrl_Text_Weather_Opt.GetImageMinus();
             img_number.invalid_image = uCtrl_Text_Weather_Opt.GetImageError();
+            img_number.dot_image = uCtrl_Text_Weather_Opt.GetSeparator();
             img_number.zero = uCtrl_Text_Weather_Opt.checkBox_addZero.Checked;
 
             JSON_Modified = true;
@@ -3344,6 +3480,7 @@ namespace Watch_Face_Editor
             text_circle.imperial_unit = uCtrl_Text_Circle_Opt.GetUnitImperial();
             text_circle.dot_image = uCtrl_Text_Circle_Opt.GetImageDecimalPoint();
             text_circle.error_image = uCtrl_Text_Circle_Opt.GetImageError();
+            text_circle.separator_image = uCtrl_Text_Circle_Opt.GetSeparator();
 
             text_circle.circle_center_X = (int)uCtrl_Text_Circle_Opt.numericUpDown_centr_X.Value;
             text_circle.circle_center_Y = (int)uCtrl_Text_Circle_Opt.numericUpDown_centr_Y.Value;
@@ -3386,6 +3523,7 @@ namespace Watch_Face_Editor
             img_number.imperial_unit = uCtrl_Text_Rotate_Opt.GetUnitMile();
             img_number.dot_image = uCtrl_Text_Rotate_Opt.GetImageDecimalPointOrMinus();
             img_number.invalid_image = uCtrl_Text_Rotate_Opt.GetImageError();
+            img_number.separator_image = uCtrl_Text_Rotate_Opt.GetSeparator(); // разделитель для макс/мин температуры
             img_number.zero = uCtrl_Text_Rotate_Opt.checkBox_addZero.Checked;
 
 
@@ -4134,6 +4272,7 @@ namespace Watch_Face_Editor
             img_number.imperial_unit = uCtrl_Text_Weather_Opt.GetUnit_F();
             img_number.negative_image = uCtrl_Text_Weather_Opt.GetImageMinus();
             img_number.invalid_image = uCtrl_Text_Weather_Opt.GetImageError();
+            img_number.dot_image = uCtrl_Text_Weather_Opt.GetSeparator();
             img_number.zero = uCtrl_Text_Weather_Opt.checkBox_addZero.Checked;
 
             WidgetProperty.Add("hmUI_widget_IMG_NUMBER", img_number);
@@ -4168,6 +4307,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Weather_Opt.SetUnit_F(img_number.imperial_unit);
             uCtrl_Text_Weather_Opt.SetImageError(img_number.invalid_image);
             uCtrl_Text_Weather_Opt.SetImageMinus(img_number.negative_image);
+            uCtrl_Text_Weather_Opt.SetSeparator(img_number.dot_image);
             uCtrl_Text_Weather_Opt.numericUpDown_spacing.Value = img_number.space;
             uCtrl_Text_Weather_Opt.numericUpDown_angle.Value = img_number.angle;
 
@@ -4263,6 +4403,7 @@ namespace Watch_Face_Editor
             text_circle.imperial_unit = uCtrl_Text_Circle_Opt.GetUnitImperial();
             text_circle.dot_image = uCtrl_Text_Circle_Opt.GetImageDecimalPoint();
             text_circle.error_image = uCtrl_Text_Circle_Opt.GetImageError();
+            text_circle.separator_image = uCtrl_Text_Circle_Opt.GetSeparator();
 
             text_circle.circle_center_X = (int)uCtrl_Text_Circle_Opt.numericUpDown_centr_X.Value;
             text_circle.circle_center_Y = (int)uCtrl_Text_Circle_Opt.numericUpDown_centr_Y.Value;
@@ -4314,6 +4455,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Circle_Opt.SetUnitImperial(text_circle.imperial_unit);
             uCtrl_Text_Circle_Opt.SetImageError(text_circle.error_image);
             uCtrl_Text_Circle_Opt.SetImageDecimalPoint(text_circle.dot_image);
+            uCtrl_Text_Circle_Opt.SetSeparator(text_circle.separator_image);
 
             uCtrl_Text_Circle_Opt.SetHorizontalAlignment(text_circle.horizontal_alignment);
             uCtrl_Text_Circle_Opt.SetVerticalAlignment(text_circle.vertical_alignment);
@@ -4343,6 +4485,7 @@ namespace Watch_Face_Editor
             img_number.imperial_unit = uCtrl_Text_Rotate_Opt.GetUnitMile();
             img_number.dot_image = uCtrl_Text_Rotate_Opt.GetImageDecimalPointOrMinus();
             img_number.invalid_image = uCtrl_Text_Rotate_Opt.GetImageError();
+            img_number.separator_image = uCtrl_Text_Rotate_Opt.GetSeparator();
             img_number.zero = uCtrl_Text_Rotate_Opt.checkBox_addZero.Checked;
 
             WidgetProperty.Add("hmUI_widget_IMG_NUMBER", img_number);
@@ -4372,6 +4515,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Rotate_Opt.SetUnitMile(img_number.imperial_unit);
             uCtrl_Text_Rotate_Opt.SetImageError(img_number.invalid_image);
             uCtrl_Text_Rotate_Opt.SetImageDecimalPointOrMinus(img_number.dot_image);
+            uCtrl_Text_Rotate_Opt.SetSeparator(img_number.separator_image);
             //uCtrl_Text_Rotate_Opt.SetImageDecimalPointOrMinus
             uCtrl_Text_Rotate_Opt.numericUpDown_spacing.Value = img_number.space;
             uCtrl_Text_Rotate_Opt.numericUpDown_angle.Value = img_number.angle;

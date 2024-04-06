@@ -15,9 +15,10 @@ namespace ControlLibrary
     {
         private bool setValue; // режим задания параметров
         private bool ImageError_mode;
-        private bool Padding_zero;
-        private bool Follow_mode;
+        //private bool Padding_zero;
+        //private bool Follow_mode;
         private bool Angle_mode = false;
+        private bool Separator_mode = false;
 
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _ElementWithText;
@@ -136,6 +137,23 @@ namespace ControlLibrary
             return comboBox_imageMinus.SelectedIndex;
         }
 
+        public void SetSeparator(string value)
+        {
+            comboBox_separator.Text = value;
+            if (comboBox_separator.SelectedIndex < 0) comboBox_separator.Text = "";
+        }
+        /// <summary>Возвращает название выбранной картинки</summary>
+        public string GetSeparator()
+        {
+            if (comboBox_separator.SelectedIndex < 0) return "";
+            return comboBox_separator.Text;
+        }
+        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
+        public int GetSelectedIndexSeparator()
+        {
+            return comboBox_separator.SelectedIndex;
+        }
+
         public void SetAlignment(string alignment)
         {
             int result;
@@ -204,35 +222,35 @@ namespace ControlLibrary
             }
         }
 
-        /// <summary>Отображение чекбокса добавления нулей в начале</summary>
-        [Description("Отображение чекбокса добавления нулей в начале")]
-        public virtual bool PaddingZero
-        {
-            get
-            {
-                return Padding_zero;
-            }
-            set
-            {
-                Padding_zero = value;
-                checkBox_addZero.Visible = Padding_zero;
-            }
-        }
+        ///// <summary>Отображение чекбокса добавления нулей в начале</summary>
+        //[Description("Отображение чекбокса добавления нулей в начале")]
+        //public virtual bool PaddingZero
+        //{
+        //    get
+        //    {
+        //        return Padding_zero;
+        //    }
+        //    set
+        //    {
+        //        Padding_zero = value;
+        //        checkBox_addZero.Visible = Padding_zero;
+        //    }
+        //}
 
-        /// <summary>Отображение чекбокса "Следовать за..."</summary>
-        [Description("Отображение чекбокса \"Следовать за...\"")]
-        public virtual bool Follow
-        {
-            get
-            {
-                return Follow_mode;
-            }
-            set
-            {
-                Follow_mode = value;
-                checkBox_follow.Visible = Follow_mode;
-            }
-        }
+        ///// <summary>Отображение чекбокса "Следовать за..."</summary>
+        //[Description("Отображение чекбокса \"Следовать за...\"")]
+        //public virtual bool Follow
+        //{
+        //    get
+        //    {
+        //        return Follow_mode;
+        //    }
+        //    set
+        //    {
+        //        Follow_mode = value;
+        //        checkBox_follow.Visible = Follow_mode;
+        //    }
+        //}
 
         /// <summary>Доступность режима изменеия угла</summary>
         [Description("Доступность режима изменеия угла")]
@@ -247,6 +265,22 @@ namespace ControlLibrary
                 Angle_mode = value;
                 numericUpDown_angle.Enabled = Angle_mode;
                 label_angle.Enabled = Angle_mode;
+            }
+        }
+
+        /// <summary>Отображение символа разделителя</summary>
+        [Description("Отображение символа разделителя")]
+        public virtual bool Separator
+        {
+            get
+            {
+                return Separator_mode;
+            }
+            set
+            {
+                Separator_mode = value;
+                comboBox_separator.Visible = Separator_mode;
+                label_separator.Visible = Separator_mode;
             }
         }
 
@@ -375,6 +409,7 @@ namespace ControlLibrary
             comboBox_unit_f.Items.Clear();
             comboBox_imageError.Items.Clear();
             comboBox_imageMinus.Items.Clear();
+            comboBox_separator.Items.Clear();
 
             comboBox_image.Items.AddRange(ListImages.ToArray());
             comboBox_icon.Items.AddRange(ListImages.ToArray());
@@ -383,6 +418,7 @@ namespace ControlLibrary
 
             comboBox_imageError.Items.AddRange(ListImages.ToArray());
             comboBox_imageMinus.Items.AddRange(ListImages.ToArray());
+            comboBox_separator.Items.AddRange(ListImages.ToArray());
 
             ListImagesFullName = _ListImagesFullName;
 
@@ -395,6 +431,7 @@ namespace ControlLibrary
                 comboBox_unit_f.DropDownHeight = 1;
                 comboBox_imageError.DropDownHeight = 1;
                 comboBox_imageMinus.DropDownHeight = 1;
+                comboBox_separator.DropDownHeight = 1;
             }
             else if (count < 5)
             {
@@ -404,6 +441,7 @@ namespace ControlLibrary
                 comboBox_unit_f.DropDownHeight = 35 * count + 1;
                 comboBox_imageError.DropDownHeight = 35 * count + 1;
                 comboBox_imageMinus.DropDownHeight = 35 * count + 1;
+                comboBox_separator.DropDownHeight = 35 * count + 1;
             }
             else
             {
@@ -413,6 +451,7 @@ namespace ControlLibrary
                 comboBox_unit_f.DropDownHeight = 106;
                 comboBox_imageError.DropDownHeight = 106;
                 comboBox_imageMinus.DropDownHeight = 106;
+                comboBox_separator.DropDownHeight = 106;
             }
         }
 
@@ -422,15 +461,17 @@ namespace ControlLibrary
             setValue = true;
 
             ImageError = false;
-            PaddingZero = false;
-            Follow = false;
+            //PaddingZero = false;
+            //Follow = false;
             Angle = false;
+            Separator = false;
 
             comboBox_image.Text = null;
             comboBox_icon.Text = null;
             comboBox_unit_c.Text = null;
             comboBox_imageError.Text = null;
             comboBox_imageMinus.Text = null;
+            comboBox_separator.Text = null;
 
             numericUpDown_imageX.Value = 0;
             numericUpDown_imageY.Value = 0;

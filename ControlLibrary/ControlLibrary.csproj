@@ -575,6 +575,12 @@
     <Compile Include="Elements\UCtrl_TopImage_Elm.Designer.cs">
       <DependentUpon>UCtrl_TopImage_Elm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\UCtrl_Weather_Elm_v2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Weather_Elm_v2.Designer.cs">
+      <DependentUpon>UCtrl_Weather_Elm_v2.cs</DependentUpon>
+    </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
@@ -2449,6 +2455,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Wind_Elm.resx">
       <DependentUpon>UCtrl_Wind_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Weather_Elm_v2.resx">
+      <DependentUpon>UCtrl_Weather_Elm_v2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\digital-clock-icon.png" />
@@ -2684,6 +2693,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\compass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\temp_min.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\temp_max.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\temp_max_min.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

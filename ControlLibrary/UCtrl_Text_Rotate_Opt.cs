@@ -21,6 +21,7 @@ namespace ControlLibrary
         private bool Year_mode = false;
         private bool Sunrise_mode = false;
         private bool Weather_mode = false;
+        private bool Separator_mode = false;
         private bool Imperial_unit_mode = false;
 
         //private Point location_unit;
@@ -148,6 +149,19 @@ namespace ControlLibrary
         public int GetSelectedIndexImageDecimalPointOrMinus()
         {
             return comboBox_imageDecimalPoint.SelectedIndex;
+        }
+
+        public void SetSeparator(string value)
+        {
+            comboBox_separator.Text = value;
+            if (comboBox_separator.SelectedIndex < 0) comboBox_separator.Text = "";
+        }
+
+        /// <summary>Возвращает название выбранной картинки</summary>
+        public string GetSeparator()
+        {
+            if (comboBox_separator.SelectedIndex < 0) return "";
+            return comboBox_separator.Text;
         }
 
         public void SetAlignment(string alignment)
@@ -429,7 +443,7 @@ namespace ControlLibrary
                     Sunrise = false;
                     //Weather = false;
 
-                    label_unit.Text = unit_label_text + " (°C))";
+                    label_unit.Text = unit_label_text + " (°C)";
                     label_unit_miles.Text = unit_label_text + " (°F)";
 
                     comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
@@ -465,6 +479,23 @@ namespace ControlLibrary
                     location = new Point(location_unit_in_alignment.X, location_unit_in_alignment.Y);
                     checkBox_unit_in_alignment.Location = location;
                 }
+            }
+        }
+
+        /// <summary>Доступность разделителя</summary>
+        [Description("Доступность разделителя")]
+        public virtual bool Separator
+        {
+            get
+            {
+                return Separator_mode;
+            }
+            set
+            {
+                Separator_mode = value;
+
+                label_separator.Visible = value;
+                comboBox_separator.Visible = value;
             }
         }
 
@@ -602,6 +633,7 @@ namespace ControlLibrary
             comboBox_unit_miles.Items.Clear();
             comboBox_imageError.Items.Clear();
             comboBox_imageDecimalPoint.Items.Clear();
+            comboBox_separator.Items.Clear();
 
             comboBox_image.Items.AddRange(ListImages.ToArray());
             comboBox_unit.Items.AddRange(ListImages.ToArray());
@@ -609,6 +641,7 @@ namespace ControlLibrary
 
             comboBox_imageError.Items.AddRange(ListImages.ToArray());
             comboBox_imageDecimalPoint.Items.AddRange(ListImages.ToArray());
+            comboBox_separator.Items.AddRange(ListImages.ToArray());
 
             ListImagesFullName = _ListImagesFullName;
 
@@ -620,6 +653,7 @@ namespace ControlLibrary
                 comboBox_unit_miles.DropDownHeight = 1;
                 comboBox_imageError.DropDownHeight = 1;
                 comboBox_imageDecimalPoint.DropDownHeight = 1;
+                comboBox_separator.DropDownHeight = 1;
             }
             else if (count < 5)
             {
@@ -628,6 +662,7 @@ namespace ControlLibrary
                 comboBox_unit_miles.DropDownHeight = 35 * count + 1;
                 comboBox_imageError.DropDownHeight = 35 * count + 1;
                 comboBox_imageDecimalPoint.DropDownHeight = 35 * count + 1;
+                comboBox_separator.DropDownHeight = 35 * count + 1;
             }
             else
             {
@@ -636,6 +671,7 @@ namespace ControlLibrary
                 comboBox_unit_miles.DropDownHeight = 106;
                 comboBox_imageError.DropDownHeight = 106;
                 comboBox_imageDecimalPoint.DropDownHeight = 106;
+                comboBox_separator.DropDownHeight = 106;
             }
         }
 
@@ -651,11 +687,13 @@ namespace ControlLibrary
             Year = false;
             Sunrise = false;
             Weather = false;
+            Separator = false;
 
             comboBox_image.Text = null;
             comboBox_unit.Text = null;
             comboBox_imageError.Text = null;
             comboBox_imageDecimalPoint.Text = null;
+            comboBox_separator.Text = null;
 
             numericUpDown_imageX.Value = 0;
             numericUpDown_imageY.Value = 0;

@@ -443,6 +443,16 @@ namespace Watch_Face_Editor
                     Scale_TEXT(elementWeather.City_Name, scale);
                     Scale_IMG(elementWeather.Icon, scale);
                     break;
+                case "ElementWeather_v2":
+                    ElementWeather_v2 elementWeather_v2 = (ElementWeather_v2)elements;
+                    Scale_WeatherGroup(elementWeather_v2.Group_Current, scale);
+                    Scale_WeatherGroup(elementWeather_v2.Group_Min, scale);
+                    Scale_WeatherGroup(elementWeather_v2.Group_Max, scale);
+                    Scale_WeatherGroup(elementWeather_v2.Group_Max_Min, scale);
+                    Scale_IMG_LEVEL(elementWeather_v2.Images, scale);
+                    Scale_TEXT(elementWeather_v2.City_Name, scale);
+                    Scale_IMG(elementWeather_v2.Icon, scale);
+                    break;
                 case "ElementUVIndex":
                     ElementUVIndex elementUVIndex = (ElementUVIndex)elements;
                     Scale_IMG_LEVEL(elementUVIndex.Images, scale);
@@ -663,6 +673,14 @@ namespace Watch_Face_Editor
             if (button.h != -1) button.h = (int)Math.Round((double)(button.h * scale), MidpointRounding.AwayFromZero);
             button.text_size = (int)Math.Round((double)(button.text_size * scale), MidpointRounding.AwayFromZero);
             button.radius = (int)Math.Round((double)(button.radius * scale), MidpointRounding.AwayFromZero);
+        }
+        private void Scale_WeatherGroup(WeatherGroup weatherGroup, float scale)
+        {
+            if (weatherGroup == null) return;
+            Scale_IMG_NUMBER(weatherGroup.Number, scale);
+            Scale_TEXT(weatherGroup.Number_Font, scale);
+            Scale_IMG_NUMBER(weatherGroup.Text_rotation, scale);
+            Scale_Text_Circle(weatherGroup.Text_circle, scale);
         }
     }
 }

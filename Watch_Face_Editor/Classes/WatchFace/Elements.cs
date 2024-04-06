@@ -100,6 +100,9 @@ namespace Watch_Face_Editor
         /// <summary>Десятичный разделитель</summary>
         public string dot_image { get; set; }
 
+        /// <summary>Символ разделителя для макс/мин температуры</summary>
+        public string separator_image { get; set; }
+
         /// <summary>Наклон надписи</summary>
         public int angle { get; set; }
 
@@ -170,6 +173,9 @@ namespace Watch_Face_Editor
 
         /// <summary>ширина символа ошибки</summary>
         public int error_width { get; set; }
+
+        /// <summary>Символ разделителя для макс/мин температуры</summary>
+        public string separator_image { get; set; }
 
         /// <summary>Выравнивание символов по вертикали относительно окружности</summary>
         public string vertical_alignment { get; set; } = "BOTTOM";
@@ -243,6 +249,9 @@ namespace Watch_Face_Editor
 
         /// <summary>ширина символа ошибки</summary>
         //public int error_width { get; set; }
+
+        /// <summary>Символ разделителя для макс/мин температуры</summary>
+        public string separator_image { get; set; }
 
         /// <summary>Выравнивание символов по вертикали относительно окружности</summary>
         public string vertical_alignment { get; set; } = "BOTTOM";

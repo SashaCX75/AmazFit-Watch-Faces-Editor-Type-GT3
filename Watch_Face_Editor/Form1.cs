@@ -1310,6 +1310,7 @@ namespace Watch_Face_Editor
             if (e.Data.GetDataPresent(typeof(UCtrl_FatBurning_Elm))) typeReturn = false;
 
             if (e.Data.GetDataPresent(typeof(UCtrl_Weather_Elm))) typeReturn = false;
+            if (e.Data.GetDataPresent(typeof(UCtrl_Weather_Elm_v2))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_UVIndex_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_Humidity_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_Altimeter_Elm))) typeReturn = false;
@@ -1532,6 +1533,14 @@ namespace Watch_Face_Editor
                             (ElementWeather)Elements.Find(e1 => e1.GetType().Name == "ElementWeather");
                         index = Elements.IndexOf(weather);
                         draggedUCtrl_Elm = (UCtrl_Weather_Elm)e.Data.GetData(typeof(UCtrl_Weather_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+
+                    case "ControlLibrary.UCtrl_Weather_Elm_v2":
+                        ElementWeather_v2 weather_v2 =
+                            (ElementWeather_v2)Elements.Find(e1 => e1.GetType().Name == "ElementWeather_v2");
+                        index = Elements.IndexOf(weather_v2);
+                        draggedUCtrl_Elm = (UCtrl_Weather_Elm_v2)e.Data.GetData(typeof(UCtrl_Weather_Elm_v2));
                         if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                         break;
 
@@ -1869,6 +1878,7 @@ namespace Watch_Face_Editor
             if (selectElementName != "FatBurning") uCtrl_FatBurning_Elm.ResetHighlightState();
 
             if (selectElementName != "Weather") uCtrl_Weather_Elm.ResetHighlightState();
+            if (selectElementName != "Weather_v2") uCtrl_Weather_Elm_v2.ResetHighlightState();
             if (selectElementName != "UVIndex") uCtrl_UVIndex_Elm.ResetHighlightState();
             if (selectElementName != "Humidity") uCtrl_Humidity_Elm.ResetHighlightState();
             if (selectElementName != "Altimeter") uCtrl_Altimeter_Elm.ResetHighlightState();
@@ -1938,6 +1948,7 @@ namespace Watch_Face_Editor
             uCtrl_FatBurning_Elm.SettingsClear();
 
             uCtrl_Weather_Elm.SettingsClear();
+            uCtrl_Weather_Elm_v2.SettingsClear();
             uCtrl_UVIndex_Elm.SettingsClear();
             uCtrl_Humidity_Elm.SettingsClear();
             uCtrl_Altimeter_Elm.SettingsClear();
@@ -3557,7 +3568,7 @@ namespace Watch_Face_Editor
         {
             if (comboBox_AddAir.SelectedIndex == 0)
             {
-                AddWeather();
+                AddWeather_v2();
                 ShowElemetsWatchFace();
                 JSON_Modified = true;
                 FormText();
@@ -4758,6 +4769,36 @@ namespace Watch_Face_Editor
             uCtrl_Weather_Elm.SettingsClear();
         }
 
+        /// <summary>Добавляем новую погоду в циферблат</summary>
+        private void AddWeather_v2()
+        {
+            if (!PreviewView) return;
+            List<object> Elements = new List<object>();
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                Elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+                Elements = Watch_Face.ScreenAOD.Elements;
+
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            ElementWeather_v2 weather = new ElementWeather_v2();
+            weather.visible = true;
+            //digitalTime.position = Elements.Count;
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementWeather_v2"); // проверяем что такого элемента нет
+            if (!exists) Elements.Insert(0, weather);
+            uCtrl_Weather_Elm_v2.SettingsClear();
+        }
+
         /// <summary>Добавляем УФ индекс в циферблат</summary>
         private void AddUVIndex()
         {
@@ -5100,6 +5141,7 @@ namespace Watch_Face_Editor
             uCtrl_FatBurning_Elm.Visible = false;
 
             uCtrl_Weather_Elm.Visible = false;
+            uCtrl_Weather_Elm_v2.Visible = false;
             uCtrl_UVIndex_Elm.Visible = false;
             uCtrl_Humidity_Elm.Visible = false;
             uCtrl_Altimeter_Elm.Visible = false;
@@ -5342,16 +5384,6 @@ namespace Watch_Face_Editor
                             break;
                         #endregion
 
-                        /*#region ElementEditablePointers
-                        case "ElementEditablePointers":
-                            ElementEditablePointers EditablePointers = (ElementEditablePointers)element;
-                            uCtrl_EditableTimePointer_Elm.SetVisibilityElementStatus(EditablePointers.enable);
-
-                            uCtrl_EditableTimePointer_Elm.Visible = true;
-                            SetElementPositionInGUI(type, count - i - 2);
-                            //SetElementPositionInGUI(type, i + 1);
-                            break;
-#endregion*/
 
                         #region ElementDateDay
                         case "ElementDateDay":
@@ -6401,6 +6433,120 @@ namespace Watch_Face_Editor
                             break;
                         #endregion
 
+                        #region ElementWeather_v2
+                        case "ElementWeather_v2":
+                            ElementWeather_v2 Weather_v2 = (ElementWeather_v2)element;
+                            uCtrl_Weather_Elm_v2.SetVisibilityElementStatus(Weather_v2.visible);
+                            elementOptions = new Dictionary<int, string>();
+
+                            if (Weather_v2.Group_Current != null)
+                            {
+                                if (Weather_v2.Group_Current.Number != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Number_Current.Checked = Weather_v2.Group_Current.Number.visible;
+                                }
+                                if (Weather_v2.Group_Current.Number_Font != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Number_Current_Font.Checked = Weather_v2.Group_Current.Number_Font.visible;
+                                }
+                                if (Weather_v2.Group_Current.Text_rotation != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Text_Current_rotation.Checked = Weather_v2.Group_Current.Text_rotation.visible;
+                                }
+                                if (Weather_v2.Group_Current.Text_circle != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Text_Current_circle.Checked = Weather_v2.Group_Current.Text_circle.visible;
+                                }
+                                elementOptions.Add(Weather_v2.Group_Current.position, "Group_Current");
+                            }
+
+                            if (Weather_v2.Group_Min != null)
+                            {
+                                if (Weather_v2.Group_Min.Number != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Number_Min.Checked = Weather_v2.Group_Min.Number.visible;
+                                }
+                                if (Weather_v2.Group_Min.Number_Font != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Number_Min_Font.Checked = Weather_v2.Group_Min.Number_Font.visible;
+                                }
+                                if (Weather_v2.Group_Min.Text_rotation != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Text_Min_rotation.Checked = Weather_v2.Group_Min.Text_rotation.visible;
+                                }
+                                if (Weather_v2.Group_Min.Text_circle != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Text_Min_circle.Checked = Weather_v2.Group_Min.Text_circle.visible;
+                                }
+                                elementOptions.Add(Weather_v2.Group_Min.position, "Group_Min");
+                            }
+
+                            if (Weather_v2.Group_Max != null)
+                            {
+                                if (Weather_v2.Group_Max.Number != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Number_Max.Checked = Weather_v2.Group_Max.Number.visible;
+                                }
+                                if (Weather_v2.Group_Max.Number_Font != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Number_Max_Font.Checked = Weather_v2.Group_Max.Number_Font.visible;
+                                }
+                                if (Weather_v2.Group_Max.Text_rotation != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Text_Max_rotation.Checked = Weather_v2.Group_Max.Text_rotation.visible;
+                                }
+                                if (Weather_v2.Group_Max.Text_circle != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Text_Max_circle.Checked = Weather_v2.Group_Max.Text_circle.visible;
+                                }
+                                elementOptions.Add(Weather_v2.Group_Max.position, "Group_Max");
+                            }
+
+                            if (Weather_v2.Group_Max_Min != null)
+                            {
+                                if (Weather_v2.Group_Max_Min.Number != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Number_Max_Min.Checked = Weather_v2.Group_Max_Min.Number.visible;
+                                }
+                                if (Weather_v2.Group_Max_Min.Number_Font != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Number_Max_Min_Font.Checked = Weather_v2.Group_Max_Min.Number_Font.visible;
+                                }
+                                if (Weather_v2.Group_Max_Min.Text_rotation != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Text_Max_Min_rotation.Checked = Weather_v2.Group_Max_Min.Text_rotation.visible;
+                                }
+                                if (Weather_v2.Group_Max_Min.Text_circle != null)
+                                {
+                                    uCtrl_Weather_Elm_v2.checkBox_Text_Max_Min_circle.Checked = Weather_v2.Group_Max_Min.Text_circle.visible;
+                                }
+                                elementOptions.Add(Weather_v2.Group_Max_Min.position, "Group_Max_Min");
+                            }
+
+                            if (Weather_v2.Images != null)
+                            {
+                                uCtrl_Weather_Elm_v2.checkBox_Images.Checked = Weather_v2.Images.visible;
+                                elementOptions.Add(Weather_v2.Images.position, "Images");
+                            }
+                            if (Weather_v2.City_Name != null)
+                            {
+                                uCtrl_Weather_Elm_v2.checkBox_Text_CityName.Checked = Weather_v2.City_Name.visible;
+                                elementOptions.Add(Weather_v2.City_Name.position, "CityName");
+                            }
+                            if (Weather_v2.Icon != null)
+                            {
+                                uCtrl_Weather_Elm_v2.checkBox_Icon.Checked = Weather_v2.Icon.visible;
+                                elementOptions.Add(Weather_v2.Icon.position, "Icon");
+                            }
+
+                            uCtrl_Weather_Elm_v2.SetOptionsPosition(elementOptions);
+
+                            uCtrl_Weather_Elm_v2.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
+                        #endregion
+
                         #region ElementUVIndex
                         case "ElementUVIndex":
                             ElementUVIndex UVIndex = (ElementUVIndex)element;
@@ -7045,6 +7191,9 @@ namespace Watch_Face_Editor
                 case "ElementWeather":
                     panel = panel_UC_Weather;
                     break;
+                case "ElementWeather_v2":
+                    panel = panel_UC_Weather_v2;
+                    break;
                 case "ElementUVIndex":
                     panel = panel_UC_UVIndex;
                     break;
@@ -7625,6 +7774,9 @@ namespace Watch_Face_Editor
 
                 case "UCtrl_Weather_Elm":
                     objectName = "ElementWeather";
+                    break;
+                case "UCtrl_Weather_Elm_v2":
+                    objectName = "ElementWeather_v2";
                     break;
                 case "UCtrl_UVIndex_Elm":
                     objectName = "ElementUVIndex";
@@ -12746,6 +12898,223 @@ namespace Watch_Face_Editor
             }
         }
 
+        private void uCtrl_Weather_Elm_v2_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            string selectElement = uCtrl_Weather_Elm_v2.selectedElement;
+            if (selectElement.Length == 0) HideAllElemenrOptions();
+            ResetHighlightState("Weather_v2");
+
+            ElementWeather_v2 weather = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    weather = (ElementWeather_v2)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementWeather_v2");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    weather = (ElementWeather_v2)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementWeather_v2");
+                }
+            }
+            if (weather != null)
+            {
+                hmUI_widget_IMG_LEVEL img_level = null;
+                hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
+                hmUI_widget_TEXT text = null;
+                hmUI_widget_IMG icon = null;
+
+                switch (selectElement)
+                {
+                    case "Number_Current":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Number_Current.Checked && weather.Group_Current != null)
+                        {
+                            img_number = weather.Group_Current.Number;
+                            Read_ImgNumberWeather_Options(img_number, false, "", true, false);
+                            ShowElemenrOptions("Text_Weather");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Current_Font":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Number_Current_Font.Checked)
+                        {
+                            text = weather.Group_Current.Number_Font;
+                            Read_Text_Options(text, true, false);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_Current_rotation":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Text_Current_rotation.Checked && weather.Group_Current != null)
+                        {
+                            text_rotation = weather.Group_Current.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, true, false, false, true, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_Current_circle":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Text_Current_circle.Checked && weather.Group_Current != null)
+                        {
+                            text_circle = weather.Group_Current.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, true, false, false, true, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+
+                    case "Number_Min":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Number_Min.Checked && weather.Group_Min != null)
+                        {
+                            img_number = weather.Group_Min.Number;
+                            Read_ImgNumberWeather_Options(img_number, false, "", true, false);
+                            ShowElemenrOptions("Text_Weather");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Min_Font":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Number_Min_Font.Checked)
+                        {
+                            text = weather.Group_Min.Number_Font;
+                            Read_Text_Options(text, true, false);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_Min_rotation":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Text_Min_rotation.Checked && weather.Group_Min != null)
+                        {
+                            text_rotation = weather.Group_Min.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, true, false, false, true, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_Min_circle":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Text_Min_circle.Checked && weather.Group_Min != null)
+                        {
+                            text_circle = weather.Group_Min.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, true, false, false, true, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+
+                    case "Number_Max":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Number_Max.Checked && weather.Group_Max != null)
+                        {
+                            img_number = weather.Group_Max.Number;
+                            Read_ImgNumberWeather_Options(img_number, false, "", true, false);
+                            ShowElemenrOptions("Text_Weather");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Max_Font":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Number_Max_Font.Checked)
+                        {
+                            text = weather.Group_Max.Number_Font;
+                            Read_Text_Options(text, true, false);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_Max_rotation":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Text_Max_rotation.Checked && weather.Group_Max != null)
+                        {
+                            text_rotation = weather.Group_Max.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, true, false, false, true, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_Max_circle":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Text_Max_circle.Checked && weather.Group_Max != null)
+                        {
+                            text_circle = weather.Group_Max.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, true, false, false, true, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+
+                    case "Number_Max_Min":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Number_Max_Min.Checked && weather.Group_Max_Min != null)
+                        {
+                            img_number = weather.Group_Max_Min.Number;
+                            Read_ImgNumberWeather_Options(img_number, false, "", true, false);
+                            uCtrl_Text_Weather_Opt.Separator = true;
+                            ShowElemenrOptions("Text_Weather");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Max_Min_Font":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Number_Max_Min_Font.Checked)
+                        {
+                            text = weather.Group_Max_Min.Number_Font;
+                            Read_Text_Options(text, true, false, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_Max_Min_rotation":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Text_Max_Min_rotation.Checked && weather.Group_Max_Min != null)
+                        {
+                            text_rotation = weather.Group_Max_Min.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, true, false, false, true, true);
+                            uCtrl_Text_Rotate_Opt.Separator = true;
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_Max_Min_circle":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Text_Max_Min_circle.Checked && weather.Group_Max_Min != null)
+                        {
+                            text_circle = weather.Group_Max_Min.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, true, false, false, true, true); 
+                            uCtrl_Text_Circle_Opt.Separator = true;
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+
+                    case "Images":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Images.Checked)
+                        {
+                            img_level = weather.Images;
+                            Read_ImgLevel_Options(img_level, 29, false, true);
+                            ShowElemenrOptions("Images");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "CityName":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Text_CityName.Checked)
+                        {
+                            text = weather.City_Name;
+                            Read_Text_Options(text, false, false);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Icon":
+                        if (uCtrl_Weather_Elm_v2.checkBox_Icon.Checked)
+                        {
+                            icon = weather.Icon;
+                            Read_Icon_Options(icon);
+                            ShowElemenrOptions("Icon");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
+
+            }
+        }
+
         private void uCtrl_UVIndex_Elm_SelectChanged(object sender, EventArgs eventArgs)
         {
             string selectElement = uCtrl_UVIndex_Elm.selectedElement;
@@ -14370,6 +14739,13 @@ namespace Watch_Face_Editor
                             break;
                         #endregion
 
+                        #region ElementWeather_v2
+                        case "ElementWeather_v2":
+                            ElementWeather_v2 weatherElement_v2 = (ElementWeather_v2)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementWeather_v2)weatherElement_v2.Clone());
+                            break;
+                        #endregion
+
                         #region ElementUVIndex
                         case "ElementUVIndex":
                             ElementUVIndex uv_indexElement = (ElementUVIndex)element;
@@ -15333,6 +15709,116 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        private void uCtrl_Weather_Elm_v2_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementWeather_v2 weather = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementWeather_v2");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementWeather_v2());
+                    weather = (ElementWeather_v2)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementWeather_v2");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementWeather_v2");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementWeather_v2());
+                    weather = (ElementWeather_v2)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementWeather_v2");
+                }
+            }
+
+            if (weather != null)
+            {
+                if (weather.Group_Current == null)
+                {
+                    weather.Group_Current = new WeatherGroup
+                    {
+                        Number = new hmUI_widget_IMG_NUMBER(),
+                        Number_Font = new hmUI_widget_TEXT(),
+                        Text_rotation = new hmUI_widget_IMG_NUMBER(),
+                        Text_circle = new Text_Circle()
+                    };
+                }
+                if (weather.Group_Min == null)
+                {
+                    weather.Group_Min = new WeatherGroup
+                    {
+                        Number = new hmUI_widget_IMG_NUMBER(),
+                        Number_Font = new hmUI_widget_TEXT(),
+                        Text_rotation = new hmUI_widget_IMG_NUMBER(),
+                        Text_circle = new Text_Circle()
+                    };
+                }
+                if (weather.Group_Max == null)
+                {
+                    weather.Group_Max = new WeatherGroup
+                    {
+                        Number = new hmUI_widget_IMG_NUMBER(),
+                        Number_Font = new hmUI_widget_TEXT(),
+                        Text_rotation = new hmUI_widget_IMG_NUMBER(),
+                        Text_circle = new Text_Circle()
+                    };
+                }
+                if (weather.Group_Max_Min == null)
+                {
+                    weather.Group_Max_Min = new WeatherGroup
+                    {
+                        Number = new hmUI_widget_IMG_NUMBER(),
+                        Number_Font = new hmUI_widget_TEXT(),
+                        Text_rotation = new hmUI_widget_IMG_NUMBER(),
+                        Text_circle = new Text_Circle()
+                    };
+                }
+
+                if (weather.Group_Current.Number == null) weather.Group_Current.Number = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Current.Number_Font == null) weather.Group_Current.Number_Font = new hmUI_widget_TEXT();
+                if (weather.Group_Current.Text_rotation == null) weather.Group_Current.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Current.Text_circle == null) weather.Group_Current.Text_circle = new Text_Circle();
+
+                if (weather.Group_Min.Number == null) weather.Group_Min.Number = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Min.Number_Font == null) weather.Group_Min.Number_Font = new hmUI_widget_TEXT();
+                if (weather.Group_Min.Text_rotation == null) weather.Group_Min.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Min.Text_circle == null) weather.Group_Min.Text_circle = new Text_Circle();
+
+                if (weather.Group_Max.Number == null) weather.Group_Max.Number = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Max.Number_Font == null) weather.Group_Max.Number_Font = new hmUI_widget_TEXT();
+                if (weather.Group_Max.Text_rotation == null) weather.Group_Max.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Max.Text_circle == null) weather.Group_Max.Text_circle = new Text_Circle();
+
+                if (weather.Group_Max_Min.Number == null) weather.Group_Max_Min.Number = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Max_Min.Number_Font == null) weather.Group_Max_Min.Number_Font = new hmUI_widget_TEXT();
+                if (weather.Group_Max_Min.Text_rotation == null) weather.Group_Max_Min.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Max_Min.Text_circle == null) weather.Group_Max_Min.Text_circle = new Text_Circle();
+
+                if (weather.Images == null) weather.Images = new hmUI_widget_IMG_LEVEL();
+                if (weather.City_Name == null) weather.City_Name = new hmUI_widget_TEXT();
+                if (weather.Icon == null) weather.Icon = new hmUI_widget_IMG();
+
+                if (elementOptions.ContainsKey("Group_Current")) weather.Group_Current.position = elementOptions["Group_Current"];
+                if (elementOptions.ContainsKey("Group_Min")) weather.Group_Min.position = elementOptions["Group_Min"];
+                if (elementOptions.ContainsKey("Group_Max")) weather.Group_Max.position = elementOptions["Group_Max"];
+                if (elementOptions.ContainsKey("Group_Max_Min")) weather.Group_Max_Min.position = elementOptions["Group_Max_Min"];
+                if (elementOptions.ContainsKey("Images")) weather.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("CityName")) weather.City_Name.position = elementOptions["CityName"];
+                if (elementOptions.ContainsKey("Icon")) weather.Icon.position = elementOptions["Icon"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
         private void uCtrl_UVIndex_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
         {
             if (!PreviewView) return;
@@ -16173,6 +16659,35 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null)
                 {
                     weather = (ElementWeather)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementWeather");
+                }
+            }
+            if (weather != null)
+            {
+                weather.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Weather_Elm_v2_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementWeather_v2 weather = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    weather = (ElementWeather_v2)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementWeather_v2");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    weather = (ElementWeather_v2)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementWeather_v2");
                 }
             }
             if (weather != null)
@@ -17995,6 +18510,185 @@ namespace Watch_Face_Editor
             }
 
             uCtrl_Weather_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Weather_Elm_v2_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementWeather_v2 weather = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementWeather_v2");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementWeather());
+                    weather = (ElementWeather_v2)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementWeather_v2");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementWeather_v2");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementWeather());
+                    weather = (ElementWeather_v2)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementWeather_v2");
+                }
+            }
+
+            if (weather != null)
+            {
+                if (weather.Group_Current == null)
+                {
+                    weather.Group_Current = new WeatherGroup
+                    {
+                        Number = new hmUI_widget_IMG_NUMBER(),
+                        Number_Font = new hmUI_widget_TEXT(),
+                        Text_rotation = new hmUI_widget_IMG_NUMBER(),
+                        Text_circle = new Text_Circle()
+                    };
+                }
+                if (weather.Group_Min == null)
+                {
+                    weather.Group_Min = new WeatherGroup
+                    {
+                        Number = new hmUI_widget_IMG_NUMBER(),
+                        Number_Font = new hmUI_widget_TEXT(),
+                        Text_rotation = new hmUI_widget_IMG_NUMBER(),
+                        Text_circle = new Text_Circle()
+                    };
+                }
+                if (weather.Group_Max == null)
+                {
+                    weather.Group_Max = new WeatherGroup
+                    {
+                        Number = new hmUI_widget_IMG_NUMBER(),
+                        Number_Font = new hmUI_widget_TEXT(),
+                        Text_rotation = new hmUI_widget_IMG_NUMBER(),
+                        Text_circle = new Text_Circle()
+                    };
+                }
+                if (weather.Group_Max_Min == null)
+                {
+                    weather.Group_Max_Min = new WeatherGroup
+                    {
+                        Number = new hmUI_widget_IMG_NUMBER(),
+                        Number_Font = new hmUI_widget_TEXT(),
+                        Text_rotation = new hmUI_widget_IMG_NUMBER(),
+                        Text_circle = new Text_Circle()
+                    };
+                }
+
+                if (weather.Group_Current.Number == null) weather.Group_Current.Number = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Current.Number_Font == null) weather.Group_Current.Number_Font = new hmUI_widget_TEXT();
+                if (weather.Group_Current.Text_rotation == null) weather.Group_Current.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Current.Text_circle == null) weather.Group_Current.Text_circle = new Text_Circle();
+
+                if (weather.Group_Min.Number == null) weather.Group_Min.Number = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Min.Number_Font == null) weather.Group_Min.Number_Font = new hmUI_widget_TEXT();
+                if (weather.Group_Min.Text_rotation == null) weather.Group_Min.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Min.Text_circle == null) weather.Group_Min.Text_circle = new Text_Circle();
+
+                if (weather.Group_Max.Number == null) weather.Group_Max.Number = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Max.Number_Font == null) weather.Group_Max.Number_Font = new hmUI_widget_TEXT();
+                if (weather.Group_Max.Text_rotation == null) weather.Group_Max.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Max.Text_circle == null) weather.Group_Max.Text_circle = new Text_Circle();
+
+                if (weather.Group_Max_Min.Number == null) weather.Group_Max_Min.Number = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Max_Min.Number_Font == null) weather.Group_Max_Min.Number_Font = new hmUI_widget_TEXT();
+                if (weather.Group_Max_Min.Text_rotation == null) weather.Group_Max_Min.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (weather.Group_Max_Min.Text_circle == null) weather.Group_Max_Min.Text_circle = new Text_Circle();
+
+                if (weather.Images == null) weather.Images = new hmUI_widget_IMG_LEVEL();
+                if (weather.City_Name == null) weather.City_Name = new hmUI_widget_TEXT();
+                if (weather.Icon == null) weather.Icon = new hmUI_widget_IMG();
+
+                Dictionary<string, int> elementOptions = uCtrl_Weather_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Group_Current")) weather.Group_Current.position = elementOptions["Group_Current"];
+                if (elementOptions.ContainsKey("Group_Min")) weather.Group_Min.position = elementOptions["Group_Min"];
+                if (elementOptions.ContainsKey("Group_Max")) weather.Group_Max.position = elementOptions["Group_Max"];
+                if (elementOptions.ContainsKey("Group_Max_Min")) weather.Group_Max_Min.position = elementOptions["Group_Max_Min"];
+                if (elementOptions.ContainsKey("Images")) weather.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("CityName")) weather.City_Name.position = elementOptions["CityName"];
+                if (elementOptions.ContainsKey("Icon")) weather.Icon.position = elementOptions["Icon"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Number_Current":
+                        weather.Group_Current.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Current_Font":
+                        weather.Group_Current.Number_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_Current_rotation":
+                        weather.Group_Current.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_Current_circle":
+                        weather.Group_Current.Text_circle.visible = checkBox.Checked;
+                        break;
+
+                    case "checkBox_Number_Min":
+                        weather.Group_Min.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Min_Font":
+                        weather.Group_Min.Number_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_Min_rotation":
+                        weather.Group_Min.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_Min_circle":
+                        weather.Group_Min.Text_circle.visible = checkBox.Checked;
+                        break;
+
+                    case "checkBox_Number_Max":
+                        weather.Group_Max.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Max_Font":
+                        weather.Group_Max.Number_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_Max_rotation":
+                        weather.Group_Max.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_Max_circle":
+                        weather.Group_Max.Text_circle.visible = checkBox.Checked;
+                        break;
+
+                    case "checkBox_Number_Max_Min":
+                        weather.Group_Max_Min.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Max_Min_Font":
+                        weather.Group_Max_Min.Number_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_Max_Min_rotation":
+                        weather.Group_Max_Min.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_Max_Min_circle":
+                        weather.Group_Max_Min.Text_circle.visible = checkBox.Checked;
+                        break;
+
+                    case "checkBox_Images":
+                        weather.Images.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_CityName":
+                        weather.City_Name.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Icon":
+                        weather.Icon.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_Weather_Elm_v2_SelectChanged(sender, eventArgs);
 
             JSON_Modified = true;
             PreviewImage();
@@ -20109,8 +20803,6 @@ namespace Watch_Face_Editor
                 }
             }
         }
-
-        
 
     }
 }
