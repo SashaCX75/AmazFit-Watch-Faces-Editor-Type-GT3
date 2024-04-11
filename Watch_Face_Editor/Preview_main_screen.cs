@@ -1189,7 +1189,7 @@ namespace Watch_Face_Editor
 
                             Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                                 image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                                valueStr, 2, BBorder, -1, "ElementDigitalTime");
+                                valueStr, 2, BBorder, -1, -1, false, "ElementDigitalTime");
                         }
 
                         if (DigitalTime.Minute_rotation != null && DigitalTime.Minute_rotation.img_First != null && DigitalTime.Minute_rotation.img_First.Length > 0 &&
@@ -1212,7 +1212,7 @@ namespace Watch_Face_Editor
 
                             Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                                 image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                                valueStr, 2, BBorder, -1, "ElementDigitalTime");
+                                valueStr, 2, BBorder, -1, -1, false, "ElementDigitalTime");
                         }
 
                         if (DigitalTime.Second_rotation != null && DigitalTime.Second_rotation.img_First != null && DigitalTime.Second_rotation.img_First.Length > 0 &&
@@ -1235,7 +1235,7 @@ namespace Watch_Face_Editor
 
                             Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                                 image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                                valueStr, 2, BBorder, -1, "ElementDigitalTime");
+                                valueStr, 2, BBorder, -1, -1, false, "ElementDigitalTime");
                         }
 
                         if (DigitalTime.Hour_circle != null && DigitalTime.Hour_circle.img_First != null && DigitalTime.Hour_circle.img_First.Length > 0 &&
@@ -1270,7 +1270,7 @@ namespace Watch_Face_Editor
                             Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                                 image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                                 vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                                valueStr, 2, BBorder, showCentrHend, -1, "ElementDigitalTime");
+                                valueStr, 2, BBorder, showCentrHend, -1, -1, false, "ElementDigitalTime");
                         }
 
                         if (DigitalTime.Minute_circle != null && DigitalTime.Minute_circle.img_First != null && DigitalTime.Minute_circle.img_First.Length > 0 &&
@@ -1297,7 +1297,7 @@ namespace Watch_Face_Editor
                             Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                                 image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                                 vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                                valueStr, 2, BBorder, showCentrHend, -1, "ElementDigitalTime");
+                                valueStr, 2, BBorder, showCentrHend, -1, -1, false, "ElementDigitalTime");
                         }
 
                         if (DigitalTime.Second_circle != null && DigitalTime.Second_circle.img_First != null && DigitalTime.Second_circle.img_First.Length > 0 &&
@@ -1324,7 +1324,7 @@ namespace Watch_Face_Editor
                             Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                                 image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                                 vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                                valueStr, 2, BBorder, showCentrHend, -1, "ElementDigitalTime");
+                                valueStr, 2, BBorder, showCentrHend, -1, -1, false, "ElementDigitalTime");
                         }
                     }
 
@@ -1873,7 +1873,7 @@ namespace Watch_Face_Editor
 
                             Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                                 image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                                valueStr, value_lenght, BBorder, -1, "ElementDateDay");
+                                valueStr, value_lenght, BBorder, -1, -1, false, "ElementDateDay");
                         }
 
                         if (DateDay.Text_circle != null && DateDay.Text_circle.img_First != null && DateDay.Text_circle.img_First.Length > 0 &&
@@ -1899,7 +1899,7 @@ namespace Watch_Face_Editor
 
                             Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                                 image_index,  unit_index, dot_image_index, vertical_alignment, horizontal_alignment, 
-                                reverse_direction, unit_in_alignment, valueStr, value_lenght, BBorder, showCentrHend, -1, "ElementDateDay");
+                                reverse_direction, unit_in_alignment, valueStr, value_lenght, BBorder, showCentrHend, -1, -1, false, "ElementDateDay");
                         }
 
                         if (DateDay.Pointer != null && DateDay.Pointer.src != null
@@ -2134,7 +2134,7 @@ namespace Watch_Face_Editor
 
                             Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                                 image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                                valueStr, value_lenght, BBorder, -1, "ElementDateMonth");
+                                valueStr, value_lenght, BBorder, -1, -1, false, "ElementDateMonth");
                         }
 
                         if (DateMonth.Text_circle != null && DateMonth.Text_circle.img_First != null && DateMonth.Text_circle.img_First.Length > 0 &&
@@ -2160,7 +2160,7 @@ namespace Watch_Face_Editor
 
                             Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                                 image_index, unit_index, dot_image_index, vertical_alignment, horizontal_alignment,
-                                reverse_direction, unit_in_alignment, valueStr, value_lenght, BBorder, showCentrHend, -1, "ElementDateMonth");
+                                reverse_direction, unit_in_alignment, valueStr, value_lenght, BBorder, showCentrHend, -1, -1, false, "ElementDateMonth");
                         }
 
                         if (DateMonth.Pointer != null && DateMonth.Pointer.src != null
@@ -2353,7 +2353,7 @@ namespace Watch_Face_Editor
 
                             Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                                 image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                                valueStr, value_lenght, BBorder, -1, "ElementDateYear");
+                                valueStr, value_lenght, BBorder, -1, -1, false, "ElementDateYear");
                         }
 
                         if (DateYear.Text_circle != null && DateYear.Text_circle.img_First != null && DateYear.Text_circle.img_First.Length > 0 &&
@@ -2380,7 +2380,7 @@ namespace Watch_Face_Editor
 
                             Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                                 image_index, unit_index, dot_image_index, vertical_alignment, horizontal_alignment,
-                                reverse_direction, unit_in_alignment, valueStr, value_lenght, BBorder, showCentrHend, -1, "ElementDateYear");
+                                reverse_direction, unit_in_alignment, valueStr, value_lenght, BBorder, showCentrHend, -1, -1, false, "ElementDateYear");
                         }
 
                         if (icon != null && icon.src != null && icon.src.Length > 0 &&
@@ -4511,7 +4511,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                         image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                        valueStr, value_lenght, BBorder, -1, elementName);
+                        valueStr, value_lenght, BBorder, -1, -1, false, elementName);
                 }
 
                 if (text_circle != null && text_circle.img_First != null && text_circle.img_First.Length > 0 &&
@@ -4537,7 +4537,7 @@ namespace Watch_Face_Editor
                     Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                         image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                         vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                        valueStr, value_lenght, BBorder, showCentrHend, -1, elementName);
+                        valueStr, value_lenght, BBorder, showCentrHend, -1, -1, false, elementName);
                 }
 
                 if (numberTarget != null && numberTarget.img_First != null && numberTarget.img_First.Length > 0 &&
@@ -4670,7 +4670,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                         image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                        valueStr, value_lenght, BBorder, -1, elementName);
+                        valueStr, value_lenght, BBorder, -1, -1, false, elementName);
                 }
 
                 if (text_circleTarget != null && text_circleTarget.img_First != null && text_circleTarget.img_First.Length > 0 &&
@@ -4696,7 +4696,7 @@ namespace Watch_Face_Editor
                     Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                         image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                         vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                        valueStr, value_lenght, BBorder, showCentrHend, -1, elementName);
+                        valueStr, value_lenght, BBorder, showCentrHend, -1, -1, false, elementName);
                 }
 
                 if (pointer != null && pointer.src != null && pointer.src.Length > 0 &&
@@ -4970,7 +4970,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                         image_index, unit_index,dot_image_index, horizontal_alignment, unit_in_alignment,
-                        value, 4, BBorder, -1, "ElementDistance");
+                        value, 4, BBorder, -1, -1, false, "ElementDistance");
                 }
 
                 if (text_circle != null && text_circle.img_First != null && text_circle.img_First.Length > 0 &&
@@ -5002,7 +5002,7 @@ namespace Watch_Face_Editor
                     Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                         image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                         vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                        value, 4, BBorder, showCentrHend, -1, "ElementDistance");
+                        value, 4, BBorder, showCentrHend, -1, -1, false, "ElementDistance");
                 }
 
                 if (icon != null && icon.src != null && icon.src.Length > 0 &&
@@ -5096,13 +5096,13 @@ namespace Watch_Face_Editor
 
                     if (showTemperature)
                     {
-                        Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, value, 2, addZero, 
+                        Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, value, 3, addZero, 
                             imageMinus_index, separator_index, angle, BBorder, -1, false);
                     }
                     else if (imageError_index >= 0)
                     {
                         Draw_weather_text(gPanel, imageIndex, x, y,
-                                        spasing, alignment, value, 2, addZero, imageMinus_index, separator_index, angle,
+                                        spasing, alignment, value, 3, addZero, imageMinus_index, separator_index, angle,
                                         BBorder, imageError_index, true);
                     }
 
@@ -5206,13 +5206,13 @@ namespace Watch_Face_Editor
 
                     if (showTemperature)
                     {
-                        Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, valueMin, 2, addZero,
+                        Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, valueMin, 3, addZero,
                             imageMinus_index, separator_index, angle, BBorder, -1, false);
                     }
                     else if (imageError_index >= 0)
                     {
                         Draw_weather_text(gPanel, imageIndex, x, y,
-                                        spasing, alignment, valueMin, 2, addZero, imageMinus_index, separator_index, angle,
+                                        spasing, alignment, valueMin, 3, addZero, imageMinus_index, separator_index, angle,
                                         BBorder, imageError_index, true);
                     }
 
@@ -5308,6 +5308,9 @@ namespace Watch_Face_Editor
                     string horizontal_alignment = textMin_rotation.align;
                     bool unit_in_alignment = textMin_rotation.unit_in_alignment;
 
+                    int error_index = -1;
+                    if (!showTemperature) error_index = ListImages.IndexOf(textMin_rotation.invalid_image);
+
                     string valueStr = valueMin.ToString();
                     string symbolMinus = "-";
                     if (textMin_rotation.zero) 
@@ -5318,7 +5321,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                         image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                        valueStr, 3, BBorder, -1, "ElementWeather");
+                        valueStr, 3, BBorder, -1, error_index, !showTemperature, "ElementWeather");
                 }
 
                 if (textMin_circle != null && textMin_circle.img_First != null && textMin_circle.img_First.Length > 0 &&
@@ -5340,6 +5343,10 @@ namespace Watch_Face_Editor
 
                     string valueStr = valueMin.ToString();
                     string symbolMinus = "-";
+
+                    int error_index = -1;
+                    if (!showTemperature) error_index = ListImages.IndexOf(textMin_circle.error_image);
+
                     if (textMin_circle.zero)
                     {
                         valueStr = valueStr.PadLeft(3, '0');
@@ -5349,7 +5356,7 @@ namespace Watch_Face_Editor
                     Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                         image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                         vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                        valueStr, 3, BBorder, showCentrHend, -1, "ElementWeather");
+                        valueStr, 3, BBorder, showCentrHend, -1, error_index, !showTemperature, "ElementWeather");
                 }
 
                 if (numberMax != null && numberMax.img_First != null && numberMax.img_First.Length > 0 &&
@@ -5374,13 +5381,13 @@ namespace Watch_Face_Editor
 
                     if (showTemperature)
                     {
-                        Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, valueMax, 2, addZero,
+                        Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, valueMax, 3, addZero,
                             imageMinus_index, separator_index, angle, BBorder, -1, false);
                     }
                     else if (imageError_index >= 0)
                     {
                         Draw_weather_text(gPanel, imageIndex, x, y,
-                                        spasing, alignment, valueMax, 2, addZero, imageMinus_index, separator_index, angle,
+                                        spasing, alignment, valueMax, 3, addZero, imageMinus_index, separator_index, angle,
                                         BBorder, imageError_index, true);
                     }
 
@@ -5476,6 +5483,9 @@ namespace Watch_Face_Editor
                     string horizontal_alignment = textMax_rotation.align;
                     bool unit_in_alignment = textMax_rotation.unit_in_alignment;
 
+                    int error_index = -1;
+                    if (!showTemperature) error_index = ListImages.IndexOf(textMax_rotation.invalid_image);
+
                     string valueStr = valueMax.ToString();
                     string symbolMinus = "-";
                     if (textMax_rotation.zero)
@@ -5486,7 +5496,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                         image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                        valueStr, 3, BBorder, -1, "ElementWeather");
+                        valueStr, 3, BBorder, -1, error_index, !showTemperature, "ElementWeather");
                 }
 
                 if (textMax_circle != null && textMax_circle.img_First != null && textMax_circle.img_First.Length > 0 &&
@@ -5506,6 +5516,9 @@ namespace Watch_Face_Editor
                     bool reverse_direction = textMax_circle.reverse_direction;
                     bool unit_in_alignment = textMax_circle.unit_in_alignment;
 
+                    int error_index = -1;
+                    if (!showTemperature) error_index = ListImages.IndexOf(textMax_circle.error_image);
+
                     string valueStr = valueMax.ToString();
                     string symbolMinus = "-";
                     if (textMax_circle.zero)
@@ -5517,7 +5530,7 @@ namespace Watch_Face_Editor
                     Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                         image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                         vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                        valueStr, 3, BBorder, showCentrHend, -1, "ElementWeather");
+                        valueStr, 3, BBorder, showCentrHend, -1, error_index, !showTemperature, "ElementWeather");
                 }
 
                 if (numberMinMax_font != null && index == numberMinMax_font.position && numberMinMax_font.visible)
@@ -5715,18 +5728,21 @@ namespace Watch_Face_Editor
                         bool reverse_direction = text_circle.reverse_direction;
                         bool unit_in_alignment = text_circle.unit_in_alignment;
 
+                        int error_index = -1;
+                        if (!showTemperature) error_index = ListImages.IndexOf(text_circle.error_image);
+
                         string valueStr = value_current.ToString();
                         string symbolMinus = "-";
                         if (text_circle.zero)
                         {
-                            valueStr = valueStr.PadLeft(3, '0');
-                            if (value_current < 0) valueStr = symbolMinus + Math.Abs(value_current).ToString().PadLeft(3, '0');
+                            valueStr = valueStr.PadLeft(value_lenght, '0');
+                            if (value_current < 0) valueStr = symbolMinus + Math.Abs(value_current).ToString().PadLeft(value_lenght, '0');
                         }
 
                         Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                             image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                             vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                            valueStr, 3, BBorder, showCentrHend, -1, "ElementWeather");
+                            valueStr, value_lenght, BBorder, showCentrHend, -1, error_index, !showTemperature, "ElementWeather");
                     }
 
                     if (text_rotation != null && text_rotation.img_First != null && text_rotation.img_First.Length > 0 &&
@@ -5743,17 +5759,20 @@ namespace Watch_Face_Editor
                         string horizontal_alignment = text_rotation.align;
                         bool unit_in_alignment = text_rotation.unit_in_alignment;
 
+                        int error_index = -1;
+                        if (!showTemperature) error_index = ListImages.IndexOf(text_rotation.invalid_image);
+
                         string valueStr = value_current.ToString();
                         string symbolMinus = "-";
                         if (text_rotation.zero)
                         {
-                            valueStr = valueStr.PadLeft(3, '0');
-                            if (value_current < 0) valueStr = symbolMinus + Math.Abs(value_current).ToString().PadLeft(3, '0');
+                            valueStr = valueStr.PadLeft(value_lenght, '0');
+                            if (value_current < 0) valueStr = symbolMinus + Math.Abs(value_current).ToString().PadLeft(value_lenght, '0');
                         }
 
                         Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                             image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                            valueStr, 3, BBorder, -1, "ElementWeather");
+                            valueStr, value_lenght, BBorder, -1, error_index, !showTemperature, "ElementWeather");
                     }
 
                     if (number_font != null && number_font.visible)
@@ -5843,13 +5862,13 @@ namespace Watch_Face_Editor
 
                         if (showTemperature)
                         {
-                            Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, value_current, 2, addZero,
+                            Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, value_current, value_lenght, addZero,
                                 imageMinus_index, separator_index, angle, BBorder, -1, false);
                         }
                         else if (imageError_index >= 0)
                         {
                             Draw_weather_text(gPanel, imageIndex, x, y,
-                                            spasing, alignment, value_current, 2, addZero, imageMinus_index, separator_index, angle,
+                                            spasing, alignment, value_current, value_lenght, addZero, imageMinus_index, separator_index, angle,
                                             BBorder, imageError_index, true);
                         }
 
@@ -5891,18 +5910,21 @@ namespace Watch_Face_Editor
                         bool reverse_direction = text_circle.reverse_direction;
                         bool unit_in_alignment = text_circle.unit_in_alignment;
 
+                        int error_index = -1;
+                        if (!showTemperature) error_index = ListImages.IndexOf(text_circle.error_image);
+
                         string valueStr = value_current.ToString();
                         string symbolMinus = "-";
                         if (text_circle.zero)
                         {
-                            valueStr = valueStr.PadLeft(3, '0');
-                            if (value_current < 0) valueStr = symbolMinus + Math.Abs(value_current).ToString().PadLeft(3, '0');
+                            valueStr = valueStr.PadLeft(value_lenght, '0');
+                            if (value_current < 0) valueStr = symbolMinus + Math.Abs(value_current).ToString().PadLeft(value_lenght, '0');
                         }
 
                         Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                             image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                             vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                            valueStr, 3, BBorder, showCentrHend, -1, "ElementWeather");
+                            valueStr, value_lenght, BBorder, showCentrHend, -1, error_index, !showTemperature, "ElementWeather");
                     }
 
                     if (text_rotation != null && text_rotation.img_First != null && text_rotation.img_First.Length > 0 &&
@@ -5919,17 +5941,20 @@ namespace Watch_Face_Editor
                         string horizontal_alignment = text_rotation.align;
                         bool unit_in_alignment = text_rotation.unit_in_alignment;
 
+                        int error_index = -1;
+                        if (!showTemperature) error_index = ListImages.IndexOf(text_rotation.invalid_image);
+
                         string valueStr = value_current.ToString();
                         string symbolMinus = "-";
                         if (text_rotation.zero)
                         {
-                            valueStr = valueStr.PadLeft(3, '0');
-                            if (value_current < 0) valueStr = symbolMinus + Math.Abs(value_current).ToString().PadLeft(3, '0');
+                            valueStr = valueStr.PadLeft(value_lenght, '0');
+                            if (value_current < 0) valueStr = symbolMinus + Math.Abs(value_current).ToString().PadLeft(value_lenght, '0');
                         }
 
                         Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                             image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                            valueStr, 3, BBorder, -1, "ElementWeather");
+                            valueStr, value_lenght, BBorder, -1, error_index, !showTemperature, "ElementWeather");
                     }
 
                     if (number_font != null && number_font.visible)
@@ -6019,13 +6044,13 @@ namespace Watch_Face_Editor
 
                         if (showTemperature)
                         {
-                            Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, value_current, 2, addZero,
+                            Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, value_current, value_lenght, addZero,
                                 imageMinus_index, separator_index, angle, BBorder, -1, false);
                         }
                         else if (imageError_index >= 0)
                         {
                             Draw_weather_text(gPanel, imageIndex, x, y,
-                                            spasing, alignment, value_current, 2, addZero, imageMinus_index, separator_index, angle,
+                                            spasing, alignment, value_current, value_lenght, addZero, imageMinus_index, separator_index, angle,
                                             BBorder, imageError_index, true);
                         }
 
@@ -6067,18 +6092,21 @@ namespace Watch_Face_Editor
                         bool reverse_direction = text_circle.reverse_direction;
                         bool unit_in_alignment = text_circle.unit_in_alignment;
 
+                        int error_index = -1;
+                        if (!showTemperature) error_index = ListImages.IndexOf(text_circle.error_image);
+
                         string valueStr = value_current.ToString();
                         string symbolMinus = "-";
                         if (text_circle.zero)
                         {
-                            valueStr = valueStr.PadLeft(3, '0');
-                            if (value_current < 0) valueStr = symbolMinus + Math.Abs(value_current).ToString().PadLeft(3, '0');
+                            valueStr = valueStr.PadLeft(value_lenght, '0');
+                            if (value_current < 0) valueStr = symbolMinus + Math.Abs(value_current).ToString().PadLeft(value_lenght, '0');
                         }
 
                         Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                             image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                             vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                            valueStr, 3, BBorder, showCentrHend, -1, "ElementWeather");
+                            valueStr, value_lenght, BBorder, showCentrHend, -1, error_index, !showTemperature, "ElementWeather");
                     }
 
                     if (text_rotation != null && text_rotation.img_First != null && text_rotation.img_First.Length > 0 &&
@@ -6095,17 +6123,20 @@ namespace Watch_Face_Editor
                         string horizontal_alignment = text_rotation.align;
                         bool unit_in_alignment = text_rotation.unit_in_alignment;
 
+                        int error_index = -1;
+                        if (!showTemperature) error_index = ListImages.IndexOf(text_rotation.invalid_image);
+
                         string valueStr = value_current.ToString();
                         string symbolMinus = "-";
                         if (text_rotation.zero)
                         {
-                            valueStr = valueStr.PadLeft(3, '0');
-                            if (value_current < 0) valueStr = symbolMinus + Math.Abs(value_current).ToString().PadLeft(3, '0');
+                            valueStr = valueStr.PadLeft(value_lenght, '0');
+                            if (value_current < 0) valueStr = symbolMinus + Math.Abs(value_current).ToString().PadLeft(value_lenght, '0');
                         }
 
                         Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                             image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                            valueStr, 3, BBorder, -1, "ElementWeather");
+                            valueStr, value_lenght, BBorder, -1, error_index, !showTemperature, "ElementWeather");
                     }
 
                     if (number_font != null && number_font.visible)
@@ -6195,13 +6226,13 @@ namespace Watch_Face_Editor
 
                         if (showTemperature)
                         {
-                            Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, value_current, 2, addZero,
+                            Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, value_current, value_lenght, addZero,
                                 imageMinus_index, separator_index, angle, BBorder, -1, false);
                         }
                         else if (imageError_index >= 0)
                         {
                             Draw_weather_text(gPanel, imageIndex, x, y,
-                                            spasing, alignment, value_current, 2, addZero, imageMinus_index, separator_index, angle,
+                                            spasing, alignment, value_current, value_lenght, addZero, imageMinus_index, separator_index, angle,
                                             BBorder, imageError_index, true);
                         }
 
@@ -6224,13 +6255,13 @@ namespace Watch_Face_Editor
                     hmUI_widget_TEXT number_font = group_max_min.Number_Font;
                     hmUI_widget_IMG_NUMBER text_rotation = group_max_min.Text_rotation;
                     Text_Circle text_circle = group_max_min.Text_circle;
-                    float value_current = valueMin;
-                    float value_max = valueMax;
-                    while (value_max > 1)
-                    {
-                        value_max = value_max / 10;
-                    }
-                    value_current += value_max;
+                    //float value_current = valueMin;
+                    //float value_max = valueMax;
+                    //while (value_max > 1)
+                    //{
+                    //    value_max = value_max / 10;
+                    //}
+                    //value_current += value_max;
 
                     if (text_circle != null && text_circle.img_First != null && text_circle.img_First.Length > 0 &&
                         text_circle.dot_image != null && text_circle.dot_image.Length > 0 && text_circle.visible)
@@ -6250,23 +6281,26 @@ namespace Watch_Face_Editor
                         bool reverse_direction = text_circle.reverse_direction;
                         bool unit_in_alignment = text_circle.unit_in_alignment;
 
+                        int error_index = -1;
+                        if (!showTemperature) error_index = ListImages.IndexOf(text_circle.error_image);
+
                         string valueMaxStr = valueMax.ToString();
                         string valueMinStr = valueMin.ToString();
                         string symbolMinus = "-";
                         if (text_circle.zero)
                         {
-                            valueMaxStr = valueMaxStr.PadLeft(3, '0');
-                            if (valueMax < 0) valueMaxStr = symbolMinus + Math.Abs(valueMax).ToString().PadLeft(3, '0');
+                            valueMaxStr = valueMaxStr.PadLeft(value_lenght, '0');
+                            if (valueMax < 0) valueMaxStr = symbolMinus + Math.Abs(valueMax).ToString().PadLeft(value_lenght, '0');
 
-                            valueMinStr = valueMinStr.PadLeft(3, '0');
-                            if (valueMin < 0) valueMinStr = symbolMinus + Math.Abs(valueMin).ToString().PadLeft(3, '0');
+                            valueMinStr = valueMinStr.PadLeft(value_lenght, '0');
+                            if (valueMin < 0) valueMinStr = symbolMinus + Math.Abs(valueMin).ToString().PadLeft(value_lenght, '0');
                         }
                         string valueStr = valueMaxStr + "*" + valueMinStr;
 
                         Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                             image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                             vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                            valueStr, 6, BBorder, showCentrHend, separator_index, "ElementWeather_Max/Min");
+                            valueStr, 6, BBorder, showCentrHend, separator_index, error_index, !showTemperature, "ElementWeather_Max/Min");
                     }
 
                     if (text_rotation != null && text_rotation.img_First != null && text_rotation.img_First.Length > 0 &&
@@ -6284,22 +6318,25 @@ namespace Watch_Face_Editor
                         string horizontal_alignment = text_rotation.align;
                         bool unit_in_alignment = text_rotation.unit_in_alignment;
 
+                        int error_index = -1;
+                        if (!showTemperature) error_index = ListImages.IndexOf(text_rotation.invalid_image);
+
                         string valueMaxStr = valueMax.ToString();
                         string valueMinStr = valueMin.ToString();
                         string symbolMinus = "-";
                         if (text_rotation.zero)
                         {
-                            valueMaxStr = valueMaxStr.PadLeft(3, '0');
-                            if (valueMax < 0) valueMaxStr = symbolMinus + Math.Abs(valueMax).ToString().PadLeft(3, '0');
+                            valueMaxStr = valueMaxStr.PadLeft(value_lenght, '0');
+                            if (valueMax < 0) valueMaxStr = symbolMinus + Math.Abs(valueMax).ToString().PadLeft(value_lenght, '0');
 
-                            valueMinStr = valueMinStr.PadLeft(3, '0');
-                            if (valueMin < 0) valueMinStr = symbolMinus + Math.Abs(valueMin).ToString().PadLeft(3, '0');
+                            valueMinStr = valueMinStr.PadLeft(value_lenght, '0');
+                            if (valueMin < 0) valueMinStr = symbolMinus + Math.Abs(valueMin).ToString().PadLeft(value_lenght, '0');
                         }
                         string valueStr = valueMaxStr + "*" + valueMinStr;
 
                         Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                             image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                            valueStr, 3, BBorder, separator_index, "ElementWeather_Max/Min");
+                            valueStr, value_lenght*2+3, BBorder, separator_index, error_index, !showTemperature, "ElementWeather_Max/Min");
                     }
 
                     if (number_font != null && number_font.visible)
@@ -6320,13 +6357,14 @@ namespace Watch_Face_Editor
                         string align_v = number_font.align_v;
                         string text_style = number_font.text_style;
                         string delimeter = "/";
-                        if (number_font.unit_string != null && number_font.unit_string.Length > 0) delimeter = number_font.unit_string;
-                        string valueStr = valueMax.ToString() + delimeter + valueMin.ToString();
+                        //if (number_font.unit_string != null && number_font.unit_string.Length > 0) delimeter = number_font.unit_string;
+                        //string valueStr = valueMax.ToString() + delimeter + valueMin.ToString();
+                        string valueStr = valueMin.ToString() + delimeter + valueMax.ToString();
                         string unitStr = unit;
                         //if (number_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
                         if (number_font.unit_type > 0)
                         {
-                            if (number_font.unit_type == 2) unitStr = "°C";
+                            //if (number_font.unit_type == 2) unitStr = "°C";
                             //if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
                             valueStr += unitStr;
                         }
@@ -6395,13 +6433,13 @@ namespace Watch_Face_Editor
 
                         if (showTemperature)
                         {
-                            Draw_weather_max_min_text(gPanel, imageIndex, x, y, spasing, alignment, valueMax, valueMin, 2, addZero,
+                            Draw_weather_max_min_text(gPanel, imageIndex, x, y, spasing, alignment, valueMax, valueMin, value_lenght, addZero,
                                 imageMinus_index, unit_index, separator_index, angle, BBorder, -1, false);
                         }
                         else if (imageError_index >= 0)
                         {
                             Draw_weather_max_min_text(gPanel, imageIndex, x, y,
-                                            spasing, alignment, valueMax, valueMin, 2, addZero, imageMinus_index, separator_index, separator_index, 
+                                            spasing, alignment, valueMax, valueMin, value_lenght, addZero, imageMinus_index, separator_index, separator_index, 
                                             angle, BBorder, imageError_index, true);
                         }
 
@@ -6717,7 +6755,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                         image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                        value, 4, BBorder, -1, "ElementSunrise");
+                        value, 4, BBorder, -1, -1, false, "ElementSunrise");
                 }
 
                 if (sunrise_circle != null && sunrise_circle.img_First != null && sunrise_circle.img_First.Length > 0 &&
@@ -6751,7 +6789,7 @@ namespace Watch_Face_Editor
                     Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                         image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                         vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                        value, 4, BBorder, showCentrHend, -1, "ElementSunrise");
+                        value, 4, BBorder, showCentrHend, -1, -1, false, "ElementSunrise");
                 }
 
                 if (sunset != null && sunset.img_First != null && sunset.img_First.Length > 0 &&
@@ -6883,7 +6921,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                         image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                        value, 4, BBorder, -1, "ElementSunrise");
+                        value, 4, BBorder, -1, -1, false, "ElementSunrise");
                 }
 
                 if (sunset_circle != null && sunset_circle.img_First != null && sunset_circle.img_First.Length > 0 &&
@@ -6917,7 +6955,7 @@ namespace Watch_Face_Editor
                     Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                         image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                         vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                        value, 4, BBorder, showCentrHend, -1, "ElementSunrise");
+                        value, 4, BBorder, showCentrHend, -1, -1, false, "ElementSunrise");
                 }
 
                 if (sunset_sunrise != null && sunset_sunrise.img_First != null && sunset_sunrise.img_First.Length > 0 &&
@@ -7199,7 +7237,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                         image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                        value, 4, BBorder, -1, "ElementSunrise");
+                        value, 4, BBorder, -1, -1, false, "ElementSunrise");
                 }
 
                 if (sunrise_circle != null && sunrise_circle.img_First != null && sunrise_circle.img_First.Length > 0 &&
@@ -7233,7 +7271,7 @@ namespace Watch_Face_Editor
                     Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                         image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                         vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                        value, 4, BBorder, showCentrHend, -1, "ElementSunrise");
+                        value, 4, BBorder, showCentrHend, -1, -1, false, "ElementSunrise");
                 }
 
                 if (sunset != null && sunset.img_First != null && sunset.img_First.Length > 0 &&
@@ -7365,7 +7403,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                         image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                        value, 4, BBorder, -1, "ElementSunrise");
+                        value, 4, BBorder, -1, -1, false, "ElementSunrise");
                 }
 
                 if (sunset_circle != null && sunset_circle.img_First != null && sunset_circle.img_First.Length > 0 &&
@@ -7399,7 +7437,7 @@ namespace Watch_Face_Editor
                     Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                         image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                         vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                        value, 4, BBorder, showCentrHend, -1, "ElementSunrise");
+                        value, 4, BBorder, showCentrHend, -1, -1, false, "ElementSunrise");
                 }
 
                 if (sunset_sunrise != null && sunset_sunrise.img_First != null && sunset_sunrise.img_First.Length > 0 &&
@@ -7629,11 +7667,11 @@ namespace Watch_Face_Editor
                     if (numberAltitude.unit != null && numberAltitude.unit.Length > 0)
                         separator_index = ListImages.IndexOf(numberAltitude.unit);
                     int imageMinus_index = -1;
-                    if (numberAltitude.dot_image != null && numberAltitude.dot_image.Length > 0)
-                        imageMinus_index = ListImages.IndexOf(numberAltitude.dot_image);
+                    if (numberAltitude.negative_image != null && numberAltitude.negative_image.Length > 0)
+                        imageMinus_index = ListImages.IndexOf(numberAltitude.negative_image);
 
                     //Draw_dagital_text(gPanel, imageIndex, x, y, spasing, alignment, value_altitude, addZero, 5, separator_index, angle, BBorder);
-                    Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, value_altitude, 5, addZero, imageMinus_index, separator_index, angle, BBorder, -1, false);
+                    Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, value_altitude, 4, addZero, imageMinus_index, separator_index, angle, BBorder, -1, false);
 
                     if (numberAltitude.icon != null && numberAltitude.icon.Length > 0)
                     {
@@ -8403,6 +8441,7 @@ namespace Watch_Face_Editor
             if (elementName == "ElementUVIndex") value_lenght = 2;
             if (elementName == "ElementHumidity") value_lenght = 3;
             if (elementName == "ElementWind") value_lenght = 2;
+            if (elementName == "ElementCompass") value_lenght = 5;
             int DateLenght = width * value_lenght;
             //int DateLenght = width * value_lenght + 1;
             if (spacing != 0)
@@ -8630,9 +8669,8 @@ namespace Watch_Face_Editor
             }
 
             //int DateLenght = widthD * 2 + widthM + widthCF + 1;
-            int DateLenght = widthD * 3 + 1;
-            //if (alignment == 2 && AvailabilityIcon) DateLenght = DateLenght - widthCF;
-            if (spacing != 0) DateLenght = DateLenght + 2 * spacing;
+            int DateLenght = widthD * value_lenght + 1;
+            if (spacing != 0) DateLenght = DateLenght + (value_lenght - 1) * spacing;
             if (unit_index >= 0 && unit_index < ListImagesFullName.Count) DateLenght = DateLenght + widthCF + spacing;
             //if (widthM == 0) DateLenght = DateLenght - spacing;
             //if (alignment == 2 && AvailabilityIcon) DateLenght = DateLenght - spacing;
@@ -8668,24 +8706,6 @@ namespace Watch_Face_Editor
 
             DateLenghtReal = DateLenghtReal - spacing;
 
-            //int PointX = 0;
-            //int PointY = y;
-            //switch (alignment)
-            //{
-            //    case 0:
-            //        PointX = x;
-            //        break;
-            //    case 1:
-            //        PointX = x + DateLenght / 2 - DateLenghtReal / 2;
-            //        break;
-            //    case 2:
-            //        PointX = x + DateLenght - DateLenghtReal;
-            //        break;
-            //    default:
-            //        PointX = x;
-            //        break;
-            //}
-
             int PointX = x;
             int offsetX = 0;
             int PointY = y;
@@ -8695,10 +8715,10 @@ namespace Watch_Face_Editor
                     offsetX = 0;
                     break;
                 case 1:
-                    offsetX = DateLenght / 2 - DateLenghtReal / 2;
+                    offsetX = (DateLenght - DateLenghtReal) / 2 - 1;
                     break;
                 case 2:
-                    offsetX = DateLenght - DateLenghtReal;
+                    offsetX = DateLenght - DateLenghtReal - 1;
                     break;
                 default:
                     offsetX = 0;
@@ -8970,10 +8990,10 @@ namespace Watch_Face_Editor
                     offsetX = 0;
                     break;
                 case 1:
-                    offsetX = DateLenght / 2 - DateLenghtReal / 2;
+                    offsetX = (DateLenght - DateLenghtReal) / 2 - 1;
                     break;
                 case 2:
-                    offsetX = DateLenght - DateLenghtReal;
+                    offsetX = DateLenght - DateLenghtReal - 1;
                     break;
                 default:
                     offsetX = 0;
@@ -9523,9 +9543,17 @@ namespace Watch_Face_Editor
         private void Draw_dagital_text_rotate(Graphics graphics, int x, int y, int spacing, float angle, bool zero,
             int image_index, int unit_index, int dot_image_index, 
             string horizontal_alignment, bool unit_in_alignment,
-            string value, int value_lenght, bool BBorder, int separator_index, string elementName = "")
+            string value, int value_lenght, bool BBorder, int separator_index, int error_index, bool errorData, string elementName = "")
         {
             Logger.WriteLine("* Draw_dagital_text_rotate");
+            if (errorData)
+            {
+                value = "0";
+                image_index = error_index;
+                value_lenght = 1;
+                unit_index = -1;
+                unit_in_alignment = false;
+            }
             //value = "-10";
             //elementName = "ElementWeather";
             if (image_index < 0 || image_index >= ListImagesFullName.Count) return;
@@ -9714,9 +9742,18 @@ namespace Watch_Face_Editor
         private void Draw_dagital_text_on_circle(Graphics graphics, int x, int y, int radius, int spacing, float angle, bool zero,
             int image_index, /*int image_width, int image_height,*/ int unit_index, /*int unit_width,*/ int dot_image_index, /*int dot_image_width,*/
             string vertical_alignment, string horizontal_alignment, bool reverse_direction, bool unit_in_alignment, 
-            string value, int value_lenght, bool BBorder, bool showCentrHend, int separator_index, string elementName = "")
+            string value, int value_lenght, bool BBorder, bool showCentrHend, int separator_index, 
+            int error_index, bool errorData, string elementName = "")
         {
             Logger.WriteLine("* Draw_dagital_text_on_circle");
+            if (errorData)
+            {
+                value = "0";
+                image_index = error_index;
+                value_lenght = 1;
+                unit_index = -1;
+                unit_in_alignment = false;
+            }
             //value = "-10";
             //elementName = "ElementWeather";
             if (image_index < 0 || image_index >= ListImagesFullName.Count) return;
@@ -9778,11 +9815,11 @@ namespace Watch_Face_Editor
             float startAngle = 0;
             double fullAngle = value_lenght * image_angle * 2 + (value_lenght - 1) * spacing;
             if (unit_width > 0 & unit_in_alignment) fullAngle += unit_angle * 2 + spacing;
-            if (dot_image_width > 0) 
-            { 
-                fullAngle += dot_image_angle * 2 + spacing;
-                if (elementName == "ElementWeather_Max/Min") fullAngle += dot_image_angle * 2 + spacing;
-            }
+            //if (dot_image_width > 0) 
+            //{ 
+            //    fullAngle += dot_image_angle * 2 + spacing;
+            //    if (elementName == "ElementWeather_Max/Min") fullAngle += dot_image_angle * 2 + spacing;
+            //}
             if (separator_width > 0) fullAngle += separator_angle * 2 + spacing;
             Pen pen = new Pen(Color.White, image_height);
 
@@ -9799,15 +9836,18 @@ namespace Watch_Face_Editor
                     if (elementName == "ElementWeather" && dot_image_width > 0 && value.StartsWith("-"))
                         angleOffset = angleOffset + (dot_image_angle - image_angle) / 2f;
 
-                    if (elementName == "ElementWeather_Max/Min")
-                    {
-                        if (dot_image_width > 0)
-                        {
-                            if (value.IndexOf("-") >= 0) angleOffset = angleOffset + (dot_image_angle - image_angle) / 2f;
-                            if (value.LastIndexOf("-") > value.IndexOf("-")) angleOffset = angleOffset + (dot_image_angle - image_angle) / 2f;
-                        }
-                        if (separator_width > 0) angleOffset = angleOffset + (separator_angle - image_angle) / 2f;
-                    }
+                    if (elementName == "ElementWeather_Max/Min" && dot_image_width > 0 && value.StartsWith("-"))
+                        angleOffset = angleOffset + (dot_image_angle - image_angle) / 2f;
+
+                    //if (elementName == "ElementWeather_Max/Min")
+                    //{
+                    //    if (dot_image_width > 0)
+                    //    {
+                    //        if (value.IndexOf("-") >= 0) angleOffset = angleOffset + (dot_image_angle - image_angle) / 2f;
+                    //        if (value.LastIndexOf("-") > value.IndexOf("-")) angleOffset = angleOffset + (dot_image_angle - image_angle) / 2f;
+                    //    }
+                    //    if (separator_width > 0) angleOffset = angleOffset + (separator_angle - image_angle) / 2f;
+                    //}
                     if (reverse_direction) angleOffset = -angleOffset;
                     graphics.RotateTransform((float)(angle - angleOffset));
                     if (unit_in_alignment && unit_width >= 0)
@@ -9826,17 +9866,20 @@ namespace Watch_Face_Editor
                     if (unit_width > 0 && unit_in_alignment) angleOffset = angleOffset + image_angle + unit_angle + spacing;
 
                     if (elementName == "ElementWeather" && dot_image_width > 0 && value.StartsWith("-"))
-                        angleOffset = angleOffset - image_angle + dot_image_angle;
+                        angleOffset = angleOffset - dot_image_angle + image_angle;
 
-                    if (elementName == "ElementWeather_Max/Min")
-                    {
-                        if (dot_image_width > 0)
-                        {
-                            if (value.IndexOf("-") >= 0) angleOffset = angleOffset - image_angle + dot_image_angle;
-                            if (value.LastIndexOf("-") > value.IndexOf("-")) angleOffset = angleOffset - image_angle + dot_image_angle;
-                        }
-                        if (separator_width > 0) angleOffset = angleOffset - image_angle + separator_angle;
-                    }
+                    if (elementName == "ElementWeather_Max/Min" && dot_image_width > 0 && value.StartsWith("-"))
+                        angleOffset = angleOffset - dot_image_angle + image_angle;
+
+                    //if (elementName == "ElementWeather_Max/Min")
+                    //{
+                    //    if (dot_image_width > 0)
+                    //    {
+                    //        if (value.IndexOf("-") >= 0) angleOffset = angleOffset - image_angle + dot_image_angle;
+                    //        if (value.LastIndexOf("-") > value.IndexOf("-")) angleOffset = angleOffset - image_angle + dot_image_angle;
+                    //    }
+                    //    if (separator_width > 0) angleOffset = angleOffset - image_angle + separator_angle;
+                    //}
 
                     if (reverse_direction) angleOffset = -angleOffset;
                     graphics.RotateTransform((float)(angle - angleOffset));

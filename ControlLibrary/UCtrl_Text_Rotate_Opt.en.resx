@@ -157,6 +157,9 @@
   <data name="label09.Text" xml:space="preserve">
     <value>Alignment</value>
   </data>
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 82</value>
+  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -222,7 +225,7 @@
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Paste</value>
   </data>
-  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 82</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -290,9 +293,6 @@
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Paste</value>
   </data>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 82</value>
-  </data>
   <data name="label01.Text" xml:space="preserve">
     <value>First Image</value>
   </data>
@@ -308,6 +308,9 @@
   <data name="label_minus_image.Text" xml:space="preserve">
     <value>Symbol "-"</value>
   </data>
+  <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 48</value>
+  </data>
   <data name="копироватьСвойстваToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 22</value>
   </data>
@@ -320,7 +323,7 @@
   <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>Insert properties</value>
   </data>
-  <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 48</value>
+  <data name="label_separator.Text" xml:space="preserve">
+    <value>Separator</value>
   </data>
 </root>

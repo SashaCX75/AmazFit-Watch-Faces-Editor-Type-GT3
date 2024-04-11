@@ -13057,7 +13057,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Weather_Elm_v2.checkBox_Number_Max_Min_Font.Checked)
                         {
                             text = weather.Group_Max_Min.Number_Font;
-                            Read_Text_Options(text, true, false, true);
+                            Read_Text_Options(text, true, true, false);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -18610,7 +18610,7 @@ namespace Watch_Face_Editor
                 if (weather.City_Name == null) weather.City_Name = new hmUI_widget_TEXT();
                 if (weather.Icon == null) weather.Icon = new hmUI_widget_IMG();
 
-                Dictionary<string, int> elementOptions = uCtrl_Weather_Elm.GetOptionsPosition();
+                Dictionary<string, int> elementOptions = uCtrl_Weather_Elm_v2.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Group_Current")) weather.Group_Current.position = elementOptions["Group_Current"];
                 if (elementOptions.ContainsKey("Group_Min")) weather.Group_Min.position = elementOptions["Group_Min"];
                 if (elementOptions.ContainsKey("Group_Max")) weather.Group_Max.position = elementOptions["Group_Max"];

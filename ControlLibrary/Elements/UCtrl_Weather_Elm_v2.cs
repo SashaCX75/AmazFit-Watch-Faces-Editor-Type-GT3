@@ -1653,10 +1653,10 @@ namespace ControlLibrary
                         elementOptions.Add("Group_Min", count - i);
                         break;
                     case "panel_Max":
-                        elementOptions.Add("Group_Min", count - i);
+                        elementOptions.Add("Group_Max", count - i);
                         break;
                     case "panel_Max_Min":
-                        elementOptions.Add("Group_Min", count - i);
+                        elementOptions.Add("Group_Max_Min", count - i);
                         break;
                     //case "panel_Number":
                     //    elementOptions.Add("Number", count - i);
