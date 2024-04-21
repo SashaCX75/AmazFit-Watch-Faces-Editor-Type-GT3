@@ -40,7 +40,9 @@ namespace Watch_Face_Editor
         public bool Alarm { get; set; }
         public bool DoNotDisturb { get; set; }
         public bool ShowTemperature = true;
-    }
+
+        public List<ForecastData> forecastData { get; set; }
+}
 
     public class TimePreview
     {

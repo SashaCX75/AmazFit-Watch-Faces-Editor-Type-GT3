@@ -1123,6 +1123,24 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Погодный информер *.
+        /// </summary>
+        internal static string WeatherInformer {
+            get {
+                return ResourceManager.GetString("WeatherInformer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({ appid: 1051195, url: &apos;page/index&apos;, params: { from_wf: true} });.
+        /// </summary>
+        internal static string WeatherInformer_function {
+            get {
+                return ResourceManager.GetString("WeatherInformer_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Активность за неделю *.
         /// </summary>
         internal static string WeekActivity {

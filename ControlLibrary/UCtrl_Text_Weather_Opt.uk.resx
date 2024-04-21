@@ -117,28 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="checkBox_addZero.Text" xml:space="preserve">
-    <value>Додати нулі на початку</value>
-  </data>
-  <data name="checkBox_follow.Text" xml:space="preserve">
-    <value>Слідувати за попередником</value>
-  </data>
   <data name="label03.Text" xml:space="preserve">
     <value>Відступи</value>
   </data>
   <data name="label06.Text" xml:space="preserve">
     <value>Зображення при помилці</value>
   </data>
-  <data name="label10.Text" xml:space="preserve">
+  <data name="label_unit_f.Text" xml:space="preserve">
     <value>Одиниці 
 виміру (°F)</value>
   </data>
   <data name="comboBox_alignment.Items" xml:space="preserve">
     <value>По лівому краю</value>
   </data>
-  <data name="label08.Text" xml:space="preserve">
+  <data name="label_unit_c.Text" xml:space="preserve">
     <value>Одиниці 
-виміру (°C)</value>
+виміру (°C )</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label09.Size" type="System.Drawing.Size, System.Drawing">
@@ -307,6 +301,9 @@
   <data name="label_angle.Text" xml:space="preserve">
     <value>Кут</value>
   </data>
+  <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 48</value>
+  </data>
   <data name="копироватьСвойстваToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 22</value>
   </data>
@@ -314,12 +311,12 @@
     <value>Копіювати властивості</value>
   </data>
   <data name="вставитьСвойстваToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>199, 22</value>
   </data>
   <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>Вставити властивості</value>
   </data>
-  <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 48</value>
+  <data name="label_separator.Text" xml:space="preserve">
+    <value>Роздільник</value>
   </data>
 </root>

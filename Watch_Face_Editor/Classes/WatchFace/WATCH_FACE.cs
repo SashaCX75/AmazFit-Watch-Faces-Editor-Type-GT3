@@ -5838,6 +5838,251 @@ namespace Watch_Face_Editor
         }
     }
 
+    public class Element_Weather_FewDays : ICloneable
+    {
+        public string elementName = "Element_Weather_FewDays";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        /// <summary>Общие настройки виджета</summary>
+        public FewDays FewDays { get; set; }
+
+        /// <summary>Иконки погоды</summary>
+        public hmUI_widget_IMG_LEVEL Images { get; set; }
+
+        /// <summary>Иконки погоды</summary>
+        public Weather_Diagram Diagram { get; set; }
+
+        /// <summary>Максимальная температура картинками</summary>
+        public hmUI_widget_IMG_NUMBER Number_Max { get; set; }
+
+        /// <summary>Максимальная температура шрифтом</summary>
+        public hmUI_widget_TEXT Number_Font_Max { get; set; }
+
+        /// <summary>Минимальная температура картинками</summary>
+        public hmUI_widget_IMG_NUMBER Number_Min { get; set; }
+
+        /// <summary>Минимальная температура шрифтом</summary>
+        public hmUI_widget_TEXT Number_Font_Min { get; set; }
+
+        /// <summary>День недели картинками</summary>
+        public hmUI_widget_IMG_LEVEL DayOfWeek_Images { get; set; }
+
+        /// <summary>День недели шрифтом</summary>
+        public hmUI_widget_TEXT DayOfWeek_Font { get; set; }
+
+        /// <summary>Иконка</summary>
+        public hmUI_widget_IMG Icon { get; set; }
+
+        public object Clone()
+        {
+            FewDays FewDays = null;
+            if (this.FewDays != null)
+            {
+                FewDays = new FewDays
+                {
+                    X = this.FewDays.X,
+                    Y = this.FewDays.Y,
+                    DaysCount = this.FewDays.DaysCount,
+                    ColumnWidth = this.FewDays.ColumnWidth,
+                    Background = this.FewDays.Background,
+                };
+            }
+
+            hmUI_widget_IMG_LEVEL Images = null;
+            if (this.Images != null)
+            {
+                Images = new hmUI_widget_IMG_LEVEL
+                {
+                    X = this.Images.X,
+                    Y = this.Images.Y,
+                    img_First = this.Images.img_First,
+                    image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
+
+                    position = this.Images.position,
+                    visible = this.Images.visible,
+                    show_level = this.Images.show_level,
+                    type = this.Images.type,
+                };
+            }
+
+            Weather_Diagram Diagram = null;
+            if (this.Diagram != null)
+            {
+                Diagram = new Weather_Diagram
+                {
+                    Height = this.Diagram.Height,
+                    Max_offsetX = this.Diagram.Max_offsetX,
+                    Min_offsetX = this.Diagram.Min_offsetX,
+                    Y = this.Diagram.Y,
+                    Max_color = this.Diagram.Max_color,
+                    Min_color = this.Diagram.Min_color,
+                    Max_pointType = this.Diagram.Max_pointType,
+                    Min_pointType = this.Diagram.Min_pointType,
+                    Max_pointSize = this.Diagram.Max_pointSize,
+                    Min_pointSize = this.Diagram.Min_pointSize,
+                    Max_lineWidth = this.Diagram.Max_lineWidth,
+                    Min_lineWidth = this.Diagram.Min_lineWidth,
+
+                    Use_max_diagram = this.Diagram.Use_max_diagram,
+                    Use_min_diagram = this.Diagram.Use_min_diagram,
+
+                    position = this.Diagram.position,
+                    visible = this.Number_Max.visible,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Number_Max = null;
+            if (this.Number_Max != null)
+            {
+                Number_Max = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number_Max.imageX,
+                    imageY = this.Number_Max.imageY,
+                    space = this.Number_Max.space,
+                    angle = this.Number_Max.angle,
+                    zero = this.Number_Max.zero,
+                    align = this.Number_Max.align,
+                    img_First = this.Number_Max.img_First,
+                    unit = this.Number_Max.unit,
+                    imperial_unit = this.Number_Max.imperial_unit,
+                    icon = this.Number_Max.icon,
+                    iconPosX = this.Number_Max.iconPosX,
+                    iconPosY = this.Number_Max.iconPosY,
+                    negative_image = this.Number_Max.negative_image,
+                    invalid_image = this.Number_Max.invalid_image,
+                    dot_image = this.Number_Max.dot_image,
+                    follow = this.Number_Max.follow,
+
+                    position = this.Number_Max.position,
+                    visible = this.Number_Max.visible,
+                    show_level = this.Number_Max.show_level,
+                    type = this.Number_Max.type,
+                };
+            }
+
+            hmUI_widget_TEXT Number_Font_Max = null;
+            if (this.Number_Font_Max != null)
+            {
+                Number_Font_Max = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Font_Max.x,
+                    y = this.Number_Font_Max.y,
+                    w = this.Number_Font_Max.w,
+                    h = this.Number_Font_Max.h,
+                    color = this.Number_Font_Max.color,
+                    align_h = this.Number_Font_Max.align_h,
+                    align_v = this.Number_Font_Max.align_v,
+                    text_size = this.Number_Font_Max.text_size,
+                    text_style = this.Number_Font_Max.text_style,
+                    line_space = this.Number_Font_Max.line_space,
+                    char_space = this.Number_Font_Max.char_space,
+                    font = this.Number_Font_Max.font,
+                    padding = this.Number_Font_Max.padding,
+                    unit_type = this.Number_Font_Max.unit_type,
+
+                    position = this.Number_Font_Max.position,
+                    visible = this.Number_Font_Max.visible,
+                    show_level = this.Number_Font_Max.show_level,
+                    type = this.Number_Font_Max.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Number_Min = null;
+            if (this.Number_Min != null)
+            {
+                Number_Min = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number_Min.imageX,
+                    imageY = this.Number_Min.imageY,
+                    space = this.Number_Min.space,
+                    angle = this.Number_Min.angle,
+                    zero = this.Number_Min.zero,
+                    align = this.Number_Min.align,
+                    img_First = this.Number_Min.img_First,
+                    unit = this.Number_Min.unit,
+                    imperial_unit = this.Number_Min.imperial_unit,
+                    icon = this.Number_Min.icon,
+                    iconPosX = this.Number_Min.iconPosX,
+                    iconPosY = this.Number_Min.iconPosY,
+                    negative_image = this.Number_Min.negative_image,
+                    invalid_image = this.Number_Min.invalid_image,
+                    dot_image = this.Number_Min.dot_image,
+                    follow = this.Number_Min.follow,
+
+                    position = this.Number_Min.position,
+                    visible = this.Number_Min.visible,
+                    show_level = this.Number_Min.show_level,
+                    type = this.Number_Min.type,
+                };
+            }
+
+            hmUI_widget_TEXT Number_Font_Min = null;
+            if (this.Number_Font_Min != null)
+            {
+                Number_Font_Min = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Font_Min.x,
+                    y = this.Number_Font_Min.y,
+                    w = this.Number_Font_Min.w,
+                    h = this.Number_Font_Min.h,
+                    color = this.Number_Font_Min.color,
+                    align_h = this.Number_Font_Min.align_h,
+                    align_v = this.Number_Font_Min.align_v,
+                    text_size = this.Number_Font_Min.text_size,
+                    text_style = this.Number_Font_Min.text_style,
+                    line_space = this.Number_Font_Min.line_space,
+                    char_space = this.Number_Font_Min.char_space,
+                    font = this.Number_Font_Min.font,
+                    padding = this.Number_Font_Min.padding,
+                    unit_type = this.Number_Font_Min.unit_type,
+
+                    position = this.Number_Font_Min.position,
+                    visible = this.Number_Font_Min.visible,
+                    show_level = this.Number_Font_Min.show_level,
+                    type = this.Number_Font_Min.type,
+                };
+            }
+
+            hmUI_widget_IMG Icon = null;
+            if (this.Icon != null)
+            {
+                Icon = new hmUI_widget_IMG
+                {
+                    x = this.Icon.x,
+                    y = this.Icon.y,
+                    w = this.Icon.w,
+                    h = this.Icon.h,
+                    src = this.Icon.src,
+
+                    position = this.Icon.position,
+                    visible = this.Icon.visible,
+                    show_level = this.Icon.show_level,
+                };
+            }
+
+            return new Element_Weather_FewDays
+            {
+                elementName = this.elementName,
+                visible = this.visible,
+
+                FewDays = FewDays,
+                Images = Images,
+                Diagram = Diagram,
+                Number_Max = Number_Max,
+                Number_Font_Max = Number_Font_Max,
+                Number_Min = Number_Min,
+                Number_Font_Min = Number_Font_Min,
+                Icon = Icon,
+            };
+        }
+    }
+
     public class WeatherGroup : ICloneable
     {
         /// <summary>Позиция в наборе элементов</summary>
@@ -5978,6 +6223,7 @@ namespace Watch_Face_Editor
             };
         }
     }
+
     public class ElementUVIndex : ICloneable
     {
         public string elementName = "ElementUVIndex";

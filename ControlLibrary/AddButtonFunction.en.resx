@@ -124,95 +124,38 @@
   <data name="radioButton_click.Text" xml:space="preserve">
     <value>Click the button</value>
   </data>
-  <data name="radioButton_click.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="radioButton_londPress.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 17</value>
   </data>
   <data name="radioButton_londPress.Text" xml:space="preserve">
     <value>Long press of the button</value>
   </data>
-  <data name="radioButton_londPress.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_Activity.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_App.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_System.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_UserScript.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="pictureBox4.ToolTip" xml:space="preserve">
-    <value>To add your own sets of scripts for functions, create a folder "user_scripts" 
+    <value>To add your own sets of scripts for functions, create a folder "button_scripts" 
 next to the executable and put the *.js files there. The file name will be used 
 to display in the dropdown list. The contents of the file will be added as function 
 code when you select it in the drop-down list.</value>
   </data>
-  <data name="pictureBox_IconSystem.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBox_selectScript.Text" xml:space="preserve">
     <value>Select from a set of functions</value>
-  </data>
-  <data name="groupBox_selectScript.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="button_Cancel.Text" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="button_Cancel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_Save.Text" xml:space="preserve">
     <value>Save</value>
-  </data>
-  <data name="button_Save.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="richTextBox_click.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="groupBox_click.Text" xml:space="preserve">
     <value>Code for the function on button click</value>
   </data>
-  <data name="groupBox_click.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="richTextBox_longPress.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBox_longPress.Text" xml:space="preserve">
     <value>Code for the function on long button press</value>
-  </data>
-  <data name="groupBox_longPress.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>308, 13</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>* Some functions may not work (depending on the watch model)</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2373,8 +2316,5 @@ code when you select it in the drop-down list.</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Editing button functions</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

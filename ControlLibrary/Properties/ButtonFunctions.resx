@@ -526,6 +526,13 @@
   <data name="Weather" xml:space="preserve">
     <value>Погода</value>
   </data>
+  <data name="WeatherInformer" xml:space="preserve">
+    <value>Погодный информер *</value>
+  </data>
+  <data name="WeatherInformer_function" xml:space="preserve">
+    <value>hmApp.startApp({ appid: 1051195, url: 'page/index', params: { from_wf: true} });</value>
+    <comment>Do not translate</comment>
+  </data>
   <data name="Weather_function" xml:space="preserve">
     <value>hmApp.startApp({url: 'WeatherScreen', native: true });</value>
     <comment>Do not translate</comment>

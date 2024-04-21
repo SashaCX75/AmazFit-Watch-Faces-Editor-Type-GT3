@@ -453,6 +453,19 @@ namespace Watch_Face_Editor
                     Scale_TEXT(elementWeather_v2.City_Name, scale);
                     Scale_IMG(elementWeather_v2.Icon, scale);
                     break;
+                case "Element_Weather_FewDays":
+                    Element_Weather_FewDays elementWeather_FewDays = (Element_Weather_FewDays)elements;
+
+                    Scale_Diagram(elementWeather_FewDays.Diagram, scale);
+                    Scale_IMG_NUMBER(elementWeather_FewDays.Number_Max, scale);
+                    Scale_TEXT(elementWeather_FewDays.Number_Font_Max, scale);
+                    Scale_IMG_NUMBER(elementWeather_FewDays.Number_Min, scale);
+                    Scale_TEXT(elementWeather_FewDays.Number_Font_Min, scale);
+                    Scale_IMG_LEVEL(elementWeather_FewDays.DayOfWeek_Images, scale);
+                    Scale_TEXT(elementWeather_FewDays.DayOfWeek_Font, scale);
+                    Scale_IMG_LEVEL(elementWeather_FewDays.Images, scale);
+                    Scale_IMG(elementWeather_FewDays.Icon, scale);
+                    break;
                 case "ElementUVIndex":
                     ElementUVIndex elementUVIndex = (ElementUVIndex)elements;
                     Scale_IMG_LEVEL(elementUVIndex.Images, scale);
@@ -674,6 +687,7 @@ namespace Watch_Face_Editor
             button.text_size = (int)Math.Round((double)(button.text_size * scale), MidpointRounding.AwayFromZero);
             button.radius = (int)Math.Round((double)(button.radius * scale), MidpointRounding.AwayFromZero);
         }
+
         private void Scale_WeatherGroup(WeatherGroup weatherGroup, float scale)
         {
             if (weatherGroup == null) return;
@@ -681,6 +695,27 @@ namespace Watch_Face_Editor
             Scale_TEXT(weatherGroup.Number_Font, scale);
             Scale_IMG_NUMBER(weatherGroup.Text_rotation, scale);
             Scale_Text_Circle(weatherGroup.Text_circle, scale);
+        }
+
+        private void Scale_WeatherFewDays(FewDays fewDays, float scale)
+        {
+            if (fewDays == null) return;
+            fewDays.X = (int)Math.Round(fewDays.X * scale, MidpointRounding.AwayFromZero);
+            fewDays.Y = (int)Math.Round(fewDays.Y * scale, MidpointRounding.AwayFromZero);
+            fewDays.ColumnWidth = (int)Math.Round(fewDays.ColumnWidth * scale, MidpointRounding.AwayFromZero);
+        }
+
+        private void Scale_Diagram(Weather_Diagram diagram, float scale)
+        {
+            if (diagram == null) return;
+            diagram.Height = (int)Math.Round(diagram.Height * scale, MidpointRounding.AwayFromZero);
+            diagram.Max_offsetX = (int)Math.Round(diagram.Max_offsetX * scale, MidpointRounding.AwayFromZero);
+            diagram.Min_offsetX = (int)Math.Round(diagram.Min_offsetX * scale, MidpointRounding.AwayFromZero);
+            diagram.Y = (int)Math.Round(diagram.Y * scale, MidpointRounding.AwayFromZero);
+            diagram.Max_pointSize = (int)Math.Round(diagram.Max_pointSize * scale, MidpointRounding.AwayFromZero);
+            diagram.Min_pointSize = (int)Math.Round(diagram.Min_pointSize * scale, MidpointRounding.AwayFromZero);
+            diagram.Max_lineWidth = (int)Math.Round(diagram.Max_lineWidth * scale, MidpointRounding.AwayFromZero);
+            diagram.Min_lineWidth = (int)Math.Round(diagram.Min_lineWidth * scale, MidpointRounding.AwayFromZero);
         }
     }
 }

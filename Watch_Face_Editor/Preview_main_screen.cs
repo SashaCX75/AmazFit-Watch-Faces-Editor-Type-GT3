@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Xml.Linq;
+using Watch_Face_Editor.Classes;
 using LineCap = System.Drawing.Drawing2D.LineCap;
 
 namespace Watch_Face_Editor
@@ -3218,6 +3219,19 @@ namespace Watch_Face_Editor
                     DrawWeather_v2(gPanel, group_current, group_min, group_max, group_max_min, img_level, city_name_v2, icon,
                         value_current_v2, value_min_v2, value_max_v2, value_lenght, icon_index_v2,
                         BBorder, showTemperature_v2, showCentrHend);
+
+
+                    break;
+                #endregion
+
+                #region Element_Weather_FewDays
+                case "Element_Weather_FewDays":
+                    Element_Weather_FewDays activityElement_Weather_FewDays = (Element_Weather_FewDays)element;
+                    if (!activityElement_Weather_FewDays.visible) return;
+
+                    bool showTemperature_FewDays = WatchFacePreviewSet.Weather.showTemperature;
+
+                    DrawWeatherFewDays(gPanel, activityElement_Weather_FewDays, WatchFacePreviewSet.Weather.forecastData, BBorder, showTemperature_FewDays);
 
 
                     break;
@@ -6554,6 +6568,403 @@ namespace Watch_Face_Editor
             src.Dispose();
         }
 
+        /// <summary>Рисуем все параметры элемента погода</summary>
+        /// <param name="gPanel">Поверхность для рисования</param>
+        /// <param name="weather_FewDays">Погода на несколько дней</param>
+        /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
+        /// <param name="showTemperature">Показывать температуру</param>
+        private void DrawWeatherFewDays(Graphics gPanel, Element_Weather_FewDays weather_FewDays, List<ForecastData> forecastData,
+            bool BBorder, bool showTemperature)
+        {
+            Logger.WriteLine("* DrawWeatherFewDays");
+            if (weather_FewDays == null) return;
+            if (!weather_FewDays.visible) return;
+            if (weather_FewDays.FewDays == null) return;
+            Bitmap src = new Bitmap(1, 1);
+            string unit = "°";
+            int x = weather_FewDays.FewDays.X;
+            int y = weather_FewDays.FewDays.Y;
+            int offsetX = weather_FewDays.FewDays.ColumnWidth;
+
+            if (weather_FewDays.FewDays != null && weather_FewDays.FewDays.Background != null)
+            {
+                string bg = weather_FewDays.FewDays.Background;
+                if (bg != null && bg.Length > 0)
+                {
+                    int imageIndex = ListImages.IndexOf(bg);
+
+                    if (imageIndex < ListImagesFullName.Count)
+                    {
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                    }
+                }
+            }
+            if (forecastData == null || forecastData.Count == 0) return;
+
+            for (int index = 0; index <= 10; index++)
+            {
+                if (weather_FewDays.Images != null && weather_FewDays.Images.img_First != null && weather_FewDays.Images.img_First.Length > 0 &&
+                   index == weather_FewDays.Images.position && weather_FewDays.Images.visible)
+                {
+                    int posY = y + weather_FewDays.Images.Y;
+                    int imageIndex = ListImages.IndexOf(weather_FewDays.Images.img_First);
+
+                    for (int dayIndex = 0; dayIndex < forecastData.Count; dayIndex++)
+                    {
+                        int weather_index = forecastData[dayIndex].index;
+                        if (weather_index >= 0)
+                        {
+                            int posX = x + offsetX * dayIndex + weather_FewDays.Images.X;
+                            int image_index = imageIndex + weather_index;
+
+                            if (image_index < ListImagesFullName.Count)
+                            {
+                                src = OpenFileStream(ListImagesFullName[image_index]);
+                                gPanel.DrawImage(src, posX, posY);
+                            }
+                        }
+                    }
+                }
+
+                if (weather_FewDays.Diagram != null && index == weather_FewDays.Diagram.position && weather_FewDays.Diagram.visible)
+                {
+                    Color colorMax = StringToColor(weather_FewDays.Diagram.Max_color);
+                    Pen penMax = new Pen(colorMax, weather_FewDays.Diagram.Max_lineWidth);
+                    Color colorMin = StringToColor(weather_FewDays.Diagram.Min_color);
+                    Pen penMin = new Pen(colorMin, weather_FewDays.Diagram.Min_lineWidth);
+                    int maxPintSize = weather_FewDays.Diagram.Max_pointSize;
+                    int minPintSize = weather_FewDays.Diagram.Min_pointSize;
+                    if (weather_FewDays.Diagram.Max_pointType == 0) maxPintSize = 0;
+                    if (weather_FewDays.Diagram.Min_pointType == 0) minPintSize = 0;
+
+                    float scale = DiagramScale(weather_FewDays.Diagram.Height, weather_FewDays.Diagram.Max_lineWidth,
+                        weather_FewDays.Diagram.Min_lineWidth, forecastData, out int maximal_temp);
+                    //float scale = DiagramScale(weather_FewDays.Diagram.Height, weather_FewDays.Diagram.Max_lineWidth, maxPintSize,
+                    //    weather_FewDays.Diagram.Min_lineWidth, minPintSize, forecastData, out int maximal_temp);
+
+                    int offsetY = weather_FewDays.Diagram.Max_lineWidth / 2;
+                    //if (weather_FewDays.Diagram.Max_pointType > 0 && weather_FewDays.Diagram.Min_pointSize > weather_FewDays.Diagram.Max_lineWidth)
+                    //    offsetY = weather_FewDays.Diagram.Min_pointSize / 2;
+                    offsetY += weather_FewDays.FewDays.Y + weather_FewDays.Diagram.Y;
+                    //offsetY++;
+
+                    int Max_offsetX = weather_FewDays.FewDays.X + weather_FewDays.Diagram.Max_offsetX;
+                    int Min_offsetX = weather_FewDays.FewDays.X + weather_FewDays.Diagram.Min_offsetX;
+
+                    int maxOldX = Max_offsetX;
+                    int minOldX = Min_offsetX;
+
+                    int maxOldY = (int)((maximal_temp - forecastData[0].high) * scale) + offsetY;
+                    int minOldY = (int)((maximal_temp - forecastData[0].low) * scale) + offsetY;
+
+                    bool endPointMax = false;
+                    bool endPointMin = false;
+
+                    SmoothingMode smoothingMode = gPanel.SmoothingMode;
+                    gPanel.SmoothingMode = SmoothingMode.AntiAlias;
+                    for (int i = 0; i < weather_FewDays.FewDays.DaysCount; i++)
+                    {
+                        if (i < forecastData.Count)
+                        {
+                            if (weather_FewDays.Diagram.Use_min_diagram)
+                            {
+                                Point pointStart = new Point(minOldX, minOldY);
+                                minOldX = Min_offsetX + i * weather_FewDays.FewDays.ColumnWidth;
+                                minOldY = (int)((maximal_temp - forecastData[i].low) * scale) + offsetY;
+                                Point pointEnd = new Point(minOldX, minOldY);
+
+                                if (pointStart != pointEnd)
+                                {
+                                    gPanel.DrawLine(penMin, pointStart, pointEnd);
+                                    DrawaWeatherPount(gPanel, pointStart.X, pointStart.Y, minPintSize,
+                                        weather_FewDays.Diagram.Min_pointType, StringToColor(weather_FewDays.Diagram.Min_color));
+                                    endPointMin = true;
+                                }
+                            }
+
+                            if (weather_FewDays.Diagram.Use_max_diagram)
+                            {
+                                Point pointStart = new Point(maxOldX, maxOldY);
+                                maxOldX = Max_offsetX + i * weather_FewDays.FewDays.ColumnWidth;
+                                maxOldY = (int)((maximal_temp - forecastData[i].high) * scale) + offsetY;
+                                Point pointEnd = new Point(maxOldX, maxOldY);
+
+                                if (pointStart != pointEnd)
+                                {
+                                    gPanel.DrawLine(penMax, pointStart, pointEnd);
+                                    DrawaWeatherPount(gPanel, pointStart.X, pointStart.Y, maxPintSize,
+                                        weather_FewDays.Diagram.Max_pointType, StringToColor(weather_FewDays.Diagram.Max_color));
+                                    endPointMax = true;
+                                }
+                            }
+                        }
+                    }
+                    if (endPointMin) DrawaWeatherPount(gPanel, minOldX, minOldY, minPintSize,
+                        weather_FewDays.Diagram.Min_pointType, StringToColor(weather_FewDays.Diagram.Min_color));
+                    if (endPointMax) DrawaWeatherPount(gPanel, maxOldX, maxOldY, maxPintSize,
+                        weather_FewDays.Diagram.Max_pointType, StringToColor(weather_FewDays.Diagram.Max_color));
+
+                    gPanel.SmoothingMode = smoothingMode;
+                }
+
+                if (weather_FewDays.Number_Max != null && weather_FewDays.Number_Max.img_First != null && weather_FewDays.Number_Max.img_First.Length > 0 && weather_FewDays.Number_Max.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(weather_FewDays.Number_Max.img_First);
+                    int posY = y + weather_FewDays.Number_Max.imageY;
+                    int spacing = weather_FewDays.Number_Max.space;
+                    int alignment = AlignmentToInt(weather_FewDays.Number_Max.align);
+                    bool addZero = false;
+                    int angle = weather_FewDays.Number_Max.angle;
+                    int separator_index = -1;
+                    if (weather_FewDays.Number_Max.unit != null && weather_FewDays.Number_Max.unit.Length > 0)
+                        separator_index = ListImages.IndexOf(weather_FewDays.Number_Max.unit);
+                    int imageError_index = -1;
+                    if (weather_FewDays.Number_Max.invalid_image != null && weather_FewDays.Number_Max.invalid_image.Length > 0)
+                        imageError_index = ListImages.IndexOf(weather_FewDays.Number_Max.invalid_image);
+                    int imageMinus_index = -1;
+                    if (weather_FewDays.Number_Max.negative_image != null && weather_FewDays.Number_Max.negative_image.Length > 0)
+                        imageMinus_index = ListImages.IndexOf(weather_FewDays.Number_Max.negative_image);
+
+                    //Logger.WriteLine("weather_FewDays.Number_Max");
+                    for (int dayIndex = 0; dayIndex < weather_FewDays.FewDays.DaysCount; dayIndex++)
+                    {
+                        //Logger.WriteLine($"dayIndex = {dayIndex}");
+                        int posX = x + offsetX * dayIndex + weather_FewDays.Number_Max.imageX;
+
+                        if (dayIndex < forecastData.Count && showTemperature)
+                        {
+                            int temperature_value = forecastData[dayIndex].high;
+
+                            Draw_weather_text(gPanel, imageIndex, posX, posY, spacing, alignment, temperature_value, 5, addZero,
+                                imageMinus_index, separator_index, angle, BBorder, -1, false);
+                        }
+                        else if (imageError_index >= 0)
+                        {
+                            Draw_weather_text(gPanel, imageIndex, posX, posY, spacing, alignment, 0, 5, addZero,
+                                imageMinus_index, separator_index, angle,
+                                            BBorder, imageError_index, true);
+                        }
+                    }
+                }
+
+                if (weather_FewDays.Number_Font_Max != null && weather_FewDays.Number_Font_Max.visible)
+                {
+                    int posY = y + weather_FewDays.Number_Font_Max.y;
+                    int h = weather_FewDays.Number_Font_Max.h;
+                    int w = weather_FewDays.Number_Font_Max.w;
+
+                    int size = weather_FewDays.Number_Font_Max.text_size;
+                    int space_h = weather_FewDays.Number_Font_Max.char_space;
+                    int space_v = weather_FewDays.Number_Font_Max.line_space;
+
+                    Color color = StringToColor(weather_FewDays.Number_Font_Max.color);
+                    string align_h = weather_FewDays.Number_Font_Max.align_h;
+                    string align_v = weather_FewDays.Number_Font_Max.align_v;
+                    string text_style = weather_FewDays.Number_Font_Max.text_style;
+
+                    for (int dayIndex = 0; dayIndex < weather_FewDays.FewDays.DaysCount; dayIndex++)
+                    {
+                        int posX = x + offsetX * dayIndex + weather_FewDays.Number_Font_Max.x;
+
+                        string valueStr = "--";
+                        if (dayIndex < forecastData.Count && showTemperature)
+                        {
+                            valueStr = forecastData[dayIndex].high.ToString();
+
+                            string unitStr = unit;
+                            if (weather_FewDays.Number_Font_Max.unit_type > 0)
+                            {
+                                if (weather_FewDays.Number_Font_Max.unit_type == 2) unitStr = unitStr.ToUpper();
+                                valueStr += unitStr;
+                            }
+                        }
+
+                        if (weather_FewDays.Number_Font_Max.centreHorizontally)
+                        {
+                            posX = (SelectedModel.background.w - w) / 2;
+                            align_h = "CENTER_H";
+                        }
+                        if (weather_FewDays.Number_Font_Max.centreVertically)
+                        {
+                            posX = (SelectedModel.background.h - h) / 2;
+                            align_v = "CENTER_V";
+                        }
+
+                        if (weather_FewDays.Number_Font_Max.font != null && weather_FewDays.Number_Font_Max.font.Length > 3 && FontsList.ContainsKey(weather_FewDays.Number_Font_Max.font))
+                        {
+                            string font_fileName = FontsList[weather_FewDays.Number_Font_Max.font];
+                            if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                            {
+                                Font drawFont = null;
+                                using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                {
+                                    fonts.AddFontFile(font_fileName);
+                                    drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                }
+
+                                Draw_text_userFont(gPanel, posX, posY, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                align_h, align_v, text_style, BBorder);
+                            }
+                            else
+                            {
+                                Draw_text(gPanel, posX, posY, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            }
+
+                        }
+                        else
+                        {
+                            Draw_text(gPanel, posX, posY, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        }
+                    }
+                }
+
+                if (weather_FewDays.DayOfWeek_Images != null && weather_FewDays.DayOfWeek_Images.img_First != null
+                    && weather_FewDays.DayOfWeek_Images.img_First.Length > 0 && index == weather_FewDays.DayOfWeek_Images.position &&
+                    weather_FewDays.DayOfWeek_Images.visible)
+                {
+                    int posY = y + weather_FewDays.DayOfWeek_Images.Y;
+                    int imageIndex = ListImages.IndexOf(weather_FewDays.DayOfWeek_Images.img_First);
+
+                    for (int dayIndex = 0; dayIndex < forecastData.Count; dayIndex++)
+                    {
+                        int dof = WatchFacePreviewSet.Date.WeekDay + dayIndex - 1;
+                        if (dof >= 7) dof -= 7;
+                        int posX = x + offsetX * dayIndex + weather_FewDays.Images.X;
+                        int image_index = imageIndex + dof;
+
+                        if (image_index < ListImagesFullName.Count)
+                        {
+                            src = OpenFileStream(ListImagesFullName[image_index]);
+                            gPanel.DrawImage(src, posX, posY);
+                        }
+                    }
+                }
+
+                if (weather_FewDays.DayOfWeek_Font != null && index == weather_FewDays.DayOfWeek_Font.position && weather_FewDays.DayOfWeek_Font.visible)
+                    {
+                        hmUI_widget_TEXT dow_font = weather_FewDays.DayOfWeek_Font;
+                        string[] dowArrey = dow_font.unit_string.Split(',');
+
+                        if (dowArrey.Length == 7)
+                        {
+                            int posY = y + weather_FewDays.DayOfWeek_Font.y;
+                            for (int dayIndex = 0; dayIndex < forecastData.Count; dayIndex++)
+                            {
+                                int dof = WatchFacePreviewSet.Date.WeekDay + dayIndex - 1;
+                                if (dof >= 7) dof -= 7;
+                                int posX = x + offsetX * dayIndex + weather_FewDays.DayOfWeek_Font.x;
+                                string valueStr = dowArrey[dof].Trim();
+
+                                int h = dow_font.h;
+                                int w = dow_font.w;
+
+                                int size = dow_font.text_size;
+                                int space_h = dow_font.char_space;
+                                int space_v = dow_font.line_space;
+
+                                Color color = StringToColor(dow_font.color);
+                                string align_h = dow_font.align_h;
+                                string align_v = dow_font.align_v;
+                                string text_style = dow_font.text_style;
+
+
+                                if (dow_font.font != null && dow_font.font.Length > 3 && FontsList.ContainsKey(dow_font.font))
+                                {
+                                    string font_fileName = FontsList[dow_font.font];
+                                    if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                    {
+                                        Font drawFont = null;
+                                        using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                        {
+                                            fonts.AddFontFile(font_fileName);
+                                            drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                        }
+
+                                        Draw_text_userFont(gPanel, posX, posY, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                        align_h, align_v, text_style, BBorder);
+                                    }
+                                    else
+                                    {
+                                        Draw_text(gPanel, posX, posY, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    }
+
+                                }
+                                else
+                                {
+                                    Draw_text(gPanel, posX, posY, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                }
+                            }
+
+                        }
+                    }
+                
+            }
+            Logger.WriteLine("* DrawWeatherFewDays (End)");
+        }
+
+        private float DiagramScale(int heightDiagram, int maxLineWidth, int minLineWidth, List<ForecastData> forecastData, out int max_temp, int daysCount = 7)
+        {
+            Logger.WriteLine("* DiagramScale");
+            max_temp = 0;
+            float scale = 0;
+            //if (maxPointSize < maxLineWidth) maxPointSize = maxLineWidth;
+            //if (minPointSize < minLineWidth) minPointSize = minLineWidth;
+            heightDiagram = heightDiagram - (maxLineWidth + minLineWidth) / 2;
+
+
+            int high = 0;
+            int low = 0;
+            if (daysCount > forecastData.Count) daysCount = forecastData.Count;
+
+            for(int index = 0; index< daysCount; index++)
+            {
+                ForecastData item = forecastData[index];
+                if (item.high > high) high = item.high;
+                if (item.low < low) low = item.low;
+            }
+
+            //foreach (ForecastData item in forecastData)
+            //{
+            //    if (item.high > high) high = item.high;
+            //    if (item.low < low) low = item.low;
+            //}
+            float delta = high - low;
+            scale = heightDiagram / delta;
+            max_temp = high;
+            //Logger.WriteLine(string.Format("scale = {0}, high = {1}, low = {2}, delta = {3}, heightDiagram = {4}", scale, high, low, delta, heightDiagram));
+
+            Logger.WriteLine("* DiagramScale (End)");
+
+            return scale;
+        }
+
+        private void DrawaWeatherPount(Graphics gPanel, int x, int y, int pointSize, int pointType, Color color)
+        {
+            if (pointSize == 0) return;
+            int fillX = x - pointSize / 4;
+            int fillY = y - pointSize / 4;
+            x -= pointSize / 2;
+            y -= pointSize / 2;
+
+            switch (pointType)
+            {
+                case 1:
+                    gPanel.FillRectangle(new SolidBrush(color), x, y, pointSize, pointSize);
+                    break;
+                case 2:
+                    gPanel.FillRectangle(new SolidBrush(color), x, y, pointSize, pointSize);
+                    gPanel.FillRectangle(new SolidBrush(Color.White), fillX, fillY, pointSize/2, pointSize/2);
+                    break;
+                case 3:
+                    gPanel.FillEllipse(new SolidBrush(color), x, y, pointSize, pointSize);
+                    break;
+                case 4:
+                    gPanel.FillEllipse(new SolidBrush(color), x, y, pointSize, pointSize);
+                    gPanel.FillEllipse(new SolidBrush(Color.White), fillX, fillY, pointSize / 2, pointSize / 2);
+                    break;
+            }
+        }
         /// <summary>Рисуем восход, звкат</summary>
         private void DrawSunrise(Graphics gPanel, hmUI_widget_IMG_LEVEL images, hmUI_widget_IMG_PROGRESS segments,
             hmUI_widget_IMG_NUMBER sunrise, hmUI_widget_TEXT sunrise_font, hmUI_widget_IMG_NUMBER sunrise_rotation, Text_Circle sunrise_circle,

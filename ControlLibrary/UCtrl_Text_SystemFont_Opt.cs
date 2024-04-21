@@ -30,6 +30,7 @@ namespace ControlLibrary
         private bool UnitStr_mode = false;
         private bool DOW_mode = false;
         private bool Month_mode = false;
+        private bool Alignments_enabled = true;
 
         public UCtrl_Text_SystemFont_Opt()
         {
@@ -507,6 +508,23 @@ namespace ControlLibrary
             }
         }
 
+        /// <summary>Отображение параметров выравнивания</summary>
+        [Description("Отображение параметров выравнивания")]
+        public virtual bool AlignmentsEnabled
+        {
+            get
+            {
+                return Alignments_enabled;
+            }
+            set
+            {
+                Alignments_enabled = value;
+
+                checkBox_CentreHorizontally.Enabled = Alignments_enabled;
+                checkBox_CentreVertically.Enabled = Alignments_enabled;
+            }
+        }
+
         [Browsable(true)]
         [Description("Происходит при изменении выбора элемента")]
         public event ValueChangedHandler ValueChanged;
@@ -857,6 +875,7 @@ namespace ControlLibrary
             UnitStrMode = false;
             DOWMode = false;
             MonthMode = false;
+            AlignmentsEnabled = true;
 
             setValue = false;
         }

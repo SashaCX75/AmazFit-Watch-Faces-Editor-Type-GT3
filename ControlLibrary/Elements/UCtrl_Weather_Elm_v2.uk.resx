@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="button_Number_Max_Min_Font.Text" xml:space="preserve">
-    <value>Дані шрифтом (макс/мін)</value>
+    <value>Дані шрифтом</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_Text_Max_Min_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -138,7 +138,7 @@
 </value>
   </data>
   <data name="button_Text_Max_Min_circle.Text" xml:space="preserve">
-    <value>Дані по колу (макс/мін)</value>
+    <value>Дані по колу</value>
   </data>
   <data name="button_Text_Max_Min_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -157,16 +157,16 @@
 </value>
   </data>
   <data name="button_Text_Max_Min_rotation.Text" xml:space="preserve">
-    <value>Дані під кутом (макс/мін)</value>
+    <value>Дані під кутом</value>
   </data>
   <data name="button_Number_Max_Min.Text" xml:space="preserve">
-    <value>Цифрові значення (макс/мін)</value>
+    <value>Цифрові значення</value>
   </data>
   <data name="button_Max_Min.Text" xml:space="preserve">
     <value>Температура (макс/мін)</value>
   </data>
   <data name="button_Number_Max_Font.Text" xml:space="preserve">
-    <value>Дані шрифтом (макс)</value>
+    <value>Дані шрифтом</value>
   </data>
   <data name="button_Text_Max_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -185,7 +185,7 @@
 </value>
   </data>
   <data name="button_Text_Max_circle.Text" xml:space="preserve">
-    <value>Дані по колу (макс)</value>
+    <value>Дані по колу</value>
   </data>
   <data name="button_Text_Max_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -204,13 +204,13 @@
 </value>
   </data>
   <data name="button_Text_Max_rotation.Text" xml:space="preserve">
-    <value>Дані під кутом (макс)</value>
+    <value>Дані під кутом</value>
   </data>
   <data name="button_Number_Max.Text" xml:space="preserve">
-    <value>Цифрові значення (макс)</value>
+    <value>Цифрові значення</value>
   </data>
   <data name="button_Number_Min_Font.Text" xml:space="preserve">
-    <value>Дані шрифтом (мін)</value>
+    <value>Дані шрифтом</value>
   </data>
   <data name="button_Text_Min_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -229,7 +229,7 @@
 </value>
   </data>
   <data name="button_Text_Min_circle.Text" xml:space="preserve">
-    <value>Дані по колу (мін)</value>
+    <value>Дані по колу</value>
   </data>
   <data name="button_Text_Min_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -248,10 +248,10 @@
 </value>
   </data>
   <data name="button_Text_Min_rotation.Text" xml:space="preserve">
-    <value>Дані під кутом (мін)</value>
+    <value>Дані під кутом</value>
   </data>
   <data name="button_Number_Min.Text" xml:space="preserve">
-    <value>Цифрові значення (мін)</value>
+    <value>Цифрові значення</value>
   </data>
   <data name="button_Min.Text" xml:space="preserve">
     <value>Температура (мін)</value>
@@ -311,5 +311,67 @@
   </data>
   <data name="button_Images.Text" xml:space="preserve">
     <value>Зображення</value>
+  </data>
+  <data name="button_Images.ToolTip" xml:space="preserve">
+    <value>1. Хмарно
+2. Дощ
+3. Дощ зі снігом
+4. Сонячно
+5. Похмуро
+6. Легкий дощ
+7. Легкий сніг
+8. Невеликий дощ
+9. Невеликий сніг
+10. Сильний сніг
+11. Сильний дощ
+12. Піщана буря
+13. Мокрий сніг
+14. Туман
+15. Димка
+16. Дощ із грозою
+17. Завірюха
+18. Пильно
+19. Потужна злива
+20. Дощ із градом
+21. Злива з градом
+22. Сильна злива
+23. Вітер із піском
+24. Сильна піщана буря
+25. Злива
+26. Невідома погода
+27. Хмарно вночі
+28. Дощ уночі
+29. Ясно вночі</value>
+  </data>
+  <data name="panel_Images.ToolTip" xml:space="preserve">
+    <value>1. Хмарно
+2. Дощ
+3. Дощ зі снігом
+4. Сонячно
+5. Похмуро
+6. Легкий дощ
+7. Легкий сніг
+8. Невеликий дощ
+9. Невеликий сніг
+10. Сильний сніг
+11. Сильний дощ
+12. Піщана буря
+13. Мокрий сніг
+14. Туман
+15. Димка
+16. Дощ із грозою
+17. Завірюха
+18. Пильно
+19. Потужна злива
+20. Дощ із градом
+21. Злива з градом
+22. Сильна злива
+23. Вітер із піском
+24. Сильна піщана буря
+25. Злива
+26. Невідома погода
+27. Хмарно вночі
+28. Дощ уночі
+29. Ясно вночі</value>
   </data>
 </root>

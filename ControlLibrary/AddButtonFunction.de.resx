@@ -131,7 +131,7 @@
     <value>Langer Druck auf den Button</value>
   </data>
   <data name="pictureBox4.ToolTip" xml:space="preserve">
-    <value>Um eigene Skripte für Funktionen hinzuzufügen, lege ein Verzeichnis "user_scripts" 
+    <value>Um eigene Skripte für Funktionen hinzuzufügen, lege ein Verzeichnis "button_scripts" 
 neben der ausführbaren Datei an und füge die *.js-Dateien dort ein. 
 Der Dateiname wird für die Anzeige in der Dropdown-Liste verwendet. 
 Der Inhalt der Datei wird als Code hinzugefügt, wenn du sie in der Dropdown-Liste auswählst.</value>

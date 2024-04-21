@@ -23,6 +23,7 @@ namespace ControlLibrary
         private bool Weather_mode = false;
         private bool Separator_mode = false;
         private bool Imperial_unit_mode = false;
+        private bool Unit_alignment_mode = true;
 
         //private Point location_unit;
         private Point location_unit_miles;
@@ -246,21 +247,6 @@ namespace ControlLibrary
                 comboBox_imageDecimalPoint.Visible = OptionalSymbol_mode;
                 label_imageDecimalPoint.Visible = OptionalSymbol_mode;
 
-                //if (OptionalSymbol_mode)
-                //{
-                //    Point location = new Point(numericUpDown_angle.Location.X, location_unit_miles.Y);
-                //    numericUpDown_angle.Location = location;
-                //    location = new Point(label_angle.Location.X, location_unit_miles_label.Y);
-                //    label_angle.Location = location;
-                //}
-                //else
-                //{
-                //    Point location = new Point(numericUpDown_angle.Location.X, location_imageDecimalPoint.Y);
-                //    numericUpDown_angle.Location = location;
-                //    location = new Point(label_angle.Location.X, location_imageDecimalPoint_label.Y);
-                //    label_angle.Location = location;
-                //}
-
                 if (!OptionalSymbol_mode && !Distance_mode && !Sunrise_mode && !Weather_mode)
                 {
                     Point location = new Point(location_addZero.X, location_addZero.Y - checkBox_location_offset);
@@ -479,6 +465,21 @@ namespace ControlLibrary
                     location = new Point(location_unit_in_alignment.X, location_unit_in_alignment.Y);
                     checkBox_unit_in_alignment.Location = location;
                 }
+            }
+        }
+
+        /// <summary>Отображение чекбокса учитывания единиц измерения при выравнивании</summary>
+        [Description("Отображение чекбокса учитывания единиц измерения при выравнивании")]
+        public virtual bool Unit_alignment
+        {
+            get
+            {
+                return Unit_alignment_mode;
+            }
+            set
+            {
+                Unit_alignment_mode = value;
+                checkBox_unit_in_alignment.Visible = Unit_alignment_mode;
             }
         }
 

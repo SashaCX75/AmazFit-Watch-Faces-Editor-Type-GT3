@@ -100,6 +100,7 @@ namespace ControlLibrary
             comboBox_App.Items.Add(Properties.ButtonFunctions.DialCall);
             comboBox_App.Items.Add(Properties.ButtonFunctions.BodyComposition);
             comboBox_App.Items.Add(Properties.ButtonFunctions.Readiness);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.WeatherInformer);
 
             comboBox_System.Items.Add(Properties.Buttons.comboBox_System);
             comboBox_System.Items.Add(Properties.ButtonFunctions.Settings);
@@ -128,7 +129,7 @@ namespace ControlLibrary
 
             #region user_script
             DirectoryInfo Folder;
-            string dirName = Path.Combine(Application.StartupPath, "user_scripts");
+            string dirName = Path.Combine(Application.StartupPath, "button_scripts");
             if (Directory.Exists(dirName))
             {
                 Folder = new DirectoryInfo(dirName);
@@ -277,6 +278,7 @@ namespace ControlLibrary
             if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.DialCall_function;
             if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.BodyComposition_function;
             if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Readiness_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.WeatherInformer_function;
 
             comboBox_App.Items.Insert(0, Properties.Buttons.comboBox_App);
             comboBox_App.SelectedIndex = 0;

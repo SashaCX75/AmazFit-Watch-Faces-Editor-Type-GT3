@@ -131,7 +131,7 @@
     <value>Pressione lunga del tasto</value>
   </data>
   <data name="pictureBox4.ToolTip" xml:space="preserve">
-    <value>Per aggiungere i tuoi set di script per le funzioni, crea una cartella "user_scripts"
+    <value>Per aggiungere i tuoi set di script per le funzioni, crea una cartella "button_scripts"
 accanto all'eseguibile e inserisci lì i file *.js. Verrà utilizzato il nome del file
 da visualizzare nell'elenco a discesa. Il contenuto del file verrà aggiunto come funzione codice quando lo selezioni nell'elenco a discesa.</value>
   </data>

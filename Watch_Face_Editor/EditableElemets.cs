@@ -1717,7 +1717,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = weather.Number;
-                                Read_ImgNumberWeather_Options(img_number, false, "", true, false);
+                                Read_ImgNumberWeather_Options(img_number);
                                 //ShowElemenrOptions("Text_Weather");
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
@@ -1727,7 +1727,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number_Min.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = weather.Number_Min;
-                                Read_ImgNumberWeather_Options(img_number, false, "", true, false);
+                                Read_ImgNumberWeather_Options(img_number);
                                 //ShowElemenrOptions("Text_Weather");
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
@@ -1737,7 +1737,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number_Max.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = weather.Number_Max;
-                                Read_ImgNumberWeather_Options(img_number, false, "", true, false);
+                                Read_ImgNumberWeather_Options(img_number);
                                 //ShowElemenrOptions("Text_Weather");
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }

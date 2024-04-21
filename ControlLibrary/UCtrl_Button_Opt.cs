@@ -365,6 +365,9 @@ namespace ControlLibrary
                 case "hmApp.startApp({url: 'readinessAppScreen', native: true });":
                     functinName = Properties.ButtonFunctions.Readiness;
                     break;
+                case "hmApp.startApp({ appid: 1051195, url: 'page/index', params: { from_wf: true} });":
+                    functinName = Properties.ButtonFunctions.WeatherInformer;
+                    break;
 
                 #endregion
 

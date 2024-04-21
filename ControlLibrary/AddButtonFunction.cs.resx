@@ -131,7 +131,7 @@
     <value>Dlouhé stisknutí tlačítka</value>
   </data>
   <data name="pictureBox4.ToolTip" xml:space="preserve">
-    <value>Chcete-li přidat vlastní sady skriptů pro funkce, vytvořte složku „user_scripts“
+    <value>Chcete-li přidat vlastní sady skriptů pro funkce, vytvořte složku „button_scripts“
 vedle spustitelného souboru a vložte tam soubory *.js. Bude použit název souboru
 zobrazíte v rozevíracím seznamu. Obsah souboru bude přidán jako funkce
 kód, když jej vyberete v rozevíracím seznamu.</value>

@@ -117,193 +117,95 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Alarm" xml:space="preserve">
-    <value>Alarm</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="checkBox_use_min.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
   </data>
-  <data name="AOD" xml:space="preserve">
-    <value>AOD time settings</value>
+  <data name="checkBox_use_min.Text" xml:space="preserve">
+    <value>Use</value>
   </data>
-  <data name="AODStyle" xml:space="preserve">
-    <value>AOD style settings</value>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Point size</value>
   </data>
-  <data name="AppList" xml:space="preserve">
-    <value>App list</value>
+  <data name="label06.Text" xml:space="preserve">
+    <value>Line width</value>
   </data>
-  <data name="AppPermission" xml:space="preserve">
-    <value>App permissions *</value>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Offset of the point horizontally</value>
   </data>
-  <data name="Baro" xml:space="preserve">
-    <value>Barometer</value>
+  <data name="comboBox_min_pointType.Items" xml:space="preserve">
+    <value>None</value>
   </data>
-  <data name="BatteryManager" xml:space="preserve">
-    <value>Usage statistics *</value>
+  <data name="comboBox_min_pointType.Items1" xml:space="preserve">
+    <value>Square 1</value>
   </data>
-  <data name="BodyComposition" xml:space="preserve">
-    <value>Body composition *</value>
+  <data name="comboBox_min_pointType.Items2" xml:space="preserve">
+    <value>Square 2</value>
   </data>
-  <data name="Camera" xml:space="preserve">
-    <value>Camera control</value>
+  <data name="comboBox_min_pointType.Items3" xml:space="preserve">
+    <value>Circle 1</value>
   </data>
-  <data name="ClubCards" xml:space="preserve">
-    <value>Member card</value>
+  <data name="comboBox_min_pointType.Items4" xml:space="preserve">
+    <value>Circle 2</value>
   </data>
-  <data name="Compass" xml:space="preserve">
-    <value>Compass</value>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Point type</value>
   </data>
-  <data name="Contacts" xml:space="preserve">
-    <value>Contacts *</value>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 13</value>
   </data>
-  <data name="ControlCenter" xml:space="preserve">
-    <value>Control centre settings *</value>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Line colour</value>
   </data>
-  <data name="CountDown" xml:space="preserve">
-    <value>Countdown</value>
+  <data name="groupBox_min.Text" xml:space="preserve">
+    <value>Minimum temperature</value>
   </data>
-  <data name="DialCall" xml:space="preserve">
-    <value>Dialer *</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Chart height</value>
   </data>
-  <data name="Display" xml:space="preserve">
-    <value>Display</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Vertical offset</value>
   </data>
-  <data name="DND" xml:space="preserve">
-    <value>Do not disturb</value>
+  <data name="checkBox_use_max.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
   </data>
-  <data name="DragList" xml:space="preserve">
-    <value>App icons</value>
+  <data name="checkBox_use_max.Text" xml:space="preserve">
+    <value>Use</value>
   </data>
-  <data name="FindPhone" xml:space="preserve">
-    <value>Phone search</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Point size</value>
   </data>
-  <data name="HeartRete" xml:space="preserve">
-    <value>Heart rate</value>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Line width</value>
   </data>
-  <data name="Light" xml:space="preserve">
-    <value>Brightness</value>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Offset of the point horizontally</value>
   </data>
-  <data name="LocalMusic" xml:space="preserve">
-    <value>Music (on watch) *</value>
+  <data name="comboBox_max_pointType.Items" xml:space="preserve">
+    <value>None</value>
   </data>
-  <data name="LowBattery" xml:space="preserve">
-    <value>Charge saving</value>
+  <data name="comboBox_max_pointType.Items1" xml:space="preserve">
+    <value>Square 1</value>
   </data>
-  <data name="Menstrual" xml:space="preserve">
-    <value>Women's calendar</value>
+  <data name="comboBox_max_pointType.Items2" xml:space="preserve">
+    <value>Square 2</value>
   </data>
-  <data name="MoreList" xml:space="preserve">
-    <value>"More" menu *</value>
+  <data name="comboBox_max_pointType.Items3" xml:space="preserve">
+    <value>Circle 1</value>
   </data>
-  <data name="MorningNews" xml:space="preserve">
-    <value>Morning greeting *</value>
+  <data name="comboBox_max_pointType.Items4" xml:space="preserve">
+    <value>Circle 2</value>
   </data>
-  <data name="NightMonitor" xml:space="preserve">
-    <value>Sleep health monitoring *</value>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Point type</value>
   </data>
-  <data name="OneKey" xml:space="preserve">
-    <value>One-touch measurement</value>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 13</value>
   </data>
-  <data name="PAI" xml:space="preserve">
-    <value>PAI</value>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Line colour</value>
   </data>
-  <data name="Phone" xml:space="preserve">
-    <value>Phone *</value>
-  </data>
-  <data name="PhoneMusic" xml:space="preserve">
-    <value>Music (on phone)</value>
-  </data>
-  <data name="PowerHint" xml:space="preserve">
-    <value>Energy consumption</value>
-  </data>
-  <data name="Readiness" xml:space="preserve">
-    <value>Readiness</value>
-  </data>
-  <data name="RecentCall" xml:space="preserve">
-    <value>Last calls *</value>
-  </data>
-  <data name="Respiration" xml:space="preserve">
-    <value>Breathing</value>
-  </data>
-  <data name="RespirationControl" xml:space="preserve">
-    <value>Respiration *</value>
-  </data>
-  <data name="ReStart" xml:space="preserve">
-    <value>Power off</value>
-  </data>
-  <data name="SaveMode" xml:space="preserve">
-    <value>Simple watchface</value>
-  </data>
-  <data name="Schedule" xml:space="preserve">
-    <value>Calendar</value>
-  </data>
-  <data name="ScheduleList" xml:space="preserve">
-    <value>Schedule</value>
-  </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="Sleep" xml:space="preserve">
-    <value>Sleep</value>
-  </data>
-  <data name="SPO2" xml:space="preserve">
-    <value>SpO2 (Oxygen)</value>
-  </data>
-  <data name="Sport" xml:space="preserve">
-    <value>Last workout</value>
-  </data>
-  <data name="SportList" xml:space="preserve">
-    <value>Starting a workout</value>
-  </data>
-  <data name="SportRecord" xml:space="preserve">
-    <value>Workout records</value>
-  </data>
-  <data name="SportStatus" xml:space="preserve">
-    <value>Training load</value>
-  </data>
-  <data name="Steps" xml:space="preserve">
-    <value>Steps</value>
-  </data>
-  <data name="StopWatch" xml:space="preserve">
-    <value>Stopwatch</value>
-  </data>
-  <data name="Stress" xml:space="preserve">
-    <value>Stress</value>
-  </data>
-  <data name="Sunset" xml:space="preserve">
-    <value>Sunrise/sunset</value>
-  </data>
-  <data name="System" xml:space="preserve">
-    <value>"System" section</value>
-  </data>
-  <data name="Test1" xml:space="preserve">
-    <value>Test</value>
-  </data>
-  <data name="Test2" xml:space="preserve">
-    <value>Test (simple)</value>
-  </data>
-  <data name="Timer" xml:space="preserve">
-    <value>Timer</value>
-  </data>
-  <data name="ToDoList" xml:space="preserve">
-    <value>To Do List</value>
-  </data>
-  <data name="VoiceMemo" xml:space="preserve">
-    <value>Voice note</value>
-  </data>
-  <data name="WatchFace" xml:space="preserve">
-    <value>Select watchface</value>
-  </data>
-  <data name="Weather" xml:space="preserve">
-    <value>Weather</value>
-  </data>
-  <data name="WeatherInformer" xml:space="preserve">
-    <value>Weather Informer *</value>
-  </data>
-  <data name="WeekActivity" xml:space="preserve">
-    <value>Activity for the week *</value>
-  </data>
-  <data name="WidgetEdit" xml:space="preserve">
-    <value>Widget settings *</value>
-  </data>
-  <data name="WorldClock" xml:space="preserve">
-    <value>World Time</value>
+  <data name="groupBox_max.Text" xml:space="preserve">
+    <value>Maximum temperature</value>
   </data>
 </root>

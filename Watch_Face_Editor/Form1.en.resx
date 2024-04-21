@@ -238,6 +238,9 @@
   <data name="comboBox_AddAir.Items7" xml:space="preserve">
     <value>Moon</value>
   </data>
+  <data name="comboBox_AddAir.Items8" xml:space="preserve">
+    <value>Weather (forecast)</value>
+  </data>
   <data name="comboBox_AddActivity.Items" xml:space="preserve">
     <value>Activity</value>
   </data>
@@ -765,7 +768,7 @@ PayPal: sashacx75@gmail.com</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAXwBKQF8ASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAYQBKQGEASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -826,12 +829,6 @@ PayPal: sashacx75@gmail.com</value>
         AZ8CAAHwAQ8B9wHnAf4BHws=
 </value>
   </data>
-  <data name="button_pack_zip.Text" xml:space="preserve">
-    <value>Pack watch face</value>
-  </data>
-  <data name="button_unpack_zip.Text" xml:space="preserve">
-    <value>Unpack watch face</value>
-  </data>
   <data name="label_watch_model.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 13</value>
   </data>
@@ -840,6 +837,12 @@ PayPal: sashacx75@gmail.com</value>
   </data>
   <data name="checkBox_Show_Buttons.Text" xml:space="preserve">
     <value>Highlight button areas</value>
+  </data>
+  <data name="button_pack_zip.Text" xml:space="preserve">
+    <value>Pack watch face</value>
+  </data>
+  <data name="button_unpack_zip.Text" xml:space="preserve">
+    <value>Unpack watch face</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

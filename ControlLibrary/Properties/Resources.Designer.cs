@@ -213,6 +213,26 @@ namespace ControlLibrary.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap chart {
+            get {
+                object obj = ResourceManager.GetObject("chart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chart2line {
+            get {
+                object obj = ResourceManager.GetObject("chart2line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap circle_scale {
             get {
                 object obj = ResourceManager.GetObject("circle_scale", resourceCulture);
@@ -576,6 +596,16 @@ namespace ControlLibrary.Properties {
         internal static System.Drawing.Bitmap segment_18 {
             get {
                 object obj = ResourceManager.GetObject("segment_18", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settings_wfd {
+            get {
+                object obj = ResourceManager.GetObject("settings_wfd", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

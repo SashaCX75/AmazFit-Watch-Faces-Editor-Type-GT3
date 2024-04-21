@@ -131,7 +131,7 @@
     <value>Pulsación larga del botón</value>
   </data>
   <data name="pictureBox4.ToolTip" xml:space="preserve">
-    <value>Para agregar sus propios conjuntos de scripts para funciones, cree una carpeta "user_scripts"
+    <value>Para agregar sus propios conjuntos de scripts para funciones, cree una carpeta "button_scripts"
 al lado del ejecutable y coloque los archivos *.js allí. Se utilizará el nombre del archivo.
 para mostrar en la lista desplegable. El contenido del archivo se agregará como función.</value>
   </data>

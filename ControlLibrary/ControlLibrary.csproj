@@ -521,6 +521,12 @@
     <Compile Include="UCtrl_SmoothSeconds_Opt.Designer.cs">
       <DependentUpon>UCtrl_SmoothSeconds_Opt.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCtrl_TemperatureGraph_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_TemperatureGraph_Opt.Designer.cs">
+      <DependentUpon>UCtrl_TemperatureGraph_Opt.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_Text_Circle_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -580,6 +586,18 @@
     </Compile>
     <Compile Include="Elements\UCtrl_Weather_Elm_v2.Designer.cs">
       <DependentUpon>UCtrl_Weather_Elm_v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Weather_FewDay_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Weather_FewDay_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Weather_FewDay_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_Weather_FewDays_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_Weather_FewDays_Opt.Designer.cs">
+      <DependentUpon>UCtrl_Weather_FewDays_Opt.cs</DependentUpon>
     </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
@@ -1490,6 +1508,12 @@
     <EmbeddedResource Include="Elements\UCtrl_Weather_Elm_v2.uk.resx">
       <DependentUpon>UCtrl_Weather_Elm_v2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Weather_FewDay_Elm.en.resx">
+      <DependentUpon>UCtrl_Weather_FewDay_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Weather_FewDay_Elm.uk.resx">
+      <DependentUpon>UCtrl_Weather_FewDay_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Wind_Elm.cs.resx">
       <DependentUpon>UCtrl_Wind_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -2316,6 +2340,15 @@
     <EmbeddedResource Include="UCtrl_SmoothSeconds_Opt.zh.resx">
       <DependentUpon>UCtrl_SmoothSeconds_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_TemperatureGraph_Opt.en.resx">
+      <DependentUpon>UCtrl_TemperatureGraph_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_TemperatureGraph_Opt.resx">
+      <DependentUpon>UCtrl_TemperatureGraph_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_TemperatureGraph_Opt.uk.resx">
+      <DependentUpon>UCtrl_TemperatureGraph_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Circle_Opt.cs.resx">
       <DependentUpon>UCtrl_Text_Circle_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -2463,6 +2496,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Weather_Elm_v2.resx">
       <DependentUpon>UCtrl_Weather_Elm_v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Weather_FewDay_Elm.resx">
+      <DependentUpon>UCtrl_Weather_FewDay_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Weather_FewDays_Opt.en.resx">
+      <DependentUpon>UCtrl_Weather_FewDays_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Weather_FewDays_Opt.resx">
+      <DependentUpon>UCtrl_Weather_FewDays_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Weather_FewDays_Opt.uk.resx">
+      <DependentUpon>UCtrl_Weather_FewDays_Opt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -2711,6 +2756,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\temp_max_min.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_wfd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart2line.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

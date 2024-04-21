@@ -14,11 +14,15 @@ namespace ControlLibrary
     public partial class UCtrl_Text_Weather_Opt : UserControl
     {
         private bool setValue; // режим задания параметров
-        private bool ImageError_mode;
-        //private bool Padding_zero;
-        //private bool Follow_mode;
+        private bool Imperial_unit_mode = true;
         private bool Angle_mode = false;
         private bool Separator_mode = false;
+        private bool Icon_show = true;
+
+        private Point location_unit;
+        private Point location_unit_imperial;
+        private Point location_unit_label;
+        private Point location_unit_imperials_label;
 
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _ElementWithText;
@@ -29,6 +33,12 @@ namespace ControlLibrary
             InitializeComponent();
             setValue = true;
             comboBox_alignment.SelectedIndex = 0;
+
+            location_unit = comboBox_unit_c.Location;
+            location_unit_imperial = comboBox_unit_f.Location;
+            location_unit_label = label_unit_c.Location;
+            location_unit_imperials_label = label_unit_f.Location;
+
             setValue = false;
         }
 
@@ -125,18 +135,6 @@ namespace ControlLibrary
             if (comboBox_imageMinus.SelectedIndex < 0) comboBox_imageMinus.Text = "";
         }
 
-        /// <summary>Возвращает название выбранной картинки</summary>
-        public string GetImageMinus()
-        {
-            if (comboBox_imageMinus.SelectedIndex < 0) return "";
-            return comboBox_imageMinus.Text;
-        }
-        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int GetSelectedIndexImageMinus()
-        {
-            return comboBox_imageMinus.SelectedIndex;
-        }
-
         public void SetSeparator(string value)
         {
             comboBox_separator.Text = value;
@@ -152,6 +150,18 @@ namespace ControlLibrary
         public int GetSelectedIndexSeparator()
         {
             return comboBox_separator.SelectedIndex;
+        }
+
+        /// <summary>Возвращает название выбранной картинки</summary>
+        public string GetImageMinus()
+        {
+            if (comboBox_imageMinus.SelectedIndex < 0) return "";
+            return comboBox_imageMinus.Text;
+        }
+        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
+        public int GetSelectedIndexImageMinus()
+        {
+            return comboBox_imageMinus.SelectedIndex;
         }
 
         public void SetAlignment(string alignment)
@@ -204,22 +214,6 @@ namespace ControlLibrary
         public int GetSelectedIndexAlignment()
         {
             return comboBox_alignment.SelectedIndex;
-        }
-
-        /// <summary>Отображение поля изображения при ошибке</summary>
-        [Description("Отображение поля изображения при ошибке")]
-        public virtual bool ImageError
-        {
-            get
-            {
-                return ImageError_mode;
-            }
-            set
-            {
-                ImageError_mode = value;
-                comboBox_imageError.Visible = ImageError_mode;
-                label06.Visible = ImageError_mode;
-            }
         }
 
         ///// <summary>Отображение чекбокса добавления нулей в начале</summary>
@@ -284,18 +278,54 @@ namespace ControlLibrary
             }
         }
 
-        /// <summary>Устанавливает надпись "Следовать за..."</summary>
-        [Localizable(true)]
-        [Description("Устанавливает надпись \"Следовать за...\"")]
-        public string FollowText
+        /// <summary>Отображение единиц измерения (°F)</summary>
+        [Description("Отображение единиц измерения (°F)")]
+        public virtual bool Imperial_unit
         {
             get
             {
-                return checkBox_follow.Text;
+                return Imperial_unit_mode;
             }
             set
             {
-                checkBox_follow.Text = value;
+                Imperial_unit_mode = value;
+                if (Imperial_unit_mode)
+                {
+                    comboBox_unit_c.Location = location_unit;
+                    comboBox_unit_f.Location = location_unit_imperial;
+                    label_unit_c.Location = location_unit_label;
+                    label_unit_f.Location = location_unit_imperials_label;
+                }
+                else
+                {
+                    comboBox_unit_f.Location = location_unit;
+                    comboBox_unit_c.Location = location_unit_imperial;
+                    label_unit_f.Location = location_unit_label;
+                    label_unit_c.Location = location_unit_imperials_label;
+                }
+            }
+        }
+
+        /// <summary>Отображение иконки</summary>
+        [Description("Отображение иконки")]
+        public virtual bool IconShow
+        {
+            get
+            {
+                return Icon_show;
+            }
+            set
+            {
+                Icon_show = value;
+
+                comboBox_icon.Enabled = Icon_show;
+                numericUpDown_iconX.Enabled = Icon_show;
+                numericUpDown_iconY.Enabled = Icon_show;
+
+                label04.Enabled = Icon_show;
+                label05.Enabled = Icon_show;
+                label1086.Enabled = Icon_show;
+                label1083.Enabled = Icon_show;
             }
         }
 
@@ -460,10 +490,9 @@ namespace ControlLibrary
         {
             setValue = true;
 
-            ImageError = false;
-            //PaddingZero = false;
-            //Follow = false;
             Angle = false;
+            Imperial_unit = true;
+            IconShow = true;
             Separator = false;
 
             comboBox_image.Text = null;
@@ -471,7 +500,6 @@ namespace ControlLibrary
             comboBox_unit_c.Text = null;
             comboBox_imageError.Text = null;
             comboBox_imageMinus.Text = null;
-            comboBox_separator.Text = null;
 
             numericUpDown_imageX.Value = 0;
             numericUpDown_imageY.Value = 0;
@@ -482,7 +510,6 @@ namespace ControlLibrary
             numericUpDown_spacing.Value = 0;
 
             comboBox_alignment.SelectedIndex = 0;
-            checkBox_addZero.Checked = false;
 
             setValue = false;
         }
@@ -648,16 +675,6 @@ namespace ControlLibrary
         }
 
         #endregion
-
-        private void checkBox_follow_CheckedChanged(object sender, EventArgs e)
-        {
-            bool b = !checkBox_follow.Checked;
-            label02.Enabled = b;
-            label1084.Enabled = b;
-            label1085.Enabled = b;
-            numericUpDown_imageX.Enabled = b;
-            numericUpDown_imageY.Enabled = b;
-        }
 
         private void numericUpDown_image_KeyDown(object sender, KeyEventArgs e)
         {

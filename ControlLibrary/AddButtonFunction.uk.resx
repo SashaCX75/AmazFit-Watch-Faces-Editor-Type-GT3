@@ -124,95 +124,38 @@
   <data name="radioButton_click.Text" xml:space="preserve">
     <value>Натискання кнопки</value>
   </data>
-  <data name="radioButton_click.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="radioButton_londPress.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 17</value>
   </data>
   <data name="radioButton_londPress.Text" xml:space="preserve">
     <value>Довге натискання кнопки</value>
   </data>
-  <data name="radioButton_londPress.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_Activity.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_App.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_System.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBox_UserScript.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="pictureBox4.ToolTip" xml:space="preserve">
-    <value>Для додавання власних наборів скриптів для функцій створіть папку "user_scripts" поруч 
+    <value>Для додавання власних наборів скриптів для функцій створіть папку "button_scripts" поруч 
 із виконуваним файлом і помістіть туди файли *.js. Ім'я файлу буде використовуватися для 
 відображення у випадаючому списку. Вміст файлу буде додано як код функції під час вибору 
 його у випадаючому списку.</value>
   </data>
-  <data name="pictureBox_IconSystem.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBox_selectScript.Text" xml:space="preserve">
     <value>Вибір із набору функцій</value>
-  </data>
-  <data name="groupBox_selectScript.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="button_Cancel.Text" xml:space="preserve">
     <value>Відмінити</value>
   </data>
-  <data name="button_Cancel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_Save.Text" xml:space="preserve">
     <value>Зберегти</value>
-  </data>
-  <data name="button_Save.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="richTextBox_click.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="groupBox_click.Text" xml:space="preserve">
     <value>Код для функції при натисканні кнопки</value>
   </data>
-  <data name="groupBox_click.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="richTextBox_longPress.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBox_longPress.Text" xml:space="preserve">
     <value>Код для функції при тривалом натискання кнопки</value>
-  </data>
-  <data name="groupBox_longPress.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>364, 13</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>* Деякі функції можуть не працювати (залежить від моделі годинника)</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2373,8 +2316,5 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Редагування функцій кнопки</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

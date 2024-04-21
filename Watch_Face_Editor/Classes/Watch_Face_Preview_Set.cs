@@ -63,6 +63,14 @@ namespace Watch_Face_Editor
         public int AirPressure { get; set; }
         public bool showTemperature { get; set; }
         //public bool showTemperatureMaxMin { get; set; }
+        public List<ForecastData> forecastData { get; set; }
+    }
+
+    public class ForecastData
+    {
+        public int high { get; set; }
+        public int low { get; set; }
+        public int index { get; set; }
     }
 
     public class StatusSet

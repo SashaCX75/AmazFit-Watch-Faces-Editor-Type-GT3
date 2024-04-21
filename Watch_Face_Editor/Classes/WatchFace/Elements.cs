@@ -1176,4 +1176,78 @@ namespace Watch_Face_Editor
         public bool visible = true;
 
     }
+
+    public class FewDays
+    {
+        /// <summary>X координата</summary>
+        public int X { get; set; }
+
+        /// <summary>Y координата</summary>
+        public int Y { get; set; }
+
+        /// <summary>Количество колонок для отображения</summary>
+        public int DaysCount { get; set; } = 7;
+
+        /// <summary>Количество колонок для отображения</summary>
+        public int ColumnWidth { get; set; } = 30;
+
+        /// <summary>Задний фон</summary>
+        public string Background { get; set; }
+
+    }
+
+    public class Weather_Diagram
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = false;
+
+
+        /// <summary>Высота графика</summary>
+        public int Height { get; set; } = 200;
+
+        /// <summary>Смещение графика по вертикали</summary>
+        public int Y { get; set; }
+
+        /// <summary>Отображать график максимальной температуры</summary>
+        public bool Use_max_diagram { get; set; } = true;
+
+        /// <summary>Смещение точки для максимальной температуры</summary>
+        public int Max_offsetX { get; set; }
+
+        /// <summary>Цвет графика максимальной температуры</summary>
+        public string Max_color { get; set; } = "0xFFFF0000";
+
+        /// <summary>Тип точки на графике максимальной температуры</summary>
+        public int Max_pointType { get; set; }
+
+        /// <summary>Размер точки на графике максимальной температуры</summary>
+        public int Max_pointSize { get; set; } = 12;
+
+        /// <summary>Размер графика максимальной температуры</summary>
+        public int Max_lineWidth { get; set; } = 3;
+
+
+
+        /// <summary>Отображать график минимальной температуры</summary>
+        public bool Use_min_diagram { get; set; } = true;
+
+        /// <summary>Смещение точки для минимальной температуры</summary>
+        public int Min_offsetX { get; set; }
+
+        /// <summary>Цвет графика минимальной температуры</summary>
+        public string Min_color { get; set; } = "0xFF10AAFF";
+
+        /// <summary>Тип точки на графике минимальной температуры</summary>
+        public int Min_pointType { get; set; }
+
+        /// <summary>Размер точки на графике минимальной температуры</summary>
+        public int Min_pointSize { get; set; } = 12;
+
+        /// <summary>Размер графика минимальной температуры</summary>
+        public int Min_lineWidth { get; set; } = 3;
+
+    }
 }

@@ -135,7 +135,7 @@
   </data>
   <data name="pictureBox4.ToolTip" xml:space="preserve">
     <value>Pour ajouter vos propres ensembles de scripts pour les fonctions, 
-créez un dossier "user_scripts" à côté du fichier exécutable et placez-y 
+créez un dossier "button_scripts" à côté du fichier exécutable et placez-y 
 les fichiers *.js. Le nom du fichier s'affichera dans la liste déroulante. 
 Le contenu du fichier sera ajouté sous forme de code et s'affiche 
 lorsque vous le sélectionnez dans la liste déroulante.</value>

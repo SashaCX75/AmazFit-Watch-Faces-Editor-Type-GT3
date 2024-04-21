@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace ControlLibrary
 {
@@ -14,6 +15,7 @@ namespace ControlLibrary
     {
         private int setNumber;
         private bool setValue;
+        Dictionary<string, List<int>> ForecastData = new Dictionary<string, List<int>>();
         public UCtrl_Set()
         {
             InitializeComponent();
@@ -168,10 +170,12 @@ namespace ControlLibrary
         /// минимальная температура, УФ индекс, качество воздуха, влажность, сила ветра,
         /// высота, давление)</param>
         /// <param name="checkValue">Дначение переключателей (Bluetooth, будильник, блокировка, DND, показ температуры)</param>
-        public void GetValue(out Dictionary<string, int> Activity, out Dictionary<string, int> Air, out Dictionary<string, bool> checkValue)
+        public void GetValue(out Dictionary<string, int> Activity, out Dictionary<string, int> Air, out Dictionary<string, List<int>> ForecastData,
+            out Dictionary<string, bool> checkValue)
         {
             Activity = new Dictionary<string, int>();
             Air = new Dictionary<string, int>();
+            ForecastData = this.ForecastData;
             checkValue = new Dictionary<string, bool>();
 
             Activity.Add("Year", dateTimePicker_Date_Set.Value.Year);
@@ -230,7 +234,8 @@ namespace ControlLibrary
         /// минимальная температура, УФ индекс, качество воздуха, влажность, сила ветра,
         /// высота, давление)</param>
         /// <param name="checkValue">Дначение переключателей (Bluetooth, будильник, блокировка, DND, показ температуры)</param>
-        public void SetValue(Dictionary<string, int> Activity, Dictionary<string, int> Air, Dictionary<string, bool> checkValue)
+        public void SetValue(Dictionary<string, int> Activity, Dictionary<string, int> Air, Dictionary<string, List<int>> ForecastData,
+            Dictionary<string, bool> checkValue)
         {
             int year;
             Activity.TryGetValue("Year", out year);
@@ -349,6 +354,8 @@ namespace ControlLibrary
                 checkBox_DND_Set.Checked = DND;
 
                 checkBox_WeatherSet_Temp.Checked = showTemperature;
+
+                this.ForecastData = ForecastData;
             }
             finally
             {
@@ -409,6 +416,25 @@ namespace ControlLibrary
             checkBox_DND_Set.Checked = rnd.Next(2) == 0 ? false : true;
 
             checkBox_WeatherSet_Temp.Checked = rnd.Next(7) == 0 ? false : true;
+
+            Dictionary<string, List<int>> ForecastData = new Dictionary<string, List<int>>();
+            List<int> high = new List<int>();
+            List<int> low = new List<int>();
+            List<int> index = new List<int>();
+            for (int i = 0; i < 9; i++)
+            {
+                int maxTemp = rnd.Next(-5, 15) + 1;
+                int minTemp = maxTemp - rnd.Next(3, 10);
+                int iconIndex = rnd.Next(0, 25);
+
+                high.Add(maxTemp);
+                low.Add(minTemp);
+                index.Add(iconIndex);
+            }
+            ForecastData.Add("high", high);
+            ForecastData.Add("low", low);
+            ForecastData.Add("index", index);
+            this.ForecastData = ForecastData;
 
             setValue = false;
         }

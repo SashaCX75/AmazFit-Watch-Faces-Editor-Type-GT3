@@ -690,6 +690,26 @@ namespace Watch_Face_Editor
                         break;
                     #endregion
 
+                    #region Element_Weather_FewDays
+                    case "Element_Weather_FewDays":
+                        Element_Weather_FewDays Weather_FewDays = null;
+                        try
+                        {
+                            Weather_FewDays = JsonConvert.DeserializeObject<Element_Weather_FewDays>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Weather_FewDays != null) NewElements.Add(Weather_FewDays);
+                        break;
+                    #endregion
+
                     #region ElementUVIndex
                     case "ElementUVIndex":
                         ElementUVIndex UVIndex = null;
@@ -1154,17 +1174,12 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Читаем настройки для отображения температуры</summary>
-        private void Read_ImgNumberWeather_Options(hmUI_widget_IMG_NUMBER img_number, bool _follow, string _followText,
-            bool _imageError, bool _padingZero)
+        private void Read_ImgNumberWeather_Options(hmUI_widget_IMG_NUMBER img_number)
         {
             PreviewView = false;
 
             uCtrl_Text_Weather_Opt.SettingsClear();
 
-            //uCtrl_Text_Weather_Opt.Follow = _follow;
-            uCtrl_Text_Weather_Opt.FollowText = _followText;
-            uCtrl_Text_Weather_Opt.ImageError = _imageError;
-            //uCtrl_Text_Weather_Opt.PaddingZero = _padingZero;
             uCtrl_Text_Weather_Opt.Visible = true;
 
             //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
@@ -1195,9 +1210,6 @@ namespace Watch_Face_Editor
             uCtrl_Text_Weather_Opt.numericUpDown_angle.Value = img_number.angle;
 
             uCtrl_Text_Weather_Opt.SetAlignment(img_number.align);
-
-            uCtrl_Text_Weather_Opt.checkBox_addZero.Checked = img_number.zero;
-            uCtrl_Text_Weather_Opt.checkBox_follow.Checked = img_number.follow;
 
             PreviewView = true;
         }
@@ -2050,6 +2062,71 @@ namespace Watch_Face_Editor
             PreviewView = true;
         }
 
+        /// <summary>Читаем настройки прогноза погоды</summary>
+        private void Read_WeatherFewDay_Options(FewDays fewDays)
+        {
+            PreviewView = false;
+
+            uCtrl_Weather_FewDays_Opt.SettingsClear();
+            uCtrl_Weather_FewDays_Opt.Visible = true;
+
+            uCtrl_Weather_FewDays_Opt._FewDays = fewDays;
+
+            if (fewDays == null)
+            {
+                PreviewView = true;
+                return;
+            }
+
+            if (fewDays.Background != null) uCtrl_Weather_FewDays_Opt.SetBackground(fewDays.Background);
+            uCtrl_Weather_FewDays_Opt.numericUpDown_posX.Value = fewDays.X;
+            uCtrl_Weather_FewDays_Opt.numericUpDown_posY.Value = fewDays.Y;
+
+            uCtrl_Weather_FewDays_Opt.numericUpDown_daysCount.Value = fewDays.DaysCount;
+            uCtrl_Weather_FewDays_Opt.numericUpDown_columnWidth.Value = fewDays.ColumnWidth;
+
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки графика прогноза погоды</summary>
+        private void Read_WeatherDiagram_Options(Weather_Diagram diagram)
+        {
+            PreviewView = false;
+
+            uCtrl_TemperatureGraph_Opt.SettingsClear();
+            uCtrl_TemperatureGraph_Opt.Visible = true;
+
+            uCtrl_TemperatureGraph_Opt._Diagram = diagram;
+
+            if (diagram == null)
+            {
+                PreviewView = true;
+                return;
+            }
+
+            uCtrl_TemperatureGraph_Opt.numericUpDown_posY.Value = diagram.Y; 
+            uCtrl_TemperatureGraph_Opt.numericUpDown_height.Value = diagram.Height;
+
+            uCtrl_TemperatureGraph_Opt.SetMaxColor(StringToColor(diagram.Max_color));
+            uCtrl_TemperatureGraph_Opt.numericUpDown_max_lineWidth.Value = diagram.Max_lineWidth;
+            uCtrl_TemperatureGraph_Opt.SetMaxPointType(diagram.Max_pointType);
+            uCtrl_TemperatureGraph_Opt.numericUpDown_max_pointSize.Value = diagram.Max_pointSize;
+            uCtrl_TemperatureGraph_Opt.numericUpDown_max_offsetX.Value = diagram.Max_offsetX;
+
+            uCtrl_TemperatureGraph_Opt.SetMinColor(StringToColor(diagram.Min_color));
+            uCtrl_TemperatureGraph_Opt.numericUpDown_min_lineWidth.Value = diagram.Min_lineWidth;
+            uCtrl_TemperatureGraph_Opt.SetMinPointType(diagram.Min_pointType);
+            uCtrl_TemperatureGraph_Opt.numericUpDown_min_pointSize.Value = diagram.Min_pointSize;
+            uCtrl_TemperatureGraph_Opt.numericUpDown_min_offsetX.Value = diagram.Min_offsetX;
+
+            uCtrl_TemperatureGraph_Opt.checkBox_use_max.Checked = diagram.Use_max_diagram;
+            uCtrl_TemperatureGraph_Opt.checkBox_use_min.Checked = diagram.Use_min_diagram;
+
+            PreviewView = true;
+        }
+
+
+
         /// <summary>Меняем настройки фона</summary>
         private void userCtrl_Background_Options_ValueChanged(object sender, EventArgs eventArgs)
         {
@@ -2254,7 +2331,6 @@ namespace Watch_Face_Editor
             if (img_number == null) return;
 
             img_number.align = uCtrl_Text_Weather_Opt.GetAlignment();
-            img_number.follow = uCtrl_Text_Weather_Opt.checkBox_follow.Checked;
             img_number.icon = uCtrl_Text_Weather_Opt.GetIcon();
             img_number.iconPosX = (int)uCtrl_Text_Weather_Opt.numericUpDown_iconX.Value;
             img_number.iconPosY = (int)uCtrl_Text_Weather_Opt.numericUpDown_iconY.Value;
@@ -2268,7 +2344,6 @@ namespace Watch_Face_Editor
             img_number.negative_image = uCtrl_Text_Weather_Opt.GetImageMinus();
             img_number.invalid_image = uCtrl_Text_Weather_Opt.GetImageError();
             img_number.dot_image = uCtrl_Text_Weather_Opt.GetSeparator();
-            img_number.zero = uCtrl_Text_Weather_Opt.checkBox_addZero.Checked;
 
             JSON_Modified = true;
             PreviewImage();
@@ -3532,6 +3607,64 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        private void uCtrl_Weather_FewDays_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            FewDays fewDays = (FewDays)uCtrl_Weather_FewDays_Opt._FewDays;
+            if (fewDays == null) return;
+
+
+            uCtrl_Weather_FewDays_Opt._FewDays = fewDays;
+
+            if (fewDays == null)
+            {
+                PreviewView = true;
+                return;
+            }
+
+            fewDays.Background = uCtrl_Weather_FewDays_Opt.GetBackground();
+            fewDays.X = (int)uCtrl_Weather_FewDays_Opt.numericUpDown_posX.Value;
+            fewDays.Y = (int)uCtrl_Weather_FewDays_Opt.numericUpDown_posY.Value;
+
+            fewDays.DaysCount = (int)uCtrl_Weather_FewDays_Opt.numericUpDown_daysCount.Value;
+            fewDays.ColumnWidth = (int)uCtrl_Weather_FewDays_Opt.numericUpDown_columnWidth.Value;
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_TemperatureGraph_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            Weather_Diagram diagram = (Weather_Diagram)uCtrl_TemperatureGraph_Opt._Diagram;
+            if (diagram == null) return;
+
+            diagram.Y = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_posY.Value;
+            diagram.Height = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_height.Value;
+
+            diagram.Max_color = ColorToString(uCtrl_TemperatureGraph_Opt.GetMaxColor());
+            diagram.Max_lineWidth = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_max_lineWidth.Value;
+            diagram.Max_pointType = uCtrl_TemperatureGraph_Opt.GetMaxPointType();
+            diagram.Max_pointSize = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_max_pointSize.Value;
+            diagram.Max_offsetX = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_max_offsetX.Value;
+
+            diagram.Min_color = ColorToString(uCtrl_TemperatureGraph_Opt.GetMinColor());
+            diagram.Min_lineWidth = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_min_lineWidth.Value;
+            diagram.Min_pointType = uCtrl_TemperatureGraph_Opt.GetMinPointType();
+            diagram.Min_pointSize = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_min_pointSize.Value;
+            diagram.Min_offsetX = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_min_offsetX.Value;
+
+            diagram.Use_max_diagram = uCtrl_TemperatureGraph_Opt.checkBox_use_max.Checked;
+            diagram.Use_min_diagram = uCtrl_TemperatureGraph_Opt.checkBox_use_min.Checked;
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
         private void uCtrl_JS_script_Opt_ValueChanged(object sender, EventArgs eventArgs)
         {
             if (!PreviewView) return;
@@ -4259,7 +4392,6 @@ namespace Watch_Face_Editor
             hmUI_widget_IMG_NUMBER img_number = new hmUI_widget_IMG_NUMBER();
 
             img_number.align = uCtrl_Text_Weather_Opt.GetAlignment();
-            img_number.follow = uCtrl_Text_Weather_Opt.checkBox_follow.Checked;
             img_number.icon = uCtrl_Text_Weather_Opt.GetIcon();
             img_number.iconPosX = (int)uCtrl_Text_Weather_Opt.numericUpDown_iconX.Value;
             img_number.iconPosY = (int)uCtrl_Text_Weather_Opt.numericUpDown_iconY.Value;
@@ -4273,7 +4405,6 @@ namespace Watch_Face_Editor
             img_number.negative_image = uCtrl_Text_Weather_Opt.GetImageMinus();
             img_number.invalid_image = uCtrl_Text_Weather_Opt.GetImageError();
             img_number.dot_image = uCtrl_Text_Weather_Opt.GetSeparator();
-            img_number.zero = uCtrl_Text_Weather_Opt.checkBox_addZero.Checked;
 
             WidgetProperty.Add("hmUI_widget_IMG_NUMBER", img_number);
             uCtrl_Text_Weather_Opt.WidgetProperty = WidgetProperty;
@@ -4312,9 +4443,6 @@ namespace Watch_Face_Editor
             uCtrl_Text_Weather_Opt.numericUpDown_angle.Value = img_number.angle;
 
             uCtrl_Text_Weather_Opt.SetAlignment(img_number.align);
-
-            uCtrl_Text_Weather_Opt.checkBox_addZero.Checked = img_number.zero;
-            uCtrl_Text_Weather_Opt.checkBox_follow.Checked = img_number.follow;
 
             PreviewView = true;
             uCtrl_Text_Weather_Opt_ValueChanged(sender, eventArgs);

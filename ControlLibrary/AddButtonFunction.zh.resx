@@ -131,7 +131,7 @@
     <value>长按按钮</value>
   </data>
   <data name="pictureBox4.ToolTip" xml:space="preserve">
-    <value>要添加您自己的函数脚本集，请创建一个文件夹“user_scripts”
+    <value>要添加您自己的函数脚本集，请创建一个文件夹“button_scripts”
 旁边的可执行文件并将 *.js 文件放在那里。 将使用文件名
 显示在下拉列表中。 文件的内容将作为函数添加
 当您在下拉列表中选择它时，会显示代码。</value>

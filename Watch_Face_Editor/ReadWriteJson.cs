@@ -8503,6 +8503,30 @@ namespace Watch_Face_Editor
                                     optionNameStart + "temperature_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+
+                            if (Weather.Group_Current.Number.imperial_unit != null && Weather.Group_Current.Number.imperial_unit.Length > 0)
+                            {
+                                if (SelectedModel.versionOS > 2)
+                                {
+                                    if (items.IndexOf("const temperatureUnit = hmSetting.getTemperatureUnit();") < 0)
+                                    {
+                                        items += Environment.NewLine + TabInString(6) + "const temperatureUnit = hmSetting.getTemperatureUnit();";
+                                    }
+
+                                    WeatherGroup group = (WeatherGroup)Weather.Group_Current.Clone();
+                                    hmUI_widget_IMG_NUMBER img_number = group.Number;
+                                    img_number.imperial_unit = Weather.Group_Current.Number.unit;
+                                    img_number.unit = Weather.Group_Current.Number.imperial_unit;
+                                    numberOptions = IMG_NUMBER_Options(img_number, "WEATHER_CURRENT", show_level, 1);
+
+                                    items += Environment.NewLine + TabInString(6) + "//start of ignored block";
+                                    items += Environment.NewLine + TabInString(6) + "if (temperatureUnit == 1) {";
+                                    items += Environment.NewLine + TabInString(7) + optionNameStart + "temperature_current_text_img.setProperty(hmUI.prop.MORE, {";
+                                    items += numberOptions + TabInString(7) + "});";
+                                    items += Environment.NewLine + TabInString(6) + "};";
+                                    items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
+                                }
+                            }
                         }
 
                         // Number_Font
@@ -8563,6 +8587,30 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "temperature_low_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberMinOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+
+                            if (Weather.Group_Min.Number.imperial_unit != null && Weather.Group_Min.Number.imperial_unit.Length > 0)
+                            {
+                                if (SelectedModel.versionOS > 2)
+                                {
+                                    if (items.IndexOf("const temperatureUnit = hmSetting.getTemperatureUnit();") < 0)
+                                    {
+                                        items += Environment.NewLine + TabInString(6) + "const temperatureUnit = hmSetting.getTemperatureUnit();";
+                                    }
+
+                                    WeatherGroup group = (WeatherGroup)Weather.Group_Min.Clone();
+                                    hmUI_widget_IMG_NUMBER img_number = group.Number;
+                                    img_number.imperial_unit = Weather.Group_Min.Number.unit;
+                                    img_number.unit = Weather.Group_Min.Number.imperial_unit;
+                                    numberMinOptions = IMG_NUMBER_Options(img_number, "WEATHER_LOW", show_level, 1);
+
+                                    items += Environment.NewLine + TabInString(6) + "//start of ignored block";
+                                    items += Environment.NewLine + TabInString(6) + "if (temperatureUnit == 1) {";
+                                    items += Environment.NewLine + TabInString(7) + optionNameStart + "temperature_low_text_img.setProperty(hmUI.prop.MORE, {";
+                                    items += numberMinOptions + TabInString(7) + "});";
+                                    items += Environment.NewLine + TabInString(6) + "};";
+                                    items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
+                                }
                             }
                         }
 
@@ -8625,6 +8673,30 @@ namespace Watch_Face_Editor
                                     optionNameStart + "temperature_high_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberMaxOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+
+                            if (Weather.Group_Max.Number.imperial_unit != null && Weather.Group_Max.Number.imperial_unit.Length > 0)
+                            {
+                                if (SelectedModel.versionOS > 2)
+                                {
+                                    if (items.IndexOf("const temperatureUnit = hmSetting.getTemperatureUnit();") < 0)
+                                    {
+                                        items += Environment.NewLine + TabInString(6) + "const temperatureUnit = hmSetting.getTemperatureUnit();";
+                                    }
+
+                                    WeatherGroup group = (WeatherGroup)Weather.Group_Max.Clone();
+                                    hmUI_widget_IMG_NUMBER img_number = group.Number;
+                                    img_number.imperial_unit = Weather.Group_Max.Number.unit;
+                                    img_number.unit = Weather.Group_Max.Number.imperial_unit;
+                                    numberMaxOptions_separator = IMG_NUMBER_Options(img_number, "WEATHER_HIGH", show_level, 1);
+
+                                    items += Environment.NewLine + TabInString(6) + "//start of ignored block";
+                                    items += Environment.NewLine + TabInString(6) + "if (temperatureUnit == 1) {";
+                                    items += Environment.NewLine + TabInString(7) + optionNameStart + "temperature_high_text_img.setProperty(hmUI.prop.MORE, {";
+                                    items += numberMaxOptions_separator + TabInString(7) + "});";
+                                    items += Environment.NewLine + TabInString(6) + "};";
+                                    items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
+                                }
+                            }
                         }
 
                         // Number_Max_Font
@@ -8685,6 +8757,30 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "temperature_max_min_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+
+                            if (Weather.Group_Max_Min.Number.imperial_unit != null && Weather.Group_Max_Min.Number.imperial_unit.Length > 0)
+                            {
+                                if (SelectedModel.versionOS > 2)
+                                {
+                                    if (items.IndexOf("const temperatureUnit = hmSetting.getTemperatureUnit();") < 0)
+                                    {
+                                        items += Environment.NewLine + TabInString(6) + "const temperatureUnit = hmSetting.getTemperatureUnit();";
+                                    }
+
+                                    WeatherGroup group = (WeatherGroup)Weather.Group_Max_Min.Clone();
+                                    hmUI_widget_IMG_NUMBER img_number = group.Number;
+                                    img_number.imperial_unit = Weather.Group_Max_Min.Number.unit;
+                                    img_number.unit = Weather.Group_Max_Min.Number.imperial_unit;
+                                    numberMaxMinOptions = IMG_NUMBER_Options(img_number, "WEATHER_HIGH_LOW", show_level, 1);
+
+                                    items += Environment.NewLine + TabInString(6) + "//start of ignored block";
+                                    items += Environment.NewLine + TabInString(6) + "if (temperatureUnit == 1) {";
+                                    items += Environment.NewLine + TabInString(7) + optionNameStart + "temperature_max_min_text_img.setProperty(hmUI.prop.MORE, {";
+                                    items += numberMaxMinOptions + TabInString(7) + "});";
+                                    items += Environment.NewLine + TabInString(6) + "};";
+                                    items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
+                                }
                             }
                         }
 
@@ -15862,12 +15958,10 @@ namespace Watch_Face_Editor
                     if (type == "WeatherHighLow")
                     {
                         options += TabInString(9 + tabOffset) + angleOffsetName + " = " + angleOffsetName + " - " + img_angle_name +
-                            " + " + optionNameStart + "TextCircle_dot_img_angle;" + Environment.NewLine;
-
-                        //options += TabInString(9 + tabOffset) + "if (" + strValueName + ".startsWith('-')) " + angleOffsetName + " = " + angleOffsetName + " - " + img_angle_name +
-                        //    " + " + optionNameStart + "TextCircle_separator_img_angle;" + Environment.NewLine;
-                        options += TabInString(9 + tabOffset) + "if (" + strValueName + ".indexOf('-', 2) >= 0) " + angleOffsetName + " = " + angleOffsetName + " - " + img_angle_name +
                             " + " + optionNameStart + "TextCircle_separator_img_angle;" + Environment.NewLine;
+
+                        options += TabInString(9 + tabOffset) + "if (" + strValueName + ".indexOf('-', 2) >= 0) " + angleOffsetName + " = " + angleOffsetName + " - " + img_angle_name +
+                            " + " + optionNameStart + "TextCircle_dot_img_angle;" + Environment.NewLine;
                     }
 
                     if (text_circle.char_space_angle != 0)
@@ -15908,8 +16002,6 @@ namespace Watch_Face_Editor
                         options += TabInString(9 + tabOffset) + angleOffsetName + " = " + angleOffsetName + " - " + img_angle_name +
                             " + " + optionNameStart + "TextCircle_separator_img_angle;" + Environment.NewLine;
 
-                        //options += TabInString(9 + tabOffset) + "if (" + strValueName + ".startsWith('-')) " + angleOffsetName + " = " + angleOffsetName + " - " + img_angle_name +
-                        //    " + " + optionNameStart + "TextCircle_dot_img_angle;" + Environment.NewLine;
                         options += TabInString(9 + tabOffset) + "if (" + strValueName + ".indexOf('-', 2) >= 0) " + angleOffsetName + " = " + angleOffsetName + " - " + img_angle_name +
                             " + " + optionNameStart + "TextCircle_dot_img_angle;" + Environment.NewLine;
                     }
@@ -32782,7 +32874,7 @@ namespace Watch_Face_Editor
 
                 if (text_rotate.imperial_unit != null && text_rotate.imperial_unit.Length > 0)
                 {
-                    if (sensorID == "forecastData" && SelectedModel.versionOS > 2)
+                    if ((sensorID == "forecastData" || sensorID == "currentWeather") && SelectedModel.versionOS > 2)
                     {
                         if (items.IndexOf("const temperatureUnit = hmSetting.getTemperatureUnit();") < 0)
                         {
@@ -33284,7 +33376,7 @@ namespace Watch_Face_Editor
 
                 if (text_circle.imperial_unit != null && text_circle.imperial_unit.Length > 0)
                 {
-                    if (sensorID == "forecastData" && SelectedModel.versionOS > 2)
+                    if ((sensorID == "forecastData" || sensorID == "currentWeather") && SelectedModel.versionOS > 2)
                     {
                         if (items.IndexOf("const temperatureUnit = hmSetting.getTemperatureUnit();") < 0)
                         {
