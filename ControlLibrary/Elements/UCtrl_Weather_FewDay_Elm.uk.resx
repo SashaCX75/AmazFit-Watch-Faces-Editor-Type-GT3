@@ -117,6 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="button_Number_Average_Font.Text" xml:space="preserve">
+    <value>Дані шрифтом (середня)</value>
+  </data>
+  <data name="button_Number_MaxMin_Font.Text" xml:space="preserve">
+    <value>Дані шрифтом (макс/мін)</value>
+  </data>
+  <data name="button_Number_Average.Text" xml:space="preserve">
+    <value>Цифрові значення (середня)</value>
+  </data>
+  <data name="button_Number_MaxMin.Text" xml:space="preserve">
+    <value>Цифрові значення (макс/мін)</value>
+  </data>
+  <data name="button_Settings.Text" xml:space="preserve">
+    <value>Загальні налаштування</value>
+  </data>
   <data name="button_Font_DOW.Text" xml:space="preserve">
     <value>День тижня шрифтом</value>
   </data>

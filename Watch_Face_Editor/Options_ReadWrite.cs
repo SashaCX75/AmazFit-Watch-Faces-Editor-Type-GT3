@@ -1094,6 +1094,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Rotate_Opt.SetUnitMile(img_number.imperial_unit);
             uCtrl_Text_Rotate_Opt.SetImageError(img_number.invalid_image);
             uCtrl_Text_Rotate_Opt.SetImageDecimalPointOrMinus(img_number.dot_image);
+            if(_weather) uCtrl_Text_Rotate_Opt.SetImageDecimalPointOrMinus(img_number.negative_image);
             uCtrl_Text_Rotate_Opt.SetSeparator(img_number.separator_image); // разделитель для макс/мин температуры
             uCtrl_Text_Rotate_Opt.numericUpDown_spacing.Value = img_number.space;
             uCtrl_Text_Rotate_Opt.numericUpDown_angle.Value = img_number.angle;
@@ -2085,6 +2086,8 @@ namespace Watch_Face_Editor
             uCtrl_Weather_FewDays_Opt.numericUpDown_daysCount.Value = fewDays.DaysCount;
             uCtrl_Weather_FewDays_Opt.numericUpDown_columnWidth.Value = fewDays.ColumnWidth;
 
+            //uCtrl_Weather_FewDays_Opt.checkBox_position_on_graph.Checked = fewDays.PositionOnGraph;
+
             PreviewView = true;
         }
 
@@ -2106,6 +2109,7 @@ namespace Watch_Face_Editor
 
             uCtrl_TemperatureGraph_Opt.numericUpDown_posY.Value = diagram.Y; 
             uCtrl_TemperatureGraph_Opt.numericUpDown_height.Value = diagram.Height;
+            uCtrl_TemperatureGraph_Opt.checkBox_position_on_graph.Checked = diagram.PositionOnGraph;
 
             uCtrl_TemperatureGraph_Opt.SetMaxColor(StringToColor(diagram.Max_color));
             uCtrl_TemperatureGraph_Opt.numericUpDown_max_lineWidth.Value = diagram.Max_lineWidth;
@@ -2119,8 +2123,15 @@ namespace Watch_Face_Editor
             uCtrl_TemperatureGraph_Opt.numericUpDown_min_pointSize.Value = diagram.Min_pointSize;
             uCtrl_TemperatureGraph_Opt.numericUpDown_min_offsetX.Value = diagram.Min_offsetX;
 
+            uCtrl_TemperatureGraph_Opt.SetAverageColor(StringToColor(diagram.Average_color));
+            uCtrl_TemperatureGraph_Opt.numericUpDown_average_lineWidth.Value = diagram.Average_lineWidth;
+            uCtrl_TemperatureGraph_Opt.SetAveragePointType(diagram.Average_pointType);
+            uCtrl_TemperatureGraph_Opt.numericUpDown_average_pointSize.Value = diagram.Average_pointSize;
+            uCtrl_TemperatureGraph_Opt.numericUpDown_average_offsetX.Value = diagram.Average_offsetX;
+
             uCtrl_TemperatureGraph_Opt.checkBox_use_max.Checked = diagram.Use_max_diagram;
             uCtrl_TemperatureGraph_Opt.checkBox_use_min.Checked = diagram.Use_min_diagram;
+            uCtrl_TemperatureGraph_Opt.checkBox_use_average.Checked = diagram.Use_average_diagram;
 
             PreviewView = true;
         }
@@ -3597,6 +3608,7 @@ namespace Watch_Face_Editor
             img_number.unit = uCtrl_Text_Rotate_Opt.GetUnit();
             img_number.imperial_unit = uCtrl_Text_Rotate_Opt.GetUnitMile();
             img_number.dot_image = uCtrl_Text_Rotate_Opt.GetImageDecimalPointOrMinus();
+            img_number.negative_image = uCtrl_Text_Rotate_Opt.GetImageDecimalPointOrMinus();
             img_number.invalid_image = uCtrl_Text_Rotate_Opt.GetImageError();
             img_number.separator_image = uCtrl_Text_Rotate_Opt.GetSeparator(); // разделитель для макс/мин температуры
             img_number.zero = uCtrl_Text_Rotate_Opt.checkBox_addZero.Checked;
@@ -3630,6 +3642,8 @@ namespace Watch_Face_Editor
             fewDays.DaysCount = (int)uCtrl_Weather_FewDays_Opt.numericUpDown_daysCount.Value;
             fewDays.ColumnWidth = (int)uCtrl_Weather_FewDays_Opt.numericUpDown_columnWidth.Value;
 
+            //fewDays.PositionOnGraph = uCtrl_Weather_FewDays_Opt.checkBox_position_on_graph.Checked;
+
             JSON_Modified = true;
             PreviewImage();
             FormText();
@@ -3644,6 +3658,7 @@ namespace Watch_Face_Editor
 
             diagram.Y = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_posY.Value;
             diagram.Height = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_height.Value;
+            diagram.PositionOnGraph = uCtrl_TemperatureGraph_Opt.checkBox_position_on_graph.Checked;
 
             diagram.Max_color = ColorToString(uCtrl_TemperatureGraph_Opt.GetMaxColor());
             diagram.Max_lineWidth = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_max_lineWidth.Value;
@@ -3657,8 +3672,15 @@ namespace Watch_Face_Editor
             diagram.Min_pointSize = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_min_pointSize.Value;
             diagram.Min_offsetX = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_min_offsetX.Value;
 
+            diagram.Average_color = ColorToString(uCtrl_TemperatureGraph_Opt.GetAverageColor());
+            diagram.Average_lineWidth = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_average_lineWidth.Value;
+            diagram.Average_pointType = uCtrl_TemperatureGraph_Opt.GetAveragePointType();
+            diagram.Average_pointSize = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_average_pointSize.Value;
+            diagram.Average_offsetX = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_average_offsetX.Value;
+
             diagram.Use_max_diagram = uCtrl_TemperatureGraph_Opt.checkBox_use_max.Checked;
             diagram.Use_min_diagram = uCtrl_TemperatureGraph_Opt.checkBox_use_min.Checked;
+            diagram.Use_average_diagram = uCtrl_TemperatureGraph_Opt.checkBox_use_average.Checked;
 
             JSON_Modified = true;
             PreviewImage();

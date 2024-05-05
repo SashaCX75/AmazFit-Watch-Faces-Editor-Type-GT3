@@ -235,13 +235,19 @@
 колонки для кожного дня.</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 52</value>
+    <value>230, 65</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>   Якщо ввімкнено відображення графіка 
-температури, то координати числового 
-значення температури відраховуються від 
-точки на графіку для поточного дня.
-</value>
+температури і позиціонування за графіком, 
+то координати числового значення 
+температури відраховуються від точки на 
+графіку для поточного дня.</value>
+  </data>
+  <data name="checkBox_position_on_graph.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 17</value>
+  </data>
+  <data name="checkBox_position_on_graph.Text" xml:space="preserve">
+    <value>Позиціонувати за графіком</value>
   </data>
 </root>

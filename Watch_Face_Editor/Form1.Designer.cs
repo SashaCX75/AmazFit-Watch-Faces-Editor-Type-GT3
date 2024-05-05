@@ -29,6 +29,7 @@ namespace Watch_Face_Editor
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -42,7 +43,7 @@ namespace Watch_Face_Editor
             this.NameFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.contextMenuStrip_RemoveImage = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip_RemoveImage = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.удалитьИзображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обновитьСписокИзображенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView_AnimImagesList = new System.Windows.Forms.DataGridView();
@@ -311,7 +312,7 @@ namespace Watch_Face_Editor
             this.checkBox_WebW = new System.Windows.Forms.CheckBox();
             this.button_PreviewBig = new System.Windows.Forms.Button();
             this.label_version = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.comboBox_watch_model = new System.Windows.Forms.ComboBox();
             this.label_watch_model = new System.Windows.Forms.Label();
             this.checkBox_Show_Buttons = new System.Windows.Forms.CheckBox();

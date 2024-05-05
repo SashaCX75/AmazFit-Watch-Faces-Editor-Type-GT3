@@ -1191,6 +1191,9 @@ namespace Watch_Face_Editor
         /// <summary>Количество колонок для отображения</summary>
         public int ColumnWidth { get; set; } = 30;
 
+        ///// <summary>Позиционировать данные температуры по графику</summary>
+        //public bool PositionOnGraph { get; set; } = true;
+
         /// <summary>Задний фон</summary>
         public string Background { get; set; }
 
@@ -1230,7 +1233,6 @@ namespace Watch_Face_Editor
         public int Max_lineWidth { get; set; } = 3;
 
 
-
         /// <summary>Отображать график минимальной температуры</summary>
         public bool Use_min_diagram { get; set; } = true;
 
@@ -1248,6 +1250,28 @@ namespace Watch_Face_Editor
 
         /// <summary>Размер графика минимальной температуры</summary>
         public int Min_lineWidth { get; set; } = 3;
+
+
+        /// <summary>Отображать график средней температуры</summary>
+        public bool Use_average_diagram { get; set; } = true;
+
+        /// <summary>Смещение точки для средней температуры</summary>
+        public int Average_offsetX { get; set; }
+
+        /// <summary>Цвет графика средней температуры</summary>
+        public string Average_color { get; set; } = "0xFFC0C0C0";
+
+        /// <summary>Тип точки на графике средней температуры</summary>
+        public int Average_pointType { get; set; }
+
+        /// <summary>Размер точки на графике средней температуры</summary>
+        public int Average_pointSize { get; set; } = 12;
+
+        /// <summary>Размер графика средней температуры</summary>
+        public int Average_lineWidth { get; set; } = 3;
+
+        /// <summary>Позиционировать данные температуры по графику</summary>
+        public bool PositionOnGraph { get; set; } = true;
 
     }
 }

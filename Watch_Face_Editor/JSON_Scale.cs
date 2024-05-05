@@ -461,6 +461,10 @@ namespace Watch_Face_Editor
                     Scale_TEXT(elementWeather_FewDays.Number_Font_Max, scale);
                     Scale_IMG_NUMBER(elementWeather_FewDays.Number_Min, scale);
                     Scale_TEXT(elementWeather_FewDays.Number_Font_Min, scale);
+                    Scale_IMG_NUMBER(elementWeather_FewDays.Number_MaxMin, scale);
+                    Scale_TEXT(elementWeather_FewDays.Number_Font_MaxMin, scale);
+                    Scale_IMG_NUMBER(elementWeather_FewDays.Number_Average, scale);
+                    Scale_TEXT(elementWeather_FewDays.Number_Font_Average, scale);
                     Scale_IMG_LEVEL(elementWeather_FewDays.DayOfWeek_Images, scale);
                     Scale_TEXT(elementWeather_FewDays.DayOfWeek_Font, scale);
                     Scale_IMG_LEVEL(elementWeather_FewDays.Images, scale);

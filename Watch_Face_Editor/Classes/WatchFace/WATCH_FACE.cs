@@ -5869,6 +5869,18 @@ namespace Watch_Face_Editor
         /// <summary>Минимальная температура шрифтом</summary>
         public hmUI_widget_TEXT Number_Font_Min { get; set; }
 
+        /// <summary>Максимальная/минимальная температура картинками</summary>
+        public hmUI_widget_IMG_NUMBER Number_MaxMin { get; set; }
+
+        /// <summary>Максимальная/минимальная температура шрифтом</summary>
+        public hmUI_widget_TEXT Number_Font_MaxMin { get; set; }
+
+        /// <summary>Средняя температура картинками</summary>
+        public hmUI_widget_IMG_NUMBER Number_Average { get; set; }
+
+        /// <summary>Средняя температура шрифтом</summary>
+        public hmUI_widget_TEXT Number_Font_Average { get; set; }
+
         /// <summary>День недели картинками</summary>
         public hmUI_widget_IMG_LEVEL DayOfWeek_Images { get; set; }
 
@@ -5917,23 +5929,36 @@ namespace Watch_Face_Editor
                 Diagram = new Weather_Diagram
                 {
                     Height = this.Diagram.Height,
+                    Y = this.Diagram.Y,
+
                     Max_offsetX = this.Diagram.Max_offsetX,
                     Min_offsetX = this.Diagram.Min_offsetX,
-                    Y = this.Diagram.Y,
+                    Average_offsetX = this.Diagram.Average_offsetX,
+
                     Max_color = this.Diagram.Max_color,
                     Min_color = this.Diagram.Min_color,
+                    Average_color = this.Diagram.Average_color,
+
                     Max_pointType = this.Diagram.Max_pointType,
                     Min_pointType = this.Diagram.Min_pointType,
+                    Average_pointType = this.Diagram.Average_pointType,
+
                     Max_pointSize = this.Diagram.Max_pointSize,
                     Min_pointSize = this.Diagram.Min_pointSize,
+                    Average_pointSize = this.Diagram.Average_pointSize,
+
                     Max_lineWidth = this.Diagram.Max_lineWidth,
                     Min_lineWidth = this.Diagram.Min_lineWidth,
+                    Average_lineWidth = this.Diagram.Average_lineWidth,
 
                     Use_max_diagram = this.Diagram.Use_max_diagram,
                     Use_min_diagram = this.Diagram.Use_min_diagram,
+                    Use_average_diagram = this.Diagram.Use_average_diagram,
+
+                    PositionOnGraph = this.Diagram.PositionOnGraph,
 
                     position = this.Diagram.position,
-                    visible = this.Number_Max.visible,
+                    visible = this.Diagram.visible,
                 };
             }
 
@@ -6049,6 +6074,163 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_IMG_NUMBER Number_MaxMin = null;
+            if (this.Number_MaxMin != null)
+            {
+                Number_MaxMin = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number_MaxMin.imageX,
+                    imageY = this.Number_MaxMin.imageY,
+                    space = this.Number_MaxMin.space,
+                    angle = this.Number_MaxMin.angle,
+                    zero = this.Number_MaxMin.zero,
+                    align = this.Number_MaxMin.align,
+                    img_First = this.Number_MaxMin.img_First,
+                    unit = this.Number_MaxMin.unit,
+                    imperial_unit = this.Number_MaxMin.imperial_unit,
+                    icon = this.Number_MaxMin.icon,
+                    iconPosX = this.Number_MaxMin.iconPosX,
+                    iconPosY = this.Number_MaxMin.iconPosY,
+                    negative_image = this.Number_MaxMin.negative_image,
+                    invalid_image = this.Number_MaxMin.invalid_image,
+                    dot_image = this.Number_MaxMin.dot_image,
+                    follow = this.Number_MaxMin.follow,
+
+                    position = this.Number_MaxMin.position,
+                    visible = this.Number_MaxMin.visible,
+                    show_level = this.Number_MaxMin.show_level,
+                    type = this.Number_MaxMin.type,
+                };
+            }
+
+            hmUI_widget_TEXT Number_Font_MaxMin = null;
+            if (this.Number_Font_MaxMin != null)
+            {
+                Number_Font_MaxMin = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Font_MaxMin.x,
+                    y = this.Number_Font_MaxMin.y,
+                    w = this.Number_Font_MaxMin.w,
+                    h = this.Number_Font_MaxMin.h,
+                    color = this.Number_Font_MaxMin.color,
+                    align_h = this.Number_Font_MaxMin.align_h,
+                    align_v = this.Number_Font_MaxMin.align_v,
+                    text_size = this.Number_Font_MaxMin.text_size,
+                    text_style = this.Number_Font_MaxMin.text_style,
+                    line_space = this.Number_Font_MaxMin.line_space,
+                    char_space = this.Number_Font_MaxMin.char_space,
+                    font = this.Number_Font_MaxMin.font,
+                    padding = this.Number_Font_MaxMin.padding,
+                    unit_type = this.Number_Font_MaxMin.unit_type,
+
+                    position = this.Number_Font_MaxMin.position,
+                    visible = this.Number_Font_MaxMin.visible,
+                    show_level = this.Number_Font_MaxMin.show_level,
+                    type = this.Number_Font_MaxMin.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Number_Average = null;
+            if (this.Number_Average != null)
+            {
+                Number_Average = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number_Average.imageX,
+                    imageY = this.Number_Average.imageY,
+                    space = this.Number_Average.space,
+                    angle = this.Number_Average.angle,
+                    zero = this.Number_Average.zero,
+                    align = this.Number_Average.align,
+                    img_First = this.Number_Average.img_First,
+                    unit = this.Number_Average.unit,
+                    imperial_unit = this.Number_Average.imperial_unit,
+                    icon = this.Number_Average.icon,
+                    iconPosX = this.Number_Average.iconPosX,
+                    iconPosY = this.Number_Average.iconPosY,
+                    negative_image = this.Number_Average.negative_image,
+                    invalid_image = this.Number_Average.invalid_image,
+                    dot_image = this.Number_Average.dot_image,
+                    follow = this.Number_Average.follow,
+
+                    position = this.Number_Average.position,
+                    visible = this.Number_Average.visible,
+                    show_level = this.Number_Average.show_level,
+                    type = this.Number_Average.type,
+                };
+            }
+
+            hmUI_widget_TEXT Number_Font_Average = null;
+            if (this.Number_Font_Average != null)
+            {
+                Number_Font_Average = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Font_Average.x,
+                    y = this.Number_Font_Average.y,
+                    w = this.Number_Font_Average.w,
+                    h = this.Number_Font_Average.h,
+                    color = this.Number_Font_Average.color,
+                    align_h = this.Number_Font_Average.align_h,
+                    align_v = this.Number_Font_Average.align_v,
+                    text_size = this.Number_Font_Average.text_size,
+                    text_style = this.Number_Font_Average.text_style,
+                    line_space = this.Number_Font_Average.line_space,
+                    char_space = this.Number_Font_Average.char_space,
+                    font = this.Number_Font_Average.font,
+                    padding = this.Number_Font_Average.padding,
+                    unit_type = this.Number_Font_Average.unit_type,
+
+                    position = this.Number_Font_Average.position,
+                    visible = this.Number_Font_Average.visible,
+                    show_level = this.Number_Font_Average.show_level,
+                    type = this.Number_Font_Average.type,
+                };
+            }
+
+            hmUI_widget_IMG_LEVEL DayOfWeek_Images = null;
+            if (this.DayOfWeek_Images != null)
+            {
+                DayOfWeek_Images = new hmUI_widget_IMG_LEVEL
+                {
+                    X = this.DayOfWeek_Images.X,
+                    Y = this.DayOfWeek_Images.Y,
+                    img_First = this.DayOfWeek_Images.img_First,
+                    image_length = this.DayOfWeek_Images.image_length,
+                    shortcut = this.DayOfWeek_Images.shortcut,
+
+                    position = this.DayOfWeek_Images.position,
+                    visible = this.DayOfWeek_Images.visible,
+                    show_level = this.DayOfWeek_Images.show_level,
+                    type = this.DayOfWeek_Images.type,
+                };
+            }
+
+            hmUI_widget_TEXT DayOfWeek_Font = null;
+            if (this.DayOfWeek_Font != null)
+            {
+                DayOfWeek_Font = new hmUI_widget_TEXT
+                {
+                    x = this.DayOfWeek_Font.x,
+                    y = this.DayOfWeek_Font.y,
+                    w = this.DayOfWeek_Font.w,
+                    h = this.DayOfWeek_Font.h,
+                    color = this.DayOfWeek_Font.color,
+                    align_h = this.DayOfWeek_Font.align_h,
+                    align_v = this.DayOfWeek_Font.align_v,
+                    text_size = this.DayOfWeek_Font.text_size,
+                    text_style = this.DayOfWeek_Font.text_style,
+                    line_space = this.DayOfWeek_Font.line_space,
+                    char_space = this.DayOfWeek_Font.char_space,
+                    font = this.DayOfWeek_Font.font,
+                    padding = this.DayOfWeek_Font.padding,
+                    unit_type = this.DayOfWeek_Font.unit_type,
+
+                    position = this.DayOfWeek_Font.position,
+                    visible = this.DayOfWeek_Font.visible,
+                    show_level = this.DayOfWeek_Font.show_level,
+                    type = this.DayOfWeek_Font.type,
+                };
+            }
+
             hmUI_widget_IMG Icon = null;
             if (this.Icon != null)
             {
@@ -6078,6 +6260,10 @@ namespace Watch_Face_Editor
                 Number_Font_Max = Number_Font_Max,
                 Number_Min = Number_Min,
                 Number_Font_Min = Number_Font_Min,
+                Number_MaxMin = Number_MaxMin,
+                Number_Font_MaxMin = Number_Font_MaxMin,
+                Number_Average = Number_Average,
+                Number_Font_Average = Number_Font_Average,
                 Icon = Icon,
             };
         }

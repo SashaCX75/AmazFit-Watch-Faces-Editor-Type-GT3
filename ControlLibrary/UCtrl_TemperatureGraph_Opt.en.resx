@@ -117,13 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBox_use_min.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 17</value>
-  </data>
-  <data name="checkBox_use_min.Text" xml:space="preserve">
-    <value>Use</value>
-  </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Point size</value>
   </data>
@@ -131,7 +124,7 @@
     <value>Line width</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Offset of the point horizontally</value>
+    <value>Horizontal offset</value>
   </data>
   <data name="comboBox_min_pointType.Items" xml:space="preserve">
     <value>None</value>
@@ -151,6 +144,7 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Point type</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 13</value>
   </data>
@@ -158,19 +152,13 @@
     <value>Line colour</value>
   </data>
   <data name="groupBox_min.Text" xml:space="preserve">
-    <value>Minimum temperature</value>
+    <value>        Minimum temperature</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Chart height</value>
+    <value>Graph height</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Vertical offset</value>
-  </data>
-  <data name="checkBox_use_max.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 17</value>
-  </data>
-  <data name="checkBox_use_max.Text" xml:space="preserve">
-    <value>Use</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Point size</value>
@@ -179,7 +167,7 @@
     <value>Line width</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
-    <value>Offset of the point horizontally</value>
+    <value>Horizontal offset</value>
   </data>
   <data name="comboBox_max_pointType.Items" xml:space="preserve">
     <value>None</value>
@@ -206,6 +194,45 @@
     <value>Line colour</value>
   </data>
   <data name="groupBox_max.Text" xml:space="preserve">
-    <value>Maximum temperature</value>
+    <value>        Maximum temperature</value>
+  </data>
+  <data name="checkBox_position_on_graph.Text" xml:space="preserve">
+    <value>Position the data on graph points</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Point size</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Line width</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Horizontal offset</value>
+  </data>
+  <data name="comboBox_average_pointType.Items" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="comboBox_average_pointType.Items1" xml:space="preserve">
+    <value>Square 1</value>
+  </data>
+  <data name="comboBox_average_pointType.Items2" xml:space="preserve">
+    <value>Square 2</value>
+  </data>
+  <data name="comboBox_average_pointType.Items3" xml:space="preserve">
+    <value>Circle 1</value>
+  </data>
+  <data name="comboBox_average_pointType.Items4" xml:space="preserve">
+    <value>Circle 2</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Point type</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Line width</value>
+  </data>
+  <data name="groupBox_average.Text" xml:space="preserve">
+    <value>        Average temperature</value>
   </data>
 </root>

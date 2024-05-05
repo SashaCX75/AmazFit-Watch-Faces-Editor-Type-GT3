@@ -132,7 +132,6 @@ namespace ControlLibrary
         }
 
 
-
         public void SetMinColor(Color color)
         {
             comboBox_minColor.BackColor = color;
@@ -153,6 +152,29 @@ namespace ControlLibrary
         public int GetMinPointType()
         {
             return comboBox_min_pointType.SelectedIndex;
+        }
+
+
+        public void SetAverageColor(Color color)
+        {
+            comboBox_averageColor.BackColor = color;
+        }
+
+        public Color GetAverageColor()
+        {
+            return comboBox_averageColor.BackColor;
+        }
+
+        /// <summary>Устанавливает тип точки минимальной температуры</summary>
+        public void SetAveragePointType(int type)
+        {
+            comboBox_average_pointType.SelectedIndex = type;
+        }
+
+        /// <summary>Возвращает тип точки минимальной температуры</summary>
+        public int GetAveragePointType()
+        {
+            return comboBox_average_pointType.SelectedIndex;
         }
 
         [Browsable(true)]
@@ -231,8 +253,14 @@ namespace ControlLibrary
             numericUpDown_min_offsetX.Value = 0;
             comboBox_min_pointType.SelectedIndex = 0;
 
+            numericUpDown_average_lineWidth.Value = 5;
+            numericUpDown_average_pointSize.Value = 12;
+            numericUpDown_average_offsetX.Value = 0;
+            comboBox_average_pointType.SelectedIndex = 0;
+
             checkBox_use_max.Checked = true;
             checkBox_use_min.Checked = true;
+            checkBox_use_average.Checked = false;
 
             setValue = false;
         }
@@ -253,6 +281,7 @@ namespace ControlLibrary
             label9.Enabled = cheked;
             label8.Enabled = cheked;
             label1.Enabled = cheked;
+            label18.Enabled = cheked;
 
             if (ValueChanged != null && !setValue)
             {
@@ -275,7 +304,40 @@ namespace ControlLibrary
             label06.Enabled = cheked;
             label7.Enabled = cheked;
             label6.Enabled = cheked;
+            label20.Enabled = cheked;
 
+            if (ValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ValueChanged(this, eventArgs);
+            }
+        }
+
+        private void checkBox_use_average_CheckedChanged(object sender, EventArgs e)
+        {
+            bool cheked = checkBox_use_average.Checked;
+            comboBox_averageColor.Enabled = cheked;
+            comboBox_average_pointType.Enabled = cheked;
+            numericUpDown_average_lineWidth.Enabled = cheked;
+            numericUpDown_average_pointSize.Enabled = cheked;
+            numericUpDown_average_offsetX.Enabled = cheked;
+
+            label16.Enabled = cheked;
+            label15.Enabled = cheked;
+            label14.Enabled = cheked;
+            label13.Enabled = cheked;
+            label12.Enabled = cheked;
+            label19.Enabled = cheked;
+
+            if (ValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ValueChanged(this, eventArgs);
+            }
+        }
+
+        private void checkBox_position_on_graph_CheckedChanged(object sender, EventArgs e)
+        {
             if (ValueChanged != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();

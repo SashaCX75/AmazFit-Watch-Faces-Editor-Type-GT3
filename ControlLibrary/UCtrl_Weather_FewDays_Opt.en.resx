@@ -247,13 +247,18 @@ are calculated from the upper left corner of the
 of the column for each day.</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 52</value>
+    <value>253, 52</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>   If the graph display is enabled If the temperature 
-graph is enabled, the coordinates of the numerical 
-of the numerical temperature value are counted from 
-point on the graph for the current day.
-</value>
+    <value>   If temperature graph display and positioning on 
+graph are enabled, the coordinates of the numerical 
+temperature value are counted from a point on the 
+graph for the current day.</value>
+  </data>
+  <data name="checkBox_position_on_graph.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 17</value>
+  </data>
+  <data name="checkBox_position_on_graph.Text" xml:space="preserve">
+    <value>Positioning on graph</value>
   </data>
 </root>

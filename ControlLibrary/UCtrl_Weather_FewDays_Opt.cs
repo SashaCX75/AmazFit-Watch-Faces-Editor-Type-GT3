@@ -361,5 +361,13 @@ namespace ControlLibrary
             }
         }
 
+        private void checkBox_position_on_graph_CheckedChanged(object sender, EventArgs e)
+        {
+            //if (ValueChanged != null && !setValue)
+            //{
+            //    EventArgs eventArgs = new EventArgs();
+            //    ValueChanged(this, eventArgs);
+            //}
+        }
     }
 }

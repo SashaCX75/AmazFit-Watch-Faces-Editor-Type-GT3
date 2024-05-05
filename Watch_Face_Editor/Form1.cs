@@ -6675,6 +6675,26 @@ namespace Watch_Face_Editor
                                 uCtrl_Weather_FewDay_Elm.checkBox_Images_DOW.Checked = Weather_FewDays.DayOfWeek_Images.visible;
                                 elementOptions.Add(Weather_FewDays.DayOfWeek_Images.position, "Images_DOW");
                             }
+                            if (Weather_FewDays.Number_MaxMin != null)
+                            {
+                                uCtrl_Weather_FewDay_Elm.checkBox_Number_MaxMin.Checked = Weather_FewDays.Number_MaxMin.visible;
+                                elementOptions.Add(Weather_FewDays.Number_MaxMin.position, "Number_MaxMin");
+                            }
+                            if (Weather_FewDays.Number_Font_MaxMin != null)
+                            {
+                                uCtrl_Weather_FewDay_Elm.checkBox_Number_MaxMin_Font.Checked = Weather_FewDays.Number_Font_MaxMin.visible;
+                                elementOptions.Add(Weather_FewDays.Number_Font_MaxMin.position, "Number_MaxMin_Font");
+                            }
+                            if (Weather_FewDays.Number_Average != null)
+                            {
+                                uCtrl_Weather_FewDay_Elm.checkBox_Number_Average.Checked = Weather_FewDays.Number_Average.visible;
+                                elementOptions.Add(Weather_FewDays.Number_Average.position, "Number_Average");
+                            }
+                            if (Weather_FewDays.Number_Font_Average != null)
+                            {
+                                uCtrl_Weather_FewDay_Elm.checkBox_Number_Average_Font.Checked = Weather_FewDays.Number_Font_Average.visible;
+                                elementOptions.Add(Weather_FewDays.Number_Font_Average.position, "Number_Average_Font");
+                            }
                             if (Weather_FewDays.DayOfWeek_Font != null)
                             {
                                 uCtrl_Weather_FewDay_Elm.checkBox_Font_DOW.Checked = Weather_FewDays.DayOfWeek_Font.visible;
@@ -13350,6 +13370,7 @@ namespace Watch_Face_Editor
                 switch (selectElement)
                 {
                     case "Settings":
+                        if (weather.FewDays == null) weather.FewDays = new FewDays();
                         fewDays = weather.FewDays;
                         Read_WeatherFewDay_Options(fewDays);
                         ShowElemenrOptions("WeatherFewDays");
@@ -13412,6 +13433,50 @@ namespace Watch_Face_Editor
                         if (uCtrl_Weather_FewDay_Elm.checkBox_Number_Min_Font.Checked)
                         {
                             text = weather.Number_Font_Min;
+                            Read_Text_Options(text, true, false);
+                            uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_MaxMin":
+                        if (uCtrl_Weather_FewDay_Elm.checkBox_Number_MaxMin.Checked)
+                        {
+                            img_number = weather.Number_MaxMin;
+                            Read_ImgNumber_Rotate_Options(img_number, false, true, false, false, true, false);
+                            uCtrl_Text_Rotate_Opt.Separator = true;
+                            uCtrl_Text_Rotate_Opt.Unit_alignment = false;
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_MaxMin_Font":
+                        if (uCtrl_Weather_FewDay_Elm.checkBox_Number_MaxMin_Font.Checked)
+                        {
+                            text = weather.Number_Font_MaxMin;
+                            Read_Text_Options(text, true, false, true);
+                            uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Average":
+                        if (uCtrl_Weather_FewDay_Elm.checkBox_Number_Average.Checked)
+                        {
+                            img_number = weather.Number_Average;
+                            //Read_ImgNumberWeather_Options(img_number, false, "", true, false);
+                            //uCtrl_Text_Weather_Opt.IconShow = false;
+                            //ShowElemenrOptions("Text_Weather");
+                            Read_ImgNumber_Rotate_Options(img_number, false, true, false, false, true, false);
+                            uCtrl_Text_Rotate_Opt.Unit_alignment = false;
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Average_Font":
+                        if (uCtrl_Weather_FewDay_Elm.checkBox_Number_Average_Font.Checked)
+                        {
+                            text = weather.Number_Font_Average;
                             Read_Text_Options(text, true, false);
                             uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
                             ShowElemenrOptions("SystemFont");
@@ -16198,6 +16263,10 @@ namespace Watch_Face_Editor
                 if (weather.Number_Font_Max == null) weather.Number_Font_Max = new hmUI_widget_TEXT();
                 if (weather.Number_Min == null) weather.Number_Min = new hmUI_widget_IMG_NUMBER();
                 if (weather.Number_Font_Min == null) weather.Number_Font_Min = new hmUI_widget_TEXT();
+                if (weather.Number_MaxMin == null) weather.Number_MaxMin = new hmUI_widget_IMG_NUMBER();
+                if (weather.Number_Font_MaxMin == null) weather.Number_Font_MaxMin = new hmUI_widget_TEXT();
+                if (weather.Number_Average == null) weather.Number_Average = new hmUI_widget_IMG_NUMBER();
+                if (weather.Number_Font_Average == null) weather.Number_Font_Average = new hmUI_widget_TEXT();
                 if (weather.DayOfWeek_Images == null) weather.DayOfWeek_Images = new hmUI_widget_IMG_LEVEL();
                 if (weather.DayOfWeek_Font == null) weather.DayOfWeek_Font = new hmUI_widget_TEXT();
                 if (weather.Icon == null) weather.Icon = new hmUI_widget_IMG();
@@ -16208,6 +16277,10 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Number_Font_Max")) weather.Number_Font_Max.position = elementOptions["Number_Font_Max"];
                 if (elementOptions.ContainsKey("Number_Min")) weather.Number_Min.position = elementOptions["Number_Min"];
                 if (elementOptions.ContainsKey("Number_Font_Min")) weather.Number_Font_Min.position = elementOptions["Number_Font_Min"];
+                if (elementOptions.ContainsKey("Number_MaxMin")) weather.Number_MaxMin.position = elementOptions["Number_MaxMin"];
+                if (elementOptions.ContainsKey("Number_Font_MaxMin")) weather.Number_Font_MaxMin.position = elementOptions["Number_Font_MaxMin"];
+                if (elementOptions.ContainsKey("Number_Average")) weather.Number_Average.position = elementOptions["Number_Average"];
+                if (elementOptions.ContainsKey("Number_Font_Average")) weather.Number_Font_Average.position = elementOptions["Number_Font_Average"];
                 if (elementOptions.ContainsKey("Images_DOW")) weather.DayOfWeek_Images.position = elementOptions["Images_DOW"];
                 if (elementOptions.ContainsKey("Font_DOW")) weather.DayOfWeek_Font.position = elementOptions["Font_DOW"];
                 if (elementOptions.ContainsKey("Icon")) weather.Icon.position = elementOptions["Icon"];
@@ -19160,6 +19233,10 @@ namespace Watch_Face_Editor
                 if (weather.Number_Font_Max == null) weather.Number_Font_Max = new hmUI_widget_TEXT();
                 if (weather.Number_Min == null) weather.Number_Min = new hmUI_widget_IMG_NUMBER();
                 if (weather.Number_Font_Min == null) weather.Number_Font_Min = new hmUI_widget_TEXT();
+                if (weather.Number_MaxMin == null) weather.Number_MaxMin = new hmUI_widget_IMG_NUMBER();
+                if (weather.Number_Font_MaxMin == null) weather.Number_Font_MaxMin = new hmUI_widget_TEXT();
+                if (weather.Number_Average == null) weather.Number_Average = new hmUI_widget_IMG_NUMBER();
+                if (weather.Number_Font_Average == null) weather.Number_Font_Average = new hmUI_widget_TEXT();
                 if (weather.DayOfWeek_Images == null) weather.DayOfWeek_Images = new hmUI_widget_IMG_LEVEL();
                 if (weather.DayOfWeek_Font == null) weather.DayOfWeek_Font = new hmUI_widget_TEXT();
                 if (weather.Icon == null) weather.Icon = new hmUI_widget_IMG();
@@ -19171,6 +19248,10 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Number_Max_Font")) weather.Number_Font_Max.position = elementOptions["Number_Max_Font"];
                 if (elementOptions.ContainsKey("Number_Min")) weather.Number_Min.position = elementOptions["Number_Min"];
                 if (elementOptions.ContainsKey("Number_Min_Font")) weather.Number_Font_Min.position = elementOptions["Number_Min_Font"];
+                if (elementOptions.ContainsKey("Number_MaxMin")) weather.Number_MaxMin.position = elementOptions["Number_MaxMin"];
+                if (elementOptions.ContainsKey("Number_MaxMin_Font")) weather.Number_Font_MaxMin.position = elementOptions["Number_MaxMin_Font"];
+                if (elementOptions.ContainsKey("Number_Average")) weather.Number_Average.position = elementOptions["Number_Average"];
+                if (elementOptions.ContainsKey("Number_Average_Font")) weather.Number_Font_Average.position = elementOptions["Number_Average_Font"];
                 if (elementOptions.ContainsKey("Images_DOW")) weather.DayOfWeek_Images.position = elementOptions["Images_DOW"];
                 if (elementOptions.ContainsKey("Font_DOW")) weather.DayOfWeek_Font.position = elementOptions["Font_DOW"];
                 if (elementOptions.ContainsKey("Icon")) weather.Icon.position = elementOptions["Icon"];
@@ -19196,6 +19277,18 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number_Min_Font":
                         weather.Number_Font_Min.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_MaxMin":
+                        weather.Number_MaxMin.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_MaxMin_Font":
+                        weather.Number_Font_MaxMin.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Average":
+                        weather.Number_Average.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Average_Font":
+                        weather.Number_Font_Average.visible = checkBox.Checked;
                         break;
                     case "checkBox_Images_DOW":
                         weather.DayOfWeek_Images.visible = checkBox.Checked;

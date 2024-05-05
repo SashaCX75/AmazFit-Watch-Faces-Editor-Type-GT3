@@ -41,6 +41,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox_minColor = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.numericUpDown_height = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown_posY = new System.Windows.Forms.NumericUpDown();
@@ -57,7 +58,24 @@
             this.label10 = new System.Windows.Forms.Label();
             this.comboBox_maxColor = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox_position_on_graph = new System.Windows.Forms.CheckBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label04 = new System.Windows.Forms.Label();
+            this.groupBox_average = new System.Windows.Forms.GroupBox();
+            this.checkBox_use_average = new System.Windows.Forms.CheckBox();
+            this.numericUpDown_average_pointSize = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.numericUpDown_average_lineWidth = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.numericUpDown_average_offsetX = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
+            this.comboBox_average_pointType = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.comboBox_averageColor = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.groupBox_min.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_min_pointSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_min_lineWidth)).BeginInit();
@@ -69,6 +87,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_max_lineWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_max_offsetX)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox_average.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_average_pointSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_average_lineWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_average_offsetX)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox_min
@@ -85,6 +107,7 @@
             this.groupBox_min.Controls.Add(this.label4);
             this.groupBox_min.Controls.Add(this.comboBox_minColor);
             this.groupBox_min.Controls.Add(this.label5);
+            this.groupBox_min.Controls.Add(this.label20);
             this.groupBox_min.Name = "groupBox_min";
             this.groupBox_min.TabStop = false;
             this.groupBox_min.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
@@ -204,6 +227,11 @@
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
+            // label20
+            // 
+            resources.ApplyResources(this.label20, "label20");
+            this.label20.Name = "label20";
+            // 
             // numericUpDown_height
             // 
             resources.ApplyResources(this.numericUpDown_height, "numericUpDown_height");
@@ -270,6 +298,7 @@
             this.groupBox_max.Controls.Add(this.label10);
             this.groupBox_max.Controls.Add(this.comboBox_maxColor);
             this.groupBox_max.Controls.Add(this.label11);
+            this.groupBox_max.Controls.Add(this.label18);
             this.groupBox_max.Name = "groupBox_max";
             this.groupBox_max.TabStop = false;
             this.groupBox_max.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
@@ -389,20 +418,187 @@
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
             // 
+            // label18
+            // 
+            resources.ApplyResources(this.label18, "label18");
+            this.label18.Name = "label18";
+            // 
             // panel1
             // 
             resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Controls.Add(this.checkBox_position_on_graph);
             this.panel1.Controls.Add(this.numericUpDown_posY);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.numericUpDown_height);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.label04);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Name = "panel1";
+            // 
+            // checkBox_position_on_graph
+            // 
+            resources.ApplyResources(this.checkBox_position_on_graph, "checkBox_position_on_graph");
+            this.checkBox_position_on_graph.Checked = true;
+            this.checkBox_position_on_graph.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_position_on_graph.Name = "checkBox_position_on_graph";
+            this.checkBox_position_on_graph.UseVisualStyleBackColor = true;
+            this.checkBox_position_on_graph.CheckedChanged += new System.EventHandler(this.checkBox_position_on_graph_CheckedChanged);
+            // 
+            // label17
+            // 
+            resources.ApplyResources(this.label17, "label17");
+            this.label17.Name = "label17";
+            // 
+            // label04
+            // 
+            resources.ApplyResources(this.label04, "label04");
+            this.label04.Name = "label04";
+            // 
+            // groupBox_average
+            // 
+            resources.ApplyResources(this.groupBox_average, "groupBox_average");
+            this.groupBox_average.Controls.Add(this.checkBox_use_average);
+            this.groupBox_average.Controls.Add(this.numericUpDown_average_pointSize);
+            this.groupBox_average.Controls.Add(this.label12);
+            this.groupBox_average.Controls.Add(this.numericUpDown_average_lineWidth);
+            this.groupBox_average.Controls.Add(this.label13);
+            this.groupBox_average.Controls.Add(this.numericUpDown_average_offsetX);
+            this.groupBox_average.Controls.Add(this.label14);
+            this.groupBox_average.Controls.Add(this.comboBox_average_pointType);
+            this.groupBox_average.Controls.Add(this.label15);
+            this.groupBox_average.Controls.Add(this.comboBox_averageColor);
+            this.groupBox_average.Controls.Add(this.label16);
+            this.groupBox_average.Controls.Add(this.label19);
+            this.groupBox_average.Name = "groupBox_average";
+            this.groupBox_average.TabStop = false;
+            this.groupBox_average.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
+            // 
+            // checkBox_use_average
+            // 
+            resources.ApplyResources(this.checkBox_use_average, "checkBox_use_average");
+            this.checkBox_use_average.Checked = true;
+            this.checkBox_use_average.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_use_average.Name = "checkBox_use_average";
+            this.checkBox_use_average.UseVisualStyleBackColor = true;
+            this.checkBox_use_average.CheckedChanged += new System.EventHandler(this.checkBox_use_average_CheckedChanged);
+            // 
+            // numericUpDown_average_pointSize
+            // 
+            resources.ApplyResources(this.numericUpDown_average_pointSize, "numericUpDown_average_pointSize");
+            this.numericUpDown_average_pointSize.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDown_average_pointSize.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_average_pointSize.Name = "numericUpDown_average_pointSize";
+            this.numericUpDown_average_pointSize.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.numericUpDown_average_pointSize.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // numericUpDown_average_lineWidth
+            // 
+            resources.ApplyResources(this.numericUpDown_average_lineWidth, "numericUpDown_average_lineWidth");
+            this.numericUpDown_average_lineWidth.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDown_average_lineWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_average_lineWidth.Name = "numericUpDown_average_lineWidth";
+            this.numericUpDown_average_lineWidth.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDown_average_lineWidth.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // numericUpDown_average_offsetX
+            // 
+            resources.ApplyResources(this.numericUpDown_average_offsetX, "numericUpDown_average_offsetX");
+            this.numericUpDown_average_offsetX.Maximum = new decimal(new int[] {
+            199,
+            0,
+            0,
+            0});
+            this.numericUpDown_average_offsetX.Minimum = new decimal(new int[] {
+            199,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown_average_offsetX.Name = "numericUpDown_average_offsetX";
+            this.numericUpDown_average_offsetX.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            // 
+            // comboBox_average_pointType
+            // 
+            resources.ApplyResources(this.comboBox_average_pointType, "comboBox_average_pointType");
+            this.comboBox_average_pointType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_average_pointType.FormattingEnabled = true;
+            this.comboBox_average_pointType.Items.AddRange(new object[] {
+            resources.GetString("comboBox_average_pointType.Items"),
+            resources.GetString("comboBox_average_pointType.Items1"),
+            resources.GetString("comboBox_average_pointType.Items2"),
+            resources.GetString("comboBox_average_pointType.Items3"),
+            resources.GetString("comboBox_average_pointType.Items4")});
+            this.comboBox_average_pointType.Name = "comboBox_average_pointType";
+            this.comboBox_average_pointType.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
+            // 
+            // comboBox_averageColor
+            // 
+            resources.ApplyResources(this.comboBox_averageColor, "comboBox_averageColor");
+            this.comboBox_averageColor.BackColor = System.Drawing.Color.Silver;
+            this.comboBox_averageColor.DropDownHeight = 1;
+            this.comboBox_averageColor.FormattingEnabled = true;
+            this.comboBox_averageColor.Name = "comboBox_averageColor";
+            this.comboBox_averageColor.Click += new System.EventHandler(this.comboBox_color_Click);
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            // 
+            // label19
+            // 
+            resources.ApplyResources(this.label19, "label19");
+            this.label19.Name = "label19";
             // 
             // UCtrl_TemperatureGraph_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox_min);
+            this.Controls.Add(this.groupBox_average);
             this.Controls.Add(this.groupBox_max);
             this.Controls.Add(this.panel1);
             this.Name = "UCtrl_TemperatureGraph_Opt";
@@ -419,6 +615,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_max_lineWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_max_offsetX)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.groupBox_average.ResumeLayout(false);
+            this.groupBox_average.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_average_pointSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_average_lineWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_average_offsetX)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -453,5 +655,23 @@
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.CheckBox checkBox_use_max;
         public System.Windows.Forms.CheckBox checkBox_use_min;
+        private System.Windows.Forms.GroupBox groupBox_average;
+        public System.Windows.Forms.CheckBox checkBox_use_average;
+        public System.Windows.Forms.NumericUpDown numericUpDown_average_pointSize;
+        private System.Windows.Forms.Label label12;
+        public System.Windows.Forms.NumericUpDown numericUpDown_average_lineWidth;
+        private System.Windows.Forms.Label label13;
+        public System.Windows.Forms.NumericUpDown numericUpDown_average_offsetX;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox comboBox_average_pointType;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox comboBox_averageColor;
+        private System.Windows.Forms.Label label16;
+        public System.Windows.Forms.CheckBox checkBox_position_on_graph;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label04;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
     }
 }

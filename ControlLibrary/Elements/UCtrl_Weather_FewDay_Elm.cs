@@ -20,6 +20,10 @@ namespace ControlLibrary
         bool highlight_number_max_font = false;
         bool highlight_number_min = false;
         bool highlight_number_min_font = false;
+        bool highlight_number_max_min = false;
+        bool highlight_number_max_min_font = false;
+        bool highlight_number_average = false;
+        bool highlight_number_average_font = false;
         bool highlight_images_dow = false;
         bool highlight_font_dow = false;
         bool highlight_icon = false;
@@ -101,6 +105,10 @@ namespace ControlLibrary
             highlight_number_max_font = false;
             highlight_number_min = false;
             highlight_number_min_font = false;
+            highlight_number_max_min = false;
+            highlight_number_max_min_font = false;
+            highlight_number_average = false;
+            highlight_number_average_font = false;
             highlight_images_dow = false;
             highlight_font_dow = false;
             highlight_icon = false;
@@ -201,6 +209,58 @@ namespace ControlLibrary
                 button_Number_Min_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
+            if (highlight_number_max_min)
+            {
+                panel_Number_MaxMin.BackColor = SystemColors.ActiveCaption;
+                button_Number_MaxMin.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Number_MaxMin.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Number_MaxMin.BackColor = SystemColors.Control;
+                button_Number_MaxMin.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Number_MaxMin.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_number_max_min_font)
+            {
+                panel_Number_MaxMin_Font.BackColor = SystemColors.ActiveCaption;
+                button_Number_MaxMin_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Number_MaxMin_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Number_MaxMin_Font.BackColor = SystemColors.Control;
+                button_Number_MaxMin_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Number_MaxMin_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+            
+            if (highlight_number_average)
+            {
+                panel_Number_Average.BackColor = SystemColors.ActiveCaption;
+                button_Number_Average.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Number_Average.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Number_Average.BackColor = SystemColors.Control;
+                button_Number_Average.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Number_Average.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_number_average_font)
+            {
+                panel_Number_Average_Font.BackColor = SystemColors.ActiveCaption;
+                button_Number_Average_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Number_Average_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Number_Average_Font.BackColor = SystemColors.Control;
+                button_Number_Average_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Number_Average_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
             if (highlight_images_dow)
             {
                 panel_Images_DOW.BackColor = SystemColors.ActiveCaption;
@@ -252,6 +312,10 @@ namespace ControlLibrary
             highlight_number_max_font = false;
             highlight_number_min = false;
             highlight_number_min_font = false;
+            highlight_number_max_min = false;
+            highlight_number_max_min_font = false;
+            highlight_number_average = false;
+            highlight_number_average_font = false;
             highlight_images_dow = false;
             highlight_font_dow = false;
             highlight_icon = false;
@@ -276,6 +340,10 @@ namespace ControlLibrary
             highlight_number_max_font = false;
             highlight_number_min = false;
             highlight_number_min_font = false;
+            highlight_number_max_min = false;
+            highlight_number_max_min_font = false;
+            highlight_number_average = false;
+            highlight_number_average_font = false;
             highlight_images_dow = false;
             highlight_font_dow = false;
             highlight_icon = false;
@@ -300,6 +368,10 @@ namespace ControlLibrary
             highlight_number_max_font = false;
             highlight_number_min = false;
             highlight_number_min_font = false;
+            highlight_number_max_min = false;
+            highlight_number_max_min_font = false;
+            highlight_number_average = false;
+            highlight_number_average_font = false;
             highlight_images_dow = false;
             highlight_font_dow = false;
             highlight_icon = false;
@@ -324,6 +396,10 @@ namespace ControlLibrary
             highlight_number_max_font = false;
             highlight_number_min = false;
             highlight_number_min_font = false;
+            highlight_number_max_min = false;
+            highlight_number_max_min_font = false;
+            highlight_number_average = false;
+            highlight_number_average_font = false;
             highlight_images_dow = false;
             highlight_font_dow = false;
             highlight_icon = false;
@@ -348,6 +424,10 @@ namespace ControlLibrary
             highlight_number_max_font = true;
             highlight_number_min = false;
             highlight_number_min_font = false;
+            highlight_number_max_min = false;
+            highlight_number_max_min_font = false;
+            highlight_number_average = false;
+            highlight_number_average_font = false;
             highlight_images_dow = false;
             highlight_font_dow = false;
             highlight_icon = false;
@@ -373,6 +453,10 @@ namespace ControlLibrary
             highlight_number_max_font = false;
             highlight_number_min = true;
             highlight_number_min_font = false;
+            highlight_number_max_min = false;
+            highlight_number_max_min_font = false;
+            highlight_number_average = false;
+            highlight_number_average_font = false;
             highlight_images_dow = false;
             highlight_font_dow = false;
             highlight_icon = false;
@@ -397,6 +481,122 @@ namespace ControlLibrary
             highlight_number_max_font = false;
             highlight_number_min = false;
             highlight_number_min_font = true;
+            highlight_number_max_min = false;
+            highlight_number_max_min_font = false;
+            highlight_number_average = false;
+            highlight_number_average_font = false;
+            highlight_images_dow = false;
+            highlight_font_dow = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Number_MaxMin_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Number_MaxMin";
+
+            highlight_settings = false;
+            highlight_images = false;
+            highlight_diagram = false;
+            highlight_number_max = false;
+            highlight_number_max_font = false;
+            highlight_number_min = false;
+            highlight_number_min_font = false;
+            highlight_number_max_min = true;
+            highlight_number_max_min_font = false;
+            highlight_number_average = false;
+            highlight_number_average_font = false;
+            highlight_images_dow = false;
+            highlight_font_dow = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Number_MaxMin_Font_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Number_MaxMin_Font";
+
+            highlight_settings = false;
+            highlight_images = false;
+            highlight_diagram = false;
+            highlight_number_max = false;
+            highlight_number_max_font = false;
+            highlight_number_min = false;
+            highlight_number_min_font = false;
+            highlight_number_max_min = false;
+            highlight_number_max_min_font = true;
+            highlight_number_average = false;
+            highlight_number_average_font = false;
+            highlight_images_dow = false;
+            highlight_font_dow = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Number_Average_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Number_Average";
+
+            highlight_settings = false;
+            highlight_images = false;
+            highlight_diagram = false;
+            highlight_number_max = false;
+            highlight_number_max_font = false;
+            highlight_number_min = false;
+            highlight_number_min_font = false;
+            highlight_number_max_min = false;
+            highlight_number_max_min_font = false;
+            highlight_number_average = true;
+            highlight_number_average_font = false;
+            highlight_images_dow = false;
+            highlight_font_dow = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Number_Average_Font_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Number_Average_Font";
+
+            highlight_settings = false;
+            highlight_images = false;
+            highlight_diagram = false;
+            highlight_number_max = false;
+            highlight_number_max_font = false;
+            highlight_number_min = false;
+            highlight_number_min_font = false;
+            highlight_number_max_min = false;
+            highlight_number_max_min_font = false;
+            highlight_number_average = false;
+            highlight_number_average_font = true;
             highlight_images_dow = false;
             highlight_font_dow = false;
             highlight_icon = false;
@@ -421,6 +621,10 @@ namespace ControlLibrary
             highlight_number_max_font = false;
             highlight_number_min = false;
             highlight_number_min_font = false;
+            highlight_number_max_min = false;
+            highlight_number_max_min_font = false;
+            highlight_number_average = false;
+            highlight_number_average_font = false;
             highlight_images_dow = true;
             highlight_font_dow = false;
             highlight_icon = false;
@@ -445,6 +649,10 @@ namespace ControlLibrary
             highlight_number_max_font = false;
             highlight_number_min = false;
             highlight_number_min_font = false;
+            highlight_number_max_min = false;
+            highlight_number_max_min_font = false;
+            highlight_number_average = false;
+            highlight_number_average_font = false;
             highlight_images_dow = false;
             highlight_font_dow = true;
             highlight_icon = false;
@@ -469,6 +677,10 @@ namespace ControlLibrary
             highlight_number_max_font = false;
             highlight_number_min = false;
             highlight_number_min_font = false;
+            highlight_number_max_min = false;
+            highlight_number_max_min_font = false;
+            highlight_number_average = false;
+            highlight_number_average_font = false;
             highlight_images_dow = false;
             highlight_font_dow = false;
             highlight_icon = true;
@@ -618,9 +830,9 @@ namespace ControlLibrary
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
 
-            if (tableLayoutPanel1.Height > 315)
+            if (tableLayoutPanel1.Height > 440)
             {
-                float currentDPI = tableLayoutPanel1.Height / 251f;
+                float currentDPI = tableLayoutPanel1.Height / 351f;
                 button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 
@@ -738,6 +950,18 @@ namespace ControlLibrary
                 case "Number_Min_Font":
                     checkBox_Number_Min_Font.Checked = status;
                     break;
+                case "Number_MaxMin":
+                    checkBox_Number_MaxMin.Checked = status;
+                    break;
+                case "Number_MaxMin_Font":
+                    checkBox_Number_MaxMin_Font.Checked = status;
+                    break;
+                case "Number_Average":
+                    checkBox_Number_Average.Checked = status;
+                    break;
+                case "Number_Average_Font":
+                    checkBox_Number_Average_Font.Checked = status;
+                    break;
                 case "Images_DOW":
                     checkBox_Images_DOW.Checked = status;
                     break;
@@ -780,6 +1004,18 @@ namespace ControlLibrary
                             break;
                         case "Number_Min_Font":
                             panel = panel_Number_Min_Font;
+                            break;
+                        case "Number_MaxMin":
+                            panel = panel_Number_MaxMin;
+                            break;
+                        case "Number_MaxMin_Font":
+                            panel = panel_Number_MaxMin_Font;
+                            break;
+                        case "Number_Average":
+                            panel = panel_Number_Average;
+                            break;
+                        case "Number_Average_Font":
+                            panel = panel_Number_Average_Font;
                             break;
                         case "Images_DOW":
                             panel = panel_Images_DOW;
@@ -850,6 +1086,18 @@ namespace ControlLibrary
                     case "panel_Number_Min_Font":
                         elementOptions.Add("Number_Min_Font", count - i);
                         break;
+                    case "panel_Number_MaxMin":
+                        elementOptions.Add("Number_MaxMin", count - i);
+                        break;
+                    case "panel_Number_MaxMin_Font":
+                        elementOptions.Add("Number_MaxMin_Font", count - i);
+                        break;
+                    case "panel_Number_Average":
+                        elementOptions.Add("Number_Average", count - i);
+                        break;
+                    case "panel_Number_Average_Font":
+                        elementOptions.Add("Number_Average_Font", count - i);
+                        break;
                     case "panel_Images_DOW":
                         elementOptions.Add("Images_DOW", count - i);
                         break;
@@ -873,6 +1121,10 @@ namespace ControlLibrary
             elementOptions.Add(index++, "Icon");
             elementOptions.Add(index++, "Font_DOW");
             elementOptions.Add(index++, "Images_DOW");
+            elementOptions.Add(index++, "Number_Average_Font");
+            elementOptions.Add(index++, "Number_Average");
+            elementOptions.Add(index++, "Number_MaxMin_Font");
+            elementOptions.Add(index++, "Number_MaxMin");
             elementOptions.Add(index++, "Number_Min_Font");
             elementOptions.Add(index++, "Number_Min");
             elementOptions.Add(index++, "Number_Max_Font");
@@ -887,6 +1139,10 @@ namespace ControlLibrary
             checkBox_Number_Max_Font.Checked = false;
             checkBox_Number_Min.Checked = false;
             checkBox_Number_Min_Font.Checked = false;
+            checkBox_Number_MaxMin.Checked = false;
+            checkBox_Number_MaxMin_Font.Checked = false;
+            checkBox_Number_Average.Checked = false;
+            checkBox_Number_Average_Font.Checked = false;
             checkBox_Images_DOW.Checked = false;
             checkBox_Font_DOW.Checked = false;
             checkBox_Icon.Checked = false;

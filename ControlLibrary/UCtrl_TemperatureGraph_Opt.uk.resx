@@ -117,13 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBox_use_min.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 17</value>
-  </data>
-  <data name="checkBox_use_min.Text" xml:space="preserve">
-    <value>Використовувати</value>
-  </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Розмір точки</value>
   </data>
@@ -131,7 +124,7 @@
     <value>Товщина лінії</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Зміщення точки по горизонталі</value>
+    <value>Зміщення по горизонталі</value>
   </data>
   <data name="comboBox_min_pointType.Items" xml:space="preserve">
     <value>Немає</value>
@@ -142,6 +135,7 @@
   <data name="comboBox_min_pointType.Items4" xml:space="preserve">
     <value>Коло 2</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 13</value>
   </data>
@@ -149,19 +143,13 @@
     <value>Колір лінії</value>
   </data>
   <data name="groupBox_min.Text" xml:space="preserve">
-    <value>Мінімальна температура</value>
+    <value>        Мінімальна температура</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Висота графіка</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Відступ по вертикалі</value>
-  </data>
-  <data name="checkBox_use_max.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 17</value>
-  </data>
-  <data name="checkBox_use_max.Text" xml:space="preserve">
-    <value>Використовувати</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Розмір точки</value>
@@ -170,7 +158,7 @@
     <value>Товщина лінії</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
-    <value>Зміщення точки по горизонталі</value>
+    <value>Зміщення по горизонталі</value>
   </data>
   <data name="comboBox_max_pointType.Items" xml:space="preserve">
     <value>Немає</value>
@@ -188,6 +176,36 @@
     <value>Колір лінії</value>
   </data>
   <data name="groupBox_max.Text" xml:space="preserve">
-    <value>Максимальна температура</value>
+    <value>        Максимальна температура</value>
+  </data>
+  <data name="checkBox_position_on_graph.Text" xml:space="preserve">
+    <value>Позиціонувати дані по точках графіка</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Розмір точки</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Товщина лінії</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Зміщення по горизонталі</value>
+  </data>
+  <data name="comboBox_average_pointType.Items" xml:space="preserve">
+    <value>Немає</value>
+  </data>
+  <data name="comboBox_average_pointType.Items3" xml:space="preserve">
+    <value>Коло 1</value>
+  </data>
+  <data name="comboBox_average_pointType.Items4" xml:space="preserve">
+    <value>Коло 2</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Колір лінії</value>
+  </data>
+  <data name="groupBox_average.Text" xml:space="preserve">
+    <value>        Середня температура</value>
   </data>
 </root>
