@@ -7292,7 +7292,7 @@ namespace Watch_Face_Editor
                     {
                         int dof = WatchFacePreviewSet.Date.WeekDay + dayIndex - 1;
                         if (dof >= 7) dof -= 7;
-                        int posX = x + offsetDayX * dayIndex + weather_FewDays.Images.X;
+                        int posX = x + offsetDayX * dayIndex + weather_FewDays.DayOfWeek_Images.X;
                         int image_index = imageIndex + dof;
 
                         if (image_index < ListImagesFullName.Count)
@@ -7308,6 +7308,20 @@ namespace Watch_Face_Editor
                         hmUI_widget_TEXT dow_font = weather_FewDays.DayOfWeek_Font;
                         string[] dowArrey = dow_font.unit_string.Split(',');
 
+                        int h = dow_font.h;
+                        int w = dow_font.w;
+
+                        int size = dow_font.text_size;
+                        int space_h = dow_font.char_space;
+                        int space_v = dow_font.line_space;
+
+                        Color color_1 = StringToColor(dow_font.color);
+                        Color color_2 = StringToColor(dow_font.color_2);
+
+                        string align_h = dow_font.align_h;
+                        string align_v = dow_font.align_v;
+                        string text_style = dow_font.text_style;
+
                         if (dowArrey.Length == 7)
                         {
                             int posY = y + weather_FewDays.DayOfWeek_Font.y;
@@ -7318,18 +7332,8 @@ namespace Watch_Face_Editor
                                 int posX = x + offsetDayX * dayIndex + weather_FewDays.DayOfWeek_Font.x;
                                 string valueStr = dowArrey[dof].Trim();
 
-                                int h = dow_font.h;
-                                int w = dow_font.w;
-
-                                int size = dow_font.text_size;
-                                int space_h = dow_font.char_space;
-                                int space_v = dow_font.line_space;
-
-                                Color color = StringToColor(dow_font.color);
-                                string align_h = dow_font.align_h;
-                                string align_v = dow_font.align_v;
-                                string text_style = dow_font.text_style;
-
+                                Color color = color_1;
+                                if (dow_font.use_color_2 && dof >= 5) color = color_2;
 
                                 if (dow_font.font != null && dow_font.font.Length > 3 && FontsList.ContainsKey(dow_font.font))
                                 {

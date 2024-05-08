@@ -247,6 +247,9 @@ namespace Watch_Face_Editor
                     font = this.Second_Font.font,
                     padding = this.Second_Font.padding,
                     unit_type = this.Second_Font.unit_type,
+                    unit_end = this.Second_Font.unit_end,
+                    centreHorizontally = this.Second_Font.centreHorizontally,
+                    centreVertically = this.Second_Font.centreVertically,
 
                     position = this.Second_Font.position,
                     visible = this.Second_Font.visible,
@@ -303,6 +306,9 @@ namespace Watch_Face_Editor
                     font = this.Minute_Font.font,
                     padding = this.Minute_Font.padding,
                     unit_type = this.Minute_Font.unit_type,
+                    unit_end = this.Minute_Font.unit_end,
+                    centreHorizontally = this.Minute_Font.centreHorizontally,
+                    centreVertically = this.Minute_Font.centreVertically,
 
                     position = this.Minute_Font.position,
                     visible = this.Minute_Font.visible,
@@ -359,6 +365,9 @@ namespace Watch_Face_Editor
                     font = this.Hour_Font.font,
                     padding = this.Hour_Font.padding,
                     unit_type = this.Hour_Font.unit_type,
+                    unit_end = this.Hour_Font.unit_end,
+                    centreHorizontally = this.Hour_Font.centreHorizontally,
+                    centreVertically = this.Hour_Font.centreVertically,
 
                     position = this.Hour_Font.position,
                     visible = this.Hour_Font.visible,
@@ -387,6 +396,8 @@ namespace Watch_Face_Editor
                     padding = this.Hour_min_Font.padding,
                     unit_type = this.Hour_min_Font.unit_type,
                     unit_end = this.Hour_min_Font.unit_end,
+                    centreHorizontally = this.Hour_min_Font.centreHorizontally,
+                    centreVertically = this.Hour_min_Font.centreVertically,
 
                     position = this.Hour_min_Font.position,
                     visible = this.Hour_min_Font.visible,
@@ -414,7 +425,9 @@ namespace Watch_Face_Editor
                     font = this.Hour_min_sec_Font.font,
                     padding = this.Hour_min_sec_Font.padding,
                     unit_type = this.Hour_min_sec_Font.unit_type,
-                    unit_end = this.Hour_min_Font.unit_end,
+                    unit_end = this.Hour_min_sec_Font.unit_end,
+                    centreHorizontally = this.Hour_min_sec_Font.centreHorizontally,
+                    centreVertically = this.Hour_min_sec_Font.centreVertically,
 
                     position = this.Hour_min_sec_Font.position,
                     visible = this.Hour_min_sec_Font.visible,
@@ -1012,6 +1025,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -1039,6 +1055,9 @@ namespace Watch_Face_Editor
                     font = this.Day_Month_Font.font,
                     padding = this.Day_Month_Font.padding,
                     unit_type = this.Day_Month_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Day_Month_Font.position,
                     visible = this.Day_Month_Font.visible,
@@ -1066,6 +1085,9 @@ namespace Watch_Face_Editor
                     font = this.Day_Month_Year_Font.font,
                     padding = this.Day_Month_Year_Font.padding,
                     unit_type = this.Day_Month_Year_Font.unit_type,
+                    unit_end = this.Day_Month_Year_Font.unit_end,
+                    centreHorizontally = this.Day_Month_Year_Font.centreHorizontally,
+                    centreVertically = this.Day_Month_Year_Font.centreVertically,
 
                     position = this.Day_Month_Year_Font.position,
                     visible = this.Day_Month_Year_Font.visible,
@@ -1241,6 +1263,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -1269,6 +1294,9 @@ namespace Watch_Face_Editor
                     padding = this.Month_Font.padding,
                     unit_type = this.Month_Font.unit_type,
                     unit_string = this.Month_Font.unit_string,
+                    unit_end = this.Month_Font.unit_end,
+                    centreHorizontally = this.Month_Font.centreHorizontally,
+                    centreVertically = this.Month_Font.centreVertically,
 
                     position = this.Month_Font.position,
                     visible = this.Month_Font.visible,
@@ -1433,6 +1461,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -1598,6 +1629,7 @@ namespace Watch_Face_Editor
                     w = this.DayOfWeek_Font.w,
                     h = this.DayOfWeek_Font.h,
                     color = this.DayOfWeek_Font.color,
+                    color_2 = this.DayOfWeek_Font.color_2,
                     align_h = this.DayOfWeek_Font.align_h,
                     align_v = this.DayOfWeek_Font.align_v,
                     text_size = this.DayOfWeek_Font.text_size,
@@ -1608,6 +1640,9 @@ namespace Watch_Face_Editor
                     padding = this.DayOfWeek_Font.padding,
                     unit_type = this.DayOfWeek_Font.unit_type,
                     unit_string = this.DayOfWeek_Font.unit_string,
+                    unit_end = this.DayOfWeek_Font.unit_end,
+                    centreHorizontally = this.DayOfWeek_Font.centreHorizontally,
+                    centreVertically = this.DayOfWeek_Font.centreVertically,
 
                     position = this.DayOfWeek_Font.position,
                     visible = this.DayOfWeek_Font.visible,
@@ -2113,6 +2148,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding=this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -2227,6 +2265,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Target_Font.font,
                     padding = this.Number_Target_Font.padding,
                     unit_type = this.Number_Target_Font.unit_type,
+                    unit_end = this.Number_Target_Font.unit_end,
+                    centreHorizontally = this.Number_Target_Font.centreHorizontally,
+                    centreVertically = this.Number_Target_Font.centreVertically,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -2509,6 +2550,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -2793,6 +2837,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -2907,6 +2954,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Target_Font.font,
                     padding = this.Number_Target_Font.padding,
                     unit_type = this.Number_Target_Font.unit_type,
+                    unit_end = this.Number_Target_Font.unit_end,
+                    centreHorizontally = this.Number_Target_Font.centreHorizontally,
+                    centreVertically = this.Number_Target_Font.centreVertically,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -3190,6 +3240,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -3472,6 +3525,9 @@ namespace Watch_Face_Editor
             //        font = this.Number_Font.font,
             //        padding = this.Number_Font.padding,
             //        unit_type = this.Number_Font.unit_type,
+            //        unit_end = this.Number_Font.unit_end,
+            //        centreHorizontally = this.Number_Font.centreHorizontally,
+            //        centreVertically = this.Number_Font.centreVertically,
 
             //        position = this.Number_Font.position,
             //        visible = this.Number_Font.visible,
@@ -3527,6 +3583,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Target_Font.font,
                     padding = this.Number_Target_Font.padding,
                     unit_type = this.Number_Target_Font.unit_type,
+                    unit_end = this.Number_Target_Font.unit_end,
+                    centreHorizontally = this.Number_Target_Font.centreHorizontally,
+                    centreVertically = this.Number_Target_Font.centreVertically,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -3767,6 +3826,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -3979,6 +4041,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -4093,6 +4158,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Target_Font.font,
                     padding = this.Number_Target_Font.padding,
                     unit_type = this.Number_Target_Font.unit_type,
+                    unit_end = this.Number_Target_Font.unit_end,
+                    centreHorizontally = this.Number_Target_Font.centreHorizontally,
+                    centreVertically = this.Number_Target_Font.centreVertically,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -4379,6 +4447,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -4435,6 +4506,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Target_Font.font,
                     padding = this.Number_Target_Font.padding,
                     unit_type = this.Number_Target_Font.unit_type,
+                    unit_end = this.Number_Target_Font.unit_end,
+                    centreHorizontally = this.Number_Target_Font.centreHorizontally,
+                    centreVertically = this.Number_Target_Font.centreVertically,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -4617,6 +4691,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -4817,6 +4894,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -4994,6 +5074,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -5108,6 +5191,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Target_Font.font,
                     padding = this.Number_Target_Font.padding,
                     unit_type = this.Number_Target_Font.unit_type,
+                    unit_end = this.Number_Target_Font.unit_end,
+                    centreHorizontally = this.Number_Target_Font.centreHorizontally,
+                    centreVertically = this.Number_Target_Font.centreVertically,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -5380,6 +5466,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -5436,6 +5525,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Min_Font.font,
                     padding = this.Number_Min_Font.padding,
                     unit_type = this.Number_Min_Font.unit_type,
+                    unit_end = this.Number_Min_Font.unit_end,
+                    centreHorizontally = this.Number_Min_Font.centreHorizontally,
+                    centreVertically = this.Number_Min_Font.centreVertically,
 
                     position = this.Number_Min_Font.position,
                     visible = this.Number_Min_Font.visible,
@@ -5554,6 +5646,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Max_Font.font,
                     padding = this.Number_Max_Font.padding,
                     unit_type = this.Number_Max_Font.unit_type,
+                    unit_end = this.Number_Max_Font.unit_end,
+                    centreHorizontally = this.Number_Max_Font.centreHorizontally,
+                    centreVertically = this.Number_Max_Font.centreVertically,
 
                     position = this.Number_Max_Font.position,
                     visible = this.Number_Max_Font.visible,
@@ -5643,6 +5738,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Min_Max_Font.font,
                     padding = this.Number_Min_Max_Font.padding,
                     unit_type = this.Number_Min_Max_Font.unit_type,
+                    unit_end = this.Number_Min_Max_Font.unit_end,
+                    centreHorizontally = this.Number_Min_Max_Font.centreHorizontally,
+                    centreVertically = this.Number_Min_Max_Font.centreVertically,
 
                     position = this.Number_Min_Max_Font.position,
                     visible = this.Number_Min_Max_Font.visible,
@@ -6010,6 +6108,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font_Max.font,
                     padding = this.Number_Font_Max.padding,
                     unit_type = this.Number_Font_Max.unit_type,
+                    unit_end = this.Number_Font_Max.unit_end,
+                    centreHorizontally = this.Number_Font_Max.centreHorizontally,
+                    centreVertically = this.Number_Font_Max.centreVertically,
 
                     position = this.Number_Font_Max.position,
                     visible = this.Number_Font_Max.visible,
@@ -6066,6 +6167,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font_Min.font,
                     padding = this.Number_Font_Min.padding,
                     unit_type = this.Number_Font_Min.unit_type,
+                    unit_end = this.Number_Font_Min.unit_end,
+                    centreHorizontally = this.Number_Font_Min.centreHorizontally,
+                    centreVertically = this.Number_Font_Min.centreVertically,
 
                     position = this.Number_Font_Min.position,
                     visible = this.Number_Font_Min.visible,
@@ -6122,6 +6226,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font_MaxMin.font,
                     padding = this.Number_Font_MaxMin.padding,
                     unit_type = this.Number_Font_MaxMin.unit_type,
+                    unit_end = this.Number_Font_MaxMin.unit_end,
+                    centreHorizontally = this.Number_Font_MaxMin.centreHorizontally,
+                    centreVertically = this.Number_Font_MaxMin.centreVertically,
 
                     position = this.Number_Font_MaxMin.position,
                     visible = this.Number_Font_MaxMin.visible,
@@ -6178,6 +6285,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font_Average.font,
                     padding = this.Number_Font_Average.padding,
                     unit_type = this.Number_Font_Average.unit_type,
+                    unit_end = this.Number_Font_Average.unit_end,
+                    centreHorizontally = this.Number_Font_Average.centreHorizontally,
+                    centreVertically = this.Number_Font_Average.centreVertically,
 
                     position = this.Number_Font_Average.position,
                     visible = this.Number_Font_Average.visible,
@@ -6214,6 +6324,8 @@ namespace Watch_Face_Editor
                     w = this.DayOfWeek_Font.w,
                     h = this.DayOfWeek_Font.h,
                     color = this.DayOfWeek_Font.color,
+                    color_2 = this.DayOfWeek_Font.color_2,
+                    use_color_2 = this.DayOfWeek_Font.use_color_2,
                     align_h = this.DayOfWeek_Font.align_h,
                     align_v = this.DayOfWeek_Font.align_v,
                     text_size = this.DayOfWeek_Font.text_size,
@@ -6223,6 +6335,10 @@ namespace Watch_Face_Editor
                     font = this.DayOfWeek_Font.font,
                     padding = this.DayOfWeek_Font.padding,
                     unit_type = this.DayOfWeek_Font.unit_type,
+                    unit_string = this.DayOfWeek_Font.unit_string,
+                    //unit_end = this.DayOfWeek_Font.unit_end,
+                    //centreHorizontally = this.DayOfWeek_Font.centreHorizontally,
+                    //centreVertically = this.DayOfWeek_Font.centreVertically,
 
                     position = this.DayOfWeek_Font.position,
                     visible = this.DayOfWeek_Font.visible,
@@ -6264,6 +6380,8 @@ namespace Watch_Face_Editor
                 Number_Font_MaxMin = Number_Font_MaxMin,
                 Number_Average = Number_Average,
                 Number_Font_Average = Number_Font_Average,
+                DayOfWeek_Images = DayOfWeek_Images,
+                DayOfWeek_Font = DayOfWeek_Font,
                 Icon = Icon,
             };
         }
@@ -6329,6 +6447,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -6515,6 +6636,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -6688,6 +6812,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -6823,6 +6950,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -6879,6 +7009,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Target_Font.font,
                     padding = this.Number_Target_Font.padding,
                     unit_type = this.Number_Target_Font.unit_type,
+                    unit_end = this.Number_Target_Font.unit_end,
+                    centreHorizontally = this.Number_Target_Font.centreHorizontally,
+                    centreVertically = this.Number_Target_Font.centreVertically,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -7055,6 +7188,9 @@ namespace Watch_Face_Editor
                     font = this.Sunrise_Font.font,
                     padding = this.Sunrise_Font.padding,
                     unit_type = this.Sunrise_Font.unit_type,
+                    unit_end = this.Sunrise_Font.unit_end,
+                    centreHorizontally = this.Sunrise_Font.centreHorizontally,
+                    centreVertically = this.Sunrise_Font.centreVertically,
 
                     position = this.Sunrise_Font.position,
                     visible = this.Sunrise_Font.visible,
@@ -7173,6 +7309,9 @@ namespace Watch_Face_Editor
                     font = this.Sunset_Font.font,
                     padding = this.Sunset_Font.padding,
                     unit_type = this.Sunset_Font.unit_type,
+                    unit_end = this.Sunset_Font.unit_end,
+                    centreHorizontally = this.Sunset_Font.centreHorizontally,
+                    centreVertically = this.Sunset_Font.centreVertically,
 
                     position = this.Sunset_Font.position,
                     visible = this.Sunset_Font.visible,
@@ -7441,6 +7580,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -7679,6 +7821,9 @@ namespace Watch_Face_Editor
                     font = this.Sunrise_Font.font,
                     padding = this.Sunrise_Font.padding,
                     unit_type = this.Sunrise_Font.unit_type,
+                    unit_end = this.Sunrise_Font.unit_end,
+                    centreHorizontally = this.Sunrise_Font.centreHorizontally,
+                    centreVertically = this.Sunrise_Font.centreVertically,
 
                     position = this.Sunrise_Font.position,
                     visible = this.Sunrise_Font.visible,
@@ -7797,6 +7942,9 @@ namespace Watch_Face_Editor
                     font = this.Sunset_Font.font,
                     padding = this.Sunset_Font.padding,
                     unit_type = this.Sunset_Font.unit_type,
+                    unit_end = this.Sunset_Font.unit_end,
+                    centreHorizontally = this.Sunset_Font.centreHorizontally,
+                    centreVertically = this.Sunset_Font.centreVertically,
 
                     position = this.Sunset_Font.position,
                     visible = this.Sunset_Font.visible,
@@ -8048,6 +8196,9 @@ namespace Watch_Face_Editor
                     font = this.Number_Font.font,
                     padding = this.Number_Font.padding,
                     unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,

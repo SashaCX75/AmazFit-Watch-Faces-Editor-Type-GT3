@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace ControlLibrary
 {
@@ -31,6 +32,7 @@ namespace ControlLibrary
         private bool DOW_mode = false;
         private bool Month_mode = false;
         private bool Alignments_enabled = true;
+        private bool Use_2_color = false;
 
         public UCtrl_Text_SystemFont_Opt()
         {
@@ -525,6 +527,24 @@ namespace ControlLibrary
             }
         }
 
+        /// <summary>Отображение второго цвета</summary>
+        [Description("Отображение второго цвета")]
+        public virtual bool Use2color
+        {
+            get
+            {
+                return Use_2_color;
+            }
+            set
+            {
+                Use_2_color = value;
+
+                label_Color2.Visible = Use_2_color;
+                checkBox_Color2.Visible = Use_2_color;
+                comboBox_Color2.Visible = Use_2_color;
+            }
+        }
+
         [Browsable(true)]
         [Description("Происходит при изменении выбора элемента")]
         public event ValueChangedHandler ValueChanged;
@@ -826,6 +846,16 @@ namespace ControlLibrary
             return comboBox_Color.BackColor;
         }
 
+        public void SetColor2Text(Color color)
+        {
+            comboBox_Color2.BackColor = color;
+        }
+
+        public Color GetColor2Text()
+        {
+            return comboBox_Color2.BackColor;
+        }
+
         public void SetUnitText(string text)
         {
             if (!DOWMode && !MonthMode) textBox_unit_string.Text = text; 
@@ -865,6 +895,7 @@ namespace ControlLibrary
             checkBox_unit.CheckState = CheckState.Unchecked;
             checkBox_addZero.Checked = false;
             checkBox_inEnd.Checked = false;
+            checkBox_Color2.Checked = false;
 
             UserFont = false;
             UnitMode = true;
@@ -876,6 +907,7 @@ namespace ControlLibrary
             DOWMode = false;
             MonthMode = false;
             AlignmentsEnabled = true;
+            Use2color = false;
 
             setValue = false;
         }
@@ -1064,6 +1096,20 @@ namespace ControlLibrary
             }
         }
 
+        private void checkBox_Color2_CheckedChanged(object sender, EventArgs e)
+        {
+            System.Windows.Forms.CheckBox checkBox = (System.Windows.Forms.CheckBox)sender;
+            bool use = checkBox.Checked;
+
+            label_Color2.Enabled = use;
+            comboBox_Color2.Enabled = use;
+
+            if (ValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ValueChanged(this, eventArgs);
+            }
+        }
     }
 }
 

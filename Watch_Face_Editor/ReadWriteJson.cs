@@ -1044,10 +1044,12 @@ namespace Watch_Face_Editor
                 tempStr += TabInString(7) + "let weatherData = weatherSensor.getForecastWeather();" + Environment.NewLine ;
                 tempStr += TabInString(7) + "let forecastData = weatherData.forecastData;" + Environment.NewLine;
 
-                if (weather_few_days.IndexOf("result = graphScale(") > 0)
-                {
+                if (weather_few_days.IndexOf("result = graphScale(") > 0) 
                     tempStr += TabInString(7) + "let result = {graphScale: 1, maximal_temp: 0};" + Environment.NewLine;
-                }
+                if (weather_few_days.IndexOf("maxOldX") > 0) tempStr += TabInString(7) + "let maxOldX = 0;" + Environment.NewLine;
+                if (weather_few_days.IndexOf("averageOldX") > 0) tempStr += TabInString(7) + "let averageOldX = 0;" + Environment.NewLine;
+                if (weather_few_days.IndexOf("minOldX") > 0) tempStr += TabInString(7) + "let minOldX = 0;" + Environment.NewLine;
+
                 weather_few_days = tempStr + weather_few_days;
                 //weather_few_days = TabInString(7) + "let forecastData = weatherData.forecastData;" + Environment.NewLine + weather_few_days;
                 //weather_few_days = TabInString(7) + "let weatherData = weatherSensor.getForecastWeather();" + Environment.NewLine + weather_few_days;
@@ -3453,6 +3455,8 @@ namespace Watch_Face_Editor
                             {
                                 variables += "'" + str.Trim() + "', ";
                             }
+                            variables = variables.TrimEnd();
+                            variables = variables.TrimEnd(',');
                             variables += "];" + Environment.NewLine;
 
 
@@ -11323,7 +11327,7 @@ namespace Watch_Face_Editor
                 items += Environment.NewLine + TabInString(6) + "//start of ignored block";
                 items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
                 items += Environment.NewLine + TabInString(7) +
-                    optionNameStart + "forecast_background = " + groupName + ".createWidget(hmUI.widget.IMG, {" + options + TabInString(6) + "});" + Environment.NewLine;
+                    optionNameStart + "forecast_background = " + groupName + ".createWidget(hmUI.widget.IMG, {" + options + TabInString(7) + "});" + Environment.NewLine;
                 items += Environment.NewLine + TabInString(6) + "};";
                 items += Environment.NewLine + TabInString(6) + "//end of ignored block";
             }
@@ -11344,6 +11348,8 @@ namespace Watch_Face_Editor
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         continue;
                     }
+
+                    #region creat widget
                     variables += TabInString(4) + "let " + variableName + " = new Array(" + daysCount.ToString() + ");" + Environment.NewLine;
                     variables += TabInString(4) + "let " + optionNameStart + "forecast_image_array = [";
                     for (int i = imgPosition; i < imgPosition + 29; i++)
@@ -11361,19 +11367,22 @@ namespace Watch_Face_Editor
                                     imagesOptions + TabInString(6) + "// });" + Environment.NewLine;
 
                     items += Environment.NewLine + TabInString(6) + "//start of ignored block";
-                    items += Environment.NewLine + TabInString(6) + "for (let i = 0; i < " + daysCount.ToString() + "; i++) {";
-                    items += Environment.NewLine + TabInString(7) + variableName + "[i] = " + groupName + ".createWidget(hmUI.widget.IMG, {";
-                    items += Environment.NewLine + TabInString(8) + "x: " + posX.ToString() + " + i*" + daysWidth.ToString() + ",";
-                    items += Environment.NewLine + TabInString(8) + "y: " + posY.ToString() + ",";
-                    items += Environment.NewLine + TabInString(8) + "src: " + optionNameStart + "forecast_image_array[25],";
+                    items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
+                    items += Environment.NewLine + TabInString(7) + "for (let i = 0; i < " + daysCount.ToString() + "; i++) {";
+                    items += Environment.NewLine + TabInString(8) + variableName + "[i] = " + groupName + ".createWidget(hmUI.widget.IMG, {";
+                    items += Environment.NewLine + TabInString(9) + "x: " + posX.ToString() + " + i*" + daysWidth.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "y: " + posY.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "src: " + optionNameStart + "forecast_image_array[25],";
                     if (show_level.Length > 0)
                     {
-                        items += Environment.NewLine + TabInString(8) + "show_level: hmUI.show_level." + show_level + ",";
+                        items += Environment.NewLine + TabInString(9) + "show_level: hmUI.show_level." + show_level + ",";
                     }
-                    items += Environment.NewLine + TabInString(7) + "});";
-                    //items += Environment.NewLine + TabInString(7) + variableName + "[i].setProperty(hmUI.prop.VISIBLE, false);";
+                    items += Environment.NewLine + TabInString(8) + "});";
+                    //items += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.VISIBLE, false);";
+                    items += Environment.NewLine + TabInString(7) + "};";
                     items += Environment.NewLine + TabInString(6) + "};";
                     items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
+                    #endregion
 
                     if (weather_few_days.IndexOf(strFor) < 0)
                         weather_few_days += Environment.NewLine + TabInString(7) + strFor;
@@ -11388,7 +11397,7 @@ namespace Watch_Face_Editor
 
                 }
 
-                // DOW images
+                // DayOfWeek images
                 if (weatherFewDays.DayOfWeek_Images != null && weatherFewDays.DayOfWeek_Images.visible && index == weatherFewDays.DayOfWeek_Images.position && 
                     weatherFewDays.DayOfWeek_Images.img_First != null)
                 {
@@ -11403,6 +11412,8 @@ namespace Watch_Face_Editor
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         continue;
                     }
+
+                    #region creat widget
                     variables += TabInString(4) + "let " + variableName + " = new Array(" + daysCount.ToString() + ");" + Environment.NewLine;
                     variables += TabInString(4) + "let " + optionNameStart + "forecast_date_week_img_array = [";
                     for (int i = imgPosition; i < imgPosition + 7; i++)
@@ -11420,19 +11431,22 @@ namespace Watch_Face_Editor
                                     imagesOptions + TabInString(6) + "// });" + Environment.NewLine;
 
                     items += Environment.NewLine + TabInString(6) + "//start of ignored block";
-                    items += Environment.NewLine + TabInString(6) + "for (let i = 0; i < " + daysCount.ToString() + "; i++) {";
-                    items += Environment.NewLine + TabInString(7) + variableName + "[i] = " + groupName + ".createWidget(hmUI.widget.IMG, {";
-                    items += Environment.NewLine + TabInString(8) + "x: " + posX.ToString() + " + i*" + daysWidth.ToString() + ",";
-                    items += Environment.NewLine + TabInString(8) + "y: " + posY.ToString() + ",";
-                    items += Environment.NewLine + TabInString(8) + "src: " + optionNameStart + "forecast_date_week_img_array[0],";
+                    items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
+                    items += Environment.NewLine + TabInString(7) + "for (let i = 0; i < " + daysCount.ToString() + "; i++) {";
+                    items += Environment.NewLine + TabInString(8) + variableName + "[i] = " + groupName + ".createWidget(hmUI.widget.IMG, {";
+                    items += Environment.NewLine + TabInString(9) + "x: " + posX.ToString() + " + i*" + daysWidth.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "y: " + posY.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "src: " + optionNameStart + "forecast_date_week_img_array[0],";
                     if (show_level.Length > 0)
                     {
-                        items += Environment.NewLine + TabInString(8) + "show_level: hmUI.show_level." + show_level + ",";
+                        items += Environment.NewLine + TabInString(9) + "show_level: hmUI.show_level." + show_level + ",";
                     }
-                    items += Environment.NewLine + TabInString(7) + "});";
-                    //items += Environment.NewLine + TabInString(7) + variableName + "[i].setProperty(hmUI.prop.VISIBLE, false);";
+                    items += Environment.NewLine + TabInString(8) + "});";
+                    //items += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.VISIBLE, false);";
+                    items += Environment.NewLine + TabInString(7) + "};";
                     items += Environment.NewLine + TabInString(6) + "};";
                     items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
+                    #endregion
 
                     if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
                         items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
@@ -11450,6 +11464,110 @@ namespace Watch_Face_Editor
                     weather_few_days += Environment.NewLine + TabInString(7);
                 }
 
+                // DayOfWeek font
+                if (weatherFewDays.DayOfWeek_Font != null && weatherFewDays.DayOfWeek_Font.visible && index == weatherFewDays.DayOfWeek_Font.position)
+                {
+                    hmUI_widget_TEXT text = weatherFewDays.DayOfWeek_Font;
+                    string[] DOW_Array = text.unit_string.Split(',');
+                    if (DOW_Array.Length != 7) continue;
+                    string variableName = optionNameStart + "forecast_date_week_font";
+
+                    variables += TabInString(4) + "let " + variableName + " = new Array(" + daysCount.ToString() + ");" + Environment.NewLine;
+
+                    variables += TabInString(4) + "let " + optionNameStart + "forecast_date_week_font_Array = [";
+                    foreach (string str in DOW_Array)
+                    {
+                        variables += "'" + str.Trim() + "', ";
+                    }
+                    variables = variables.TrimEnd();
+                    variables = variables.TrimEnd(',');
+                    variables += "];" + Environment.NewLine;
+
+                    int posX = text.x /*+ offetX*/;
+                    int posY = text.y /*+ offetY*/;
+
+                    string textOptions = TEXT_Сommented_Options(text, "forecast_date_week_img", show_level);
+                    items += Environment.NewLine + TabInString(6) + "// " + variableName + " = " + groupName + ".createWidget(hmUI.widget.TEXT_Options, {" +
+                                    textOptions + TabInString(6) + "// });" + Environment.NewLine;
+
+                    #region creat widget
+                    if (SelectedModel.versionOS >= 2 && text.font != null && text.font.Length > 3)
+                    {
+                        string cacheName = "// FontName: " + text.font + "; FontSize: " + text.text_size.ToString();
+                        //if (text.unit_type > 0) cacheName = "// FontName: " + text.font + "; FontSize: " + text.text_size.ToString() + "; Cache: full";
+                        if (fonts_cache.IndexOf(cacheName) < 0)
+                        {
+                            //bool fullCache = text.unit_type > 0;
+                            string fontCacheOptions = TEXT_Cache_Options(text, false);
+                            if (fontCacheOptions.Length > 5)
+                            {
+                                fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                    TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+                    }
+
+                    items += Environment.NewLine + TabInString(6) + "//start of ignored block";
+                    items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
+                    items += Environment.NewLine + TabInString(7) + "for (let i = 0; i < " + daysCount.ToString() + "; i++) {";
+                    items += Environment.NewLine + TabInString(8) + variableName + "[i] = " + groupName + ".createWidget(hmUI.widget.TEXT, {";
+                    items += Environment.NewLine + TabInString(9) + "x: " + posX.ToString() + " + i*" + daysWidth.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "y: " + posY.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "w: " + text.w.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "h: " + text.h.ToString() + ",";
+
+                    items += Environment.NewLine + TabInString(9) + "text_size: " + text.text_size.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "char_space: " + text.char_space.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "line_space: " + text.line_space.ToString() + ",";
+
+                    if (SelectedModel.versionOS >= 2 && text.font != null && text.font.Length > 3)
+                    {
+                        items += Environment.NewLine + TabInString(9) + "font: 'fonts/" + text.font + "',";
+                    }
+
+                    items += Environment.NewLine + TabInString(9) + "color: " + text.color + ",";
+                    items += Environment.NewLine + TabInString(9) + "// color_2: " + text.color_2 + ",";
+
+                    items += Environment.NewLine + TabInString(9) + "align_h: hmUI.align." + text.align_h + ",";
+                    items += Environment.NewLine + TabInString(9) + "align_v: hmUI.align." + text.align_v + ",";
+                    items += Environment.NewLine + TabInString(9) + "text_style: hmUI.text_style." + text.text_style + ",";
+
+                    if (text.padding) items += Environment.NewLine + TabInString(9) + "// padding: true,";
+                    if (text.unit_type > 0) items += Environment.NewLine + TabInString(9) + "// unit_type: " + text.unit_type.ToString() + ",";
+                    if (text.unit_end) items += Environment.NewLine + TabInString(9) + "// unit_end: true,";
+                    if (text.unit_string.Length > 0) items += Environment.NewLine + TabInString(9) + "// unit_string: " + text.unit_string + ",";
+
+                    if (show_level.Length > 0)
+                    {
+                        items += Environment.NewLine + TabInString(9) + "show_level: hmUI.show_level." + show_level + ",";
+                    }
+                    items += Environment.NewLine + TabInString(8) + "});";
+                    //items += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.VISIBLE, false);";
+                    items += Environment.NewLine + TabInString(7) + "};";
+                    items += Environment.NewLine + TabInString(6) + "};";
+                    items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
+                    #endregion
+
+                    if (weather_few_days.IndexOf(strFor) < 0)
+                        weather_few_days += Environment.NewLine + TabInString(7) + strFor;
+
+                    weather_few_days += Environment.NewLine + TabInString(8) + "// DayOfWeek font";
+                    weather_few_days += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
+                    weather_few_days += Environment.NewLine + TabInString(9) + "let dowIndex = timeSensor.week - 1;";
+                    weather_few_days += Environment.NewLine + TabInString(9) + "dowIndex += i;";
+                    weather_few_days += Environment.NewLine + TabInString(9) + "while (dowIndex >= 7) {dowIndex -= 7;}";
+                    weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.TEXT, " + 
+                        optionNameStart + "forecast_date_week_font_Array[dowIndex]);";
+                    if(text.use_color_2 && text.color != text.color_2)
+                    {
+                        weather_few_days += Environment.NewLine + TabInString(9) + "if (dowIndex >= 5) " + variableName + "[i].setProperty(hmUI.prop.COLOR, " + text.color_2 + ");";
+                        weather_few_days += Environment.NewLine + TabInString(9) + "else " + variableName + "[i].setProperty(hmUI.prop.COLOR, " + text.color + ");";
+                    }
+                    weather_few_days += Environment.NewLine + TabInString(8) + "};";
+                    weather_few_days += Environment.NewLine + TabInString(7);
+                }
+
                 // Graph
                 if (weatherFewDays.Diagram != null && weatherFewDays.Diagram.visible && index == weatherFewDays.Diagram.position && 
                     (weatherFewDays.Diagram.Use_average_diagram || weatherFewDays.Diagram.Use_max_diagram || weatherFewDays.Diagram.Use_min_diagram))
@@ -11461,23 +11579,29 @@ namespace Watch_Face_Editor
                     int offsetMin = (int)Math.Ceiling(pointMinSize / 2f);
                     int graphOffsetX = new List<int> { offsetMax, offsetAverage, offsetMin }.Max();
 
+                    #region creat widget
                     //variables += TabInString(4) + "let forecastGraphScale = 1;" + Environment.NewLine;
                     variables += TabInString(4) + "let " + optionNameStart + "canvas1 = '';" + Environment.NewLine;
                     variables += TabInString(4) + "let " + optionNameStart + "canvas2 = '';" + Environment.NewLine;
 
-                    items += Environment.NewLine + TabInString(6) + optionNameStart + "canvas1 = " + groupName + ".createWidget(hmUI.widget.CANVAS, {";
-                    items += Environment.NewLine + TabInString(7) + "x: -" + graphOffsetX.ToString() + ",";
-                    items += Environment.NewLine + TabInString(7) + "y: " + weatherFewDays.Diagram.Y.ToString() + ",";
-                    items += Environment.NewLine + TabInString(7) + "w: 215,";
-                    items += Environment.NewLine + TabInString(7) + "h: 215,";
-                    items += Environment.NewLine + TabInString(6) + "});" + Environment.NewLine;
+                    items += Environment.NewLine + TabInString(6) + "//start of ignored block";
+                    items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
+                    items += Environment.NewLine + TabInString(7) + optionNameStart + "canvas1 = " + groupName + ".createWidget(hmUI.widget.CANVAS, {";
+                    items += Environment.NewLine + TabInString(8) + "x: -" + graphOffsetX.ToString() + ",";
+                    items += Environment.NewLine + TabInString(8) + "y: " + weatherFewDays.Diagram.Y.ToString() + ",";
+                    items += Environment.NewLine + TabInString(8) + "w: 215,";
+                    items += Environment.NewLine + TabInString(8) + "h: 215,";
+                    items += Environment.NewLine + TabInString(7) + "});" + Environment.NewLine;
 
-                    items += Environment.NewLine + TabInString(6) + optionNameStart + "canvas2 = " + groupName + ".createWidget(hmUI.widget.CANVAS, {";
-                    items += Environment.NewLine + TabInString(7) + "x: " + (215 - graphOffsetX).ToString() + ",";
-                    items += Environment.NewLine + TabInString(7) + "y: " + weatherFewDays.Diagram.Y.ToString() + ",";
-                    items += Environment.NewLine + TabInString(7) + "w: 215,";
-                    items += Environment.NewLine + TabInString(7) + "h: 215,";
-                    items += Environment.NewLine + TabInString(6) + "});" + Environment.NewLine;
+                    items += Environment.NewLine + TabInString(7) + optionNameStart + "canvas2 = " + groupName + ".createWidget(hmUI.widget.CANVAS, {";
+                    items += Environment.NewLine + TabInString(8) + "x: " + (215 - graphOffsetX).ToString() + ",";
+                    items += Environment.NewLine + TabInString(8) + "y: " + weatherFewDays.Diagram.Y.ToString() + ",";
+                    items += Environment.NewLine + TabInString(8) + "w: 215,";
+                    items += Environment.NewLine + TabInString(8) + "h: 215,";
+                    items += Environment.NewLine + TabInString(7) + "});";
+                    items += Environment.NewLine + TabInString(6) + "};";
+                    items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
+                    #endregion
 
                     string temp_items = "";
 
@@ -11488,27 +11612,30 @@ namespace Watch_Face_Editor
 
                     if (weatherFewDays.Diagram.Use_max_diagram) {
                         temp_items += Environment.NewLine + TabInString(7) +
-                            "let max_offsetX = " + (weatherFewDays.Diagram.Max_offsetX + graphOffsetX) + ";";
-                        temp_items += Environment.NewLine + TabInString(7) + "let maxOldX = max_offsetX;";
-                        temp_items += Environment.NewLine + TabInString(7) +
+                            "let " + optionNameStart + "max_offsetX = " + (weatherFewDays.Diagram.Max_offsetX + graphOffsetX) + ";";
+                        temp_items += Environment.NewLine + TabInString(7) + "if (screenType == hmSetting.screen_type." + screenType + 
+                            ")  maxOldX = " + optionNameStart + "max_offsetX;";
+                        if (weather_few_days.IndexOf("let maxOldY") < 0) temp_items += Environment.NewLine + TabInString(7) +
                             "let maxOldY = (maximal_temp - forecastData.data[0].high) * forecastGraphScale + " + offsetDiagramY.ToString() + ";";
-                        temp_items += Environment.NewLine + TabInString(7) + "let endPointMax = false;";
+                        if (weather_few_days.IndexOf("let endPointMax") < 0) temp_items += Environment.NewLine + TabInString(7) + "let endPointMax = false;";
                     }
                     if (weatherFewDays.Diagram.Use_average_diagram) {
                         temp_items += Environment.NewLine + TabInString(7) +
-                            "let average_offsetX = " + (weatherFewDays.Diagram.Average_offsetX + graphOffsetX) + ";";
-                        temp_items += Environment.NewLine + TabInString(7) + "let averageOldX = average_offsetX;";
-                        temp_items += Environment.NewLine + TabInString(7) +
+                            "let " + optionNameStart + "average_offsetX = " + (weatherFewDays.Diagram.Average_offsetX + graphOffsetX) + ";";
+                        temp_items += Environment.NewLine + TabInString(7) + "if (screenType == hmSetting.screen_type." + screenType +
+                            ") averageOldX = " + optionNameStart + "average_offsetX;";
+                        if (weather_few_days.IndexOf("let averageOldY") < 0) temp_items += Environment.NewLine + TabInString(7) +
                             "let averageOldY = (maximal_temp - (forecastData.data[0].high + forecastData.data[0].low) / 2) * forecastGraphScale + " + offsetDiagramY.ToString() + ";";
-                        temp_items += Environment.NewLine + TabInString(7) + "let endPointAverage = false;";
+                        if (weather_few_days.IndexOf("let endPointAverage") < 0) temp_items += Environment.NewLine + TabInString(7) + "let endPointAverage = false;";
                     }
                     if (weatherFewDays.Diagram.Use_min_diagram) {
                         temp_items += Environment.NewLine + TabInString(7) +
-                            "let min_offsetX = " + (weatherFewDays.Diagram.Min_offsetX + graphOffsetX) + ";";
-                        temp_items += Environment.NewLine + TabInString(7) + "let minOldX = min_offsetX;";
-                        temp_items += Environment.NewLine + TabInString(7) +
+                            "let " + optionNameStart + "min_offsetX = " + (weatherFewDays.Diagram.Min_offsetX + graphOffsetX) + ";";
+                        temp_items += Environment.NewLine + TabInString(7) + "if (screenType == hmSetting.screen_type." + screenType +
+                            ") minOldX = " + optionNameStart + "min_offsetX;";
+                        if (weather_few_days.IndexOf("let minOldY") < 0) temp_items += Environment.NewLine + TabInString(7) +
                             "let minOldY = (maximal_temp - forecastData.data[0].low) * forecastGraphScale + " + offsetDiagramY.ToString() + ";";
-                        temp_items += Environment.NewLine + TabInString(7) + "let endPointMin = false;";
+                        if (weather_few_days.IndexOf("let endPointMin") < 0) temp_items += Environment.NewLine + TabInString(7) + "let endPointMin = false;";
                     }
 
                     weather_few_days = temp_items + weather_few_days;
@@ -11523,7 +11650,7 @@ namespace Watch_Face_Editor
                     {
                         weather_few_days += Environment.NewLine + TabInString(10) + "let maxStartX = maxOldX;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let maxStartY = maxOldY;";
-                        weather_few_days += Environment.NewLine + TabInString(10) + "maxOldX = max_offsetX + i * " + daysWidth.ToString() + ";";
+                        weather_few_days += Environment.NewLine + TabInString(10) + "maxOldX = " + optionNameStart + "max_offsetX + i * " + daysWidth.ToString() + ";";
                         weather_few_days += Environment.NewLine + TabInString(10) + "maxOldY = (maximal_temp - forecastData.data[i].high) * forecastGraphScale + " + offsetDiagramY.ToString() + ";";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let maxEndX = maxOldX;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let maxEndY = maxOldY;";
@@ -11552,7 +11679,7 @@ namespace Watch_Face_Editor
                     {
                         weather_few_days += Environment.NewLine + TabInString(10) + "let averageStartX = averageOldX;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let averageStartY = averageOldY;";
-                        weather_few_days += Environment.NewLine + TabInString(10) + "averageOldX = average_offsetX + i * " + daysWidth.ToString() + ";";
+                        weather_few_days += Environment.NewLine + TabInString(10) + "averageOldX = " + optionNameStart + "average_offsetX + i * " + daysWidth.ToString() + ";";
                         weather_few_days += Environment.NewLine + TabInString(10) + "averageOldY = (maximal_temp - (forecastData.data[i].high + forecastData.data[i].low) / 2) * forecastGraphScale + " + offsetDiagramY.ToString() + ";";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let averageEndX = averageOldX;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let averageEndY = averageOldY;";
@@ -11581,7 +11708,7 @@ namespace Watch_Face_Editor
                     {
                         weather_few_days += Environment.NewLine + TabInString(10) + "let minStartX = minOldX;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let minStartY = minOldY;";
-                        weather_few_days += Environment.NewLine + TabInString(10) + "minOldX = min_offsetX + i * " + daysWidth.ToString() + ";";
+                        weather_few_days += Environment.NewLine + TabInString(10) + "minOldX = " + optionNameStart + "min_offsetX + i * " + daysWidth.ToString() + ";";
                         weather_few_days += Environment.NewLine + TabInString(10) + "minOldY = (maximal_temp - forecastData.data[i].low) * forecastGraphScale + " + offsetDiagramY.ToString() + ";";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let minEndX = minOldX;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let minEndY = minOldY;";
@@ -11632,9 +11759,9 @@ namespace Watch_Face_Editor
                     int posX = img_number.imageX /*+ offetX*/;
                     int posY = img_number.imageY /*+ offetY*/;
 
-                    //string imgNumberOptions = IMG_IMAGES_Сommented_Options(img_number, "forecast_image", show_level);
-                    //items += Environment.NewLine + TabInString(6) + "// " + variableName + " = " + groupName + ".createWidget(hmUI.widget.TEXT_IMG_Options, {" +
-                    //                imagesOptions + TabInString(6) + "// });" + Environment.NewLine;
+                    string imgNumberOptions = IMG_NUMBER_Сommented_Options(img_number, "forecast_high_text_img", show_level);
+                    items += Environment.NewLine + TabInString(6) + "// " + variableName + " = " + groupName + ".createWidget(hmUI.widget.TEXT_IMG_Options, {" +
+                                    imgNumberOptions + TabInString(6) + "// });" + Environment.NewLine;
 
                     string img_array = "[";
                     for (int i = imgPosition; i < imgPosition + 10; i++)
@@ -11659,58 +11786,40 @@ namespace Watch_Face_Editor
 
                     #region creat widget
                     items += Environment.NewLine + TabInString(6) + "//start of ignored block";
-                    items += Environment.NewLine + TabInString(6) + "for (let i = 0; i < " + daysCount.ToString() + "; i++) {";
-                    items += Environment.NewLine + TabInString(7) + variableName + "[i] = " + groupName + ".createWidget(hmUI.widget.TEXT_IMG, {";
-                    items += Environment.NewLine + TabInString(8) + "x: " + posX.ToString() + " + i*" + daysWidth.ToString() + ",";
-                    items += Environment.NewLine + TabInString(8) + "y: " + posY.ToString() + ",";
-                    items += Environment.NewLine + TabInString(8) + "font_array: " + img_array + ",";
-                    items += Environment.NewLine + TabInString(8) + "padding: false,";
-                    items += Environment.NewLine + TabInString(8) + "h_space: " + img_number.space.ToString() + ",";
+                    items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
+                    items += Environment.NewLine + TabInString(7) + "for (let i = 0; i < " + daysCount.ToString() + "; i++) {";
+                    items += Environment.NewLine + TabInString(8) + variableName + "[i] = " + groupName + ".createWidget(hmUI.widget.TEXT_IMG, {";
+                    items += Environment.NewLine + TabInString(9) + "x: " + posX.ToString() + " + i*" + daysWidth.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "y: " + posY.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "font_array: " + img_array + ",";
+                    items += Environment.NewLine + TabInString(9) + "padding: false,";
+                    items += Environment.NewLine + TabInString(9) + "h_space: " + img_number.space.ToString() + ",";
                     if (img_number.angle != 0)
-                        items += Environment.NewLine + TabInString(8) + "angle: " + img_number.angle.ToString() + ",";
+                        items += Environment.NewLine + TabInString(9) + "angle: " + img_number.angle.ToString() + ",";
 
                     if (img_number.unit != null && img_number.unit.Length > 0)
                     {
                         string unit = "'" + img_number.unit + ".png'";
-                        items += Environment.NewLine + TabInString(8) + "unit_sc: " + unit + ",";
-                        items += Environment.NewLine + TabInString(8) + "unit_tc: " + unit + ",";
-                        items += Environment.NewLine + TabInString(8) + "unit_en: " + unit + ",";
+                        items += Environment.NewLine + TabInString(9) + "unit_sc: " + unit + ",";
+                        items += Environment.NewLine + TabInString(9) + "unit_tc: " + unit + ",";
+                        items += Environment.NewLine + TabInString(9) + "unit_en: " + unit + ",";
                     }
-                    //if (img_number.imperial_unit != null && img_number.imperial_unit.Length > 0)
-                    //{
-                    //    string unit = "'" + img_number.imperial_unit + ".png'";
-                    //    items += Environment.NewLine + TabInString(8) + "imperial_unit_sc: " + unit + ",";
-                    //    items += Environment.NewLine + TabInString(8) + "imperial_unit_tc: " + unit + ",";
-                    //    items += Environment.NewLine + TabInString(8) + "imperial_unit_en: " + unit + ",";
-                    //}
 
                     if (img_number.negative_image != null && img_number.negative_image.Length > 0)
                     {
                         string negative_image = "'" + img_number.negative_image + ".png'";
-                        items += Environment.NewLine + TabInString(8) + "negative_image: " + negative_image + ",";
+                        items += Environment.NewLine + TabInString(9) + "negative_image: " + negative_image + ",";
                     }
 
-                    //if (img_number.invalid_image != null && img_number.invalid_image.Length > 0)
-                    //{
-                    //    string invalid_image = "'" + img_number.invalid_image + ".png'";
-                    //    items += Environment.NewLine + TabInString(8) + "invalid_image: " + invalid_image + ",";
-                    //}
-
-                    //if (img_number.dot_image != null && img_number.dot_image.Length > 0)
-                    //{
-                    //    string dot_path = "'" + img_number.dot_image + ".png'";
-                    //    items += Environment.NewLine + TabInString(8) + "dot_image: " + dot_path + ",";
-                    //}
-
-                    items += Environment.NewLine + TabInString(8) + "align_h: hmUI.align." + img_number.align.ToUpper() + ",";
-                    items += Environment.NewLine + TabInString(8) + "// type: hmUI.data_type.FORECAST_NUMBER_MAX,";
+                    items += Environment.NewLine + TabInString(9) + "align_h: hmUI.align." + img_number.align.ToUpper() + ",";
+                    items += Environment.NewLine + TabInString(9) + "// type: hmUI.data_type.FORECAST_NUMBER_MAX,";
 
                     if (show_level.Length > 0)
                     {
-                        items += Environment.NewLine + TabInString(8) + "show_level: hmUI.show_level." + show_level + ",";
+                        items += Environment.NewLine + TabInString(9) + "show_level: hmUI.show_level." + show_level + ",";
                     }
-                    items += Environment.NewLine + TabInString(7) + "});";
-                    //items += Environment.NewLine + TabInString(7) + variableName + "[i].setProperty(hmUI.prop.VISIBLE, false);";
+                    items += Environment.NewLine + TabInString(8) + "});";
+                    //items += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.VISIBLE, false);";
                     if (img_number.imperial_unit != null && img_number.imperial_unit.Length > 0 && 
                         img_number.unit != null && img_number.unit != img_number.imperial_unit)
                     {
@@ -11718,63 +11827,45 @@ namespace Watch_Face_Editor
                         {
                             if (items.IndexOf("const temperatureUnit = hmSetting.getTemperatureUnit();") < 0)
                             {
-                                items += Environment.NewLine + TabInString(6) + "const temperatureUnit = hmSetting.getTemperatureUnit();";
+                                items += Environment.NewLine + TabInString(7) + "const temperatureUnit = hmSetting.getTemperatureUnit();";
                             }
 
-                            items += Environment.NewLine + TabInString(7) + "if (temperatureUnit == 1) {";
-                            items += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.MORE, {";
-                            items += Environment.NewLine + TabInString(9) + "x: " + posX.ToString() + " + i*" + daysWidth.ToString() + ",";
-                            items += Environment.NewLine + TabInString(9) + "y: " + posY.ToString() + ",";
-                            items += Environment.NewLine + TabInString(9) + "font_array: " + img_array + ",";
-                            items += Environment.NewLine + TabInString(9) + "padding: false,";
-                            items += Environment.NewLine + TabInString(9) + "h_space: " + img_number.space.ToString() + ",";
+                            items += Environment.NewLine + TabInString(8) + "if (temperatureUnit == 1) {";
+                            items += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.MORE, {";
+                            items += Environment.NewLine + TabInString(10) + "x: " + posX.ToString() + " + i*" + daysWidth.ToString() + ",";
+                            items += Environment.NewLine + TabInString(10) + "y: " + posY.ToString() + ",";
+                            items += Environment.NewLine + TabInString(10) + "font_array: " + img_array + ",";
+                            items += Environment.NewLine + TabInString(10) + "padding: false,";
+                            items += Environment.NewLine + TabInString(10) + "h_space: " + img_number.space.ToString() + ",";
                             if (img_number.angle != 0)
-                                items += Environment.NewLine + TabInString(9) + "angle: " + img_number.angle.ToString() + ",";
+                                items += Environment.NewLine + TabInString(10) + "angle: " + img_number.angle.ToString() + ",";
 
-                            //if (img_number.unit != null && img_number.unit.Length > 0)
-                            //{
-                            //    string unit = "'" + img_number.unit + ".png'";
-                            //    items += Environment.NewLine + TabInString(9) + "unit_sc: " + unit + ",";
-                            //    items += Environment.NewLine + TabInString(9) + "unit_tc: " + unit + ",";
-                            //    items += Environment.NewLine + TabInString(9) + "unit_en: " + unit + ",";
-                            //}
                             if (img_number.imperial_unit != null && img_number.imperial_unit.Length > 0)
                             {
                                 string unit = "'" + img_number.imperial_unit + ".png'";
-                                items += Environment.NewLine + TabInString(9) + "unit_sc: " + unit + ",";
-                                items += Environment.NewLine + TabInString(9) + "unit_tc: " + unit + ",";
-                                items += Environment.NewLine + TabInString(9) + "unit_en: " + unit + ",";
+                                items += Environment.NewLine + TabInString(10) + "unit_sc: " + unit + ",";
+                                items += Environment.NewLine + TabInString(10) + "unit_tc: " + unit + ",";
+                                items += Environment.NewLine + TabInString(10) + "unit_en: " + unit + ",";
                             }
 
                             if (img_number.negative_image != null && img_number.negative_image.Length > 0)
                             {
                                 string negative_image = "'" + img_number.negative_image + ".png'";
-                                items += Environment.NewLine + TabInString(9) + "negative_image: " + negative_image + ",";
+                                items += Environment.NewLine + TabInString(10) + "negative_image: " + negative_image + ",";
                             }
 
-                            //if (img_number.invalid_image != null && img_number.invalid_image.Length > 0)
-                            //{
-                            //    string invalid_image = "'" + img_number.invalid_image + ".png'";
-                            //    items += Environment.NewLine + TabInString(9) + "invalid_image: " + invalid_image + ",";
-                            //}
-
-                            //if (img_number.dot_image != null && img_number.dot_image.Length > 0)
-                            //{
-                            //    string dot_path = "'" + img_number.dot_image + ".png'";
-                            //    items += Environment.NewLine + TabInString(9) + "dot_image: " + dot_path + ",";
-                            //}
-
-                            items += Environment.NewLine + TabInString(9) + "align_h: hmUI.align." + img_number.align.ToUpper() + ",";
+                            items += Environment.NewLine + TabInString(10) + "align_h: hmUI.align." + img_number.align.ToUpper() + ",";
                             items += Environment.NewLine + TabInString(9) + "// type: hmUI.data_type.FORECAST_NUMBER_MAX,";
 
                             if (show_level.Length > 0)
                             {
-                                items += Environment.NewLine + TabInString(9) + "show_level: hmUI.show_level." + show_level + ",";
+                                items += Environment.NewLine + TabInString(10) + "show_level: hmUI.show_level." + show_level + ",";
                             }
-                            items += Environment.NewLine + TabInString(8) + "});";
-                            items += Environment.NewLine + TabInString(7) + "};";
+                            items += Environment.NewLine + TabInString(9) + "});";
+                            items += Environment.NewLine + TabInString(8) + "};";
                         }
                     }
+                    items += Environment.NewLine + TabInString(7) + "};";
                     items += Environment.NewLine + TabInString(6) + "};";
                     items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
                     #endregion
@@ -11783,13 +11874,6 @@ namespace Watch_Face_Editor
                         weather_few_days += Environment.NewLine + TabInString(7) + strFor;
 
                     weather_few_days += Environment.NewLine + TabInString(8) + "// Number_Max";
-                    if (weatherFewDays.Diagram != null && weatherFewDays.Diagram.PositionOnGraph)
-                    {
-                        weather_few_days += Environment.NewLine + TabInString(8) + "let " + optionNameStart +
-                            "forecast_high_text_posY = (maximal_temp - forecastData.data[i].high) * forecastGraphScale + " + offsetDiagramY.ToString() + 
-                            " + " + posY.ToString() + ";";
-                        weather_few_days += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.Y, " + optionNameStart + "forecast_high_text_posY);";
-                    }
 
                     if (weather_few_days.IndexOf("let maxTemperature = '-';") < 0)
                     {
@@ -11797,7 +11881,16 @@ namespace Watch_Face_Editor
                         weather_few_days += Environment.NewLine + TabInString(8) + "if (i < forecastData.count) maxTemperature = forecastData.data[i].high.toString();";
                     }
 
-                    weather_few_days += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.TEXT, maxTemperature);";
+                    weather_few_days += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
+                    if (weatherFewDays.Diagram != null && weatherFewDays.Diagram.PositionOnGraph)
+                    {
+                        weather_few_days += Environment.NewLine + TabInString(9) + "let " + optionNameStart +
+                            "forecast_high_text_posY = (maximal_temp - forecastData.data[i].high) * forecastGraphScale + " + offsetDiagramY.ToString() + 
+                            " + " + posY.ToString() + ";";
+                        weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.Y, " + optionNameStart + "forecast_high_text_posY);";
+                    }
+                    weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.TEXT, maxTemperature);";
+                    weather_few_days += Environment.NewLine + TabInString(8) + "};";
                     weather_few_days += Environment.NewLine + TabInString(8);
                 }
 
@@ -11812,9 +11905,9 @@ namespace Watch_Face_Editor
                     int posX = text.x /*+ offetX*/;
                     int posY = text.y /*+ offetY*/;
 
-                    //string imgNumberOptions = IMG_IMAGES_Сommented_Options(img_number, "forecast_image", show_level);
-                    //items += Environment.NewLine + TabInString(6) + "// " + variableName + " = " + groupName + ".createWidget(hmUI.widget.TEXT_IMG_Options, {" +
-                    //                imagesOptions + TabInString(6) + "// });" + Environment.NewLine;
+                    string textOptions = TEXT_Сommented_Options(text, "forecast_high_text_font", show_level);
+                    items += Environment.NewLine + TabInString(6) + "// " + variableName + " = " + groupName + ".createWidget(hmUI.widget.TEXT_Options, {" +
+                                    textOptions + TabInString(6) + "// });" + Environment.NewLine;
 
                     #region creat widget
                     if (SelectedModel.versionOS >= 2 && text.font != null && text.font.Length > 3)
@@ -11835,39 +11928,41 @@ namespace Watch_Face_Editor
                     }
 
                     items += Environment.NewLine + TabInString(6) + "//start of ignored block";
-                    items += Environment.NewLine + TabInString(6) + "for (let i = 0; i < " + daysCount.ToString() + "; i++) {";
-                    items += Environment.NewLine + TabInString(7) + variableName + "[i] = " + groupName + ".createWidget(hmUI.widget.TEXT, {";
-                    items += Environment.NewLine + TabInString(8) + "x: " + posX.ToString() + " + i*" + daysWidth.ToString() + ",";
-                    items += Environment.NewLine + TabInString(8) + "y: " + posY.ToString() + ",";
-                    items += Environment.NewLine + TabInString(8) + "w: " + text.w.ToString() + ",";
-                    items += Environment.NewLine + TabInString(8) + "h: " + text.h.ToString() + ",";
+                    items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
+                    items += Environment.NewLine + TabInString(7) + "for (let i = 0; i < " + daysCount.ToString() + "; i++) {";
+                    items += Environment.NewLine + TabInString(8) + variableName + "[i] = " + groupName + ".createWidget(hmUI.widget.TEXT, {";
+                    items += Environment.NewLine + TabInString(9) + "x: " + posX.ToString() + " + i*" + daysWidth.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "y: " + posY.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "w: " + text.w.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "h: " + text.h.ToString() + ",";
 
-                    items += Environment.NewLine + TabInString(8) + "text_size: " + text.text_size.ToString() + ",";
-                    items += Environment.NewLine + TabInString(8) + "char_space: " + text.char_space.ToString() + ",";
-                    items += Environment.NewLine + TabInString(8) + "line_space: " + text.line_space.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "text_size: " + text.text_size.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "char_space: " + text.char_space.ToString() + ",";
+                    items += Environment.NewLine + TabInString(9) + "line_space: " + text.line_space.ToString() + ",";
 
                     if (SelectedModel.versionOS >= 2 && text.font != null && text.font.Length > 3)
                     {
-                        items += Environment.NewLine + TabInString(8) + "font: 'fonts/" + text.font + "',";
+                        items += Environment.NewLine + TabInString(9) + "font: 'fonts/" + text.font + "',";
                     }
 
-                    items += Environment.NewLine + TabInString(8) + "color: " + text.color + ",";
+                    items += Environment.NewLine + TabInString(9) + "color: " + text.color + ",";
 
-                    items += Environment.NewLine + TabInString(8) + "align_h: hmUI.align." + text.align_h + ",";
-                    items += Environment.NewLine + TabInString(8) + "align_v: hmUI.align." + text.align_v + ",";
-                    items += Environment.NewLine + TabInString(8) + "text_style: hmUI.text_style." + text.text_style + ",";
+                    items += Environment.NewLine + TabInString(9) + "align_h: hmUI.align." + text.align_h + ",";
+                    items += Environment.NewLine + TabInString(9) + "align_v: hmUI.align." + text.align_v + ",";
+                    items += Environment.NewLine + TabInString(9) + "text_style: hmUI.text_style." + text.text_style + ",";
 
-                    if (text.padding) items += Environment.NewLine + TabInString(8) + "// padding: true,";
-                    if (text.unit_type > 0) items += Environment.NewLine + TabInString(8) + "// unit_type: " + text.unit_type.ToString() + ",";
-                    if (text.unit_end) items += Environment.NewLine + TabInString(8) + "// unit_end: true,";
-                    if (text.unit_string.Length > 0) items += Environment.NewLine + TabInString(8) + "// unit_string: " + text.unit_string + ",";
+                    if (text.padding) items += Environment.NewLine + TabInString(9) + "// padding: true,";
+                    if (text.unit_type > 0) items += Environment.NewLine + TabInString(9) + "// unit_type: " + text.unit_type.ToString() + ",";
+                    if (text.unit_end) items += Environment.NewLine + TabInString(9) + "// unit_end: true,";
+                    if (text.unit_string.Length > 0) items += Environment.NewLine + TabInString(9) + "// unit_string: " + text.unit_string + ",";
 
                     if (show_level.Length > 0)
                     {
-                        items += Environment.NewLine + TabInString(8) + "show_level: hmUI.show_level." + show_level + ",";
+                        items += Environment.NewLine + TabInString(9) + "show_level: hmUI.show_level." + show_level + ",";
                     }
-                    items += Environment.NewLine + TabInString(7) + "});";
-                    //items += Environment.NewLine + TabInString(7) + variableName + "[i].setProperty(hmUI.prop.VISIBLE, false);";
+                    items += Environment.NewLine + TabInString(8) + "});";
+                    //items += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.VISIBLE, false);";
+                    items += Environment.NewLine + TabInString(7) + "};";
                     items += Environment.NewLine + TabInString(6) + "};";
                     items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
                     #endregion
@@ -11876,28 +11971,31 @@ namespace Watch_Face_Editor
                         weather_few_days += Environment.NewLine + TabInString(7) + strFor;
 
                     weather_few_days += Environment.NewLine + TabInString(8) + "// Number_Font_Max";
-                    if (weatherFewDays.Diagram != null && weatherFewDays.Diagram.PositionOnGraph)
-                    {
-                        weather_few_days += Environment.NewLine + TabInString(8) + "let " + optionNameStart +
-                            "forecast_high_text_font_posY = (maximal_temp - forecastData.data[i].high) * forecastGraphScale + " + offsetDiagramY.ToString() +
-                            " + " + posY.ToString() + ";";
-                        weather_few_days += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.Y, " + optionNameStart + "forecast_high_text_font_posY);";
-                    }
-
                     if (weather_few_days.IndexOf("let maxTemperature = '-';") < 0)
                     {
                         weather_few_days += Environment.NewLine + TabInString(8) + "let maxTemperature = '-';";
                         weather_few_days += Environment.NewLine + TabInString(8) + "if (i < forecastData.count) maxTemperature = forecastData.data[i].high.toString();";
                     }
 
+                    weather_few_days += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
+
+                    if (weatherFewDays.Diagram != null && weatherFewDays.Diagram.PositionOnGraph)
+                    {
+                        weather_few_days += Environment.NewLine + TabInString(9) + "let " + variableName +
+                            "_posY = (maximal_temp - forecastData.data[i].high) * forecastGraphScale + " + offsetDiagramY.ToString() +
+                            " + " + posY.ToString() + ";";
+                        weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.Y, " + variableName + "_posY);";
+                    }
+
                     if (text.unit_type == 0)
                     {
-                        weather_few_days += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.TEXT, maxTemperature);"; 
+                        weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.TEXT, maxTemperature);"; 
                     }
                     else
                     {
-                        weather_few_days += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.TEXT, maxTemperature + '°');";
+                        weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.TEXT, maxTemperature + '°');";
                     }
+                    weather_few_days += Environment.NewLine + TabInString(8) + "};";
                     weather_few_days += Environment.NewLine + TabInString(8);
                 }
 
@@ -11911,9 +12009,11 @@ namespace Watch_Face_Editor
                     //iconOptions += TabInString(7) + "src: '" + weatherFewDays.Icon.src + ".png'," + Environment.NewLine;
 
                     variables += TabInString(4) + "let " + optionNameStart + "forecast_icon_img = ''" + Environment.NewLine;
-                    items += Environment.NewLine + TabInString(6) +
+                    items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
+                    items += Environment.NewLine + TabInString(7) +
                         optionNameStart + "forecast_icon_img = " + groupName + ".createWidget(hmUI.widget.IMG, {" +
-                            iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                            iconOptions + TabInString(7) + "});" + Environment.NewLine;
+                    items += Environment.NewLine + TabInString(6) + "});" + Environment.NewLine;
                 }
             }
 
@@ -11968,8 +12068,14 @@ namespace Watch_Face_Editor
 
         private void AddGraphFunctions(ref string items)
         {
-            items += TabInString(6) + Environment.NewLine;
-            items += TabInString(6) + "//start of ignored block" + Environment.NewLine;
+            bool addComents = false;
+            if (items.IndexOf("function drawLine") < 0 || items.IndexOf("function drawRect") < 0 ||
+                items.IndexOf("function drawCircle") < 0 || items.IndexOf("function drawGraphPoint") < 0) addComents = true;
+            if (addComents)
+            {
+                items += TabInString(6) + Environment.NewLine;
+                items += TabInString(6) + "//start of ignored block" + Environment.NewLine; 
+            }
             if (items.IndexOf("function drawLine") < 0)
             {
                 items += TabInString(6) + "function drawLine(canvas1, canvas2, x1, y1, x2, y2, color, line_width) {" + Environment.NewLine;
@@ -12072,7 +12178,7 @@ namespace Watch_Face_Editor
                 items += TabInString(6) + "};" + Environment.NewLine;
             }
 
-            items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
+            if (addComents) items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
         }
 
         private void AddGraphScaleFunction(ref string items)
@@ -15370,6 +15476,85 @@ namespace Watch_Face_Editor
             return options;
         }
 
+        private string IMG_NUMBER_Сommented_Options(hmUI_widget_IMG_NUMBER img_number, string type, string show_level, int tabOffset = 0)
+        {
+            string options = Environment.NewLine;
+            if (img_number == null) return options;
+            if (img_number.img_First == null) return options;
+            string img = img_number.img_First;
+            if (img.Length > 0)
+            {
+                int imgPosition = ListImages.IndexOf(img);
+                if (imgPosition + 9 > ListImages.Count)
+                {
+                    MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error + Environment.NewLine +
+                        "type: hmUI.data_type." + type, Properties.FormStrings.Message_Warning_Caption,
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return options;
+                }
+                string img_array = "[";
+                for (int i = imgPosition; i < imgPosition + 10; i++)
+                {
+                    string file_name = "\"" + ListImages[i] + ".png" + "\"";
+                    img_array += file_name;
+                    if (i < imgPosition + 9) img_array += ",";
+                }
+                img_array += "]";
+                options += TabInString(7 + tabOffset) + "// x: " + img_number.imageX.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// y: " + img_number.imageY.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// font_array: " + img_array + "," + Environment.NewLine;
+                if (img_number.zero) options += TabInString(7 + tabOffset) + "// padding: true," + Environment.NewLine;
+                else options += TabInString(7 + tabOffset) + "// padding: false," + Environment.NewLine;
+
+                options += TabInString(7 + tabOffset) + "// h_space: " + img_number.space.ToString() + "," + Environment.NewLine;
+                if (img_number.angle != 0)
+                    options += TabInString(7 + tabOffset) + "// angle: " + img_number.angle.ToString() + "," + Environment.NewLine;
+                if (img_number.unit != null && img_number.unit.Length > 0)
+                {
+                    string unit = "'" + img_number.unit + ".png'";
+                    options += TabInString(7 + tabOffset) + "// unit_en: " + unit + "," + Environment.NewLine;
+                }
+
+                if (img_number.imperial_unit != null && img_number.imperial_unit.Length > 0)
+                {
+                    string unit = "'" + img_number.imperial_unit + ".png'";
+                    options += TabInString(7 + tabOffset) + "// imperial_unit_en: " + unit + "," + Environment.NewLine;
+                }
+
+                if (img_number.negative_image != null && img_number.negative_image.Length > 0)
+                {
+                    string negative_image = "'" + img_number.negative_image + ".png'";
+                    options += TabInString(7 + tabOffset) + "// negative_image: " + negative_image + "," + Environment.NewLine;
+                }
+
+                if (img_number.invalid_image != null && img_number.invalid_image.Length > 0)
+                {
+                    string invalid_image = "'" + img_number.invalid_image + ".png'";
+                    options += TabInString(7 + tabOffset) + "// invalid_image: " + invalid_image + "," + Environment.NewLine;
+                }
+
+                if (img_number.dot_image != null && img_number.dot_image.Length > 0)
+                {
+                    string dot_path = "'" + img_number.dot_image + ".png'";
+                    options += TabInString(7 + tabOffset) + "// dot_image: " + dot_path + "," + Environment.NewLine;
+                }
+
+                options += TabInString(7 + tabOffset) + "// align_h: hmUI.align." + img_number.align.ToUpper() + "," + Environment.NewLine;
+
+
+                if (type.Length > 0)
+                {
+                    options += TabInString(7 + tabOffset) + "// type: hmUI.data_type." + type + "," + Environment.NewLine;
+                }
+
+                if (show_level.Length > 0)
+                {
+                    options += TabInString(7 + tabOffset) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                }
+            }
+            return options;
+        }
+
         private string IMG_NUMBER_Hour_Options(hmUI_widget_IMG_NUMBER img_number_hour, string show_level)
         {
             string options = Environment.NewLine;
@@ -17592,6 +17777,60 @@ namespace Watch_Face_Editor
             if (show_level.Length > 0)
             {
                 options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+            }
+
+            return options;
+        }
+
+        private string TEXT_Сommented_Options(hmUI_widget_TEXT text, string type, string show_level, int tabOffset = 0)
+        {
+            string options = Environment.NewLine;
+            if (text == null) return options;
+            int x = text.x;
+            int y = text.y;
+            int w = text.w;
+            int h = text.h;
+            if (text.centreHorizontally) x = (SelectedModel.background.w - w) / 2;
+            if (text.centreVertically) y = (SelectedModel.background.h - h) / 2;
+            options += TabInString(7 + tabOffset) + "// x: " + x.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// y: " + y.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// w: " + w.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// h: " + h.ToString() + "," + Environment.NewLine;
+
+            options += TabInString(7 + tabOffset) + "// text_size: " + text.text_size.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// char_space: " + text.char_space.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// line_space: " + text.line_space.ToString() + "," + Environment.NewLine;
+
+            if (SelectedModel.versionOS >= 2 && text.font != null && text.font.Length > 3)
+            {
+                options += TabInString(7 + tabOffset) + "// font: 'fonts/" + text.font + "'," + Environment.NewLine;
+            }
+
+            options += TabInString(7 + tabOffset) + "// color: " + text.color + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// color_2: " + text.color_2 + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// use_color_2: " + text.use_color_2.ToString() + "," + Environment.NewLine;
+
+            options += TabInString(7 + tabOffset) + "// align_h: hmUI.align." + text.align_h + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// align_v: hmUI.align." + text.align_v + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// text_style: hmUI.text_style." + text.text_style + "," + Environment.NewLine;
+
+            if (type.Length > 0)
+            {
+                options += TabInString(7 + tabOffset) + "// type: hmUI.data_type." + type + "," + Environment.NewLine;
+            }
+
+            if (text.padding) options += TabInString(7 + tabOffset) + "// padding: true," + Environment.NewLine;
+            if (text.unit_type > 0) options += TabInString(7 + tabOffset) + "// unit_type: " + text.unit_type.ToString() + "," + Environment.NewLine;
+            if (text.unit_end) options += TabInString(7 + tabOffset) + "// unit_end: true," + Environment.NewLine;
+            if (text.unit_string.Length > 0) options += TabInString(7 + tabOffset) + "// unit_string: " + text.unit_string + "," + Environment.NewLine;
+
+#if DEBUG
+            options += TabInString(7 + tabOffset) + "// text: 'Text'," + Environment.NewLine;
+#endif
+
+            if (show_level.Length > 0)
+            {
+                options += TabInString(7 + tabOffset) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
             }
 
             return options;
@@ -19837,7 +20076,7 @@ namespace Watch_Face_Editor
                                 continue;
                             }
 
-                            if (objectName.EndsWith("forecast_background"))
+                            /*if (objectName.EndsWith("forecast_background"))
                             {
 
                                 Element_Weather_FewDays wfd_background = (Element_Weather_FewDays)elementsList.Find(e => e.GetType().Name == "Element_Weather_FewDays");
@@ -19851,7 +20090,7 @@ namespace Watch_Face_Editor
                                     if (wfd_background.FewDays == null) wfd_background.FewDays = new FewDays();
                                     wfd_background.FewDays.Background = img.src;
                                 }
-                            }
+                            }*/
 
                             if (objectName.Length == 0)
                             {
@@ -20241,7 +20480,7 @@ namespace Watch_Face_Editor
                             break;
                         #endregion
 
-                        #region IMG_NUMBER
+                        #region TEXT_IMG
                         case "TEXT_IMG":
                             hmUI_widget_IMG_NUMBER imgNumber = Object_IMG_NUMBER(parametrs);
                             elementsList = null;
@@ -20252,6 +20491,26 @@ namespace Watch_Face_Editor
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
                             else if (imgNumber.show_level == "ONLY_AOD" || imgNumber.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            {
+                                if (Watch_Face.ScreenAOD.Elements == null)
+                                    Watch_Face.ScreenAOD.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenAOD.Elements;
+                            }
+                            ParametrsToObject(elementsList, parametrs);
+                            break;
+                        #endregion
+
+                        #region TEXT_IMG_Options
+                        case "TEXT_IMG_Options":
+                            hmUI_widget_IMG_NUMBER imgNumberOptions = Object_IMG_NUMBER_Options(parametrs);
+                            elementsList = null;
+                            if (imgNumberOptions.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
+                            {
+                                if (Watch_Face.ScreenNormal.Elements == null)
+                                    Watch_Face.ScreenNormal.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenNormal.Elements;
+                            }
+                            else if (imgNumberOptions.show_level == "ONLY_AOD" || imgNumberOptions.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -20703,6 +20962,26 @@ namespace Watch_Face_Editor
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
                             if (!objectName.EndsWith("_cache")) ParametrsToObject(elementsList, parametrs);
+                            break;
+                        #endregion
+
+                        #region TEXT_Options
+                        case "TEXT_Options":
+                            hmUI_widget_TEXT textOptions = Object_TEXT_Options(parametrs);
+                            elementsList = null;
+                            if (textOptions.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
+                            {
+                                if (Watch_Face.ScreenNormal.Elements == null)
+                                    Watch_Face.ScreenNormal.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenNormal.Elements;
+                            }
+                            else if (textOptions.show_level == "ONLY_AOD" || textOptions.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            {
+                                if (Watch_Face.ScreenAOD.Elements == null)
+                                    Watch_Face.ScreenAOD.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenAOD.Elements;
+                            }
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -23123,38 +23402,38 @@ namespace Watch_Face_Editor
 
                         if (imgLevelOptions.type == "forecast_image")
                         {
-                            Element_Weather_FewDays weatherFewDays_img = (Element_Weather_FewDays)elementsList.Find(e => e.GetType().Name == "Element_Weather_FewDays");
-                            if (weatherFewDays_img == null)
+                            Element_Weather_FewDays weatherFewDays = (Element_Weather_FewDays)elementsList.Find(e => e.GetType().Name == "Element_Weather_FewDays");
+                            if (weatherFewDays == null)
                             {
                                 elementsList.Add(new Element_Weather_FewDays());
-                                weatherFewDays_img = (Element_Weather_FewDays)elementsList.Find(e => e.GetType().Name == "Element_Weather_FewDays");
+                                weatherFewDays = (Element_Weather_FewDays)elementsList.Find(e => e.GetType().Name == "Element_Weather_FewDays");
                             }
-                            if (weatherFewDays_img != null)
+                            if (weatherFewDays != null)
                             {
                                 int offset = 1;
-                                //if (weatherFewDays_img.Images != null) offset++;
-                                if (weatherFewDays_img.Diagram != null) offset++;
-                                if (weatherFewDays_img.Number_Max != null) offset++;
-                                if (weatherFewDays_img.Number_Font_Max != null) offset++;
-                                if (weatherFewDays_img.Number_Min != null) offset++;
-                                if (weatherFewDays_img.Number_Font_Min != null) offset++;
-                                if (weatherFewDays_img.Number_MaxMin != null) offset++;
-                                if (weatherFewDays_img.Number_Font_MaxMin != null) offset++;
-                                if (weatherFewDays_img.Number_Average != null) offset++;
-                                if (weatherFewDays_img.Number_Font_Average != null) offset++;
-                                if (weatherFewDays_img.DayOfWeek_Images != null) offset++;
-                                if (weatherFewDays_img.DayOfWeek_Font != null) offset++;
-                                if (weatherFewDays_img.Icon != null) offset++;
+                                //if (weatherFewDays.Images != null) offset++;
+                                if (weatherFewDays.Diagram != null) offset++;
+                                if (weatherFewDays.Number_Max != null) offset++;
+                                if (weatherFewDays.Number_Font_Max != null) offset++;
+                                if (weatherFewDays.Number_Min != null) offset++;
+                                if (weatherFewDays.Number_Font_Min != null) offset++;
+                                if (weatherFewDays.Number_MaxMin != null) offset++;
+                                if (weatherFewDays.Number_Font_MaxMin != null) offset++;
+                                if (weatherFewDays.Number_Average != null) offset++;
+                                if (weatherFewDays.Number_Font_Average != null) offset++;
+                                if (weatherFewDays.DayOfWeek_Images != null) offset++;
+                                if (weatherFewDays.DayOfWeek_Font != null) offset++;
+                                if (weatherFewDays.Icon != null) offset++;
 
-                                weatherFewDays_img.Images = new hmUI_widget_IMG_LEVEL();
-                                weatherFewDays_img.Images.img_First = imgLevelOptions.img_First;
-                                weatherFewDays_img.Images.image_length = imgLevelOptions.image_length;
-                                weatherFewDays_img.Images.X = imgLevelOptions.X;
-                                weatherFewDays_img.Images.Y = imgLevelOptions.Y;
-                                weatherFewDays_img.Images.shortcut = false;
+                                weatherFewDays.Images = new hmUI_widget_IMG_LEVEL();
+                                weatherFewDays.Images.img_First = imgLevelOptions.img_First;
+                                weatherFewDays.Images.image_length = imgLevelOptions.image_length;
+                                weatherFewDays.Images.X = imgLevelOptions.X;
+                                weatherFewDays.Images.Y = imgLevelOptions.Y;
+                                weatherFewDays.Images.shortcut = false;
                                 //weatherFewDays_img.Images.shortcut = imgLevelOptions.shortcut;
-                                weatherFewDays_img.Images.visible = true;
-                                weatherFewDays_img.Images.position = offset;
+                                weatherFewDays.Images.visible = true;
+                                weatherFewDays.Images.position = offset;
                             }
                         }
 
@@ -23633,7 +23912,7 @@ namespace Watch_Face_Editor
                         break;
                     #endregion
 
-                    #region IMG_NUMBER
+                    #region TEXT_IMG
                     case "TEXT_IMG":
                         hmUI_widget_IMG_NUMBER imgNumber = Object_IMG_NUMBER(parametrs);
 
@@ -25092,6 +25371,56 @@ namespace Watch_Face_Editor
                             }
                         }
 
+
+                        break;
+                    #endregion
+
+                    #region TEXT_IMG_Options
+                    case "TEXT_IMG_Options":
+                        hmUI_widget_IMG_NUMBER imgNumberOptions = Object_IMG_NUMBER_Options(parametrs);
+
+                        if (imgNumberOptions.type == "forecast_high_text_img")
+                        {
+                            Element_Weather_FewDays weatherFewDays = (Element_Weather_FewDays)elementsList.Find(e => e.GetType().Name == "Element_Weather_FewDays");
+                            if (weatherFewDays == null)
+                            {
+                                elementsList.Add(new Element_Weather_FewDays());
+                                weatherFewDays = (Element_Weather_FewDays)elementsList.Find(e => e.GetType().Name == "Element_Weather_FewDays");
+                            }
+                            if (weatherFewDays != null)
+                            {
+                                int offset = 1;
+                                if (weatherFewDays.Images != null) offset++;
+                                if (weatherFewDays.Diagram != null) offset++;
+                                //if (weatherFewDays.Number_Max != null) offset++;
+                                if (weatherFewDays.Number_Font_Max != null) offset++;
+                                if (weatherFewDays.Number_Min != null) offset++;
+                                if (weatherFewDays.Number_Font_Min != null) offset++;
+                                if (weatherFewDays.Number_MaxMin != null) offset++;
+                                if (weatherFewDays.Number_Font_MaxMin != null) offset++;
+                                if (weatherFewDays.Number_Average != null) offset++;
+                                if (weatherFewDays.Number_Font_Average != null) offset++;
+                                if (weatherFewDays.DayOfWeek_Images != null) offset++;
+                                if (weatherFewDays.DayOfWeek_Font != null) offset++;
+                                if (weatherFewDays.Icon != null) offset++;
+
+                                weatherFewDays.Number_Max = new hmUI_widget_IMG_NUMBER();
+                                weatherFewDays.Number_Max.img_First = imgNumberOptions.img_First;
+                                weatherFewDays.Number_Max.imageX = imgNumberOptions.imageX;
+                                weatherFewDays.Number_Max.imageY = imgNumberOptions.imageY;
+                                weatherFewDays.Number_Max.space = imgNumberOptions.space;
+                                weatherFewDays.Number_Max.angle = imgNumberOptions.angle;
+                                weatherFewDays.Number_Max.zero = imgNumberOptions.zero;
+                                weatherFewDays.Number_Max.unit = imgNumberOptions.unit;
+                                weatherFewDays.Number_Max.imperial_unit = imgNumberOptions.imperial_unit;
+                                weatherFewDays.Number_Max.negative_image = imgNumberOptions.negative_image;
+                                weatherFewDays.Number_Max.invalid_image = imgNumberOptions.invalid_image;
+                                weatherFewDays.Number_Max.dot_image = imgNumberOptions.dot_image;
+                                weatherFewDays.Number_Max.align = imgNumberOptions.align;
+                                weatherFewDays.Number_Max.visible = true;
+                                weatherFewDays.Number_Max.position = offset;
+                            }
+                        }
 
                         break;
                     #endregion
@@ -29697,6 +30026,115 @@ namespace Watch_Face_Editor
                         break;
                     #endregion
 
+                    #region TEXT_Options
+                    case "TEXT_Options":
+                        hmUI_widget_TEXT textOptions = Object_TEXT_Options(parametrs);
+
+                        if (objectName.EndsWith("forecast_date_week_font"))
+                        {
+                            Element_Weather_FewDays weatherFewDays_week_font = (Element_Weather_FewDays)elementsList.Find(e => e.GetType().Name == "Element_Weather_FewDays");
+                            if (weatherFewDays_week_font == null)
+                            {
+                                elementsList.Add(new Element_Weather_FewDays());
+                                weatherFewDays_week_font = (Element_Weather_FewDays)elementsList.Find(e => e.GetType().Name == "Element_Weather_FewDays");
+                            }
+                            if (weatherFewDays_week_font != null)
+                            {
+                                int offset = 1;
+                                if (weatherFewDays_week_font.Images != null) offset++;
+                                if (weatherFewDays_week_font.Diagram != null) offset++;
+                                if (weatherFewDays_week_font.Number_Max != null) offset++;
+                                if (weatherFewDays_week_font.Number_Font_Max != null) offset++;
+                                if (weatherFewDays_week_font.Number_Min != null) offset++;
+                                if (weatherFewDays_week_font.Number_Font_Min != null) offset++;
+                                if (weatherFewDays_week_font.Number_MaxMin != null) offset++;
+                                if (weatherFewDays_week_font.Number_Font_MaxMin != null) offset++;
+                                if (weatherFewDays_week_font.Number_Average != null) offset++;
+                                if (weatherFewDays_week_font.Number_Font_Average != null) offset++;
+                                if (weatherFewDays_week_font.DayOfWeek_Images != null) offset++;
+                                //if (weatherFewDays_week_font.DayOfWeek_Font != null) offset++;
+                                if (weatherFewDays_week_font.Icon != null) offset++;
+
+                                weatherFewDays_week_font.DayOfWeek_Font = new hmUI_widget_TEXT();
+                                weatherFewDays_week_font.DayOfWeek_Font.x = textOptions.x;
+                                weatherFewDays_week_font.DayOfWeek_Font.y = textOptions.y;
+                                weatherFewDays_week_font.DayOfWeek_Font.w = textOptions.w;
+                                weatherFewDays_week_font.DayOfWeek_Font.h = textOptions.h;
+
+                                weatherFewDays_week_font.DayOfWeek_Font.color = textOptions.color;
+                                weatherFewDays_week_font.DayOfWeek_Font.color_2 = textOptions.color_2;
+                                weatherFewDays_week_font.DayOfWeek_Font.use_color_2 = textOptions.use_color_2;
+
+                                weatherFewDays_week_font.DayOfWeek_Font.font = textOptions.font;
+
+                                weatherFewDays_week_font.DayOfWeek_Font.text_size = textOptions.text_size;
+                                weatherFewDays_week_font.DayOfWeek_Font.char_space = textOptions.char_space;
+                                weatherFewDays_week_font.DayOfWeek_Font.line_space = textOptions.line_space;
+
+                                weatherFewDays_week_font.DayOfWeek_Font.unit_string = textOptions.unit_string;
+
+                                weatherFewDays_week_font.DayOfWeek_Font.align_h = textOptions.align_h;
+                                weatherFewDays_week_font.DayOfWeek_Font.align_v = textOptions.align_v;
+                                weatherFewDays_week_font.DayOfWeek_Font.text_style = textOptions.text_style;
+
+                                weatherFewDays_week_font.DayOfWeek_Font.visible = true;
+                                weatherFewDays_week_font.DayOfWeek_Font.position = offset;
+                            }
+                        }
+
+                        if (objectName.EndsWith("forecast_high_text_font"))
+                        {
+                            Element_Weather_FewDays weatherFewDays = (Element_Weather_FewDays)elementsList.Find(e => e.GetType().Name == "Element_Weather_FewDays");
+                            if (weatherFewDays == null)
+                            {
+                                elementsList.Add(new Element_Weather_FewDays());
+                                weatherFewDays = (Element_Weather_FewDays)elementsList.Find(e => e.GetType().Name == "Element_Weather_FewDays");
+                            }
+                            if (weatherFewDays != null)
+                            {
+                                int offset = 1;
+                                if (weatherFewDays.Images != null) offset++;
+                                if (weatherFewDays.Diagram != null) offset++;
+                                //if (weatherFewDays.Number_Max != null) offset++;
+                                if (weatherFewDays.Number_Font_Max != null) offset++;
+                                if (weatherFewDays.Number_Min != null) offset++;
+                                if (weatherFewDays.Number_Font_Min != null) offset++;
+                                if (weatherFewDays.Number_MaxMin != null) offset++;
+                                if (weatherFewDays.Number_Font_MaxMin != null) offset++;
+                                if (weatherFewDays.Number_Average != null) offset++;
+                                if (weatherFewDays.Number_Font_Average != null) offset++;
+                                if (weatherFewDays.DayOfWeek_Images != null) offset++;
+                                if (weatherFewDays.DayOfWeek_Font != null) offset++;
+                                if (weatherFewDays.Icon != null) offset++;
+
+                                weatherFewDays.Number_Font_Max = new hmUI_widget_TEXT();
+                                weatherFewDays.Number_Font_Max.x = textOptions.x;
+                                weatherFewDays.Number_Font_Max.y = textOptions.y;
+                                weatherFewDays.Number_Font_Max.w = textOptions.w;
+                                weatherFewDays.Number_Font_Max.h = textOptions.h;
+
+                                weatherFewDays.Number_Font_Max.color = textOptions.color;
+                                weatherFewDays.Number_Font_Max.color_2 = textOptions.color_2;
+                                weatherFewDays.Number_Font_Max.use_color_2 = textOptions.use_color_2;
+
+                                weatherFewDays.Number_Font_Max.font = textOptions.font;
+
+                                weatherFewDays.Number_Font_Max.text_size = textOptions.text_size;
+                                weatherFewDays.Number_Font_Max.char_space = textOptions.char_space;
+                                weatherFewDays.Number_Font_Max.line_space = textOptions.line_space;
+
+                                weatherFewDays.Number_Font_Max.align_h = textOptions.align_h;
+                                weatherFewDays.Number_Font_Max.align_v = textOptions.align_v;
+                                weatherFewDays.Number_Font_Max.text_style = textOptions.text_style;
+
+                                weatherFewDays.Number_Font_Max.visible = true;
+                                weatherFewDays.Number_Font_Max.position = offset;
+                            }
+                        }
+
+                        break;
+                    #endregion
+
                     #region TEXT_FONT
                     case "TEXT_FONT":
                         hmUI_widget_TEXT text_font = Object_TEXT(parametrs);
@@ -31438,19 +31876,20 @@ namespace Watch_Face_Editor
                     case "FewDays":
                         FewDays fewDays = Object_FewDays(parametrs);
 
-                        Element_Weather_FewDays weatherFewDays = (Element_Weather_FewDays)elementsList.Find(e => e.GetType().Name == "Element_Weather_FewDays");
-                        if (weatherFewDays == null)
+                        Element_Weather_FewDays weatherFewDaysFD = (Element_Weather_FewDays)elementsList.Find(e => e.GetType().Name == "Element_Weather_FewDays");
+                        if (weatherFewDaysFD == null)
                         {
                             elementsList.Add(new Element_Weather_FewDays());
-                            weatherFewDays = (Element_Weather_FewDays)elementsList.Find(e => e.GetType().Name == "Element_Weather_FewDays");
+                            weatherFewDaysFD = (Element_Weather_FewDays)elementsList.Find(e => e.GetType().Name == "Element_Weather_FewDays");
                         }
-                        if (weatherFewDays != null)
+                        if (weatherFewDaysFD != null)
                         {
-                            if (weatherFewDays.FewDays == null) weatherFewDays.FewDays = new FewDays();
-                            weatherFewDays.FewDays.X = fewDays.X;
-                            weatherFewDays.FewDays.Y = fewDays.Y;
-                            weatherFewDays.FewDays.ColumnWidth = fewDays.ColumnWidth;
-                            weatherFewDays.FewDays.DaysCount = fewDays.DaysCount;
+                            if (weatherFewDaysFD.FewDays == null) weatherFewDaysFD.FewDays = new FewDays();
+                            weatherFewDaysFD.FewDays.X = fewDays.X;
+                            weatherFewDaysFD.FewDays.Y = fewDays.Y;
+                            weatherFewDaysFD.FewDays.ColumnWidth = fewDays.ColumnWidth;
+                            weatherFewDaysFD.FewDays.DaysCount = fewDays.DaysCount;
+                            weatherFewDaysFD.FewDays.Background = fewDays.Background;
                         }
 
                         break;
@@ -33297,6 +33736,74 @@ namespace Watch_Face_Editor
             return imgNumber;
         }
 
+        private hmUI_widget_IMG_NUMBER Object_IMG_NUMBER_Options(Dictionary<string, string> parametrs)
+        {
+            hmUI_widget_IMG_NUMBER imgNumber = new hmUI_widget_IMG_NUMBER();
+            int value;
+            if (parametrs.ContainsKey("// font_array"))
+            {
+                string[] image_array = parametrs["// font_array"].Split(',');
+                string imgName = image_array[0].Replace("\"", "").Replace("[", "").Replace("]", "").Replace("'", "").Replace(Environment.NewLine, "");
+                imgName = imgName.Trim();
+                imgName = Path.GetFileNameWithoutExtension(imgName);
+                imgNumber.img_First = imgName;
+
+                if (parametrs.ContainsKey("// x") && Int32.TryParse(parametrs["// x"], out value)) imgNumber.imageX = value;
+                if (parametrs.ContainsKey("// y") && Int32.TryParse(parametrs["// y"], out value)) imgNumber.imageY = value;
+                if (parametrs.ContainsKey("// h_space") && Int32.TryParse(parametrs["// h_space"], out value)) imgNumber.space = value;
+                if (parametrs.ContainsKey("// angle") && Int32.TryParse(parametrs["// angle"], out value)) imgNumber.angle = value;
+                if (parametrs.ContainsKey("// padding")) imgNumber.zero = StringToBool(parametrs["// padding"]);
+                if (parametrs.ContainsKey("// align_h")) imgNumber.align = parametrs["// align_h"].Replace("hmUI.align.", "");
+                if (parametrs.ContainsKey("// unit_en") && parametrs["// unit_en"].Length > 0)
+                {
+                    imgName = parametrs["// unit_en"].Replace("'", "").Replace("\"", "");
+                    imgName = Path.GetFileNameWithoutExtension(imgName);
+                    imgNumber.unit = imgName;
+                }
+                if (parametrs.ContainsKey("// imperial_unit_en") && parametrs["// imperial_unit_en"].Length > 0)
+                {
+                    imgName = parametrs["// imperial_unit_en"].Replace("'", "").Replace("\"", "");
+                    imgName = Path.GetFileNameWithoutExtension(imgName);
+                    imgNumber.imperial_unit = imgName;
+                }
+                if (parametrs.ContainsKey("// negative_image") && parametrs["// negative_image"].Length > 0)
+                {
+                    imgName = parametrs["// negative_image"].Replace("'", "").Replace("\"", "");
+                    imgName = Path.GetFileNameWithoutExtension(imgName);
+                    imgNumber.negative_image = imgName;
+                }
+                if (parametrs.ContainsKey("// invalid_image") && parametrs["// invalid_image"].Length > 0)
+                {
+                    imgName = parametrs["// invalid_image"].Replace("'", "").Replace("\"", "");
+                    imgName = Path.GetFileNameWithoutExtension(imgName);
+                    imgNumber.invalid_image = imgName;
+                }
+                if (parametrs.ContainsKey("// dot_image") && parametrs["// dot_image"].Length > 0)
+                {
+                    imgName = parametrs["// dot_image"].Replace("'", "").Replace("\"", "");
+                    imgName = Path.GetFileNameWithoutExtension(imgName);
+                    imgNumber.dot_image = imgName;
+                }
+
+                if (parametrs.ContainsKey("// type"))
+                {
+                    imgName = parametrs["// type"].Replace("hmUI.data_type.", "");
+                    imgNumber.type = imgName;
+                }
+
+                if (parametrs.ContainsKey("// show_level"))
+                {
+                    imgName = parametrs["// show_level"].Replace("hmUI.show_level.", "");
+                    imgNumber.show_level = imgName;
+                }
+
+                imgNumber.visible = true;
+                imgNumber.position = 1;
+            }
+
+            return imgNumber;
+        }
+
         private hmUI_widget_IMG_NUMBER Object_Text_Rotate(Dictionary<string, string> parametrs)
         {
             hmUI_widget_IMG_NUMBER textRotate = new hmUI_widget_IMG_NUMBER();
@@ -33617,6 +34124,8 @@ namespace Watch_Face_Editor
             }
 
             if (parametrs.ContainsKey("color")) text.color = parametrs["color"].Replace("'", "");
+            if (parametrs.ContainsKey("// color_2")) text.color = parametrs["// color_2"].Replace("'", "");
+            if (parametrs.ContainsKey("// use_color_2")) text.use_color_2 = StringToBool(parametrs["// use_color_2"]);
 
             if (parametrs.ContainsKey("align_h"))
             {
@@ -33648,6 +34157,69 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("show_level"))
             {
                 paramName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                text.show_level = paramName;
+            }
+            text.visible = true;
+            text.position = 1;
+
+            return text;
+        }
+
+        private hmUI_widget_TEXT Object_TEXT_Options(Dictionary<string, string> parametrs)
+        {
+            hmUI_widget_TEXT text = new hmUI_widget_TEXT();
+            int value;
+            string paramName = "";
+            if (parametrs.ContainsKey("// x") && Int32.TryParse(parametrs["// x"], out value)) text.x = value;
+            if (parametrs.ContainsKey("// y") && Int32.TryParse(parametrs["// y"], out value)) text.y = value;
+            if (parametrs.ContainsKey("// w") && Int32.TryParse(parametrs["// w"], out value)) text.w = value;
+            if (parametrs.ContainsKey("// h") && Int32.TryParse(parametrs["// h"], out value)) text.h = value;
+
+            if (parametrs.ContainsKey("// text_size") && Int32.TryParse(parametrs["// text_size"], out value)) text.text_size = value;
+            if (parametrs.ContainsKey("// char_space") && Int32.TryParse(parametrs["// char_space"], out value)) text.char_space = value;
+            if (parametrs.ContainsKey("// line_space") && Int32.TryParse(parametrs["// line_space"], out value)) text.line_space = value;
+
+            if (parametrs.ContainsKey("// font"))
+            {
+                paramName = parametrs["// font"].Replace("'", "");
+                if (paramName.LastIndexOf("/") > 0) paramName = paramName.Remove(0, paramName.LastIndexOf("/") + 1);
+                text.font = paramName;
+            }
+
+            if (parametrs.ContainsKey("// color")) text.color = parametrs["// color"].Replace("'", "");
+            if (parametrs.ContainsKey("// color_2")) text.color_2 = parametrs["// color_2"].Replace("'", "");
+            if (parametrs.ContainsKey("// use_color_2")) text.use_color_2 = StringToBool(parametrs["// use_color_2"]);
+
+            if (parametrs.ContainsKey("// align_h"))
+            {
+                paramName = parametrs["// align_h"].Replace("hmUI.align.", "");
+                text.align_h = paramName;
+            }
+            if (parametrs.ContainsKey("// align_v"))
+            {
+                paramName = parametrs["// align_v"].Replace("hmUI.align.", "");
+                text.align_v = paramName;
+            }
+            if (parametrs.ContainsKey("// text_style"))
+            {
+                paramName = parametrs["// text_style"].Replace("hmUI.text_style.", "");
+                text.text_style = paramName;
+            }
+
+            if (parametrs.ContainsKey("// padding")) text.padding = StringToBool(parametrs["// padding"]);
+            if (parametrs.ContainsKey("// unit_type") && Int32.TryParse(parametrs["// unit_type"], out value)) text.unit_type = value;
+            if (parametrs.ContainsKey("// unit_end")) text.unit_end = StringToBool(parametrs["// unit_end"]);
+            if (parametrs.ContainsKey("// unit_string")) text.unit_string = parametrs["// unit_string"];
+
+            if (parametrs.ContainsKey("// type"))
+            {
+                string typeName = parametrs["// type"].Replace("hmUI.data_type.", "");
+                text.type = typeName;
+            }
+
+            if (parametrs.ContainsKey("// show_level"))
+            {
+                paramName = parametrs["// show_level"].Replace("hmUI.show_level.", "");
                 text.show_level = paramName;
             }
             text.visible = true;
@@ -33883,6 +34455,12 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("// y") && Int32.TryParse(parametrs["// y"], out value)) fewDays.Y = value;
             if (parametrs.ContainsKey("// ColumnWidth") && Int32.TryParse(parametrs["// ColumnWidth"], out value)) fewDays.ColumnWidth = value;
             if (parametrs.ContainsKey("// DaysCount") && Int32.TryParse(parametrs["// DaysCount"], out value)) fewDays.DaysCount = value;
+            if (parametrs.ContainsKey("// Background"))
+            {
+                string imgName = parametrs["// Background"].Replace("'", "").Replace("\"", "");
+                imgName = Path.GetFileNameWithoutExtension(imgName);
+                fewDays.Background = imgName;
+            }
 
             return fewDays;
         }

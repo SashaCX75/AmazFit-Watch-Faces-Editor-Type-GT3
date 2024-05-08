@@ -701,6 +701,12 @@ namespace Watch_Face_Editor
         /// <summary>Цвет</summary>
         public string color { get; set; } = "0xFFFF8C00";
 
+        /// <summary>Цвет 2 (цвет выходных)</summary>
+        public string color_2 { get; set; } = "0xFFFF0000";
+
+        /// <summary>Использование второго цвета</summary>
+        public bool use_color_2 { get; set; } = false;
+
         /// <summary>Горизонтальное выравнивание</summary>
         public string align_h { get; set; } = "LEFT";
 

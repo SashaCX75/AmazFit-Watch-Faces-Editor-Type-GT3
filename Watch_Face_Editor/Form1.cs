@@ -13497,7 +13497,9 @@ namespace Watch_Face_Editor
                         {
                             text = weather.DayOfWeek_Font;
                             Read_Text_Options(text, false, false, false, false, true);
-                            if (text.unit_string.Length == 0) uCtrl_Text_SystemFont_Opt_ValueChanged(sender, eventArgs);
+                            uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
+                            uCtrl_Text_SystemFont_Opt.Use2color = true;
+                            uCtrl_Text_SystemFont_Opt_ValueChanged(sender, eventArgs);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();

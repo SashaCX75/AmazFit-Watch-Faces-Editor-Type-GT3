@@ -385,4 +385,7 @@
   <data name="label_Month.Text" xml:space="preserve">
     <value>Назви місяців шрифтом</value>
   </data>
+  <data name="label_Color2.Text" xml:space="preserve">
+    <value>Колір вихідних</value>
+  </data>
 </root>

@@ -83,6 +83,9 @@ namespace ControlLibrary
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label_DOW = new System.Windows.Forms.Label();
             this.label_Month = new System.Windows.Forms.Label();
+            this.comboBox_Color2 = new System.Windows.Forms.ComboBox();
+            this.label_Color2 = new System.Windows.Forms.Label();
+            this.checkBox_Color2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Width)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Height)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_X)).BeginInit();
@@ -567,11 +570,38 @@ namespace ControlLibrary
             this.label_Month.Name = "label_Month";
             this.toolTip1.SetToolTip(this.label_Month, resources.GetString("label_Month.ToolTip"));
             // 
+            // comboBox_Color2
+            // 
+            resources.ApplyResources(this.comboBox_Color2, "comboBox_Color2");
+            this.comboBox_Color2.BackColor = System.Drawing.Color.DarkOrange;
+            this.comboBox_Color2.DropDownHeight = 1;
+            this.comboBox_Color2.FormattingEnabled = true;
+            this.comboBox_Color2.Name = "comboBox_Color2";
+            this.toolTip1.SetToolTip(this.comboBox_Color2, resources.GetString("comboBox_Color2.ToolTip"));
+            this.comboBox_Color2.Click += new System.EventHandler(this.comboBox_Color_Click);
+            // 
+            // label_Color2
+            // 
+            resources.ApplyResources(this.label_Color2, "label_Color2");
+            this.label_Color2.Name = "label_Color2";
+            this.toolTip1.SetToolTip(this.label_Color2, resources.GetString("label_Color2.ToolTip"));
+            // 
+            // checkBox_Color2
+            // 
+            resources.ApplyResources(this.checkBox_Color2, "checkBox_Color2");
+            this.checkBox_Color2.Name = "checkBox_Color2";
+            this.toolTip1.SetToolTip(this.checkBox_Color2, resources.GetString("checkBox_Color2.ToolTip"));
+            this.checkBox_Color2.UseVisualStyleBackColor = true;
+            this.checkBox_Color2.CheckedChanged += new System.EventHandler(this.checkBox_Color2_CheckedChanged);
+            // 
             // UCtrl_Text_SystemFont_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ContextMenuStrip = this.context_WidgetProperty;
+            this.Controls.Add(this.checkBox_Color2);
+            this.Controls.Add(this.comboBox_Color2);
+            this.Controls.Add(this.label_Color2);
             this.Controls.Add(this.label_Month);
             this.Controls.Add(this.label_DOW);
             this.Controls.Add(this.textBox_DOW);
@@ -683,5 +713,8 @@ namespace ControlLibrary
         private System.Windows.Forms.ToolTip toolTip1;
         protected System.Windows.Forms.Label label_DOW;
         protected System.Windows.Forms.Label label_Month;
+        private System.Windows.Forms.ComboBox comboBox_Color2;
+        protected System.Windows.Forms.Label label_Color2;
+        public System.Windows.Forms.CheckBox checkBox_Color2;
     }
 }

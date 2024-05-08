@@ -1899,6 +1899,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_SystemFont_Opt.numericUpDown_LineSpace.Value = system_font.line_space;
 
             uCtrl_Text_SystemFont_Opt.SetColorText(StringToColor(system_font.color));
+            uCtrl_Text_SystemFont_Opt.SetColor2Text(StringToColor(system_font.color_2));
 
             uCtrl_Text_SystemFont_Opt.SetHorizontalAlignment(system_font.align_h);
             uCtrl_Text_SystemFont_Opt.SetVerticalAlignment(system_font.align_v);
@@ -1906,6 +1907,7 @@ namespace Watch_Face_Editor
 
             uCtrl_Text_SystemFont_Opt.checkBox_CentreHorizontally.Checked = system_font.centreHorizontally;
             uCtrl_Text_SystemFont_Opt.checkBox_CentreVertically.Checked = system_font.centreVertically;
+            uCtrl_Text_SystemFont_Opt.checkBox_Color2.Checked = system_font.use_color_2;
 
             uCtrl_Text_SystemFont_Opt.SetFont(system_font.font);
 
@@ -2573,6 +2575,7 @@ namespace Watch_Face_Editor
             systemFont.line_space = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_LineSpace.Value;
 
             systemFont.color = ColorToString(uCtrl_Text_SystemFont_Opt.GetColorText());
+            systemFont.color_2 = ColorToString(uCtrl_Text_SystemFont_Opt.GetColor2Text());
 
             systemFont.align_h = uCtrl_Text_SystemFont_Opt.GetHorizontalAlignment();
             systemFont.align_v = uCtrl_Text_SystemFont_Opt.GetVerticalAlignment();
@@ -2580,6 +2583,7 @@ namespace Watch_Face_Editor
 
             systemFont.centreHorizontally = uCtrl_Text_SystemFont_Opt.checkBox_CentreHorizontally.Checked;
             systemFont.centreVertically = uCtrl_Text_SystemFont_Opt.checkBox_CentreVertically.Checked;
+            systemFont.use_color_2 = uCtrl_Text_SystemFont_Opt.checkBox_Color2.Checked;
 
             systemFont.font = uCtrl_Text_SystemFont_Opt.GetFont();
             systemFont.unit_string = uCtrl_Text_SystemFont_Opt.GetUnitText();
