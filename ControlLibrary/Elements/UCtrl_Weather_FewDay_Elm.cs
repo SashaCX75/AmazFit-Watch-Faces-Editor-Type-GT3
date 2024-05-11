@@ -28,6 +28,8 @@ namespace ControlLibrary
         bool highlight_font_dow = false;
         bool highlight_icon = false;
 
+        private bool Graph_use = false;
+
         bool visibility_elements = false; // развернут список с элементами
         bool visibilityElement = true; // элемент оторажается на предпросмотре
 
@@ -85,6 +87,25 @@ namespace ControlLibrary
         [Description("Происходит при удалении элемента")]
         public event DelElementHandler DelElement;
         public delegate void DelElementHandler(object sender, EventArgs eventArgs);
+
+        /// <summary>Возможность отображения графика температуры</summary>
+        [Description("Возможность отображения графика температуры")]
+        public virtual bool GraphUse
+        {
+            get
+            {
+                return Graph_use;
+            }
+            set
+            {
+                Graph_use = value;
+                bool tempSate = setValue;
+                setValue = true;
+                panel_Diagram.Enabled = Graph_use;
+                checkBox_Diagram.Checked = false;
+                setValue = tempSate;
+            }
+        }
 
         private void button_ElementName_Click(object sender, EventArgs e)
         {
@@ -1146,6 +1167,8 @@ namespace ControlLibrary
             checkBox_Images_DOW.Checked = false;
             checkBox_Font_DOW.Checked = false;
             checkBox_Icon.Checked = false;
+
+            GraphUse = true;
 
             visibility_elements = false;
             tableLayoutPanel1.Visible = visibility_elements;

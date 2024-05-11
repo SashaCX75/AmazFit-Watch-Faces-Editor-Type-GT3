@@ -6021,7 +6021,7 @@ namespace Watch_Face_Editor
                 };
             }
 
-            Weather_Diagram Diagram = null;
+            /*Weather_Diagram Diagram = null;
             if (this.Diagram != null)
             {
                 Diagram = new Weather_Diagram
@@ -6058,7 +6058,7 @@ namespace Watch_Face_Editor
                     position = this.Diagram.position,
                     visible = this.Diagram.visible,
                 };
-            }
+            }*/
 
             hmUI_widget_IMG_NUMBER Number_Max = null;
             if (this.Number_Max != null)
@@ -6198,6 +6198,7 @@ namespace Watch_Face_Editor
                     negative_image = this.Number_MaxMin.negative_image,
                     invalid_image = this.Number_MaxMin.invalid_image,
                     dot_image = this.Number_MaxMin.dot_image,
+                    separator_image = this.Number_MaxMin.separator_image,
                     follow = this.Number_MaxMin.follow,
 
                     position = this.Number_MaxMin.position,

@@ -420,11 +420,12 @@ namespace ControlLibrary
             Dictionary<string, List<int>> ForecastData = new Dictionary<string, List<int>>();
             List<int> high = new List<int>();
             List<int> low = new List<int>();
-            List<int> index = new List<int>();
+            List<int> index = new List<int>(); 
+            int tempOffset = rnd.Next(-10, 20);
             for (int i = 0; i < 9; i++)
             {
-                int maxTemp = rnd.Next(-5, 15) + 1;
-                int minTemp = maxTemp - rnd.Next(3, 10);
+                int maxTemp = rnd.Next(-5, 5) + tempOffset;
+                int minTemp = maxTemp - rnd.Next(3, 7);
                 int iconIndex = rnd.Next(0, 25);
 
                 high.Add(maxTemp);

@@ -6638,8 +6638,6 @@ namespace Watch_Face_Editor
                             uCtrl_Weather_FewDay_Elm.SetVisibilityElementStatus(Weather_FewDays.visible);
                             elementOptions = new Dictionary<int, string>();
 
-                            
-
                             if (Weather_FewDays.Images != null)
                             {
                                 uCtrl_Weather_FewDay_Elm.checkBox_Images.Checked = Weather_FewDays.Images.visible;
@@ -6706,6 +6704,7 @@ namespace Watch_Face_Editor
                                 uCtrl_Weather_FewDay_Elm.checkBox_Icon.Checked = Weather_FewDays.Icon.visible;
                                 elementOptions.Add(Weather_FewDays.Icon.position, "Icon");
                             }
+                            if (!radioButton_ScreenNormal.Checked) uCtrl_Weather_FewDay_Elm.GraphUse = false;
 
                             uCtrl_Weather_FewDay_Elm.SetOptionsPosition(elementOptions);
 
@@ -8351,10 +8350,11 @@ namespace Watch_Face_Editor
             WatchFacePreviewSet.Weather.CompassDirection = compassDirection;
 
             WatchFacePreviewSet.Weather.forecastData = new List<ForecastData>();
+            int tempOffset = rnd.Next(-10, 20);
             for (int i = 0; i < 9; i++)
             {
-                int maxTemp = rnd.Next(-5, 15) + 1;
-                int minTemp = maxTemp - rnd.Next(3, 10);
+                int maxTemp = rnd.Next(-5, 5) + tempOffset;
+                int minTemp = maxTemp - rnd.Next(3, 7);
                 int iconIndex = rnd.Next(0, 25);
 
                 WatchFacePreviewSet.Weather.forecastData.Add(new ForecastData { high = maxTemp, low = minTemp, index = iconIndex });
@@ -11182,6 +11182,7 @@ namespace Watch_Face_Editor
                             text = dateWeek.DayOfWeek_Font;
                             Read_Text_Options(text, false, false, false, false, true);
                             if (text.unit_string.Length == 0) uCtrl_Text_SystemFont_Opt_ValueChanged(sender, eventArgs);
+                            uCtrl_Text_SystemFont_Opt.Use2color = true;
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();

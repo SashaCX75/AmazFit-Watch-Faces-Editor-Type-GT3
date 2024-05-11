@@ -2487,7 +2487,8 @@ namespace Watch_Face_Editor
                                 int space_h = dow_font.char_space;
                                 int space_v = dow_font.line_space;
 
-                                Color color = StringToColor(dow_font.color);
+                                Color color = StringToColor(dow_font.color); 
+                                if (dow_font.use_color_2 && strIndex >= 5) color = StringToColor(dow_font.color_2);
                                 //int align_h = AlignmentToInt(number_font.align_h);
                                 //int align_v = AlignmentVerticalToInt(number_font.align_v);
                                 string align_h = dow_font.align_h;
@@ -6588,15 +6589,21 @@ namespace Watch_Face_Editor
             int x = weather_FewDays.FewDays.X;
             int y = weather_FewDays.FewDays.Y;
             int offsetDayX = weather_FewDays.FewDays.ColumnWidth;
-            int offsetGraphX = 0;
+            //int offsetGraphX = 0;
             //int offsetGraphAverageX = 0;
             int offsetGraphY = 0;
             bool useMaxGraphOffset = (weather_FewDays.Diagram != null && weather_FewDays.Diagram.visible && weather_FewDays.Diagram.Use_max_diagram && weather_FewDays.Diagram.PositionOnGraph);
             bool useMinGraphOffset = (weather_FewDays.Diagram != null && weather_FewDays.Diagram.visible && weather_FewDays.Diagram.Use_min_diagram && weather_FewDays.Diagram.PositionOnGraph);
             bool useAverageGraphOffset = (weather_FewDays.Diagram != null && weather_FewDays.Diagram.visible && weather_FewDays.Diagram.Use_average_diagram && weather_FewDays.Diagram.PositionOnGraph);
 
-            if (useMaxGraphOffset) offsetGraphX = weather_FewDays.Diagram.Max_offsetX;
-            if (useMaxGraphOffset) offsetGraphY = weather_FewDays.Diagram.Y;
+            if (!radioButton_ScreenNormal.Checked)
+            {
+                useMaxGraphOffset = false;
+                useMinGraphOffset = false;
+                useAverageGraphOffset = false;
+            }
+
+            if (useMaxGraphOffset || useMinGraphOffset || useAverageGraphOffset) offsetGraphY = weather_FewDays.Diagram.Y;
             //if (useAverageGraphOffset) offsetGraphAverageX = weather_FewDays.Diagram.Average_offsetX;
 
             if (weather_FewDays.FewDays != null && weather_FewDays.FewDays.Background != null)
@@ -6631,6 +6638,8 @@ namespace Watch_Face_Editor
 
             for (int index = 0; index <= 15; index++)
             {
+                int offsetGraphX = 0;
+
                 if (weather_FewDays.Images != null && weather_FewDays.Images.img_First != null && weather_FewDays.Images.img_First.Length > 0 &&
                    index == weather_FewDays.Images.position && weather_FewDays.Images.visible)
                 {
@@ -6657,7 +6666,7 @@ namespace Watch_Face_Editor
                     }
                 }
 
-                if (weather_FewDays.Diagram != null && index == weather_FewDays.Diagram.position && weather_FewDays.Diagram.visible)
+                if (weather_FewDays.Diagram != null && index == weather_FewDays.Diagram.position && weather_FewDays.Diagram.visible && radioButton_ScreenNormal.Checked)
                 {
                     Color colorMax = StringToColor(weather_FewDays.Diagram.Max_color);
                     Pen penMax = new Pen(colorMax, weather_FewDays.Diagram.Max_lineWidth);
@@ -6710,7 +6719,7 @@ namespace Watch_Face_Editor
                                 if (pointStart != pointEnd)
                                 {
                                     gPanel.DrawLine(penMin, pointStart, pointEnd);
-                                    DrawaWeatherPount(gPanel, pointStart.X, pointStart.Y, minPintSize,
+                                    DrawaWeatherPoint(gPanel, pointStart.X, pointStart.Y, minPintSize,
                                         weather_FewDays.Diagram.Min_pointType, StringToColor(weather_FewDays.Diagram.Min_color));
                                     endPointMin = true;
                                 }
@@ -6726,7 +6735,7 @@ namespace Watch_Face_Editor
                                 if (pointStart != pointEnd)
                                 {
                                     gPanel.DrawLine(penAverage, pointStart, pointEnd);
-                                    DrawaWeatherPount(gPanel, pointStart.X, pointStart.Y, averagePintSize,
+                                    DrawaWeatherPoint(gPanel, pointStart.X, pointStart.Y, averagePintSize,
                                         weather_FewDays.Diagram.Average_pointType, StringToColor(weather_FewDays.Diagram.Average_color));
                                     endPointAverage = true;
                                 }
@@ -6742,18 +6751,18 @@ namespace Watch_Face_Editor
                                 if (pointStart != pointEnd)
                                 {
                                     gPanel.DrawLine(penMax, pointStart, pointEnd);
-                                    DrawaWeatherPount(gPanel, pointStart.X, pointStart.Y, maxPintSize,
+                                    DrawaWeatherPoint(gPanel, pointStart.X, pointStart.Y, maxPintSize,
                                         weather_FewDays.Diagram.Max_pointType, StringToColor(weather_FewDays.Diagram.Max_color));
                                     endPointMax = true;
                                 }
                             }
                         }
                     }
-                    if (endPointMin) DrawaWeatherPount(gPanel, minOldX, minOldY, minPintSize,
+                    if (endPointMin) DrawaWeatherPoint(gPanel, minOldX, minOldY, minPintSize,
                         weather_FewDays.Diagram.Min_pointType, StringToColor(weather_FewDays.Diagram.Min_color));
-                    if (endPointAverage) DrawaWeatherPount(gPanel, averageOldX, averageOldY, averagePintSize,
+                    if (endPointAverage) DrawaWeatherPoint(gPanel, averageOldX, averageOldY, averagePintSize,
                         weather_FewDays.Diagram.Average_pointType, StringToColor(weather_FewDays.Diagram.Average_color));
-                    if (endPointMax) DrawaWeatherPount(gPanel, maxOldX, maxOldY, maxPintSize,
+                    if (endPointMax) DrawaWeatherPoint(gPanel, maxOldX, maxOldY, maxPintSize,
                         weather_FewDays.Diagram.Max_pointType, StringToColor(weather_FewDays.Diagram.Max_color));
 
                     gPanel.SmoothingMode = smoothingMode;
@@ -6763,6 +6772,7 @@ namespace Watch_Face_Editor
                 if (weather_FewDays.Number_Max != null && index == weather_FewDays.Number_Max.position && 
                     weather_FewDays.Number_Max.img_First != null && weather_FewDays.Number_Max.img_First.Length > 0 && weather_FewDays.Number_Max.visible)
                 {
+                    if (useMaxGraphOffset) offsetGraphX = weather_FewDays.Diagram.Max_offsetX;
                     int imageIndex = ListImages.IndexOf(weather_FewDays.Number_Max.img_First);
                     int posY = y + weather_FewDays.Number_Max.imageY;
                     int spacing = weather_FewDays.Number_Max.space;
@@ -6812,6 +6822,7 @@ namespace Watch_Face_Editor
 
                 if (weather_FewDays.Number_Font_Max != null && index == weather_FewDays.Number_Font_Max.position && weather_FewDays.Number_Font_Max.visible)
                 {
+                    if (useMaxGraphOffset) offsetGraphX = weather_FewDays.Diagram.Max_offsetX;
                     int posY = y + weather_FewDays.Number_Font_Max.y;
                     int h = weather_FewDays.Number_Font_Max.h;
                     int w = weather_FewDays.Number_Font_Max.w;
@@ -6831,7 +6842,7 @@ namespace Watch_Face_Editor
                         if (dayIndex < forecastData.Count)
                         {
                             int posDayY = posY;
-                            int posX = x + offsetDayX * dayIndex + weather_FewDays.Number_Font_Max.x;
+                            int posX = x + offsetDayX * dayIndex + weather_FewDays.Number_Font_Max.x + offsetGraphX;
                             if (useMaxGraphOffset)
                             {
 
@@ -6896,6 +6907,7 @@ namespace Watch_Face_Editor
                 if (weather_FewDays.Number_Average != null && index == weather_FewDays.Number_Average.position &&
                     weather_FewDays.Number_Average.img_First != null && weather_FewDays.Number_Average.img_First.Length > 0 && weather_FewDays.Number_Average.visible)
                 {
+                    if (useAverageGraphOffset) offsetGraphX = weather_FewDays.Diagram.Average_offsetX;
                     int imageIndex = ListImages.IndexOf(weather_FewDays.Number_Average.img_First);
                     int posY = y + weather_FewDays.Number_Average.imageY;
                     int spacing = weather_FewDays.Number_Average.space;
@@ -6945,6 +6957,7 @@ namespace Watch_Face_Editor
 
                 if (weather_FewDays.Number_Font_Average != null && index == weather_FewDays.Number_Font_Average.position && weather_FewDays.Number_Font_Average.visible)
                 {
+                    if (useAverageGraphOffset) offsetGraphX = weather_FewDays.Diagram.Average_offsetX;
                     int posY = y + weather_FewDays.Number_Font_Average.y;
                     int h = weather_FewDays.Number_Font_Average.h;
                     int w = weather_FewDays.Number_Font_Average.w;
@@ -6964,7 +6977,7 @@ namespace Watch_Face_Editor
                         if (dayIndex < forecastData.Count)
                         {
                             int posDayY = posY;
-                            int posX = x + offsetDayX * dayIndex + weather_FewDays.Number_Font_Average.x;
+                            int posX = x + offsetDayX * dayIndex + weather_FewDays.Number_Font_Average.x + offsetGraphX;
                             if (useAverageGraphOffset)
                             {
 
@@ -7030,6 +7043,7 @@ namespace Watch_Face_Editor
                 if (weather_FewDays.Number_Min != null && index == weather_FewDays.Number_Min.position &&
                     weather_FewDays.Number_Min.img_First != null && weather_FewDays.Number_Min.img_First.Length > 0 && weather_FewDays.Number_Min.visible)
                 {
+                    if (useMinGraphOffset) offsetGraphX = weather_FewDays.Diagram.Min_offsetX;
                     int imageIndex = ListImages.IndexOf(weather_FewDays.Number_Min.img_First);
                     int posY = y + weather_FewDays.Number_Min.imageY;
                     int spacing = weather_FewDays.Number_Min.space;
@@ -7079,6 +7093,7 @@ namespace Watch_Face_Editor
 
                 if (weather_FewDays.Number_Font_Min != null && index == weather_FewDays.Number_Font_Min.position && weather_FewDays.Number_Font_Min.visible)
                 {
+                    if (useMinGraphOffset) offsetGraphX = weather_FewDays.Diagram.Min_offsetX;
                     int posY = y + weather_FewDays.Number_Font_Min.y;
                     int h = weather_FewDays.Number_Font_Min.h;
                     int w = weather_FewDays.Number_Font_Min.w;
@@ -7098,7 +7113,7 @@ namespace Watch_Face_Editor
                         if (dayIndex < forecastData.Count)
                         {
                             int posDayY = posY;
-                            int posX = x + offsetDayX * dayIndex + weather_FewDays.Number_Font_Min.x;
+                            int posX = x + offsetDayX * dayIndex + weather_FewDays.Number_Font_Min.x + offsetGraphX;
                             if (useMinGraphOffset)
                             {
 
@@ -7169,15 +7184,18 @@ namespace Watch_Face_Editor
                     int alignment = AlignmentToInt(weather_FewDays.Number_MaxMin.align);
                     bool addZero = false;
                     int angle = weather_FewDays.Number_MaxMin.angle;
-                    int separator_index = -1;
+                    int unit_index = -1;
                     if (weather_FewDays.Number_MaxMin.unit != null && weather_FewDays.Number_MaxMin.unit.Length > 0)
-                        separator_index = ListImages.IndexOf(weather_FewDays.Number_MaxMin.unit);
+                        unit_index = ListImages.IndexOf(weather_FewDays.Number_MaxMin.unit);
                     int imageError_index = -1;
                     if (weather_FewDays.Number_MaxMin.invalid_image != null && weather_FewDays.Number_MaxMin.invalid_image.Length > 0)
                         imageError_index = ListImages.IndexOf(weather_FewDays.Number_MaxMin.invalid_image);
                     int imageMinus_index = -1;
                     if (weather_FewDays.Number_MaxMin.negative_image != null && weather_FewDays.Number_MaxMin.negative_image.Length > 0)
                         imageMinus_index = ListImages.IndexOf(weather_FewDays.Number_MaxMin.negative_image);
+                    int separator_index = -1;
+                    if (weather_FewDays.Number_MaxMin.separator_image != null && weather_FewDays.Number_MaxMin.separator_image.Length > 0)
+                        separator_index = ListImages.IndexOf(weather_FewDays.Number_MaxMin.separator_image);
 
 
                     for (int dayIndex = 0; dayIndex < weather_FewDays.FewDays.DaysCount; dayIndex++)
@@ -7189,15 +7207,18 @@ namespace Watch_Face_Editor
 
                             if (dayIndex < forecastData.Count && showTemperature)
                             {
-                                int temperature_value = forecastData[dayIndex].high;
+                                int tMax_value = forecastData[dayIndex].high;
+                                int tMin_value = forecastData[dayIndex].low;
 
-                                Draw_weather_text(gPanel, imageIndex, posX, posDayY, spacing, alignment, temperature_value, 5, addZero,
-                                    imageMinus_index, separator_index, angle, BBorder, -1, false);
+                                //Draw_weather_text(gPanel, imageIndex, posX, posDayY, spacing, alignment, temperature_value, 5, addZero,
+                                //    imageMinus_index, separator_index, angle, BBorder, -1, false);
+                                Draw_weather_MaxMin(gPanel, imageIndex, posX, posDayY, spacing, alignment, tMax_value, tMin_value,
+                                    imageMinus_index, separator_index, unit_index, angle, BBorder, -1, false);
                             }
                             else if (imageError_index >= 0)
                             {
                                 Draw_weather_text(gPanel, imageIndex, posX, posDayY, spacing, alignment, 0, 5, addZero,
-                                    imageMinus_index, separator_index, angle,
+                                    imageMinus_index, unit_index, angle,
                                                 BBorder, imageError_index, true);
                             } 
                         }
@@ -7231,6 +7252,9 @@ namespace Watch_Face_Editor
                             if (dayIndex < forecastData.Count && showTemperature)
                             {
                                 valueStr = forecastData[dayIndex].high.ToString();
+                                if (weather_FewDays.Number_Font_MaxMin.unit_string != null && weather_FewDays.Number_Font_MaxMin.unit_string.Length > 0)
+                                    valueStr += weather_FewDays.Number_Font_MaxMin.unit_string;
+                                valueStr += forecastData[dayIndex].low.ToString();
 
                                 string unitStr = unit;
                                 if (weather_FewDays.Number_Font_MaxMin.unit_type > 0)
@@ -7291,7 +7315,7 @@ namespace Watch_Face_Editor
                     for (int dayIndex = 0; dayIndex < weather_FewDays.FewDays.DaysCount; dayIndex++)
                     {
                         int dof = WatchFacePreviewSet.Date.WeekDay + dayIndex - 1;
-                        if (dof >= 7) dof -= 7;
+                        while (dof >= 7) { dof -= 7; }
                         int posX = x + offsetDayX * dayIndex + weather_FewDays.DayOfWeek_Images.X;
                         int image_index = imageIndex + dof;
 
@@ -7328,7 +7352,7 @@ namespace Watch_Face_Editor
                             for (int dayIndex = 0; dayIndex < weather_FewDays.FewDays.DaysCount; dayIndex++)
                             {
                                 int dof = WatchFacePreviewSet.Date.WeekDay + dayIndex - 1;
-                                if (dof >= 7) dof -= 7;
+                                while (dof >= 7) { dof -= 7; }
                                 int posX = x + offsetDayX * dayIndex + weather_FewDays.DayOfWeek_Font.x;
                                 string valueStr = dowArrey[dof].Trim();
 
@@ -7422,7 +7446,7 @@ namespace Watch_Face_Editor
             return scale;
         }
 
-        private void DrawaWeatherPount(Graphics gPanel, int x, int y, int pointSize, int pointType, Color color)
+        private void DrawaWeatherPoint(Graphics gPanel, int x, int y, int pointSize, int pointType, Color color)
         {
             if (pointSize == 0) return;
             int fillX = x - pointSize / 4;
@@ -9660,6 +9684,284 @@ namespace Watch_Face_Editor
                             graphics.DrawImage(src, new Rectangle(PointX + offsetX, PointY, src.Width, src.Height));
                             PointX = PointX + src.Width + spacing;
                             //src.Dispose();
+                        }
+                    }
+
+                }
+                result = PointX - spacing + offsetX;
+                if (unit_index > -1)
+                {
+                    src = OpenFileStream(ListImagesFullName[unit_index]);
+                    graphics.DrawImage(src, new Rectangle(PointX + offsetX, PointY, src.Width, src.Height));
+                    result = result + src.Width + spacing;
+                }
+            }
+            else if (imageError_index >= 0)
+            {
+                src = OpenFileStream(ListImagesFullName[imageError_index]);
+                //switch (alignment)
+                //{
+                //    case 0:
+                //        PointX = x;
+                //        break;
+                //    case 1:
+                //        PointX = x + (DateLenght - src.Width) / 2;
+                //        break;
+                //    case 2:
+                //        PointX = x + DateLenght - src.Width;
+                //        break;
+                //    default:
+                //        PointX = x;
+                //        break;
+                //}
+                switch (alignment)
+                {
+                    case 0:
+                        offsetX = 0;
+                        break;
+                    case 1:
+                        offsetX = (DateLenght - src.Width) / 2;
+                        break;
+                    case 2:
+                        offsetX = DateLenght - src.Width;
+                        break;
+                    default:
+                        offsetX = 0;
+                        break;
+                }
+                //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+                if (SelectedModel.versionOS >= 1.5)
+                {
+                    int pivot_point_offset_x = 0;
+                    int pivot_point_offset_y = 0;
+                    Calculation_pivot_point_offset(widthD, height, angle, out pivot_point_offset_x, out pivot_point_offset_y);
+                    graphics.TranslateTransform(PointX, PointY);
+                    graphics.TranslateTransform(pivot_point_offset_x, pivot_point_offset_y);
+                    graphics.RotateTransform(angle);
+                    graphics.TranslateTransform(-PointX, -PointY);
+                }
+                graphics.DrawImage(src, PointX + offsetX, PointY);
+            }
+            src.Dispose();
+
+            if (BBorder)
+            {
+                Logger.WriteLine("DrawBorder");
+                Rectangle rect = new Rectangle(x, y, DateLenght - 1, height - 1);
+                using (Pen pen1 = new Pen(Color.White, 1))
+                {
+                    graphics.DrawRectangle(pen1, rect);
+                }
+                using (Pen pen2 = new Pen(Color.Black, 1))
+                {
+                    pen2.DashStyle = DashStyle.Dot;
+                    graphics.DrawRectangle(pen2, rect);
+                }
+            }
+            //graphics.ResetTransform();
+            graphics.Transform = transformMatrix;
+
+            Logger.WriteLine("* Draw_weather_text (end)");
+            return result;
+        }
+
+        /// <summary>Рисует погоду числом</summary>
+        /// <param name="graphics">Поверхность для рисования</param>
+        /// <param name="image_index">Номер изображения</param>
+        /// <param name="x">Координата X</param>
+        /// <param name="y">Координата y</param>
+        /// <param name="spacing">Величина отступа</param>
+        /// <param name="alignment">Выравнивание</param>
+        /// <param name="valueMax">Максимальная температура</param>
+        /// <param name="valueMin">минимальная температура</param>
+        /// <param name="image_minus_index">Символ "-"</param>
+        /// <param name="separtator_index">Символ разделителя</param>
+        /// <param name="unit_index">Символ единиц измерения</param>
+        /// <param name="angle">Угол наклона текста</param>
+        /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
+        /// <param name="imageError_index">Иконка ошибки данны</param>
+        /// <param name="errorData">отображать ошибку данный</param>
+        private int Draw_weather_MaxMin(Graphics graphics, int image_index, int x, int y, int spacing,
+            int alignment, int valueMax, int valueMin, int image_minus_index, int separtator_index, int unit_index, 
+            int angle, bool BBorder, int imageError_index = -1, bool errorData = false)
+        {
+            int result = 0;
+            int value_lenght = 5;
+            //if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" &&
+            //    ProgramSettings.Watch_Model != "GTR mini" && ProgramSettings.Watch_Model != "T-Rex Ultra") angle = 0;
+            if (SelectedModel.versionOS < 2) angle = 0;
+            Logger.WriteLine("* Draw_weather_text");
+            var src = new Bitmap(1, 1);
+            int _number;
+            int i;
+            string value_S = valueMax.ToString();
+            if (separtator_index >= 0)
+            {
+                value_S += ".";
+            }
+            value_S += valueMin.ToString();
+            //if (addZero)
+            //{
+            //    //while (value_S.Length < 2)
+            //    //{
+            //    //    value_S = "0" + value_S;
+            //    //}
+            //    if (value >= 0) value_S = value_S.PadLeft(value_lenght, '0');
+            //    else
+            //    {
+            //        int tempGoal = Math.Abs(value);
+            //        value_S = tempGoal.ToString();
+            //        value_S = value_S.PadLeft(value_lenght - 1, '0');
+            //        value_S = "-" + value_S;
+            //    }
+            //}
+            char[] CH = value_S.ToCharArray();
+
+            src = OpenFileStream(ListImagesFullName[image_index]);
+            int widthD = src.Width;
+            int height = src.Height;
+            int widthM = 0;
+            int widthCF = 0;
+            int widthS = 0;
+            if (image_minus_index >= 0 && image_minus_index < ListImagesFullName.Count)
+            {
+                src = OpenFileStream(ListImagesFullName[image_minus_index]);
+                widthM = src.Width;
+            }
+            if (unit_index >= 0 && unit_index < ListImagesFullName.Count)
+            {
+                src = OpenFileStream(ListImagesFullName[unit_index]);
+                widthCF = src.Width;
+            }
+            if (separtator_index >= 0 && separtator_index < ListImagesFullName.Count)
+            {
+                src = OpenFileStream(ListImagesFullName[separtator_index]);
+                widthS = src.Width;
+            }
+
+            //int DateLenght = widthD * 2 + widthM + widthCF + 1;
+            int DateLenght = widthD * value_lenght + 1;
+            if (spacing != 0) DateLenght = DateLenght + (value_lenght - 1) * spacing;
+            if (unit_index >= 0 && unit_index < ListImagesFullName.Count) DateLenght = DateLenght + widthCF + spacing;
+            if (separtator_index >= 0 && separtator_index < ListImagesFullName.Count) DateLenght = DateLenght + widthS + spacing;
+            //if (widthM == 0) DateLenght = DateLenght - spacing;
+            //if (alignment == 2 && AvailabilityIcon) DateLenght = DateLenght - spacing;
+
+            int DateLenghtReal = 0;
+            Logger.WriteLine("DateLenght");
+            foreach (char ch in CH)
+            {
+                _number = 0;
+                if (int.TryParse(ch.ToString(), out _number))
+                {
+                    i = image_index + _number;
+                    if (i < ListImagesFullName.Count)
+                    {
+                        //src = new Bitmap(ListImagesFullName[i]);
+                        src = OpenFileStream(ListImagesFullName[i]);
+                        DateLenghtReal = DateLenghtReal + src.Width + spacing;
+                        //src.Dispose();
+                    }
+                }
+                else
+                {
+                    if (ch == '.')
+                    {
+                        if (separtator_index >= 0 && separtator_index < ListImagesFullName.Count)
+                        {
+                            DateLenghtReal = DateLenghtReal + widthS + spacing;
+                        }
+                    }
+                    else
+                    {
+                        if (image_minus_index >= 0 && image_minus_index < ListImagesFullName.Count)
+                        {
+                            DateLenghtReal = DateLenghtReal + widthM + spacing;
+                        } 
+                    }
+                }
+            }
+            if (unit_index >= 0 && unit_index < ListImagesFullName.Count)
+            {
+                DateLenghtReal = DateLenghtReal + widthCF + spacing;
+            }
+
+            DateLenghtReal = DateLenghtReal - spacing;
+
+            int PointX = x;
+            int offsetX = 0;
+            int PointY = y;
+            switch (alignment)
+            {
+                case 0:
+                    offsetX = 0;
+                    break;
+                case 1:
+                    offsetX = (DateLenght - DateLenghtReal) / 2 - 1;
+                    break;
+                case 2:
+                    offsetX = DateLenght - DateLenghtReal - 1;
+                    break;
+                default:
+                    offsetX = 0;
+                    break;
+            }
+
+            Logger.WriteLine("Draw value");
+            Matrix transformMatrix = graphics.Transform;
+            if (!errorData)
+            {
+                //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+                if (SelectedModel.versionOS >= 1.5)
+                {
+                    int pivot_point_offset_x = 0;
+                    int pivot_point_offset_y = 0;
+                    Calculation_pivot_point_offset(widthD, height, angle, out pivot_point_offset_x, out pivot_point_offset_y);
+                    graphics.TranslateTransform(PointX, PointY);
+                    graphics.TranslateTransform(pivot_point_offset_x, pivot_point_offset_y);
+                    graphics.RotateTransform(angle);
+                    graphics.TranslateTransform(-PointX, -PointY);
+                }
+
+                foreach (char ch in CH)
+                {
+                    _number = 0;
+                    if (int.TryParse(ch.ToString(), out _number))
+                    {
+                        i = image_index + _number;
+                        if (i < ListImagesFullName.Count)
+                        {
+                            //src = new Bitmap(ListImagesFullName[i]);
+                            src = OpenFileStream(ListImagesFullName[i]);
+                            graphics.DrawImage(src, new Rectangle(PointX + offsetX, PointY, src.Width, src.Height));
+                            //PointX = PointX + src.Width + spacing;
+                            PointX = PointX + widthD + spacing;
+                            //src.Dispose();
+                        }
+                    }
+                    else
+                    {
+                        if (ch == '.')
+                        {
+                            if (separtator_index >= 0 && separtator_index < ListImagesFullName.Count)
+                            {
+                                //src = new Bitmap(ListImagesFullName[dec]);
+                                src = OpenFileStream(ListImagesFullName[separtator_index]);
+                                graphics.DrawImage(src, new Rectangle(PointX + offsetX, PointY, src.Width, src.Height));
+                                PointX = PointX + src.Width + spacing;
+                                //src.Dispose();
+                            }
+                        }
+                        else
+                        {
+                            if (image_minus_index >= 0 && image_minus_index < ListImagesFullName.Count)
+                            {
+                                //src = new Bitmap(ListImagesFullName[dec]);
+                                src = OpenFileStream(ListImagesFullName[image_minus_index]);
+                                graphics.DrawImage(src, new Rectangle(PointX + offsetX, PointY, src.Width, src.Height));
+                                PointX = PointX + src.Width + spacing;
+                                //src.Dispose();
+                            } 
                         }
                     }
 
