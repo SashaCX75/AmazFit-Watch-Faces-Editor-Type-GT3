@@ -5842,19 +5842,19 @@ namespace Watch_Face_Editor
             }
 
             WeatherGroup Group_Min = new WeatherGroup();
-            if (Group_Min != null)
+            if (this.Group_Min != null)
             {
                 Group_Min = (WeatherGroup)this.Group_Min.Clone();
             }
 
             WeatherGroup Group_Max = new WeatherGroup();
-            if (Group_Max != null)
+            if (this.Group_Max != null)
             {
                 Group_Max = (WeatherGroup)this.Group_Max.Clone();
             }
 
             WeatherGroup Group_Max_Min = new WeatherGroup();
-            if (Group_Max_Min != null)
+            if (this.Group_Max_Min != null)
             {
                 Group_Max_Min = (WeatherGroup)this.Group_Max_Min.Clone();
             }

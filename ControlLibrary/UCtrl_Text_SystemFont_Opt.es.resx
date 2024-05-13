@@ -403,4 +403,7 @@ verticalmente</value>
   <data name="label_Month.Text" xml:space="preserve">
     <value>Nombres de meses en fuente</value>
   </data>
+  <data name="label_Color2.Text" xml:space="preserve">
+    <value>Color del fin de semana</value>
+  </data>
 </root>

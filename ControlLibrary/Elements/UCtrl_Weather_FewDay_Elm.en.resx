@@ -120,110 +120,29 @@
   <data name="button_Number_Average_Font.Text" xml:space="preserve">
     <value>Value in font (average)</value>
   </data>
-  <data name="button_Number_Average_Font.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_Number_Average_Font.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel_Number_Average_Font.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_Number_MaxMin_Font.Text" xml:space="preserve">
     <value>Value in font (max/min)</value>
-  </data>
-  <data name="button_Number_MaxMin_Font.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_Number_MaxMin_Font.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel_Number_MaxMin_Font.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="button_Number_Average.Text" xml:space="preserve">
     <value>Numerical values (average)</value>
   </data>
-  <data name="button_Number_Average.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_Number_Average.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel_Number_Average.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_Number_MaxMin.Text" xml:space="preserve">
     <value>Numerical values (max/min)</value>
-  </data>
-  <data name="button_Number_MaxMin.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_Number_MaxMin.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel_Number_MaxMin.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="button_Settings.Text" xml:space="preserve">
     <value>General settings</value>
   </data>
-  <data name="button_Settings.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel_Settings.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_Font_DOW.Text" xml:space="preserve">
     <value>Day of the week in font</value>
-  </data>
-  <data name="button_Font_DOW.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_Font_DOW.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel_Font_DOW.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="button_Number_Max_Font.Text" xml:space="preserve">
     <value>Value in font (max)</value>
   </data>
-  <data name="button_Number_Max_Font.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_Number_Max_Font.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel_Number_Max_Font.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_Number_Min_Font.Text" xml:space="preserve">
     <value>Value in font (min)</value>
   </data>
-  <data name="button_Number_Min_Font.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_Number_Min_Font.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel_Number_Min_Font.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_Images_DOW.Text" xml:space="preserve">
     <value>Day of the week</value>
-  </data>
-  <data name="button_Images_DOW.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_Images_DOW.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel_Images_DOW.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_Images.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="button_Images.Text" xml:space="preserve">
     <value>Images</value>
@@ -231,76 +150,16 @@
   <data name="button_Diagram.Text" xml:space="preserve">
     <value>Temperature graph</value>
   </data>
-  <data name="button_Diagram.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_Diagram.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel_Diagram.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_Icon.Text" xml:space="preserve">
     <value>Icon</value>
-  </data>
-  <data name="button_Icon.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_Icon.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel_Icon.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="button_Number_Min.Text" xml:space="preserve">
     <value>Numerical values (min)</value>
   </data>
-  <data name="button_Number_Min.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_Number_Min.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel_Number_Min.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_Number_Max.Text" xml:space="preserve">
     <value>Numerical values (max)</value>
   </data>
-  <data name="button_Number_Max.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBox_Number_Max.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel_Number_Max.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox_Arrow_Down.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox_NotShow.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox_Arrow_Right.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox_Show.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox_Del.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Weather (forecast)</value>
-  </data>
-  <data name="button_ElementName.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

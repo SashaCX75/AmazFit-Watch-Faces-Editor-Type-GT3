@@ -53,6 +53,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox_position_on_graph = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_posX)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_posY)).BeginInit();
@@ -63,10 +64,10 @@
             // 
             // comboBox_image
             // 
+            resources.ApplyResources(this.comboBox_image, "comboBox_image");
             this.comboBox_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_image.DropDownWidth = 135;
             this.comboBox_image.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox_image, "comboBox_image");
             this.comboBox_image.Name = "comboBox_image";
             this.comboBox_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -76,8 +77,8 @@
             // 
             // numericUpDown_posX
             // 
-            this.numericUpDown_posX.ContextMenuStrip = this.contextMenuStrip_X;
             resources.ApplyResources(this.numericUpDown_posX, "numericUpDown_posX");
+            this.numericUpDown_posX.ContextMenuStrip = this.contextMenuStrip_X;
             this.numericUpDown_posX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -95,13 +96,13 @@
             // 
             // contextMenuStrip_X
             // 
+            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_X.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуХToolStripMenuItem,
             this.копироватьToolStripMenuItemX,
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
-            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
@@ -124,8 +125,8 @@
             // 
             // numericUpDown_posY
             // 
-            this.numericUpDown_posY.ContextMenuStrip = this.contextMenuStrip_Y;
             resources.ApplyResources(this.numericUpDown_posY, "numericUpDown_posY");
+            this.numericUpDown_posY.ContextMenuStrip = this.contextMenuStrip_Y;
             this.numericUpDown_posY.Maximum = new decimal(new int[] {
             999,
             0,
@@ -143,13 +144,13 @@
             // 
             // contextMenuStrip_Y
             // 
+            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_Y.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуYToolStripMenuItem,
             this.копироватьToolStripMenuItemY,
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
-            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem
@@ -266,10 +267,16 @@
             this.checkBox_position_on_graph.UseVisualStyleBackColor = true;
             this.checkBox_position_on_graph.CheckedChanged += new System.EventHandler(this.checkBox_position_on_graph_CheckedChanged);
             // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
             // UCtrl_Weather_FewDays_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.checkBox_position_on_graph);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -322,5 +329,6 @@
         private System.Windows.Forms.ToolStripMenuItem копироватьToolStripMenuItemX;
         private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItemX;
         private System.Windows.Forms.CheckBox checkBox_position_on_graph;
+        private System.Windows.Forms.Label label4;
     }
 }

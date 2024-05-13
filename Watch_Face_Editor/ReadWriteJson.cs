@@ -11274,7 +11274,7 @@ namespace Watch_Face_Editor
             if (weatherFewDays == null) return;
             if (!weatherFewDays.visible) return;
             if (weatherFewDays.FewDays == null) return;
-            if (SelectedModel.versionOS < 3) return;
+            //if (SelectedModel.versionOS < 3) return;
 
             //int offetX = weatherFewDays.FewDays.X;
             //int offetY = weatherFewDays.FewDays.Y;
@@ -11288,7 +11288,7 @@ namespace Watch_Face_Editor
             bool useMinGraphOffset = (weatherFewDays.Diagram != null && weatherFewDays.Diagram.visible && weatherFewDays.Diagram.Use_min_diagram && weatherFewDays.Diagram.PositionOnGraph);
             bool useAverageGraphOffset = (weatherFewDays.Diagram != null && weatherFewDays.Diagram.visible && weatherFewDays.Diagram.Use_average_diagram && weatherFewDays.Diagram.PositionOnGraph);
 
-            if (optionNameStart != "normal_")
+            if (optionNameStart != "normal_" || SelectedModel.versionOS < 3)
             {
                 useMaxGraphOffset = false;
                 useMinGraphOffset = false;
@@ -11316,7 +11316,9 @@ namespace Watch_Face_Editor
                         pointMinSize = weatherFewDays.Diagram.Min_pointSize;
                 }
             }
-            int offsetDiagramY = (int)Math.Ceiling(pointMaxSize / 2f);
+            int offsetDiagramPointY = (int)Math.Ceiling(pointMaxSize / 2f);
+            int offsetDiagramY = 0;
+            if (weatherFewDays.Diagram != null) offsetDiagramY = weatherFewDays.Diagram.Y;
 
             if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
@@ -11566,6 +11568,9 @@ namespace Watch_Face_Editor
                     items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
                     #endregion
 
+                    if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                        items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
+
                     if (weather_few_days.IndexOf(strFor) < 0)
                         weather_few_days += Environment.NewLine + TabInString(7) + strFor;
 
@@ -11588,7 +11593,7 @@ namespace Watch_Face_Editor
                 // Graph
                 if (weatherFewDays.Diagram != null && weatherFewDays.Diagram.visible && index == weatherFewDays.Diagram.position && 
                     (weatherFewDays.Diagram.Use_average_diagram || weatherFewDays.Diagram.Use_max_diagram || weatherFewDays.Diagram.Use_min_diagram) &&
-                    optionNameStart == "normal_")
+                    optionNameStart == "normal_" && SelectedModel.versionOS >= 3)
                 {
                     AddGraphFunctions(ref items);
                     AddGraphScaleFunction(ref items);
@@ -11634,7 +11639,7 @@ namespace Watch_Face_Editor
                         temp_items += Environment.NewLine + TabInString(7) + "if (screenType == hmSetting.screen_type." + screenType + 
                             ")  maxOldX = " + optionNameStart + "max_offsetX;";
                         if (weather_few_days.IndexOf("let maxOldY") < 0) temp_items += Environment.NewLine + TabInString(7) +
-                            "let maxOldY = (maximal_temp - forecastData.data[0].high) * forecastGraphScale + " + offsetDiagramY.ToString() + ";";
+                            "let maxOldY = (maximal_temp - forecastData.data[0].high) * forecastGraphScale + " + offsetDiagramPointY.ToString() + ";";
                         if (weather_few_days.IndexOf("let endPointMax") < 0) temp_items += Environment.NewLine + TabInString(7) + "let endPointMax = false;";
                     }
                     if (weatherFewDays.Diagram.Use_average_diagram) {
@@ -11643,7 +11648,7 @@ namespace Watch_Face_Editor
                         temp_items += Environment.NewLine + TabInString(7) + "if (screenType == hmSetting.screen_type." + screenType +
                             ") averageOldX = " + optionNameStart + "average_offsetX;";
                         if (weather_few_days.IndexOf("let averageOldY") < 0) temp_items += Environment.NewLine + TabInString(7) +
-                            "let averageOldY = (maximal_temp - (forecastData.data[0].high + forecastData.data[0].low) / 2) * forecastGraphScale + " + offsetDiagramY.ToString() + ";";
+                            "let averageOldY = (maximal_temp - (forecastData.data[0].high + forecastData.data[0].low) / 2) * forecastGraphScale + " + offsetDiagramPointY.ToString() + ";";
                         if (weather_few_days.IndexOf("let endPointAverage") < 0) temp_items += Environment.NewLine + TabInString(7) + "let endPointAverage = false;";
                     }
                     if (weatherFewDays.Diagram.Use_min_diagram) {
@@ -11652,7 +11657,7 @@ namespace Watch_Face_Editor
                         temp_items += Environment.NewLine + TabInString(7) + "if (screenType == hmSetting.screen_type." + screenType +
                             ") minOldX = " + optionNameStart + "min_offsetX;";
                         if (weather_few_days.IndexOf("let minOldY") < 0) temp_items += Environment.NewLine + TabInString(7) +
-                            "let minOldY = (maximal_temp - forecastData.data[0].low) * forecastGraphScale + " + offsetDiagramY.ToString() + ";";
+                            "let minOldY = (maximal_temp - forecastData.data[0].low) * forecastGraphScale + " + offsetDiagramPointY.ToString() + ";";
                         if (weather_few_days.IndexOf("let endPointMin") < 0) temp_items += Environment.NewLine + TabInString(7) + "let endPointMin = false;";
                     }
 
@@ -11669,7 +11674,7 @@ namespace Watch_Face_Editor
                         weather_few_days += Environment.NewLine + TabInString(10) + "let maxStartX = maxOldX;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let maxStartY = maxOldY;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "maxOldX = " + optionNameStart + "max_offsetX + i * " + daysWidth.ToString() + ";";
-                        weather_few_days += Environment.NewLine + TabInString(10) + "maxOldY = (maximal_temp - forecastData.data[i].high) * forecastGraphScale + " + offsetDiagramY.ToString() + ";";
+                        weather_few_days += Environment.NewLine + TabInString(10) + "maxOldY = (maximal_temp - forecastData.data[i].high) * forecastGraphScale + " + offsetDiagramPointY.ToString() + ";";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let maxEndX = maxOldX;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let maxEndY = maxOldY;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "if (maxStartX != maxEndX) {";
@@ -11698,7 +11703,7 @@ namespace Watch_Face_Editor
                         weather_few_days += Environment.NewLine + TabInString(10) + "let averageStartX = averageOldX;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let averageStartY = averageOldY;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "averageOldX = " + optionNameStart + "average_offsetX + i * " + daysWidth.ToString() + ";";
-                        weather_few_days += Environment.NewLine + TabInString(10) + "averageOldY = (maximal_temp - (forecastData.data[i].high + forecastData.data[i].low) / 2) * forecastGraphScale + " + offsetDiagramY.ToString() + ";";
+                        weather_few_days += Environment.NewLine + TabInString(10) + "averageOldY = (maximal_temp - (forecastData.data[i].high + forecastData.data[i].low) / 2) * forecastGraphScale + " + offsetDiagramPointY.ToString() + ";";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let averageEndX = averageOldX;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let averageEndY = averageOldY;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "if (averageStartX != averageEndX) {";
@@ -11727,7 +11732,7 @@ namespace Watch_Face_Editor
                         weather_few_days += Environment.NewLine + TabInString(10) + "let minStartX = minOldX;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let minStartY = minOldY;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "minOldX = " + optionNameStart + "min_offsetX + i * " + daysWidth.ToString() + ";";
-                        weather_few_days += Environment.NewLine + TabInString(10) + "minOldY = (maximal_temp - forecastData.data[i].low) * forecastGraphScale + " + offsetDiagramY.ToString() + ";";
+                        weather_few_days += Environment.NewLine + TabInString(10) + "minOldY = (maximal_temp - forecastData.data[i].low) * forecastGraphScale + " + offsetDiagramPointY.ToString() + ";";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let minEndX = minOldX;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "let minEndY = minOldY;";
                         weather_few_days += Environment.NewLine + TabInString(10) + "if (minStartX != minEndX) {";
@@ -11903,10 +11908,10 @@ namespace Watch_Face_Editor
                     weather_few_days += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
                     if (useMaxGraphOffset)
                     {
-                        weather_few_days += Environment.NewLine + TabInString(9) + "let " + optionNameStart +
-                            "forecast_high_text_posY = (maximal_temp - forecastData.data[i].high) * forecastGraphScale + " + offsetDiagramY.ToString() + 
-                            " + " + posY.ToString() + ";";
-                        weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.Y, " + optionNameStart + "forecast_high_text_posY);";
+                        weather_few_days += Environment.NewLine + TabInString(9) + "let " + variableName + 
+                            "_posY = (maximal_temp - forecastData.data[i].high) * forecastGraphScale + " + 
+                            (offsetDiagramPointY + offsetDiagramY + posY).ToString() + ";";
+                        weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.Y, " + variableName + "_posY);";
                     }
                     weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.TEXT, maxTemperature);";
                     weather_few_days += Environment.NewLine + TabInString(8) + "};";
@@ -12002,8 +12007,8 @@ namespace Watch_Face_Editor
                     if (useMaxGraphOffset)
                     {
                         weather_few_days += Environment.NewLine + TabInString(9) + "let " + variableName +
-                            "_posY = (maximal_temp - forecastData.data[i].high) * forecastGraphScale + " + offsetDiagramY.ToString() +
-                            " + " + posY.ToString() + ";";
+                            "_posY = (maximal_temp - forecastData.data[i].high) * forecastGraphScale + " + 
+                            (offsetDiagramPointY + offsetDiagramY + posY).ToString() + ";";
                         weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.Y, " + variableName + "_posY);";
                     }
 
@@ -12165,10 +12170,10 @@ namespace Watch_Face_Editor
                     weather_few_days += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
                     if (useAverageGraphOffset)
                     {
-                        weather_few_days += Environment.NewLine + TabInString(9) + "let " + optionNameStart +
-                            "forecast_high_text_posY = (maximal_temp - (forecastData.data[i].high + forecastData.data[i].low)/2 ) * forecastGraphScale + " + offsetDiagramY.ToString() +
-                            " + " + posY.ToString() + ";";
-                        weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.Y, " + optionNameStart + "forecast_high_text_posY);";
+                        weather_few_days += Environment.NewLine + TabInString(9) + "let " + variableName + 
+                            "_posY = (maximal_temp - (forecastData.data[i].high + forecastData.data[i].low)/2 ) * forecastGraphScale + " + 
+                            (offsetDiagramPointY + offsetDiagramY + posY).ToString() + ";";
+                        weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.Y, " + variableName + "forecast_high_text_posY);";
                     }
                     weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.TEXT, averageTemperature);";
                     weather_few_days += Environment.NewLine + TabInString(8) + "};";
@@ -12179,7 +12184,7 @@ namespace Watch_Face_Editor
                 if (weatherFewDays.Number_Font_Average != null && weatherFewDays.Number_Font_Average.visible && index == weatherFewDays.Number_Font_Average.position)
                 {
                     hmUI_widget_TEXT text = weatherFewDays.Number_Font_Average;
-                    string variableName = optionNameStart + "forecast_high_text_font";
+                    string variableName = optionNameStart + "forecast_average_text_font";
 
                     variables += TabInString(4) + "let " + variableName + " = new Array(" + daysCount.ToString() + ");" + Environment.NewLine;
 
@@ -12187,7 +12192,7 @@ namespace Watch_Face_Editor
                     int posY = text.y /*+ offetY*/;
                     if (useAverageGraphOffset) posX += weatherFewDays.Diagram.Average_offsetX;
 
-                    string textOptions = TEXT_Сommented_Options(text, "forecast_high_text_font", show_level);
+                    string textOptions = TEXT_Сommented_Options(text, "forecast_average_text_font", show_level);
                     items += Environment.NewLine + TabInString(6) + "// " + variableName + " = " + groupName + ".createWidget(hmUI.widget.TEXT_Options, {" +
                                     textOptions + TabInString(6) + "// });" + Environment.NewLine;
 
@@ -12264,8 +12269,8 @@ namespace Watch_Face_Editor
                     if (useAverageGraphOffset)
                     {
                         weather_few_days += Environment.NewLine + TabInString(9) + "let " + variableName +
-                            "_posY = (maximal_temp - (forecastData.data[i].high + forecastData.data[i].low)/2 ) * forecastGraphScale + " + offsetDiagramY.ToString() +
-                            " + " + posY.ToString() + ";";
+                            "_posY = (maximal_temp - (forecastData.data[i].high + forecastData.data[i].low)/2 ) * forecastGraphScale + " + 
+                            (offsetDiagramPointY + offsetDiagramY + posY).ToString() + ";";
                         weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.Y, " + variableName + "_posY);";
                     }
 
@@ -12427,10 +12432,10 @@ namespace Watch_Face_Editor
                     weather_few_days += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
                     if (useMinGraphOffset)
                     {
-                        weather_few_days += Environment.NewLine + TabInString(9) + "let " + optionNameStart +
-                            "forecast_low_text_posY = (maximal_temp - forecastData.data[i].low) * forecastGraphScale + " + offsetDiagramY.ToString() +
-                            " + " + posY.ToString() + ";";
-                        weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.Y, " + optionNameStart + "forecast_low_text_posY);";
+                        weather_few_days += Environment.NewLine + TabInString(9) + "let " + variableName + 
+                            "_posY = (maximal_temp - forecastData.data[i].low) * forecastGraphScale + " + 
+                            (offsetDiagramPointY + offsetDiagramY + posY).ToString() + ";";
+                        weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.Y, " + variableName + "forecast_low_text_posY);";
                     }
                     weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.TEXT, minTemperature);";
                     weather_few_days += Environment.NewLine + TabInString(8) + "};";
@@ -12526,8 +12531,8 @@ namespace Watch_Face_Editor
                     if (useMinGraphOffset)
                     {
                         weather_few_days += Environment.NewLine + TabInString(9) + "let " + variableName +
-                            "_posY = (maximal_temp - forecastData.data[i].low) * forecastGraphScale + " + offsetDiagramY.ToString() +
-                            " + " + posY.ToString() + ";";
+                            "_posY = (maximal_temp - forecastData.data[i].low) * forecastGraphScale + " + 
+                            (offsetDiagramPointY + offsetDiagramY + posY).ToString() + ";";
                         weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.Y, " + variableName + "_posY);";
                     }
 
@@ -12718,7 +12723,6 @@ namespace Watch_Face_Editor
 
                     int posX = text.x /*+ offetX*/;
                     int posY = text.y /*+ offetY*/;
-                    if (useMaxGraphOffset) posX += weatherFewDays.Diagram.Max_offsetX;
 
                     string textOptions = TEXT_Сommented_Options(text, "forecast_high_low_text_font", show_level);
                     items += Environment.NewLine + TabInString(6) + "// " + variableName + " = " + groupName + ".createWidget(hmUI.widget.TEXT_Options, {" +

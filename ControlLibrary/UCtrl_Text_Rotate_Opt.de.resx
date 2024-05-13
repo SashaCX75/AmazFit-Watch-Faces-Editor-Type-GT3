@@ -314,4 +314,7 @@
   <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>Eigenschaften kopieren</value>
   </data>
+  <data name="label_separator.Text" xml:space="preserve">
+    <value>Trennzeichen</value>
+  </data>
 </root>

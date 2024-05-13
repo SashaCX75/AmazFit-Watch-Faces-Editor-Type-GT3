@@ -6582,7 +6582,7 @@ namespace Watch_Face_Editor
             if (weather_FewDays == null) return;
             if (!weather_FewDays.visible) return;
             if (weather_FewDays.FewDays == null) return;
-            if (SelectedModel.versionOS < 3) return;
+            //if (SelectedModel.versionOS < 3) return;
 
             Bitmap src = new Bitmap(1, 1);
             string unit = "°";
@@ -6596,7 +6596,7 @@ namespace Watch_Face_Editor
             bool useMinGraphOffset = (weather_FewDays.Diagram != null && weather_FewDays.Diagram.visible && weather_FewDays.Diagram.Use_min_diagram && weather_FewDays.Diagram.PositionOnGraph);
             bool useAverageGraphOffset = (weather_FewDays.Diagram != null && weather_FewDays.Diagram.visible && weather_FewDays.Diagram.Use_average_diagram && weather_FewDays.Diagram.PositionOnGraph);
 
-            if (!radioButton_ScreenNormal.Checked)
+            if (!radioButton_ScreenNormal.Checked || SelectedModel.versionOS < 3)
             {
                 useMaxGraphOffset = false;
                 useMinGraphOffset = false;
@@ -6666,7 +6666,8 @@ namespace Watch_Face_Editor
                     }
                 }
 
-                if (weather_FewDays.Diagram != null && index == weather_FewDays.Diagram.position && weather_FewDays.Diagram.visible && radioButton_ScreenNormal.Checked)
+                if (weather_FewDays.Diagram != null && index == weather_FewDays.Diagram.position && weather_FewDays.Diagram.visible && 
+                    radioButton_ScreenNormal.Checked && SelectedModel.versionOS >= 3)
                 {
                     Color colorMax = StringToColor(weather_FewDays.Diagram.Max_color);
                     Pen penMax = new Pen(colorMax, weather_FewDays.Diagram.Max_lineWidth);

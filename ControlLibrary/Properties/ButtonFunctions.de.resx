@@ -294,6 +294,9 @@
   <data name="Weather" xml:space="preserve">
     <value>Wetter</value>
   </data>
+  <data name="WeatherInformer" xml:space="preserve">
+    <value>Wettervorhersage *</value>
+  </data>
   <data name="WeekActivity" xml:space="preserve">
     <value>Aktivität für die Woche *</value>
   </data>

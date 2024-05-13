@@ -124,8 +124,8 @@
   <data name="numericUpDown_posY.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Толщина линии</value>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBox_min</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 135</value>
@@ -161,6 +161,9 @@
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>184</value>
   </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Толщина линии</value>
+  </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>110, 27</value>
   </data>
@@ -173,6 +176,9 @@
   </data>
   <data name="&gt;&gt;numericUpDown_height.Name" xml:space="preserve">
     <value>numericUpDown_height</value>
+  </data>
+  <data name="checkBox_use_min.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 0</value>
   </data>
   <data name="numericUpDown_min_pointSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
@@ -192,8 +198,8 @@
   <data name="comboBox_min_pointType.Items1" xml:space="preserve">
     <value>Квадрат 1</value>
   </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="groupBox_min.TabIndex" type="System.Int32, mscorlib">
     <value>129</value>
@@ -228,11 +234,11 @@
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>174</value>
   </data>
-  <data name="label15.TabIndex" type="System.Int32, mscorlib">
-    <value>175</value>
-  </data>
   <data name="numericUpDown_average_lineWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 13</value>
   </data>
   <data name="label06.TabIndex" type="System.Int32, mscorlib">
     <value>184</value>
@@ -242,6 +248,12 @@
   </data>
   <data name="checkBox_use_max.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;checkBox_use_min.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label12.TabIndex" type="System.Int32, mscorlib">
     <value>186</value>
@@ -267,9 +279,6 @@
   <data name="checkBox_use_max.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="comboBox_max_pointType.Items1" xml:space="preserve">
-    <value>Квадрат 1</value>
-  </data>
   <data name="&gt;&gt;label11.Parent" xml:space="preserve">
     <value>groupBox_max</value>
   </data>
@@ -288,9 +297,6 @@
   <data name="&gt;&gt;numericUpDown_max_pointSize.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_average_offsetX.Name" xml:space="preserve">
-    <value>numericUpDown_average_offsetX</value>
-  </data>
   <data name="&gt;&gt;label14.Parent" xml:space="preserve">
     <value>groupBox_average</value>
   </data>
@@ -303,11 +309,11 @@
   <data name="label12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
+  <data name="numericUpDown_height.TabIndex" type="System.Int32, mscorlib">
+    <value>189</value>
+  </data>
   <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
-  </data>
-  <data name="numericUpDown_average_pointSize.TabIndex" type="System.Int32, mscorlib">
-    <value>185</value>
   </data>
   <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 145</value>
@@ -321,8 +327,8 @@
   <data name="comboBox_max_pointType.Items2" xml:space="preserve">
     <value>Квадрат 2</value>
   </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>groupBox_min</value>
+  <data name="comboBox_max_pointType.Items1" xml:space="preserve">
+    <value>Квадрат 1</value>
   </data>
   <data name="label15.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
@@ -330,11 +336,14 @@
   <data name="comboBox_minColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 43</value>
   </data>
-  <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
   </data>
   <data name="&gt;&gt;label17.Name" xml:space="preserve">
     <value>label17</value>
+  </data>
+  <data name="&gt;&gt;groupBox_max.Name" xml:space="preserve">
+    <value>groupBox_max</value>
   </data>
   <data name="comboBox_averageColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 43</value>
@@ -363,11 +372,11 @@
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 145</value>
   </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;comboBox_minColor.ZOrder" xml:space="preserve">
     <value>9</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;label18.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -390,17 +399,14 @@
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="&gt;&gt;comboBox_min_pointType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 145</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 70</value>
-  </data>
   <data name="label16.Text" xml:space="preserve">
     <value>Цвет линии</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="label19.TabIndex" type="System.Int32, mscorlib">
     <value>194</value>
@@ -411,8 +417,8 @@
   <data name="&gt;&gt;groupBox_min.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>174</value>
+  <data name="label12.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
   </data>
   <data name="numericUpDown_min_pointSize.TabIndex" type="System.Int32, mscorlib">
     <value>185</value>
@@ -421,6 +427,9 @@
     <value>6</value>
   </data>
   <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="comboBox_average_pointType.Items" xml:space="preserve">
@@ -444,9 +453,6 @@
   <data name="label18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Смещение по горизонтали</value>
   </data>
@@ -459,8 +465,8 @@
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;label18.Name" xml:space="preserve">
-    <value>label18</value>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 27</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
     <value>110, 70</value>
@@ -474,14 +480,14 @@
   <data name="groupBox_min.Text" xml:space="preserve">
     <value>        Минимальная температура</value>
   </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 34</value>
-  </data>
-  <data name="groupBox_average.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 70</value>
   </data>
   <data name="&gt;&gt;label04.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Цвет линии</value>
   </data>
   <data name="&gt;&gt;label16.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -516,8 +522,8 @@
   <data name="label04.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 27</value>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;checkBox_use_max.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -552,6 +558,9 @@
   <data name="comboBox_min_pointType.Items" xml:space="preserve">
     <value>Нет</value>
   </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="comboBox_minColor.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -585,17 +594,11 @@
   <data name="&gt;&gt;numericUpDown_max_lineWidth.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>10</value>
+  <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;label5.Parent" xml:space="preserve">
     <value>groupBox_min</value>
-  </data>
-  <data name="label12.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomCenter</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
   </data>
   <data name="comboBox_maxColor.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -606,17 +609,14 @@
   <data name="&gt;&gt;numericUpDown_average_pointSize.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="comboBox_max_pointType.TabIndex" type="System.Int32, mscorlib">
     <value>176</value>
   </data>
   <data name="&gt;&gt;label19.Name" xml:space="preserve">
     <value>label19</value>
   </data>
-  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 135</value>
+  <data name="&gt;&gt;label04.Name" xml:space="preserve">
+    <value>label04</value>
   </data>
   <data name="checkBox_use_average.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -627,11 +627,11 @@
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
   </data>
-  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;label06.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;checkBox_position_on_graph.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -641,6 +641,9 @@
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>X:</value>
+  </data>
+  <data name="label06.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="&gt;&gt;numericUpDown_max_offsetX.Name" xml:space="preserve">
     <value>numericUpDown_max_offsetX</value>
@@ -666,6 +669,9 @@
   <data name="&gt;&gt;numericUpDown_max_pointSize.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 135</value>
+  </data>
   <data name="&gt;&gt;comboBox_averageColor.Name" xml:space="preserve">
     <value>comboBox_averageColor</value>
   </data>
@@ -675,8 +681,8 @@
   <data name="checkBox_use_max.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 27</value>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -714,9 +720,6 @@
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
     <value>18, 13</value>
   </data>
-  <data name="comboBox_min_pointType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 21</value>
-  </data>
   <data name="label06.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -726,8 +729,8 @@
   <data name="label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -737,9 +740,6 @@
   </data>
   <data name="&gt;&gt;comboBox_min_pointType.ZOrder" xml:space="preserve">
     <value>7</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
     <value>11</value>
@@ -753,26 +753,23 @@
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 30</value>
   </data>
+  <data name="checkBox_use_min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
   </data>
-  <data name="label14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_average_lineWidth.Name" xml:space="preserve">
-    <value>numericUpDown_average_lineWidth</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="groupBox_average.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="groupBox_max.Text" xml:space="preserve">
     <value>        Максимальная температура</value>
-  </data>
-  <data name="&gt;&gt;label06.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="numericUpDown_max_pointSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
@@ -780,14 +777,14 @@
   <data name="checkBox_use_min.TabIndex" type="System.Int32, mscorlib">
     <value>188</value>
   </data>
-  <data name="numericUpDown_average_offsetX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 142</value>
-  </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
   <data name="&gt;&gt;numericUpDown_average_pointSize.Parent" xml:space="preserve">
     <value>groupBox_average</value>
+  </data>
+  <data name="numericUpDown_average_lineWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 105</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 34</value>
@@ -815,6 +812,9 @@
   </data>
   <data name="&gt;&gt;label13.Parent" xml:space="preserve">
     <value>groupBox_average</value>
+  </data>
+  <data name="&gt;&gt;checkBox_position_on_graph.Name" xml:space="preserve">
+    <value>checkBox_position_on_graph</value>
   </data>
   <data name="&gt;&gt;numericUpDown_max_offsetX.Parent" xml:space="preserve">
     <value>groupBox_max</value>
@@ -885,9 +885,6 @@
   <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label10.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomCenter</value>
-  </data>
   <data name="&gt;&gt;checkBox_use_max.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
@@ -900,11 +897,11 @@
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBox_average.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 280</value>
+  <data name="&gt;&gt;numericUpDown_min_pointSize.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="groupBox_max.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 175</value>
+  <data name="label13.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
     <value>8</value>
@@ -924,14 +921,8 @@
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 5</value>
   </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>190</value>
-  </data>
   <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
     <value>11</value>
-  </data>
-  <data name="&gt;&gt;label04.Name" xml:space="preserve">
-    <value>label04</value>
   </data>
   <data name="&gt;&gt;label9.Parent" xml:space="preserve">
     <value>groupBox_max</value>
@@ -939,8 +930,8 @@
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 13</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>174</value>
   </data>
   <data name="&gt;&gt;groupBox_min.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -951,17 +942,14 @@
   <data name="&gt;&gt;checkBox_use_min.Name" xml:space="preserve">
     <value>checkBox_use_min</value>
   </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>groupBox_max</value>
+  <data name="numericUpDown_average_offsetX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
   </data>
   <data name="&gt;&gt;label13.Name" xml:space="preserve">
     <value>label13</value>
   </data>
   <data name="numericUpDown_max_offsetX.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 142</value>
-  </data>
-  <data name="groupBox_average.TabIndex" type="System.Int32, mscorlib">
-    <value>193</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Отступ по вертикали</value>
@@ -977,9 +965,6 @@
   </data>
   <data name="groupBox_max.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_average_offsetX.Parent" xml:space="preserve">
-    <value>groupBox_average</value>
   </data>
   <data name="comboBox_min_pointType.Items3" xml:space="preserve">
     <value>Круг 1</value>
@@ -1004,6 +989,9 @@
   </data>
   <data name="&gt;&gt;label14.Name" xml:space="preserve">
     <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1044,8 +1032,8 @@
   <data name="&gt;&gt;comboBox_maxColor.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="label6.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="checkBox_position_on_graph.TabIndex" type="System.Int32, mscorlib">
     <value>191</value>
@@ -1071,6 +1059,12 @@
   <data name="&gt;&gt;label15.Parent" xml:space="preserve">
     <value>groupBox_average</value>
   </data>
+  <data name="&gt;&gt;numericUpDown_min_lineWidth.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;checkBox_use_min.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;numericUpDown_min_lineWidth.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -1086,26 +1080,26 @@
   <data name="label04.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="numericUpDown_average_lineWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>183</value>
+  <data name="&gt;&gt;label04.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;checkBox_position_on_graph.Name" xml:space="preserve">
-    <value>checkBox_position_on_graph</value>
-  </data>
-  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="comboBox_average_pointType.Items1" xml:space="preserve">
     <value>Квадрат 1</value>
   </data>
+  <data name="comboBox_min_pointType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 21</value>
+  </data>
+  <data name="numericUpDown_posY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 38</value>
+  </data>
   <data name="numericUpDown_min_lineWidth.TabIndex" type="System.Int32, mscorlib">
     <value>183</value>
-  </data>
-  <data name="&gt;&gt;comboBox_min_pointType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;numericUpDown_min_offsetX.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -1113,8 +1107,8 @@
   <data name="&gt;&gt;numericUpDown_min_offsetX.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericUpDown_height.TabIndex" type="System.Int32, mscorlib">
-    <value>189</value>
+  <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Цвет линии</value>
@@ -1149,8 +1143,8 @@
   <data name="numericUpDown_min_offsetX.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 142</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_min_lineWidth.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="label15.TabIndex" type="System.Int32, mscorlib">
+    <value>175</value>
   </data>
   <data name="&gt;&gt;checkBox_use_max.Parent" xml:space="preserve">
     <value>groupBox_max</value>
@@ -1167,6 +1161,9 @@
   <data name="comboBox_max_pointType.Items4" xml:space="preserve">
     <value>Круг 2</value>
   </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
   <data name="checkBox_use_average.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 0</value>
   </data>
@@ -1182,8 +1179,8 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="label06.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;numericUpDown_average_lineWidth.Name" xml:space="preserve">
+    <value>numericUpDown_average_lineWidth</value>
   </data>
   <data name="&gt;&gt;numericUpDown_max_lineWidth.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -1215,17 +1212,14 @@
   <data name="label8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 34</value>
   </data>
-  <data name="&gt;&gt;checkBox_use_min.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="label6.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
-  <data name="checkBox_position_on_graph.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_average_lineWidth.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="numericUpDown_average_pointSize.TabIndex" type="System.Int32, mscorlib">
+    <value>185</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Смещение по горизонтали</value>
@@ -1242,6 +1236,9 @@
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
+  <data name="checkBox_position_on_graph.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="numericUpDown_height.Location" type="System.Drawing.Point, System.Drawing">
     <value>134, 38</value>
   </data>
@@ -1251,14 +1248,14 @@
   <data name="&gt;&gt;groupBox_average.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Цвет линии</value>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericUpDown_posY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 38</value>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
   </data>
-  <data name="&gt;&gt;label04.Parent" xml:space="preserve">
-    <value>panel1</value>
+  <data name="&gt;&gt;numericUpDown_average_lineWidth.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -1275,10 +1272,7 @@
   <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
   </data>
-  <data name="numericUpDown_average_lineWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 105</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericUpDown_average_offsetX.Parent" xml:space="preserve">
     <value>groupBox_average</value>
   </data>
   <data name="label7.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
@@ -1305,8 +1299,8 @@
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
   </data>
-  <data name="&gt;&gt;groupBox_max.Name" xml:space="preserve">
-    <value>groupBox_max</value>
+  <data name="groupBox_average.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 280</value>
   </data>
   <data name="&gt;&gt;numericUpDown_average_offsetX.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -1314,29 +1308,29 @@
   <data name="label3.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
   </data>
-  <data name="checkBox_use_min.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 0</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>182</value>
   </data>
-  <data name="&gt;&gt;checkBox_use_min.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="groupBox_average.TabIndex" type="System.Int32, mscorlib">
+    <value>193</value>
   </data>
   <data name="groupBox_min.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="&gt;&gt;checkBox_use_average.Parent" xml:space="preserve">
-    <value>groupBox_average</value>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>groupBox_max</value>
   </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 13</value>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 27</value>
   </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;numericUpDown_average_offsetX.Name" xml:space="preserve">
+    <value>numericUpDown_average_offsetX</value>
   </data>
-  <data name="checkBox_use_min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>190</value>
   </data>
   <data name="comboBox_minColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 21</value>
@@ -1365,11 +1359,11 @@
   <data name="checkBox_use_min.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="label10.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
   </data>
-  <data name="numericUpDown_average_offsetX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>groupBox_average</value>
   </data>
   <data name="&gt;&gt;label19.Parent" xml:space="preserve">
     <value>groupBox_average</value>
@@ -1380,8 +1374,8 @@
   <data name="&gt;&gt;numericUpDown_average_pointSize.Name" xml:space="preserve">
     <value>numericUpDown_average_pointSize</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_min_pointSize.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;checkBox_position_on_graph.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_use_average.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1395,8 +1389,8 @@
   <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
+  <data name="groupBox_max.Size" type="System.Drawing.Size, System.Drawing">
+    <value>245, 175</value>
   </data>
   <data name="numericUpDown_max_lineWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 105</value>
@@ -1413,14 +1407,17 @@
   <data name="&gt;&gt;comboBox_max_pointType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="label14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
   <data name="&gt;&gt;groupBox_average.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="numericUpDown_average_lineWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>183</value>
   </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1435,8 +1432,8 @@
     <value>Позиционировать данные 
 по точкам графика</value>
   </data>
-  <data name="label13.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomCenter</value>
+  <data name="numericUpDown_average_offsetX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 142</value>
   </data>
   <data name="&gt;&gt;label15.Name" xml:space="preserve">
     <value>label15</value>
@@ -1459,10 +1456,16 @@
   <data name="&gt;&gt;groupBox_average.Name" xml:space="preserve">
     <value>groupBox_average</value>
   </data>
+  <data name="&gt;&gt;checkBox_use_average.Parent" xml:space="preserve">
+    <value>groupBox_average</value>
+  </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>de</value>
   </metadata>
 </root>

@@ -117,46 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label_angle.Text" xml:space="preserve">
-    <value>Angolo</value>
-  </data>
-  <data name="checkBox_addZero.Text" xml:space="preserve">
-    <value>Aggiungi zeri iniziali</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label03.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 13</value>
-  </data>
-  <data name="label03.Text" xml:space="preserve">
-    <value>Spaziatura</value>
-  </data>
-  <data name="label_imageError.Text" xml:space="preserve">
-    <value>Immagine in caso di errore</value>
-  </data>
-  <data name="label_imageDecimalPoint.Text" xml:space="preserve">
-    <value>Separatore decimale</value>
-  </data>
-  <data name="label_unit_miles.Text" xml:space="preserve">
-    <value>Unità di misura (ml)</value>
-  </data>
-  <data name="comboBox_alignment.Items" xml:space="preserve">
-    <value>Sinistra</value>
-  </data>
-  <data name="comboBox_alignment.Items1" xml:space="preserve">
-    <value>Centrato</value>
-  </data>
-  <data name="comboBox_alignment.Items2" xml:space="preserve">
-    <value>Destra</value>
-  </data>
-  <data name="label_unit.Text" xml:space="preserve">
-    <value>Unità di misura</value>
-  </data>
-  <data name="label09.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 13</value>
-  </data>
-  <data name="label09.Text" xml:space="preserve">
-    <value>Allineamento</value>
-  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -172,10 +133,10 @@
 </value>
   </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 26</value>
+    <value>184, 26</value>
   </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
-    <value>Incolla coordinata X</value>
+    <value>Pegar coordenada X</value>
   </data>
   <data name="копироватьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -194,10 +155,10 @@
 </value>
   </data>
   <data name="копироватьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 26</value>
+    <value>184, 26</value>
   </data>
   <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Copia</value>
+    <value>Copiar</value>
   </data>
   <data name="вставитьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -217,13 +178,13 @@
 </value>
   </data>
   <data name="вставитьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 26</value>
+    <value>184, 26</value>
   </data>
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Incolla</value>
+    <value>Pegar</value>
   </data>
   <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 82</value>
+    <value>185, 82</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -240,10 +201,10 @@
 </value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 26</value>
+    <value>184, 26</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
-    <value>Incolla coordinata Y</value>
+    <value>Pegar coordenada Y</value>
   </data>
   <data name="копироватьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -262,10 +223,10 @@
 </value>
   </data>
   <data name="копироватьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 26</value>
+    <value>184, 26</value>
   </data>
   <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Copia</value>
+    <value>Copiar</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -285,36 +246,68 @@
 </value>
   </data>
   <data name="вставитьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 26</value>
+    <value>184, 26</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Incolla</value>
+    <value>Pegar</value>
   </data>
   <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 82</value>
+    <value>185, 82</value>
+  </data>
+  <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 13</value>
   </data>
   <data name="label01.Text" xml:space="preserve">
-    <value>immagine iniziale</value>
+    <value>Fondo esfera</value>
   </data>
   <data name="label02.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 13</value>
+    <value>70, 13</value>
   </data>
   <data name="label02.Text" xml:space="preserve">
-    <value>Coordinate</value>
+    <value>Coordenadas</value>
   </data>
-  <data name="checkBox_unit_in_alignment.Text" xml:space="preserve">
-    <value>Prendi in considerazione le unità durante il livellamento</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 39</value>
   </data>
-  <data name="label_minus_image.Text" xml:space="preserve">
-    <value>Simbolo "-"</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>   Ancho del día: tamaño de columna para un día 
+(el paso con el que se repetirán los elementos para
+días siguientes). </value>
   </data>
-  <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
-    <value>Inserire Proprietà</value>
+  <data name="label06.Text" xml:space="preserve">
+    <value>Ancho del día</value>
   </data>
-  <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copia proprietà</value>
+  <data name="label07.Text" xml:space="preserve">
+    <value>Recuento de días</value>
   </data>
-  <data name="label_separator.Text" xml:space="preserve">
-    <value>Separatore</value>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 39</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>   Coordenadas de todos los elementos del widget
+se calculan desde la esquina superior izquierda
+de la columna para cada día.</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>247, 65</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value> Si la visualización y el posicionamiento del gráfico 
+de temperatura están habilitados, las coordenadas 
+del gráfico numérico y el valor de la temperatura 
+se cuenta desde un punto en la gráfico del día 
+actual.</value>
+  </data>
+  <data name="checkBox_position_on_graph.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 17</value>
+  </data>
+  <data name="checkBox_position_on_graph.Text" xml:space="preserve">
+    <value>Posicionamiento en gráfico</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 13</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>El tamaño máximo del gráfico es 430x215 px.</value>
   </data>
 </root>
