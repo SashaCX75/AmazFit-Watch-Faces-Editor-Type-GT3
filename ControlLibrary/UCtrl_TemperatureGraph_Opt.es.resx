@@ -227,10 +227,10 @@
     <value>Tipo de punto</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 13</value>
+    <value>73, 13</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
-    <value>Ancho de línea</value>
+    <value>Color de línea</value>
   </data>
   <data name="groupBox_average.Text" xml:space="preserve">
     <value>        Temperatura media</value>

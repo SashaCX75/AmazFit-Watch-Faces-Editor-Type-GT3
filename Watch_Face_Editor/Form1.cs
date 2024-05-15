@@ -6704,7 +6704,7 @@ namespace Watch_Face_Editor
                                 uCtrl_Weather_FewDay_Elm.checkBox_Icon.Checked = Weather_FewDays.Icon.visible;
                                 elementOptions.Add(Weather_FewDays.Icon.position, "Icon");
                             }
-                            if (!radioButton_ScreenNormal.Checked || SelectedModel.versionOS < 3) uCtrl_Weather_FewDay_Elm.GraphUse = false;
+                            if (/*!radioButton_ScreenNormal.Checked ||*/ SelectedModel.versionOS < 3) uCtrl_Weather_FewDay_Elm.GraphUse = false;
 
                             uCtrl_Weather_FewDay_Elm.SetOptionsPosition(elementOptions);
 

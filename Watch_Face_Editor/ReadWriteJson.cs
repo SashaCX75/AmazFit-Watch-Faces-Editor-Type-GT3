@@ -11593,7 +11593,7 @@ namespace Watch_Face_Editor
                 // Graph
                 if (weatherFewDays.Diagram != null && weatherFewDays.Diagram.visible && index == weatherFewDays.Diagram.position && 
                     (weatherFewDays.Diagram.Use_average_diagram || weatherFewDays.Diagram.Use_max_diagram || weatherFewDays.Diagram.Use_min_diagram) &&
-                    optionNameStart == "normal_" && SelectedModel.versionOS >= 3)
+                    /*optionNameStart == "normal_" &&*/ SelectedModel.versionOS >= 3)
                 {
                     AddGraphFunctions(ref items);
                     AddGraphScaleFunction(ref items);
@@ -11601,6 +11601,7 @@ namespace Watch_Face_Editor
                     int offsetAverage = (int)Math.Ceiling(pointAverageSize / 2f);
                     int offsetMin = (int)Math.Ceiling(pointMinSize / 2f);
                     int graphOffsetX = new List<int> { offsetMax, offsetAverage, offsetMin }.Max();
+                    int graphHeight = Math.Max(215, weatherFewDays.Diagram.Height + offsetMax + offsetMin);
 
                     #region creat widget
                     //variables += TabInString(4) + "let forecastGraphScale = 1;" + Environment.NewLine;
@@ -11613,14 +11614,14 @@ namespace Watch_Face_Editor
                     items += Environment.NewLine + TabInString(8) + "x: -" + graphOffsetX.ToString() + ",";
                     items += Environment.NewLine + TabInString(8) + "y: " + weatherFewDays.Diagram.Y.ToString() + ",";
                     items += Environment.NewLine + TabInString(8) + "w: 215,";
-                    items += Environment.NewLine + TabInString(8) + "h: 215,";
+                    items += Environment.NewLine + TabInString(8) + "h: " + graphHeight.ToString() + ",";
                     items += Environment.NewLine + TabInString(7) + "});" + Environment.NewLine;
 
                     items += Environment.NewLine + TabInString(7) + optionNameStart + "canvas2 = " + groupName + ".createWidget(hmUI.widget.CANVAS, {";
                     items += Environment.NewLine + TabInString(8) + "x: " + (215 - graphOffsetX).ToString() + ",";
                     items += Environment.NewLine + TabInString(8) + "y: " + weatherFewDays.Diagram.Y.ToString() + ",";
                     items += Environment.NewLine + TabInString(8) + "w: 215,";
-                    items += Environment.NewLine + TabInString(8) + "h: 215,";
+                    items += Environment.NewLine + TabInString(8) + "h: " + graphHeight.ToString() + ",";
                     items += Environment.NewLine + TabInString(7) + "});";
                     items += Environment.NewLine + TabInString(6) + "};";
                     items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
@@ -11629,8 +11630,8 @@ namespace Watch_Face_Editor
                     string temp_items = "";
 
                     temp_items += Environment.NewLine + TabInString(7) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
-                    temp_items += Environment.NewLine + TabInString(8) + optionNameStart + "canvas1.clear({x: 0, y:0, w: 215, h: 215});";
-                    temp_items += Environment.NewLine + TabInString(8) + optionNameStart + "canvas2.clear({x: 0, y:0, w: 215, h: 215});";
+                    temp_items += Environment.NewLine + TabInString(8) + optionNameStart + "canvas1.clear({x: 0, y:0, w: 215, h: " + graphHeight.ToString() + "});";
+                    temp_items += Environment.NewLine + TabInString(8) + optionNameStart + "canvas2.clear({x: 0, y:0, w: 215, h: " + graphHeight.ToString() + "});";
                     temp_items += Environment.NewLine + TabInString(7) + "};";
 
                     if (weatherFewDays.Diagram.Use_max_diagram) {

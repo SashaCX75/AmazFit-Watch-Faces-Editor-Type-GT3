@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="button_Number_Average_Font.Text" xml:space="preserve">
-    <value>valore per font (medio)</value>
+    <value>Valore per font (medio)</value>
   </data>
   <data name="button_Number_MaxMin_Font.Text" xml:space="preserve">
     <value>Valore per font (max/min)</value>
@@ -133,10 +133,10 @@
     <value>Configurazione Generale</value>
   </data>
   <data name="button_Font_DOW.Text" xml:space="preserve">
-    <value>Giorno della settimana tramite font</value>
+    <value>Giorno settimana in font</value>
   </data>
   <data name="button_Number_Max_Font.Text" xml:space="preserve">
-    <value>valore per font (max)</value>
+    <value>Valore per font (max)</value>
   </data>
   <data name="button_Number_Min_Font.Text" xml:space="preserve">
     <value>Valore per font (min)</value>

@@ -6667,7 +6667,7 @@ namespace Watch_Face_Editor
                 }
 
                 if (weather_FewDays.Diagram != null && index == weather_FewDays.Diagram.position && weather_FewDays.Diagram.visible && 
-                    radioButton_ScreenNormal.Checked && SelectedModel.versionOS >= 3)
+                    /*radioButton_ScreenNormal.Checked &&*/ SelectedModel.versionOS >= 3)
                 {
                     Color colorMax = StringToColor(weather_FewDays.Diagram.Max_color);
                     Pen penMax = new Pen(colorMax, weather_FewDays.Diagram.Max_lineWidth);

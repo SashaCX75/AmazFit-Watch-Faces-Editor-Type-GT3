@@ -236,7 +236,7 @@
             // 
             resources.ApplyResources(this.numericUpDown_height, "numericUpDown_height");
             this.numericUpDown_height.Maximum = new decimal(new int[] {
-            215,
+            999,
             0,
             0,
             0});

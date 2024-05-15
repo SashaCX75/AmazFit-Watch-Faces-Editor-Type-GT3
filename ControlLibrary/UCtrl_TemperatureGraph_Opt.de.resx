@@ -227,10 +227,10 @@
     <value>Punkt-Typ</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 13</value>
+    <value>59, 13</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
-    <value>Linienbreite</value>
+    <value>Linienfarbe</value>
   </data>
   <data name="groupBox_average.Text" xml:space="preserve">
     <value>        Durchschnittstemperatur</value>

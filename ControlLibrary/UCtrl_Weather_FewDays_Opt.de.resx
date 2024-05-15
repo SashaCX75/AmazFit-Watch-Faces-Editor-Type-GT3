@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 82</value>
+  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -183,7 +186,7 @@
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Einfügen</value>
   </data>
-  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 82</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -251,9 +254,6 @@
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Einfügen</value>
   </data>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 82</value>
-  </data>
   <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 13</value>
   </data>
@@ -267,10 +267,12 @@
     <value>Koordinaten</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 13</value>
+    <value>216, 39</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>„ Tageslänge - Spaltengröße für einen Tag </value>
+    <value>   Tageslänge - Spaltengröße für einen Tag  
+(der Schritt, mit dem die Elemente für die 
+folgenden Tage wiederholt werden).  </value>
   </data>
   <data name="label06.Text" xml:space="preserve">
     <value>Tageslänge</value>
@@ -279,16 +281,21 @@
     <value>Anzahl der Tage</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 13</value>
+    <value>230, 39</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>„ Die Koordinaten aller Elemente des Widgets </value>
+    <value>   Die Koordinaten aller Elemente des Widgets 
+werden von der linken oberen Ecke der Spalte 
+für jeden Tag berechnet.  </value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>580, 13</value>
+    <value>259, 52</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>„ Wenn die Anzeige der Temperaturkurve und die Positionierung  aktiviert sind, werden die Koordinaten des numerischen </value>
+    <value>   Wenn die Anzeige der Temperaturkurve und die 
+Positionierung  aktiviert sind, werden die Koordinaten 
+des numerischen Temperaturwertes des aktuellen 
+Tages als Punkt auf dem Diagramm dargestellt.  </value>
   </data>
   <data name="checkBox_position_on_graph.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 17</value>

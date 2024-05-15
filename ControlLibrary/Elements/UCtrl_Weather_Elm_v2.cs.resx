@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_Number_Max_Min_Font.Text" xml:space="preserve">
-    <value>Valor por fuente</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_Text_Max_Min_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -137,9 +134,6 @@
         4MYSebY3darLRvTCTW3TmbMVquoNr1ZmWoWICBcAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button_Text_Max_Min_circle.Text" xml:space="preserve">
-    <value>Valor en un círculo</value>
-  </data>
   <data name="button_Text_Max_Min_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
@@ -155,18 +149,6 @@
         yhLf0eUpyXJZByTwDej3TqJLm7SyjW9AfyS9MMVbVnwDcTLLStZAEZll5doTfMFbVk4DjwvNEZW8Chyw
         KOoAAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="button_Text_Max_Min_rotation.Text" xml:space="preserve">
-    <value>Valor en ángulo</value>
-  </data>
-  <data name="button_Number_Max_Min.Text" xml:space="preserve">
-    <value>Valores numéricos</value>
-  </data>
-  <data name="button_Max_Min.Text" xml:space="preserve">
-    <value>Temperatura (máx/mín)</value>
-  </data>
-  <data name="button_Number_Max_Font.Text" xml:space="preserve">
-    <value>Valor por fuente</value>
   </data>
   <data name="button_Text_Max_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -184,9 +166,6 @@
         4MYSebY3darLRvTCTW3TmbMVquoNr1ZmWoWICBcAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button_Text_Max_circle.Text" xml:space="preserve">
-    <value>Valor en un círculo</value>
-  </data>
   <data name="button_Text_Max_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
@@ -202,18 +181,6 @@
         yhLf0eUpyXJZByTwDej3TqJLm7SyjW9AfyS9MMVbVnwDcTLLStZAEZll5doTfMFbVk4DjwvNEZW8Chyw
         KOoAAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="button_Text_Max_rotation.Text" xml:space="preserve">
-    <value>Valor en ángulo</value>
-  </data>
-  <data name="button_Number_Max.Text" xml:space="preserve">
-    <value>Valores numéricos</value>
-  </data>
-  <data name="button_Max.Text" xml:space="preserve">
-    <value>Temperatura (máx)</value>
-  </data>
-  <data name="button_Number_Min_Font.Text" xml:space="preserve">
-    <value>Valor por fuente</value>
   </data>
   <data name="button_Text_Min_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -231,9 +198,6 @@
         4MYSebY3darLRvTCTW3TmbMVquoNr1ZmWoWICBcAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button_Text_Min_circle.Text" xml:space="preserve">
-    <value>Valor en un círculo</value>
-  </data>
   <data name="button_Text_Min_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
@@ -249,15 +213,6 @@
         yhLf0eUpyXJZByTwDej3TqJLm7SyjW9AfyS9MMVbVnwDcTLLStZAEZll5doTfMFbVk4DjwvNEZW8Chyw
         KOoAAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="button_Text_Min_rotation.Text" xml:space="preserve">
-    <value>Valor en ángulo</value>
-  </data>
-  <data name="button_Number_Min.Text" xml:space="preserve">
-    <value>Valores numéricos</value>
-  </data>
-  <data name="button_Min.Text" xml:space="preserve">
-    <value>Temperatura (mín)</value>
   </data>
   <data name="button_Text_Current_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -275,15 +230,6 @@
         4MYSebY3darLRvTCTW3TmbMVquoNr1ZmWoWICBcAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button_Text_Current_circle.Text" xml:space="preserve">
-    <value>Valor en un círculo</value>
-  </data>
-  <data name="button_Number_Current_Font.Text" xml:space="preserve">
-    <value>Valor por fuente</value>
-  </data>
-  <data name="button_Number_Current.Text" xml:space="preserve">
-    <value>Valores numéricos</value>
-  </data>
   <data name="button_Text_Current_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
@@ -300,84 +246,138 @@
         KOoAAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="button_Text_Current_rotation.Text" xml:space="preserve">
-    <value>Valor en ángulo</value>
-  </data>
   <data name="button_Current.Text" xml:space="preserve">
-    <value>Temperatura (actual)</value>
-  </data>
-  <data name="button_Text_CityName.Text" xml:space="preserve">
-    <value>Nombre de la ciudad</value>
-  </data>
-  <data name="button_Icon.Text" xml:space="preserve">
-    <value>Icono</value>
-  </data>
-  <data name="button_Images.Text" xml:space="preserve">
-    <value>Imágenes</value>
-  </data>
-  <data name="button_Images.ToolTip" xml:space="preserve">
-    <value>1. Nublado
-2. Probabilidad de lluvia
-3. Probabilidad de nieve
-4. Soleado
-5. Nublado
-6. Lluvia ligera
-7. Nieve ligera
-8. Lluvia moderada
-9. Nieve moderada
-10. Fuertes nevadas
-11. Fuertes lluvias
-12. Tormenta de arena
-13. Aguanieve
-14. Niebla
-15. Neblina
-16. Tormenta
-17. Tormenta de nieve
-18. Polvoriento
-19. Lluvia extrema
-20. Lluvia con granizo
-21. Fuertes lluvias con granizo
-22. Tormenta de lluvia
-23. Tormenta de polvo
-24. Tormenta de arena severa
-25. Lluvia torrencial
-26. Clima desconocido
-27. Noche nublada
-28. Noche lluviosa
-29. Noche clara</value>
-  </data>
-  <data name="panel_Images.ToolTip" xml:space="preserve">
-    <value>1. Nublado
-2. Probabilidad de lluvia
-3. Probabilidad de nieve
-4. Soleado
-5. Nublado
-6. Lluvia ligera
-7. Nieve ligera
-8. Lluvia moderada
-9. Nieve moderada
-10. Fuertes nevadas
-11. Fuertes lluvias
-12. Tormenta de arena
-13. Aguanieve
-14. Niebla
-15. Neblina
-16. Tormenta
-17. Tormenta de nieve
-18. Polvoriento
-19. Lluvia extrema
-20. Lluvia con granizo
-21. Fuertes lluvias con granizo
-22. Tormenta de lluvia
-23. Tormenta de polvo
-24. Tormenta de arena severa
-25. Lluvia torrencial
-26. Clima desconocido
-27. Noche nublada
-28. Noche lluviosa
-29. Noche clara</value>
+    <value>Teplota (aktuální)</value>
   </data>
   <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Clima</value>
+    <value>Počasí</value>
+  </data>
+  <data name="button_Icon.Text" xml:space="preserve">
+    <value>Ikona</value>
+  </data>
+  <data name="button_Images.Text" xml:space="preserve">
+    <value>Obrázky</value>
+  </data>
+  <data name="button_Images.ToolTip" xml:space="preserve">
+    <value>1. Zataženo
+2. Déšť
+3. Déšť a sníh
+4. Slunečno
+5. Zataženo
+6. Slabý déšť
+7. Lehký sníh
+8. Slabý déšť
+9. Lehké sněžení
+10. Silný sníh
+11. Silný déšť
+12. Písečná bouře
+13. Mokrý sníh
+14. Mlha
+15. Opar
+16. Déšť s bouřkou
+17. Vánice
+18. Zaprášený
+19. Silný déšť
+20. Déšť a kroupy
+21. Déšť s kroupami
+22. Silný déšť
+23. Vítr s pískem
+24. Silná písečná bouře
+25. Déšť
+26. Neznámé počasí
+27. V noci zataženo
+28. Déšť v noci
+29. V noci jasno</value>
+  </data>
+  <data name="button_Max.Text" xml:space="preserve">
+    <value>Teplota (max.)</value>
+  </data>
+  <data name="button_Max_Min.Text" xml:space="preserve">
+    <value>Teplota (max/min)</value>
+  </data>
+  <data name="button_Min.Text" xml:space="preserve">
+    <value>Teplota (min)</value>
+  </data>
+  <data name="button_Number_Current.Text" xml:space="preserve">
+    <value>Číselné hodnoty</value>
+  </data>
+  <data name="button_Number_Current_Font.Text" xml:space="preserve">
+    <value>Data ve fontu</value>
+  </data>
+  <data name="button_Number_Max.Text" xml:space="preserve">
+    <value>Číselné hodnoty</value>
+  </data>
+  <data name="button_Number_Max_Font.Text" xml:space="preserve">
+    <value>Data ve fontu</value>
+  </data>
+  <data name="button_Number_Max_Min.Text" xml:space="preserve">
+    <value>Číselné hodnoty</value>
+  </data>
+  <data name="button_Number_Max_Min_Font.Text" xml:space="preserve">
+    <value>Data ve fontu</value>
+  </data>
+  <data name="button_Number_Min.Text" xml:space="preserve">
+    <value>Číselné hodnoty</value>
+  </data>
+  <data name="button_Number_Min_Font.Text" xml:space="preserve">
+    <value>Data ve fontu</value>
+  </data>
+  <data name="button_Text_CityName.Text" xml:space="preserve">
+    <value>Jméno města</value>
+  </data>
+  <data name="button_Text_Current_circle.Text" xml:space="preserve">
+    <value>Údaje o kruhu</value>
+  </data>
+  <data name="button_Text_Current_rotation.Text" xml:space="preserve">
+    <value>Data pod úhlem</value>
+  </data>
+  <data name="button_Text_Max_circle.Text" xml:space="preserve">
+    <value>Údaje o kruhu</value>
+  </data>
+  <data name="button_Text_Max_Min_circle.Text" xml:space="preserve">
+    <value>Údaje o kruhu</value>
+  </data>
+  <data name="button_Text_Max_Min_rotation.Text" xml:space="preserve">
+    <value>Data pod úhlem</value>
+  </data>
+  <data name="button_Text_Max_rotation.Text" xml:space="preserve">
+    <value>Data pod úhlem</value>
+  </data>
+  <data name="button_Text_Min_circle.Text" xml:space="preserve">
+    <value>Údaje o kruhu</value>
+  </data>
+  <data name="button_Text_Min_rotation.Text" xml:space="preserve">
+    <value>Data pod úhlem</value>
+  </data>
+  <data name="panel_Images.ToolTip" xml:space="preserve">
+    <value>1. Zataženo
+2. Déšť
+3. Déšť a sníh
+4. Slunečno
+5. Zataženo
+6. Slabý déšť
+7. Lehký sníh
+8. Slabý déšť
+9. Lehké sněžení
+10. Silný sníh
+11. Silný déšť
+12. Písečná bouře
+13. Mokrý sníh
+14. Mlha
+15. Opar
+16. Déšť s bouřkou
+17. Vánice
+18. Zaprášený
+19. Silný déšť
+20. Déšť a kroupy
+21. Déšť s kroupami
+22. Silný déšť
+23. Vítr s pískem
+24. Silná písečná bouře
+25. Déšť
+26. Neznámé počasí
+27. V noci zataženo
+28. Déšť v noci
+29. V noci jasno</value>
   </data>
 </root>

@@ -232,7 +232,7 @@
             0});
             this.numericUpDown_columnWidth.Name = "numericUpDown_columnWidth";
             this.numericUpDown_columnWidth.Value = new decimal(new int[] {
-            30,
+            50,
             0,
             0,
             0});

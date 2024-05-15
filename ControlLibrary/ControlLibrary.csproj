@@ -1502,6 +1502,9 @@
       <DependentUpon>UCtrl_Weather_Elm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Weather_Elm_v2.cs.resx">
+      <DependentUpon>UCtrl_Weather_Elm_v2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Weather_Elm_v2.de.resx">
       <DependentUpon>UCtrl_Weather_Elm_v2.cs</DependentUpon>
     </EmbeddedResource>
@@ -1511,11 +1514,17 @@
     <EmbeddedResource Include="Elements\UCtrl_Weather_Elm_v2.es.resx">
       <DependentUpon>UCtrl_Weather_Elm_v2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Weather_Elm_v2.fr.resx">
+      <DependentUpon>UCtrl_Weather_Elm_v2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Weather_Elm_v2.it.resx">
       <DependentUpon>UCtrl_Weather_Elm_v2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Weather_Elm_v2.uk.resx">
       <DependentUpon>UCtrl_Weather_Elm_v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Weather_FewDay_Elm.cs.resx">
+      <DependentUpon>UCtrl_Weather_FewDay_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Weather_FewDay_Elm.de.resx">
       <DependentUpon>UCtrl_Weather_FewDay_Elm.cs</DependentUpon>
@@ -1524,6 +1533,9 @@
       <DependentUpon>UCtrl_Weather_FewDay_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Weather_FewDay_Elm.es.resx">
+      <DependentUpon>UCtrl_Weather_FewDay_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Weather_FewDay_Elm.fr.resx">
       <DependentUpon>UCtrl_Weather_FewDay_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Weather_FewDay_Elm.it.resx">
@@ -2358,6 +2370,9 @@
     <EmbeddedResource Include="UCtrl_SmoothSeconds_Opt.zh.resx">
       <DependentUpon>UCtrl_SmoothSeconds_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_TemperatureGraph_Opt.cs.resx">
+      <DependentUpon>UCtrl_TemperatureGraph_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_TemperatureGraph_Opt.de.resx">
       <DependentUpon>UCtrl_TemperatureGraph_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -2365,6 +2380,9 @@
       <DependentUpon>UCtrl_TemperatureGraph_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_TemperatureGraph_Opt.es.resx">
+      <DependentUpon>UCtrl_TemperatureGraph_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_TemperatureGraph_Opt.fr.resx">
       <DependentUpon>UCtrl_TemperatureGraph_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_TemperatureGraph_Opt.it.resx">
@@ -2527,6 +2545,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Weather_FewDay_Elm.resx">
       <DependentUpon>UCtrl_Weather_FewDay_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Weather_FewDays_Opt.cs.resx">
+      <DependentUpon>UCtrl_Weather_FewDays_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Weather_FewDays_Opt.de.resx">
       <DependentUpon>UCtrl_Weather_FewDays_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -2534,6 +2555,9 @@
       <DependentUpon>UCtrl_Weather_FewDays_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Weather_FewDays_Opt.es.resx">
+      <DependentUpon>UCtrl_Weather_FewDays_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Weather_FewDays_Opt.fr.resx">
       <DependentUpon>UCtrl_Weather_FewDays_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Weather_FewDays_Opt.it.resx">

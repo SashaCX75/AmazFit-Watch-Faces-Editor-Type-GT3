@@ -989,7 +989,7 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="comboBox_separator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 285</value>
+    <value>3, 341</value>
   </data>
   <data name="comboBox_separator.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>25</value>
@@ -1019,7 +1019,7 @@
     <value>NoControl</value>
   </data>
   <data name="label_separator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-4, 270</value>
+    <value>-4, 326</value>
   </data>
   <data name="label_separator.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>

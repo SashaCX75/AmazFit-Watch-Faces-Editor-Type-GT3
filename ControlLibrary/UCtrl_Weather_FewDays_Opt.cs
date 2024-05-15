@@ -157,7 +157,7 @@ namespace ControlLibrary
             numericUpDown_posY.Value = 0;
 
             numericUpDown_daysCount.Value = 7;
-            numericUpDown_columnWidth.Value = 30;
+            numericUpDown_columnWidth.Value = 50;
 
             setValue = false;
         }

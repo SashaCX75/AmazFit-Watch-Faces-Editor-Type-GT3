@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="button_Number_Max_Min_Font.Text" xml:space="preserve">
-    <value>Valor por fuente</value>
+    <value>Valeur en police</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_Text_Max_Min_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -138,7 +138,7 @@
 </value>
   </data>
   <data name="button_Text_Max_Min_circle.Text" xml:space="preserve">
-    <value>Valor en un círculo</value>
+    <value>Valeur en cercle</value>
   </data>
   <data name="button_Text_Max_Min_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -157,16 +157,13 @@
 </value>
   </data>
   <data name="button_Text_Max_Min_rotation.Text" xml:space="preserve">
-    <value>Valor en ángulo</value>
+    <value>Valeur de l'angle</value>
   </data>
   <data name="button_Number_Max_Min.Text" xml:space="preserve">
-    <value>Valores numéricos</value>
-  </data>
-  <data name="button_Max_Min.Text" xml:space="preserve">
-    <value>Temperatura (máx/mín)</value>
+    <value>Valeurs numériques</value>
   </data>
   <data name="button_Number_Max_Font.Text" xml:space="preserve">
-    <value>Valor por fuente</value>
+    <value>Valeur en police</value>
   </data>
   <data name="button_Text_Max_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -185,7 +182,7 @@
 </value>
   </data>
   <data name="button_Text_Max_circle.Text" xml:space="preserve">
-    <value>Valor en un círculo</value>
+    <value>Valeur en cercle</value>
   </data>
   <data name="button_Text_Max_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -204,16 +201,13 @@
 </value>
   </data>
   <data name="button_Text_Max_rotation.Text" xml:space="preserve">
-    <value>Valor en ángulo</value>
+    <value>Valeur de l'angle</value>
   </data>
   <data name="button_Number_Max.Text" xml:space="preserve">
-    <value>Valores numéricos</value>
-  </data>
-  <data name="button_Max.Text" xml:space="preserve">
-    <value>Temperatura (máx)</value>
+    <value>Valeurs numériques</value>
   </data>
   <data name="button_Number_Min_Font.Text" xml:space="preserve">
-    <value>Valor por fuente</value>
+    <value>Valeur en police</value>
   </data>
   <data name="button_Text_Min_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -232,7 +226,7 @@
 </value>
   </data>
   <data name="button_Text_Min_circle.Text" xml:space="preserve">
-    <value>Valor en un círculo</value>
+    <value>Valeur en cercle</value>
   </data>
   <data name="button_Text_Min_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -251,13 +245,10 @@
 </value>
   </data>
   <data name="button_Text_Min_rotation.Text" xml:space="preserve">
-    <value>Valor en ángulo</value>
+    <value>Valeur de l'angle</value>
   </data>
   <data name="button_Number_Min.Text" xml:space="preserve">
-    <value>Valores numéricos</value>
-  </data>
-  <data name="button_Min.Text" xml:space="preserve">
-    <value>Temperatura (mín)</value>
+    <value>Valeurs numériques</value>
   </data>
   <data name="button_Text_Current_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -276,13 +267,13 @@
 </value>
   </data>
   <data name="button_Text_Current_circle.Text" xml:space="preserve">
-    <value>Valor en un círculo</value>
+    <value>Valeur en cercle</value>
   </data>
   <data name="button_Number_Current_Font.Text" xml:space="preserve">
-    <value>Valor por fuente</value>
+    <value>Valeur en police</value>
   </data>
   <data name="button_Number_Current.Text" xml:space="preserve">
-    <value>Valores numéricos</value>
+    <value>Valeurs numériques</value>
   </data>
   <data name="button_Text_Current_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -301,83 +292,80 @@
 </value>
   </data>
   <data name="button_Text_Current_rotation.Text" xml:space="preserve">
-    <value>Valor en ángulo</value>
-  </data>
-  <data name="button_Current.Text" xml:space="preserve">
-    <value>Temperatura (actual)</value>
+    <value>Valeur de l'angle</value>
   </data>
   <data name="button_Text_CityName.Text" xml:space="preserve">
-    <value>Nombre de la ciudad</value>
+    <value>Nom de la Ville</value>
   </data>
   <data name="button_Icon.Text" xml:space="preserve">
-    <value>Icono</value>
+    <value>Icône</value>
   </data>
   <data name="button_Images.Text" xml:space="preserve">
-    <value>Imágenes</value>
+    <value>Images</value>
   </data>
   <data name="button_Images.ToolTip" xml:space="preserve">
-    <value>1. Nublado
-2. Probabilidad de lluvia
-3. Probabilidad de nieve
-4. Soleado
-5. Nublado
-6. Lluvia ligera
-7. Nieve ligera
-8. Lluvia moderada
-9. Nieve moderada
-10. Fuertes nevadas
-11. Fuertes lluvias
-12. Tormenta de arena
-13. Aguanieve
-14. Niebla
-15. Neblina
-16. Tormenta
-17. Tormenta de nieve
-18. Polvoriento
-19. Lluvia extrema
-20. Lluvia con granizo
-21. Fuertes lluvias con granizo
-22. Tormenta de lluvia
-23. Tormenta de polvo
-24. Tormenta de arena severa
-25. Lluvia torrencial
-26. Clima desconocido
-27. Noche nublada
-28. Noche lluviosa
-29. Noche clara</value>
+    <value>1. Nuageux
+2. Averse
+3. Averse de neige
+4. Ensoleillé
+5. Couvert
+6. Pluie légère
+7. Légère neige
+8. Pluie modérée
+9. Neige modérée
+10. Neige abondante
+11. Fortes pluies
+12. Tempête de sable
+13. Neige fondue
+14. Brouillard
+15. Brume
+16. Orage
+17. Tempête de neige
+18. Poussière
+19. Très forte pluie
+20. Pluie avec grêle
+21. Orages avec grêle
+22. Forte tempête de pluie
+23. Vent de sable
+24. Forte tempête de sable
+25. Tempête de pluie
+26. Météo inconnue
+27. Nuit nuageuse
+28. Nuit pluvieuse
+29. Nuit claire</value>
   </data>
   <data name="panel_Images.ToolTip" xml:space="preserve">
-    <value>1. Nublado
-2. Probabilidad de lluvia
-3. Probabilidad de nieve
-4. Soleado
-5. Nublado
-6. Lluvia ligera
-7. Nieve ligera
-8. Lluvia moderada
-9. Nieve moderada
-10. Fuertes nevadas
-11. Fuertes lluvias
-12. Tormenta de arena
-13. Aguanieve
-14. Niebla
-15. Neblina
-16. Tormenta
-17. Tormenta de nieve
-18. Polvoriento
-19. Lluvia extrema
-20. Lluvia con granizo
-21. Fuertes lluvias con granizo
-22. Tormenta de lluvia
-23. Tormenta de polvo
-24. Tormenta de arena severa
-25. Lluvia torrencial
-26. Clima desconocido
-27. Noche nublada
-28. Noche lluviosa
-29. Noche clara</value>
+    <value>1. Nuageux
+2. Averse
+3. Averse de neige
+4. Ensoleillé
+5. Couvert
+6. Pluie légère
+7. Légère neige
+8. Pluie modérée
+9. Neige modérée
+10. Neige abondante
+11. Fortes pluies
+12. Tempête de sable
+13. Neige fondue
+14. Brouillard
+15. Brume
+16. Orage
+17. Tempête de neige
+18. Poussière
+19. Très forte pluie
+20. Pluie avec grêle
+21. Orages avec grêle
+22. Forte tempête de pluie
+23. Vent de sable
+24. Forte tempête de sable
+25. Tempête de pluie
+26. Météo inconnue
+27. Nuit nuageuse
+28. Nuit pluvieuse
+29. Nuit claire</value>
   </data>
   <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Clima</value>
+    <value>Météo</value>
   </data>
 </root>

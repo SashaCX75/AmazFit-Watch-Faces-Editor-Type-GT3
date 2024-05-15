@@ -335,4 +335,7 @@
   <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>Copier les propriétés</value>
   </data>
+  <data name="label_separator.Text" xml:space="preserve">
+    <value>Séparateur</value>
+  </data>
 </root>
