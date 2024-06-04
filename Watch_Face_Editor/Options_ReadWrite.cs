@@ -2112,6 +2112,7 @@ namespace Watch_Face_Editor
             uCtrl_TemperatureGraph_Opt.numericUpDown_posY.Value = diagram.Y; 
             uCtrl_TemperatureGraph_Opt.numericUpDown_height.Value = diagram.Height;
             uCtrl_TemperatureGraph_Opt.checkBox_position_on_graph.Checked = diagram.PositionOnGraph;
+            uCtrl_TemperatureGraph_Opt.checkBox_graph_fullScreen.Checked = diagram.GraphFullScreen;
 
             uCtrl_TemperatureGraph_Opt.SetMaxColor(StringToColor(diagram.Max_color));
             uCtrl_TemperatureGraph_Opt.numericUpDown_max_lineWidth.Value = diagram.Max_lineWidth;
@@ -3663,6 +3664,7 @@ namespace Watch_Face_Editor
             diagram.Y = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_posY.Value;
             diagram.Height = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_height.Value;
             diagram.PositionOnGraph = uCtrl_TemperatureGraph_Opt.checkBox_position_on_graph.Checked;
+            diagram.GraphFullScreen = uCtrl_TemperatureGraph_Opt.checkBox_graph_fullScreen.Checked;
 
             diagram.Max_color = ColorToString(uCtrl_TemperatureGraph_Opt.GetMaxColor());
             diagram.Max_lineWidth = (int)uCtrl_TemperatureGraph_Opt.numericUpDown_max_lineWidth.Value;
@@ -3993,8 +3995,9 @@ namespace Watch_Face_Editor
             button.press_color = ColorToString(uCtrl_Button_Opt.GetColorPress());
             button.visible = true;
 
-            if (rowIndex < 0 || rowIndex >= buttonsList.Count) buttonsList.Add(button);
-            else buttonsList.Insert(rowIndex, button);
+            //if (rowIndex < 0 || rowIndex >= buttonsList.Count) buttonsList.Add(button);
+            //else buttonsList.Insert(rowIndex, button);
+            buttonsList.Add(button);
 
             //if (rowIndex < 0 || rowIndex == buttonsList.Count - 1) buttonsList.Add(button);
             //else buttonsList.Insert(rowIndex, button);

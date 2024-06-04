@@ -60,6 +60,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox_graph_fullScreen = new System.Windows.Forms.CheckBox();
             this.checkBox_position_on_graph = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label04 = new System.Windows.Forms.Label();
@@ -426,6 +427,7 @@
             // panel1
             // 
             resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Controls.Add(this.checkBox_graph_fullScreen);
             this.panel1.Controls.Add(this.checkBox_position_on_graph);
             this.panel1.Controls.Add(this.numericUpDown_posY);
             this.panel1.Controls.Add(this.label3);
@@ -434,6 +436,15 @@
             this.panel1.Controls.Add(this.label04);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Name = "panel1";
+            // 
+            // checkBox_graph_fullScreen
+            // 
+            resources.ApplyResources(this.checkBox_graph_fullScreen, "checkBox_graph_fullScreen");
+            this.checkBox_graph_fullScreen.Checked = true;
+            this.checkBox_graph_fullScreen.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_graph_fullScreen.Name = "checkBox_graph_fullScreen";
+            this.checkBox_graph_fullScreen.UseVisualStyleBackColor = true;
+            this.checkBox_graph_fullScreen.CheckedChanged += new System.EventHandler(this.checkBox_position_on_graph_CheckedChanged);
             // 
             // checkBox_position_on_graph
             // 
@@ -673,5 +684,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
+        public System.Windows.Forms.CheckBox checkBox_graph_fullScreen;
     }
 }

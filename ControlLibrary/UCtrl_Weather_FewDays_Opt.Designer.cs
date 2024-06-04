@@ -53,7 +53,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox_position_on_graph = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_posX)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_posY)).BeginInit();
@@ -267,16 +267,16 @@
             this.checkBox_position_on_graph.UseVisualStyleBackColor = true;
             this.checkBox_position_on_graph.CheckedChanged += new System.EventHandler(this.checkBox_position_on_graph_CheckedChanged);
             // 
-            // label4
+            // label5
             // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
             // 
             // UCtrl_Weather_FewDays_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.checkBox_position_on_graph);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -329,6 +329,6 @@
         private System.Windows.Forms.ToolStripMenuItem копироватьToolStripMenuItemX;
         private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItemX;
         private System.Windows.Forms.CheckBox checkBox_position_on_graph;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

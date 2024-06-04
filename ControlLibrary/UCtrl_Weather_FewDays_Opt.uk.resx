@@ -154,6 +154,9 @@
         gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="копироватьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 26</value>
+  </data>
   <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Копіювати</value>
   </data>
@@ -173,6 +176,9 @@
         Y8zzGh/eD8M37sHH0RGMed9i1DOEoRfP8eyJA9caj0C8cBiVB0taM+WCoBEEM13l01yN4MrXCi5DjuAq
         zqO/TnAxx2CuMF/jKtTrXEWk1Wk1ZkEQhL+gXkz+KXzH3gAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="вставитьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 26</value>
   </data>
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Вставити</value>
@@ -216,6 +222,9 @@
         gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="копироватьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 26</value>
+  </data>
   <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Копіювати</value>
   </data>
@@ -235,6 +244,9 @@
         Y8zzGh/eD8M37sHH0RGMed9i1DOEoRfP8eyJA9caj0C8cBiVB0taM+WCoBEEM13l01yN4MrXCi5DjuAq
         zqO/TnAxx2CuMF/jKtTrXEWk1Wk1ZkEQhL+gXkz+KXzH3gAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="вставитьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 26</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Вставити</value>
@@ -280,10 +292,11 @@
   <data name="checkBox_position_on_graph.Text" xml:space="preserve">
     <value>Позиціонувати за графіком</value>
   </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 13</value>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 26</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>   Максимальний розмір графіка 430x215 px.</value>
+  <data name="label5.Text" xml:space="preserve">
+    <value>   Графік розміром більше 430x215 px може 
+працювати неправильно.</value>
   </data>
 </root>

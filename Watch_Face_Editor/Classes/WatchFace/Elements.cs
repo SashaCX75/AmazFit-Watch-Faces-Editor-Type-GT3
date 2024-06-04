@@ -1279,5 +1279,8 @@ namespace Watch_Face_Editor
         /// <summary>Позиционировать данные температуры по графику</summary>
         public bool PositionOnGraph { get; set; } = true;
 
+        /// <summary>Создавать график на весь экран</summary>
+        public bool GraphFullScreen { get; set; } = true;
+
     }
 }

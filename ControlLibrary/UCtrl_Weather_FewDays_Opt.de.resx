@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 82</value>
-  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -186,7 +183,7 @@
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Einfügen</value>
   </data>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 82</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -254,6 +251,9 @@
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Einfügen</value>
   </data>
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 82</value>
+  </data>
   <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 13</value>
   </data>
@@ -303,11 +303,11 @@ Tages als Punkt auf dem Diagramm dargestellt.  </value>
   <data name="checkBox_position_on_graph.Text" xml:space="preserve">
     <value>Positionierung im Diagramm</value>
   </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 26</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>   Die maximale Größe des Diagramms beträgt 
-430x215 px.</value>
+  <data name="label5.Text" xml:space="preserve">
+    <value>   Eine Grafik, die größer als 430x215 px ist, 
+funktioniert möglicherweise nicht richtig.</value>
   </data>
 </root>

@@ -162,6 +162,9 @@
   <data name="button_Number_Max_Min.Text" xml:space="preserve">
     <value>Valeurs numériques</value>
   </data>
+  <data name="button_Max_Min.Text" xml:space="preserve">
+    <value>Température (Max/Min)</value>
+  </data>
   <data name="button_Number_Max_Font.Text" xml:space="preserve">
     <value>Valeur en police</value>
   </data>
@@ -205,6 +208,9 @@
   </data>
   <data name="button_Number_Max.Text" xml:space="preserve">
     <value>Valeurs numériques</value>
+  </data>
+  <data name="button_Max.Text" xml:space="preserve">
+    <value>Température (Max)</value>
   </data>
   <data name="button_Number_Min_Font.Text" xml:space="preserve">
     <value>Valeur en police</value>
@@ -250,6 +256,9 @@
   <data name="button_Number_Min.Text" xml:space="preserve">
     <value>Valeurs numériques</value>
   </data>
+  <data name="button_Min.Text" xml:space="preserve">
+    <value>Température (Min)</value>
+  </data>
   <data name="button_Text_Current_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
@@ -293,6 +302,9 @@
   </data>
   <data name="button_Text_Current_rotation.Text" xml:space="preserve">
     <value>Valeur de l'angle</value>
+  </data>
+  <data name="button_Current.Text" xml:space="preserve">
+    <value>Température (actuelle)</value>
   </data>
   <data name="button_Text_CityName.Text" xml:space="preserve">
     <value>Nom de la Ville</value>

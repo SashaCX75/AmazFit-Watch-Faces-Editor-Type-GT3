@@ -475,6 +475,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка добавления шрифта .
+        /// </summary>
+        internal static string Message_Error_Font {
+            get {
+                return ResourceManager.GetString("Message_Error_Font", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Невозможно открыть изображение:.
         /// </summary>
         internal static string Message_Error_Image_Text1 {
@@ -489,6 +498,15 @@ namespace Watch_Face_Editor.Properties {
         internal static string Message_Error_Image_Text2 {
             get {
                 return ResourceManager.GetString("Message_Error_Image_Text2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка в виджете: .
+        /// </summary>
+        internal static string Message_Error_InWidget {
+            get {
+                return ResourceManager.GetString("Message_Error_InWidget", resourceCulture);
             }
         }
         
@@ -768,6 +786,15 @@ namespace Watch_Face_Editor.Properties {
         internal static string Message_Warning_Information {
             get {
                 return ResourceManager.GetString("Message_Warning_Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на В этой папке уже существует папка с JS файлами..
+        /// </summary>
+        internal static string Message_Warning_JS_Exist1 {
+            get {
+                return ResourceManager.GetString("Message_Warning_JS_Exist1", resourceCulture);
             }
         }
         

@@ -304,10 +304,11 @@ actual.</value>
   <data name="checkBox_position_on_graph.Text" xml:space="preserve">
     <value>Posicionamiento en gráfico</value>
   </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 13</value>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 26</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>El tamaño máximo del gráfico es 430x215 px.</value>
+  <data name="label5.Text" xml:space="preserve">
+    <value>   Es posible que un gráfico de más de 430 x 215 px 
+no funcione adecuadamente.</value>
   </data>
 </root>

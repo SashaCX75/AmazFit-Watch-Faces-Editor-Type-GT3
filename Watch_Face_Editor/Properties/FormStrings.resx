@@ -259,11 +259,17 @@
   <data name="Message_Error_Caption" xml:space="preserve">
     <value>Ошибка</value>
   </data>
+  <data name="Message_Error_Font" xml:space="preserve">
+    <value>Ошибка добавления шрифта </value>
+  </data>
   <data name="Message_Error_Image_Text1" xml:space="preserve">
     <value>Невозможно открыть изображение:</value>
   </data>
   <data name="Message_Error_Image_Text2" xml:space="preserve">
     <value>. У Вас нет прав на чтение файла, или изображение повреждено.</value>
+  </data>
+  <data name="Message_Error_InWidget" xml:space="preserve">
+    <value>Ошибка в виджете: </value>
   </data>
   <data name="Message_GoToFile_Caption" xml:space="preserve">
     <value>Перейти к файлу</value>
@@ -366,6 +372,9 @@
   </data>
   <data name="Message_Warning_Information" xml:space="preserve">
     <value>Информация</value>
+  </data>
+  <data name="Message_Warning_JS_Exist1" xml:space="preserve">
+    <value>В этой папке уже существует папка с JS файлами.</value>
   </data>
   <data name="Message_Wrong_ColorScheme" xml:space="preserve">
     <value>Указана неизвестная цветовая схема для модели:</value>

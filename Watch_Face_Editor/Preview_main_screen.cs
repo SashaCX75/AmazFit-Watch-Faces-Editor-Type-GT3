@@ -10480,13 +10480,24 @@ namespace Watch_Face_Editor
                         posX = (float)(w/2 - 0.3 * offsetX - textLenght/2);
                     }
 
-                    foreach (char ch in draw_string)
+                    if (spacing_h == 0)
                     {
-                        string str = ch.ToString();
-                        Size strSize = TextRenderer.MeasureText(graphics, str, drawFont);
-                        gPanel.DrawString(str, drawFont, drawBrush, posX, posY, strFormat);
+                        //SizeF strSizeF = graphics.MeasureString(draw_string, drawFont);
+                        Size strSize = TextRenderer.MeasureText(graphics, draw_string, drawFont);
+                        gPanel.DrawString(draw_string, drawFont, drawBrush, posX, posY, strFormat);
 
-                        posX = posX + strSize.Width + spacing_h - offsetX;
+                        posX = posX + strSize.Width - offsetX;
+                    }
+                    else
+                    {
+                        foreach (char ch in draw_string)
+                        {
+                            string str = ch.ToString();
+                            Size strSize = TextRenderer.MeasureText(graphics, str, drawFont);
+                            gPanel.DrawString(str, drawFont, drawBrush, posX, posY, strFormat);
+
+                            posX = posX + strSize.Width + spacing_h - offsetX;
+                        }
                     }
                     PointY += (float)(1.47 * size + 0.55 * spacing_v);
                 }
@@ -10668,26 +10679,49 @@ namespace Watch_Face_Editor
                         posX = (float)(w / 2 - 0.5 * offsetX - textLenght / 2);
                     }
 
-                    string lastChar = "0";
-                    foreach (char ch in draw_string)
+                    if(spacing_h == 0)
                     {
-                        string str = ch.ToString();
-                        string drawStr = lastChar + str;
-                        Size strSize = TextRenderer.MeasureText(graphics, str, drawFont);
+                        SizeF textSize = graphics.MeasureString(draw_string, drawFont);
+                        float chWidthStr = textSize.Width * 0.98f;
 
-                        Size chSize1 = TextRenderer.MeasureText(lastChar, drawFont);
-                        Size chSize2 = TextRenderer.MeasureText(drawStr, drawFont);
-                        chWidth = chSize2.Width - chSize1.Width;
+                        gPanel.DrawString(draw_string, drawFont, drawBrush, posX, posY, strFormat);
 
-                        SizeF textSize1 = graphics.MeasureString(lastChar, drawFont);
-                        SizeF textSize2 = graphics.MeasureString(drawStr, drawFont);
-                        float chWidth2 = (textSize2.Width - textSize1.Width) * 0.98f;
+                        posX = posX + chWidthStr + spacing_h;
+                    }
+                    else
+                    {
+                        string lastChar = "0";
+                        foreach (char ch in draw_string)
+                        {
+                            string str = ch.ToString();
+                            string drawStr = lastChar + str;
+                            Size strSize = TextRenderer.MeasureText(graphics, str, drawFont);
 
-                        gPanel.DrawString(str, drawFont, drawBrush, posX, posY, strFormat);
-                        lastChar = str;
+                            Size chSize1 = TextRenderer.MeasureText(lastChar, drawFont);
+                            Size chSize2 = TextRenderer.MeasureText(drawStr, drawFont);
+                            chWidth = chSize2.Width - chSize1.Width;
 
-                        posX = posX + chWidth2 + spacing_h;
-                        //posX = posX + strSize.Width + spacing_h - offsetX;
+                            SizeF textSize1 = graphics.MeasureString(lastChar, drawFont);
+                            SizeF textSize2 = graphics.MeasureString(drawStr, drawFont);
+                            float chWidth2 = (textSize2.Width - textSize1.Width) * 0.98f;
+                            if (str == " ")
+                            {
+                                textSize2 = graphics.MeasureString(str + lastChar, drawFont);
+                                chWidth2 = (textSize2.Width - textSize1.Width) * 0.98f;
+                            }
+                            if (lastChar == " ")
+                            {
+                                textSize1 = graphics.MeasureString(lastChar + str, drawFont);
+                                textSize2 = graphics.MeasureString(str + lastChar + str, drawFont);
+                                chWidth2 = (textSize2.Width - textSize1.Width) * 0.98f;
+                            }
+
+                            gPanel.DrawString(str, drawFont, drawBrush, posX, posY, strFormat);
+                            lastChar = str;
+
+                            posX = posX + chWidth2 + spacing_h;
+                            //posX = posX + strSize.Width + spacing_h - offsetX;
+                        } 
                     }
                     PointY += (float)(chHeight + 0.46 * spacing_v);
                 }

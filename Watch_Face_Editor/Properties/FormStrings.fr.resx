@@ -258,11 +258,17 @@
   <data name="Message_Error_Caption" xml:space="preserve">
     <value>Erreur</value>
   </data>
+  <data name="Message_Error_Font" xml:space="preserve">
+    <value>Erreur lors de l'ajout de la police</value>
+  </data>
   <data name="Message_Error_Image_Text1" xml:space="preserve">
     <value>Impossible d'ouvrir l'image :</value>
   </data>
   <data name="Message_Error_Image_Text2" xml:space="preserve">
     <value>. Vous n'êtes pas autorisé à lire le fichier ou l'image est endommagée.</value>
+  </data>
+  <data name="Message_Error_InWidget" xml:space="preserve">
+    <value>Erreur dans le widget :</value>
   </data>
   <data name="Message_GoToFile_Caption" xml:space="preserve">
     <value>Aller au dossier</value>
@@ -362,6 +368,9 @@
   </data>
   <data name="Message_Warning_Information" xml:space="preserve">
     <value>Informations</value>
+  </data>
+  <data name="Message_Warning_JS_Exist1" xml:space="preserve">
+    <value>Il existe déjà un dossier contenant des fichiers JS dans ce dossier.</value>
   </data>
   <data name="Message_Wrong_ColorScheme" xml:space="preserve">
     <value>Une palette de couleurs inconnue est spécifiée pour le modèle :</value>

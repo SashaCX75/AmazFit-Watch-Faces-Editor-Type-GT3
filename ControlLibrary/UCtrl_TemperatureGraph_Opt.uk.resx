@@ -178,6 +178,12 @@
   <data name="groupBox_max.Text" xml:space="preserve">
     <value>        Максимальна температура</value>
   </data>
+  <data name="checkBox_graph_fullScreen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 17</value>
+  </data>
+  <data name="checkBox_graph_fullScreen.Text" xml:space="preserve">
+    <value>Графік на весь екран</value>
+  </data>
   <data name="checkBox_position_on_graph.Text" xml:space="preserve">
     <value>Позиціонувати дані по точках графіка</value>
   </data>

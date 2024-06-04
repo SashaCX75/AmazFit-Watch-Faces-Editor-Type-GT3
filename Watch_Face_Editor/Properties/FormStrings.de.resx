@@ -258,11 +258,17 @@
   <data name="Message_Error_Caption" xml:space="preserve">
     <value>Fehler</value>
   </data>
+  <data name="Message_Error_Font" xml:space="preserve">
+    <value>Fehler beim Hinzufügen einer Schriftart </value>
+  </data>
   <data name="Message_Error_Image_Text1" xml:space="preserve">
     <value>Das Bild kann nicht geöffnet werden:</value>
   </data>
   <data name="Message_Error_Image_Text2" xml:space="preserve">
     <value>. Sie haben keine Berechtigung, die Datei zu lesen, oder das Bild ist beschädigt.</value>
+  </data>
+  <data name="Message_Error_InWidget" xml:space="preserve">
+    <value>Fehler in dem Widget:</value>
   </data>
   <data name="Message_GoToFile_Caption" xml:space="preserve">
     <value>Zur Datei gehen</value>
@@ -362,6 +368,9 @@
   </data>
   <data name="Message_Warning_Information" xml:space="preserve">
     <value>Information</value>
+  </data>
+  <data name="Message_Warning_JS_Exist1" xml:space="preserve">
+    <value>Ein Ordner mit JS-Dateien ist bereits in diesem Ordner vorhanden.</value>
   </data>
   <data name="Message_Wrong_ColorScheme" xml:space="preserve">
     <value>Es wurde ein unbekanntes Farbschema für das Modell festgelegt:</value>

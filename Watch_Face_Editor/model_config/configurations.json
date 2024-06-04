@@ -37,7 +37,7 @@
     "previewHeight": 306,
     "colorScheme": 3,
     "fixSize": false,
-    "versionOS": 2.1
+    "versionOS": 3.5
   },
   "Active Edge": {
     "name": "Amazfit Active Edge",
@@ -200,6 +200,47 @@
     "colorScheme": 3,
     "fixSize": false,
     "versionOS": 2.1
+  },
+  "Bip 5 Unity": {
+    "name": "Amazfit Bip 5 Unity",
+    "designWidth": 320,
+    "deviceSource_ids": [
+      8782081,
+      8782088,
+      8782089
+    ],
+    "background": {
+      "w": 320,
+      "h": 380
+    },
+    "scaling": {
+      "scaling_0_5": {
+        "w": 163,
+        "h": 193
+      },
+      "scaling_1_0": {
+        "w": 322,
+        "h": 392
+      },
+      "scaling_1_5": {
+        "w": 482,
+        "h": 572
+      },
+      "scaling_2_0": {
+        "w": 641,
+        "h": 761
+      },
+      "scaling_2_5": {
+        "w": 801,
+        "h": 951
+      }
+    },
+    "maskImage": "mask_bip_5.png",
+    "watchSkin": "WatchSkin_Bip_5.json",
+    "previewHeight": 238,
+    "colorScheme": 3,
+    "fixSize": false,
+    "versionOS": 3.0
   },
   "Cheetah": {
     "name": "Amazfit Cheetah",

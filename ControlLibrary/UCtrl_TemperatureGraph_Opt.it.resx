@@ -196,6 +196,12 @@
   <data name="groupBox_max.Text" xml:space="preserve">
     <value>        Temperatura Massima</value>
   </data>
+  <data name="checkBox_graph_fullScreen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 17</value>
+  </data>
+  <data name="checkBox_graph_fullScreen.Text" xml:space="preserve">
+    <value>Grafico a schermo intero</value>
+  </data>
   <data name="checkBox_position_on_graph.Text" xml:space="preserve">
     <value>Dati di Posizione del punto sul grafico</value>
   </data>

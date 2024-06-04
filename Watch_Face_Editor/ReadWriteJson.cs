@@ -11284,6 +11284,9 @@ namespace Watch_Face_Editor
             int pointAverageSize = 0;
             int pointMinSize = 0;
 
+            //bool graphFullScreen = true;
+            //graphFullScreen = false;
+
             bool useMaxGraphOffset = (weatherFewDays.Diagram != null && weatherFewDays.Diagram.visible && weatherFewDays.Diagram.Use_max_diagram && weatherFewDays.Diagram.PositionOnGraph);
             bool useMinGraphOffset = (weatherFewDays.Diagram != null && weatherFewDays.Diagram.visible && weatherFewDays.Diagram.Use_min_diagram && weatherFewDays.Diagram.PositionOnGraph);
             bool useAverageGraphOffset = (weatherFewDays.Diagram != null && weatherFewDays.Diagram.visible && weatherFewDays.Diagram.Use_average_diagram && weatherFewDays.Diagram.PositionOnGraph);
@@ -11329,7 +11332,7 @@ namespace Watch_Face_Editor
             string groupName = optionNameStart + "group_ForecastWeather";
             string screenType = optionNameStart == "normal_" ? "WATCHFACE" : "AOD";
 
-                if (weatherFewDays.FewDays.Background != null && weatherFewDays.FewDays.Background.Length > 0)
+            if (weatherFewDays.FewDays.Background != null && weatherFewDays.FewDays.Background.Length > 0)
             {
                 variables += TabInString(4) + "let " + optionNameStart +
                                 "forecast_background = ''" + Environment.NewLine;
@@ -11346,7 +11349,7 @@ namespace Watch_Face_Editor
                 items += Environment.NewLine + TabInString(6) + "//start of ignored block";
                 items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
                 items += Environment.NewLine + TabInString(7) +
-                    optionNameStart + "forecast_background = " + groupName + ".createWidget(hmUI.widget.IMG, {" + options + TabInString(7) + "});" + Environment.NewLine;
+                    optionNameStart + "forecast_background = " + groupName + ".createWidget(hmUI.widget.IMG, {" + options + TabInString(7) + "});";
                 items += Environment.NewLine + TabInString(6) + "};";
                 items += Environment.NewLine + TabInString(6) + "//end of ignored block";
             }
@@ -11595,43 +11598,80 @@ namespace Watch_Face_Editor
                     (weatherFewDays.Diagram.Use_average_diagram || weatherFewDays.Diagram.Use_max_diagram || weatherFewDays.Diagram.Use_min_diagram) &&
                     /*optionNameStart == "normal_" &&*/ SelectedModel.versionOS >= 3)
                 {
-                    AddGraphFunctions(ref items);
+                    bool graphFullScreen = weatherFewDays.Diagram.GraphFullScreen;
+                    int canvasWidth = 215;
+                    int canvasHeight = 215;
+                    if (graphFullScreen)
+                    {
+                        canvasWidth = SelectedModel.background.w;
+                        canvasHeight = SelectedModel.background.h;
+                    }
+
+                    AddGraphFunctions(ref items, graphFullScreen);
                     AddGraphScaleFunction(ref items);
                     int offsetMax = (int)Math.Ceiling(pointMaxSize / 2f);
                     int offsetAverage = (int)Math.Ceiling(pointAverageSize / 2f);
                     int offsetMin = (int)Math.Ceiling(pointMinSize / 2f);
                     int graphOffsetX = new List<int> { offsetMax, offsetAverage, offsetMin }.Max();
-                    int graphHeight = Math.Max(215, weatherFewDays.Diagram.Height + offsetMax + offsetMin);
+                    int graphHeight = Math.Max(canvasHeight, weatherFewDays.Diagram.Height + offsetMax + offsetMin);
 
                     #region creat widget
-                    //variables += TabInString(4) + "let forecastGraphScale = 1;" + Environment.NewLine;
+                        //variables += TabInString(4) + "let forecastGraphScale = 1;" + Environment.NewLine;
                     variables += TabInString(4) + "let " + optionNameStart + "canvas1 = '';" + Environment.NewLine;
                     variables += TabInString(4) + "let " + optionNameStart + "canvas2 = '';" + Environment.NewLine;
 
                     items += Environment.NewLine + TabInString(6) + "//start of ignored block";
-                    items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
-                    items += Environment.NewLine + TabInString(7) + optionNameStart + "canvas1 = " + groupName + ".createWidget(hmUI.widget.CANVAS, {";
-                    items += Environment.NewLine + TabInString(8) + "x: -" + graphOffsetX.ToString() + ",";
-                    items += Environment.NewLine + TabInString(8) + "y: " + weatherFewDays.Diagram.Y.ToString() + ",";
-                    items += Environment.NewLine + TabInString(8) + "w: 215,";
-                    items += Environment.NewLine + TabInString(8) + "h: " + graphHeight.ToString() + ",";
-                    items += Environment.NewLine + TabInString(7) + "});" + Environment.NewLine;
+                    if (graphFullScreen) {
+                        items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
+                        items += Environment.NewLine + TabInString(7) + optionNameStart + "canvas1 = " + groupName + ".createWidget(hmUI.widget.CANVAS, {";
+                        items += Environment.NewLine + TabInString(8) + "x: 0,";
+                        items += Environment.NewLine + TabInString(8) + "y: 0,";
+                        items += Environment.NewLine + TabInString(8) + "w: 0,";
+                        items += Environment.NewLine + TabInString(8) + "h: 0,";
+                        items += Environment.NewLine + TabInString(7) + "});" + Environment.NewLine;
 
-                    items += Environment.NewLine + TabInString(7) + optionNameStart + "canvas2 = " + groupName + ".createWidget(hmUI.widget.CANVAS, {";
-                    items += Environment.NewLine + TabInString(8) + "x: " + (215 - graphOffsetX).ToString() + ",";
-                    items += Environment.NewLine + TabInString(8) + "y: " + weatherFewDays.Diagram.Y.ToString() + ",";
-                    items += Environment.NewLine + TabInString(8) + "w: 215,";
-                    items += Environment.NewLine + TabInString(8) + "h: " + graphHeight.ToString() + ",";
-                    items += Environment.NewLine + TabInString(7) + "});";
-                    items += Environment.NewLine + TabInString(6) + "};";
+                        items += Environment.NewLine + TabInString(7) + optionNameStart + "canvas2 = " + groupName + ".createWidget(hmUI.widget.CANVAS, {";
+                        items += Environment.NewLine + TabInString(8) + "x: -" + graphOffsetX.ToString() + ",";
+                        items += Environment.NewLine + TabInString(8) + "y: " + weatherFewDays.Diagram.Y.ToString() + ",";
+                        items += Environment.NewLine + TabInString(8) + "w: " + canvasWidth.ToString() + ","; ;
+                        items += Environment.NewLine + TabInString(8) + "h: " + canvasHeight.ToString() + ",";
+                        items += Environment.NewLine + TabInString(7) + "});";
+                        items += Environment.NewLine + TabInString(6) + "};";
+                    } 
+                    else
+                    {
+                        items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
+                        items += Environment.NewLine + TabInString(7) + optionNameStart + "canvas1 = " + groupName + ".createWidget(hmUI.widget.CANVAS, {";
+                        items += Environment.NewLine + TabInString(8) + "x: -" + graphOffsetX.ToString() + ",";
+                        items += Environment.NewLine + TabInString(8) + "y: " + weatherFewDays.Diagram.Y.ToString() + ",";
+                        items += Environment.NewLine + TabInString(8) + "w: 215,";
+                        items += Environment.NewLine + TabInString(8) + "h: " + graphHeight.ToString() + ",";
+                        items += Environment.NewLine + TabInString(7) + "});" + Environment.NewLine;
+
+                        items += Environment.NewLine + TabInString(7) + optionNameStart + "canvas2 = " + groupName + ".createWidget(hmUI.widget.CANVAS, {";
+                        items += Environment.NewLine + TabInString(8) + "x: " + (215 - graphOffsetX).ToString() + ",";
+                        items += Environment.NewLine + TabInString(8) + "y: " + weatherFewDays.Diagram.Y.ToString() + ",";
+                        items += Environment.NewLine + TabInString(8) + "w: 215,";
+                        items += Environment.NewLine + TabInString(8) + "h: " + graphHeight.ToString() + ",";
+                        items += Environment.NewLine + TabInString(7) + "});";
+                        items += Environment.NewLine + TabInString(6) + "};";
+                    }
                     items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
                     #endregion
 
                     string temp_items = "";
 
                     temp_items += Environment.NewLine + TabInString(7) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
-                    temp_items += Environment.NewLine + TabInString(8) + optionNameStart + "canvas1.clear({x: 0, y:0, w: 215, h: " + graphHeight.ToString() + "});";
-                    temp_items += Environment.NewLine + TabInString(8) + optionNameStart + "canvas2.clear({x: 0, y:0, w: 215, h: " + graphHeight.ToString() + "});";
+                    if (graphFullScreen)
+                    {
+                        temp_items += Environment.NewLine + TabInString(8) + optionNameStart + "canvas1.clear({x: 0, y:0, w: 0, h: 0});";
+                        temp_items += Environment.NewLine + TabInString(8) + optionNameStart + "canvas2.clear({x: 0, y:0, w: " + canvasWidth.ToString() + ", h: " + canvasHeight.ToString() + "});";
+                    }
+                    else
+                    {
+                        //temp_items += Environment.NewLine + TabInString(8) + optionNameStart + "canvas1.clear({x: 0, y:0, w: 215, h: " + graphHeight.ToString() + "});";
+                        temp_items += Environment.NewLine + TabInString(8) + optionNameStart + "canvas2.clear({x: 0, y:0, w: 215, h: " + graphHeight.ToString() + "});"; 
+                    }
                     temp_items += Environment.NewLine + TabInString(7) + "};";
 
                     if (weatherFewDays.Diagram.Use_max_diagram) {
@@ -12174,7 +12214,7 @@ namespace Watch_Face_Editor
                         weather_few_days += Environment.NewLine + TabInString(9) + "let " + variableName + 
                             "_posY = (maximal_temp - (forecastData.data[i].high + forecastData.data[i].low)/2 ) * forecastGraphScale + " + 
                             (offsetDiagramPointY + offsetDiagramY + posY).ToString() + ";";
-                        weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.Y, " + variableName + "forecast_high_text_posY);";
+                        weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.Y, " + variableName + "_posY);";
                     }
                     weather_few_days += Environment.NewLine + TabInString(9) + variableName + "[i].setProperty(hmUI.prop.TEXT, averageTemperature);";
                     weather_few_days += Environment.NewLine + TabInString(8) + "};";
@@ -12826,10 +12866,9 @@ namespace Watch_Face_Editor
 
                     variables += TabInString(4) + "let " + optionNameStart + "forecast_icon_img = ''" + Environment.NewLine;
                     items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
-                    items += Environment.NewLine + TabInString(7) +
-                        optionNameStart + "forecast_icon_img = " + groupName + ".createWidget(hmUI.widget.IMG, {" +
-                            iconOptions + TabInString(7) + "});" + Environment.NewLine;
-                    items += Environment.NewLine + TabInString(6) + "});" + Environment.NewLine;
+                    items += Environment.NewLine + TabInString(7) + optionNameStart + 
+                        "forecast_icon_img = " + groupName + ".createWidget(hmUI.widget.IMG, {" + iconOptions + TabInString(7) + "});";
+                    items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine;
                 }
             }
 
@@ -12878,8 +12917,10 @@ namespace Watch_Face_Editor
             items += TabInString(6) + "});" + Environment.NewLine;
         }
 
-        private void AddGraphFunctions(ref string items)
+        private void AddGraphFunctions(ref string items, bool graphFullScreen)
         {
+            int canvasWidth = 215;
+            if(graphFullScreen) canvasWidth = 0;
             bool addComents = false;
             if (items.IndexOf("function drawLine") < 0 || items.IndexOf("function drawRect") < 0 ||
                 items.IndexOf("function drawCircle") < 0 || items.IndexOf("function drawGraphPoint") < 0) addComents = true;
@@ -12900,15 +12941,23 @@ namespace Watch_Face_Editor
                 items += TabInString(8) + "y2 = temp_y;" + Environment.NewLine;
                 items += TabInString(7) + "};" + Environment.NewLine;
 
-                items += TabInString(7) + Environment.NewLine;
-                items += TabInString(7) + "if (x1 < 215) {" + Environment.NewLine;
-                items += TabInString(8) + "canvas1.setPaint({ color: color, line_width: line_width });" + Environment.NewLine;
-                items += TabInString(8) + "canvas1.drawLine({ x1: x1, y1: y1, x2: x2, y2: y2 });" + Environment.NewLine;
-                items += TabInString(7) + "};" + Environment.NewLine;
-                items += TabInString(7) + "if (x2 >= 215) {" + Environment.NewLine;
-                items += TabInString(8) + "canvas2.setPaint({ color: color, line_width: line_width });" + Environment.NewLine;
-                items += TabInString(8) + "canvas2.drawLine({ x1: x1-215, y1: y1, x2: x2-215, y2: y2 });" + Environment.NewLine;
-                items += TabInString(7) + "}" + Environment.NewLine;
+                if (canvasWidth > 0)
+                {
+                    items += TabInString(7) + Environment.NewLine;
+                    items += TabInString(7) + "if (x1 < " + canvasWidth.ToString() + ") {" + Environment.NewLine;
+                    items += TabInString(8) + "canvas1.setPaint({ color: color, line_width: line_width });" + Environment.NewLine;
+                    items += TabInString(8) + "canvas1.drawLine({ x1: x1, y1: y1, x2: x2, y2: y2 });" + Environment.NewLine;
+                    items += TabInString(7) + "};" + Environment.NewLine;
+                    items += TabInString(7) + "if (x2 >= " + canvasWidth.ToString() + ") {" + Environment.NewLine;
+                    items += TabInString(8) + "canvas2.setPaint({ color: color, line_width: line_width });" + Environment.NewLine;
+                    items += TabInString(8) + "canvas2.drawLine({ x1: x1-" + canvasWidth.ToString() + ", y1: y1, x2: x2-" + canvasWidth.ToString() + ", y2: y2 });" + Environment.NewLine;
+                    items += TabInString(7) + "}" + Environment.NewLine; 
+                }
+                else
+                {
+                    items += TabInString(7) + "canvas2.setPaint({ color: color, line_width: line_width });" + Environment.NewLine;
+                    items += TabInString(7) + "canvas2.drawLine({ x1: x1, y1: y1, x2: x2, y2: y2 });" + Environment.NewLine;
+                }
 
                 items += TabInString(6) + "};" + Environment.NewLine; 
             }
@@ -12926,15 +12975,21 @@ namespace Watch_Face_Editor
                 items += TabInString(8) + "y2 = temp_y;" + Environment.NewLine;
                 items += TabInString(7) + "};" + Environment.NewLine;
 
-                items += TabInString(7) + Environment.NewLine;
-                items += TabInString(7) + "if (x1 < 215) {" + Environment.NewLine;
-                //items += TabInString(8) + "canvas1.setPaint({ color: color, line_width: line_width });" + Environment.NewLine;
-                items += TabInString(8) + "canvas1.drawRect({ x1: x1, y1: y1, x2: x2, y2: y2, color: color });" + Environment.NewLine;
-                items += TabInString(7) + "};" + Environment.NewLine;
-                items += TabInString(7) + "if (x2 >= 215) {" + Environment.NewLine;
-                //items += TabInString(8) + "canvas2.setPaint({ color: color, line_width: line_width });" + Environment.NewLine;
-                items += TabInString(8) + "canvas2.drawRect({ x1: x1-215, y1: y1, x2: x2-215, y2: y2, color: color });" + Environment.NewLine;
-                items += TabInString(7) + "}" + Environment.NewLine;
+                if (canvasWidth > 0)
+                {
+                    items += TabInString(7) + Environment.NewLine;
+                    items += TabInString(7) + "if (x1 < " + canvasWidth.ToString() + ") {" + Environment.NewLine;
+                    items += TabInString(8) + "canvas1.drawRect({ x1: x1, y1: y1, x2: x2, y2: y2, color: color });" + Environment.NewLine;
+                    items += TabInString(7) + "};" + Environment.NewLine;
+                    items += TabInString(7) + "if (x2 >= " + canvasWidth.ToString() + ") {" + Environment.NewLine;
+                    items += TabInString(8) + "canvas2.drawRect({ x1: x1-" + canvasWidth.ToString() + ", y1: y1, x2: x2-" + canvasWidth.ToString() + ", y2: y2, color: color });" + Environment.NewLine;
+                    items += TabInString(7) + "}" + Environment.NewLine; 
+                }
+                else
+                {
+                    items += TabInString(7) + Environment.NewLine;
+                    items += TabInString(7) + "canvas2.drawRect({ x1: x1, y1: y1, x2: x2, y2: y2, color: color });" + Environment.NewLine;
+                }
 
                 items += TabInString(6) + "};" + Environment.NewLine;
             }
@@ -12943,14 +12998,19 @@ namespace Watch_Face_Editor
             {
                 items += TabInString(6) + Environment.NewLine;
                 items += TabInString(6) + "function drawCircle(canvas1, canvas2, center_x, center_y, color, radius) {" + Environment.NewLine;
-                items += TabInString(7) + "if (center_x < 215+radius) {" + Environment.NewLine;
-                //items += TabInString(8) + "canvas1.setPaint({ color: color, line_width: radius });" + Environment.NewLine;
-                items += TabInString(8) + "canvas1.drawCircle({ center_x: center_x, center_y: center_y, radius: radius, color: color });" + Environment.NewLine;
-                items += TabInString(7) + "};" + Environment.NewLine;
-                items += TabInString(7) + "if (center_x >= 215-radius) {" + Environment.NewLine;
-                //items += TabInString(8) + "canvas2.setPaint({ color: color, line_width: radius });" + Environment.NewLine;
-                items += TabInString(8) + "canvas2.drawCircle({ center_x: center_x-215, center_y: center_y, radius: radius, color: color });" + Environment.NewLine;
-                items += TabInString(7) + "}" + Environment.NewLine;
+                if (canvasWidth > 0)
+                {
+                    items += TabInString(7) + "if (center_x < " + canvasWidth.ToString() + "+radius) {" + Environment.NewLine;
+                    items += TabInString(8) + "canvas1.drawCircle({ center_x: center_x, center_y: center_y, radius: radius, color: color });" + Environment.NewLine;
+                    items += TabInString(7) + "};" + Environment.NewLine;
+                    items += TabInString(7) + "if (center_x >= " + canvasWidth.ToString() + "-radius) {" + Environment.NewLine;
+                    items += TabInString(8) + "canvas2.drawCircle({ center_x: center_x-" + canvasWidth.ToString() + ", center_y: center_y, radius: radius, color: color });" + Environment.NewLine;
+                    items += TabInString(7) + "}" + Environment.NewLine; 
+                }
+                else
+                {
+                    items += TabInString(7) + "canvas2.drawCircle({ center_x: center_x, center_y: center_y, radius: radius, color: color });" + Environment.NewLine;
+                }
 
                 items += TabInString(6) + "};" + Environment.NewLine;
             }
@@ -35251,6 +35311,8 @@ namespace Watch_Face_Editor
 
             if (parametrs.ContainsKey("// padding")) text.padding = StringToBool(parametrs["// padding"]);
             if (parametrs.ContainsKey("// unit_type") && Int32.TryParse(parametrs["// unit_type"], out value)) text.unit_type = value;
+            if (parametrs.ContainsKey("padding")) text.padding = StringToBool(parametrs["padding"]);
+            if (parametrs.ContainsKey("unit_type") && Int32.TryParse(parametrs["unit_type"], out value)) text.unit_type = value;
             if (parametrs.ContainsKey("// unit_end")) text.unit_end = StringToBool(parametrs["// unit_end"]);
             if (parametrs.ContainsKey("// unit_string")) text.unit_string = parametrs["// unit_string"];
 

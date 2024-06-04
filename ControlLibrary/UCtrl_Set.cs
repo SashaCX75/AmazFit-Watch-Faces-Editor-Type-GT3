@@ -421,7 +421,7 @@ namespace ControlLibrary
             List<int> high = new List<int>();
             List<int> low = new List<int>();
             List<int> index = new List<int>(); 
-            int tempOffset = rnd.Next(-10, 20);
+            int tempOffset = rnd.Next(-25, 25);
             for (int i = 0; i < 9; i++)
             {
                 int maxTemp = rnd.Next(-5, 5) + tempOffset;
