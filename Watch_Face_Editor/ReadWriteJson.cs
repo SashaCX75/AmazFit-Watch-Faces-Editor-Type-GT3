@@ -12858,12 +12858,12 @@ namespace Watch_Face_Editor
                 // Icon
                 if (weatherFewDays.Icon != null && weatherFewDays.Icon.visible && index == weatherFewDays.Icon.position && weatherFewDays.Icon.src != null && weatherFewDays.Icon.src.Length > 0)
                 {
-                    string iconOptions = IMG_Options(weatherFewDays.Icon, show_level);
-                    //string iconOptions = Environment.NewLine;
-                    //iconOptions += TabInString(7) + "x: " + (weatherFewDays.Icon.x + offetX).ToString() + "," + Environment.NewLine;
-                    //iconOptions += TabInString(7) + "y: " + (weatherFewDays.Icon.y + offetY).ToString() + "," + Environment.NewLine;
-                    //iconOptions += TabInString(7) + "src: '" + weatherFewDays.Icon.src + ".png'," + Environment.NewLine;
+                    string iconOptions = IMG_Сommented_Options(weatherFewDays.Icon, show_level);
+                    items += Environment.NewLine + Environment.NewLine + TabInString(6) + "// " + optionNameStart + "forecast_icon_img = hmUI.createWidget(hmUI.widget.IMG_Options, {" +
+                                    iconOptions + TabInString(6) + "// });";
 
+                    iconOptions = IMG_Options(weatherFewDays.Icon, show_level);
+                    
                     variables += TabInString(4) + "let " + optionNameStart + "forecast_icon_img = ''" + Environment.NewLine;
                     items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type." + screenType + ") {";
                     items += Environment.NewLine + TabInString(7) + optionNameStart + 
@@ -12889,7 +12889,7 @@ namespace Watch_Face_Editor
             }
         }
 
-        private void AddWeatherFewDays_Options(FewDays fewDays, ref string variables, ref string items, string optionNameStart, string show_level)
+        private void AddWeatherFewDays_Options(FewDays fewDays, /*hmUI_widget_IMG icon,*/ ref string variables, ref string items, string optionNameStart, string show_level)
         {
             if (fewDays == null) return;
             items += TabInString(6) + Environment.NewLine;
@@ -12900,6 +12900,12 @@ namespace Watch_Face_Editor
             items += TabInString(7) + "// DaysCount: " + fewDays.DaysCount.ToString() + "," + Environment.NewLine;
             if (fewDays.Background != null && fewDays.Background.Length > 0) 
                 items += TabInString(7) + "// Background: '" + fewDays.Background + ".png'," + Environment.NewLine;
+            //if (icon != null && icon.visible && icon.src != null && icon.src.Length > 0)
+            //{
+            //    items += TabInString(7) + "// icon_x: " + icon.x.ToString() + "," + Environment.NewLine;
+            //    items += TabInString(7) + "// icon_y: " + icon.y.ToString() + "," + Environment.NewLine;
+            //    items += TabInString(7) + "// icon_src: " + icon.src.ToString() + "," + Environment.NewLine;
+            //}
             items += TabInString(6) + "// });" + Environment.NewLine;
 
             variables += TabInString(4) + "let " + optionNameStart + "group_ForecastWeather = ''" + Environment.NewLine;
@@ -16165,6 +16171,27 @@ namespace Watch_Face_Editor
                     if(show_level.StartsWith("hmUI.show_level")) options += TabInString(7 + tabOffset) + "show_level: " + show_level + "," + Environment.NewLine;
                     else options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine; 
                 } 
+            }
+            return options;
+        }
+
+        private string IMG_Сommented_Options(hmUI_widget_IMG img, string show_level, int tabOffset = 0)
+        {
+            string options = Environment.NewLine;
+            if (img == null) return options;
+            if (img.src == null) return options;
+            if (img.src.Length > 0)
+            {
+                options += TabInString(7 + tabOffset) + "// x: " + img.x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// y: " + img.y.ToString() + "," + Environment.NewLine;
+                if (img.w != null) options += TabInString(7 + tabOffset) + "// w: " + img.w.ToString() + "," + Environment.NewLine;
+                if (img.h != null) options += TabInString(7 + tabOffset) + "// h: " + img.h.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// src: '" + img.src + ".png'," + Environment.NewLine;
+                if (show_level != null && show_level.Length > 0)
+                {
+                    if (show_level.StartsWith("hmUI.show_level")) options += TabInString(7 + tabOffset) + "// show_level: " + show_level + "," + Environment.NewLine;
+                    else options += TabInString(7 + tabOffset) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                }
             }
             return options;
         }
@@ -19675,6 +19702,7 @@ namespace Watch_Face_Editor
                     {
                         #region IMG
                         case "IMG":
+                        case "IMG_Options":
                             hmUI_widget_IMG img = Object_IMG(parametrs);
                             if (objectName.EndsWith("background_bg") || objectName.EndsWith("background_bg_img"))
                             {
@@ -33529,6 +33557,26 @@ namespace Watch_Face_Editor
         {
             hmUI_widget_IMG img = new hmUI_widget_IMG();
             int value;
+            if (parametrs.ContainsKey("// src"))
+            {
+                string imgName = parametrs["// src"].Replace("'", "");
+                imgName = imgName.Replace("\"", "");
+                imgName = Path.GetFileNameWithoutExtension(imgName);
+                img.src = imgName;
+
+                if (parametrs.ContainsKey("// x") && Int32.TryParse(parametrs["// x"], out value)) img.x = value;
+                if (parametrs.ContainsKey("// y") && Int32.TryParse(parametrs["// y"], out value)) img.y = value;
+                if (parametrs.ContainsKey("// h") && Int32.TryParse(parametrs["// h"], out value)) img.h = value;
+                if (parametrs.ContainsKey("// w") && Int32.TryParse(parametrs["// w"], out value)) img.w = value;
+
+                if (parametrs.ContainsKey("// show_level"))
+                {
+                    imgName = parametrs["// show_level"].Replace("hmUI.show_level.", "");
+                    if (imgName == "ONLY_NORMAL | ONLY_EDIT") imgName = "ONLY_NORMAL";
+                    img.show_level = imgName;
+                }
+                img.visible = true;
+            }
             if (parametrs.ContainsKey("src"))
             {
                 string imgName = parametrs["src"].Replace("'", "");

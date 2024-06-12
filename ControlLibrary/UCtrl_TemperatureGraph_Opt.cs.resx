@@ -196,6 +196,12 @@
   <data name="groupBox_max.Text" xml:space="preserve">
     <value>        Maximální teplota</value>
   </data>
+  <data name="checkBox_graph_fullScreen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 17</value>
+  </data>
+  <data name="checkBox_graph_fullScreen.Text" xml:space="preserve">
+    <value>Graf na celé obrazovce</value>
+  </data>
   <data name="checkBox_position_on_graph.Text" xml:space="preserve">
     <value>Údaje o poloze podle bodů grafu</value>
   </data>

@@ -6542,7 +6542,8 @@ namespace Watch_Face_Editor
                                     {
                                         uCtrl_Weather_Elm_v2.checkBox_Text_Current_circle.Checked = Weather_v2.Group_Current.Text_circle.visible;
                                     }
-                                    elementOptions.Add(Weather_v2.Group_Current.position, "Group_Current");
+                                    int position = Weather_v2.Group_Current.position;
+                                    if (position > 0) elementOptions.Add(Weather_v2.Group_Current.position, "Group_Current");
                                 }
 
                                 if (Weather_v2.Group_Min != null)
@@ -6563,7 +6564,8 @@ namespace Watch_Face_Editor
                                     {
                                         uCtrl_Weather_Elm_v2.checkBox_Text_Min_circle.Checked = Weather_v2.Group_Min.Text_circle.visible;
                                     }
-                                    elementOptions.Add(Weather_v2.Group_Min.position, "Group_Min");
+                                    int position = Weather_v2.Group_Min.position;
+                                    if (position > 0) elementOptions.Add(Weather_v2.Group_Min.position, "Group_Min");
                                 }
 
                                 if (Weather_v2.Group_Max != null)
@@ -6584,7 +6586,8 @@ namespace Watch_Face_Editor
                                     {
                                         uCtrl_Weather_Elm_v2.checkBox_Text_Max_circle.Checked = Weather_v2.Group_Max.Text_circle.visible;
                                     }
-                                    elementOptions.Add(Weather_v2.Group_Max.position, "Group_Max");
+                                    int position = Weather_v2.Group_Max.position;
+                                    if (position > 0) elementOptions.Add(Weather_v2.Group_Max.position, "Group_Max");
                                 }
 
                                 if (Weather_v2.Group_Max_Min != null)
@@ -6605,7 +6608,8 @@ namespace Watch_Face_Editor
                                     {
                                         uCtrl_Weather_Elm_v2.checkBox_Text_Max_Min_circle.Checked = Weather_v2.Group_Max_Min.Text_circle.visible;
                                     }
-                                    elementOptions.Add(Weather_v2.Group_Max_Min.position, "Group_Max_Min");
+                                    int position = Weather_v2.Group_Max_Min.position;
+                                    if (position > 0) elementOptions.Add(Weather_v2.Group_Max_Min.position, "Group_Max_Min");
                                 }
 
                                 if (Weather_v2.Images != null)

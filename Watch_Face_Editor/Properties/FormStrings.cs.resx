@@ -258,11 +258,17 @@
   <data name="Message_Error_Caption" xml:space="preserve">
     <value>Chyba</value>
   </data>
+  <data name="Message_Error_Font" xml:space="preserve">
+    <value>Při přidávání písma došlo k chybě</value>
+  </data>
   <data name="Message_Error_Image_Text1" xml:space="preserve">
     <value>Nelze otevřít obrázek:</value>
   </data>
   <data name="Message_Error_Image_Text2" xml:space="preserve">
     <value>. Nemáte oprávnění soubor číst nebo je obraz poškozen.</value>
+  </data>
+  <data name="Message_Error_InWidget" xml:space="preserve">
+    <value>Chyba ve widgetu:</value>
   </data>
   <data name="Message_GoToFile_Caption" xml:space="preserve">
     <value>Přejít na soubor</value>
@@ -362,6 +368,9 @@
   </data>
   <data name="Message_Warning_Information" xml:space="preserve">
     <value>Informace</value>
+  </data>
+  <data name="Message_Warning_JS_Exist1" xml:space="preserve">
+    <value>V této složce již existuje složka se soubory JS.</value>
   </data>
   <data name="Message_Wrong_ColorScheme" xml:space="preserve">
     <value>Pro model je zadáno neznámé barevné schéma:</value>
