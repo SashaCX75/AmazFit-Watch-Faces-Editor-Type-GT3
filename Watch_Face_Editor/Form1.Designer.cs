@@ -158,6 +158,8 @@ namespace Watch_Face_Editor
             this.uCtrl_Weather_Elm_v2 = new ControlLibrary.UCtrl_Weather_Elm_v2();
             this.panel_UC_Weather_FewDay = new System.Windows.Forms.Panel();
             this.uCtrl_Weather_FewDay_Elm = new ControlLibrary.UCtrl_Weather_FewDay_Elm();
+            this.panel_UC_DigitalTime_v2 = new System.Windows.Forms.Panel();
+            this.uCtrl_DigitalTime_Elm_v2 = new ControlLibrary.UCtrl_DigitalTime_Elm_v2();
             this.panel_ElementsOpt = new System.Windows.Forms.Panel();
             this.uCtrl_TemperatureGraph_Opt = new ControlLibrary.UCtrl_TemperatureGraph_Opt();
             this.uCtrl_Weather_FewDays_Opt = new ControlLibrary.UCtrl_Weather_FewDays_Opt();
@@ -379,6 +381,7 @@ namespace Watch_Face_Editor
             this.panel_UC_Compass.SuspendLayout();
             this.panel_UC_Weather_v2.SuspendLayout();
             this.panel_UC_Weather_FewDay.SuspendLayout();
+            this.panel_UC_DigitalTime_v2.SuspendLayout();
             this.panel_ElementsOpt.SuspendLayout();
             this.panel_MainScreen_AOD.SuspendLayout();
             this.tabPage_Show_Set.SuspendLayout();
@@ -841,46 +844,47 @@ namespace Watch_Face_Editor
             // 
             this.tableLayoutPanel_ElemetsWatchFace.AllowDrop = true;
             resources.ApplyResources(this.tableLayoutPanel_ElemetsWatchFace, "tableLayoutPanel_ElemetsWatchFace");
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_EditableElements, 0, 8);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_EditableElements, 0, 9);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DigitalTime, 0, 7);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_AnalogTime, 0, 6);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateDay, 0, 9);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateDay, 0, 10);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_RepeatingAlert, 0, 2);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateMonth, 0, 10);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateYear, 0, 11);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 39);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateWeek, 0, 12);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Steps, 0, 15);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Statuses, 0, 14);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Shortcuts, 0, 13);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Battery, 0, 16);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Heart, 0, 17);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Calories, 0, 18);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_PAI, 0, 19);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Distance, 0, 20);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Weather, 0, 24);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stand, 0, 21);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Activity, 0, 22);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_SpO2, 0, 23);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_UVIndex, 0, 27);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Humidity, 0, 28);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stress, 0, 29);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_FatBurning, 0, 30);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Altimeter, 0, 31);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateMonth, 0, 11);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateYear, 0, 12);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 40);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateWeek, 0, 13);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Steps, 0, 16);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Statuses, 0, 15);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Shortcuts, 0, 14);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Battery, 0, 17);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Heart, 0, 18);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Calories, 0, 19);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_PAI, 0, 20);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Distance, 0, 21);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Weather, 0, 25);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stand, 0, 22);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Activity, 0, 23);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_SpO2, 0, 24);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_UVIndex, 0, 28);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Humidity, 0, 29);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stress, 0, 30);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_FatBurning, 0, 31);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Altimeter, 0, 32);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_EditableTimePointer, 0, 4);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Sunrise, 0, 32);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Wind, 0, 33);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Moon, 0, 35);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Animation, 0, 38);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Sunrise, 0, 33);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Wind, 0, 34);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Moon, 0, 36);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Animation, 0, 39);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DisconnectAlert, 0, 1);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_AnalogTimePro, 0, 5);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Image, 0, 34);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Image, 0, 35);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_TopImage, 0, 3);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Buttons, 0, 0);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_JS, 0, 37);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Compass, 0, 36);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Weather_v2, 0, 25);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Weather_FewDay, 0, 26);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_JS, 0, 38);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Compass, 0, 37);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Weather_v2, 0, 26);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Weather_FewDay, 0, 27);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DigitalTime_v2, 0, 8);
             this.tableLayoutPanel_ElemetsWatchFace.Name = "tableLayoutPanel_ElemetsWatchFace";
             this.tableLayoutPanel_ElemetsWatchFace.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
             // 
@@ -1632,6 +1636,25 @@ namespace Watch_Face_Editor
             this.uCtrl_Weather_FewDay_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.uCtrl_Weather_FewDay_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.uCtrl_Weather_FewDay_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // panel_UC_DigitalTime_v2
+            // 
+            resources.ApplyResources(this.panel_UC_DigitalTime_v2, "panel_UC_DigitalTime_v2");
+            this.panel_UC_DigitalTime_v2.Controls.Add(this.uCtrl_DigitalTime_Elm_v2);
+            this.panel_UC_DigitalTime_v2.Name = "panel_UC_DigitalTime_v2";
+            // 
+            // uCtrl_DigitalTime_Elm_v2
+            // 
+            resources.ApplyResources(this.uCtrl_DigitalTime_Elm_v2, "uCtrl_DigitalTime_Elm_v2");
+            this.uCtrl_DigitalTime_Elm_v2.Name = "uCtrl_DigitalTime_Elm_v2";
+            this.uCtrl_DigitalTime_Elm_v2.VisibleElementChanged += new ControlLibrary.UCtrl_DigitalTime_Elm_v2.VisibleElementChangedHandler(this.uCtrl_DigitalTime_Elm_v2_VisibleElementChanged);
+            this.uCtrl_DigitalTime_Elm_v2.VisibleOptionsChanged += new ControlLibrary.UCtrl_DigitalTime_Elm_v2.VisibleOptionsChangedHandler(this.uCtrl_DigitalTime_Elm_v2_VisibleOptionsChanged);
+            this.uCtrl_DigitalTime_Elm_v2.OptionsMoved += new ControlLibrary.UCtrl_DigitalTime_Elm_v2.OptionsMovedHandler(this.uCtrl_DigitalTime_Elm_v2_OptionsMoved);
+            this.uCtrl_DigitalTime_Elm_v2.SelectChanged += new ControlLibrary.UCtrl_DigitalTime_Elm_v2.SelectChangedHandler(this.uCtrl_DigitalTime_Elm_v2_SelectChanged);
+            this.uCtrl_DigitalTime_Elm_v2.DelElement += new ControlLibrary.UCtrl_DigitalTime_Elm_v2.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_DigitalTime_Elm_v2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_DigitalTime_Elm_v2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_DigitalTime_Elm_v2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
             // panel_ElementsOpt
             // 
@@ -3262,6 +3285,8 @@ namespace Watch_Face_Editor
             this.panel_UC_Weather_v2.PerformLayout();
             this.panel_UC_Weather_FewDay.ResumeLayout(false);
             this.panel_UC_Weather_FewDay.PerformLayout();
+            this.panel_UC_DigitalTime_v2.ResumeLayout(false);
+            this.panel_UC_DigitalTime_v2.PerformLayout();
             this.panel_ElementsOpt.ResumeLayout(false);
             this.panel_MainScreen_AOD.ResumeLayout(false);
             this.panel_MainScreen_AOD.PerformLayout();
@@ -3595,6 +3620,8 @@ namespace Watch_Face_Editor
         private ControlLibrary.UCtrl_Weather_FewDay_Elm uCtrl_Weather_FewDay_Elm;
         private ControlLibrary.UCtrl_Weather_FewDays_Opt uCtrl_Weather_FewDays_Opt;
         private ControlLibrary.UCtrl_TemperatureGraph_Opt uCtrl_TemperatureGraph_Opt;
+        private System.Windows.Forms.Panel panel_UC_DigitalTime_v2;
+        private ControlLibrary.UCtrl_DigitalTime_Elm_v2 uCtrl_DigitalTime_Elm_v2;
     }
 }
 

@@ -655,6 +655,284 @@ namespace Watch_Face_Editor
         }
     }
 
+    public class ElementDigitalTime_v2 : ICloneable
+    {
+        public string elementName = "DigitalTime_v2";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public DigitalTimeGroup Group_Second { get; set; }
+        public DigitalTimeGroup Group_Minute { get; set; }
+        public DigitalTimeGroup Group_Hour { get; set; }
+
+        public hmUI_widget_IMG_TIME_am_pm AmPm { get; set; }
+
+        public hmUI_widget_TEXT Hour_Min_Font { get; set; }
+        public hmUI_widget_TEXT Hour_Min_Sec_Font { get; set; }
+
+        public object Clone()
+        {
+            DigitalTimeGroup Group_Second = null;
+            if (this.Group_Second != null)
+            {
+                Group_Second = (DigitalTimeGroup)this.Group_Second.Clone();
+            }
+            DigitalTimeGroup Group_Minute = null;
+            if (this.Group_Minute != null)
+            {
+                Group_Minute = (DigitalTimeGroup)this.Group_Minute.Clone();
+            }
+            DigitalTimeGroup Group_Hour = null;
+            if (this.Group_Hour != null)
+            {
+                Group_Hour = (DigitalTimeGroup)this.Group_Hour.Clone();
+            }
+
+            hmUI_widget_TEXT Hour_Min_Font = null;
+            if (this.Hour_Min_Font != null)
+            {
+                Hour_Min_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Hour_Min_Font.x,
+                    y = this.Hour_Min_Font.y,
+                    w = this.Hour_Min_Font.w,
+                    h = this.Hour_Min_Font.h,
+                    color = this.Hour_Min_Font.color,
+                    align_h = this.Hour_Min_Font.align_h,
+                    align_v = this.Hour_Min_Font.align_v,
+                    text_size = this.Hour_Min_Font.text_size,
+                    text_style = this.Hour_Min_Font.text_style,
+                    line_space = this.Hour_Min_Font.line_space,
+                    char_space = this.Hour_Min_Font.char_space,
+                    font = this.Hour_Min_Font.font,
+                    padding = this.Hour_Min_Font.padding,
+                    unit_type = this.Hour_Min_Font.unit_type,
+                    unit_end = this.Hour_Min_Font.unit_end,
+                    centreHorizontally = this.Hour_Min_Font.centreHorizontally,
+                    centreVertically = this.Hour_Min_Font.centreVertically,
+
+                    position = this.Hour_Min_Font.position,
+                    visible = this.Hour_Min_Font.visible,
+                    show_level = this.Hour_Min_Font.show_level,
+                    type = this.Hour_Min_Font.type,
+                };
+            }
+
+            hmUI_widget_TEXT Hour_Min_Sec_Font = null;
+            if (this.Hour_Min_Sec_Font != null)
+            {
+                Hour_Min_Sec_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Hour_Min_Sec_Font.x,
+                    y = this.Hour_Min_Sec_Font.y,
+                    w = this.Hour_Min_Sec_Font.w,
+                    h = this.Hour_Min_Sec_Font.h,
+                    color = this.Hour_Min_Sec_Font.color,
+                    align_h = this.Hour_Min_Sec_Font.align_h,
+                    align_v = this.Hour_Min_Sec_Font.align_v,
+                    text_size = this.Hour_Min_Sec_Font.text_size,
+                    text_style = this.Hour_Min_Sec_Font.text_style,
+                    line_space = this.Hour_Min_Sec_Font.line_space,
+                    char_space = this.Hour_Min_Sec_Font.char_space,
+                    font = this.Hour_Min_Sec_Font.font,
+                    padding = this.Hour_Min_Sec_Font.padding,
+                    unit_type = this.Hour_Min_Sec_Font.unit_type,
+                    unit_end = this.Hour_Min_Sec_Font.unit_end,
+                    centreHorizontally = this.Hour_Min_Sec_Font.centreHorizontally,
+                    centreVertically = this.Hour_Min_Sec_Font.centreVertically,
+
+                    position = this.Hour_Min_Sec_Font.position,
+                    visible = this.Hour_Min_Sec_Font.visible,
+                    show_level = this.Hour_Min_Sec_Font.show_level,
+                    type = this.Hour_Min_Sec_Font.type,
+                };
+            }
+
+            hmUI_widget_IMG_TIME_am_pm AmPm = null;
+            if (this.AmPm != null)
+            {
+                AmPm = new hmUI_widget_IMG_TIME_am_pm
+                {
+                    am_x = this.AmPm.am_x,
+                    am_y = this.AmPm.am_y,
+                    am_img = this.AmPm.am_img,
+                    pm_x = this.AmPm.pm_x,
+                    pm_y = this.AmPm.pm_y,
+                    pm_img = this.AmPm.pm_img,
+
+                    position = this.AmPm.position,
+                    visible = this.AmPm.visible,
+                    show_level = this.AmPm.show_level,
+                };
+            }
+
+
+
+            return new ElementDigitalTime_v2
+            {
+                elementName = this.elementName,
+                visible = this.visible,
+
+                Group_Second = Group_Second,
+                Group_Minute = Group_Minute,
+                Group_Hour = Group_Hour,
+
+                AmPm = AmPm,
+
+                Hour_Min_Font = Hour_Min_Font,
+                Hour_Min_Sec_Font = Hour_Min_Sec_Font,
+            };
+        }
+    }
+
+    public class DigitalTimeGroup : ICloneable
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+
+        public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_TEXT Number_Font { get; set; }
+        public hmUI_widget_IMG_NUMBER Text_rotation { get; set; }
+        public Text_Circle Text_circle { get; set; }
+
+        public object Clone()
+        {
+            hmUI_widget_IMG_NUMBER Number = null;
+            if (this.Number != null)
+            {
+                Number = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number.imageX,
+                    imageY = this.Number.imageY,
+                    space = this.Number.space,
+                    angle = this.Number.angle,
+                    zero = this.Number.zero,
+                    align = this.Number.align,
+                    img_First = this.Number.img_First,
+                    unit = this.Number.unit,
+                    imperial_unit = this.Number.imperial_unit,
+                    icon = this.Number.icon,
+                    iconPosX = this.Number.iconPosX,
+                    iconPosY = this.Number.iconPosY,
+                    negative_image = this.Number.negative_image,
+                    invalid_image = this.Number.invalid_image,
+                    dot_image = this.Number.dot_image,
+                    follow = this.Number.follow,
+
+                    position = this.Number.position,
+                    visible = this.Number.visible,
+                    show_level = this.Number.show_level,
+                    type = this.Number.type,
+                };
+            }
+
+            hmUI_widget_TEXT Number_Font = null;
+            if (this.Number_Font != null)
+            {
+                Number_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Font.x,
+                    y = this.Number_Font.y,
+                    w = this.Number_Font.w,
+                    h = this.Number_Font.h,
+                    color = this.Number_Font.color,
+                    align_h = this.Number_Font.align_h,
+                    align_v = this.Number_Font.align_v,
+                    text_size = this.Number_Font.text_size,
+                    text_style = this.Number_Font.text_style,
+                    line_space = this.Number_Font.line_space,
+                    char_space = this.Number_Font.char_space,
+                    font = this.Number_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
+                    unit_end = this.Number_Font.unit_end,
+                    centreHorizontally = this.Number_Font.centreHorizontally,
+                    centreVertically = this.Number_Font.centreVertically,
+
+                    position = this.Number_Font.position,
+                    visible = this.Number_Font.visible,
+                    show_level = this.Number_Font.show_level,
+                    type = this.Number_Font.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Text_rotation = null;
+            if (this.Text_rotation != null)
+            {
+                Text_rotation = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Text_rotation.imageX,
+                    imageY = this.Text_rotation.imageY,
+                    space = this.Text_rotation.space,
+                    angle = this.Text_rotation.angle,
+                    zero = this.Text_rotation.zero,
+                    align = this.Text_rotation.align,
+                    img_First = this.Text_rotation.img_First,
+                    unit = this.Text_rotation.unit,
+                    imperial_unit = this.Text_rotation.imperial_unit,
+                    icon = this.Text_rotation.icon,
+                    iconPosX = this.Text_rotation.iconPosX,
+                    iconPosY = this.Text_rotation.iconPosY,
+                    negative_image = this.Text_rotation.negative_image,
+                    invalid_image = this.Text_rotation.invalid_image,
+                    dot_image = this.Text_rotation.dot_image,
+                    unit_in_alignment = this.Text_rotation.unit_in_alignment,
+
+                    position = this.Text_rotation.position,
+                    visible = this.Text_rotation.visible,
+                    show_level = this.Text_rotation.show_level,
+                    type = this.Text_rotation.type,
+                };
+            }
+
+            Text_Circle Text_circle = null;
+            if (this.Text_circle != null)
+            {
+                Text_circle = new Text_Circle
+                {
+                    circle_center_X = this.Text_circle.circle_center_X,
+                    circle_center_Y = this.Text_circle.circle_center_Y,
+                    radius = this.Text_circle.radius,
+                    angle = this.Text_circle.angle,
+                    char_space_angle = this.Text_circle.char_space_angle,
+                    zero = this.Text_circle.zero,
+                    img_First = this.Text_circle.img_First,
+                    //image_width = this.Text_circle.image_width,
+                    //image_height = this.Text_circle.image_height,
+                    unit = this.Text_circle.unit,
+                    //unit_width = this.Text_circle.unit_width,
+                    imperial_unit = this.Text_circle.imperial_unit,
+                    dot_image = this.Text_circle.dot_image,
+                    //dot_image_width = this.Text_circle.dot_image_width,
+                    error_image = this.Text_circle.error_image,
+                    //error_width = this.Text_circle.error_width,
+                    vertical_alignment = this.Text_circle.vertical_alignment,
+                    horizontal_alignment = this.Text_circle.horizontal_alignment,
+                    reverse_direction = this.Text_circle.reverse_direction,
+                    unit_in_alignment = this.Text_circle.unit_in_alignment,
+
+                    position = this.Text_circle.position,
+                    visible = this.Text_circle.visible,
+                    show_level = this.Text_circle.show_level,
+                    type = this.Text_circle.type,
+                };
+            }
+
+            return new DigitalTimeGroup
+            {
+                position = this.position,
+                Number = Number,
+                Number_Font = Number_Font,
+                Text_rotation = Text_rotation,
+                Text_circle = Text_circle,
+            };
+        }
+    }
+
     public class ElementAnalogTime : ICloneable
     {
         public string elementName = "AnalogTime";
@@ -5836,28 +6114,24 @@ namespace Watch_Face_Editor
         public object Clone()
         {
             WeatherGroup Group_Current = null;
-            //WeatherGroup Group_Current = new WeatherGroup();
             if (this.Group_Current != null)
             {
                 Group_Current = (WeatherGroup)this.Group_Current.Clone();
             }
 
             WeatherGroup Group_Min = null;
-            //WeatherGroup Group_Min = new WeatherGroup();
             if (this.Group_Min != null)
             {
                 Group_Min = (WeatherGroup)this.Group_Min.Clone();
             }
 
             WeatherGroup Group_Max = null;
-            //WeatherGroup Group_Max = new WeatherGroup();
             if (this.Group_Max != null)
             {
                 Group_Max = (WeatherGroup)this.Group_Max.Clone();
             }
 
             WeatherGroup Group_Max_Min = null;
-            //WeatherGroup Group_Max_Min = new WeatherGroup();
             if (this.Group_Max_Min != null)
             {
                 Group_Max_Min = (WeatherGroup)this.Group_Max_Min.Clone();

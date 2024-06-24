@@ -306,6 +306,9 @@
   <data name="Message_ModelConfig_ReadError" xml:space="preserve">
     <value>Error reading model configuration</value>
   </data>
+  <data name="Message_Old_OS" xml:space="preserve">
+    <value>This widget is not supported by the selected watch model.</value>
+  </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Reboot</value>
   </data>
@@ -371,6 +374,9 @@
   </data>
   <data name="Message_Warning_JS_Exist1" xml:space="preserve">
     <value>A folder with JS files already exists in this folder.</value>
+  </data>
+  <data name="Message_Widget_Exists" xml:space="preserve">
+    <value>Such a widget already exists in the watch face.</value>
   </data>
   <data name="Message_Wrong_ColorScheme" xml:space="preserve">
     <value>An unknown colour scheme for the model is specified:</value>

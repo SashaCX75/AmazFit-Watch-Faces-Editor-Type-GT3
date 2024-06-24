@@ -608,7 +608,7 @@ namespace Watch_Face_Editor
             string type = element.GetType().Name;
             switch (type)
             {
-                #region ElementDigitalTime
+                /*#region ElementDigitalTime
                 case "ElementDigitalTime":
                     ElementDigitalTime DigitalTime = (ElementDigitalTime)element;
                     if (!DigitalTime.visible) return;
@@ -1270,7 +1270,7 @@ namespace Watch_Face_Editor
                             if (addZero) valueStr = valueStr.PadLeft(2, '0');
 
                             Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
-                                image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                                image_index, *//*int image_width, int image_height,*//* unit_index, *//*int unit_width,*//* dot_image_index, *//*int dot_image_width,*//*
                                 vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
                                 valueStr, 2, BBorder, showCentrHend, -1, -1, false, "ElementDigitalTime");
                         }
@@ -1297,7 +1297,7 @@ namespace Watch_Face_Editor
                             if (addZero) valueStr = valueStr.PadLeft(2, '0');
 
                             Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
-                                image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                                image_index, *//*int image_width, int image_height,*//* unit_index, *//*int unit_width,*//* dot_image_index, *//*int dot_image_width,*//*
                                 vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
                                 valueStr, 2, BBorder, showCentrHend, -1, -1, false, "ElementDigitalTime");
                         }
@@ -1324,10 +1324,742 @@ namespace Watch_Face_Editor
                             if (addZero) valueStr = valueStr.PadLeft(2, '0');
 
                             Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
-                                image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                                image_index, *//*int image_width, int image_height,*//* unit_index, *//*int unit_width,*//* dot_image_index, *//*int dot_image_width,*//*
                                 vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
                                 valueStr, 2, BBorder, showCentrHend, -1, -1, false, "ElementDigitalTime");
                         }
+                    }
+
+                    break;
+                #endregion*/
+
+                #region ElementDigitalTime_v2
+                case "ElementDigitalTime_v2":
+                    ElementDigitalTime_v2 DigitalTime_v2 = (ElementDigitalTime_v2)element;
+                    if (!DigitalTime_v2.visible) return;
+                    int time_v2_hour_offsetX = -1;
+                    int time_v2_hour_offsetY = -1;
+                    int time_v2_minute_offsetX = -1;
+                    int time_v2_minute_offsetY = -1;
+                    int time_v2_spasing = 0;
+                    bool am_pm_v2 = false;
+                    value_lenght = 2;
+
+                    // определяем формат времени am/pm
+                    if (DigitalTime_v2.AmPm != null && DigitalTime_v2.AmPm.visible && checkBox_ShowIn12hourFormat.Checked &&
+                        DigitalTime_v2.AmPm.am_img != null && DigitalTime_v2.AmPm.am_img.Length > 0 &&
+                        DigitalTime_v2.AmPm.pm_img != null && DigitalTime_v2.AmPm.pm_img.Length > 0) am_pm_v2 = true;
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        if (DigitalTime_v2.Group_Hour != null && index == DigitalTime_v2.Group_Hour.position)
+                        {
+                            if (DigitalTime_v2.Group_Hour.Text_circle != null && DigitalTime_v2.Group_Hour.Text_circle.img_First != null && 
+                                DigitalTime_v2.Group_Hour.Text_circle.img_First.Length > 0 && DigitalTime_v2.Group_Hour.Text_circle.visible)
+                            {
+                                int centr_x = DigitalTime_v2.Group_Hour.Text_circle.circle_center_X;
+                                int centr_y = DigitalTime_v2.Group_Hour.Text_circle.circle_center_Y;
+                                int radius = DigitalTime_v2.Group_Hour.Text_circle.radius;
+                                int spacing = DigitalTime_v2.Group_Hour.Text_circle.char_space_angle;
+                                float angle = DigitalTime_v2.Group_Hour.Text_circle.angle;
+                                bool addZero = DigitalTime_v2.Group_Hour.Text_circle.zero;
+                                int image_index = ListImages.IndexOf(DigitalTime_v2.Group_Hour.Text_circle.img_First);
+                                int unit_index = ListImages.IndexOf(DigitalTime_v2.Group_Hour.Text_circle.unit);
+                                int dot_image_index = ListImages.IndexOf(DigitalTime_v2.Group_Hour.Text_circle.dot_image);
+                                string vertical_alignment = DigitalTime_v2.Group_Hour.Text_circle.vertical_alignment;
+                                string horizontal_alignment = DigitalTime_v2.Group_Hour.Text_circle.horizontal_alignment;
+                                bool reverse_direction = DigitalTime_v2.Group_Hour.Text_circle.reverse_direction;
+                                bool unit_in_alignment = DigitalTime_v2.Group_Hour.Text_circle.unit_in_alignment;
+
+                                int value = WatchFacePreviewSet.Time.Hours;
+                                if (ProgramSettings.ShowIn12hourFormat && DigitalTime_v2.AmPm != null)
+                                {
+                                    if (am_pm_v2)
+                                    {
+                                        if (value > 11) value -= 12;
+                                        if (value == 0) value = 12;
+                                    }
+                                }
+                                string valueStr = value.ToString();
+                                if (addZero) valueStr = valueStr.PadLeft(2, '0');
+
+                                Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                                    image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                                    vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
+                                    valueStr, 2, BBorder, showCentrHend, -1, -1, false, "ElementDigitalTime");
+                            }
+
+                            if (DigitalTime_v2.Group_Hour.Text_rotation != null && DigitalTime_v2.Group_Hour.Text_rotation.img_First != null && 
+                                DigitalTime_v2.Group_Hour.Text_rotation.img_First.Length > 0 && DigitalTime_v2.Group_Hour.Text_rotation.visible)
+                            {
+                                int pos_x = DigitalTime_v2.Group_Hour.Text_rotation.imageX;
+                                int pos_y = DigitalTime_v2.Group_Hour.Text_rotation.imageY;
+                                int spacing = DigitalTime_v2.Group_Hour.Text_rotation.space;
+                                float angle = DigitalTime_v2.Group_Hour.Text_rotation.angle;
+                                bool addZero = DigitalTime_v2.Group_Hour.Text_rotation.zero;
+                                int image_index = ListImages.IndexOf(DigitalTime_v2.Group_Hour.Text_rotation.img_First);
+                                int unit_index = ListImages.IndexOf(DigitalTime_v2.Group_Hour.Text_rotation.unit);
+                                int dot_image_index = ListImages.IndexOf(DigitalTime_v2.Group_Hour.Text_rotation.dot_image);
+                                string horizontal_alignment = DigitalTime_v2.Group_Hour.Text_rotation.align;
+                                bool unit_in_alignment = DigitalTime_v2.Group_Hour.Text_rotation.unit_in_alignment;
+
+                                int value = WatchFacePreviewSet.Time.Hours;
+                                if (ProgramSettings.ShowIn12hourFormat && DigitalTime_v2.AmPm != null)
+                                {
+                                    if (am_pm_v2)
+                                    {
+                                        if (value > 11) value -= 12;
+                                        if (value == 0) value = 12;
+                                    }
+                                }
+                                string valueStr = value.ToString();
+                                if (addZero) valueStr = valueStr.PadLeft(2, '0');
+
+                                Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                                    image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                                    valueStr, 2, BBorder, -1, -1, false, "ElementDigitalTime");
+                            }
+
+                            if (DigitalTime_v2.Group_Hour.Number_Font != null && DigitalTime_v2.Group_Hour.Number_Font.visible)
+                            {
+                                hmUI_widget_TEXT number_font = DigitalTime_v2.Group_Hour.Number_Font;
+                                int x = number_font.x;
+                                int y = number_font.y;
+                                int h = number_font.h;
+                                int w = number_font.w;
+
+                                int size = number_font.text_size;
+                                int space_h = number_font.char_space;
+                                int space_v = number_font.line_space;
+
+                                Color color = StringToColor(number_font.color);
+                                //int align_h = AlignmentToInt(number_font.align_h);
+                                //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                                string align_h = number_font.align_h;
+                                string align_v = number_font.align_v;
+                                string text_style = number_font.text_style;
+                                int value = WatchFacePreviewSet.Time.Hours;
+                                if (ProgramSettings.ShowIn12hourFormat && DigitalTime_v2.AmPm != null)
+                                {
+                                    if (value > 11) value -= 12;
+                                    if (value == 0) value = 12;
+                                }
+                                string valueStr = value.ToString();
+                                string unitStr = "hour";
+                                if (number_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
+                                if (number_font.unit_type > 0)
+                                {
+                                    if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                                    valueStr += unitStr;
+                                }
+
+                                if (number_font.centreHorizontally)
+                                {
+                                    x = (SelectedModel.background.w - w) / 2;
+                                    align_h = "CENTER_H";
+                                }
+                                if (number_font.centreVertically)
+                                {
+                                    y = (SelectedModel.background.h - h) / 2;
+                                    align_v = "CENTER_V";
+                                }
+
+                                if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                                {
+                                    string font_fileName = FontsList[number_font.font];
+                                    //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                                    if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                    {
+                                        Font drawFont = null;
+                                        using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                        {
+                                            fonts.AddFontFile(font_fileName);
+                                            drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                        }
+
+                                        Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                        align_h, align_v, text_style, BBorder);
+                                    }
+                                    else
+                                    {
+                                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    }
+
+                                }
+                                else
+                                {
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                }
+                            }
+
+                            if (DigitalTime_v2.Group_Hour.Number != null && DigitalTime_v2.Group_Hour.Number.img_First != null && 
+                                DigitalTime_v2.Group_Hour.Number.img_First.Length > 0 && DigitalTime_v2.Group_Hour.Number.visible)
+                            {
+                                int imageIndex = ListImages.IndexOf(DigitalTime_v2.Group_Hour.Number.img_First);
+                                int x = DigitalTime_v2.Group_Hour.Number.imageX;
+                                int y = DigitalTime_v2.Group_Hour.Number.imageY;
+                                time_v2_hour_offsetY = y;
+                                int spasing = DigitalTime_v2.Group_Hour.Number.space;
+                                time_v2_spasing = spasing;
+                                int angle = DigitalTime_v2.Group_Hour.Number.angle;
+                                int alignment = AlignmentToInt(DigitalTime_v2.Group_Hour.Number.align);
+                                bool addZero = DigitalTime_v2.Group_Hour.Number.zero;
+                                //addZero = true;
+                                int value = WatchFacePreviewSet.Time.Hours;
+                                int separator_index = -1;
+                                if (DigitalTime_v2.Group_Hour.Number.unit != null && DigitalTime_v2.Group_Hour.Number.unit.Length > 0)
+                                    separator_index = ListImages.IndexOf(DigitalTime_v2.Group_Hour.Number.unit);
+
+                                if (ProgramSettings.ShowIn12hourFormat && DigitalTime_v2.AmPm != null)
+                                {
+                                    if (am_pm_v2)
+                                    {
+                                        if (value > 11) value -= 12;
+                                        if (value == 0) value = 12;
+                                    }
+                                }
+
+                                time_v2_hour_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y, spasing, alignment, value, addZero, 2, separator_index, angle, BBorder, "ElementDigitalTime");
+                                time_v2_minute_offsetX = -1;
+                                time_v2_minute_offsetY = -1;
+                                if (spasing != 0 && separator_index >= 0) time_v2_hour_offsetX -= spasing;
+
+                                if (DigitalTime_v2.Group_Hour.Number.icon != null && DigitalTime_v2.Group_Hour.Number.icon.Length > 0)
+                                {
+                                    imageIndex = ListImages.IndexOf(DigitalTime_v2.Group_Hour.Number.icon);
+                                    x = DigitalTime_v2.Group_Hour.Number.iconPosX;
+                                    y = DigitalTime_v2.Group_Hour.Number.iconPosY;
+
+                                    src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                    if (src != null) gPanel.DrawImage(src, x, y);
+                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                }
+                            }
+                        }
+
+                        if (DigitalTime_v2.Group_Minute != null && index == DigitalTime_v2.Group_Minute.position)
+                        {
+                            if (DigitalTime_v2.Group_Minute.Text_circle != null && DigitalTime_v2.Group_Minute.Text_circle.img_First != null && 
+                                DigitalTime_v2.Group_Minute.Text_circle.img_First.Length > 0 && DigitalTime_v2.Group_Minute.Text_circle.visible)
+                            {
+                                int centr_x = DigitalTime_v2.Group_Minute.Text_circle.circle_center_X;
+                                int centr_y = DigitalTime_v2.Group_Minute.Text_circle.circle_center_Y;
+                                int radius = DigitalTime_v2.Group_Minute.Text_circle.radius;
+                                int spacing = DigitalTime_v2.Group_Minute.Text_circle.char_space_angle;
+                                float angle = DigitalTime_v2.Group_Minute.Text_circle.angle;
+                                bool addZero = DigitalTime_v2.Group_Minute.Text_circle.zero;
+                                int image_index = ListImages.IndexOf(DigitalTime_v2.Group_Minute.Text_circle.img_First);
+                                int unit_index = ListImages.IndexOf(DigitalTime_v2.Group_Minute.Text_circle.unit);
+                                int dot_image_index = ListImages.IndexOf(DigitalTime_v2.Group_Minute.Text_circle.dot_image);
+                                string vertical_alignment = DigitalTime_v2.Group_Minute.Text_circle.vertical_alignment;
+                                string horizontal_alignment = DigitalTime_v2.Group_Minute.Text_circle.horizontal_alignment;
+                                bool reverse_direction = DigitalTime_v2.Group_Minute.Text_circle.reverse_direction;
+                                bool unit_in_alignment = DigitalTime_v2.Group_Minute.Text_circle.unit_in_alignment;
+
+                                int value = WatchFacePreviewSet.Time.Minutes;
+                                string valueStr = value.ToString();
+                                if (addZero) valueStr = valueStr.PadLeft(2, '0');
+
+                                Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                                    image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                                    vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
+                                    valueStr, 2, BBorder, showCentrHend, -1, -1, false, "ElementDigitalTime");
+                            }
+
+                            if (DigitalTime_v2.Group_Minute.Text_rotation != null && DigitalTime_v2.Group_Minute.Text_rotation.img_First != null && 
+                                DigitalTime_v2.Group_Minute.Text_rotation.img_First.Length > 0 && DigitalTime_v2.Group_Minute.Text_rotation.visible)
+                            {
+                                int pos_x = DigitalTime_v2.Group_Minute.Text_rotation.imageX;
+                                int pos_y = DigitalTime_v2.Group_Minute.Text_rotation.imageY;
+                                int spacing = DigitalTime_v2.Group_Minute.Text_rotation.space;
+                                float angle = DigitalTime_v2.Group_Minute.Text_rotation.angle;
+                                bool addZero = DigitalTime_v2.Group_Minute.Text_rotation.zero;
+                                int image_index = ListImages.IndexOf(DigitalTime_v2.Group_Minute.Text_rotation.img_First);
+                                int unit_index = ListImages.IndexOf(DigitalTime_v2.Group_Minute.Text_rotation.unit);
+                                int dot_image_index = ListImages.IndexOf(DigitalTime_v2.Group_Minute.Text_rotation.dot_image);
+                                string horizontal_alignment = DigitalTime_v2.Group_Minute.Text_rotation.align;
+                                bool unit_in_alignment = DigitalTime_v2.Group_Minute.Text_rotation.unit_in_alignment;
+
+                                int value = WatchFacePreviewSet.Time.Minutes;
+                                string valueStr = value.ToString();
+                                if (addZero) valueStr = valueStr.PadLeft(2, '0');
+
+                                Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                                    image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                                    valueStr, 2, BBorder, -1, -1, false, "ElementDigitalTime");
+                            }
+
+                            if (DigitalTime_v2.Group_Minute.Number_Font != null && DigitalTime_v2.Group_Minute.Number_Font.visible)
+                            {
+                                hmUI_widget_TEXT number_font = DigitalTime_v2.Group_Minute.Number_Font;
+                                int x = number_font.x;
+                                int y = number_font.y;
+                                int h = number_font.h;
+                                int w = number_font.w;
+
+                                int size = number_font.text_size;
+                                int space_h = number_font.char_space;
+                                int space_v = number_font.line_space;
+
+                                Color color = StringToColor(number_font.color);
+                                //int align_h = AlignmentToInt(number_font.align_h);
+                                //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                                string align_h = number_font.align_h;
+                                string align_v = number_font.align_v;
+                                string text_style = number_font.text_style;
+                                string valueStr = WatchFacePreviewSet.Time.Minutes.ToString();
+                                string unitStr = "min";
+                                if (number_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
+                                if (number_font.unit_type > 0)
+                                {
+                                    if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                                    valueStr += unitStr;
+                                }
+
+                                if (number_font.centreHorizontally)
+                                {
+                                    x = (SelectedModel.background.w - w) / 2;
+                                    align_h = "CENTER_H";
+                                }
+                                if (number_font.centreVertically)
+                                {
+                                    y = (SelectedModel.background.h - h) / 2;
+                                    align_v = "CENTER_V";
+                                }
+
+                                if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                                {
+                                    string font_fileName = FontsList[number_font.font];
+                                    //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                                    if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                    {
+                                        Font drawFont = null;
+                                        using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                        {
+                                            fonts.AddFontFile(font_fileName);
+                                            drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                        }
+
+                                        Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                        align_h, align_v, text_style, BBorder);
+                                    }
+                                    else
+                                    {
+                                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    }
+
+                                }
+                                else
+                                {
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                }
+                            }
+
+                            if (DigitalTime_v2.Group_Minute.Number != null && DigitalTime_v2.Group_Minute.Number.img_First != null && 
+                                DigitalTime_v2.Group_Minute.Number.img_First.Length > 0 && DigitalTime_v2.Group_Minute.Number.visible)
+                            {
+                                int imageIndex = ListImages.IndexOf(DigitalTime_v2.Group_Minute.Number.img_First);
+                                int x = DigitalTime_v2.Group_Minute.Number.imageX;
+                                int y = DigitalTime_v2.Group_Minute.Number.imageY;
+                                int spasing = DigitalTime_v2.Group_Minute.Number.space;
+                                //time_v2_spasing = spasing;
+                                int angle = DigitalTime_v2.Group_Minute.Number.angle;
+                                int alignment = AlignmentToInt(DigitalTime_v2.Group_Minute.Number.align);
+                                bool addZero = DigitalTime_v2.Group_Minute.Number.zero;
+                                //addZero = true;
+                                if (DigitalTime_v2.Group_Minute.Number.follow && time_v2_hour_offsetX > -1 &&
+                                    DigitalTime_v2.Group_Minute.Number.position > DigitalTime_v2.Group_Hour.Number.position)
+                                {
+                                    x = time_v2_hour_offsetX;
+                                    alignment = 0;
+                                    y = time_v2_hour_offsetY;
+                                    spasing = time_v2_spasing;
+                                }
+                                time_v2_minute_offsetY = y;
+                                int value = WatchFacePreviewSet.Time.Minutes;
+                                int separator_index = -1;
+                                if (DigitalTime_v2.Group_Minute.Number.unit != null && DigitalTime_v2.Group_Minute.Number.unit.Length > 0)
+                                    separator_index = ListImages.IndexOf(DigitalTime_v2.Group_Minute.Number.unit);
+
+                                time_v2_minute_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y, spasing, alignment, value, addZero, 2, separator_index, angle, BBorder, "ElementDigitalTime");
+                                time_v2_hour_offsetX = -1;
+                                time_v2_hour_offsetY = -1;
+                                if (spasing != 0 && separator_index >= 0) time_v2_minute_offsetX -= spasing;
+
+                                if (DigitalTime_v2.Group_Minute.Number.icon != null && DigitalTime_v2.Group_Minute.Number.icon.Length > 0)
+                                {
+                                    imageIndex = ListImages.IndexOf(DigitalTime_v2.Group_Minute.Number.icon);
+                                    x = DigitalTime_v2.Group_Minute.Number.iconPosX;
+                                    y = DigitalTime_v2.Group_Minute.Number.iconPosY;
+
+                                    src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                    if (src != null) gPanel.DrawImage(src, x, y);
+                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                }
+                            } 
+                        }
+
+                        if (DigitalTime_v2.Group_Second != null && index == DigitalTime_v2.Group_Second.position)
+                        {
+                            if (DigitalTime_v2.Group_Second.Text_circle != null && DigitalTime_v2.Group_Second.Text_circle.img_First != null && 
+                                DigitalTime_v2.Group_Second.Text_circle.img_First.Length > 0 && DigitalTime_v2.Group_Second.Text_circle.visible)
+                            {
+                                int centr_x = DigitalTime_v2.Group_Second.Text_circle.circle_center_X;
+                                int centr_y = DigitalTime_v2.Group_Second.Text_circle.circle_center_Y;
+                                int radius = DigitalTime_v2.Group_Second.Text_circle.radius;
+                                int spacing = DigitalTime_v2.Group_Second.Text_circle.char_space_angle;
+                                float angle = DigitalTime_v2.Group_Second.Text_circle.angle;
+                                bool addZero = DigitalTime_v2.Group_Second.Text_circle.zero;
+                                int image_index = ListImages.IndexOf(DigitalTime_v2.Group_Second.Text_circle.img_First);
+                                int unit_index = ListImages.IndexOf(DigitalTime_v2.Group_Second.Text_circle.unit);
+                                int dot_image_index = ListImages.IndexOf(DigitalTime_v2.Group_Second.Text_circle.dot_image);
+                                string vertical_alignment = DigitalTime_v2.Group_Second.Text_circle.vertical_alignment;
+                                string horizontal_alignment = DigitalTime_v2.Group_Second.Text_circle.horizontal_alignment;
+                                bool reverse_direction = DigitalTime_v2.Group_Second.Text_circle.reverse_direction;
+                                bool unit_in_alignment = DigitalTime_v2.Group_Second.Text_circle.unit_in_alignment;
+
+                                int value = WatchFacePreviewSet.Time.Seconds;
+                                string valueStr = value.ToString();
+                                if (addZero) valueStr = valueStr.PadLeft(2, '0');
+
+                                Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                                    image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                                    vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
+                                    valueStr, 2, BBorder, showCentrHend, -1, -1, false, "ElementDigitalTime");
+                            }
+
+                            if (DigitalTime_v2.Group_Second.Text_rotation != null && DigitalTime_v2.Group_Second.Text_rotation.img_First != null && 
+                                DigitalTime_v2.Group_Second.Text_rotation.img_First.Length > 0 && DigitalTime_v2.Group_Second.Text_rotation.visible)
+                            {
+                                int pos_x = DigitalTime_v2.Group_Second.Text_rotation.imageX;
+                                int pos_y = DigitalTime_v2.Group_Second.Text_rotation.imageY;
+                                int spacing = DigitalTime_v2.Group_Second.Text_rotation.space;
+                                float angle = DigitalTime_v2.Group_Second.Text_rotation.angle;
+                                bool addZero = DigitalTime_v2.Group_Second.Text_rotation.zero;
+                                int image_index = ListImages.IndexOf(DigitalTime_v2.Group_Second.Text_rotation.img_First);
+                                int unit_index = ListImages.IndexOf(DigitalTime_v2.Group_Second.Text_rotation.unit);
+                                int dot_image_index = ListImages.IndexOf(DigitalTime_v2.Group_Second.Text_rotation.dot_image);
+                                string horizontal_alignment = DigitalTime_v2.Group_Second.Text_rotation.align;
+                                bool unit_in_alignment = DigitalTime_v2.Group_Second.Text_rotation.unit_in_alignment;
+
+                                int value = WatchFacePreviewSet.Time.Seconds;
+                                string valueStr = value.ToString();
+                                if (addZero) valueStr = valueStr.PadLeft(2, '0');
+
+                                Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                                    image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                                    valueStr, 2, BBorder, -1, -1, false, "ElementDigitalTime");
+                            }
+
+                            if (DigitalTime_v2.Group_Second.Number_Font != null && DigitalTime_v2.Group_Second.Number_Font.visible)
+                            {
+                                hmUI_widget_TEXT number_font = DigitalTime_v2.Group_Second.Number_Font;
+                                int x = number_font.x;
+                                int y = number_font.y;
+                                int h = number_font.h;
+                                int w = number_font.w;
+
+                                int size = number_font.text_size;
+                                int space_h = number_font.char_space;
+                                int space_v = number_font.line_space;
+
+                                Color color = StringToColor(number_font.color);
+                                //int align_h = AlignmentToInt(number_font.align_h);
+                                //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                                string align_h = number_font.align_h;
+                                string align_v = number_font.align_v;
+                                string text_style = number_font.text_style;
+                                string valueStr = WatchFacePreviewSet.Time.Seconds.ToString();
+                                string unitStr = "sec";
+                                if (number_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
+                                if (number_font.unit_type > 0)
+                                {
+                                    if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                                    valueStr += unitStr;
+                                }
+
+                                if (number_font.centreHorizontally)
+                                {
+                                    x = (SelectedModel.background.w - w) / 2;
+                                    align_h = "CENTER_H";
+                                }
+                                if (number_font.centreVertically)
+                                {
+                                    y = (SelectedModel.background.h - h) / 2;
+                                    align_v = "CENTER_V";
+                                }
+
+                                if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                                {
+                                    string font_fileName = FontsList[number_font.font];
+                                    //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                                    if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                    {
+                                        Font drawFont = null;
+                                        using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                        {
+                                            fonts.AddFontFile(font_fileName);
+                                            drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                        }
+
+                                        Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                        align_h, align_v, text_style, BBorder);
+                                    }
+                                    else
+                                    {
+                                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    }
+
+                                }
+                                else
+                                {
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                }
+                            }
+
+                            if (DigitalTime_v2.Group_Second.Number != null && DigitalTime_v2.Group_Second.Number.img_First != null && 
+                                DigitalTime_v2.Group_Second.Number.img_First.Length > 0 && DigitalTime_v2.Group_Second.Number.visible)
+                            {
+                                int imageIndex = ListImages.IndexOf(DigitalTime_v2.Group_Second.Number.img_First);
+                                int x = DigitalTime_v2.Group_Second.Number.imageX;
+                                int y = DigitalTime_v2.Group_Second.Number.imageY;
+                                int spasing = DigitalTime_v2.Group_Second.Number.space;
+                                //time_v2_spasing = spasing;
+                                int angle = DigitalTime_v2.Group_Second.Number.angle;
+                                int alignment = AlignmentToInt(DigitalTime_v2.Group_Second.Number.align);
+                                bool addZero = DigitalTime_v2.Group_Second.Number.zero;
+                                //addZero = true;
+                                if (DigitalTime_v2.Group_Second.Number.follow && time_v2_minute_offsetX > -1 &&
+                                    DigitalTime_v2.Group_Second.Number.position > DigitalTime_v2.Group_Minute.Number.position)
+                                {
+                                    x = time_v2_minute_offsetX;
+                                    alignment = 0;
+                                    y = time_v2_minute_offsetY;
+                                    spasing = time_v2_spasing;
+                                }
+                                //time_v2_hour_offsetY = y;
+                                int value = WatchFacePreviewSet.Time.Seconds;
+                                int separator_index = -1;
+                                if (DigitalTime_v2.Group_Second.Number.unit != null && DigitalTime_v2.Group_Second.Number.unit.Length > 0)
+                                    separator_index = ListImages.IndexOf(DigitalTime_v2.Group_Second.Number.unit);
+
+
+                                Draw_dagital_text(gPanel, imageIndex, x, y,
+                                                    spasing, alignment, value, addZero, 2, separator_index, angle, BBorder, "ElementDigitalTime");
+
+                                if (DigitalTime_v2.Group_Second.Number.icon != null && DigitalTime_v2.Group_Second.Number.icon.Length > 0)
+                                {
+                                    imageIndex = ListImages.IndexOf(DigitalTime_v2.Group_Second.Number.icon);
+                                    x = DigitalTime_v2.Group_Second.Number.iconPosX;
+                                    y = DigitalTime_v2.Group_Second.Number.iconPosY;
+
+                                    src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                    if (src != null) gPanel.DrawImage(src, x, y);
+                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                }
+                            } 
+                        }
+
+
+                        if (am_pm_v2 && index == DigitalTime_v2.AmPm.position)
+                        {
+                            if (WatchFacePreviewSet.Time.Hours > 11)
+                            {
+                                int imageIndex = ListImages.IndexOf(DigitalTime_v2.AmPm.pm_img);
+                                int x = DigitalTime_v2.AmPm.pm_x;
+                                int y = DigitalTime_v2.AmPm.pm_y;
+
+                                src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                if (src != null) gPanel.DrawImage(src, x, y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            }
+                            else
+                            {
+                                int imageIndex = ListImages.IndexOf(DigitalTime_v2.AmPm.am_img);
+                                int x = DigitalTime_v2.AmPm.am_x;
+                                int y = DigitalTime_v2.AmPm.am_y;
+
+                                src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                if (src != null) gPanel.DrawImage(src, x, y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            }
+                        }
+
+
+                        if (DigitalTime_v2.Hour_Min_Font != null && index == DigitalTime_v2.Hour_Min_Font.position && DigitalTime_v2.Hour_Min_Font.visible)
+                        {
+                            hmUI_widget_TEXT number_font = DigitalTime_v2.Hour_Min_Font;
+                            int x = number_font.x;
+                            int y = number_font.y;
+                            int h = number_font.h;
+                            int w = number_font.w;
+
+                            int size = number_font.text_size;
+                            int space_h = number_font.char_space;
+                            int space_v = number_font.line_space;
+
+                            Color color = StringToColor(number_font.color);
+                            //int align_h = AlignmentToInt(number_font.align_h);
+                            //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                            string align_h = number_font.align_h;
+                            string align_v = number_font.align_v;
+                            string text_style = number_font.text_style;
+                            string unitStr = "Am";
+                            int value = WatchFacePreviewSet.Time.Hours;
+                            if (ProgramSettings.ShowIn12hourFormat)
+                            {
+                                if (value > 11)
+                                {
+                                    value -= 12;
+                                    unitStr = "Pm";
+                                }
+                                if (value == 0) value = 12;
+                            }
+                            string valueHourStr = value.ToString();
+                            if (number_font.padding) valueHourStr = valueHourStr.PadLeft(value_lenght, '0');
+                            string valueMinStr = WatchFacePreviewSet.Time.Minutes.ToString();
+                            valueMinStr = valueMinStr.PadLeft(value_lenght, '0');
+
+                            string delimeter = ":";
+                            if (number_font.unit_string != null && number_font.unit_string.Length > 0) delimeter = number_font.unit_string;
+
+                            string valueStr = "";
+                            if (number_font.unit_type == 0) unitStr = unitStr.ToLower();
+                            if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                            valueStr = valueHourStr + delimeter + valueMinStr;
+                            if (checkBox_ShowIn12hourFormat.Checked)
+                            {
+                                if (number_font.unit_end) valueStr = valueStr + " " + unitStr;
+                                else valueStr = unitStr + " " + valueStr;
+                            }
+
+                            if (number_font.centreHorizontally)
+                            {
+                                x = (SelectedModel.background.w - w) / 2;
+                                align_h = "CENTER_H";
+                            }
+                            if (number_font.centreVertically)
+                            {
+                                y = (SelectedModel.background.h - h) / 2;
+                                align_v = "CENTER_V";
+                            }
+
+                            if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                            {
+                                string font_fileName = FontsList[number_font.font];
+                                //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                                if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                {
+                                    Font drawFont = null;
+                                    using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                    {
+                                        fonts.AddFontFile(font_fileName);
+                                        drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                    }
+
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                    align_h, align_v, text_style, BBorder);
+                                }
+                                else
+                                {
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                }
+
+                            }
+                            else
+                            {
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            }
+                        }
+
+                        if (DigitalTime_v2.Hour_Min_Sec_Font != null && index == DigitalTime_v2.Hour_Min_Sec_Font.position && DigitalTime_v2.Hour_Min_Sec_Font.visible)
+                        {
+                            hmUI_widget_TEXT number_font = DigitalTime_v2.Hour_Min_Sec_Font;
+                            int x = number_font.x;
+                            int y = number_font.y;
+                            int h = number_font.h;
+                            int w = number_font.w;
+
+                            int size = number_font.text_size;
+                            int space_h = number_font.char_space;
+                            int space_v = number_font.line_space;
+
+                            Color color = StringToColor(number_font.color);
+                            //int align_h = AlignmentToInt(number_font.align_h);
+                            //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                            string align_h = number_font.align_h;
+                            string align_v = number_font.align_v;
+                            string text_style = number_font.text_style;
+                            string unitStr = "Am";
+                            int value = WatchFacePreviewSet.Time.Hours;
+                            if (ProgramSettings.ShowIn12hourFormat)
+                            {
+                                if (value > 11)
+                                {
+                                    value -= 12;
+                                    unitStr = "Pm";
+                                }
+                                if (value == 0) value = 12;
+                            }
+                            string valueHourStr = value.ToString();
+                            if (number_font.padding) valueHourStr = valueHourStr.PadLeft(value_lenght, '0');
+                            string valueMinStr = WatchFacePreviewSet.Time.Minutes.ToString();
+                            valueMinStr = valueMinStr.PadLeft(value_lenght, '0');
+                            string valueSecStr = WatchFacePreviewSet.Time.Seconds.ToString();
+                            valueSecStr = valueSecStr.PadLeft(value_lenght, '0');
+
+                            string delimeter = ":";
+                            if (number_font.unit_string != null && number_font.unit_string.Length > 0) delimeter = number_font.unit_string;
+
+                            string valueStr = "";
+                            if (number_font.unit_type == 0) unitStr = unitStr.ToLower();
+                            if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                            valueStr = valueHourStr + delimeter + valueMinStr + delimeter + valueSecStr;
+                            if (checkBox_ShowIn12hourFormat.Checked)
+                            {
+                                if (number_font.unit_end) valueStr = valueStr + " " + unitStr;
+                                else valueStr = unitStr + " " + valueStr;
+                            }
+
+                            if (number_font.centreHorizontally)
+                            {
+                                x = (SelectedModel.background.w - w) / 2;
+                                align_h = "CENTER_H";
+                            }
+                            if (number_font.centreVertically)
+                            {
+                                y = (SelectedModel.background.h - h) / 2;
+                                align_v = "CENTER_V";
+                            }
+
+                            if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                            {
+                                string font_fileName = FontsList[number_font.font];
+                                //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                                if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                {
+                                    Font drawFont = null;
+                                    using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                    {
+                                        fonts.AddFontFile(font_fileName);
+                                        drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                    }
+
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                    align_h, align_v, text_style, BBorder);
+                                }
+                                else
+                                {
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                }
+
+                            }
+                            else
+                            {
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            }
+                        }
+
                     }
 
                     break;
@@ -1620,7 +2352,7 @@ namespace Watch_Face_Editor
                             int x = DateDay.Number.imageX;
                             int y = DateDay.Number.imageY;
                             int spasing = DateDay.Number.space;
-                            time_spasing = spasing;
+                            time_v2_spasing = spasing;
                             int alignment = AlignmentToInt(DateDay.Number.align);
                             bool addZero = DateDay.Number.zero;
                             //addZero = true;
@@ -3158,7 +3890,7 @@ namespace Watch_Face_Editor
 
 
 
-                #region ElementWeather
+                /*#region ElementWeather
                 case "ElementWeather":
                     ElementWeather activityElementWeather = (ElementWeather)element;
                     if (!activityElementWeather.visible) return;
@@ -3195,7 +3927,7 @@ namespace Watch_Face_Editor
 
 
                     break;
-                #endregion
+                #endregion*/
 
                 #region ElementWeather_v2
                 case "ElementWeather_v2":
@@ -3576,6 +4308,7 @@ namespace Watch_Face_Editor
                 case "ElementCompass":
                     ElementCompass activityElementCompass = (ElementCompass)element;
                     if (!activityElementCompass.visible) return;
+                    if (SelectedModel.versionOS < 2) return;
 
                     img_level = activityElementCompass.Images;
                     img_number = activityElementCompass.Number;
@@ -10834,7 +11567,7 @@ namespace Watch_Face_Editor
                 if (separator_width > 0) DateLenght = DateLenght - image_width + separator_width;
                 else DateLenght = DateLenght - image_width;
             }
-            if (unit_in_alignment && unit_width > 0) DateLenght = DateLenght - spacing;
+            if (unit_in_alignment && unit_width > 0) DateLenght = DateLenght + unit_width + spacing;
 
 
             switch (horizontal_alignment)

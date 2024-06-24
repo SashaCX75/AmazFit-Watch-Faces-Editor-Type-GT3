@@ -1278,11 +1278,8 @@ namespace ControlLibrary
             if (control != null)
             {
                 TableLayoutPanelCellPosition pos = tableLayoutPanel1.GetPositionFromControl(control);
-                //if (pos.Column < 0 && pos.Row < 0)
-                //{
-                //    control = control.Parent;
-                //}
                 TableLayoutPanelCellPosition posOld = tableLayoutPanel1.GetPositionFromControl(draggedPanel);
+
                 if (pos != posOld && pos.Row < posOld.Row)
                 {
                     if (posOld.Row - pos.Row == 1)

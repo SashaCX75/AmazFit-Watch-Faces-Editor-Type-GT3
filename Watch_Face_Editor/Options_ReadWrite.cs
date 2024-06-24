@@ -116,7 +116,7 @@ namespace Watch_Face_Editor
                 string type = GetTypeFromSring(elementStr);
                 switch (type)
                 {
-                    #region DigitalTime
+                    /*#region DigitalTime
                     case "DigitalTime":
                         ElementDigitalTime DigitalTime = null;
                         try
@@ -133,6 +133,142 @@ namespace Watch_Face_Editor
                                 Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         if (DigitalTime != null) NewElements.Add(DigitalTime);
+                        break;
+                    #endregion*/
+
+                    #region DigitalTime
+                    case "DigitalTime":
+                        ElementDigitalTime DigitalTime = null;
+                        try
+                        {
+                            DigitalTime = JsonConvert.DeserializeObject<ElementDigitalTime>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (DigitalTime != null) {
+                            ElementDigitalTime_v2 DigitalTime_v2_temp = new ElementDigitalTime_v2();
+
+                            if (DigitalTime.Second != null)
+                            {
+                                if (DigitalTime_v2_temp.Group_Second == null) DigitalTime_v2_temp.Group_Second = new DigitalTimeGroup();
+                                DigitalTime_v2_temp.Group_Second.Number = DigitalTime.Second;
+                                DigitalTime_v2_temp.Group_Second.position = DigitalTime.Second.position;
+                            }
+                            if (DigitalTime.Second_Font != null)
+                            {
+                                if (DigitalTime_v2_temp.Group_Second == null) DigitalTime_v2_temp.Group_Second = new DigitalTimeGroup();
+                                DigitalTime_v2_temp.Group_Second.Number_Font = DigitalTime.Second_Font;
+                                DigitalTime_v2_temp.Group_Second.position = DigitalTime.Second_Font.position;
+                            }
+                            if (DigitalTime.Second_rotation != null)
+                            {
+                                if (DigitalTime_v2_temp.Group_Second == null) DigitalTime_v2_temp.Group_Second = new DigitalTimeGroup();
+                                DigitalTime_v2_temp.Group_Second.Text_rotation = DigitalTime.Second_rotation;
+                                DigitalTime_v2_temp.Group_Second.position = DigitalTime.Second_rotation.position;
+                            }
+                            if (DigitalTime.Second_circle != null)
+                            {
+                                if (DigitalTime_v2_temp.Group_Second == null) DigitalTime_v2_temp.Group_Second = new DigitalTimeGroup();
+                                DigitalTime_v2_temp.Group_Second.Text_circle = DigitalTime.Second_circle;
+                                DigitalTime_v2_temp.Group_Second.position = DigitalTime.Second_circle.position;
+                            }
+
+                            if (DigitalTime.Minute != null)
+                            {
+                                if (DigitalTime_v2_temp.Group_Minute == null) DigitalTime_v2_temp.Group_Minute = new DigitalTimeGroup();
+                                DigitalTime_v2_temp.Group_Minute.Number = DigitalTime.Minute;
+                                DigitalTime_v2_temp.Group_Minute.position = DigitalTime.Minute.position;
+                            }
+                            if (DigitalTime.Minute_Font != null)
+                            {
+                                if (DigitalTime_v2_temp.Group_Minute == null) DigitalTime_v2_temp.Group_Minute = new DigitalTimeGroup();
+                                DigitalTime_v2_temp.Group_Minute.Number_Font = DigitalTime.Minute_Font;
+                                DigitalTime_v2_temp.Group_Minute.position = DigitalTime.Minute_Font.position;
+                            }
+                            if (DigitalTime.Minute_rotation != null)
+                            {
+                                if (DigitalTime_v2_temp.Group_Minute == null) DigitalTime_v2_temp.Group_Minute = new DigitalTimeGroup();
+                                DigitalTime_v2_temp.Group_Minute.Text_rotation = DigitalTime.Minute_rotation;
+                                DigitalTime_v2_temp.Group_Minute.position = DigitalTime.Minute_rotation.position;
+                            }
+                            if (DigitalTime.Minute_circle != null)
+                            {
+                                if (DigitalTime_v2_temp.Group_Minute == null) DigitalTime_v2_temp.Group_Minute = new DigitalTimeGroup();
+                                DigitalTime_v2_temp.Group_Minute.Text_circle = DigitalTime.Minute_circle;
+                                DigitalTime_v2_temp.Group_Minute.position = DigitalTime.Minute_circle.position;
+                            }
+
+                            if (DigitalTime.Hour != null)
+                            {
+                                if (DigitalTime_v2_temp.Group_Hour == null) DigitalTime_v2_temp.Group_Hour = new DigitalTimeGroup();
+                                DigitalTime_v2_temp.Group_Hour.Number = DigitalTime.Hour;
+                                DigitalTime_v2_temp.Group_Hour.position = DigitalTime.Hour.position;
+                            }
+                            if (DigitalTime.Hour_Font != null)
+                            {
+                                if (DigitalTime_v2_temp.Group_Hour == null) DigitalTime_v2_temp.Group_Hour = new DigitalTimeGroup();
+                                DigitalTime_v2_temp.Group_Hour.Number_Font = DigitalTime.Hour_Font;
+                                DigitalTime_v2_temp.Group_Hour.position = DigitalTime.Hour_Font.position;
+                            }
+                            if (DigitalTime.Hour_rotation != null)
+                            {
+                                if (DigitalTime_v2_temp.Group_Hour == null) DigitalTime_v2_temp.Group_Hour = new DigitalTimeGroup();
+                                DigitalTime_v2_temp.Group_Hour.Text_rotation = DigitalTime.Hour_rotation;
+                                DigitalTime_v2_temp.Group_Hour.position = DigitalTime.Hour_rotation.position;
+                            }
+                            if (DigitalTime.Hour_circle != null)
+                            {
+                                if (DigitalTime_v2_temp.Group_Hour == null) DigitalTime_v2_temp.Group_Hour = new DigitalTimeGroup();
+                                DigitalTime_v2_temp.Group_Hour.Text_circle = DigitalTime.Hour_circle;
+                                DigitalTime_v2_temp.Group_Hour.position = DigitalTime.Hour_circle.position;
+                            }
+
+                            if (DigitalTime.Hour_min_Font != null) DigitalTime_v2_temp.Hour_Min_Font = DigitalTime.Hour_min_Font;
+                            if (DigitalTime.Hour_min_sec_Font != null) DigitalTime_v2_temp.Hour_Min_Sec_Font = DigitalTime.Hour_min_sec_Font;
+
+                            if (DigitalTime.AmPm != null) DigitalTime_v2_temp.AmPm = DigitalTime.AmPm;
+
+                            int index = 1;
+                            for (int i = 0; i < 25; i++)
+                            {
+                                if (DigitalTime_v2_temp.Group_Second != null && DigitalTime_v2_temp.Group_Second.position == i) DigitalTime_v2_temp.Group_Second.position = index++;
+                                if (DigitalTime_v2_temp.Group_Minute != null && DigitalTime_v2_temp.Group_Minute.position == i) DigitalTime_v2_temp.Group_Minute.position = index++;
+                                if (DigitalTime_v2_temp.Group_Hour != null && DigitalTime_v2_temp.Group_Hour.position == i) DigitalTime_v2_temp.Group_Hour.position = index++;
+
+                                if (DigitalTime_v2_temp.Hour_Min_Font != null && DigitalTime_v2_temp.Hour_Min_Font.position == i) DigitalTime_v2_temp.Hour_Min_Font.position = index++;
+                                if (DigitalTime_v2_temp.Hour_Min_Sec_Font != null && DigitalTime_v2_temp.Hour_Min_Sec_Font.position == i) DigitalTime_v2_temp.Hour_Min_Sec_Font.position = index++;
+                                if (DigitalTime_v2_temp.AmPm != null && DigitalTime_v2_temp.AmPm.position == i) DigitalTime_v2_temp.AmPm.position = index++;
+                            }
+
+                            NewElements.Add(DigitalTime_v2_temp);
+                        }
+                        break;
+                    #endregion
+
+                    #region DigitalTime_v2
+                    case "DigitalTime_v2":
+                        ElementDigitalTime_v2 DigitalTime_v2 = null;
+                        try
+                        {
+                            DigitalTime_v2 = JsonConvert.DeserializeObject<ElementDigitalTime_v2>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (DigitalTime_v2 != null) NewElements.Add(DigitalTime_v2);
                         break;
                     #endregion
 
@@ -576,7 +712,6 @@ namespace Watch_Face_Editor
                         if (Weather != null) 
                         {
                             ElementWeather_v2 Weather_v2_temp = new ElementWeather_v2();
-                            List<String> list = new List<String>();
 
                             if(Weather.Number != null)
                             {

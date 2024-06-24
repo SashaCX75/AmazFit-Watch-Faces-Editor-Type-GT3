@@ -47,7 +47,7 @@ namespace Watch_Face_Editor
                     }
                 }
             }
-            if(Watch_Face.ElementEditablePointers != null)
+            if (Watch_Face.ElementEditablePointers != null)
             {
                 Scale_EditablePointers(Watch_Face.ElementEditablePointers, scale);
             }
@@ -226,6 +226,33 @@ namespace Watch_Face_Editor
                     Scale_Text_Circle(elementDigitalTime.Minute_circle, scale);
                     Scale_Text_Circle(elementDigitalTime.Second_circle, scale);
                     break;
+                case "ElementDigitalTime_v2":
+                    ElementDigitalTime_v2 elementDigitalTime_v2 = (ElementDigitalTime_v2)elements;
+                    if (elementDigitalTime_v2.Group_Hour != null)
+                    {
+                        Scale_IMG_NUMBER(elementDigitalTime_v2.Group_Hour.Number, scale);
+                        Scale_TEXT(elementDigitalTime_v2.Group_Hour.Number_Font, scale);
+                        Scale_IMG_NUMBER(elementDigitalTime_v2.Group_Hour.Text_rotation, scale);
+                        Scale_Text_Circle(elementDigitalTime_v2.Group_Hour.Text_circle, scale);
+                    }
+                    if (elementDigitalTime_v2.Group_Minute != null)
+                    {
+                        Scale_IMG_NUMBER(elementDigitalTime_v2.Group_Minute.Number, scale);
+                        Scale_TEXT(elementDigitalTime_v2.Group_Minute.Number_Font, scale);
+                        Scale_IMG_NUMBER(elementDigitalTime_v2.Group_Minute.Text_rotation, scale);
+                        Scale_Text_Circle(elementDigitalTime_v2.Group_Minute.Text_circle, scale);
+                    }
+                    if (elementDigitalTime_v2.Group_Second != null)
+                    {
+                        Scale_IMG_NUMBER(elementDigitalTime_v2.Group_Second.Number, scale);
+                        Scale_TEXT(elementDigitalTime_v2.Group_Second.Number_Font, scale);
+                        Scale_IMG_NUMBER(elementDigitalTime_v2.Group_Second.Text_rotation, scale);
+                        Scale_Text_Circle(elementDigitalTime_v2.Group_Second.Text_circle, scale);
+                    }
+                    Scale_AmPm(elementDigitalTime_v2.AmPm, scale);
+                    Scale_TEXT(elementDigitalTime_v2.Hour_Min_Font, scale);
+                    Scale_TEXT(elementDigitalTime_v2.Hour_Min_Sec_Font, scale);
+                    break;
                 case "ElementAnalogTime":
                     ElementAnalogTime elementAnalogTime = (ElementAnalogTime)elements;
                     Scale_IMG_POINTER(elementAnalogTime.Hour, scale);
@@ -398,6 +425,7 @@ namespace Watch_Face_Editor
                     Scale_TEXT(elementSpO2.Number_Font, scale);
                     Scale_IMG_NUMBER(elementSpO2.Text_rotation, scale);
                     Scale_Text_Circle(elementSpO2.Text_circle, scale);
+                    Scale_IMG(elementSpO2.Icon, scale);
                     break;
                 case "ElementStress":
                     ElementStress elementStress = (ElementStress)elements;

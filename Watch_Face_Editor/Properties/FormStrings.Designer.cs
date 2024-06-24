@@ -628,6 +628,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Этот виджет не поддерживается выбранной моделью часов..
+        /// </summary>
+        internal static string Message_Old_OS {
+            get {
+                return ResourceManager.GetString("Message_Old_OS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Перезагрузка.
         /// </summary>
         internal static string Message_Restart_Caption {
@@ -831,6 +840,15 @@ namespace Watch_Face_Editor.Properties {
         internal static string Message_WarningPreview_Text2 {
             get {
                 return ResourceManager.GetString("Message_WarningPreview_Text2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Такой виджет уже есть в циферблате..
+        /// </summary>
+        internal static string Message_Widget_Exists {
+            get {
+                return ResourceManager.GetString("Message_Widget_Exists", resourceCulture);
             }
         }
         

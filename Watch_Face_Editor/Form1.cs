@@ -1277,8 +1277,7 @@ namespace Watch_Face_Editor
                 int dY = Math.Abs(cursorY - cursorPos.Y);
                 if (panel.Name == "panel_UC_Background" || panel.Name == "panel_UC_Shortcuts" || panel.Name == "panel_UC_DisconnectAlert" || 
                     panel.Name == "panel_UC_EditableTimePointer" || panel.Name == "panel_UC_EditableElements" || 
-                    panel.Name == "panel_UC_RepeatingAlert" || panel.Name == "panel_UC_TopImage" || 
-                    panel.Name == "panel_UC_Image")
+                    panel.Name == "panel_UC_RepeatingAlert" || panel.Name == "panel_UC_TopImage" )
                 {
                     panel.DoDragDrop(sender, DragDropEffects.None);
                     return;
@@ -1301,6 +1300,7 @@ namespace Watch_Face_Editor
             //return;
             //if (e.Data.GetDataPresent(typeof(UCtrl_Background_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_DigitalTime_Elm))) typeReturn = false;
+            if (e.Data.GetDataPresent(typeof(UCtrl_DigitalTime_Elm_v2))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_AnalogTime_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_AnalogTimePro_Elm))) typeReturn = false;
             //if (e.Data.GetDataPresent(typeof(UCtrl_EditableTimePointer_Elm))) typeReturn = false;
@@ -1368,6 +1368,14 @@ namespace Watch_Face_Editor
                             (ElementDigitalTime)Elements.Find(e1 => e1.GetType().Name == "ElementDigitalTime");
                         index = Elements.IndexOf(digitalTime);
                         draggedUCtrl_Elm = (UCtrl_DigitalTime_Elm)e.Data.GetData(typeof(UCtrl_DigitalTime_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+
+                    case "ControlLibrary.UCtrl_DigitalTime_Elm_v2":
+                        ElementDigitalTime_v2 digitalTime_v2 =
+                            (ElementDigitalTime_v2)Elements.Find(e1 => e1.GetType().Name == "ElementDigitalTime_v2");
+                        index = Elements.IndexOf(digitalTime_v2);
+                        draggedUCtrl_Elm = (UCtrl_DigitalTime_Elm_v2)e.Data.GetData(typeof(UCtrl_DigitalTime_Elm_v2));
                         if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                         break;
 
@@ -1886,6 +1894,7 @@ namespace Watch_Face_Editor
         {
             if (selectElementName != "Background") uCtrl_Background_Elm.ResetHighlightState();
             if (selectElementName != "DigitalTime") uCtrl_DigitalTime_Elm.ResetHighlightState();
+            if (selectElementName != "DigitalTime_v2") uCtrl_DigitalTime_Elm_v2.ResetHighlightState();
             if (selectElementName != "AnalogTime") uCtrl_AnalogTime_Elm.ResetHighlightState();
             if (selectElementName != "AnalogTimePro") uCtrl_AnalogTimePro_Elm.ResetHighlightState();
             if (selectElementName != "EditablePointers") uCtrl_EditableTimePointer_Elm.ResetHighlightState();
@@ -1955,6 +1964,7 @@ namespace Watch_Face_Editor
         {
             uCtrl_Background_Elm.SettingsClear();
             uCtrl_DigitalTime_Elm.SettingsClear();
+            uCtrl_DigitalTime_Elm_v2.SettingsClear();
             uCtrl_AnalogTime_Elm.SettingsClear();
             uCtrl_AnalogTimePro_Elm.SettingsClear();
             uCtrl_EditableTimePointer_Elm.SettingsClear();
@@ -2202,6 +2212,185 @@ namespace Watch_Face_Editor
                         if (uCtrl_DigitalTime_Elm.checkBox_Seconds_circle.Checked)
                         {
                             text_circle = digitalTime.Second_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
+
+            }
+
+            //JSON_Modified = true;
+            //PreviewImage();
+            //FormText();
+        }
+
+        private void uCtrl_DigitalTime_Elm_v2_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            string selectElement = uCtrl_DigitalTime_Elm_v2.selectedElement;
+            if (selectElement.Length == 0) HideAllElemenrOptions();
+            ResetHighlightState("DigitalTime_v2");
+
+            ElementDigitalTime_v2 digitalTime = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    digitalTime = (ElementDigitalTime_v2)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime_v2");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    digitalTime = (ElementDigitalTime_v2)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDigitalTime_v2");
+                }
+            }
+            if (digitalTime != null)
+            {
+                hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
+                hmUI_widget_TEXT text = null;
+
+                switch (selectElement)
+                {
+                    case "Hour":
+                        if (uCtrl_DigitalTime_Elm_v2.checkBox_Number_Hours.Checked)
+                        {
+                            img_number = digitalTime.Group_Hour.Number;
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Minute":
+                        if (uCtrl_DigitalTime_Elm_v2.checkBox_Number_Minutes.Checked)
+                        {
+                            img_number = digitalTime.Group_Minute.Number;
+                            Read_ImgNumber_Options(img_number, false, true, Properties.FormStrings.FollowMinute, false, false, true, false);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Second":
+                        if (uCtrl_DigitalTime_Elm_v2.checkBox_Number_Seconds.Checked)
+                        {
+                            img_number = digitalTime.Group_Second.Number;
+                            Read_ImgNumber_Options(img_number, false, true, Properties.FormStrings.FollowSecond, false, false, true, false);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "AmPm":
+                        if (uCtrl_DigitalTime_Elm_v2.checkBox_AmPm.Checked)
+                        {
+                            hmUI_widget_IMG_TIME_am_pm am_pm = digitalTime.AmPm;
+                            Read_AM_PM_Options(am_pm);
+                            ShowElemenrOptions("AmPm");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+
+                    case "Hour_Font":
+                        if (uCtrl_DigitalTime_Elm_v2.checkBox_Number_Hours_Font.Checked)
+                        {
+                            text = digitalTime.Group_Hour.Number_Font;
+                            Read_Text_Options(text, true, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Minute_Font":
+                        if (uCtrl_DigitalTime_Elm_v2.checkBox_Number_Minutes_Font.Checked)
+                        {
+                            text = digitalTime.Group_Minute.Number_Font;
+                            Read_Text_Options(text, true, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Second_Font":
+                        if (uCtrl_DigitalTime_Elm_v2.checkBox_Number_Seconds_Font.Checked)
+                        {
+                            text = digitalTime.Group_Second.Number_Font;
+                            Read_Text_Options(text, true, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Hour_Min_Font":
+                        if (uCtrl_DigitalTime_Elm_v2.checkBox_Hour_Min_Font.Checked)
+                        {
+                            text = digitalTime.Hour_Min_Font;
+                            Read_Text_Options(text, true, true, true, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Hour_Min_Sec_Font":
+                        if (uCtrl_DigitalTime_Elm_v2.checkBox_Hour_Min_Sec_Font.Checked)
+                        {
+                            text = digitalTime.Hour_Min_Sec_Font;
+                            Read_Text_Options(text, true, true, true, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+
+                    case "Hour_rotation":
+                        if (uCtrl_DigitalTime_Elm_v2.checkBox_Hours_rotation.Checked)
+                        {
+                            text_rotation = digitalTime.Group_Hour.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Minute_rotation":
+                        if (uCtrl_DigitalTime_Elm_v2.checkBox_Minutes_rotation.Checked)
+                        {
+                            text_rotation = digitalTime.Group_Minute.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Second_rotation":
+                        if (uCtrl_DigitalTime_Elm_v2.checkBox_Seconds_rotation.Checked)
+                        {
+                            text_rotation = digitalTime.Group_Second.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+
+                    case "Hour_circle":
+                        if (uCtrl_DigitalTime_Elm_v2.checkBox_Hours_circle.Checked)
+                        {
+                            text_circle = digitalTime.Group_Hour.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Minute_circle":
+                        if (uCtrl_DigitalTime_Elm_v2.checkBox_Minutes_circle.Checked)
+                        {
+                            text_circle = digitalTime.Group_Minute.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Second_circle":
+                        if (uCtrl_DigitalTime_Elm_v2.checkBox_Seconds_circle.Checked)
+                        {
+                            text_circle = digitalTime.Group_Second.Text_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
@@ -3334,7 +3523,6 @@ namespace Watch_Face_Editor
             }
             saveFileDialog.Filter = Properties.FormStrings.FilterJson;
 
-            //openFileDialog.Filter = "Json files (*.json) | *.json";
             saveFileDialog.RestoreDirectory = true;
             saveFileDialog.Title = Properties.FormStrings.Dialog_Title_Dial_Settings;
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -3364,8 +3552,6 @@ namespace Watch_Face_Editor
                         button_CreatePreview.Visible = false;
                     }
                 }
-
-                //if (checkBox_JsonWarnings.Checked) jsonWarnings(fullfilename);
             }
         }
 
@@ -3373,14 +3559,16 @@ namespace Watch_Face_Editor
         {
             if (comboBox_AddTime.SelectedIndex == 0)
             {
-                AddAnalogTime();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddAnalogTime())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                //panel_WatchfaceElements.AutoScrollPosition = new Point(
-                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                //    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    //panel_WatchfaceElements.AutoScrollPosition = new Point(
+                    //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                    //    panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddTime.SelectedIndex == 1)
             {
@@ -3388,16 +3576,29 @@ namespace Watch_Face_Editor
                 ShowElemetsWatchFace();
                 JSON_Modified = true;
                 FormText();
-
-                //panel_WatchfaceElements.AutoScrollPosition = new Point(
-                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                //    panel_WatchfaceElements.VerticalScroll.Maximum);
             }
             if (comboBox_AddTime.SelectedIndex == 2)
             {
                 if (radioButton_ScreenNormal.Checked)
                 {
-                    AddEditableTimePointer();
+                    if (AddEditableTimePointer())
+                    {
+                        ShowElemetsWatchFace();
+                        JSON_Modified = true;
+                        FormText();
+
+                        //panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        //    panel_WatchfaceElements.VerticalScroll.Maximum); 
+                    }
+                }
+                else MessageBox.Show(Properties.FormStrings.Message_EditablePointerAOD_Text, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            if (comboBox_AddTime.SelectedIndex == 3)
+            {
+                if (AddAnalogTimePro())
+                {
                     ShowElemetsWatchFace();
                     JSON_Modified = true;
                     FormText();
@@ -3406,22 +3607,9 @@ namespace Watch_Face_Editor
                     //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
                     //    panel_WatchfaceElements.VerticalScroll.Maximum); 
                 }
-                else MessageBox.Show(Properties.FormStrings.Message_EditablePointerAOD_Text, Properties.FormStrings.Message_Warning_Caption,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            if (comboBox_AddTime.SelectedIndex == 3)
-            {
-                AddAnalogTimePro();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
-
-                //panel_WatchfaceElements.AutoScrollPosition = new Point(
-                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                //    panel_WatchfaceElements.VerticalScroll.Maximum); 
-            }
+            
             PreviewView = false;
-            //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
             comboBox_AddTime.Items.Insert(0, Properties.FormStrings.Elemet_Time);
             comboBox_AddTime.SelectedIndex = 0;
             PreviewView = true;
@@ -3431,50 +3619,58 @@ namespace Watch_Face_Editor
         {
             if (comboBox_AddDate.SelectedIndex == 0)
             {
-                AddDateDay();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddDateDay())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddDate.SelectedIndex == 1)
             {
-                AddDateMonth();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddDateMonth())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddDate.SelectedIndex == 2)
             {
-                AddDateYear();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddDateYear())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddDate.SelectedIndex == 3)
             {
-                AddDateWeek();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddDateWeek())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
+            
             PreviewView = false;
-            //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
             comboBox_AddDate.Items.Insert(0, Properties.FormStrings.Elemet_Date);
             comboBox_AddDate.SelectedIndex = 0;
             PreviewView = true;
@@ -3484,117 +3680,122 @@ namespace Watch_Face_Editor
         {
             if (comboBox_AddActivity.SelectedIndex == 0)
             {
-                AddSteps();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddSteps())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddActivity.SelectedIndex == 1)
             {
-                AddCalories();
-                ShowElemetsWatchFace();
+                if(AddCalories())
+                {ShowElemetsWatchFace();
                 JSON_Modified = true;
                 FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddActivity.SelectedIndex == 2)
             {
-                AddHeart();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddHeart())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddActivity.SelectedIndex == 3)
             {
-                AddPAI();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddPAI())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddActivity.SelectedIndex == 4)
             {
-                AddDistance();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddDistance())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddActivity.SelectedIndex == 5)
             {
-                AddStand();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddStand())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
-            /*if (comboBox_AddActivity.SelectedIndex == 6)
-            {
-                AddActivity();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
-
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
-            }*/
             if (comboBox_AddActivity.SelectedIndex == 6)
             {
-                AddSpO2();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddSpO2())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddActivity.SelectedIndex == 7)
             {
-                AddFatBurning();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddFatBurning())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddActivity.SelectedIndex == 8)
             {
-                AddStress();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddStress())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
 
             PreviewView = false;
-            //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
             comboBox_AddActivity.Items.Insert(0, Properties.FormStrings.Elemet_Activity);
             comboBox_AddActivity.SelectedIndex = 0;
             PreviewView = true;
@@ -3604,91 +3805,107 @@ namespace Watch_Face_Editor
         {
             if (comboBox_AddAir.SelectedIndex == 0)
             {
-                AddWeather_v2();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddWeather_v2())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddAir.SelectedIndex == 1)
             {
-                AddUVIndex();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddUVIndex())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddAir.SelectedIndex == 2)
             {
-                AddHumidity();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddHumidity())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddAir.SelectedIndex == 3)
             {
-                AddSunrise();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddSunrise())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddAir.SelectedIndex == 4)
             {
-                AddWind();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddWind())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddAir.SelectedIndex == 5)
             {
-                AddAltimeter();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddAltimeter())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddAir.SelectedIndex == 6)
             {
-                AddMoon();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddMoon())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddAir.SelectedIndex == 7)
             {
-                AddWeather_FewDays();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddWeather_FewDays())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
 
             PreviewView = false;
@@ -3701,34 +3918,40 @@ namespace Watch_Face_Editor
         {
             if (comboBox_AddSystem.SelectedIndex == 0)
             {
-                AddBattery();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddBattery())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddSystem.SelectedIndex == 1)
             {
-                AddStatuses();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (AddStatuses())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
             }
             if (comboBox_AddSystem.SelectedIndex == 2)
             {
                 if (radioButton_ScreenNormal.Checked)
                 {
-                    AddShortcuts();
-                    ShowElemetsWatchFace();
-                    JSON_Modified = true;
-                    FormText(); 
+                    if (AddShortcuts())
+                    {
+                        ShowElemetsWatchFace();
+                        JSON_Modified = true;
+                        FormText();
+                    }
                 }
                 else MessageBox.Show(Properties.FormStrings.Message_ShortcutsAOD_Text, Properties.FormStrings.Message_Warning_Caption,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -3737,10 +3960,12 @@ namespace Watch_Face_Editor
             {
                 if (radioButton_ScreenNormal.Checked)
                 {
-                    AddAnimation();
-                    ShowElemetsWatchFace();
-                    JSON_Modified = true;
-                    FormText();
+                    if (AddAnimation())
+                    {
+                        ShowElemetsWatchFace();
+                        JSON_Modified = true;
+                        FormText();
+                    }
                 }
                 else MessageBox.Show(Properties.FormStrings.Message_AnimationAOD_Text, Properties.FormStrings.Message_Warning_Caption,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -3761,10 +3986,12 @@ namespace Watch_Face_Editor
             {
                 if (radioButton_ScreenNormal.Checked)
                 {
-                    AddDisconnectAlert();
-                    ShowElemetsWatchFace();
-                    JSON_Modified = true;
-                    FormText();
+                    if (AddDisconnectAlert())
+                    {
+                        ShowElemetsWatchFace();
+                        JSON_Modified = true;
+                        FormText();
+                    }
                 }
                 else MessageBox.Show(Properties.FormStrings.Message_ElementAOD_Text, Properties.FormStrings.Message_Warning_Caption,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -3773,65 +4000,20 @@ namespace Watch_Face_Editor
             {
                 if (radioButton_ScreenNormal.Checked)
                 {
-                    AddRepeatingAlert();
-                    ShowElemetsWatchFace();
-                    JSON_Modified = true;
-                    FormText();
+                    if (AddRepeatingAlert())
+                    {
+                        ShowElemetsWatchFace();
+                        JSON_Modified = true;
+                        FormText();
+                    }
                 }
                 else MessageBox.Show(Properties.FormStrings.Message_ElementAOD_Text, Properties.FormStrings.Message_Warning_Caption,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             if (comboBox_AddSystem.SelectedIndex == 7)
             {
-                AddImage();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
-
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
-            }
-            if (comboBox_AddSystem.SelectedIndex == 8)
-            {
-                if (radioButton_ScreenNormal.Checked)
+                if (AddImage())
                 {
-                    AddTopImage();
-                    ShowElemetsWatchFace();
-                    JSON_Modified = true;
-                    FormText();
-                }
-                else MessageBox.Show(Properties.FormStrings.Message_ElementAOD_Text, Properties.FormStrings.Message_Warning_Caption,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            if (comboBox_AddSystem.SelectedIndex == 9)
-            {
-                if (radioButton_ScreenNormal.Checked)
-                {
-                    AddButtons();
-                    ShowElemetsWatchFace();
-                    JSON_Modified = true;
-                    FormText();
-                }
-                else MessageBox.Show(Properties.FormStrings.Message_ElementAOD_Text, Properties.FormStrings.Message_Warning_Caption,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            if (comboBox_AddSystem.SelectedIndex == 10)
-            {
-                AddScript();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
-
-                panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    panel_WatchfaceElements.VerticalScroll.Maximum);
-            }
-            if (comboBox_AddSystem.SelectedIndex == 11)
-            {
-                if (radioButton_ScreenNormal.Checked)
-                {
-                    AddCompass();
                     ShowElemetsWatchFace();
                     JSON_Modified = true;
                     FormText();
@@ -3840,12 +4022,73 @@ namespace Watch_Face_Editor
                         Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
                         panel_WatchfaceElements.VerticalScroll.Maximum);
                 }
+            }
+            if (comboBox_AddSystem.SelectedIndex == 8)
+            {
+                if (radioButton_ScreenNormal.Checked)
+                {
+                    if (AddTopImage())
+                    {
+                        ShowElemetsWatchFace();
+                        JSON_Modified = true;
+                        FormText();
+                    }
+                }
                 else MessageBox.Show(Properties.FormStrings.Message_ElementAOD_Text, Properties.FormStrings.Message_Warning_Caption,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            if (comboBox_AddSystem.SelectedIndex == 9)
+            {
+                if (radioButton_ScreenNormal.Checked)
+                {
+                    if (AddButtons())
+                    {
+                        ShowElemetsWatchFace();
+                        JSON_Modified = true;
+                        FormText();
+                    }
+                }
+                else MessageBox.Show(Properties.FormStrings.Message_ElementAOD_Text, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            if (comboBox_AddSystem.SelectedIndex == 10)
+            {
+                if (AddScript())
+                {
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
+
+                    panel_WatchfaceElements.AutoScrollPosition = new Point(
+                        Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                        panel_WatchfaceElements.VerticalScroll.Maximum);
+                }
+            }
+            if (comboBox_AddSystem.SelectedIndex == 11)
+            {
+                if (SelectedModel.versionOS >= 2)
+                {
+                    if (radioButton_ScreenNormal.Checked)
+                    {
+                        if (AddCompass())
+                        {
+                            ShowElemetsWatchFace();
+                            JSON_Modified = true;
+                            FormText();
+
+                            panel_WatchfaceElements.AutoScrollPosition = new Point(
+                                Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                                panel_WatchfaceElements.VerticalScroll.Maximum);
+                        }
+                    }
+                    else MessageBox.Show(Properties.FormStrings.Message_ElementAOD_Text, Properties.FormStrings.Message_Warning_Caption,
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else MessageBox.Show(Properties.FormStrings.Message_Old_OS, Properties.FormStrings.Message_Warning_Caption,
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
             PreviewView = false;
-            //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
             comboBox_AddSystem.Items.Insert(0, Properties.FormStrings.Elemet_System);
             comboBox_AddSystem.SelectedIndex = 0;
             PreviewView = true;
@@ -4053,9 +4296,9 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Добавляем цифровое время в циферблат</summary>
-        private void AddDigitalTime()
+        private bool AddDigitalTime()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4074,23 +4317,26 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementDigitalTime digitalTime = new ElementDigitalTime();
+            ElementDigitalTime_v2 digitalTime = new ElementDigitalTime_v2();
             digitalTime.visible = true;
             //digitalTime.position = Elements.Count;
-            bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime"); // проверяем что такого элемента нет
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime_v2"); // проверяем что такого элемента нет
             bool existsShortcuts = Elements.Exists(e => e.GetType().Name == "ElementShortcuts"); // проверяем что нет ярлыков
             if (!exists) {
                 if (!existsShortcuts) Elements.Add(digitalTime);
                 else Elements.Insert(Elements.Count - 1, digitalTime);
+                uCtrl_DigitalTime_Elm.SettingsClear();
+                return true;
             }
-            //if (!exists) Elements.Insert(0, digitalTime);
-            uCtrl_DigitalTime_Elm.SettingsClear();
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем аналогового время в циферблат</summary>
-        private void AddAnalogTime()
+        private bool AddAnalogTime()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4109,24 +4355,27 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementAnalogTime analogTime = new ElementAnalogTime();
-            analogTime.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime"); // проверяем что такого элемента нет
             bool existsShortcuts = Elements.Exists(e => e.GetType().Name == "ElementShortcuts"); // проверяем что нет ярлыков
-            if (!exists) 
-            { 
-                if(!existsShortcuts) Elements.Add(analogTime);
+            if (!exists)
+            {
+                ElementAnalogTime analogTime = new ElementAnalogTime();
+                analogTime.visible = true;
+
+                if (!existsShortcuts) Elements.Add(analogTime);
                 else Elements.Insert(Elements.Count-1, analogTime);
+                uCtrl_AnalogTime_Elm.SettingsClear();
+                return true;
             }
-            //if (!exists) Elements.Insert(0, analogTime);
-            uCtrl_AnalogTime_Elm.SettingsClear();
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем аналогового время в циферблат (Pro)</summary>
-        private void AddAnalogTimePro()
+        private bool AddAnalogTimePro()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             ElementAnalogTimePro analogTime = new ElementAnalogTimePro();
@@ -4148,121 +4397,129 @@ namespace Watch_Face_Editor
                 if (analogTime.SmoothSecond != null) analogTime.SmoothSecond.type = 2;
             }
 
-            //ElementAnalogTimePro analogTime = new ElementAnalogTimePro();
             analogTime.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTimePro"); // проверяем что такого элемента нет
             bool existsShortcuts = Elements.Exists(e => e.GetType().Name == "ElementShortcuts"); // проверяем что нет ярлыков
             if (!exists)
             {
                 if (!existsShortcuts) Elements.Add(analogTime);
                 else Elements.Insert(Elements.Count - 1, analogTime);
+                uCtrl_AnalogTimePro_Elm.SettingsClear();
+                return true;
             }
-            //if (!exists) Elements.Insert(0, analogTime);
-            uCtrl_AnalogTimePro_Elm.SettingsClear();
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем редактируемые стрелки</summary>
-        private void AddEditableTimePointer()
+        private bool AddEditableTimePointer()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             //List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
-            /*if (radioButton_ScreenNormal.Checked)
+            if (Watch_Face.ElementEditablePointers == null) 
             {
-                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
-                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
-                Elements = Watch_Face.ScreenNormal.Elements;
+                Watch_Face.ElementEditablePointers = new ElementEditablePointers();
+                Watch_Face.ElementEditablePointers.visible = true;
+                uCtrl_EditableTimePointer_Opt.SettingsClear();
+                return true;
             }
-            else
-            {
-                return;
-                //if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
-                //if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
-                //Elements = Watch_Face.ScreenAOD.Elements;
-
-                //if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
-                //    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
-            }
-
-            ElementEditablePointers editablePointers = new ElementEditablePointers();
-            editablePointers.enable = true;
-            //digitalTime.position = Elements.Count;
-            bool exists = Elements.Exists(e => e.GetType().Name == "ElementEditablePointers"); // проверяем что такого элемента нет
-            bool existsShortcuts = Elements.Exists(e => e.GetType().Name == "ElementShortcuts"); // проверяем что нет ярлыков
-            if (!exists)
-            {
-                if (!existsShortcuts) Elements.Add(editablePointers);
-                else Elements.Insert(Elements.Count - 1, editablePointers);
-            }
-            //if (!exists) Elements.Insert(0, analogTime);*/
-            if (Watch_Face.ElementEditablePointers == null) Watch_Face.ElementEditablePointers = new ElementEditablePointers();
-            Watch_Face.ElementEditablePointers.visible = true;
-            uCtrl_EditableTimePointer_Opt.SettingsClear();
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем редактируемые стрелки</summary>
-        private void AddEditableElements()
+        private bool AddEditableElements()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
 
-            if (Watch_Face.Editable_Elements == null) Watch_Face.Editable_Elements = new EditableElements();
-            Watch_Face.Editable_Elements.visible = true;
+            if (Watch_Face.Editable_Elements == null) 
+            {
+                Watch_Face.Editable_Elements = new EditableElements();
+                Watch_Face.Editable_Elements.visible = true;
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем оповещение об обрыве связи</summary>
-        private void AddDisconnectAlert()
+        private bool AddDisconnectAlert()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
 
-            if (Watch_Face.DisconnectAlert == null) Watch_Face.DisconnectAlert = new DisconnectAlert();
-            Watch_Face.DisconnectAlert.enable = true;
+            if (Watch_Face.DisconnectAlert == null) 
+            {
+                Watch_Face.DisconnectAlert = new DisconnectAlert();
+                Watch_Face.DisconnectAlert.enable = true;
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем повторяющиеся оповещение</summary>
-        private void AddRepeatingAlert()
+        private bool AddRepeatingAlert()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
 
-            if (Watch_Face.RepeatAlert == null) Watch_Face.RepeatAlert = new RepeatAlert();
-            Watch_Face.RepeatAlert.enable = true;
+            if (Watch_Face.RepeatAlert == null) {
+                Watch_Face.RepeatAlert = new RepeatAlert();
+                Watch_Face.RepeatAlert.enable = true;
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем верхнее изображение оповещение</summary>
-        private void AddTopImage()
+        private bool AddTopImage()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
 
             if (Watch_Face.TopImage == null)
             {
                 Watch_Face.TopImage = new TopImage();
                 Watch_Face.TopImage.Icon = new hmUI_widget_IMG();
+                Watch_Face.TopImage.visible = true;
+                return true;
             }
-            Watch_Face.TopImage.visible = true;
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем кнопки</summary>
-        private void AddButtons()
+        private bool AddButtons()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
 
             if (Watch_Face.Buttons == null)
             {
                 Watch_Face.Buttons = new ElementButtons();
                 Watch_Face.Buttons.Button = new List<Button>();
+                Watch_Face.Buttons.enable = true;
+                return true;
             }
-            Watch_Face.Buttons.enable = true;
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем дату в циферблат</summary>
-        private void AddDateDay()
+        private bool AddDateDay()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4281,18 +4538,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementDateDay dateDay = new ElementDateDay();
-            dateDay.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementDateDay"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, dateDay);
-            uCtrl_DigitalTime_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementDateDay dateDay = new ElementDateDay();
+                dateDay.visible = true;
+
+                Elements.Insert(0, dateDay);
+                uCtrl_DigitalTime_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем месяц в циферблат</summary>
-        private void AddDateMonth()
+        private bool AddDateMonth()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4311,18 +4575,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementDateMonth dateMonth = new ElementDateMonth();
-            dateMonth.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementDateMonth"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, dateMonth);
-            uCtrl_DigitalTime_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementDateMonth dateMonth = new ElementDateMonth();
+                dateMonth.visible = true;
+
+                Elements.Insert(0, dateMonth);
+                uCtrl_DigitalTime_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем год в циферблат</summary>
-        private void AddDateYear()
+        private bool AddDateYear()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4341,18 +4612,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementDateYear dateYear = new ElementDateYear();
-            dateYear.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementDateYear"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, dateYear);
-            uCtrl_DigitalTime_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementDateYear dateYear = new ElementDateYear();
+                dateYear.visible = true;
+
+                Elements.Insert(0, dateYear);
+                uCtrl_DigitalTime_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем день недели в циферблат</summary>
-        private void AddDateWeek()
+        private bool AddDateWeek()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4371,18 +4649,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementDateWeek dateWeek = new ElementDateWeek();
-            dateWeek.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementDateWeek"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, dateWeek);
-            uCtrl_DigitalTime_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementDateWeek dateWeek = new ElementDateWeek();
+                dateWeek.visible = true;
+
+                Elements.Insert(0, dateWeek);
+                uCtrl_DigitalTime_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем статусы в циферблат</summary>
-        private void AddStatuses()
+        private bool AddStatuses()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4401,28 +4686,42 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementStatuses statuses = new ElementStatuses();
-            statuses.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementStatuses"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, statuses);
-            uCtrl_Statuses_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementStatuses statuses = new ElementStatuses();
+                statuses.visible = true;
+
+                Elements.Insert(0, statuses);
+                uCtrl_Statuses_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем ярлыки в циферблат</summary>
-        private void AddShortcuts()
+        private bool AddShortcuts()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
-            if (Watch_Face.Shortcuts == null) Watch_Face.Shortcuts = new ElementShortcuts();
-            Watch_Face.Shortcuts.visible = true;
-            uCtrl_Shortcuts_Elm.SettingsClear();
+            if(Watch_Face.Shortcuts == null)
+            {
+                Watch_Face.Shortcuts = new ElementShortcuts();
+                Watch_Face.Shortcuts.visible = true;
+                uCtrl_Shortcuts_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем ярлыки в циферблат</summary>
-        private void AddAnimation()
+        private bool AddAnimation()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4441,19 +4740,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementAnimation animation = new ElementAnimation();
-            animation.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnimation"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, animation);
-            //if (!exists) Elements.Add(animation);
-            uCtrl_Animation_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementAnimation animation = new ElementAnimation();
+                animation.visible = true;
+
+                Elements.Insert(0, animation);
+                uCtrl_Animation_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем шаги в циферблат</summary>
-        private void AddSteps()
+        private bool AddSteps()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4472,18 +4777,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementSteps steps = new ElementSteps();
-            steps.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementSteps"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, steps);
-            uCtrl_Steps_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementSteps steps = new ElementSteps();
+                steps.visible = true;
+
+                Elements.Insert(0, steps);
+                uCtrl_Steps_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем заряд в циферблат</summary>
-        private void AddBattery()
+        private bool AddBattery()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4502,18 +4814,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementBattery battery = new ElementBattery();
-            battery.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementBattery"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, battery);
-            uCtrl_Battery_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementBattery battery = new ElementBattery();
+                battery.visible = true;
+
+                Elements.Insert(0, battery);
+                uCtrl_Battery_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем калории в циферблат</summary>
-        private void AddCalories()
+        private bool AddCalories()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4532,18 +4851,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementCalories сalories = new ElementCalories();
-            сalories.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementCalories"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, сalories);
-            uCtrl_Calories_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementCalories сalories = new ElementCalories();
+                сalories.visible = true;
+
+                Elements.Insert(0, сalories);
+                uCtrl_Calories_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем пульс в циферблат</summary>
-        private void AddHeart()
+        private bool AddHeart()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4562,18 +4888,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementHeart heart = new ElementHeart();
-            heart.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementHeart"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, heart);
-            uCtrl_Heart_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementHeart heart = new ElementHeart();
+                heart.visible = true;
+
+                Elements.Insert(0, heart);
+                uCtrl_Heart_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем PAI в циферблат</summary>
-        private void AddPAI()
+        private bool AddPAI()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4592,18 +4925,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementPAI pai = new ElementPAI();
-            pai.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementPAI"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, pai);
-            uCtrl_PAI_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementPAI pai = new ElementPAI();
+                pai.visible = true;
+
+                Elements.Insert(0, pai);
+                uCtrl_PAI_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем путь в циферблат</summary>
-        private void AddDistance()
+        private bool AddDistance()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4622,18 +4962,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementDistance distance = new ElementDistance();
-            distance.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementDistance"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, distance);
-            uCtrl_Distance_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementDistance distance = new ElementDistance();
+                distance.visible = true;
+
+                Elements.Insert(0, distance);
+                uCtrl_Distance_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем разминку в циферблат</summary>
-        private void AddStand()
+        private bool AddStand()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4652,18 +4999,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementStand stand = new ElementStand();
-            stand.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementStand"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, stand);
-            uCtrl_Stand_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementStand stand = new ElementStand();
+                stand.visible = true;
+
+                Elements.Insert(0, stand);
+                uCtrl_Stand_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем активность в циферблат</summary>
-        private void AddActivity()
+        private bool AddActivity()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4682,18 +5036,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementActivity activity = new ElementActivity();
-            activity.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementActivity"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, activity);
-            uCtrl_Activity_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementActivity activity = new ElementActivity();
+                activity.visible = true;
+
+                Elements.Insert(0, activity);
+                uCtrl_Activity_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем SpO2 в циферблат</summary>
-        private void AddSpO2()
+        private bool AddSpO2()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4712,21 +5073,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementSpO2 spo2 = new ElementSpO2();
-            spo2.visible = true;
-            //spo2.Number = new hmUI_widget_IMG_NUMBER();
-            //spo2.Number.position = 1;
-            //spo2.Number.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementSpO2"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, spo2);
-            uCtrl_SpO2_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementSpO2 spo2 = new ElementSpO2();
+                spo2.visible = true;
+
+                Elements.Insert(0, spo2);
+                uCtrl_SpO2_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем стресс в циферблат</summary>
-        private void AddStress()
+        private bool AddStress()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4745,18 +5110,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementStress steps = new ElementStress();
-            steps.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementStress"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, steps);
-            uCtrl_Stress_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementStress steps = new ElementStress();
+                steps.visible = true;
+
+                Elements.Insert(0, steps);
+                uCtrl_Stress_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем жиросжигание в циферблат</summary>
-        private void AddFatBurning()
+        private bool AddFatBurning()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4775,20 +5147,27 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementFatBurning steps = new ElementFatBurning();
-            steps.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementFatBurning"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, steps);
-            uCtrl_FatBurning_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementFatBurning steps = new ElementFatBurning();
+                steps.visible = true;
+
+                Elements.Insert(0, steps);
+                uCtrl_FatBurning_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
 
 
         /// <summary>Добавляем погоду в циферблат</summary>
-        private void AddWeather()
+        /*private bool AddWeather()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4807,18 +5186,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementWeather weather = new ElementWeather();
-            weather.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementWeather"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, weather);
-            uCtrl_Weather_Elm.SettingsClear();
-        }
+            if (!exists)
+            {
+                ElementWeather weather = new ElementWeather();
+                weather.visible = true;
+
+                Elements.Insert(0, weather);
+                uCtrl_Weather_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
+        }*/
 
         /// <summary>Добавляем новую погоду в циферблат</summary>
-        private void AddWeather_v2()
+        private bool AddWeather_v2()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4837,18 +5223,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementWeather_v2 weather = new ElementWeather_v2();
-            weather.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementWeather_v2"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, weather);
-            uCtrl_Weather_Elm_v2.SettingsClear();
+            if (!exists)
+            {
+                ElementWeather_v2 weather = new ElementWeather_v2();
+                weather.visible = true;
+
+                Elements.Insert(0, weather);
+                uCtrl_Weather_Elm_v2.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем прогноз на несколько дней в циферблат</summary>
-        private void AddWeather_FewDays()
+        private bool AddWeather_FewDays()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4867,18 +5260,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            Element_Weather_FewDays weather = new Element_Weather_FewDays();
-            weather.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "Element_Weather_FewDays"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, weather);
-            uCtrl_Weather_FewDay_Elm.SettingsClear();
+            if (!exists)
+            {
+                Element_Weather_FewDays weather = new Element_Weather_FewDays();
+                weather.visible = true;
+
+                Elements.Insert(0, weather);
+                uCtrl_Weather_FewDay_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем УФ индекс в циферблат</summary>
-        private void AddUVIndex()
+        private bool AddUVIndex()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4897,18 +5297,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementUVIndex uv_index = new ElementUVIndex();
-            uv_index.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementUVIndex"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, uv_index);
-            uCtrl_UVIndex_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementUVIndex uv_index = new ElementUVIndex();
+                uv_index.visible = true;
+
+                Elements.Insert(0, uv_index);
+                uCtrl_UVIndex_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем шаги в циферблат</summary>
-        private void AddHumidity()
+        private bool AddHumidity()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4927,18 +5334,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementHumidity humidity = new ElementHumidity();
-            humidity.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementHumidity"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, humidity);
-            uCtrl_Humidity_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementHumidity humidity = new ElementHumidity();
+                humidity.visible = true;
+
+                Elements.Insert(0, humidity);
+                uCtrl_Humidity_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем барометр в циферблат</summary>
-        private void AddAltimeter()
+        private bool AddAltimeter()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4957,18 +5371,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementAltimeter altimete = new ElementAltimeter();
-            altimete.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementAltimeter"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, altimete);
-            uCtrl_Altimeter_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementAltimeter altimete = new ElementAltimeter();
+                altimete.visible = true;
+
+                Elements.Insert(0, altimete);
+                uCtrl_Altimeter_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем восход в циферблат</summary>
-        private void AddSunrise()
+        private bool AddSunrise()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -4987,18 +5408,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementSunrise sunrise = new ElementSunrise();
-            sunrise.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementSunrise"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, sunrise);
-            uCtrl_Sunrise_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementSunrise sunrise = new ElementSunrise();
+                sunrise.visible = true;
+
+                Elements.Insert(0, sunrise);
+                uCtrl_Sunrise_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем ветер в циферблат</summary>
-        private void AddWind()
+        private bool AddWind()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -5017,47 +5445,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementWind wind = new ElementWind();
-            wind.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementWind"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, wind);
-            uCtrl_Wind_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementWind wind = new ElementWind();
+                wind.visible = true;
+
+                Elements.Insert(0, wind);
+                uCtrl_Wind_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем луна в циферблат</summary>
-        private void AddMoon()
+        private bool AddMoon()
         {
-            //if (!PreviewView) return;
-            //List<object> Elements = new List<object>();
-            //if (Watch_Face == null) Watch_Face = new WATCH_FACE();
-            //if (radioButton_ScreenNormal.Checked)
-            //{
-            //    if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
-            //    if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
-            //    Elements = Watch_Face.ScreenNormal.Elements;
-            //}
-            //else
-            //{
-            //    if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
-            //    if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
-            //    Elements = Watch_Face.ScreenAOD.Elements;
-
-            //    if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
-            //        Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
-            //}
-
-            //ElementMoon moon = new ElementMoon();
-            //moon.visible = true;
-            //moon.Images = new hmUI_widget_IMG_LEVEL();
-            //moon.Images.position = 1;
-            //moon.Images.visible = true;
-
-            //bool exists = Elements.Exists(e => e.GetType().Name == "ElementMoon"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Insert(0, moon);
-            //uCtrl_Moon_Elm.SettingsClear();
-
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -5076,18 +5482,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementMoon moon = new ElementMoon();
-            moon.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementMoon"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, moon);
-            uCtrl_Moon_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementMoon moon = new ElementMoon();
+                moon.visible = true;
+
+                Elements.Insert(0, moon);
+                uCtrl_Moon_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем изображение в циферблат</summary>
-        private void AddImage()
+        private bool AddImage()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -5106,21 +5519,28 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementImage image = new ElementImage();
-            image.visible = true;
-            image.Icon = new hmUI_widget_IMG();
-            image.Icon.position = 1;
-            image.Icon.visible = true;
-
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementImage"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, image);
-            uCtrl_Icon_Opt.SettingsClear();
+            if (!exists)
+            {
+                ElementImage image = new ElementImage();
+                image.visible = true;
+                image.Icon = new hmUI_widget_IMG();
+                image.Icon.position = 1;
+                image.Icon.visible = true;
+
+                Elements.Insert(0, image);
+                uCtrl_Icon_Opt.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем JS скрипт в циферблат</summary>
-        private void AddScript()
+        private bool AddScript()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -5139,18 +5559,25 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementScript script = new ElementScript();
-            script.enable = true;
 
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementScript"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, script);
-            uCtrl_JS_script_Opt.SettingsClear(ProjectDir);
+            if (!exists)
+            {
+                ElementScript script = new ElementScript();
+                script.enable = true;
+                Elements.Insert(0, script);
+                uCtrl_JS_script_Opt.SettingsClear(ProjectDir);
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         /// <summary>Добавляем компас в циферблат</summary>
-        private void AddCompass()
+        private bool AddCompass()
         {
-            if (!PreviewView) return;
+            if (!PreviewView) return false;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -5169,15 +5596,19 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementCompass compass = new ElementCompass();
-            compass.visible = true;
-            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementCompass"); // проверяем что такого элемента нет
-            if (!exists) Elements.Insert(0, compass);
-            uCtrl_Compass_Elm.SettingsClear();
+            if (!exists)
+            {
+                ElementCompass compass = new ElementCompass();
+                compass.visible = true;
+                Elements.Insert(0, compass);
+                uCtrl_Compass_Elm.SettingsClear();
+                return true;
+            }
+            else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
-
-
 
 
         /// <summary>Отображаем элемынты в соответствии с json файлом</summary>
@@ -5194,6 +5625,7 @@ namespace Watch_Face_Editor
 
             uCtrl_Background_Elm.Visible = false;
             uCtrl_DigitalTime_Elm.Visible = false;
+            uCtrl_DigitalTime_Elm_v2.Visible = false;
             uCtrl_AnalogTime_Elm.Visible = false;
             uCtrl_AnalogTimePro_Elm.Visible = false;
             uCtrl_EditableTimePointer_Elm.Visible = false;
@@ -5292,8 +5724,10 @@ namespace Watch_Face_Editor
                     //string elementStr = element.ToString();
                     //string type = GetTypeFromSring(elementStr);
                     string type = element.GetType().Name;
+#if !DEBUG
                     try
                     {
+#endif
                         switch (type)
                         {
                             #region ElementDigitalTime
@@ -5398,6 +5832,104 @@ namespace Watch_Face_Editor
                                 uCtrl_DigitalTime_Elm.SetOptionsPosition(elementOptions);
 
                                 uCtrl_DigitalTime_Elm.Visible = true;
+                                SetElementPositionInGUI(type, count - i - 2);
+                                //SetElementPositionInGUI(type, i + 1);
+                                break;
+                            #endregion
+
+                            #region ElementDigitalTime_v2
+                            case "ElementDigitalTime_v2":
+                                ElementDigitalTime_v2 DigitalTime_v2 = (ElementDigitalTime_v2)element;
+                                uCtrl_DigitalTime_Elm_v2.SetVisibilityElementStatus(DigitalTime_v2.visible);
+                                elementOptions = new Dictionary<int, string>();
+
+                                if (DigitalTime_v2.Group_Second != null)
+                                {
+                                    if (DigitalTime_v2.Group_Second.Number != null)
+                                    {
+                                        uCtrl_DigitalTime_Elm_v2.checkBox_Number_Seconds.Checked = DigitalTime_v2.Group_Second.Number.visible;
+                                    }
+                                    if (DigitalTime_v2.Group_Second.Number_Font != null)
+                                    {
+                                        uCtrl_DigitalTime_Elm_v2.checkBox_Number_Seconds_Font.Checked = DigitalTime_v2.Group_Second.Number_Font.visible;
+                                    }
+                                    if (DigitalTime_v2.Group_Second.Text_rotation != null)
+                                    {
+                                        uCtrl_DigitalTime_Elm_v2.checkBox_Seconds_rotation.Checked = DigitalTime_v2.Group_Second.Text_rotation.visible;
+                                    }
+                                    if (DigitalTime_v2.Group_Second.Text_circle != null)
+                                    {
+                                        uCtrl_DigitalTime_Elm_v2.checkBox_Seconds_circle.Checked = DigitalTime_v2.Group_Second.Text_circle.visible;
+                                    }
+                                    int position = DigitalTime_v2.Group_Second.position;
+                                    if (position > 0) elementOptions.Add(position, "Second");
+                                }
+
+                                if (DigitalTime_v2.Group_Minute != null)
+                                {
+                                    if (DigitalTime_v2.Group_Minute.Number != null)
+                                    {
+                                        uCtrl_DigitalTime_Elm_v2.checkBox_Number_Minutes.Checked = DigitalTime_v2.Group_Minute.Number.visible;
+                                    }
+                                    if (DigitalTime_v2.Group_Minute.Number_Font != null)
+                                    {
+                                        uCtrl_DigitalTime_Elm_v2.checkBox_Number_Minutes_Font.Checked = DigitalTime_v2.Group_Minute.Number_Font.visible;
+                                    }
+                                    if (DigitalTime_v2.Group_Minute.Text_rotation != null)
+                                    {
+                                        uCtrl_DigitalTime_Elm_v2.checkBox_Minutes_rotation.Checked = DigitalTime_v2.Group_Minute.Text_rotation.visible;
+                                    }
+                                    if (DigitalTime_v2.Group_Minute.Text_circle != null)
+                                    {
+                                        uCtrl_DigitalTime_Elm_v2.checkBox_Minutes_circle.Checked = DigitalTime_v2.Group_Minute.Text_circle.visible;
+                                    }
+                                    int position = DigitalTime_v2.Group_Minute.position;
+                                    if (position > 0) elementOptions.Add(position, "Minute");
+                                }
+
+                                if (DigitalTime_v2.Group_Hour != null)
+                                {
+                                    if (DigitalTime_v2.Group_Hour.Number != null)
+                                    {
+                                        uCtrl_DigitalTime_Elm_v2.checkBox_Number_Hours.Checked = DigitalTime_v2.Group_Hour.Number.visible;
+                                    }
+                                    if (DigitalTime_v2.Group_Hour.Number_Font != null)
+                                    {
+                                        uCtrl_DigitalTime_Elm_v2.checkBox_Number_Hours_Font.Checked = DigitalTime_v2.Group_Hour.Number_Font.visible;
+                                    }
+                                    if (DigitalTime_v2.Group_Hour.Text_rotation != null)
+                                    {
+                                        uCtrl_DigitalTime_Elm_v2.checkBox_Hours_rotation.Checked = DigitalTime_v2.Group_Hour.Text_rotation.visible;
+                                    }
+                                    if (DigitalTime_v2.Group_Hour.Text_circle != null)
+                                    {
+                                        uCtrl_DigitalTime_Elm_v2.checkBox_Hours_circle.Checked = DigitalTime_v2.Group_Hour.Text_circle.visible;
+                                    }
+                                    int position = DigitalTime_v2.Group_Hour.position;
+                                    if (position > 0) elementOptions.Add(position, "Hour");
+                                }
+
+                                if (DigitalTime_v2.AmPm != null)
+                                {
+                                    uCtrl_DigitalTime_Elm_v2.checkBox_AmPm.Checked = DigitalTime_v2.AmPm.visible;
+                                    elementOptions.Add(DigitalTime_v2.AmPm.position, "AmPm");
+                                }
+
+
+                                if (DigitalTime_v2.Hour_Min_Font != null)
+                                {
+                                    uCtrl_DigitalTime_Elm_v2.checkBox_Hour_Min_Font.Checked = DigitalTime_v2.Hour_Min_Font.visible;
+                                    elementOptions.Add(DigitalTime_v2.Hour_Min_Font.position, "Hour_Min_Font");
+                                }
+                                if (DigitalTime_v2.Hour_Min_Sec_Font != null)
+                                {
+                                    uCtrl_DigitalTime_Elm_v2.checkBox_Hour_Min_Sec_Font.Checked = DigitalTime_v2.Hour_Min_Sec_Font.visible;
+                                    elementOptions.Add(DigitalTime_v2.Hour_Min_Sec_Font.position, "Hour_Min_Sec_Font");
+                                }
+
+                                uCtrl_DigitalTime_Elm_v2.SetOptionsPosition(elementOptions);
+
+                                uCtrl_DigitalTime_Elm_v2.Visible = true;
                                 SetElementPositionInGUI(type, count - i - 2);
                                 //SetElementPositionInGUI(type, i + 1);
                                 break;
@@ -6543,7 +7075,7 @@ namespace Watch_Face_Editor
                                         uCtrl_Weather_Elm_v2.checkBox_Text_Current_circle.Checked = Weather_v2.Group_Current.Text_circle.visible;
                                     }
                                     int position = Weather_v2.Group_Current.position;
-                                    if (position > 0) elementOptions.Add(Weather_v2.Group_Current.position, "Group_Current");
+                                    if (position > 0) elementOptions.Add(position, "Group_Current");
                                 }
 
                                 if (Weather_v2.Group_Min != null)
@@ -6565,7 +7097,7 @@ namespace Watch_Face_Editor
                                         uCtrl_Weather_Elm_v2.checkBox_Text_Min_circle.Checked = Weather_v2.Group_Min.Text_circle.visible;
                                     }
                                     int position = Weather_v2.Group_Min.position;
-                                    if (position > 0) elementOptions.Add(Weather_v2.Group_Min.position, "Group_Min");
+                                    if (position > 0) elementOptions.Add(position, "Group_Min");
                                 }
 
                                 if (Weather_v2.Group_Max != null)
@@ -6587,7 +7119,7 @@ namespace Watch_Face_Editor
                                         uCtrl_Weather_Elm_v2.checkBox_Text_Max_circle.Checked = Weather_v2.Group_Max.Text_circle.visible;
                                     }
                                     int position = Weather_v2.Group_Max.position;
-                                    if (position > 0) elementOptions.Add(Weather_v2.Group_Max.position, "Group_Max");
+                                    if (position > 0) elementOptions.Add(position, "Group_Max");
                                 }
 
                                 if (Weather_v2.Group_Max_Min != null)
@@ -6609,7 +7141,7 @@ namespace Watch_Face_Editor
                                         uCtrl_Weather_Elm_v2.checkBox_Text_Max_Min_circle.Checked = Weather_v2.Group_Max_Min.Text_circle.visible;
                                     }
                                     int position = Weather_v2.Group_Max_Min.position;
-                                    if (position > 0) elementOptions.Add(Weather_v2.Group_Max_Min.position, "Group_Max_Min");
+                                    if (position > 0) elementOptions.Add(position, "Group_Max_Min");
                                 }
 
                                 if (Weather_v2.Images != null)
@@ -7125,9 +7657,15 @@ namespace Watch_Face_Editor
                                 uCtrl_Compass_Elm.Visible = true;
                                 SetElementPositionInGUI(type, count - i - 2);
                                 //SetElementPositionInGUI(type, i + 1);
+                                
+                                //if (SelectedModel.versionOS < 2) uCtrl_Compass_Elm.Enabled = false;
+                                //else uCtrl_Compass_Elm.Enabled = true;
+
                                 break;
                                 #endregion
                         }
+
+#if !DEBUG
                     }
                     catch (Exception e)
                     {
@@ -7136,6 +7674,7 @@ namespace Watch_Face_Editor
 
                         ShowExtraordinaryElemetsWatchFace(type, count, i);
                     }
+#endif
                 }
             }
 
@@ -7540,6 +8079,9 @@ namespace Watch_Face_Editor
                     break;
                 case "ElementDigitalTime":
                     panel = panel_UC_DigitalTime;
+                    break;
+                case "ElementDigitalTime_v2":
+                    panel = panel_UC_DigitalTime_v2;
                     break;
                 case "ElementEditablePointers":
                     panel = panel_UC_EditableTimePointer;
@@ -8009,6 +8551,144 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        private void uCtrl_DigitalTime_Elm_v2_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementDigitalTime_v2 digitalTime = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementDigitalTime_v2");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDigitalTime_v2());
+                    digitalTime = (ElementDigitalTime_v2)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime_v2");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementDigitalTime_v2");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDigitalTime_v2());
+                    digitalTime = (ElementDigitalTime_v2)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDigitalTime_v2");
+                }
+            }
+
+            if (digitalTime != null)
+            {
+                if (digitalTime.Group_Hour == null)
+                {
+                    digitalTime.Group_Hour = new DigitalTimeGroup
+                    {
+                        Number = new hmUI_widget_IMG_NUMBER(),
+                        Number_Font = new hmUI_widget_TEXT(),
+                        Text_rotation = new hmUI_widget_IMG_NUMBER(),
+                        Text_circle = new Text_Circle()
+                    };
+                }
+                if (digitalTime.Group_Minute == null)
+                {
+                    digitalTime.Group_Minute = new DigitalTimeGroup
+                    {
+                        Number = new hmUI_widget_IMG_NUMBER(),
+                        Number_Font = new hmUI_widget_TEXT(),
+                        Text_rotation = new hmUI_widget_IMG_NUMBER(),
+                        Text_circle = new Text_Circle()
+                    };
+                }
+                if (digitalTime.Group_Second == null)
+                {
+                    digitalTime.Group_Second = new DigitalTimeGroup
+                    {
+                        Number = new hmUI_widget_IMG_NUMBER(),
+                        Number_Font = new hmUI_widget_TEXT(),
+                        Text_rotation = new hmUI_widget_IMG_NUMBER(),
+                        Text_circle = new Text_Circle()
+                    };
+                }
+
+                if (digitalTime.AmPm == null) digitalTime.AmPm = new hmUI_widget_IMG_TIME_am_pm();
+
+                if (digitalTime.Hour_Min_Font == null) digitalTime.Hour_Min_Font = new hmUI_widget_TEXT();
+                if (digitalTime.Hour_Min_Sec_Font == null) digitalTime.Hour_Min_Sec_Font = new hmUI_widget_TEXT();
+
+                Dictionary<string, int> elementOptions = uCtrl_DigitalTime_Elm_v2.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Hour")) digitalTime.Group_Hour.position = elementOptions["Hour"];
+                if (elementOptions.ContainsKey("Minute")) digitalTime.Group_Minute.position = elementOptions["Minute"];
+                if (elementOptions.ContainsKey("Second")) digitalTime.Group_Second.position = elementOptions["Second"];
+                if (elementOptions.ContainsKey("AmPm")) digitalTime.AmPm.position = elementOptions["AmPm"];
+
+                if (elementOptions.ContainsKey("Hour_Min_Font")) digitalTime.Hour_Min_Font.position = elementOptions["Hour_Min_Font"];
+                if (elementOptions.ContainsKey("Hour_Min_Sec_Font")) digitalTime.Hour_Min_Sec_Font.position = elementOptions["Hour_Min_Sec_Font"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Number_Hours":
+                        digitalTime.Group_Hour.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Minutes":
+                        digitalTime.Group_Minute.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Seconds":
+                        digitalTime.Group_Second.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_AmPm":
+                        digitalTime.AmPm.visible = checkBox.Checked;
+                        break;
+
+                    case "checkBox_Number_Hours_Font":
+                        digitalTime.Group_Hour.Number_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Minutes_Font":
+                        digitalTime.Group_Minute.Number_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Seconds_Font":
+                        digitalTime.Group_Second.Number_Font.visible = checkBox.Checked;
+                        break;
+
+                    case "checkBox_Hour_Min_Sec_Font":
+                        digitalTime.Hour_Min_Sec_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Hour_Min_Font":
+                        digitalTime.Hour_Min_Font.visible = checkBox.Checked;
+                        break;
+
+                    case "checkBox_Hours_rotation":
+                        digitalTime.Group_Hour.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Minutes_rotation":
+                        digitalTime.Group_Minute.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Seconds_rotation":
+                        digitalTime.Group_Second.Text_rotation.visible = checkBox.Checked;
+                        break;
+
+                    case "checkBox_Hours_circle":
+                        digitalTime.Group_Hour.Text_circle.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Minutes_circle":
+                        digitalTime.Group_Minute.Text_circle.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Seconds_circle":
+                        digitalTime.Group_Second.Text_circle.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_DigitalTime_Elm_v2_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
         private void uCtrl_DigitalTime_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
         {
             if (!PreviewView) return;
@@ -8086,6 +8766,87 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        private void uCtrl_DigitalTime_Elm_v2_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementDigitalTime_v2 digitalTime = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementDigitalTime_v2");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDigitalTime());
+                    digitalTime = (ElementDigitalTime_v2)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime_v2");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementDigitalTime_v2");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDigitalTime());
+                    digitalTime = (ElementDigitalTime_v2)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDigitalTime_v2");
+                }
+            }
+
+            if (digitalTime != null)
+            {
+                if (digitalTime.Group_Hour == null)
+                {
+                    digitalTime.Group_Hour = new DigitalTimeGroup
+                    {
+                        Number = new hmUI_widget_IMG_NUMBER(),
+                        Number_Font = new hmUI_widget_TEXT(),
+                        Text_rotation = new hmUI_widget_IMG_NUMBER(),
+                        Text_circle = new Text_Circle()
+                    };
+                }
+                if (digitalTime.Group_Minute == null)
+                {
+                    digitalTime.Group_Minute = new DigitalTimeGroup
+                    {
+                        Number = new hmUI_widget_IMG_NUMBER(),
+                        Number_Font = new hmUI_widget_TEXT(),
+                        Text_rotation = new hmUI_widget_IMG_NUMBER(),
+                        Text_circle = new Text_Circle()
+                    };
+                }
+                if (digitalTime.Group_Second == null)
+                {
+                    digitalTime.Group_Second = new DigitalTimeGroup
+                    {
+                        Number = new hmUI_widget_IMG_NUMBER(),
+                        Number_Font = new hmUI_widget_TEXT(),
+                        Text_rotation = new hmUI_widget_IMG_NUMBER(),
+                        Text_circle = new Text_Circle()
+                    };
+                }
+
+                if (digitalTime.AmPm == null) digitalTime.AmPm = new hmUI_widget_IMG_TIME_am_pm();
+
+                if (digitalTime.Hour_Min_Font == null) digitalTime.Hour_Min_Font = new hmUI_widget_TEXT();
+                if (digitalTime.Hour_Min_Sec_Font == null) digitalTime.Hour_Min_Sec_Font = new hmUI_widget_TEXT();
+
+                if (elementOptions.ContainsKey("Hour")) digitalTime.Group_Hour.position = elementOptions["Hour"];
+                if (elementOptions.ContainsKey("Minute")) digitalTime.Group_Minute.position = elementOptions["Minute"];
+                if (elementOptions.ContainsKey("Second")) digitalTime.Group_Second.position = elementOptions["Second"];
+
+                if (elementOptions.ContainsKey("AmPm")) digitalTime.AmPm.position = elementOptions["AmPm"];
+
+                if (elementOptions.ContainsKey("Hour_Min_Font")) digitalTime.Hour_Min_Font.position = elementOptions["Hour_Min_Font"];
+                if (elementOptions.ContainsKey("Hour_Min_Sec_Font")) digitalTime.Hour_Min_Sec_Font.position = elementOptions["Hour_Min_Sec_Font"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
         private void uCtrl_DigitalTime_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
         {
             ElementDigitalTime digitalTime = null;
@@ -8116,6 +8877,35 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        private void uCtrl_DigitalTime_Elm_v2_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementDigitalTime_v2 digitalTime = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    digitalTime = (ElementDigitalTime_v2)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime_v2");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    digitalTime = (ElementDigitalTime_v2)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDigitalTime_v2");
+                }
+            }
+            if (digitalTime != null)
+            {
+                digitalTime.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
         private void uCtrl_Elm_DelElement(object sender, EventArgs eventArgs)
         {
             List<object> Elements = new List<object>();
@@ -8125,6 +8915,9 @@ namespace Watch_Face_Editor
             {
                 case "UCtrl_DigitalTime_Elm":
                     objectName = "ElementDigitalTime";
+                    break;
+                case "UCtrl_DigitalTime_Elm_v2":
+                    objectName = "ElementDigitalTime_v2";
                     break;
                 case "UCtrl_AnalogTime_Elm":
                     objectName = "ElementAnalogTime";
@@ -15248,6 +16041,13 @@ namespace Watch_Face_Editor
                             break;
                         #endregion
 
+                        #region ElementDigitalTime_v2
+                        case "ElementDigitalTime_v2":
+                            ElementDigitalTime_v2 DigitalTime_v2 = (ElementDigitalTime_v2)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementDigitalTime_v2)DigitalTime_v2.Clone());
+                            break;
+                        #endregion
+
                         #region ElementAnalogTime
                         case "ElementAnalogTime":
                             ElementAnalogTime AnalogTime = (ElementAnalogTime)element;
@@ -15460,7 +16260,7 @@ namespace Watch_Face_Editor
                             ElementCompass compassElement = (ElementCompass)element;
                             Watch_Face.ScreenAOD.Elements.Add((ElementCompass)compassElement.Clone());
                             break;
-                        #endregion*/
+#endregion*/
                     }
                 }
 
@@ -21026,34 +21826,6 @@ namespace Watch_Face_Editor
                 Image loadedImage = null;
                 Directory.CreateDirectory(newFullDirName);
                 Directory.CreateDirectory(Path.Combine(newFullDirName, "assets"));
-                //foreach (string ImageFullName in ListImagesFullName)
-                //{
-                //    using (FileStream stream = new FileStream(ImageFullName, FileMode.Open, FileAccess.Read))
-                //    {
-                //        loadedImage = Image.FromStream(stream);
-                //    }
-                //    string fileName = Path.GetFileName(ImageFullName);
-                //    string newFullFileName = Path.Combine(newFullDirName, "assets", fileName);
-                //    Bitmap bitmap = ResizeImage(loadedImage, scale);
-
-                //    bitmap.Save(newFullFileName, ImageFormat.Png);
-                //}
-                //if (ListAnimImagesFullName.Count > 0)
-                //{
-                //    Directory.CreateDirectory(Path.Combine(newFullDirName, "assets", "animation"));
-                //    foreach (string ImageFullName in ListAnimImagesFullName)
-                //    {
-                //        using (FileStream stream = new FileStream(ImageFullName, FileMode.Open, FileAccess.Read))
-                //        {
-                //            loadedImage = Image.FromStream(stream);
-                //        }
-                //        string fileName = Path.GetFileName(ImageFullName);
-                //        string newFullFileName = Path.Combine(newFullDirName, "assets", "animation", fileName);
-                //        Bitmap bitmap = ResizeImage(loadedImage, scale);
-
-                //        bitmap.Save(newFullFileName, ImageFormat.Png);
-                //    } 
-                //}
 
                 // читаем подпапки в папках
                 List<string> allDirs = GetRecursDirectories(ProjectDir + @"\assets", 5, ProjectDir + @"\assets");
@@ -21706,7 +22478,6 @@ namespace Watch_Face_Editor
                 }
             }
         }
-
     }
 }
 

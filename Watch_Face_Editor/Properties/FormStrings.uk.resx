@@ -306,6 +306,9 @@
   <data name="Message_ModelConfig_ReadError" xml:space="preserve">
     <value>Помилка читання конфігурації моделей</value>
   </data>
+  <data name="Message_Old_OS" xml:space="preserve">
+    <value>Цей віджет не підтримується обраною моделлю годинника.</value>
+  </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Перезавантаження</value>
   </data>
@@ -371,6 +374,9 @@
   </data>
   <data name="Message_Warning_JS_Exist1" xml:space="preserve">
     <value>У цій папці вже існує папка з JS файлами.</value>
+  </data>
+  <data name="Message_Widget_Exists" xml:space="preserve">
+    <value>Такий віджет вже є в циферблаті.</value>
   </data>
   <data name="Message_Wrong_ColorScheme" xml:space="preserve">
     <value>Зазначено невідому колірну схему для моделі:</value>
