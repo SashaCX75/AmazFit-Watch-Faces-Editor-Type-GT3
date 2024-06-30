@@ -150,6 +150,72 @@
   <data name="button_Alarm.Text" xml:space="preserve">
     <value>Alarm clocks</value>
   </data>
+  <data name="button_RecoveryTime.Text" xml:space="preserve">
+    <value>Recovery time</value>
+  </data>
+  <data name="button_OpenWaterSwimming.Text" xml:space="preserve">
+    <value>Swimming</value>
+  </data>
+  <data name="button_PoolSwimming.Text" xml:space="preserve">
+    <value>Swimming in pool</value>
+  </data>
+  <data name="button_TrainingLoad.Text" xml:space="preserve">
+    <value>Training load</value>
+  </data>
+  <data name="button_Trainings.Text" xml:space="preserve">
+    <value>Training</value>
+  </data>
+  <data name="button_Walking.Text" xml:space="preserve">
+    <value>Walking</value>
+  </data>
+  <data name="button_OutdoorRunning.Text" xml:space="preserve">
+    <value>Outdoor running</value>
+  </data>
+  <data name="button_OutdoorCycling.Text" xml:space="preserve">
+    <value>Cycling</value>
+  </data>
+  <data name="button_FreeTraining.Text" xml:space="preserve">
+    <value>Free training</value>
+  </data>
+  <data name="button_Battery.Text" xml:space="preserve">
+    <value>Battery statistics</value>
+  </data>
+  <data name="button_System.Text" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="button_Altitude.Text" xml:space="preserve">
+    <value>Altitude</value>
+  </data>
+  <data name="button_Moon.Text" xml:space="preserve">
+    <value>Moonrise / Moonset</value>
+  </data>
+  <data name="button_Air.Text" xml:space="preserve">
+    <value>Air</value>
+  </data>
+  <data name="button_FatBurning.Text" xml:space="preserve">
+    <value>Fat burning</value>
+  </data>
+  <data name="button_Stand.Text" xml:space="preserve">
+    <value>Stand</value>
+  </data>
+  <data name="button_Cal.Text" xml:space="preserve">
+    <value>Activity statistics</value>
+  </data>
+  <data name="button_Activities.Text" xml:space="preserve">
+    <value>Activities</value>
+  </data>
+  <data name="button_BreathTrain.Text" xml:space="preserve">
+    <value>Breath</value>
+  </data>
+  <data name="button_Readiness.Text" xml:space="preserve">
+    <value>Readiness</value>
+  </data>
+  <data name="button_BodyTemp.Text" xml:space="preserve">
+    <value>Body temperature</value>
+  </data>
+  <data name="button_Health.Text" xml:space="preserve">
+    <value>Health</value>
+  </data>
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Shortcuts</value>
   </data>

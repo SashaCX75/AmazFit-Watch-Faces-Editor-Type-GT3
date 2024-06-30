@@ -141,16 +141,65 @@
   <data name="button_Altimeter.Text" xml:space="preserve">
     <value>Атмосферний тиск</value>
   </data>
-  <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Ярлики</value>
-  </data>
   <data name="button_Alarm.Text" xml:space="preserve">
     <value>Будильник</value>
   </data>
-  <data name="button_Heart.Text" xml:space="preserve">
-    <value>Пульс</value>
+  <data name="button_RecoveryTime.Text" xml:space="preserve">
+    <value>Час відновлення</value>
   </data>
-  <data name="button_Sleep.Text" xml:space="preserve">
-    <value>Сон</value>
+  <data name="button_OpenWaterSwimming.Text" xml:space="preserve">
+    <value>Плавання</value>
+  </data>
+  <data name="button_OutdoorRunning.Text" xml:space="preserve">
+    <value>Біг на вулиці</value>
+  </data>
+  <data name="button_PoolSwimming.Text" xml:space="preserve">
+    <value>Плавання в басейні</value>
+  </data>
+  <data name="button_FreeTraining.Text" xml:space="preserve">
+    <value>Вільне тренування</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button_TrainingLoad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 24</value>
+  </data>
+  <data name="button_TrainingLoad.Text" xml:space="preserve">
+    <value>Тренувальне навантаження</value>
+  </data>
+  <data name="button_Trainings.Text" xml:space="preserve">
+    <value>Тренування</value>
+  </data>
+  <data name="button_Battery.Text" xml:space="preserve">
+    <value>Статистика батареї</value>
+  </data>
+  <data name="button_Altitude.Text" xml:space="preserve">
+    <value>Висота</value>
+  </data>
+  <data name="button_Moon.Text" xml:space="preserve">
+    <value>Схід/захід місяця</value>
+  </data>
+  <data name="button_FatBurning.Text" xml:space="preserve">
+    <value>Жироспалювання</value>
+  </data>
+  <data name="button_Stand.Text" xml:space="preserve">
+    <value>Розминка</value>
+  </data>
+  <data name="button_Activities.Text" xml:space="preserve">
+    <value>Активності</value>
+  </data>
+  <data name="button_BreathTrain.Text" xml:space="preserve">
+    <value>Дихання</value>
+  </data>
+  <data name="button_Readiness.Text" xml:space="preserve">
+    <value>Готовність</value>
+  </data>
+  <data name="button_BodyTemp.Text" xml:space="preserve">
+    <value>Температура тіла</value>
+  </data>
+  <data name="button_Health.Text" xml:space="preserve">
+    <value>Здоров'я</value>
+  </data>
+  <data name="button_ElementName.Text" xml:space="preserve">
+    <value>Ярлики</value>
   </data>
 </root>

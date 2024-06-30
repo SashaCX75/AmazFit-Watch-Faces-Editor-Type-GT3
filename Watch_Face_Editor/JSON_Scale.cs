@@ -75,17 +75,35 @@ namespace Watch_Face_Editor
             {
                 ElementShortcuts elementShortcuts = Watch_Face.Shortcuts;
                 Scale_IMG_CLICK(elementShortcuts.Step, scale);
+                Scale_IMG_CLICK(elementShortcuts.Cal, scale);
                 Scale_IMG_CLICK(elementShortcuts.Heart, scale);
-                Scale_IMG_CLICK(elementShortcuts.SPO2, scale);
                 Scale_IMG_CLICK(elementShortcuts.PAI, scale);
-                Scale_IMG_CLICK(elementShortcuts.Stress, scale);
-                Scale_IMG_CLICK(elementShortcuts.Weather, scale);
-                Scale_IMG_CLICK(elementShortcuts.Altimeter, scale);
+                Scale_IMG_CLICK(elementShortcuts.Battery, scale);
                 Scale_IMG_CLICK(elementShortcuts.Sunrise, scale);
-                Scale_IMG_CLICK(elementShortcuts.Alarm, scale);
-                Scale_IMG_CLICK(elementShortcuts.Sleep, scale);
+                Scale_IMG_CLICK(elementShortcuts.Moon, scale);
+                Scale_IMG_CLICK(elementShortcuts.BodyTemp, scale);
+                Scale_IMG_CLICK(elementShortcuts.Weather, scale);
+                Scale_IMG_CLICK(elementShortcuts.Stand, scale);
+                Scale_IMG_CLICK(elementShortcuts.SPO2, scale);
+                Scale_IMG_CLICK(elementShortcuts.Altimeter, scale);
+                Scale_IMG_CLICK(elementShortcuts.Stress, scale);
                 Scale_IMG_CLICK(elementShortcuts.Countdown, scale);
                 Scale_IMG_CLICK(elementShortcuts.Stopwatch, scale);
+                Scale_IMG_CLICK(elementShortcuts.Alarm, scale);
+                Scale_IMG_CLICK(elementShortcuts.Sleep, scale);
+                Scale_IMG_CLICK(elementShortcuts.Altitude, scale);
+                Scale_IMG_CLICK(elementShortcuts.Readiness, scale);
+                Scale_IMG_CLICK(elementShortcuts.OutdoorRunning, scale);
+                Scale_IMG_CLICK(elementShortcuts.Walking, scale);
+                Scale_IMG_CLICK(elementShortcuts.OutdoorCycling, scale);
+                Scale_IMG_CLICK(elementShortcuts.FreeTraining, scale);
+                Scale_IMG_CLICK(elementShortcuts.PoolSwimming, scale);
+                Scale_IMG_CLICK(elementShortcuts.OpenWaterSwimming, scale);
+                Scale_IMG_CLICK(elementShortcuts.TrainingLoad, scale);
+                Scale_IMG_CLICK(elementShortcuts.VO2max, scale);
+                Scale_IMG_CLICK(elementShortcuts.RecoveryTime, scale);
+                Scale_IMG_CLICK(elementShortcuts.BreathTrain, scale);
+                Scale_IMG_CLICK(elementShortcuts.FatBurning, scale);
             }
             if (Watch_Face.TopImage != null && Watch_Face.TopImage.Icon != null)
             {

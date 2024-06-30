@@ -7745,68 +7745,139 @@ namespace Watch_Face_Editor
             {
                 ElementShortcuts Shortcuts = Watch_Face.Shortcuts;
                 uCtrl_Shortcuts_Elm.SetVisibilityElementStatus(Shortcuts.visible);
-                elementOptions = new Dictionary<int, string>();
+                //elementOptions = new Dictionary<int, string>();
                 if (Shortcuts.Step != null)
                 {
                     uCtrl_Shortcuts_Elm.checkBox_Step.Checked = Shortcuts.Step.visible;
-                    elementOptions.Add(Shortcuts.Step.position, "Step");
+                }
+                if (Shortcuts.Cal != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Cal.Checked = Shortcuts.Cal.visible;
                 }
                 if (Shortcuts.Heart != null)
                 {
                     uCtrl_Shortcuts_Elm.checkBox_Heart.Checked = Shortcuts.Heart.visible;
-                    elementOptions.Add(Shortcuts.Heart.position, "Heart");
-                }
-                if (Shortcuts.SPO2 != null)
-                {
-                    uCtrl_Shortcuts_Elm.checkBox_SPO2.Checked = Shortcuts.SPO2.visible;
-                    elementOptions.Add(Shortcuts.SPO2.position, "SPO2");
+                    //elementOptions.Add(Shortcuts.Heart.position, "Heart");
                 }
                 if (Shortcuts.PAI != null)
                 {
                     uCtrl_Shortcuts_Elm.checkBox_PAI.Checked = Shortcuts.PAI.visible;
-                    elementOptions.Add(Shortcuts.PAI.position, "PAI");
+                    //elementOptions.Add(Shortcuts.PAI.position, "PAI");
                 }
-                if (Shortcuts.Stress != null)
+                if (Shortcuts.Battery != null)
                 {
-                    uCtrl_Shortcuts_Elm.checkBox_Stress.Checked = Shortcuts.Stress.visible;
-                    elementOptions.Add(Shortcuts.Stress.position, "Stress");
-                }
-                if (Shortcuts.Weather != null)
-                {
-                    uCtrl_Shortcuts_Elm.checkBox_Weather.Checked = Shortcuts.Weather.visible;
-                    elementOptions.Add(Shortcuts.Weather.position, "Weather");
-                }
-                if (Shortcuts.Altimeter != null)
-                {
-                    uCtrl_Shortcuts_Elm.checkBox_Altimeter.Checked = Shortcuts.Altimeter.visible;
-                    elementOptions.Add(Shortcuts.Altimeter.position, "Altimeter");
+                    uCtrl_Shortcuts_Elm.checkBox_Battery.Checked = Shortcuts.Battery.visible;
                 }
                 if (Shortcuts.Sunrise != null)
                 {
                     uCtrl_Shortcuts_Elm.checkBox_Sunrise.Checked = Shortcuts.Sunrise.visible;
-                    elementOptions.Add(Shortcuts.Sunrise.position, "Sunrise");
+                    //elementOptions.Add(Shortcuts.Sunrise.position, "Sunrise");
                 }
-                if (Shortcuts.Alarm != null)
+                if (Shortcuts.Moon != null)
                 {
-                    uCtrl_Shortcuts_Elm.checkBox_Alarm.Checked = Shortcuts.Alarm.visible;
-                    elementOptions.Add(Shortcuts.Alarm.position, "Alarm");
+                    uCtrl_Shortcuts_Elm.checkBox_Moon.Checked = Shortcuts.Moon.visible;
                 }
-                if (Shortcuts.Sleep != null)
+                if (Shortcuts.BodyTemp != null)
                 {
-                    uCtrl_Shortcuts_Elm.checkBox_Sleep.Checked = Shortcuts.Sleep.visible;
-                    elementOptions.Add(Shortcuts.Sleep.position, "Sleep");
+                    uCtrl_Shortcuts_Elm.checkBox_BodyTemp.Checked = Shortcuts.BodyTemp.visible;
+                }
+                if (Shortcuts.Weather != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Weather.Checked = Shortcuts.Weather.visible;
+                    //elementOptions.Add(Shortcuts.Weather.position, "Weather");
+                }
+                if (Shortcuts.Stand != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Stand.Checked = Shortcuts.Stand.visible;
+                }
+                if (Shortcuts.SPO2 != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_SPO2.Checked = Shortcuts.SPO2.visible;
+                    //elementOptions.Add(Shortcuts.SPO2.position, "SPO2");
+                }
+                if (Shortcuts.Altimeter != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Altimeter.Checked = Shortcuts.Altimeter.visible;
+                    //elementOptions.Add(Shortcuts.Altimeter.position, "Altimeter");
+                }
+                if (Shortcuts.Stress != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Stress.Checked = Shortcuts.Stress.visible;
+                    //elementOptions.Add(Shortcuts.Stress.position, "Stress");
                 }
                 if (Shortcuts.Countdown != null)
                 {
                     uCtrl_Shortcuts_Elm.checkBox_Countdown.Checked = Shortcuts.Countdown.visible;
-                    elementOptions.Add(Shortcuts.Countdown.position, "Countdown");
+                    //elementOptions.Add(Shortcuts.Countdown.position, "Countdown");
                 }
                 if (Shortcuts.Stopwatch != null)
                 {
                     uCtrl_Shortcuts_Elm.checkBox_Stopwatch.Checked = Shortcuts.Stopwatch.visible;
-                    elementOptions.Add(Shortcuts.Stopwatch.position, "Stopwatch");
+                    //elementOptions.Add(Shortcuts.Stopwatch.position, "Stopwatch");
                 }
-                uCtrl_Shortcuts_Elm.SetOptionsPosition(elementOptions);
+                if (Shortcuts.Alarm != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Alarm.Checked = Shortcuts.Alarm.visible;
+                    //elementOptions.Add(Shortcuts.Alarm.position, "Alarm");
+                }
+                if (Shortcuts.Sleep != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Sleep.Checked = Shortcuts.Sleep.visible;
+                    //elementOptions.Add(Shortcuts.Sleep.position, "Sleep");
+                }
+                if (Shortcuts.Altitude != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Altitude.Checked = Shortcuts.Altitude.visible;
+                }
+                if (Shortcuts.Readiness != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Readiness.Checked = Shortcuts.Readiness.visible;
+                }
+                if (Shortcuts.OutdoorRunning != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_OutdoorRunning.Checked = Shortcuts.OutdoorRunning.visible;
+                }
+                if (Shortcuts.Walking != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Walking.Checked = Shortcuts.Walking.visible;
+                }
+                if (Shortcuts.OutdoorCycling != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_OutdoorCycling.Checked = Shortcuts.OutdoorCycling.visible;
+                }
+                if (Shortcuts.FreeTraining != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_FreeTraining.Checked = Shortcuts.FreeTraining.visible;
+                }
+                if (Shortcuts.PoolSwimming != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_PoolSwimming.Checked = Shortcuts.PoolSwimming.visible;
+                }
+                if (Shortcuts.OpenWaterSwimming != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_OpenWaterSwimming.Checked = Shortcuts.OpenWaterSwimming.visible;
+                }
+                if (Shortcuts.TrainingLoad != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_TrainingLoad.Checked = Shortcuts.TrainingLoad.visible;
+                }
+                if (Shortcuts.VO2max != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_VO2max.Checked = Shortcuts.VO2max.visible;
+                }
+                if (Shortcuts.RecoveryTime != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_RecoveryTime.Checked = Shortcuts.RecoveryTime.visible;
+                }
+                if (Shortcuts.BreathTrain != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_BreathTrain.Checked = Shortcuts.BreathTrain.visible;
+                }
+                if (Shortcuts.FatBurning != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_FatBurning.Checked = Shortcuts.FatBurning.visible;
+                }
+                //uCtrl_Shortcuts_Elm.SetOptionsPosition(elementOptions);
 
                 uCtrl_Shortcuts_Elm.Visible = true;
                 SetElementPositionInGUI("ElementShortcuts", count - elementsCount - 2);
@@ -12257,19 +12328,19 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
-                    case "Heart":
-                        if (uCtrl_Shortcuts_Elm.checkBox_Heart.Checked)
+                    case "Cal":
+                        if (uCtrl_Shortcuts_Elm.checkBox_Cal.Checked)
                         {
-                            img_click = shortcuts.Heart;
+                            img_click = shortcuts.Cal;
                             Read_Shortcuts_Options(img_click);
                             ShowElemenrOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
-                    case "SPO2":
-                        if (uCtrl_Shortcuts_Elm.checkBox_SPO2.Checked)
+                    case "Heart":
+                        if (uCtrl_Shortcuts_Elm.checkBox_Heart.Checked)
                         {
-                            img_click = shortcuts.SPO2;
+                            img_click = shortcuts.Heart;
                             Read_Shortcuts_Options(img_click);
                             ShowElemenrOptions("Shortcut");
                         }
@@ -12284,10 +12355,37 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
-                    case "Stress":
-                        if (uCtrl_Shortcuts_Elm.checkBox_Stress.Checked)
+                    case "Battery":
+                        if (uCtrl_Shortcuts_Elm.checkBox_Battery.Checked)
                         {
-                            img_click = shortcuts.Stress;
+                            img_click = shortcuts.Battery;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Sunrise":
+                        if (uCtrl_Shortcuts_Elm.checkBox_Sunrise.Checked)
+                        {
+                            img_click = shortcuts.Sunrise;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Moon":
+                        if (uCtrl_Shortcuts_Elm.checkBox_Moon.Checked)
+                        {
+                            img_click = shortcuts.Moon;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "BodyTemp":
+                        if (uCtrl_Shortcuts_Elm.checkBox_BodyTemp.Checked)
+                        {
+                            img_click = shortcuts.BodyTemp;
                             Read_Shortcuts_Options(img_click);
                             ShowElemenrOptions("Shortcut");
                         }
@@ -12302,6 +12400,24 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Stand":
+                        if (uCtrl_Shortcuts_Elm.checkBox_Stand.Checked)
+                        {
+                            img_click = shortcuts.Stand;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "SPO2":
+                        if (uCtrl_Shortcuts_Elm.checkBox_SPO2.Checked)
+                        {
+                            img_click = shortcuts.SPO2;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "Altimeter":
                         if (uCtrl_Shortcuts_Elm.checkBox_Altimeter.Checked)
                         {
@@ -12311,10 +12427,28 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
-                    case "Sunrise":
-                        if (uCtrl_Shortcuts_Elm.checkBox_Sunrise.Checked)
+                    case "Stress":
+                        if (uCtrl_Shortcuts_Elm.checkBox_Stress.Checked)
                         {
-                            img_click = shortcuts.Sunrise;
+                            img_click = shortcuts.Stress;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Countdown":
+                        if (uCtrl_Shortcuts_Elm.checkBox_Countdown.Checked)
+                        {
+                            img_click = shortcuts.Countdown;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Stopwatch":
+                        if (uCtrl_Shortcuts_Elm.checkBox_Stopwatch.Checked)
+                        {
+                            img_click = shortcuts.Stopwatch;
                             Read_Shortcuts_Options(img_click);
                             ShowElemenrOptions("Shortcut");
                         }
@@ -12338,19 +12472,118 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
-                    case "Countdown":
-                        if (uCtrl_Shortcuts_Elm.checkBox_Countdown.Checked)
+                    case "Altitude":
+                        if (uCtrl_Shortcuts_Elm.checkBox_Altitude.Checked)
                         {
-                            img_click = shortcuts.Countdown;
+                            img_click = shortcuts.Altitude;
                             Read_Shortcuts_Options(img_click);
                             ShowElemenrOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
-                    case "Stopwatch":
-                        if (uCtrl_Shortcuts_Elm.checkBox_Stopwatch.Checked)
+                    case "Readiness":
+                        if (uCtrl_Shortcuts_Elm.checkBox_Readiness.Checked)
                         {
-                            img_click = shortcuts.Stopwatch;
+                            img_click = shortcuts.Readiness;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "OutdoorRunning":
+                        if (uCtrl_Shortcuts_Elm.checkBox_OutdoorRunning.Checked)
+                        {
+                            img_click = shortcuts.OutdoorRunning;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Walking":
+                        if (uCtrl_Shortcuts_Elm.checkBox_Walking.Checked)
+                        {
+                            img_click = shortcuts.Walking;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "OutdoorCycling":
+                        if (uCtrl_Shortcuts_Elm.checkBox_OutdoorCycling.Checked)
+                        {
+                            img_click = shortcuts.OutdoorCycling;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "FreeTraining":
+                        if (uCtrl_Shortcuts_Elm.checkBox_FreeTraining.Checked)
+                        {
+                            img_click = shortcuts.FreeTraining;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "PoolSwimming":
+                        if (uCtrl_Shortcuts_Elm.checkBox_PoolSwimming.Checked)
+                        {
+                            img_click = shortcuts.PoolSwimming;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "OpenWaterSwimming":
+                        if (uCtrl_Shortcuts_Elm.checkBox_OpenWaterSwimming.Checked)
+                        {
+                            img_click = shortcuts.OpenWaterSwimming;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "TrainingLoad":
+                        if (uCtrl_Shortcuts_Elm.checkBox_TrainingLoad.Checked)
+                        {
+                            img_click = shortcuts.TrainingLoad;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "VO2max":
+                        if (uCtrl_Shortcuts_Elm.checkBox_VO2max.Checked)
+                        {
+                            img_click = shortcuts.VO2max;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "RecoveryTime":
+                        if (uCtrl_Shortcuts_Elm.checkBox_RecoveryTime.Checked)
+                        {
+                            img_click = shortcuts.RecoveryTime;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "BreathTrain":
+                        if (uCtrl_Shortcuts_Elm.checkBox_BreathTrain.Checked)
+                        {
+                            img_click = shortcuts.BreathTrain;
+                            Read_Shortcuts_Options(img_click);
+                            ShowElemenrOptions("Shortcut");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "FatBurning":
+                        if (uCtrl_Shortcuts_Elm.checkBox_FatBurning.Checked)
+                        {
+                            img_click = shortcuts.FatBurning;
                             Read_Shortcuts_Options(img_click);
                             ShowElemenrOptions("Shortcut");
                         }
@@ -18590,57 +18823,53 @@ namespace Watch_Face_Editor
             if (Watch_Face == null) return;
 
             ElementShortcuts statuses = Watch_Face.Shortcuts;
-            //if (radioButton_ScreenNormal.Checked)
-            //{
-            //    if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
-            //        Watch_Face.ScreenNormal.Elements != null)
-            //    {
-            //        bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementShortcuts");
-            //        //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-            //        if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementShortcuts());
-            //        statuses = (ElementShortcuts)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
-            //    }
-            //}
-            //else
-            //{
-            //    if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
-            //        Watch_Face.ScreenAOD.Elements != null)
-            //    {
-            //        bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementShortcuts");
-            //        //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-            //        if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementShortcuts());
-            //        statuses = (ElementShortcuts)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
-            //    }
-            //}
 
             if (statuses != null)
             {
                 if (statuses.Step == null) statuses.Step = new hmUI_widget_IMG_CLICK();
+                if (statuses.Cal == null) statuses.Cal = new hmUI_widget_IMG_CLICK();
                 if (statuses.Heart == null) statuses.Heart = new hmUI_widget_IMG_CLICK();
-                if (statuses.SPO2 == null) statuses.SPO2 = new hmUI_widget_IMG_CLICK();
                 if (statuses.PAI == null) statuses.PAI = new hmUI_widget_IMG_CLICK();
-                if (statuses.Stress == null) statuses.Stress = new hmUI_widget_IMG_CLICK();
-                if (statuses.Weather == null) statuses.Weather = new hmUI_widget_IMG_CLICK();
-                if (statuses.Altimeter == null) statuses.Altimeter = new hmUI_widget_IMG_CLICK();
+                if (statuses.Battery == null) statuses.Battery = new hmUI_widget_IMG_CLICK();
                 if (statuses.Sunrise == null) statuses.Sunrise = new hmUI_widget_IMG_CLICK();
-                if (statuses.Alarm == null) statuses.Alarm = new hmUI_widget_IMG_CLICK();
-                if (statuses.Sleep == null) statuses.Sleep = new hmUI_widget_IMG_CLICK();
+                if (statuses.Moon == null) statuses.Moon = new hmUI_widget_IMG_CLICK();
+                if (statuses.BodyTemp == null) statuses.BodyTemp = new hmUI_widget_IMG_CLICK();
+                if (statuses.Weather == null) statuses.Weather = new hmUI_widget_IMG_CLICK();
+                if (statuses.Stand == null) statuses.Stand = new hmUI_widget_IMG_CLICK();
+                if (statuses.SPO2 == null) statuses.SPO2 = new hmUI_widget_IMG_CLICK();
+                if (statuses.Altimeter == null) statuses.Altimeter = new hmUI_widget_IMG_CLICK();
+                if (statuses.Stress == null) statuses.Stress = new hmUI_widget_IMG_CLICK();
                 if (statuses.Countdown == null) statuses.Countdown = new hmUI_widget_IMG_CLICK();
                 if (statuses.Stopwatch == null) statuses.Stopwatch = new hmUI_widget_IMG_CLICK();
+                if (statuses.Alarm == null) statuses.Alarm = new hmUI_widget_IMG_CLICK();
+                if (statuses.Sleep == null) statuses.Sleep = new hmUI_widget_IMG_CLICK();
+                if (statuses.Altitude == null) statuses.Altitude = new hmUI_widget_IMG_CLICK();
+                if (statuses.Readiness == null) statuses.Readiness = new hmUI_widget_IMG_CLICK();
+                if (statuses.OutdoorRunning == null) statuses.OutdoorRunning = new hmUI_widget_IMG_CLICK();
+                if (statuses.Walking == null) statuses.Walking = new hmUI_widget_IMG_CLICK();
+                if (statuses.OutdoorCycling == null) statuses.OutdoorCycling = new hmUI_widget_IMG_CLICK();
+                if (statuses.FreeTraining == null) statuses.FreeTraining = new hmUI_widget_IMG_CLICK();
+                if (statuses.PoolSwimming == null) statuses.PoolSwimming = new hmUI_widget_IMG_CLICK();
+                if (statuses.OpenWaterSwimming == null) statuses.OpenWaterSwimming = new hmUI_widget_IMG_CLICK();
+                if (statuses.TrainingLoad == null) statuses.TrainingLoad = new hmUI_widget_IMG_CLICK();
+                if (statuses.VO2max == null) statuses.VO2max = new hmUI_widget_IMG_CLICK();
+                if (statuses.RecoveryTime == null) statuses.RecoveryTime = new hmUI_widget_IMG_CLICK();
+                if (statuses.BreathTrain == null) statuses.BreathTrain = new hmUI_widget_IMG_CLICK();
+                if (statuses.FatBurning == null) statuses.FatBurning = new hmUI_widget_IMG_CLICK();
 
-                Dictionary<string, int> elementOptions = uCtrl_Shortcuts_Elm.GetOptionsPosition();
-                if (elementOptions.ContainsKey("Step")) statuses.Step.position = elementOptions["Step"];
-                if (elementOptions.ContainsKey("Heart")) statuses.Heart.position = elementOptions["Heart"];
-                if (elementOptions.ContainsKey("SPO2")) statuses.SPO2.position = elementOptions["SPO2"];
-                if (elementOptions.ContainsKey("PAI")) statuses.PAI.position = elementOptions["PAI"];
-                if (elementOptions.ContainsKey("Stress")) statuses.Stress.position = elementOptions["Stress"];
-                if (elementOptions.ContainsKey("Weather")) statuses.Weather.position = elementOptions["Weather"];
-                if (elementOptions.ContainsKey("Altimeter")) statuses.Altimeter.position = elementOptions["Altimeter"];
-                if (elementOptions.ContainsKey("Sunrise")) statuses.Sunrise.position = elementOptions["Sunrise"];
-                if (elementOptions.ContainsKey("Alarm")) statuses.Alarm.position = elementOptions["Alarm"];
-                if (elementOptions.ContainsKey("Sleep")) statuses.Sleep.position = elementOptions["Sleep"];
-                if (elementOptions.ContainsKey("Countdown")) statuses.Countdown.position = elementOptions["Countdown"];
-                if (elementOptions.ContainsKey("Stopwatch")) statuses.Stopwatch.position = elementOptions["Stopwatch"];
+                //Dictionary<string, int> elementOptions = uCtrl_Shortcuts_Elm.GetOptionsPosition();
+                //if (elementOptions.ContainsKey("Step")) statuses.Step.position = elementOptions["Step"];
+                //if (elementOptions.ContainsKey("Heart")) statuses.Heart.position = elementOptions["Heart"];
+                //if (elementOptions.ContainsKey("SPO2")) statuses.SPO2.position = elementOptions["SPO2"];
+                //if (elementOptions.ContainsKey("PAI")) statuses.PAI.position = elementOptions["PAI"];
+                //if (elementOptions.ContainsKey("Stress")) statuses.Stress.position = elementOptions["Stress"];
+                //if (elementOptions.ContainsKey("Weather")) statuses.Weather.position = elementOptions["Weather"];
+                //if (elementOptions.ContainsKey("Altimeter")) statuses.Altimeter.position = elementOptions["Altimeter"];
+                //if (elementOptions.ContainsKey("Sunrise")) statuses.Sunrise.position = elementOptions["Sunrise"];
+                //if (elementOptions.ContainsKey("Alarm")) statuses.Alarm.position = elementOptions["Alarm"];
+                //if (elementOptions.ContainsKey("Sleep")) statuses.Sleep.position = elementOptions["Sleep"];
+                //if (elementOptions.ContainsKey("Countdown")) statuses.Countdown.position = elementOptions["Countdown"];
+                //if (elementOptions.ContainsKey("Stopwatch")) statuses.Stopwatch.position = elementOptions["Stopwatch"];
 
                 CheckBox checkBox = (CheckBox)sender;
                 string name = checkBox.Name;
@@ -18649,26 +18878,47 @@ namespace Watch_Face_Editor
                     case "checkBox_Step":
                         statuses.Step.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Cal":
+                        statuses.Cal.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Heart":
                         statuses.Heart.visible = checkBox.Checked;
-                        break;
-                    case "checkBox_SPO2":
-                        statuses.SPO2.visible = checkBox.Checked;
                         break;
                     case "checkBox_PAI":
                         statuses.PAI.visible = checkBox.Checked;
                         break;
-                    case "checkBox_Stress":
-                        statuses.Stress.visible = checkBox.Checked;
+                    case "checkBox_Battery":
+                        statuses.Battery.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Sunrise":
+                        statuses.Sunrise.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Moon":
+                        statuses.Moon.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_BodyTemp":
+                        statuses.BodyTemp.visible = checkBox.Checked;
                         break;
                     case "checkBox_Weather":
                         statuses.Weather.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Stand":
+                        statuses.Stand.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_SPO2":
+                        statuses.SPO2.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Altimeter":
                         statuses.Altimeter.visible = checkBox.Checked;
                         break;
-                    case "checkBox_Sunrise":
-                        statuses.Sunrise.visible = checkBox.Checked;
+                    case "checkBox_Stress":
+                        statuses.Stress.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Countdown":
+                        statuses.Countdown.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Stopwatch":
+                        statuses.Stopwatch.visible = checkBox.Checked;
                         break;
                     case "checkBox_Alarm":
                         statuses.Alarm.visible = checkBox.Checked;
@@ -18676,11 +18926,44 @@ namespace Watch_Face_Editor
                     case "checkBox_Sleep":
                         statuses.Sleep.visible = checkBox.Checked;
                         break;
-                    case "checkBox_Countdown":
-                        statuses.Countdown.visible = checkBox.Checked;
+                    case "checkBox_Altitude":
+                        statuses.Altitude.visible = checkBox.Checked;
                         break;
-                    case "checkBox_Stopwatch":
-                        statuses.Stopwatch.visible = checkBox.Checked;
+                    case "checkBox_Readiness":
+                        statuses.Readiness.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_OutdoorRunning":
+                        statuses.OutdoorRunning.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Walking":
+                        statuses.Walking.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_OutdoorCycling":
+                        statuses.OutdoorCycling.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_FreeTraining":
+                        statuses.FreeTraining.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_PoolSwimming":
+                        statuses.PoolSwimming.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_OpenWaterSwimming":
+                        statuses.OpenWaterSwimming.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_TrainingLoad":
+                        statuses.TrainingLoad.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_VO2max":
+                        statuses.VO2max.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_RecoveryTime":
+                        statuses.RecoveryTime.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_BreathTrain":
+                        statuses.BreathTrain.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_FatBurning":
+                        statuses.FatBurning.visible = checkBox.Checked;
                         break;
                 }
 

@@ -51,7 +51,7 @@ namespace Watch_Face_Editor
 
                     ElementShortcuts shortcuts = (ElementShortcuts)NewElements.Find(e1 => e1.GetType().Name == "ElementShortcuts");
                     if (shortcuts != null) 
-                    { 
+                    {
                         Watch_Face_return.Shortcuts = (ElementShortcuts)shortcuts.Clone();
                         int index = NewElements.FindIndex(e => e.GetType().Name == "ElementShortcuts");
                         NewElements.RemoveAt(index);

@@ -2850,5 +2850,14 @@
   <ItemGroup>
     <None Include="Resources\hr_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\activitys_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trainings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\health.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

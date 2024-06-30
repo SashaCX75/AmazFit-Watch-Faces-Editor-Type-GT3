@@ -378,23 +378,46 @@ namespace Watch_Face_Editor
                 ElementShortcuts shortcutsElement = Watch_Face.Shortcuts;
 
                 hmUI_widget_IMG_CLICK img_click_step = shortcutsElement.Step;
+                hmUI_widget_IMG_CLICK img_click_cal = shortcutsElement.Cal;
                 hmUI_widget_IMG_CLICK img_click_heart = shortcutsElement.Heart;
-                hmUI_widget_IMG_CLICK img_click_spo2 = shortcutsElement.SPO2;
                 hmUI_widget_IMG_CLICK img_click_pai = shortcutsElement.PAI;
-                hmUI_widget_IMG_CLICK img_click_stress = shortcutsElement.Stress;
-                hmUI_widget_IMG_CLICK img_click_weather = shortcutsElement.Weather;
-                hmUI_widget_IMG_CLICK img_click_altimeter = shortcutsElement.Altimeter;
+                hmUI_widget_IMG_CLICK img_click_battery = shortcutsElement.Battery;
                 hmUI_widget_IMG_CLICK img_click_sunrise = shortcutsElement.Sunrise;
-                hmUI_widget_IMG_CLICK img_click_alarm = shortcutsElement.Alarm;
-                hmUI_widget_IMG_CLICK img_click_sleep = shortcutsElement.Sleep;
+                hmUI_widget_IMG_CLICK img_click_moon = shortcutsElement.Moon;
+                hmUI_widget_IMG_CLICK img_click_bodyTemp = shortcutsElement.BodyTemp;
+                hmUI_widget_IMG_CLICK img_click_weather = shortcutsElement.Weather;
+                hmUI_widget_IMG_CLICK img_click_stand = shortcutsElement.Stand;
+                hmUI_widget_IMG_CLICK img_click_spo2 = shortcutsElement.SPO2;
+                hmUI_widget_IMG_CLICK img_click_altimeter = shortcutsElement.Altimeter;
+                hmUI_widget_IMG_CLICK img_click_stress = shortcutsElement.Stress;
                 hmUI_widget_IMG_CLICK img_click_countdown = shortcutsElement.Countdown;
                 hmUI_widget_IMG_CLICK img_click_stopwatch = shortcutsElement.Stopwatch;
+                hmUI_widget_IMG_CLICK img_click_alarm = shortcutsElement.Alarm;
+                hmUI_widget_IMG_CLICK img_click_sleep = shortcutsElement.Sleep;
+                hmUI_widget_IMG_CLICK img_click_altitude = shortcutsElement.Altitude;
+                hmUI_widget_IMG_CLICK img_click_readiness = shortcutsElement.Readiness;
+                hmUI_widget_IMG_CLICK img_click_outdoorRunning = shortcutsElement.OutdoorRunning;
+                hmUI_widget_IMG_CLICK img_click_walking = shortcutsElement.Walking;
+                hmUI_widget_IMG_CLICK img_click_outdoorCycling = shortcutsElement.OutdoorCycling;
+                hmUI_widget_IMG_CLICK img_click_freeTraining = shortcutsElement.FreeTraining;
+                hmUI_widget_IMG_CLICK img_click_poolSwimming = shortcutsElement.PoolSwimming;
+                hmUI_widget_IMG_CLICK img_click_openWaterSwimming = shortcutsElement.OpenWaterSwimming;
+                hmUI_widget_IMG_CLICK img_click_trainingLoad = shortcutsElement.TrainingLoad;
+                hmUI_widget_IMG_CLICK img_click_vo2max = shortcutsElement.VO2max;
+                hmUI_widget_IMG_CLICK img_click_recoveryTime = shortcutsElement.RecoveryTime;
+                hmUI_widget_IMG_CLICK img_click_breathTrain = shortcutsElement.BreathTrain;
+                hmUI_widget_IMG_CLICK img_click_fatBurning = shortcutsElement.FatBurning;
 
-                for (int index = 1; index <= 15; index++)
+                for (int index = -1; index <= 35; index++)
                 {
                     if (img_click_step != null && index == img_click_step.position)
                     {
                         DrawShortcuts(gPanel, img_click_step, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_cal != null && index == img_click_cal.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_cal, showShortcuts,
                             showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                     }
                     if (img_click_heart != null && index == img_click_heart.position)
@@ -402,19 +425,29 @@ namespace Watch_Face_Editor
                         DrawShortcuts(gPanel, img_click_heart, showShortcuts,
                             showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                     }
-                    if (img_click_spo2 != null && index == img_click_spo2.position)
-                    {
-                        DrawShortcuts(gPanel, img_click_spo2, showShortcuts,
-                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                    }
                     if (img_click_pai != null && index == img_click_pai.position)
                     {
                         DrawShortcuts(gPanel, img_click_pai, showShortcuts,
                             showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                     }
-                    if (img_click_stress != null && index == img_click_stress.position)
+                    if (img_click_battery != null && index == img_click_battery.position)
                     {
-                        DrawShortcuts(gPanel, img_click_stress, showShortcuts,
+                        DrawShortcuts(gPanel, img_click_battery, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_sunrise != null && index == img_click_sunrise.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_sunrise, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_moon != null && index == img_click_moon.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_moon, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_bodyTemp != null && index == img_click_bodyTemp.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_bodyTemp, showShortcuts,
                             showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                     }
                     if (img_click_weather != null && index == img_click_weather.position)
@@ -422,14 +455,29 @@ namespace Watch_Face_Editor
                         DrawShortcuts(gPanel, img_click_weather, showShortcuts,
                             showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                     }
+                    if (img_click_spo2 != null && index == img_click_spo2.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_spo2, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
                     if (img_click_altimeter != null && index == img_click_altimeter.position)
                     {
                         DrawShortcuts(gPanel, img_click_altimeter, showShortcuts,
                             showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                     }
-                    if (img_click_sunrise != null && index == img_click_sunrise.position)
+                    if (img_click_stress != null && index == img_click_stress.position)
                     {
-                        DrawShortcuts(gPanel, img_click_sunrise, showShortcuts,
+                        DrawShortcuts(gPanel, img_click_stress, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_countdown != null && index == img_click_countdown.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_countdown, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_stopwatch != null && index == img_click_stopwatch.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_stopwatch, showShortcuts,
                             showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                     }
                     if (img_click_alarm != null && index == img_click_alarm.position)
@@ -442,14 +490,69 @@ namespace Watch_Face_Editor
                         DrawShortcuts(gPanel, img_click_sleep, showShortcuts,
                             showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                     }
-                    if (img_click_countdown != null && index == img_click_countdown.position)
+                    if (img_click_altitude != null && index == img_click_altitude.position)
                     {
-                        DrawShortcuts(gPanel, img_click_countdown, showShortcuts,
+                        DrawShortcuts(gPanel, img_click_altitude, showShortcuts,
                             showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                     }
-                    if (img_click_stopwatch != null && index == img_click_stopwatch.position)
+                    if (img_click_readiness != null && index == img_click_readiness.position)
                     {
-                        DrawShortcuts(gPanel, img_click_stopwatch, showShortcuts,
+                        DrawShortcuts(gPanel, img_click_readiness, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_outdoorRunning != null && index == img_click_outdoorRunning.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_outdoorRunning, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_walking != null && index == img_click_walking.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_walking, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_outdoorCycling != null && index == img_click_outdoorCycling.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_outdoorCycling, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_freeTraining != null && index == img_click_freeTraining.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_freeTraining, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_poolSwimming != null && index == img_click_poolSwimming.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_poolSwimming, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_openWaterSwimming != null && index == img_click_openWaterSwimming.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_openWaterSwimming, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_trainingLoad != null && index == img_click_trainingLoad.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_trainingLoad, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_vo2max != null && index == img_click_vo2max.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_vo2max, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_recoveryTime != null && index == img_click_recoveryTime.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_recoveryTime, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_breathTrain != null && index == img_click_breathTrain.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_breathTrain, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_fatBurning != null && index == img_click_fatBurning.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_fatBurning, showShortcuts,
                             showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                     }
                 }

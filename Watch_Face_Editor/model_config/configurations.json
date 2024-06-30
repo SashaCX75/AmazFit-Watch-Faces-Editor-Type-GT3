@@ -159,7 +159,7 @@
     "previewHeight": 324,
     "colorScheme": 1,
     "fixSize": true,
-    "versionOS": 3
+    "versionOS": 3.5
   },
   "Bip 5": {
     "name": "Amazfit Bip 5",
@@ -280,7 +280,7 @@
     "previewHeight": 306,
     "colorScheme": 1,
     "fixSize": true,
-    "versionOS": 2.1
+    "versionOS": 3.5
   },
   "Cheetah Pro": {
     "name": "Amazfit Cheetah Pro",
@@ -320,7 +320,7 @@
     "previewHeight": 324,
     "colorScheme": 1,
     "fixSize": true,
-    "versionOS": 2.1
+    "versionOS": 3.5
   },
   "Cheetah (Square)": {
     "name": "Amazfit Cheetah (Square)",
@@ -399,7 +399,7 @@
     "previewHeight": 280,
     "colorScheme": 1,
     "fixSize": true,
-    "versionOS": 1
+    "versionOS": 3.5
   },
   "GTR 3": {
     "name": "Amazfit GTR 3",
@@ -763,6 +763,6 @@
     "previewHeight": 306,
     "colorScheme": 1,
     "fixSize": true,
-    "versionOS": 2.1
+    "versionOS": 3.5
   }
 }

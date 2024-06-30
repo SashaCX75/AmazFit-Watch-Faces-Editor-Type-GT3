@@ -14,20 +14,44 @@ namespace ControlLibrary
     {
         private bool setValue; // режим задания параметров
         bool highlight_Step = false;
+        bool highlight_Cal = false;
         bool highlight_Heart = false;
-        bool highlight_SPO2 = false;
         bool highlight_PAI = false;
-        bool highlight_Stress = false;
-        bool highlight_Weather = false;
-        bool highlight_Altimeter = false;
+        bool highlight_Battery = false;
         bool highlight_Sunrise = false;
-        bool highlight_Alarm = false;
-        bool highlight_Sleep = false;
+        bool highlight_Moon= false;
+        bool highlight_BodyTemp = false;
+        bool highlight_Weather = false;
+        bool highlight_Stand = false;
+        bool highlight_SPO2 = false;
+        bool highlight_Altimeter = false;
+        bool highlight_Stress = false;
         bool highlight_Countdown = false;
         bool highlight_Stopwatch = false;
+        bool highlight_Alarm = false;
+        bool highlight_Sleep = false;
+        bool highlight_Altitude = false;
+        bool highlight_Readiness = false;
+        bool highlight_OutdoorRunning = false;
+        bool highlight_Walking = false;
+        bool highlight_OutdoorCycling = false;
+        bool highlight_FreeTraining = false;
+        bool highlight_PoolSwimming = false;
+        bool highlight_OpenWaterSwimming = false;
+        bool highlight_TrainingLoad = false;
+        bool highlight_VO2max = false;
+        bool highlight_RecoveryTime = false;
+        bool highlight_BreathTrain = false;
+        bool highlight_FatBurning = false;
 
         bool visibility_elements = false; // развернут список с элементами
         bool visibilityElement = true; // элемент оторажается на предпросмотре
+
+        bool visibility_activities = false; // развернут список ярлыков с ативностями
+        bool visibility_health = false; // развернут список ярлыков со здоровьем
+        bool visibility_air = false; // развернут список ярлыков с атмосферой
+        bool visibility_system = false; // развернут список системных ярлыков 
+        bool visibility_trainings = false; // развернут список ярлыков с тренировками
 
         public int position = -1; // позиция в наборе элеменетов
         public string selectedElement; // название выбраного элемента
@@ -45,6 +69,21 @@ namespace ControlLibrary
             button_ElementName.Controls.Add(pictureBox_Show);
             button_ElementName.Controls.Add(pictureBox_Del);
 
+            button_Activities.Controls.Add(pictureBox_Arrow_Right_Activities);
+            button_Activities.Controls.Add(pictureBox_Arrow_Down_Activities);
+
+            button_Health.Controls.Add(pictureBox_Arrow_Right_Health);
+            button_Health.Controls.Add(pictureBox_Arrow_Down_Health);
+
+            button_System.Controls.Add(pictureBox_Arrow_Right_System);
+            button_System.Controls.Add(pictureBox_Arrow_Down_System);
+
+            button_Air.Controls.Add(pictureBox_Arrow_Right_Air);
+            button_Air.Controls.Add(pictureBox_Arrow_Down_Air);
+
+            button_Trainings.Controls.Add(pictureBox_Arrow_Right_Trainings);
+            button_Trainings.Controls.Add(pictureBox_Arrow_Down_Trainings);
+
             pictureBox_Arrow_Right.Location = new Point(1, 2);
             pictureBox_Arrow_Right.BackColor = Color.Transparent;
 
@@ -57,6 +96,31 @@ namespace ControlLibrary
 
             //pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 8, 2);
             pictureBox_Del.BackColor = Color.Transparent;
+
+            pictureBox_Arrow_Right_Activities.Location = new Point(1, 2);
+            pictureBox_Arrow_Right_Activities.BackColor = Color.Transparent;
+            pictureBox_Arrow_Down_Activities.Location = new Point(1, 2);
+            pictureBox_Arrow_Down_Activities.BackColor = Color.Transparent;
+
+            pictureBox_Arrow_Right_Health.Location = new Point(1, 2);
+            pictureBox_Arrow_Right_Health.BackColor = Color.Transparent;
+            pictureBox_Arrow_Down_Health.Location = new Point(1, 2);
+            pictureBox_Arrow_Down_Health.BackColor = Color.Transparent;
+
+            pictureBox_Arrow_Right_Air.Location = new Point(1, 2);
+            pictureBox_Arrow_Right_Air.BackColor = Color.Transparent;
+            pictureBox_Arrow_Down_Air.Location = new Point(1, 2);
+            pictureBox_Arrow_Down_Air.BackColor = Color.Transparent;
+
+            pictureBox_Arrow_Right_System.Location = new Point(1, 2);
+            pictureBox_Arrow_Right_System.BackColor = Color.Transparent;
+            pictureBox_Arrow_Down_System.Location = new Point(1, 2);
+            pictureBox_Arrow_Down_System.BackColor = Color.Transparent;
+
+            pictureBox_Arrow_Right_Trainings.Location = new Point(1, 2);
+            pictureBox_Arrow_Right_Trainings.BackColor = Color.Transparent;
+            pictureBox_Arrow_Down_Trainings.Location = new Point(1, 2);
+            pictureBox_Arrow_Down_Trainings.BackColor = Color.Transparent;
         }
 
         [Browsable(true)]
@@ -92,22 +156,80 @@ namespace ControlLibrary
             pictureBox_Arrow_Right.Visible = !visibility_elements;
         }
 
+        private void button_Activities_Click(object sender, EventArgs e)
+        {
+            visibility_activities = !visibility_activities;
+            tableLayoutPanel_Activities.Visible = visibility_activities;
+            pictureBox_Arrow_Down_Activities.Visible = visibility_activities;
+            pictureBox_Arrow_Right_Activities.Visible = !visibility_activities;
+        }
+
+        private void button_Health_Click(object sender, EventArgs e)
+        {
+            visibility_health = !visibility_health;
+            tableLayoutPanel_Health.Visible = visibility_health;
+            pictureBox_Arrow_Down_Health.Visible = visibility_health;
+            pictureBox_Arrow_Right_Health.Visible = !visibility_health;
+        }
+
+        private void button_Air_Click(object sender, EventArgs e)
+        {
+            visibility_air = !visibility_air;
+            tableLayoutPanel_Air.Visible = visibility_air;
+            pictureBox_Arrow_Down_Air.Visible = visibility_air;
+            pictureBox_Arrow_Right_Air.Visible = !visibility_air;
+        }
+
+        private void button_System_Click(object sender, EventArgs e)
+        {
+            visibility_system = !visibility_system;
+            tableLayoutPanel_System.Visible = visibility_system;
+            pictureBox_Arrow_Down_System.Visible = visibility_system;
+            pictureBox_Arrow_Right_System.Visible = !visibility_system;
+        }
+
+        private void button_Trainings_Click(object sender, EventArgs e)
+        {
+            visibility_trainings = !visibility_trainings;
+            tableLayoutPanel_Trainings.Visible = visibility_trainings;
+            pictureBox_Arrow_Down_Trainings.Visible = visibility_trainings;
+            pictureBox_Arrow_Right_Trainings.Visible = !visibility_trainings;
+        }
+
         public void ResetHighlightState()
         {
             selectedElement = "";
 
             highlight_Step = false;
+            highlight_Cal = false;
             highlight_Heart = false;
-            highlight_SPO2 = false;
             highlight_PAI = false;
-            highlight_Stress = false;
-            highlight_Weather = false;
-            highlight_Altimeter = false;
+            highlight_Battery = false;
             highlight_Sunrise = false;
-            highlight_Alarm = false;
-            highlight_Sleep = false;
+            highlight_Moon = false;
+            highlight_BodyTemp = false;
+            highlight_Weather = false;
+            highlight_Stand = false;
+            highlight_SPO2 = false;
+            highlight_Altimeter = false;
+            highlight_Stress = false;
             highlight_Countdown = false;
             highlight_Stopwatch = false;
+            highlight_Alarm = false;
+            highlight_Sleep = false;
+            highlight_Altitude = false;
+            highlight_Readiness = false;
+            highlight_OutdoorRunning = false;
+            highlight_Walking = false;
+            highlight_OutdoorCycling = false;
+            highlight_FreeTraining = false;
+            highlight_PoolSwimming = false;
+            highlight_OpenWaterSwimming = false;
+            highlight_TrainingLoad = false;
+            highlight_VO2max = false;
+            highlight_RecoveryTime = false;
+            highlight_BreathTrain = false;
+            highlight_FatBurning = false;
 
             SelectElement();
         }
@@ -127,6 +249,19 @@ namespace ControlLibrary
                 button_Step.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
+            if (highlight_Cal)
+            {
+                panel_Cal.BackColor = SystemColors.ActiveCaption;
+                button_Cal.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Cal.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Cal.BackColor = SystemColors.Control;
+                button_Cal.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Cal.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
             if (highlight_Heart)
             {
                 panel_Heart.BackColor = SystemColors.ActiveCaption;
@@ -138,19 +273,6 @@ namespace ControlLibrary
                 panel_Heart.BackColor = SystemColors.Control;
                 button_Heart.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Heart.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_SPO2)
-            {
-                panel_SPO2.BackColor = SystemColors.ActiveCaption;
-                button_SPO2.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_SPO2.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_SPO2.BackColor = SystemColors.Control;
-                button_SPO2.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_SPO2.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (highlight_PAI)
@@ -166,17 +288,56 @@ namespace ControlLibrary
                 button_PAI.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
-            if (highlight_Stress)
+            if (highlight_Battery)
             {
-                panel_Stress.BackColor = SystemColors.ActiveCaption;
-                button_Stress.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Stress.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                panel_Battery.BackColor = SystemColors.ActiveCaption;
+                button_Battery.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Battery.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             }
             else
             {
-                panel_Stress.BackColor = SystemColors.Control;
-                button_Stress.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Stress.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+                panel_Battery.BackColor = SystemColors.Control;
+                button_Battery.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Battery.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_Sunrise)
+            {
+                panel_Sunrise.BackColor = SystemColors.ActiveCaption;
+                button_Sunrise.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Sunrise.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Sunrise.BackColor = SystemColors.Control;
+                button_Sunrise.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Sunrise.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_Moon)
+            {
+                panel_Moon.BackColor = SystemColors.ActiveCaption;
+                button_Moon.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Moon.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Moon.BackColor = SystemColors.Control;
+                button_Moon.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Moon.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_BodyTemp)
+            {
+                panel_BodyTemp.BackColor = SystemColors.ActiveCaption;
+                button_BodyTemp.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_BodyTemp.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_BodyTemp.BackColor = SystemColors.Control;
+                button_BodyTemp.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_BodyTemp.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (highlight_Weather)
@@ -192,6 +353,32 @@ namespace ControlLibrary
                 button_Weather.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
+            if (highlight_Stand)
+            {
+                panel_Stand.BackColor = SystemColors.ActiveCaption;
+                button_Stand.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Stand.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Stand.BackColor = SystemColors.Control;
+                button_Stand.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Stand.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_SPO2)
+            {
+                panel_SPO2.BackColor = SystemColors.ActiveCaption;
+                button_SPO2.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_SPO2.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_SPO2.BackColor = SystemColors.Control;
+                button_SPO2.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_SPO2.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
             if (highlight_Altimeter)
             {
                 panel_Altimeter.BackColor = SystemColors.ActiveCaption;
@@ -205,17 +392,43 @@ namespace ControlLibrary
                 button_Altimeter.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
-            if (highlight_Sunrise)
+            if (highlight_Stress)
             {
-                panel_Sunrise.BackColor = SystemColors.ActiveCaption;
-                button_Sunrise.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Sunrise.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                panel_Stress.BackColor = SystemColors.ActiveCaption;
+                button_Stress.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Stress.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             }
             else
             {
-                panel_Sunrise.BackColor = SystemColors.Control;
-                button_Sunrise.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Sunrise.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+                panel_Stress.BackColor = SystemColors.Control;
+                button_Stress.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Stress.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_Countdown)
+            {
+                panel_Countdown.BackColor = SystemColors.ActiveCaption;
+                button_Countdown.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Countdown.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Countdown.BackColor = SystemColors.Control;
+                button_Countdown.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Countdown.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_Stopwatch)
+            {
+                panel_Stopwatch.BackColor = SystemColors.ActiveCaption;
+                button_Stopwatch.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Stopwatch.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Stopwatch.BackColor = SystemColors.Control;
+                button_Stopwatch.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Stopwatch.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (highlight_Alarm)
@@ -244,49 +457,197 @@ namespace ControlLibrary
                 button_Sleep.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
-            if (highlight_Countdown)
+            if (highlight_Altitude)
             {
-                panel_Countdown.BackColor = SystemColors.ActiveCaption;
-                button_Countdown.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Countdown.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                panel_Altitude.BackColor = SystemColors.ActiveCaption;
+                button_Altitude.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Altitude.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             }
             else
             {
-                panel_Countdown.BackColor = SystemColors.Control;
-                button_Countdown.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Countdown.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+                panel_Altitude.BackColor = SystemColors.Control;
+                button_Altitude.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Altitude.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
-            if (highlight_Stopwatch)
+            if (highlight_Readiness)
             {
-                panel_Stopwatch.BackColor = SystemColors.ActiveCaption;
-                button_Stopwatch.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Stopwatch.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                panel_Readiness.BackColor = SystemColors.ActiveCaption;
+                button_Readiness.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Readiness.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             }
             else
             {
-                panel_Stopwatch.BackColor = SystemColors.Control;
-                button_Stopwatch.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Stopwatch.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+                panel_Readiness.BackColor = SystemColors.Control;
+                button_Readiness.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Readiness.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_OutdoorRunning)
+            {
+                panel_OutdoorRunning.BackColor = SystemColors.ActiveCaption;
+                button_OutdoorRunning.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_OutdoorRunning.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_OutdoorRunning.BackColor = SystemColors.Control;
+                button_OutdoorRunning.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_OutdoorRunning.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_Walking)
+            {
+                panel_Walking.BackColor = SystemColors.ActiveCaption;
+                button_Walking.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Walking.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Walking.BackColor = SystemColors.Control;
+                button_Walking.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Walking.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_OutdoorCycling)
+            {
+                panel_OutdoorCycling.BackColor = SystemColors.ActiveCaption;
+                button_OutdoorCycling.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_OutdoorCycling.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_OutdoorCycling.BackColor = SystemColors.Control;
+                button_OutdoorCycling.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_OutdoorCycling.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_FreeTraining)
+            {
+                panel_FreeTraining.BackColor = SystemColors.ActiveCaption;
+                button_FreeTraining.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_FreeTraining.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_FreeTraining.BackColor = SystemColors.Control;
+                button_FreeTraining.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_FreeTraining.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_PoolSwimming)
+            {
+                panel_PoolSwimming.BackColor = SystemColors.ActiveCaption;
+                button_PoolSwimming.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_PoolSwimming.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_PoolSwimming.BackColor = SystemColors.Control;
+                button_PoolSwimming.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_PoolSwimming.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_OpenWaterSwimming)
+            {
+                panel_OpenWaterSwimming.BackColor = SystemColors.ActiveCaption;
+                button_OpenWaterSwimming.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_OpenWaterSwimming.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_OpenWaterSwimming.BackColor = SystemColors.Control;
+                button_OpenWaterSwimming.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_OpenWaterSwimming.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_TrainingLoad)
+            {
+                panel_TrainingLoad.BackColor = SystemColors.ActiveCaption;
+                button_TrainingLoad.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_TrainingLoad.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_TrainingLoad.BackColor = SystemColors.Control;
+                button_TrainingLoad.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_TrainingLoad.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_VO2max)
+            {
+                panel_VO2max.BackColor = SystemColors.ActiveCaption;
+                button_VO2max.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_VO2max.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_VO2max.BackColor = SystemColors.Control;
+                button_VO2max.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_VO2max.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_RecoveryTime)
+            {
+                panel_RecoveryTime.BackColor = SystemColors.ActiveCaption;
+                button_RecoveryTime.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_RecoveryTime.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_RecoveryTime.BackColor = SystemColors.Control;
+                button_RecoveryTime.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_RecoveryTime.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_BreathTrain)
+            {
+                panel_BreathTrain.BackColor = SystemColors.ActiveCaption;
+                button_BreathTrain.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_BreathTrain.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_BreathTrain.BackColor = SystemColors.Control;
+                button_BreathTrain.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_BreathTrain.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_FatBurning)
+            {
+                panel_FatBurning.BackColor = SystemColors.ActiveCaption;
+                button_FatBurning.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_FatBurning.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_FatBurning.BackColor = SystemColors.Control;
+                button_FatBurning.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_FatBurning.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
         }
 
+
         private void panel_Step_Click(object sender, EventArgs e)
         {
+            ResetHighlightState();
             selectedElement = "Step";
-
             highlight_Step = true;
-            highlight_Heart = false;
-            highlight_SPO2 = false;
-            highlight_PAI = false;
-            highlight_Stress = false;
-            highlight_Weather = false;
-            highlight_Altimeter = false;
-            highlight_Sunrise = false;
-            highlight_Alarm = false;
-            highlight_Sleep = false;
-            highlight_Countdown = false;
-            highlight_Stopwatch = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Cal_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "Cal";
+            highlight_Cal = true;
 
             SelectElement();
 
@@ -299,46 +660,9 @@ namespace ControlLibrary
 
         private void panel_Heart_Click(object sender, EventArgs e)
         {
+            ResetHighlightState();
             selectedElement = "Heart";
-
-            highlight_Step = false;
             highlight_Heart = true;
-            highlight_SPO2 = false;
-            highlight_PAI = false;
-            highlight_Stress = false;
-            highlight_Weather = false;
-            highlight_Altimeter = false;
-            highlight_Sunrise = false;
-            highlight_Alarm = false;
-            highlight_Sleep = false;
-            highlight_Countdown = false;
-            highlight_Stopwatch = false;
-
-            SelectElement();
-
-            if (SelectChanged != null)
-            {
-                EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs);
-            }
-        }
-
-        private void panel_SPO2_Click(object sender, EventArgs e)
-        {
-            selectedElement = "SPO2";
-
-            highlight_Step = false;
-            highlight_Heart = false;
-            highlight_SPO2 = true;
-            highlight_PAI = false;
-            highlight_Stress = false;
-            highlight_Weather = false;
-            highlight_Altimeter = false;
-            highlight_Sunrise = false;
-            highlight_Alarm = false;
-            highlight_Sleep = false;
-            highlight_Countdown = false;
-            highlight_Stopwatch = false;
 
             SelectElement();
 
@@ -351,20 +675,9 @@ namespace ControlLibrary
 
         private void panel_PAI_Click(object sender, EventArgs e)
         {
+            ResetHighlightState();
             selectedElement = "PAI";
-
-            highlight_Step = false;
-            highlight_Heart = false;
-            highlight_SPO2 = false;
             highlight_PAI = true;
-            highlight_Stress = false;
-            highlight_Weather = false;
-            highlight_Altimeter = false;
-            highlight_Sunrise = false;
-            highlight_Alarm = false;
-            highlight_Sleep = false;
-            highlight_Countdown = false;
-            highlight_Stopwatch = false;
 
             SelectElement();
 
@@ -375,74 +688,11 @@ namespace ControlLibrary
             }
         }
 
-        private void panel_Stress_Click(object sender, EventArgs e)
+        private void panel_Battery_Click(object sender, EventArgs e)
         {
-            selectedElement = "Stress";
-
-            highlight_Step = false;
-            highlight_Heart = false;
-            highlight_SPO2 = false;
-            highlight_PAI = false;
-            highlight_Stress = true;
-            highlight_Weather = false;
-            highlight_Altimeter = false;
-            highlight_Sunrise = false;
-            highlight_Alarm = false;
-            highlight_Sleep = false;
-            highlight_Countdown = false;
-            highlight_Stopwatch = false;
-
-            SelectElement();
-
-            if (SelectChanged != null)
-            {
-                EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs);
-            }
-        }
-
-        private void panel_Weather_Click(object sender, EventArgs e)
-        {
-            selectedElement = "Weather";
-
-            highlight_Step = false;
-            highlight_Heart = false;
-            highlight_SPO2 = false;
-            highlight_PAI = false;
-            highlight_Stress = false;
-            highlight_Weather = true;
-            highlight_Altimeter = false;
-            highlight_Sunrise = false;
-            highlight_Alarm = false;
-            highlight_Sleep = false;
-            highlight_Countdown = false;
-            highlight_Stopwatch = false;
-
-            SelectElement();
-
-            if (SelectChanged != null)
-            {
-                EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs);
-            }
-        }
-
-        private void panel_Altimeter_Click(object sender, EventArgs e)
-        {
-            selectedElement = "Altimeter";
-
-            highlight_Step = false;
-            highlight_Heart = false;
-            highlight_SPO2 = false;
-            highlight_PAI = false;
-            highlight_Stress = false;
-            highlight_Weather = false;
-            highlight_Altimeter = true;
-            highlight_Sunrise = false;
-            highlight_Alarm = false;
-            highlight_Sleep = false;
-            highlight_Countdown = false;
-            highlight_Stopwatch = false;
+            ResetHighlightState();
+            selectedElement = "Battery";
+            highlight_Battery = true;
 
             SelectElement();
 
@@ -455,20 +705,9 @@ namespace ControlLibrary
 
         private void panel_Sunrise_Click(object sender, EventArgs e)
         {
+            ResetHighlightState();
             selectedElement = "Sunrise";
-
-            highlight_Step = false;
-            highlight_Heart = false;
-            highlight_SPO2 = false;
-            highlight_PAI = false;
-            highlight_Stress = false;
-            highlight_Weather = false;
-            highlight_Altimeter = false;
             highlight_Sunrise = true;
-            highlight_Alarm = false;
-            highlight_Sleep = false;
-            highlight_Countdown = false;
-            highlight_Stopwatch = false;
 
             SelectElement();
 
@@ -479,22 +718,11 @@ namespace ControlLibrary
             }
         }
 
-        private void panel_Alarm_Click(object sender, EventArgs e)
+        private void panel_Moon_Click(object sender, EventArgs e)
         {
-            selectedElement = "Alarm";
-
-            highlight_Step = false;
-            highlight_Heart = false;
-            highlight_SPO2 = false;
-            highlight_PAI = false;
-            highlight_Stress = false;
-            highlight_Weather = false;
-            highlight_Altimeter = false;
-            highlight_Sunrise = false;
-            highlight_Alarm = true;
-            highlight_Sleep = false;
-            highlight_Countdown = false;
-            highlight_Stopwatch = false;
+            ResetHighlightState();
+            selectedElement = "Moon";
+            highlight_Moon = true;
 
             SelectElement();
 
@@ -505,22 +733,86 @@ namespace ControlLibrary
             }
         }
 
-        private void panel_Sleep_Click(object sender, EventArgs e)
+        private void panel_BodyTemp_Click(object sender, EventArgs e)
         {
-            selectedElement = "Sleep";
+            ResetHighlightState();
+            selectedElement = "BodyTemp";
+            highlight_BodyTemp = true;
 
-            highlight_Step = false;
-            highlight_Heart = false;
-            highlight_SPO2 = false;
-            highlight_PAI = false;
-            highlight_Stress = false;
-            highlight_Weather = false;
-            highlight_Altimeter = false;
-            highlight_Sunrise = false;
-            highlight_Alarm = false;
-            highlight_Sleep = true;
-            highlight_Countdown = false;
-            highlight_Stopwatch = false;
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Weather_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "Weather";
+            highlight_Weather = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Stand_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "Stand";
+            highlight_Stand = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_SPO2_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "SPO2";
+            highlight_SPO2 = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Altimeter_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "Altimeter";
+            highlight_Altimeter = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Stress_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "Stress";
+            highlight_Stress = true;
 
             SelectElement();
 
@@ -533,20 +825,9 @@ namespace ControlLibrary
 
         private void panel_Countdown_Click(object sender, EventArgs e)
         {
+            ResetHighlightState();
             selectedElement = "Countdown";
-
-            highlight_Step = false;
-            highlight_Heart = false;
-            highlight_SPO2 = false;
-            highlight_PAI = false;
-            highlight_Stress = false;
-            highlight_Weather = false;
-            highlight_Altimeter = false;
-            highlight_Sunrise = false;
-            highlight_Alarm = false;
-            highlight_Sleep = false;
             highlight_Countdown = true;
-            highlight_Stopwatch = false;
 
             SelectElement();
 
@@ -559,19 +840,8 @@ namespace ControlLibrary
 
         private void panel_Stopwatch_Click(object sender, EventArgs e)
         {
+            ResetHighlightState();
             selectedElement = "Stopwatch";
-
-            highlight_Step = false;
-            highlight_Heart = false;
-            highlight_SPO2 = false;
-            highlight_PAI = false;
-            highlight_Stress = false;
-            highlight_Weather = false;
-            highlight_Altimeter = false;
-            highlight_Sunrise = false;
-            highlight_Alarm = false;
-            highlight_Sleep = false;
-            highlight_Countdown = false;
             highlight_Stopwatch = true;
 
             SelectElement();
@@ -583,11 +853,234 @@ namespace ControlLibrary
             }
         }
 
+        private void panel_Alarm_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "Alarm";
+            highlight_Alarm = true;
 
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Sleep_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "Sleep";
+            highlight_Sleep = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Altitude_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "Altitude";
+            highlight_Altitude = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Readiness_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "Readiness";
+            highlight_Readiness = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_BreathTrain_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "BreathTrain";
+            highlight_BreathTrain = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_FatBurning_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "FatBurning";
+            highlight_FatBurning = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_OutdoorRunning_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "OutdoorRunning";
+            highlight_OutdoorRunning = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Walking_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "Walking";
+            highlight_Walking = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_OutdoorCycling_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "OutdoorCycling";
+            highlight_OutdoorCycling = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_FreeTraining_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "FreeTraining";
+            highlight_FreeTraining = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_PoolSwimming_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "PoolSwimming";
+            highlight_PoolSwimming = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_OpenWaterSwimming_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "OpenWaterSwimming";
+            highlight_OpenWaterSwimming = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_TrainingLoad_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "TrainingLoad";
+            highlight_TrainingLoad = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_VO2max_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "VO2max";
+            highlight_VO2max = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_RecoveryTime_Click(object sender, EventArgs e)
+        {
+            ResetHighlightState();
+            selectedElement = "RecoveryTime";
+            highlight_RecoveryTime = true;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
 
 
         #region перетягиваем элементы
-        private void Control_MouseDown(object sender, MouseEventArgs e)
+       /* private void Control_MouseDown(object sender, MouseEventArgs e)
         {
             Control control = (Control)sender;
             Panel panel;
@@ -689,7 +1182,7 @@ namespace ControlLibrary
                     OptionsMoved(this, eventArgs, GetOptionsPosition());
                 }
             }
-        }
+        }*/
 
         private void button_ElementName_MouseDown(object sender, MouseEventArgs e)
         {
@@ -715,9 +1208,9 @@ namespace ControlLibrary
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
 
-            if (tableLayoutPanel1.Height > 380)
+            if (tableLayoutPanel1.Height > 1065)
             {
-                float currentDPI = tableLayoutPanel1.Height / 301f;
+                float currentDPI = tableLayoutPanel1.Height / 851f;
                 button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 
@@ -811,53 +1304,7 @@ namespace ControlLibrary
 
         }
 
-        /// <summary>Устанавливаем статус вкл/выкл для отдельной опции в элементе</summary>
-        public void SetVisibilityOptionsStatus(string name, bool status)
-        {
-            setValue = true;
-            switch (name)
-            {
-                case "Step":
-                    checkBox_Step.Checked = status;
-                    break;
-                case "Heart":
-                    checkBox_Heart.Checked = status;
-                    break;
-                case "SPO2":
-                    checkBox_SPO2.Checked = status;
-                    break;
-                case "PAI":
-                    checkBox_PAI.Checked = status;
-                    break;
-                case "Stress":
-                    checkBox_Stress.Checked = status;
-                    break;
-                case "Weather":
-                    checkBox_Weather.Checked = status;
-                    break;
-                case "Altimeter":
-                    checkBox_Altimeter.Checked = status;
-                    break;
-                case "Sunrise":
-                    checkBox_Sunrise.Checked = status;
-                    break;
-                case "Alarm":
-                    checkBox_Alarm.Checked = status;
-                    break;
-                case "Sleep":
-                    checkBox_Sleep.Checked = status;
-                    break;
-                case "Countdown":
-                    checkBox_Countdown.Checked = status;
-                    break;
-                case "Stopwatch":
-                    checkBox_Stopwatch.Checked = status;
-                    break;
-            }
-            setValue = false;
-        }
-
-        /// <summary>Устанавливаем порядок опций в элементе</summary>
+        /*/// <summary>Устанавливаем порядок опций в элементе</summary>
         public void SetOptionsPosition(Dictionary<int, string> elementOptions)
         {
             int elementCount = tableLayoutPanel1.RowCount;
@@ -935,9 +1382,9 @@ namespace ControlLibrary
                     }
                 }
             }
-        }
+        }*/
 
-        /// <summary>Получаем порядок опций в элементе</summary>
+        /*/// <summary>Получаем порядок опций в элементе</summary>
         public Dictionary<string, int> GetOptionsPosition()
         {
             Dictionary<string, int> elementOptions = new Dictionary<string, int>();
@@ -986,13 +1433,13 @@ namespace ControlLibrary
                 }
             }
             return elementOptions;
-        }
+        }*/
 
         public void SettingsClear()
         {
             setValue = true;
 
-            Dictionary<int, string> elementOptions = new Dictionary<int, string>();
+            /*Dictionary<int, string> elementOptions = new Dictionary<int, string>();
             elementOptions.Add(1, "Stopwatch");
             elementOptions.Add(2, "Countdown");
             elementOptions.Add(3, "Sleep");
@@ -1005,25 +1452,68 @@ namespace ControlLibrary
             elementOptions.Add(10, "SPO2");
             elementOptions.Add(11, "Heart");
             elementOptions.Add(12, "Step");
-            SetOptionsPosition(elementOptions);
+            SetOptionsPosition(elementOptions);*/
 
             checkBox_Step.Checked = false;
+            checkBox_Cal.Checked = false;
             checkBox_Heart.Checked = false;
-            checkBox_SPO2.Checked = false;
             checkBox_PAI.Checked = false;
-            checkBox_Stress.Checked = false;
-            checkBox_Weather.Checked = false;
-            checkBox_Altimeter.Checked = false;
+            checkBox_Battery.Checked = false;
             checkBox_Sunrise.Checked = false;
-            checkBox_Alarm.Checked = false;
-            checkBox_Sleep.Checked = false;
+            checkBox_Moon.Checked = false;
+            checkBox_BodyTemp.Checked = false;
+            checkBox_Weather.Checked = false;
+            checkBox_Stand.Checked = false;
+            checkBox_SPO2.Checked = false;
+            checkBox_Altimeter.Checked = false;
+            checkBox_Stress.Checked = false;
             checkBox_Countdown.Checked = false;
             checkBox_Stopwatch.Checked = false;
+            checkBox_Alarm.Checked = false;
+            checkBox_Sleep.Checked = false;
+            checkBox_Altitude.Checked = false;
+            checkBox_Readiness.Checked = false;
+            checkBox_OutdoorRunning.Checked = false;
+            checkBox_Walking.Checked = false;
+            checkBox_OutdoorCycling.Checked = false;
+            checkBox_FreeTraining.Checked = false;
+            checkBox_PoolSwimming.Checked = false;
+            checkBox_OpenWaterSwimming.Checked = false;
+            checkBox_TrainingLoad.Checked = false;
+            checkBox_VO2max.Checked = false;
+            checkBox_RecoveryTime.Checked = false;
+            checkBox_BreathTrain.Checked = false;
+            checkBox_FatBurning.Checked = false;
 
             visibility_elements = false;
             tableLayoutPanel1.Visible = visibility_elements;
             pictureBox_Arrow_Down.Visible = visibility_elements;
             pictureBox_Arrow_Right.Visible = !visibility_elements;
+
+            visibility_activities = false;
+            tableLayoutPanel_Activities.Visible = visibility_activities;
+            pictureBox_Arrow_Down_Activities.Visible = visibility_activities;
+            pictureBox_Arrow_Right_Activities.Visible = !visibility_activities;
+
+            visibility_health = false;
+            tableLayoutPanel_Health.Visible = visibility_health;
+            pictureBox_Arrow_Down_Health.Visible = visibility_health;
+            pictureBox_Arrow_Right_Health.Visible = !visibility_health;
+
+            visibility_air = false;
+            tableLayoutPanel_Air.Visible = visibility_air;
+            pictureBox_Arrow_Down_Air.Visible = visibility_air;
+            pictureBox_Arrow_Right_Air.Visible = !visibility_air;
+
+            visibility_system = false;
+            tableLayoutPanel_System.Visible = visibility_system;
+            pictureBox_Arrow_Down_System.Visible = visibility_system;
+            pictureBox_Arrow_Right_System.Visible = !visibility_system;
+
+            visibility_trainings = false;
+            tableLayoutPanel_Trainings.Visible = visibility_trainings;
+            pictureBox_Arrow_Down_Trainings.Visible = visibility_trainings;
+            pictureBox_Arrow_Right_Trainings.Visible = !visibility_trainings;
 
             visibilityElement = true;
             pictureBox_Show.Visible = visibilityElement;

@@ -4404,30 +4404,66 @@ namespace Watch_Face_Editor
 
                     if (!Shortcuts.visible) return;
                     int positionShortcutsStep = 99;
+                    int positionShortcutsCal = 99;
                     int positionShortcutsHeart = 99;
-                    int positionShortcutsSPO2 = 99;
                     int positionShortcutsPAI = 99;
-                    int positionShortcutsStress = 99;
-                    int positionShortcutsWeather = 99;
-                    int positionShortcutsAltimeter = 99;
+                    int positionShortcutsBattery = 99;
                     int positionShortcutsSunrise = 99;
-                    int positionShortcutsAlarm = 99;
-                    int positionShortcutsSleep = 99;
+                    int positionShortcutsMoon = 99;
+                    int positionShortcutsBodyTemp = 99;
+                    int positionShortcutsWeather = 99;
+                    int positionShortcutsStand = 99;
+                    int positionShortcutsSPO2 = 99;
+                    int positionShortcutsAltimeter = 99;
+                    int positionShortcutsStress = 99;
                     int positionShortcutsCountdown = 99;
                     int positionShortcutsStopwatch = 99;
+                    int positionShortcutsAlarm = 99;
+                    int positionShortcutsSleep = 99;
+                    int positionShortcutsAltitude = 99;
+                    int positionShortcutsReadiness = 99;
+                    int positionShortcutsOutdoorRunning = 99;
+                    int positionShortcutsWalking = 99;
+                    int positionShortcutsOutdoorCycling = 99;
+                    int positionShortcutsFreeTraining = 99;
+                    int positionShortcutsPoolSwimming = 99;
+                    int positionShortcutsOpenWaterSwimming = 99;
+                    int positionShortcutsTrainingLoad = 99;
+                    int positionShortcutsVO2max = 99;
+                    int positionShortcutsRecoveryTime = 99;
+                    int positionShortcutsBreathTrain = 99;
+                    int positionShortcutsFatBurning = 99;
 
                     string optionsShortcutsStep = "";
+                    string optionsShortcutsCal = "";
                     string optionsShortcutsHeart = "";
-                    string optionsShortcutsSPO2 = "";
                     string optionsShortcutsPAI = "";
-                    string optionsShortcutsStress = "";
-                    string optionsShortcutsWeather = "";
-                    string optionsShortcutsAltimeter = "";
+                    string optionsShortcutsBattery = "";
                     string optionsShortcutsSunrise = "";
-                    string optionsShortcutsAlarm = "";
-                    string optionsShortcutsSleep = "";
+                    string optionsShortcutsMoon = "";
+                    string optionsShortcutsBodyTemp = "";
+                    string optionsShortcutsWeather = "";
+                    string optionsShortcutsStand = "";
+                    string optionsShortcutsSPO2 = "";
+                    string optionsShortcutsAltimeter = "";
+                    string optionsShortcutsStress = "";
                     string optionsShortcutsCountdown = "";
                     string optionsShortcutsStopwatch = "";
+                    string optionsShortcutsAlarm = "";
+                    string optionsShortcutsSleep = "";
+                    string optionsShortcutsAltitude = "";
+                    string optionsShortcutsReadiness = "";
+                    string optionsShortcutsOutdoorRunning = "";
+                    string optionsShortcutsWalking = "";
+                    string optionsShortcutsOutdoorCycling = "";
+                    string optionsShortcutsFreeTraining = "";
+                    string optionsShortcutsPoolSwimming = "";
+                    string optionsShortcutsOpenWaterSwimming = "";
+                    string optionsShortcutsTrainingLoad = "";
+                    string optionsShortcutsVO2max = "";
+                    string optionsShortcutsRecoveryTime = "";
+                    string optionsShortcutsBreathTrain = "";
+                    string optionsShortcutsFatBurning = "";
 
                     if (Shortcuts.Step != null && Shortcuts.Step.visible)
                     {
@@ -4435,17 +4471,17 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_CLICK img_clic = Shortcuts.Step;
                         optionsShortcutsStep = IMG_CLICK_Options(img_clic, "STEP", show_level);
                     }
+                    if (Shortcuts.Cal != null && Shortcuts.Cal.visible)
+                    {
+                        positionShortcutsCal = Shortcuts.Cal.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Cal;
+                        optionsShortcutsCal = IMG_CLICK_Options(img_clic, "CAL", show_level);
+                    }
                     if (Shortcuts.Heart != null && Shortcuts.Heart.visible)
                     {
                         positionShortcutsHeart = Shortcuts.Heart.position;
                         hmUI_widget_IMG_CLICK img_clic = Shortcuts.Heart;
                         optionsShortcutsHeart = IMG_CLICK_Options(img_clic, "HEART", show_level);
-                    }
-                    if (Shortcuts.SPO2 != null && Shortcuts.SPO2.visible)
-                    {
-                        positionShortcutsSPO2 = Shortcuts.SPO2.position;
-                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.SPO2;
-                        optionsShortcutsSPO2 = IMG_CLICK_Options(img_clic, "SPO2", show_level);
                     }
                     if (Shortcuts.PAI != null && Shortcuts.PAI.visible)
                     {
@@ -4453,23 +4489,11 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_CLICK img_clic = Shortcuts.PAI;
                         optionsShortcutsPAI = IMG_CLICK_Options(img_clic, "PAI_WEEKLY", show_level);
                     }
-                    if (Shortcuts.Stress != null && Shortcuts.Stress.visible)
+                    if (Shortcuts.Battery != null && Shortcuts.Battery.visible)
                     {
-                        positionShortcutsStress = Shortcuts.Stress.position;
-                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Stress;
-                        optionsShortcutsStress = IMG_CLICK_Options(img_clic, "STRESS", show_level);
-                    }
-                    if (Shortcuts.Weather != null && Shortcuts.Weather.visible)
-                    {
-                        positionShortcutsWeather = Shortcuts.Weather.position;
-                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Weather;
-                        optionsShortcutsWeather = IMG_CLICK_Options(img_clic, "WEATHER_CURRENT", show_level);
-                    }
-                    if (Shortcuts.Altimeter != null && Shortcuts.Altimeter.visible)
-                    {
-                        positionShortcutsAltimeter = Shortcuts.Altimeter.position;
-                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Altimeter;
-                        optionsShortcutsAltimeter = IMG_CLICK_Options(img_clic, "ALTIMETER", show_level);
+                        positionShortcutsBattery = Shortcuts.Battery.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Battery;
+                        optionsShortcutsBattery = IMG_CLICK_Options(img_clic, "BATTERY", show_level);
                     }
                     if (Shortcuts.Sunrise != null && Shortcuts.Sunrise.visible)
                     {
@@ -4477,17 +4501,47 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_CLICK img_clic = Shortcuts.Sunrise;
                         optionsShortcutsSunrise = IMG_CLICK_Options(img_clic, "SUN_CURRENT", show_level);
                     }
-                    if (Shortcuts.Alarm != null && Shortcuts.Alarm.visible)
+                    if (Shortcuts.Moon != null && Shortcuts.Moon.visible)
                     {
-                        positionShortcutsAlarm = Shortcuts.Alarm.position;
-                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Alarm;
-                        optionsShortcutsAlarm = IMG_CLICK_Options(img_clic, "ALARM_CLOCK", show_level);
+                        positionShortcutsMoon = Shortcuts.Moon.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Moon;
+                        optionsShortcutsMoon = IMG_CLICK_Options(img_clic, "MOON_CURRENT", show_level);
                     }
-                    if (Shortcuts.Sleep != null && Shortcuts.Sleep.visible)
+                    if (Shortcuts.BodyTemp != null && Shortcuts.BodyTemp.visible)
                     {
-                        positionShortcutsSleep = Shortcuts.Sleep.position;
-                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Sleep;
-                        optionsShortcutsSleep = IMG_CLICK_Options(img_clic, "SLEEP", show_level);
+                        positionShortcutsBodyTemp = Shortcuts.BodyTemp.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.BodyTemp;
+                        optionsShortcutsBodyTemp = IMG_CLICK_Options(img_clic, "BODY_TEMP", show_level);
+                    }
+                    if (Shortcuts.Weather != null && Shortcuts.Weather.visible)
+                    {
+                        positionShortcutsWeather = Shortcuts.Weather.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Weather;
+                        optionsShortcutsWeather = IMG_CLICK_Options(img_clic, "WEATHER_CURRENT", show_level);
+                    }
+                    if (Shortcuts.Stand != null && Shortcuts.Stand.visible)
+                    {
+                        positionShortcutsStand = Shortcuts.Stand.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Stand;
+                        optionsShortcutsStand = IMG_CLICK_Options(img_clic, "STAND", show_level);
+                    }
+                    if (Shortcuts.SPO2 != null && Shortcuts.SPO2.visible)
+                    {
+                        positionShortcutsSPO2 = Shortcuts.SPO2.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.SPO2;
+                        optionsShortcutsSPO2 = IMG_CLICK_Options(img_clic, "SPO2", show_level);
+                    }
+                    if (Shortcuts.Altimeter != null && Shortcuts.Altimeter.visible)
+                    {
+                        positionShortcutsAltimeter = Shortcuts.Altimeter.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Altimeter;
+                        optionsShortcutsAltimeter = IMG_CLICK_Options(img_clic, "ALTIMETER", show_level);
+                    }
+                    if (Shortcuts.Stress != null && Shortcuts.Stress.visible)
+                    {
+                        positionShortcutsStress = Shortcuts.Stress.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Stress;
+                        optionsShortcutsStress = IMG_CLICK_Options(img_clic, "STRESS", show_level);
                     }
                     if (Shortcuts.Countdown != null && Shortcuts.Countdown.visible)
                     {
@@ -4501,9 +4555,100 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_CLICK img_clic = Shortcuts.Stopwatch;
                         optionsShortcutsStopwatch = IMG_CLICK_Options(img_clic, "STOP_WATCH", show_level);
                     }
-
-                    for (int index = 1; index <= 12; index++)
+                    if (Shortcuts.Alarm != null && Shortcuts.Alarm.visible)
                     {
+                        positionShortcutsAlarm = Shortcuts.Alarm.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Alarm;
+                        optionsShortcutsAlarm = IMG_CLICK_Options(img_clic, "ALARM_CLOCK", show_level);
+                    }
+                    if (Shortcuts.Sleep != null && Shortcuts.Sleep.visible)
+                    {
+                        positionShortcutsSleep = Shortcuts.Sleep.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Sleep;
+                        optionsShortcutsSleep = IMG_CLICK_Options(img_clic, "SLEEP", show_level);
+                    }
+                    if (Shortcuts.Altitude != null && Shortcuts.Altitude.visible)
+                    {
+                        positionShortcutsAltitude = Shortcuts.Altitude.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Altitude;
+                        optionsShortcutsAltitude = IMG_CLICK_Options(img_clic, "ALTITUDE", show_level);
+                    }
+                    if (Shortcuts.Readiness != null && Shortcuts.Readiness.visible)
+                    {
+                        positionShortcutsReadiness = Shortcuts.Readiness.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Readiness;
+                        optionsShortcutsReadiness = IMG_CLICK_Options(img_clic, "READINESS", show_level);
+                    }
+                    if (Shortcuts.OutdoorRunning != null && Shortcuts.OutdoorRunning.visible)
+                    {
+                        positionShortcutsOutdoorRunning = Shortcuts.OutdoorRunning.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.OutdoorRunning;
+                        optionsShortcutsOutdoorRunning = IMG_CLICK_Options(img_clic, "OUTDOOR_RUNNING", show_level);
+                    }
+                    if (Shortcuts.Walking != null && Shortcuts.Walking.visible)
+                    {
+                        positionShortcutsWalking = Shortcuts.Walking.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.Walking;
+                        optionsShortcutsWalking = IMG_CLICK_Options(img_clic, "WALKING", show_level);
+                    }
+                    if (Shortcuts.OutdoorCycling != null && Shortcuts.OutdoorCycling.visible)
+                    {
+                        positionShortcutsOutdoorCycling = Shortcuts.OutdoorCycling.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.OutdoorCycling;
+                        optionsShortcutsOutdoorCycling = IMG_CLICK_Options(img_clic, "OUTDOOR_CYCLING", show_level);
+                    }
+                    if (Shortcuts.FreeTraining != null && Shortcuts.FreeTraining.visible)
+                    {
+                        positionShortcutsFreeTraining = Shortcuts.FreeTraining.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.FreeTraining;
+                        optionsShortcutsFreeTraining = IMG_CLICK_Options(img_clic, "FREE_TRAINING", show_level);
+                    }
+                    if (Shortcuts.PoolSwimming != null && Shortcuts.PoolSwimming.visible)
+                    {
+                        positionShortcutsPoolSwimming = Shortcuts.PoolSwimming.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.PoolSwimming;
+                        optionsShortcutsPoolSwimming = IMG_CLICK_Options(img_clic, "POOL_SWIMMING", show_level);
+                    }
+                    if (Shortcuts.OpenWaterSwimming != null && Shortcuts.OpenWaterSwimming.visible)
+                    {
+                        positionShortcutsOpenWaterSwimming = Shortcuts.OpenWaterSwimming.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.OpenWaterSwimming;
+                        optionsShortcutsOpenWaterSwimming = IMG_CLICK_Options(img_clic, "OPEN_WATER_SWIMMING", show_level);
+                    }
+                    if (Shortcuts.TrainingLoad != null && Shortcuts.TrainingLoad.visible)
+                    {
+                        positionShortcutsTrainingLoad = Shortcuts.TrainingLoad.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.TrainingLoad;
+                        optionsShortcutsTrainingLoad = IMG_CLICK_Options(img_clic, "TRAINING_LOAD", show_level);
+                    }
+                    if (Shortcuts.VO2max != null && Shortcuts.VO2max.visible)
+                    {
+                        positionShortcutsVO2max = Shortcuts.VO2max.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.VO2max;
+                        optionsShortcutsVO2max = IMG_CLICK_Options(img_clic, "VO2MAX", show_level);
+                    }
+                    if (Shortcuts.RecoveryTime != null && Shortcuts.RecoveryTime.visible)
+                    {
+                        positionShortcutsRecoveryTime = Shortcuts.RecoveryTime.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.RecoveryTime;
+                        optionsShortcutsRecoveryTime = IMG_CLICK_Options(img_clic, "RECOVERY_TIME", show_level);
+                    }
+                    if (Shortcuts.BreathTrain != null && Shortcuts.BreathTrain.visible)
+                    {
+                        positionShortcutsBreathTrain = Shortcuts.BreathTrain.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.BreathTrain;
+                        optionsShortcutsBreathTrain = IMG_CLICK_Options(img_clic, "BREATH_TRAIN", show_level);
+                    }
+                    if (Shortcuts.FatBurning != null && Shortcuts.FatBurning.visible)
+                    {
+                        positionShortcutsFatBurning = Shortcuts.FatBurning.position;
+                        hmUI_widget_IMG_CLICK img_clic = Shortcuts.FatBurning;
+                        optionsShortcutsFatBurning = IMG_CLICK_Options(img_clic, "FAT_BURNING", show_level);
+                    }
+
+                    for (int index = -1; index <= 35; index++)
+                    {
+
                         // Step
                         if (index == positionShortcutsStep && optionsShortcutsStep.Length > 5)
                         {
@@ -4512,6 +4657,16 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "step_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
                                     optionsShortcutsStep + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Cal
+                        if (index == positionShortcutsCal && optionsShortcutsCal.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "cal_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "cal_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsCal + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Heart
@@ -4524,16 +4679,6 @@ namespace Watch_Face_Editor
                                     optionsShortcutsHeart + TabInString(6) + "});" + Environment.NewLine;
                         }
 
-                        // SPO2
-                        if (index == positionShortcutsSPO2 && optionsShortcutsSPO2.Length > 5)
-                        {
-                            variables += TabInString(4) + "let " + optionNameStart +
-                                "spo2_jumpable_img_click = ''" + Environment.NewLine;
-                            items += Environment.NewLine + TabInString(6) +
-                                optionNameStart + "spo2_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
-                                    optionsShortcutsSPO2 + TabInString(6) + "});" + Environment.NewLine;
-                        }
-
                         // PAI
                         if (index == positionShortcutsPAI && optionsShortcutsPAI.Length > 5)
                         {
@@ -4544,14 +4689,44 @@ namespace Watch_Face_Editor
                                     optionsShortcutsPAI + TabInString(6) + "});" + Environment.NewLine;
                         }
 
-                        // Stress
-                        if (index == positionShortcutsStress && optionsShortcutsStress.Length > 5)
+                        // Battery
+                        if (index == positionShortcutsBattery && optionsShortcutsBattery.Length > 5)
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
-                                "stress_jumpable_img_click = ''" + Environment.NewLine;
+                                "battery_jumpable_img_click = ''" + Environment.NewLine;
                             items += Environment.NewLine + TabInString(6) +
-                                optionNameStart + "stress_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
-                                    optionsShortcutsStress + TabInString(6) + "});" + Environment.NewLine;
+                                optionNameStart + "battery_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsBattery + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Sunrise
+                        if (index == positionShortcutsSunrise && optionsShortcutsSunrise.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "sunrise_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "sunrise_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsSunrise + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Moon
+                        if (index == positionShortcutsMoon && optionsShortcutsMoon.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "moon_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "moon_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsMoon + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // BodyTemp
+                        if (index == positionShortcutsBodyTemp && optionsShortcutsBodyTemp.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "bodyTemp_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "bodyTemp_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsBodyTemp + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Weather
@@ -4564,6 +4739,26 @@ namespace Watch_Face_Editor
                                     optionsShortcutsWeather + TabInString(6) + "});" + Environment.NewLine;
                         }
 
+                        // Stand
+                        if (index == positionShortcutsStand && optionsShortcutsStand.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stand_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stand_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsStand + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // SPO2
+                        if (index == positionShortcutsSPO2 && optionsShortcutsSPO2.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "spo2_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "spo2_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsSPO2 + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
                         // Altimeter
                         if (index == positionShortcutsAltimeter && optionsShortcutsAltimeter.Length > 5)
                         {
@@ -4574,14 +4769,34 @@ namespace Watch_Face_Editor
                                     optionsShortcutsAltimeter + TabInString(6) + "});" + Environment.NewLine;
                         }
 
-                        // Sunrise
-                        if (index == positionShortcutsSunrise && optionsShortcutsSunrise.Length > 5)
+                        // Stress
+                        if (index == positionShortcutsStress && optionsShortcutsStress.Length > 5)
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
-                                "sunrise_jumpable_img_click = ''" + Environment.NewLine;
+                                "stress_jumpable_img_click = ''" + Environment.NewLine;
                             items += Environment.NewLine + TabInString(6) +
-                                optionNameStart + "sunrise_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
-                                    optionsShortcutsSunrise + TabInString(6) + "});" + Environment.NewLine;
+                                optionNameStart + "stress_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsStress + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Countdown
+                        if (index == positionShortcutsCountdown && optionsShortcutsCountdown.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "countdown_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "countdown_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsCountdown + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Stopwatch
+                        if (index == positionShortcutsStopwatch && optionsShortcutsStopwatch.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stopwatch_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stopwatch_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsStopwatch + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Alarm
@@ -4604,24 +4819,134 @@ namespace Watch_Face_Editor
                                     optionsShortcutsSleep + TabInString(6) + "});" + Environment.NewLine;
                         }
 
-                        // Countdown
-                        if (index == positionShortcutsCountdown && optionsShortcutsCountdown.Length > 5)
+                        // Altitude
+                        if (index == positionShortcutsAltitude && optionsShortcutsAltitude.Length > 5)
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
-                                "countdown_jumpable_img_click = ''" + Environment.NewLine;
+                                "altitude_jumpable_img_click = ''" + Environment.NewLine;
                             items += Environment.NewLine + TabInString(6) +
-                                optionNameStart + "countdown_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
-                                    optionsShortcutsCountdown + TabInString(6) + "});" + Environment.NewLine;
+                                optionNameStart + "altitude_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsAltitude + TabInString(6) + "});" + Environment.NewLine;
                         }
 
-                        // Stopwatch
-                        if (index == positionShortcutsStopwatch && optionsShortcutsStopwatch.Length > 5)
+                        // Readiness
+                        if (index == positionShortcutsReadiness && optionsShortcutsReadiness.Length > 5)
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
-                                "stopwatch_jumpable_img_click = ''" + Environment.NewLine;
+                                "readiness_jumpable_img_click = ''" + Environment.NewLine;
                             items += Environment.NewLine + TabInString(6) +
-                                optionNameStart + "stopwatch_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
-                                    optionsShortcutsStopwatch + TabInString(6) + "});" + Environment.NewLine;
+                                optionNameStart + "readiness_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsReadiness + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // OutdoorRunning
+                        if (index == positionShortcutsOutdoorRunning && optionsShortcutsOutdoorRunning.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "outdoorRunning_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "outdoorRunning_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsOutdoorRunning + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Walking
+                        if (index == positionShortcutsWalking && optionsShortcutsWalking.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "walking_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "walking_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsWalking + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // OutdoorCycling
+                        if (index == positionShortcutsOutdoorCycling && optionsShortcutsOutdoorCycling.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "outdoorCycling_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "outdoorCycling_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsOutdoorCycling + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // FreeTraining
+                        if (index == positionShortcutsFreeTraining && optionsShortcutsFreeTraining.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "freeTraining_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "freeTraining_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsFreeTraining + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // PoolSwimming
+                        if (index == positionShortcutsPoolSwimming && optionsShortcutsPoolSwimming.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "poolSwimming_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "poolSwimming_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsPoolSwimming + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // OpenWaterSwimming
+                        if (index == positionShortcutsOpenWaterSwimming && optionsShortcutsOpenWaterSwimming.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "openWaterSwimming_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "openWaterSwimming_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsOpenWaterSwimming + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // TrainingLoad
+                        if (index == positionShortcutsTrainingLoad && optionsShortcutsTrainingLoad.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "trainingLoad_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "trainingLoad_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsTrainingLoad + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // VO2max
+                        if (index == positionShortcutsVO2max && optionsShortcutsVO2max.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "vo2max_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "vo2max_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsVO2max + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // RecoveryTime
+                        if (index == positionShortcutsRecoveryTime && optionsShortcutsRecoveryTime.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "recoveryTime_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "recoveryTime_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsRecoveryTime + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // BreathTrain
+                        if (index == positionShortcutsBreathTrain && optionsShortcutsBreathTrain.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "breathTrain_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "breathTrain_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsBreathTrain + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // FatBurning
+                        if (index == positionShortcutsFatBurning && optionsShortcutsFatBurning.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "fatBurning_jumpable_img_click = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "fatBurning_jumpable_img_click = hmUI.createWidget(hmUI.widget.IMG_CLICK, {" +
+                                    optionsShortcutsFatBurning + TabInString(6) + "});" + Environment.NewLine;
                         }
 
 
@@ -22392,20 +22717,6 @@ namespace Watch_Face_Editor
                         #region IMG_CLICK
                         case "IMG_CLICK":
                             hmUI_widget_IMG_CLICK imgShortcut = Object_IMG_CLICK(parametrs);
-                            //elementsList = null;
-                            //if (imgShortcut.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
-                            //{
-                            //    if (Watch_Face.ScreenNormal.Elements == null)
-                            //        Watch_Face.ScreenNormal.Elements = new List<object>();
-                            //    elementsList = Watch_Face.ScreenNormal.Elements;
-                            //}
-                            //else if (imgShortcut.show_level == "ONLY_AOD" || imgShortcut.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
-                            //{
-                            //    if (Watch_Face.ScreenAOD.Elements == null)
-                            //        Watch_Face.ScreenAOD.Elements = new List<object>();
-                            //    elementsList = Watch_Face.ScreenAOD.Elements;
-                            //}
-                            //ParametrsToObject(elementsList, parametrs);
 
                             if (Watch_Face.Shortcuts == null) Watch_Face.Shortcuts = new ElementShortcuts();
                             ElementShortcuts elementShortcuts = Watch_Face.Shortcuts;
@@ -22415,24 +22726,82 @@ namespace Watch_Face_Editor
                                 int index = 1;
                                 switch (imgShortcut.type)
                                 {
+
                                     case "STEP":
                                         if (elementShortcuts.Step == null)
                                         {
                                             //if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
                                             if (elementShortcuts.Heart != null) index++;
-                                            if (elementShortcuts.SPO2 != null) index++;
                                             if (elementShortcuts.PAI != null) index++;
-                                            if (elementShortcuts.Stress != null) index++;
-                                            if (elementShortcuts.Weather != null) index++;
-                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
                                             if (elementShortcuts.Sunrise != null) index++;
-                                            if (elementShortcuts.Alarm != null) index++;
-                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
                                             if (elementShortcuts.Countdown != null) index++;
                                             if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
 
                                             imgShortcut.position = index;
                                             elementShortcuts.Step = imgShortcut;
+                                        }
+                                        break;
+                                    
+                                    case "CAL":
+                                        if (elementShortcuts.Cal == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            //if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.Cal = imgShortcut;
                                         }
                                         break;
 
@@ -22440,41 +22809,38 @@ namespace Watch_Face_Editor
                                         if (elementShortcuts.Heart == null)
                                         {
                                             if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
                                             //if (elementShortcuts.Heart != null) index++;
-                                            if (elementShortcuts.SPO2 != null) index++;
                                             if (elementShortcuts.PAI != null) index++;
-                                            if (elementShortcuts.Stress != null) index++;
-                                            if (elementShortcuts.Weather != null) index++;
-                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
                                             if (elementShortcuts.Sunrise != null) index++;
-                                            if (elementShortcuts.Alarm != null) index++;
-                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
                                             if (elementShortcuts.Countdown != null) index++;
                                             if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
 
                                             imgShortcut.position = index;
                                             elementShortcuts.Heart = imgShortcut;
-                                        }
-                                        break;
-
-                                    case "SPO2":
-                                        if (elementShortcuts.SPO2 == null)
-                                        {
-                                            if (elementShortcuts.Step != null) index++;
-                                            if (elementShortcuts.Heart != null) index++;
-                                            //if (elementShortcuts.SPO2 != null) index++;
-                                            if (elementShortcuts.PAI != null) index++;
-                                            if (elementShortcuts.Stress != null) index++;
-                                            if (elementShortcuts.Weather != null) index++;
-                                            if (elementShortcuts.Altimeter != null) index++;
-                                            if (elementShortcuts.Sunrise != null) index++;
-                                            if (elementShortcuts.Alarm != null) index++;
-                                            if (elementShortcuts.Sleep != null) index++;
-                                            if (elementShortcuts.Countdown != null) index++;
-                                            if (elementShortcuts.Stopwatch != null) index++;
-
-                                            imgShortcut.position = index;
-                                            elementShortcuts.SPO2 = imgShortcut;
                                         }
                                         break;
 
@@ -22483,83 +22849,77 @@ namespace Watch_Face_Editor
                                         if (elementShortcuts.PAI == null)
                                         {
                                             if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
                                             if (elementShortcuts.Heart != null) index++;
-                                            if (elementShortcuts.SPO2 != null) index++;
                                             //if (elementShortcuts.PAI != null) index++;
-                                            if (elementShortcuts.Stress != null) index++;
-                                            if (elementShortcuts.Weather != null) index++;
-                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
                                             if (elementShortcuts.Sunrise != null) index++;
-                                            if (elementShortcuts.Alarm != null) index++;
-                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
                                             if (elementShortcuts.Countdown != null) index++;
                                             if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
 
                                             imgShortcut.position = index;
                                             elementShortcuts.PAI = imgShortcut;
                                         }
                                         break;
 
-                                    case "STRESS":
-                                        if (elementShortcuts.Stress == null)
+                                    case "BATTERY":
+                                        if (elementShortcuts.Battery == null)
                                         {
                                             if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
                                             if (elementShortcuts.Heart != null) index++;
-                                            if (elementShortcuts.SPO2 != null) index++;
                                             if (elementShortcuts.PAI != null) index++;
-                                            //if (elementShortcuts.Stress != null) index++;
+                                            //if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
                                             if (elementShortcuts.Weather != null) index++;
-                                            if (elementShortcuts.Altimeter != null) index++;
-                                            if (elementShortcuts.Sunrise != null) index++;
-                                            if (elementShortcuts.Alarm != null) index++;
-                                            if (elementShortcuts.Sleep != null) index++;
-                                            if (elementShortcuts.Countdown != null) index++;
-                                            if (elementShortcuts.Stopwatch != null) index++;
-
-                                            imgShortcut.position = index;
-                                            elementShortcuts.Stress = imgShortcut;
-                                        }
-                                        break;
-
-                                    case "WEATHER_CURRENT":
-                                        if (elementShortcuts.Weather == null)
-                                        {
-                                            if (elementShortcuts.Step != null) index++;
-                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
                                             if (elementShortcuts.SPO2 != null) index++;
-                                            if (elementShortcuts.PAI != null) index++;
-                                            if (elementShortcuts.Stress != null) index++;
-                                            //if (elementShortcuts.Weather != null) index++;
                                             if (elementShortcuts.Altimeter != null) index++;
-                                            if (elementShortcuts.Sunrise != null) index++;
-                                            if (elementShortcuts.Alarm != null) index++;
-                                            if (elementShortcuts.Sleep != null) index++;
-                                            if (elementShortcuts.Countdown != null) index++;
-                                            if (elementShortcuts.Stopwatch != null) index++;
-
-                                            imgShortcut.position = index;
-                                            elementShortcuts.Weather = imgShortcut;
-                                        }
-                                        break;
-
-                                    case "ALTIMETER":
-                                        if (elementShortcuts.Altimeter == null)
-                                        {
-                                            if (elementShortcuts.Step != null) index++;
-                                            if (elementShortcuts.Heart != null) index++;
-                                            if (elementShortcuts.SPO2 != null) index++;
-                                            if (elementShortcuts.PAI != null) index++;
                                             if (elementShortcuts.Stress != null) index++;
-                                            if (elementShortcuts.Weather != null) index++;
-                                            //if (elementShortcuts.Altimeter != null) index++;
-                                            if (elementShortcuts.Sunrise != null) index++;
-                                            if (elementShortcuts.Alarm != null) index++;
-                                            if (elementShortcuts.Sleep != null) index++;
                                             if (elementShortcuts.Countdown != null) index++;
                                             if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
 
                                             imgShortcut.position = index;
-                                            elementShortcuts.Altimeter = imgShortcut;
+                                            elementShortcuts.Battery = imgShortcut;
                                         }
                                         break;
 
@@ -22567,62 +22927,311 @@ namespace Watch_Face_Editor
                                         if (elementShortcuts.Sunrise == null)
                                         {
                                             if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
                                             if (elementShortcuts.Heart != null) index++;
-                                            if (elementShortcuts.SPO2 != null) index++;
                                             if (elementShortcuts.PAI != null) index++;
-                                            if (elementShortcuts.Stress != null) index++;
-                                            if (elementShortcuts.Weather != null) index++;
-                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
                                             //if (elementShortcuts.Sunrise != null) index++;
-                                            if (elementShortcuts.Alarm != null) index++;
-                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
                                             if (elementShortcuts.Countdown != null) index++;
                                             if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
 
                                             imgShortcut.position = index;
                                             elementShortcuts.Sunrise = imgShortcut;
                                         }
                                         break;
 
-                                    case "ALARM_CLOCK":
-                                        if (elementShortcuts.Alarm == null)
+                                    case "MOON_CURRENT":
+                                        if (elementShortcuts.Moon == null)
                                         {
                                             if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
                                             if (elementShortcuts.Heart != null) index++;
-                                            if (elementShortcuts.SPO2 != null) index++;
                                             if (elementShortcuts.PAI != null) index++;
-                                            if (elementShortcuts.Stress != null) index++;
-                                            if (elementShortcuts.Weather != null) index++;
-                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
                                             if (elementShortcuts.Sunrise != null) index++;
-                                            //if (elementShortcuts.Alarm != null) index++;
-                                            if (elementShortcuts.Sleep != null) index++;
+                                            //if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
                                             if (elementShortcuts.Countdown != null) index++;
                                             if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
 
                                             imgShortcut.position = index;
-                                            elementShortcuts.Alarm = imgShortcut;
+                                            elementShortcuts.Moon = imgShortcut;
                                         }
                                         break;
 
-                                    case "SLEEP":
-                                        if (elementShortcuts.Sleep == null)
+                                    case "BODY_TEMP":
+                                        if (elementShortcuts.BodyTemp == null)
                                         {
                                             if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
                                             if (elementShortcuts.Heart != null) index++;
-                                            if (elementShortcuts.SPO2 != null) index++;
                                             if (elementShortcuts.PAI != null) index++;
-                                            if (elementShortcuts.Stress != null) index++;
-                                            if (elementShortcuts.Weather != null) index++;
-                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
                                             if (elementShortcuts.Sunrise != null) index++;
-                                            if (elementShortcuts.Alarm != null) index++;
-                                            //if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            //if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
                                             if (elementShortcuts.Countdown != null) index++;
                                             if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
 
                                             imgShortcut.position = index;
-                                            elementShortcuts.Sleep = imgShortcut;
+                                            elementShortcuts.BodyTemp = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "WEATHER_CURRENT":
+                                        if (elementShortcuts.Weather == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            //if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.Weather = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "STAND":
+                                        if (elementShortcuts.Stand == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            //if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.Stand = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "SPO2":
+                                        if (elementShortcuts.SPO2 == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            //if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.SPO2 = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "ALTIMETER":
+                                        if (elementShortcuts.Altimeter == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            //if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.Altimeter = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "STRESS":
+                                        if (elementShortcuts.Stress == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            //if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.Stress = imgShortcut;
                                         }
                                         break;
 
@@ -22630,17 +23239,35 @@ namespace Watch_Face_Editor
                                         if (elementShortcuts.Countdown == null)
                                         {
                                             if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
                                             if (elementShortcuts.Heart != null) index++;
-                                            if (elementShortcuts.SPO2 != null) index++;
                                             if (elementShortcuts.PAI != null) index++;
-                                            if (elementShortcuts.Stress != null) index++;
-                                            if (elementShortcuts.Weather != null) index++;
-                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
                                             if (elementShortcuts.Sunrise != null) index++;
-                                            if (elementShortcuts.Alarm != null) index++;
-                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
                                             //if (elementShortcuts.Countdown != null) index++;
                                             if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
 
                                             imgShortcut.position = index;
                                             elementShortcuts.Countdown = imgShortcut;
@@ -22651,20 +23278,623 @@ namespace Watch_Face_Editor
                                         if (elementShortcuts.Stopwatch == null)
                                         {
                                             if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
                                             if (elementShortcuts.Heart != null) index++;
-                                            if (elementShortcuts.SPO2 != null) index++;
                                             if (elementShortcuts.PAI != null) index++;
-                                            if (elementShortcuts.Stress != null) index++;
-                                            if (elementShortcuts.Weather != null) index++;
-                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
                                             if (elementShortcuts.Sunrise != null) index++;
-                                            if (elementShortcuts.Alarm != null) index++;
-                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
                                             if (elementShortcuts.Countdown != null) index++;
                                             //if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
 
                                             imgShortcut.position = index;
                                             elementShortcuts.Stopwatch = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "ALARM_CLOCK":
+                                        if (elementShortcuts.Alarm == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            //if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.Alarm = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "SLEEP":
+                                        if (elementShortcuts.Sleep == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            //if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.Sleep = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "ALTITUDE":
+                                        if (elementShortcuts.Altitude == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            //if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.Altitude = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "READINESS":
+                                        if (elementShortcuts.Readiness == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            //if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.Readiness = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "OUTDOOR_RUNNING":
+                                        if (elementShortcuts.OutdoorRunning == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            //if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.OutdoorRunning = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "WALKING":
+                                        if (elementShortcuts.Walking == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            //if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.Walking = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "OUTDOOR_CYCLING":
+                                        if (elementShortcuts.OutdoorCycling == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            //if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.OutdoorCycling = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "FREE_TRAINING":
+                                        if (elementShortcuts.FreeTraining == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            //if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.FreeTraining = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "POOL_SWIMMING":
+                                        if (elementShortcuts.PoolSwimming == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            //if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.PoolSwimming = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "OPEN_WATER_SWIMMING":
+                                        if (elementShortcuts.OpenWaterSwimming == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            //if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.Step = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "TRAINING_LOAD":
+                                        if (elementShortcuts.TrainingLoad == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            //if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.TrainingLoad = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "VO2MAX":
+                                        if (elementShortcuts.VO2max == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            //if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.VO2max = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "RECOVERY_TIME":
+                                        if (elementShortcuts.RecoveryTime == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            //if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.RecoveryTime = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "BREATH_TRAIN":
+                                        if (elementShortcuts.BreathTrain == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            //if (elementShortcuts.BreathTrain != null) index++;
+                                            if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.BreathTrain = imgShortcut;
+                                        }
+                                        break;
+
+                                    case "FAT_BURNING":
+                                        if (elementShortcuts.FatBurning == null)
+                                        {
+                                            if (elementShortcuts.Step != null) index++;
+                                            if (elementShortcuts.Cal != null) index++;
+                                            if (elementShortcuts.Heart != null) index++;
+                                            if (elementShortcuts.PAI != null) index++;
+                                            if (elementShortcuts.Battery != null) index++;
+                                            if (elementShortcuts.Sunrise != null) index++;
+                                            if (elementShortcuts.Moon != null) index++;
+                                            if (elementShortcuts.BodyTemp != null) index++;
+                                            if (elementShortcuts.Weather != null) index++;
+                                            if (elementShortcuts.Stand != null) index++;
+                                            if (elementShortcuts.SPO2 != null) index++;
+                                            if (elementShortcuts.Altimeter != null) index++;
+                                            if (elementShortcuts.Stress != null) index++;
+                                            if (elementShortcuts.Countdown != null) index++;
+                                            if (elementShortcuts.Stopwatch != null) index++;
+                                            if (elementShortcuts.Alarm != null) index++;
+                                            if (elementShortcuts.Sleep != null) index++;
+                                            if (elementShortcuts.Altitude != null) index++;
+                                            if (elementShortcuts.Readiness != null) index++;
+                                            if (elementShortcuts.OutdoorRunning != null) index++;
+                                            if (elementShortcuts.Walking != null) index++;
+                                            if (elementShortcuts.OutdoorCycling != null) index++;
+                                            if (elementShortcuts.FreeTraining != null) index++;
+                                            if (elementShortcuts.PoolSwimming != null) index++;
+                                            if (elementShortcuts.OpenWaterSwimming != null) index++;
+                                            if (elementShortcuts.TrainingLoad != null) index++;
+                                            if (elementShortcuts.VO2max != null) index++;
+                                            if (elementShortcuts.RecoveryTime != null) index++;
+                                            if (elementShortcuts.BreathTrain != null) index++;
+                                            //if (elementShortcuts.FatBurning != null) index++;
+
+                                            imgShortcut.position = index;
+                                            elementShortcuts.FatBurning = imgShortcut;
                                         }
                                         break;
 
@@ -27333,6 +28563,7 @@ namespace Watch_Face_Editor
                                 //if (hour.Minute_circle != null) offset++;
                                 //if (hour.Second_circle != null) offset++;
 
+                                if (hour.Group_Hour == null) hour.Group_Hour = new DigitalTimeGroup();
                                 hour.Group_Hour.Text_rotation = new hmUI_widget_IMG_NUMBER();
                                 hour.Group_Hour.Text_rotation.img_First = textRotate.img_First;
                                 hour.Group_Hour.Text_rotation.imageX = textRotate.imageX;
@@ -27383,6 +28614,7 @@ namespace Watch_Face_Editor
                                 //if (minute.Minute_circle != null) offset++;
                                 //if (minute.Second_circle != null) offset++;
 
+                                if (minute.Group_Minute == null) minute.Group_Minute = new DigitalTimeGroup();
                                 minute.Group_Minute.Text_rotation = new hmUI_widget_IMG_NUMBER();
                                 minute.Group_Minute.Text_rotation.img_First = textRotate.img_First;
                                 minute.Group_Minute.Text_rotation.imageX = textRotate.imageX;
@@ -27433,6 +28665,7 @@ namespace Watch_Face_Editor
                                 //if (second.Minute_circle != null) offset++;
                                 //if (second.Second_circle != null) offset++;
 
+                                if (second.Group_Second == null) second.Group_Second = new DigitalTimeGroup();
                                 second.Group_Second.Text_rotation = new hmUI_widget_IMG_NUMBER();
                                 second.Group_Second.Text_rotation.img_First = textRotate.img_First;
                                 second.Group_Second.Text_rotation.imageX = textRotate.imageX;
@@ -28543,6 +29776,7 @@ namespace Watch_Face_Editor
                                 //if (hour.Minute_circle != null) offset++;
                                 //if (hour.Second_circle != null) offset++;
 
+                                if (hour.Group_Hour == null) hour.Group_Hour = new DigitalTimeGroup();
                                 hour.Group_Hour.Text_circle = new Text_Circle();
                                 hour.Group_Hour.Text_circle.img_First = textCircle.img_First;
                                 hour.Group_Hour.Text_circle.circle_center_X = textCircle.circle_center_X;
@@ -28591,6 +29825,7 @@ namespace Watch_Face_Editor
                                 //if (minute.Minute_circle != null) offset++;
                                 //if (minute.Second_circle != null) offset++;
 
+                                if (minute.Group_Minute == null) minute.Group_Minute = new DigitalTimeGroup();
                                 minute.Group_Minute.Text_circle = new Text_Circle();
                                 minute.Group_Minute.Text_circle.img_First = textCircle.img_First;
                                 minute.Group_Minute.Text_circle.circle_center_X = textCircle.circle_center_X;
@@ -28625,7 +29860,7 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (second.Group_Hour != null) offset++;
                                 if (second.Group_Minute != null) offset++;
-                                if (second.Group_Second != null) offset++;
+                                //if (second.Group_Second != null) offset++;
                                 if (second.AmPm != null) offset++;
 
                                 //if (second.Hour_rotation != null) offset++;
@@ -28639,6 +29874,7 @@ namespace Watch_Face_Editor
                                 //if (second.Minute_circle != null) offset++;
                                 //if (hour.Second_circle != null) offset++;
 
+                                if (second.Group_Second == null) second.Group_Second = new DigitalTimeGroup();
                                 second.Group_Second.Text_circle = new Text_Circle();
                                 second.Group_Second.Text_circle.img_First = textCircle.img_First;
                                 second.Group_Second.Text_circle.circle_center_X = textCircle.circle_center_X;
@@ -31589,6 +32825,7 @@ namespace Watch_Face_Editor
                                 //if (time_hour_text.Minute_circle != null) offset++;
                                 //if (time_hour_text.Second_circle != null) offset++;
 
+                                if (time_hour_text.Group_Hour == null) time_hour_text.Group_Hour = new DigitalTimeGroup();
                                 time_hour_text.Group_Hour.Number_Font = new hmUI_widget_TEXT();
                                 time_hour_text.Group_Hour.Number_Font.x = text.x;
                                 time_hour_text.Group_Hour.Number_Font.y = text.y;
@@ -31647,6 +32884,7 @@ namespace Watch_Face_Editor
                                 //if (time_minute_text.Minute_circle != null) offset++;
                                 //if (time_minute_text.Second_circle != null) offset++;
 
+                                if (time_minute_text.Group_Minute == null) time_minute_text.Group_Minute = new DigitalTimeGroup();
                                 time_minute_text.Group_Minute.Number_Font = new hmUI_widget_TEXT();
                                 time_minute_text.Group_Minute.Number_Font.x = text.x;
                                 time_minute_text.Group_Minute.Number_Font.y = text.y;
@@ -31687,7 +32925,7 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (second_text_font.Group_Hour != null) offset++;
                                 if (second_text_font.Group_Minute != null) offset++;
-                                if (second_text_font.Group_Second != null) offset++;
+                                //if (second_text_font.Group_Second != null) offset++;
                                 if (second_text_font.AmPm != null) offset++;
 
                                 //if (second_text_font.Hour_Font != null) offset++;
@@ -31705,6 +32943,7 @@ namespace Watch_Face_Editor
                                 //if (second_text_font.Minute_circle != null) offset++;
                                 //if (second_text_font.Second_circle != null) offset++;
 
+                                if (second_text_font.Group_Second == null) second_text_font.Group_Second = new DigitalTimeGroup();
                                 second_text_font.Group_Second.Number_Font = new hmUI_widget_TEXT();
                                 second_text_font.Group_Second.Number_Font.x = text.x;
                                 second_text_font.Group_Second.Number_Font.y = text.y;
