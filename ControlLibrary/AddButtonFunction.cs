@@ -78,7 +78,9 @@ namespace ControlLibrary
             comboBox_App.Items.Add(Properties.ButtonFunctions.ScheduleList);
             comboBox_App.Items.Add(Properties.ButtonFunctions.ToDoList);
             comboBox_App.Items.Add(Properties.ButtonFunctions.PhoneMusic);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.PhoneMusic_2);
             comboBox_App.Items.Add(Properties.ButtonFunctions.LocalMusic);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.FlashLight);
             comboBox_App.Items.Add(Properties.ButtonFunctions.Weather);
             comboBox_App.Items.Add(Properties.ButtonFunctions.Sunset);
             comboBox_App.Items.Add(Properties.ButtonFunctions.Compass);
@@ -256,7 +258,9 @@ namespace ControlLibrary
             if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.ScheduleList_function;
             if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.ToDoList_function;
             if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.PhoneMusic_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.PhoneMusic_2_function;
             if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.LocalMusic_function;
+            if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.FlashLight_function;
             if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Weather_function;
             if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Sunset_function;
             if (comboBox_App.SelectedIndex == index++) script = Properties.ButtonFunctions.Compass_function;

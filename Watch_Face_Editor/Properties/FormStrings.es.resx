@@ -306,6 +306,9 @@
   <data name="Message_ModelConfig_ReadError" xml:space="preserve">
     <value>Error al leer la configuración del modelo</value>
   </data>
+  <data name="Message_Old_OS" xml:space="preserve">
+    <value>Este widget no es compatible con el modelo de reloj seleccionado.</value>
+  </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Reiniciar</value>
   </data>
@@ -371,6 +374,9 @@
   </data>
   <data name="Message_Warning_JS_Exist1" xml:space="preserve">
     <value>Ya existe una carpeta con archivos JS en esta carpeta.</value>
+  </data>
+  <data name="Message_Widget_Exists" xml:space="preserve">
+    <value>Un widget de este tipo ya existe en la esfera del reloj.</value>
   </data>
   <data name="Message_Wrong_ColorScheme" xml:space="preserve">
     <value>Se especifica una combinación de colores desconocida para el modelo:</value>

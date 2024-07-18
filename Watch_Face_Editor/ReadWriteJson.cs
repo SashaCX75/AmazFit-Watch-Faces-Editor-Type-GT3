@@ -2064,7 +2064,6 @@ namespace Watch_Face_Editor
                     {
                         if (DigitalTime_v2.Group_Hour.Number != null && DigitalTime_v2.Group_Hour.Number.visible)
                         {
-                            hourPosition_v2 = DigitalTime_v2.Group_Hour.position;
                             hmUI_widget_IMG_NUMBER img_number_hour = DigitalTime_v2.Group_Hour.Number;
                             optionsHour_v2 = IMG_NUMBER_Hour_Options(img_number_hour, "");
 
@@ -2093,12 +2092,13 @@ namespace Watch_Face_Editor
 
                             optionsHour_circle_v2 = Text_Circle_Options(text_circle, "HOUR", show_level, false);
                         }
+
+                        hourPosition_v2 = DigitalTime_v2.Group_Hour.position;
                     }
                     if (DigitalTime_v2.Group_Minute != null)
                     {
                         if (DigitalTime_v2.Group_Minute.Number != null && DigitalTime_v2.Group_Minute.Number.visible)
                         {
-                            minutePosition_v2 = DigitalTime_v2.Group_Minute.position;
                             hmUI_widget_IMG_NUMBER img_number_minute = DigitalTime_v2.Group_Minute.Number;
                             optionsMinute_v2 = IMG_NUMBER_Minute_Options(img_number_minute, "");
 
@@ -2127,6 +2127,8 @@ namespace Watch_Face_Editor
 
                             optionsMinute_circle_v2 = Text_Circle_Options(text_circle, "MINUTE", show_level, false);
                         }
+                        
+                        minutePosition_v2 = DigitalTime_v2.Group_Minute.position;
                     }
                     if (DigitalTime_v2.Group_Second != null)
                     {
@@ -2161,6 +2163,8 @@ namespace Watch_Face_Editor
 
                             optionsSecond_circle_v2 = Text_Circle_Options(text_circle, "SECOND", show_level, false);
                         }
+
+                        secondPosition_v2 = DigitalTime_v2.Group_Second.position;
                     }
 
                     if (DigitalTime_v2.AmPm != null && DigitalTime_v2.AmPm.visible)
@@ -11246,30 +11250,6 @@ namespace Watch_Face_Editor
                     break;
                 #endregion
 
-                //#region ElementMoon
-                //case "ElementMoon":
-                //    ElementMoon Moon = (ElementMoon)element;
-
-                //    if (!Moon.visible) return;
-                //    if (Moon.Images != null)
-                //    {
-                //        imagesPosition = Moon.Images.position;
-                //        hmUI_widget_IMG_LEVEL img_images = Moon.Images;
-                //        imagesOptions = IMG_IMAGES_Options(img_images, "MOON", show_level);
-                //    }
-
-                //    // Images
-                //    if (imagesOptions.Length > 5)
-                //    {
-                //        variables += TabInString(4) + "let " + optionNameStart +
-                //            "moon_image_progress_img_level = ''" + Environment.NewLine;
-                //        items += Environment.NewLine + TabInString(6) +
-                //            optionNameStart + "moon_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
-                //                imagesOptions + TabInString(6) + "});" + Environment.NewLine;
-                //    }
-                //    break;
-                //#endregion
-
                 #region ElementImage
                 case "ElementImage":
                     ElementImage Image = (ElementImage)element;
@@ -19814,8 +19794,13 @@ namespace Watch_Face_Editor
 
             options += TabInString(7 + tabOffset) + "color: " + text.color + "," + Environment.NewLine;
 
-            options += TabInString(7 + tabOffset) + "align_h: hmUI.align." + text.align_h + "," + Environment.NewLine;
-            options += TabInString(7 + tabOffset) + "align_v: hmUI.align." + text.align_v + "," + Environment.NewLine;
+            //options += TabInString(7 + tabOffset) + "align_h: hmUI.align." + text.align_h + "," + Environment.NewLine;
+            //options += TabInString(7 + tabOffset) + "align_v: hmUI.align." + text.align_v + "," + Environment.NewLine;
+            if (text.centreHorizontally) options += TabInString(7 + tabOffset) + "align_h: hmUI.align.CENTER_H," + Environment.NewLine;
+            else options += TabInString(7 + tabOffset) + "align_h: hmUI.align." + text.align_h + "," + Environment.NewLine;
+            if (text.centreVertically) options += TabInString(7 + tabOffset) + "align_v: hmUI.align.CENTER_V," + Environment.NewLine;
+            else options += TabInString(7 + tabOffset) + "align_v: hmUI.align." + text.align_v + "," + Environment.NewLine;
+
             options += TabInString(7 + tabOffset) + "text_style: hmUI.text_style." + text.text_style + "," + Environment.NewLine;
 
             if (text.padding) options += TabInString(7 + tabOffset) + "// padding: true," + Environment.NewLine;

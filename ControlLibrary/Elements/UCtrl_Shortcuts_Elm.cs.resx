@@ -150,6 +150,76 @@
   <data name="button_Alarm.Text" xml:space="preserve">
     <value>Budíky</value>
   </data>
+  <data name="button_RecoveryTime.Text" xml:space="preserve">
+    <value>Doba rekonvalescence</value>
+  </data>
+  <data name="button_OpenWaterSwimming.Text" xml:space="preserve">
+    <value>Plavání</value>
+  </data>
+  <data name="button_Walking.Text" xml:space="preserve">
+    <value>Chůze</value>
+  </data>
+  <data name="button_OutdoorRunning.Text" xml:space="preserve">
+    <value>Venkovní běh</value>
+  </data>
+  <data name="button_PoolSwimming.Text" xml:space="preserve">
+    <value>Plavání v bazénu</value>
+  </data>
+  <data name="button_OutdoorCycling.Text" xml:space="preserve">
+    <value>Cyklistika</value>
+  </data>
+  <data name="button_FreeTraining.Text" xml:space="preserve">
+    <value>Bezplatné cvičení</value>
+  </data>
+  <data name="button_TrainingLoad.Text" xml:space="preserve">
+    <value>Tréninkové zatížení</value>
+  </data>
+  <data name="button_Trainings.Text" xml:space="preserve">
+    <value>Tréninky</value>
+  </data>
+  <data name="button_Battery.Text" xml:space="preserve">
+    <value>Statistika baterie</value>
+  </data>
+  <data name="button_System.Text" xml:space="preserve">
+    <value>Systém</value>
+  </data>
+  <data name="button_Altitude.Text" xml:space="preserve">
+    <value>Nadmořská výška</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button_Moon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 24</value>
+  </data>
+  <data name="button_Moon.Text" xml:space="preserve">
+    <value>Východ / západ měsíce</value>
+  </data>
+  <data name="button_Air.Text" xml:space="preserve">
+    <value>Atmosféra/Vzduch</value>
+  </data>
+  <data name="button_FatBurning.Text" xml:space="preserve">
+    <value>Spalování tuků</value>
+  </data>
+  <data name="button_Stand.Text" xml:space="preserve">
+    <value>Zahřát</value>
+  </data>
+  <data name="button_Cal.Text" xml:space="preserve">
+    <value>Statistika aktivity</value>
+  </data>
+  <data name="button_Activities.Text" xml:space="preserve">
+    <value>Aktivity</value>
+  </data>
+  <data name="button_BreathTrain.Text" xml:space="preserve">
+    <value>Dech</value>
+  </data>
+  <data name="button_Readiness.Text" xml:space="preserve">
+    <value>Připravenost</value>
+  </data>
+  <data name="button_BodyTemp.Text" xml:space="preserve">
+    <value>Tělesná teplota</value>
+  </data>
+  <data name="button_Health.Text" xml:space="preserve">
+    <value>Zdraví</value>
+  </data>
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Štítky</value>
   </data>

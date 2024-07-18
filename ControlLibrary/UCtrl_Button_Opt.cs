@@ -302,6 +302,12 @@ namespace ControlLibrary
                 case "hmApp.startApp({url: 'PhoneMusicCtrlScreen', native: true });":
                     functinName = Properties.ButtonFunctions.PhoneMusic;
                     break;
+                case "hmApp.startApp({url: 'MusicCommonScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.PhoneMusic_2;
+                    break;
+                case "hmApp.startApp({url: 'FlashLightScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.FlashLight;
+                    break;
                 case "hmApp.startApp({url: 'WeatherScreen', native: true });":
                     functinName = Properties.ButtonFunctions.Weather;
                     break;

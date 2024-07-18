@@ -306,6 +306,9 @@
   <data name="Message_ModelConfig_ReadError" xml:space="preserve">
     <value>Erreur lors de la lecture de la configuration du modèle</value>
   </data>
+  <data name="Message_Old_OS" xml:space="preserve">
+    <value>Ce widget n'est pas pris en charge par le modèle de montre sélectionné.</value>
+  </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Redémarrer</value>
   </data>
@@ -371,6 +374,9 @@
   </data>
   <data name="Message_Warning_JS_Exist1" xml:space="preserve">
     <value>Il existe déjà un dossier contenant des fichiers JS dans ce dossier.</value>
+  </data>
+  <data name="Message_Widget_Exists" xml:space="preserve">
+    <value>Widget déjà présent dans le cadran de la montre.</value>
   </data>
   <data name="Message_Wrong_ColorScheme" xml:space="preserve">
     <value>Une palette de couleurs inconnue est spécifiée pour le modèle :</value>

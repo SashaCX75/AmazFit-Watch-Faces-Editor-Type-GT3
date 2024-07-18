@@ -128,11 +128,20 @@
   <data name="button_Air.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="button_Alarm.Text" xml:space="preserve">
+    <value>Будильники</value>
+  </data>
+  <data name="&gt;&gt;button_ElementName.Name" xml:space="preserve">
+    <value>button_ElementName</value>
+  </data>
   <data name="&gt;&gt;button_BodyTemp.Name" xml:space="preserve">
     <value>button_BodyTemp</value>
   </data>
   <data name="&gt;&gt;panel_FreeTraining.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_BodyTemp.Parent" xml:space="preserve">
+    <value>panel_BodyTemp</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="checkBox_Readiness.Location" type="System.Drawing.Point, System.Drawing">
@@ -140,9 +149,6 @@
   </data>
   <data name="panel_FatBurning.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
-  </data>
-  <data name="checkBox_OutdoorRunning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 14</value>
   </data>
   <data name="pictureBox_Arrow_Down.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -162,20 +168,14 @@
   <data name="checkBox_Countdown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;panel_PoolSwimming.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;panel_System.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="&gt;&gt;button_OutdoorCycling.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkBox_Altitude.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="panel_Heart.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="pictureBox_Arrow_Right_System.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
@@ -183,8 +183,14 @@
   <data name="&gt;&gt;panel_FreeTraining.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="&gt;&gt;button_Stand.Name" xml:space="preserve">
-    <value>button_Stand</value>
+  <data name="&gt;&gt;panel_Stress.Parent" xml:space="preserve">
+    <value>tableLayoutPanel_Health</value>
+  </data>
+  <data name="button_Stopwatch.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="panel_Moon.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
   <data name="tableLayoutPanel_Air.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 28</value>
@@ -213,23 +219,14 @@
   <data name="button_OutdoorCycling.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
-  <data name="button_VO2max.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="checkBox_OutdoorCycling.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="button_Alarm.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 24</value>
   </data>
-  <data name="panel_Altimeter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
   <data name="&gt;&gt;checkBox_Altitude.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="pictureBox_Arrow_Down_Trainings.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
   </data>
   <data name="tableLayoutPanel_Trainings.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -240,20 +237,14 @@
   <data name="checkBox_Altitude.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;panel_BreathTrain.Parent" xml:space="preserve">
-    <value>tableLayoutPanel_Health</value>
-  </data>
-  <data name="panel_Stress.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="&gt;&gt;panel_VO2max.Parent" xml:space="preserve">
+    <value>tableLayoutPanel_Trainings</value>
   </data>
   <data name="button_Stress.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 24</value>
   </data>
   <data name="panel_Air.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
-  </data>
-  <data name="&gt;&gt;panel_RecoveryTime.Name" xml:space="preserve">
-    <value>panel_RecoveryTime</value>
   </data>
   <data name="pictureBox_Arrow_Right_Trainings.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
@@ -264,14 +255,11 @@
   <data name="panel_BreathTrain.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
   </data>
-  <data name="checkBox_Stand.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;panel_OpenWaterSwimming.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBox_PAI.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
-  </data>
-  <data name="button_Trainings.Text" xml:space="preserve">
-    <value>Тренировки</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -324,6 +312,9 @@
   <data name="&gt;&gt;pictureBox_Arrow_Down_Activities.Name" xml:space="preserve">
     <value>pictureBox_Arrow_Down_Activities</value>
   </data>
+  <data name="button_TrainingLoad.Text" xml:space="preserve">
+    <value>Тренировочная нагрузка</value>
+  </data>
   <data name="&gt;&gt;button_PAI.Name" xml:space="preserve">
     <value>button_PAI</value>
   </data>
@@ -339,8 +330,11 @@
   <data name="button_Battery.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
-  <data name="&gt;&gt;panel_Altimeter.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;checkBox_Cal.Parent" xml:space="preserve">
+    <value>panel_Cal</value>
+  </data>
+  <data name="button_Health.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="button_TrainingLoad.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
@@ -353,6 +347,9 @@
   </data>
   <data name="&gt;&gt;button_Health.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="panel_Air.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;button_Readiness.Name" xml:space="preserve">
     <value>button_Readiness</value>
@@ -369,14 +366,14 @@
   <data name="button_Cal.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Right_System.Name" xml:space="preserve">
-    <value>pictureBox_Arrow_Right_System</value>
-  </data>
   <data name="button_System.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="panel_FreeTraining.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
+  </data>
+  <data name="&gt;&gt;panel_Readiness.Parent" xml:space="preserve">
+    <value>tableLayoutPanel_Health</value>
   </data>
   <data name="button_Altimeter.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -393,8 +390,14 @@
   <data name="&gt;&gt;pictureBox_Arrow_Down_Activities.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="checkBox_Stand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 5</value>
+  </data>
   <data name="checkBox_PAI.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;button_Heart.Parent" xml:space="preserve">
+    <value>panel_Heart</value>
   </data>
   <data name="panel_Health.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 181</value>
@@ -414,6 +417,9 @@
   <data name="tableLayoutPanel_System.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 101</value>
   </data>
+  <data name="pictureBox_Show.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
   <data name="checkBox_Step.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -426,8 +432,8 @@
   <data name="&gt;&gt;panel_Sunrise.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel_Activities.Parent" xml:space="preserve">
-    <value>panel_Activities</value>
+  <data name="panel_TrainingLoad.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 151</value>
   </data>
   <data name="&gt;&gt;checkBox_BodyTemp.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -447,11 +453,14 @@
   <data name="&gt;&gt;checkBox_Sleep.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;button_Weather.Name" xml:space="preserve">
+    <value>button_Weather</value>
+  </data>
   <data name="button_PAI.Text" xml:space="preserve">
     <value>PAI</value>
   </data>
-  <data name="&gt;&gt;button_Alarm.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="button_BodyTemp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 24</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel_Air.Parent" xml:space="preserve">
     <value>panel_Air</value>
@@ -462,26 +471,23 @@
   <data name="button_OutdoorRunning.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="button_PAI.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
-  </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tableLayoutPanel_Activities.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_FatBurning" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Stand" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Cal" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_PAI" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Step" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Heart" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="&gt;&gt;button_Stress.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="button_Weather.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="panel_Stopwatch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="&gt;&gt;button_Activities.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="tableLayoutPanel_Trainings.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="tableLayoutPanel_Air.RowCount" type="System.Int32, mscorlib">
-    <value>5</value>
   </data>
   <data name="&gt;&gt;checkBox_Altimeter.Name" xml:space="preserve">
     <value>checkBox_Altimeter</value>
@@ -492,20 +498,17 @@
   <data name="panel_Heart.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
   </data>
+  <data name="button_Health.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="button_BreathTrain.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
   <data name="button_Walking.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="pictureBox_Arrow_Right_Activities.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
   <data name="panel_Air.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Stopwatch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="pictureBox_Arrow_Right_System.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
@@ -525,14 +528,14 @@
   <data name="&gt;&gt;pictureBox_Arrow_Right_Air.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button_Moon.Text" xml:space="preserve">
-    <value>Восход/закат луны</value>
+  <data name="&gt;&gt;button_Stress.Parent" xml:space="preserve">
+    <value>panel_Stress</value>
   </data>
   <data name="&gt;&gt;pictureBox_Arrow_Right.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="button_Health.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="panel_Health.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>20, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;button_Step.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -546,8 +549,8 @@
   <data name="tableLayoutPanel1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="panel_VO2max.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 24</value>
+  <data name="checkBox_Readiness.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;checkBox_Heart.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -555,11 +558,11 @@
   <data name="&gt;&gt;button_Stand.Parent" xml:space="preserve">
     <value>panel_Stand</value>
   </data>
+  <data name="button_TrainingLoad.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
   <data name="&gt;&gt;button_OutdoorRunning.Name" xml:space="preserve">
     <value>button_OutdoorRunning</value>
-  </data>
-  <data name="tableLayoutPanel_Air.TabIndex" type="System.Int32, mscorlib">
-    <value>43</value>
   </data>
   <data name="checkBox_Altitude.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
@@ -576,20 +579,29 @@
   <data name="&gt;&gt;pictureBox_Arrow_Down.Name" xml:space="preserve">
     <value>pictureBox_Arrow_Down</value>
   </data>
+  <data name="panel_PAI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 24</value>
+  </data>
   <data name="pictureBox_Arrow_Right_Health.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
   </data>
   <data name="button_VO2max.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
-  <data name="&gt;&gt;button_Heart.Name" xml:space="preserve">
-    <value>button_Heart</value>
+  <data name="pictureBox_NotShow.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tableLayoutPanel_Trainings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 226</value>
   </data>
   <data name="pictureBox_NotShow.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="&gt;&gt;panel_Countdown.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_Activities.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>20, 0, 0, 0</value>
   </data>
   <data name="panel_TrainingLoad.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -599,9 +611,6 @@
   </data>
   <data name="panel_PoolSwimming.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel_Health.Parent" xml:space="preserve">
-    <value>panel_Health</value>
   </data>
   <data name="button_Stand.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -627,14 +636,14 @@
   <data name="panel_BreathTrain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="button_BreathTrain.Text" xml:space="preserve">
+    <value>Дыхание</value>
+  </data>
   <data name="&gt;&gt;checkBox_OutdoorRunning.Name" xml:space="preserve">
     <value>checkBox_OutdoorRunning</value>
   </data>
   <data name="tableLayoutPanel_System.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 28</value>
-  </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Down.Parent" xml:space="preserve">
-    <value>$this</value>
   </data>
   <data name="checkBox_Stopwatch.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
@@ -666,11 +675,17 @@
   <data name="button_System.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
+  <data name="button_Heart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 24</value>
+  </data>
   <data name="checkBox_Sunrise.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
   <data name="&gt;&gt;checkBox_Stand.Parent" xml:space="preserve">
     <value>panel_Stand</value>
+  </data>
+  <data name="&gt;&gt;panel_BreathTrain.Name" xml:space="preserve">
+    <value>panel_BreathTrain</value>
   </data>
   <data name="tableLayoutPanel_Health.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
     <value>Single</value>
@@ -678,20 +693,14 @@
   <data name="&gt;&gt;panel_Altitude.Name" xml:space="preserve">
     <value>panel_Altitude</value>
   </data>
-  <data name="&gt;&gt;panel_OpenWaterSwimming.Name" xml:space="preserve">
-    <value>panel_OpenWaterSwimming</value>
+  <data name="panel_OutdoorCycling.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 24</value>
   </data>
   <data name="button_Walking.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="panel_PAI.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_BreathTrain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
-  </data>
-  <data name="tableLayoutPanel_Health.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 151</value>
+  <data name="button_Step.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="checkBox_Step.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
@@ -714,6 +723,9 @@
   <data name="&gt;&gt;button_SPO2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="button_Altitude.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="panel_Activities.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>20, 0, 0, 0</value>
   </data>
@@ -725,6 +737,9 @@
   </data>
   <data name="&gt;&gt;button_Heart.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="tableLayoutPanel_Air.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="panel_Walking.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -753,9 +768,6 @@
   <data name="checkBox_BreathTrain.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Right_Activities.Name" xml:space="preserve">
-    <value>pictureBox_Arrow_Right_Activities</value>
-  </data>
   <data name="panel_Trainings.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>20, 0, 0, 0</value>
   </data>
@@ -774,6 +786,9 @@
   <data name="checkBox_Countdown.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="panel_Moon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 24</value>
+  </data>
   <data name="button_Health.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
   </data>
@@ -782,9 +797,6 @@
   </data>
   <data name="pictureBox_Arrow_Right_Activities.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
-  </data>
-  <data name="button_OpenWaterSwimming.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
   </data>
   <data name="&gt;&gt;panel_RecoveryTime.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -807,6 +819,9 @@
   <data name="panel_Sleep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="&gt;&gt;button_Activities.Parent" xml:space="preserve">
+    <value>panel_Activities</value>
+  </data>
   <data name="&gt;&gt;checkBox_Weather.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
@@ -816,14 +831,17 @@
   <data name="&gt;&gt;checkBox_PoolSwimming.Name" xml:space="preserve">
     <value>checkBox_PoolSwimming</value>
   </data>
+  <data name="checkBox_Stopwatch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
+  </data>
   <data name="&gt;&gt;panel_Heart.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="checkBox_Sleep.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
-  <data name="&gt;&gt;panel_TrainingLoad.Name" xml:space="preserve">
-    <value>panel_TrainingLoad</value>
+  <data name="button_ElementName.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>20, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;checkBox_Sleep.Parent" xml:space="preserve">
     <value>panel_Sleep</value>
@@ -834,8 +852,11 @@
   <data name="pictureBox_Arrow_Down_Activities.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
   </data>
-  <data name="&gt;&gt;button_Altimeter.Name" xml:space="preserve">
-    <value>button_Altimeter</value>
+  <data name="checkBox_SPO2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="button_Cal.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="button_Altitude.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -843,11 +864,14 @@
   <data name="checkBox_PAI.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="panel_PoolSwimming.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="&gt;&gt;checkBox_Countdown.Name" xml:space="preserve">
+    <value>checkBox_Countdown</value>
   </data>
   <data name="button_Step.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="panel_Altitude.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 101</value>
   </data>
   <data name="panel_Countdown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -855,14 +879,8 @@
   <data name="&gt;&gt;button_Stopwatch.Name" xml:space="preserve">
     <value>button_Stopwatch</value>
   </data>
-  <data name="&gt;&gt;panel_RecoveryTime.Parent" xml:space="preserve">
-    <value>tableLayoutPanel_Trainings</value>
-  </data>
   <data name="checkBox_BodyTemp.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="button_Step.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 24</value>
   </data>
   <data name="checkBox_Cal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -873,11 +891,14 @@
   <data name="&gt;&gt;checkBox_Walking.Name" xml:space="preserve">
     <value>checkBox_Walking</value>
   </data>
-  <data name="button_Weather.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
+  <data name="&gt;&gt;button_OutdoorRunning.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBox_Stress.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel_Trainings.Name" xml:space="preserve">
+    <value>tableLayoutPanel_Trainings</value>
   </data>
   <data name="&gt;&gt;button_FreeTraining.Parent" xml:space="preserve">
     <value>panel_FreeTraining</value>
@@ -909,6 +930,9 @@
   <data name="&gt;&gt;button_FreeTraining.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;pictureBox_Arrow_Right.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="pictureBox_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
   </data>
@@ -933,9 +957,6 @@
   <data name="tableLayoutPanel_Health.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;checkBox_Step.Parent" xml:space="preserve">
-    <value>panel_Step</value>
-  </data>
   <data name="checkBox_Readiness.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -944,15 +965,6 @@
   </data>
   <data name="&gt;&gt;tableLayoutPanel_Health.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="pictureBox_Arrow_Down_System.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;button_Stopwatch.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="button_OpenWaterSwimming.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel_Trainings.Parent" xml:space="preserve">
     <value>panel_Trainings</value>
@@ -969,8 +981,8 @@
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 902</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>UCtrl_Shortcuts_Elm</value>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;button_System.Parent" xml:space="preserve">
     <value>panel_System</value>
@@ -981,8 +993,8 @@
   <data name="checkBox_TrainingLoad.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
-  <data name="checkBox_RecoveryTime.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;checkBox_PAI.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;pictureBox_Arrow_Down_Health.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -998,9 +1010,6 @@
   </data>
   <data name="&gt;&gt;checkBox_PAI.Parent" xml:space="preserve">
     <value>panel_PAI</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Stopwatch.Name" xml:space="preserve">
-    <value>checkBox_Stopwatch</value>
   </data>
   <data name="checkBox_OpenWaterSwimming.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1032,9 +1041,6 @@
   <data name="pictureBox_Arrow_Down_Health.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;panel_Stress.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="pictureBox_Arrow_Down_Trainings.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
   </data>
@@ -1062,17 +1068,14 @@
   <data name="checkBox_VO2max.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="checkBox_Battery.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_Stand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
-  </data>
   <data name="button_Cal.Text" xml:space="preserve">
     <value>Статистика активностей</value>
   </data>
   <data name="&gt;&gt;panel_OutdoorCycling.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="button_SPO2.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="tableLayoutPanel_System.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1089,20 +1092,17 @@
   <data name="button_Countdown.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Right_Trainings.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="button_OutdoorCycling.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="checkBox_BreathTrain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 5</value>
+  <data name="panel_FreeTraining.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 76</value>
   </data>
   <data name="pictureBox_Arrow_Right_Activities.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
   </data>
   <data name="tableLayoutPanel_Trainings.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_RecoveryTime" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_VO2max" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_OpenWaterSwimming" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Walking" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_OutdoorRunning" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_PoolSwimming" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_OutdoorCycling" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_FreeTraining" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_TrainingLoad" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="&gt;&gt;panel_OpenWaterSwimming.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="pictureBox_Arrow_Down_System.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1115,9 +1115,6 @@
   </data>
   <data name="&gt;&gt;button_VO2max.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;checkBox_OutdoorCycling.Parent" xml:space="preserve">
-    <value>panel_OutdoorCycling</value>
   </data>
   <data name="button_SPO2.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
@@ -1155,14 +1152,17 @@
   <data name="tableLayoutPanel_Air.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="button_TrainingLoad.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
   <data name="button_Health.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="&gt;&gt;panel_PAI.Name" xml:space="preserve">
+    <value>panel_PAI</value>
+  </data>
   <data name="panel_System.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
+  </data>
+  <data name="&gt;&gt;button_Stand.Name" xml:space="preserve">
+    <value>button_Stand</value>
   </data>
   <data name="&gt;&gt;button_Cal.Name" xml:space="preserve">
     <value>button_Cal</value>
@@ -1179,26 +1179,23 @@
   <data name="panel_Altimeter.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
   </data>
+  <data name="panel_BreathTrain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 126</value>
+  </data>
   <data name="button_System.Text" xml:space="preserve">
     <value>Система</value>
   </data>
   <data name="&gt;&gt;panel_Stand.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Activities</value>
   </data>
-  <data name="&gt;&gt;panel_OutdoorRunning.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="checkBox_Sunrise.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
-  <data name="button_Stress.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
+  <data name="&gt;&gt;pictureBox_Arrow_Right_Health.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_OpenWaterSwimming.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;panel_Air.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;button_OpenWaterSwimming.Name" xml:space="preserve">
     <value>button_OpenWaterSwimming</value>
@@ -1227,9 +1224,6 @@
   <data name="button_Heart.Text" xml:space="preserve">
     <value>Пульс</value>
   </data>
-  <data name="button_Stopwatch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
-  </data>
   <data name="panel_Stress.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
@@ -1245,8 +1239,14 @@
   <data name="panel_Stand.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
   </data>
+  <data name="tableLayoutPanel_Health.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_BreathTrain" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Readiness" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_BodyTemp" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Sleep" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_SPO2" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Stress" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
   <data name="&gt;&gt;panel_FatBurning.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel_Walking.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="button_FatBurning.Text" xml:space="preserve">
     <value>Жиросжигание</value>
@@ -1263,8 +1263,14 @@
   <data name="button_Sleep.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
   </data>
-  <data name="panel_BreathTrain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 126</value>
+  <data name="&gt;&gt;checkBox_BreathTrain.Parent" xml:space="preserve">
+    <value>panel_BreathTrain</value>
+  </data>
+  <data name="checkBox_Walking.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 5</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel_Trainings.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="button_VO2max.Text" xml:space="preserve">
     <value>VO2 max</value>
@@ -1272,8 +1278,8 @@
   <data name="button_FatBurning.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="checkBox_SPO2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 14</value>
+  <data name="&gt;&gt;panel_TrainingLoad.Name" xml:space="preserve">
+    <value>panel_TrainingLoad</value>
   </data>
   <data name="&gt;&gt;checkBox_PAI.Name" xml:space="preserve">
     <value>checkBox_PAI</value>
@@ -1290,9 +1296,6 @@
   <data name="panel_OutdoorRunning.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="&gt;&gt;panel_Step.Name" xml:space="preserve">
-    <value>panel_Step</value>
-  </data>
   <data name="panel_Alarm.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -1304,6 +1307,9 @@
   </data>
   <data name="&gt;&gt;button_Stand.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_PAI.Parent" xml:space="preserve">
+    <value>tableLayoutPanel_Activities</value>
   </data>
   <data name="button_Weather.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1329,9 +1335,6 @@
   <data name="&gt;&gt;panel_Readiness.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBox_Heart.Name" xml:space="preserve">
-    <value>checkBox_Heart</value>
-  </data>
   <data name="checkBox_OutdoorRunning.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
@@ -1353,6 +1356,9 @@
   <data name="button_Sunrise.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
   </data>
+  <data name="panel_Stress.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
   <data name="panel_RecoveryTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
@@ -1362,20 +1368,23 @@
   <data name="tableLayoutPanel_Activities.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;checkBox_RecoveryTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Ярлыки</value>
+  </data>
+  <data name="button_Activities.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 28</value>
   </data>
   <data name="&gt;&gt;button_ElementName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="button_BodyTemp.Text" xml:space="preserve">
+    <value>Температура тела</value>
+  </data>
   <data name="button_OutdoorRunning.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
-  <data name="button_Altitude.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="&gt;&gt;panel_Sleep.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel_Trainings.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1395,8 +1404,14 @@
   <data name="checkBox_PoolSwimming.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="&gt;&gt;panel_Weather.Name" xml:space="preserve">
+    <value>panel_Weather</value>
+  </data>
   <data name="&gt;&gt;button_Activities.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Weather.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBox_TrainingLoad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1428,6 +1443,9 @@
   <data name="panel_SPO2.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
   </data>
+  <data name="panel_Battery.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
   <data name="&gt;&gt;panel_Altitude.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
@@ -1440,14 +1458,14 @@
   <data name="checkBox_PoolSwimming.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="panel_Air.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 361</value>
-  </data>
   <data name="tableLayoutPanel_Health.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="button_Countdown.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
+  </data>
+  <data name="checkBox_Cal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 5</value>
   </data>
   <data name="button_BodyTemp.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1458,9 +1476,6 @@
   <data name="tableLayoutPanel_Activities.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="panel_PAI.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
   <data name="&gt;&gt;checkBox_Moon.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -1470,9 +1485,6 @@
   <data name="panel_Moon.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="checkBox_FatBurning.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="checkBox_PoolSwimming.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
@@ -1481,9 +1493,6 @@
   </data>
   <data name="button_Weather.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Step.Name" xml:space="preserve">
-    <value>checkBox_Step</value>
   </data>
   <data name="button_Air.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>20, 0, 0, 0</value>
@@ -1499,9 +1508,6 @@
   </data>
   <data name="&gt;&gt;button_Alarm.Parent" xml:space="preserve">
     <value>panel_Alarm</value>
-  </data>
-  <data name="pictureBox_Arrow_Down_Activities.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 2</value>
   </data>
   <data name="&gt;&gt;panel_BreathTrain.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1524,8 +1530,8 @@
   <data name="button_Trainings.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 0</value>
   </data>
-  <data name="button_Step.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="button_Altimeter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1547,6 +1553,9 @@
   </data>
   <data name="&gt;&gt;checkBox_Sunrise.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_Sunrise.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="button_BreathTrain.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -1581,8 +1590,14 @@
   <data name="tableLayoutPanel_Activities.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="&gt;&gt;pictureBox_Arrow_Right.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="panel_Readiness.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel_Activities.Name" xml:space="preserve">
+    <value>tableLayoutPanel_Activities</value>
   </data>
   <data name="button_SPO2.Text" xml:space="preserve">
     <value>Кислород в крови (SpO2)</value>
@@ -1590,20 +1605,14 @@
   <data name="&gt;&gt;checkBox_OpenWaterSwimming.Name" xml:space="preserve">
     <value>checkBox_OpenWaterSwimming</value>
   </data>
-  <data name="&gt;&gt;checkBox_Readiness.Parent" xml:space="preserve">
-    <value>panel_Readiness</value>
+  <data name="&gt;&gt;pictureBox_Show.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel_Sleep.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Health</value>
   </data>
   <data name="pictureBox_Arrow_Down_System.Location" type="System.Drawing.Point, System.Drawing">
     <value>131, 2</value>
-  </data>
-  <data name="panel_TrainingLoad.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="panel_RecoveryTime.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
   </data>
   <data name="&gt;&gt;panel_Health.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1614,8 +1623,8 @@
   <data name="button_PoolSwimming.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;button_VO2max.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_Readiness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 24</value>
   </data>
   <data name="button_OutdoorRunning.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 24</value>
@@ -1634,9 +1643,6 @@
   </data>
   <data name="button_OpenWaterSwimming.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Down_Trainings.Name" xml:space="preserve">
-    <value>pictureBox_Arrow_Down_Trainings</value>
   </data>
   <data name="&gt;&gt;button_PAI.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1668,9 +1674,6 @@
   <data name="&gt;&gt;button_Step.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Down_System.Name" xml:space="preserve">
-    <value>pictureBox_Arrow_Down_System</value>
-  </data>
   <data name="checkBox_Weather.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
@@ -1679,6 +1682,9 @@
   </data>
   <data name="&gt;&gt;pictureBox_Arrow_Right_System.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="panel_BreathTrain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBox_PAI.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1691,6 +1697,9 @@
   </data>
   <data name="button_Air.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 0</value>
+  </data>
+  <data name="button_Altimeter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
   </data>
   <data name="&gt;&gt;button_RecoveryTime.Name" xml:space="preserve">
     <value>button_RecoveryTime</value>
@@ -1719,8 +1728,8 @@
   <data name="checkBox_Battery.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
-  <data name="&gt;&gt;checkBox_Stress.Name" xml:space="preserve">
-    <value>checkBox_Stress</value>
+  <data name="&gt;&gt;panel_Countdown.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="button_System.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>20, 0, 0, 0</value>
@@ -1731,11 +1740,17 @@
   <data name="button_Battery.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
   </data>
+  <data name="&gt;&gt;button_ElementName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="button_Moon.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
   <data name="tableLayoutPanel_Trainings.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
     <value>Single</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>UCtrl_Shortcuts_Elm</value>
   </data>
   <data name="&gt;&gt;pictureBox_Del.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1749,14 +1764,17 @@
   <data name="panel_Step.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 1</value>
   </data>
-  <data name="button_Walking.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
+  <data name="&gt;&gt;button_VO2max.Parent" xml:space="preserve">
+    <value>panel_VO2max</value>
+  </data>
+  <data name="pictureBox_Arrow_Down_Activities.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="panel_Stand.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="&gt;&gt;panel_Sunrise.Parent" xml:space="preserve">
-    <value>tableLayoutPanel_Air</value>
+  <data name="pictureBox_Arrow_Down_Trainings.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
   </data>
   <data name="&gt;&gt;checkBox_Altimeter.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1764,17 +1782,17 @@
   <data name="button_ElementName.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="&gt;&gt;checkBox_VO2max.Parent" xml:space="preserve">
+    <value>panel_VO2max</value>
+  </data>
   <data name="&gt;&gt;panel_Moon.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="&gt;&gt;checkBox_RecoveryTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="button_ElementName.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 28</value>
-  </data>
-  <data name="&gt;&gt;button_Weather.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_Stand.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1821,17 +1839,11 @@
   <data name="button_PoolSwimming.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
   </data>
-  <data name="&gt;&gt;panel_PoolSwimming.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="pictureBox_Arrow_Down_Health.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
-  </data>
   <data name="&gt;&gt;panel_OutdoorRunning.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Trainings</value>
   </data>
-  <data name="panel_Moon.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="button_BreathTrain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1869,14 +1881,14 @@
   <data name="button_Sleep.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="panel_Heart.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="button_VO2max.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;checkBox_Countdown.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button_OpenWaterSwimming.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
+  <data name="checkBox_Stand.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="pictureBox_NotShow.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1886,9 +1898,6 @@
   </data>
   <data name="&gt;&gt;checkBox_FatBurning.Parent" xml:space="preserve">
     <value>panel_FatBurning</value>
-  </data>
-  <data name="panel_Weather.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
   </data>
   <data name="pictureBox_Arrow_Down_Trainings.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1902,8 +1911,8 @@
   <data name="button_OutdoorRunning.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
   </data>
-  <data name="&gt;&gt;button_FreeTraining.Name" xml:space="preserve">
-    <value>button_FreeTraining</value>
+  <data name="&gt;&gt;panel_Sunrise.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel_Air.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1914,9 +1923,6 @@
   <data name="checkBox_Weather.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="panel_OutdoorCycling.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 51</value>
-  </data>
   <data name="panel_PAI.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 76</value>
   </data>
@@ -1926,11 +1932,11 @@
   <data name="pictureBox_Arrow_Down.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
   </data>
-  <data name="pictureBox_Show.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="checkBox_Walking.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="panel_Stand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 101</value>
   </data>
   <data name="&gt;&gt;button_OpenWaterSwimming.Parent" xml:space="preserve">
     <value>panel_OpenWaterSwimming</value>
@@ -1938,17 +1944,17 @@
   <data name="panel_PoolSwimming.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;checkBox_Sunrise.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="checkBox_BodyTemp.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Down_Air.Name" xml:space="preserve">
-    <value>pictureBox_Arrow_Down_Air</value>
+  <data name="&gt;&gt;panel_Trainings.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="pictureBox_NotShow.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
+  </data>
+  <data name="&gt;&gt;checkBox_BodyTemp.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="panel_Sleep.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 76</value>
@@ -1962,11 +1968,8 @@
   <data name="&gt;&gt;checkBox_Alarm.Name" xml:space="preserve">
     <value>checkBox_Alarm</value>
   </data>
-  <data name="tableLayoutPanel_Trainings.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;panel_Walking.Name" xml:space="preserve">
-    <value>panel_Walking</value>
+  <data name="button_Cal.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
   </data>
   <data name="&gt;&gt;panel_FreeTraining.Name" xml:space="preserve">
     <value>panel_FreeTraining</value>
@@ -2013,17 +2016,11 @@
   <data name="&gt;&gt;checkBox_FatBurning.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;panel_Sleep.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button_Sunrise.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="checkBox_Moon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 5</value>
   </data>
   <data name="pictureBox_Arrow_Down_Air.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
-  </data>
-  <data name="&gt;&gt;button_Heart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="panel_Sunrise.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2031,11 +2028,14 @@
   <data name="panel_Altitude.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;panel_Step.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="panel_Sunrise.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 26</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_Arrow_Right_Trainings.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panel_Stopwatch.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="panel_Trainings.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 254</value>
@@ -2070,29 +2070,23 @@
   <data name="panel_Activities.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;panel_BreathTrain.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="tableLayoutPanel_Health.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="&gt;&gt;panel_Step.Parent" xml:space="preserve">
-    <value>tableLayoutPanel_Activities</value>
-  </data>
-  <data name="button_SPO2.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
-  </data>
-  <data name="&gt;&gt;button_Sleep.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="button_Stand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
   </data>
   <data name="button_PAI.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 24</value>
   </data>
-  <data name="button_Altimeter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
+  <data name="&gt;&gt;button_Sleep.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="panel_OutdoorCycling.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="button_RecoveryTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 24</value>
   </data>
-  <data name="&gt;&gt;panel_VO2max.Parent" xml:space="preserve">
-    <value>tableLayoutPanel_Trainings</value>
+  <data name="panel_Moon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 51</value>
   </data>
   <data name="&gt;&gt;panel_Walking.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2108,9 +2102,6 @@
   </data>
   <data name="panel_FatBurning.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 126</value>
-  </data>
-  <data name="button_PAI.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
   </data>
   <data name="checkBox_Stopwatch.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2130,35 +2121,26 @@
   <data name="&gt;&gt;panel_OpenWaterSwimming.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Trainings</value>
   </data>
-  <data name="&gt;&gt;checkBox_Altitude.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="button_Battery.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;button_Cal.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="panel_Trainings.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
+  <data name="checkBox_FatBurning.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
   </data>
-  <data name="&gt;&gt;panel_Sleep.Name" xml:space="preserve">
-    <value>panel_Sleep</value>
-  </data>
-  <data name="tableLayoutPanel_Air.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 126</value>
+  <data name="&gt;&gt;panel_Readiness.Name" xml:space="preserve">
+    <value>panel_Readiness</value>
   </data>
   <data name="checkBox_Alarm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel_Trainings.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="checkBox_OutdoorRunning.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
   </data>
   <data name="button_Air.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
-  </data>
-  <data name="button_Cal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
   </data>
   <data name="panel_Moon.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2166,8 +2148,8 @@
   <data name="button_Stress.Text" xml:space="preserve">
     <value>Уровень стресса</value>
   </data>
-  <data name="&gt;&gt;button_Heart.Parent" xml:space="preserve">
-    <value>panel_Heart</value>
+  <data name="&gt;&gt;button_Alarm.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="button_Air.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -2175,14 +2157,11 @@
   <data name="pictureBox_Arrow_Down_Health.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
   </data>
-  <data name="button_Trainings.TabIndex" type="System.Int32, mscorlib">
-    <value>43</value>
+  <data name="pictureBox_Arrow_Down_Activities.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 2</value>
   </data>
   <data name="panel_TrainingLoad.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
-  </data>
-  <data name="&gt;&gt;panel_BodyTemp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="button_Stand.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 24</value>
@@ -2199,8 +2178,11 @@
   <data name="button_OpenWaterSwimming.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
-  <data name="pictureBox_Arrow_Right_System.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 2</value>
+  <data name="&gt;&gt;checkBox_Readiness.Parent" xml:space="preserve">
+    <value>panel_Readiness</value>
+  </data>
+  <data name="panel_BodyTemp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBox_VO2max.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2220,8 +2202,8 @@
   <data name="&gt;&gt;panel_Air.Name" xml:space="preserve">
     <value>panel_Air</value>
   </data>
-  <data name="&gt;&gt;panel_Readiness.Parent" xml:space="preserve">
-    <value>tableLayoutPanel_Health</value>
+  <data name="panel_Trainings.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
   </data>
   <data name="&gt;&gt;panel_Air.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -2241,8 +2223,8 @@
   <data name="checkBox_FatBurning.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;panel_OpenWaterSwimming.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_Weather.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="button_Activities.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -2250,11 +2232,8 @@
   <data name="pictureBox_Arrow_Right_Trainings.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 2</value>
   </data>
-  <data name="&gt;&gt;panel_FatBurning.Parent" xml:space="preserve">
-    <value>tableLayoutPanel_Activities</value>
-  </data>
-  <data name="button_Altimeter.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="&gt;&gt;panel_Altitude.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="pictureBox_Arrow_Right.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
@@ -2268,11 +2247,17 @@
   <data name="panel_Weather.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="checkBox_FatBurning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 14</value>
+  <data name="checkBox_Altimeter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;button_ElementName.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="button_Readiness.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="panel_Air.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 361</value>
+  </data>
+  <data name="&gt;&gt;panel_OpenWaterSwimming.Name" xml:space="preserve">
+    <value>panel_OpenWaterSwimming</value>
   </data>
   <data name="&gt;&gt;panel_Stopwatch.Name" xml:space="preserve">
     <value>panel_Stopwatch</value>
@@ -2298,11 +2283,11 @@
   <data name="panel_Step.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;button_FatBurning.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_Altimeter.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
-  <data name="&gt;&gt;button_Activities.Parent" xml:space="preserve">
-    <value>panel_Activities</value>
+  <data name="&gt;&gt;panel_PoolSwimming.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_BreathTrain.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2319,20 +2304,20 @@
   <data name="button_Health.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>20, 0, 0, 0</value>
   </data>
+  <data name="&gt;&gt;tableLayoutPanel_Health.Name" xml:space="preserve">
+    <value>tableLayoutPanel_Health</value>
+  </data>
   <data name="button_SPO2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="pictureBox_Arrow_Down_Activities.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;tableLayoutPanel_Activities.Parent" xml:space="preserve">
+    <value>panel_Activities</value>
   </data>
   <data name="panel_FreeTraining.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
   </data>
-  <data name="pictureBox_Arrow_Right_Trainings.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="checkBox_Stopwatch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 14</value>
+  <data name="panel_Altimeter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="&gt;&gt;button_VO2max.Name" xml:space="preserve">
     <value>button_VO2max</value>
@@ -2343,11 +2328,11 @@
   <data name="checkBox_Heart.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="button_BodyTemp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 24</value>
+  <data name="&gt;&gt;button_Heart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel_Walking.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="button_Stopwatch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel_Activities.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2388,17 +2373,14 @@
   <data name="button_Stress.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
   </data>
-  <data name="&gt;&gt;button_Weather.Parent" xml:space="preserve">
-    <value>panel_Weather</value>
-  </data>
-  <data name="button_ElementName.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
+  <data name="button_Walking.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="&gt;&gt;button_BreathTrain.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;panel_Countdown.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="button_Health.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="&gt;&gt;checkBox_OpenWaterSwimming.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2406,14 +2388,14 @@
   <data name="panel_Countdown.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 51</value>
   </data>
+  <data name="pictureBox_Arrow_Down.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;panel_Battery.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button_Step.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
-  </data>
-  <data name="&gt;&gt;panel_VO2max.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;button_FatBurning.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="pictureBox_Del.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -2424,8 +2406,8 @@
   <data name="checkBox_Moon.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="button_ElementName.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>20, 0, 0, 0</value>
+  <data name="pictureBox_Arrow_Down_Health.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="button_Stopwatch.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -2433,8 +2415,8 @@
   <data name="checkBox_Moon.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;button_Weather.Name" xml:space="preserve">
-    <value>button_Weather</value>
+  <data name="button_Walking.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
   </data>
   <data name="pictureBox_Arrow_Right_Health.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 2</value>
@@ -2444,9 +2426,6 @@
   </data>
   <data name="pictureBox_Arrow_Right_Activities.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="panel_Stopwatch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="tableLayoutPanel_System.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_Stopwatch" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Battery" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Countdown" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Alarm" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -2475,8 +2454,11 @@
   <data name="&gt;&gt;tableLayoutPanel_System.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button_SPO2.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="panel_Stress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 24</value>
+  </data>
+  <data name="checkBox_BreathTrain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 5</value>
   </data>
   <data name="button_Altitude.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2486,9 +2468,6 @@
   </data>
   <data name="checkBox_Stress.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="pictureBox_Arrow_Down_Trainings.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="pictureBox_Arrow_Down_Health.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
@@ -2529,6 +2508,9 @@
   <data name="&gt;&gt;pictureBox_Arrow_Right.Name" xml:space="preserve">
     <value>pictureBox_Arrow_Right</value>
   </data>
+  <data name="&gt;&gt;panel_Activities.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="checkBox_Stand.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2538,17 +2520,14 @@
   <data name="checkBox_Weather.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;button_Air.Name" xml:space="preserve">
-    <value>button_Air</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Weather.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tableLayoutPanel_Activities.RowCount" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;panel_System.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tableLayoutPanel_Health.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="&gt;&gt;checkBox_Stopwatch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_PAI.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2568,8 +2547,11 @@
   <data name="&gt;&gt;panel_PoolSwimming.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Trainings</value>
   </data>
-  <data name="checkBox_Cal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 5</value>
+  <data name="button_ElementName.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="pictureBox_Arrow_Down.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="panel_Cal.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -2583,8 +2565,8 @@
   <data name="panel_Battery.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="button_Heart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 24</value>
+  <data name="&gt;&gt;checkBox_Stress.Name" xml:space="preserve">
+    <value>checkBox_Stress</value>
   </data>
   <data name="&gt;&gt;button_Weather.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2664,6 +2646,9 @@
   <data name="&gt;&gt;panel_System.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
+  <data name="&gt;&gt;button_Readiness.Parent" xml:space="preserve">
+    <value>panel_Readiness</value>
+  </data>
   <data name="&gt;&gt;panel_Altitude.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Air</value>
   </data>
@@ -2685,14 +2670,20 @@
   <data name="&gt;&gt;pictureBox_Arrow_Down_Activities.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="button_Health.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 0</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_Show.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="&gt;&gt;checkBox_FreeTraining.Name" xml:space="preserve">
     <value>checkBox_FreeTraining</value>
   </data>
   <data name="checkBox_Sunrise.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;button_Sunrise.Parent" xml:space="preserve">
-    <value>panel_Sunrise</value>
+  <data name="panel_FatBurning.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
   </data>
   <data name="&gt;&gt;checkBox_Stand.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2730,8 +2721,8 @@
   <data name="button_Step.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
-  <data name="panel_Moon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 24</value>
+  <data name="button_Moon.Text" xml:space="preserve">
+    <value>Восход/закат луны</value>
   </data>
   <data name="panel_Stress.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 51</value>
@@ -2739,8 +2730,8 @@
   <data name="&gt;&gt;button_SPO2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="panel_Air.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="panel_TrainingLoad.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
   </data>
   <data name="checkBox_FreeTraining.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2754,6 +2745,12 @@
   <data name="button_Stopwatch.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 24</value>
   </data>
+  <data name="button_Moon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
+  </data>
+  <data name="pictureBox_NotShow.Location" type="System.Drawing.Point, System.Drawing">
+    <value>101, 2</value>
+  </data>
   <data name="checkBox_Battery.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
@@ -2763,20 +2760,26 @@
   <data name="&gt;&gt;button_Health.Name" xml:space="preserve">
     <value>button_Health</value>
   </data>
+  <data name="button_BodyTemp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="checkBox_Weather.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;panel_PAI.Parent" xml:space="preserve">
-    <value>tableLayoutPanel_Activities</value>
+  <data name="&gt;&gt;checkBox_Heart.Name" xml:space="preserve">
+    <value>checkBox_Heart</value>
   </data>
-  <data name="&gt;&gt;button_ElementName.Name" xml:space="preserve">
-    <value>button_ElementName</value>
+  <data name="&gt;&gt;panel_Step.Name" xml:space="preserve">
+    <value>panel_Step</value>
   </data>
   <data name="button_Moon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;panel_Stopwatch.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pictureBox_Arrow_Down_Air.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="button_Sleep.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 24</value>
@@ -2805,6 +2808,9 @@
   <data name="&gt;&gt;checkBox_Stress.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="button_Battery.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 24</value>
+  </data>
   <data name="&gt;&gt;pictureBox_Arrow_Right_Air.Name" xml:space="preserve">
     <value>pictureBox_Arrow_Right_Air</value>
   </data>
@@ -2817,23 +2823,17 @@
   <data name="&gt;&gt;panel_Activities.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="button_Weather.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 24</value>
-  </data>
   <data name="checkBox_VO2max.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
-  <data name="&gt;&gt;checkBox_RecoveryTime.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="button_FreeTraining.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="tableLayoutPanel_Air.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
   </data>
   <data name="&gt;&gt;panel_SPO2.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Health</value>
   </data>
-  <data name="&gt;&gt;checkBox_BodyTemp.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;pictureBox_Arrow_Right_Activities.Name" xml:space="preserve">
+    <value>pictureBox_Arrow_Right_Activities</value>
   </data>
   <data name="tableLayoutPanel_Activities.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
     <value>Single</value>
@@ -2841,8 +2841,8 @@
   <data name="&gt;&gt;panel_Altimeter.Name" xml:space="preserve">
     <value>panel_Altimeter</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Show.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;button_Weather.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="button_Altimeter.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
@@ -2859,8 +2859,8 @@
   <data name="panel_Heart.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="panel_Stress.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 24</value>
+  <data name="button_Cal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
   </data>
   <data name="&gt;&gt;button_Trainings.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2868,14 +2868,14 @@
   <data name="checkBox_FreeTraining.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
-  <data name="panel_FreeTraining.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 76</value>
+  <data name="panel_Weather.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="checkBox_Heart.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
-  <data name="&gt;&gt;button_Readiness.Parent" xml:space="preserve">
-    <value>panel_Readiness</value>
+  <data name="&gt;&gt;button_FreeTraining.Name" xml:space="preserve">
+    <value>button_FreeTraining</value>
   </data>
   <data name="panel_System.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2889,8 +2889,8 @@
   <data name="panel_RecoveryTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 201</value>
   </data>
-  <data name="&gt;&gt;checkBox_VO2max.Parent" xml:space="preserve">
-    <value>panel_VO2max</value>
+  <data name="&gt;&gt;button_Air.Name" xml:space="preserve">
+    <value>button_Air</value>
   </data>
   <data name="&gt;&gt;checkBox_Alarm.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2907,20 +2907,17 @@
   <data name="&gt;&gt;button_Alarm.Name" xml:space="preserve">
     <value>button_Alarm</value>
   </data>
-  <data name="checkBox_Readiness.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;button_Walking.Name" xml:space="preserve">
-    <value>button_Walking</value>
-  </data>
   <data name="button_Weather.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;pictureBox_Arrow_Down_Air.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Del.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;pictureBox_NotShow.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Step.Name" xml:space="preserve">
+    <value>checkBox_Step</value>
   </data>
   <data name="checkBox_Stopwatch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2934,11 +2931,17 @@
   <data name="&gt;&gt;panel_Weather.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkBox_Walking.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 5</value>
+  <data name="&gt;&gt;panel_Battery.Parent" xml:space="preserve">
+    <value>tableLayoutPanel_System</value>
+  </data>
+  <data name="&gt;&gt;panel_BreathTrain.Parent" xml:space="preserve">
+    <value>tableLayoutPanel_Health</value>
   </data>
   <data name="&gt;&gt;checkBox_SPO2.Name" xml:space="preserve">
     <value>checkBox_SPO2</value>
+  </data>
+  <data name="button_TrainingLoad.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="panel_VO2max.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -2964,14 +2967,17 @@
   <data name="panel_Health.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="button_Readiness.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="button_Trainings.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
   <data name="button_FatBurning.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBox_Sleep.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="button_Stress.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
   </data>
   <data name="checkBox_Countdown.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
@@ -2982,8 +2988,8 @@
   <data name="&gt;&gt;panel_Battery.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;checkBox_BreathTrain.Parent" xml:space="preserve">
-    <value>panel_BreathTrain</value>
+  <data name="checkBox_RecoveryTime.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="tableLayoutPanel_Activities.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 151</value>
@@ -2997,8 +3003,14 @@
   <data name="&gt;&gt;pictureBox_Arrow_Right_Trainings.Name" xml:space="preserve">
     <value>pictureBox_Arrow_Right_Trainings</value>
   </data>
-  <data name="panel_Altitude.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 101</value>
+  <data name="panel_SPO2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 26</value>
+  </data>
+  <data name="button_Altimeter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 24</value>
+  </data>
+  <data name="button_Trainings.Text" xml:space="preserve">
+    <value>Тренировки</value>
   </data>
   <data name="button_VO2max.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 24</value>
@@ -3024,14 +3036,14 @@
   <data name="&gt;&gt;checkBox_Stress.Parent" xml:space="preserve">
     <value>panel_Stress</value>
   </data>
-  <data name="&gt;&gt;panel_Sunrise.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tableLayoutPanel_Air.RowCount" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="button_Activities.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBox_Altimeter.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;panel_Altimeter.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;panel_PAI.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -3039,17 +3051,14 @@
   <data name="&gt;&gt;button_OutdoorCycling.Name" xml:space="preserve">
     <value>button_OutdoorCycling</value>
   </data>
-  <data name="panel_FatBurning.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
+  <data name="checkBox_SPO2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
   </data>
   <data name="pictureBox_Arrow_Down_Activities.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
   </data>
   <data name="tableLayoutPanel_System.RowCount" type="System.Int32, mscorlib">
     <value>4</value>
-  </data>
-  <data name="&gt;&gt;panel_Stand.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="panel_Alarm.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -3072,8 +3081,8 @@
   <data name="&gt;&gt;button_Countdown.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tableLayoutPanel_Air.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;panel_Sleep.Name" xml:space="preserve">
+    <value>panel_Sleep</value>
   </data>
   <data name="checkBox_BodyTemp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3099,17 +3108,14 @@
   <data name="button_FatBurning.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
-  <data name="panel_Sunrise.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
   <data name="pictureBox_Arrow_Down_Activities.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
   </data>
   <data name="&gt;&gt;checkBox_Alarm.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="button_Cal.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="checkBox_Altitude.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="button_PoolSwimming.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
@@ -3126,8 +3132,8 @@
   <data name="button_BreathTrain.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;checkBox_PAI.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;checkBox_OutdoorCycling.Parent" xml:space="preserve">
+    <value>panel_OutdoorCycling</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 28</value>
@@ -3135,8 +3141,8 @@
   <data name="button_RecoveryTime.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;button_VO2max.Parent" xml:space="preserve">
-    <value>panel_VO2max</value>
+  <data name="&gt;&gt;panel_PoolSwimming.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="&gt;&gt;checkBox_OutdoorCycling.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3150,29 +3156,23 @@
   <data name="button_Readiness.Text" xml:space="preserve">
     <value>Готовность</value>
   </data>
-  <data name="pictureBox_Show.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
   <data name="&gt;&gt;panel_Sleep.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel_Activities.Name" xml:space="preserve">
-    <value>tableLayoutPanel_Activities</value>
-  </data>
-  <data name="checkBox_OutdoorRunning.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;panel_BodyTemp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_PoolSwimming.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="pictureBox_Arrow_Down.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
+  <data name="&gt;&gt;panel_Sunrise.Parent" xml:space="preserve">
+    <value>tableLayoutPanel_Air</value>
   </data>
   <data name="button_Battery.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
-  <data name="button_Alarm.Text" xml:space="preserve">
-    <value>Будильники</value>
+  <data name="pictureBox_Show.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_Trainings" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_System" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Air" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Activities" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Health" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -3195,6 +3195,9 @@
   <data name="panel_SPO2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="&gt;&gt;button_FatBurning.Parent" xml:space="preserve">
+    <value>panel_FatBurning</value>
+  </data>
   <data name="&gt;&gt;checkBox_Sleep.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -3213,8 +3216,8 @@
   <data name="&gt;&gt;panel_Trainings.Name" xml:space="preserve">
     <value>panel_Trainings</value>
   </data>
-  <data name="&gt;&gt;panel_Activities.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_OpenWaterSwimming.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="button_Air.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 28</value>
@@ -3222,14 +3225,14 @@
   <data name="&gt;&gt;tableLayoutPanel_Air.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel_Trainings.Name" xml:space="preserve">
-    <value>tableLayoutPanel_Trainings</value>
+  <data name="button_Sunrise.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="&gt;&gt;pictureBox_Arrow_Down.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="button_Readiness.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="&gt;&gt;button_Heart.Name" xml:space="preserve">
+    <value>button_Heart</value>
   </data>
   <data name="&gt;&gt;panel_OutdoorRunning.Name" xml:space="preserve">
     <value>panel_OutdoorRunning</value>
@@ -3249,14 +3252,14 @@
   <data name="button_BreathTrain.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 24</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Right.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="checkBox_Battery.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;checkBox_Altitude.Parent" xml:space="preserve">
     <value>panel_Altitude</value>
   </data>
-  <data name="pictureBox_Arrow_Down.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;checkBox_Step.Parent" xml:space="preserve">
+    <value>panel_Step</value>
   </data>
   <data name="&gt;&gt;button_Trainings.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -3279,8 +3282,8 @@
   <data name="panel_Battery.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 1</value>
   </data>
-  <data name="button_TrainingLoad.Text" xml:space="preserve">
-    <value>Тренировочная нагрузка</value>
+  <data name="button_Countdown.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="panel_VO2max.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3294,29 +3297,26 @@
   <data name="&gt;&gt;button_Air.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tableLayoutPanel_Health.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_BreathTrain" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Readiness" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_BodyTemp" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Sleep" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_SPO2" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Stress" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="panel_RecoveryTime.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
   </data>
-  <data name="&gt;&gt;panel_Readiness.Name" xml:space="preserve">
-    <value>panel_Readiness</value>
-  </data>
-  <data name="&gt;&gt;checkBox_FreeTraining.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="pictureBox_Show.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
   </data>
   <data name="&gt;&gt;checkBox_Altimeter.Parent" xml:space="preserve">
     <value>panel_Altimeter</value>
   </data>
-  <data name="panel_SPO2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 26</value>
+  <data name="&gt;&gt;button_Altimeter.Name" xml:space="preserve">
+    <value>button_Altimeter</value>
   </data>
-  <data name="checkBox_SPO2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="checkBox_OutdoorRunning.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="button_Walking.Text" xml:space="preserve">
     <value>Хотьба</value>
   </data>
-  <data name="panel_TrainingLoad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 151</value>
+  <data name="button_OpenWaterSwimming.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
   </data>
   <data name="tableLayoutPanel_Health.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 28</value>
@@ -3326,9 +3326,6 @@
   </data>
   <data name="&gt;&gt;tableLayoutPanel_Trainings.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_OpenWaterSwimming.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3341,9 +3338,6 @@
   </data>
   <data name="pictureBox_Arrow_Right_Trainings.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
-  </data>
-  <data name="checkBox_RecoveryTime.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel_System.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -3360,8 +3354,8 @@
   <data name="pictureBox_Arrow_Down.Location" type="System.Drawing.Point, System.Drawing">
     <value>131, 2</value>
   </data>
-  <data name="panel_PAI.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 24</value>
+  <data name="&gt;&gt;checkBox_Altitude.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel_System.Name" xml:space="preserve">
     <value>tableLayoutPanel_System</value>
@@ -3372,11 +3366,11 @@
   <data name="panel_Battery.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
   </data>
-  <data name="&gt;&gt;panel_Battery.Parent" xml:space="preserve">
-    <value>tableLayoutPanel_System</value>
+  <data name="&gt;&gt;button_VO2max.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Right.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;pictureBox_Arrow_Down.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="tableLayoutPanel_System.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -3393,8 +3387,8 @@
   <data name="button_SPO2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;checkBox_Cal.Parent" xml:space="preserve">
-    <value>panel_Cal</value>
+  <data name="checkBox_FatBurning.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="pictureBox_Arrow_Right_Air.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
@@ -3402,8 +3396,8 @@
   <data name="&gt;&gt;checkBox_PoolSwimming.Parent" xml:space="preserve">
     <value>panel_PoolSwimming</value>
   </data>
-  <data name="panel_Stopwatch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="tableLayoutPanel_Health.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 151</value>
   </data>
   <data name="checkBox_Stand.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
@@ -3420,11 +3414,11 @@
   <data name="&gt;&gt;pictureBox_Arrow_Down_System.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Show.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;pictureBox_Arrow_Down_Air.Name" xml:space="preserve">
+    <value>pictureBox_Arrow_Down_Air</value>
   </data>
-  <data name="panel_Moon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 51</value>
+  <data name="&gt;&gt;checkBox_RecoveryTime.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="button_VO2max.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
@@ -3432,17 +3426,17 @@
   <data name="button_VO2max.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="pictureBox_Arrow_Down_Air.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+  <data name="&gt;&gt;panel_BreathTrain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel_OutdoorRunning.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pictureBox_Arrow_Down_System.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel_Health.Name" xml:space="preserve">
-    <value>tableLayoutPanel_Health</value>
-  </data>
-  <data name="panel_BodyTemp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Countdown.Name" xml:space="preserve">
-    <value>checkBox_Countdown</value>
+  <data name="&gt;&gt;checkBox_FreeTraining.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="pictureBox_Show.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -3465,11 +3459,17 @@
   <data name="button_Countdown.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 24</value>
   </data>
-  <data name="panel_Stand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 101</value>
+  <data name="&gt;&gt;panel_Step.Parent" xml:space="preserve">
+    <value>tableLayoutPanel_Activities</value>
+  </data>
+  <data name="checkBox_BodyTemp.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="checkBox_Readiness.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
+  </data>
+  <data name="&gt;&gt;checkBox_BodyTemp.Name" xml:space="preserve">
+    <value>checkBox_BodyTemp</value>
   </data>
   <data name="panel_Countdown.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
@@ -3486,9 +3486,6 @@
   <data name="&gt;&gt;checkBox_Moon.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="pictureBox_Arrow_Down_System.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
   <data name="panel_Altitude.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
@@ -3501,11 +3498,11 @@
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="pictureBox_NotShow.Location" type="System.Drawing.Point, System.Drawing">
-    <value>101, 2</value>
+  <data name="&gt;&gt;panel_Stand.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="button_Battery.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 24</value>
+  <data name="&gt;&gt;panel_Step.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel_Altimeter.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Air</value>
@@ -3513,14 +3510,14 @@
   <data name="button_Stand.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
-  <data name="checkBox_Stand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 5</value>
+  <data name="panel_Sunrise.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="&gt;&gt;panel_BodyTemp.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Health</value>
   </data>
-  <data name="&gt;&gt;button_Stress.Parent" xml:space="preserve">
-    <value>panel_Stress</value>
+  <data name="panel_OutdoorCycling.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="panel_Step.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
@@ -3528,14 +3525,14 @@
   <data name="&gt;&gt;pictureBox_Arrow_Right_Air.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="button_BodyTemp.Text" xml:space="preserve">
-    <value>Температура тела</value>
+  <data name="tableLayoutPanel_Air.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 126</value>
   </data>
-  <data name="button_Moon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
+  <data name="&gt;&gt;checkBox_Stopwatch.Name" xml:space="preserve">
+    <value>checkBox_Stopwatch</value>
   </data>
-  <data name="button_Walking.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="panel_OutdoorCycling.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 51</value>
   </data>
   <data name="button_Health.Text" xml:space="preserve">
     <value>Здоровье</value>
@@ -3546,20 +3543,20 @@
   <data name="tableLayoutPanel_Air.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tableLayoutPanel_Activities.RowCount" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="&gt;&gt;pictureBox_Arrow_Right_System.Name" xml:space="preserve">
+    <value>pictureBox_Arrow_Right_System</value>
   </data>
   <data name="&gt;&gt;button_PoolSwimming.Parent" xml:space="preserve">
     <value>panel_PoolSwimming</value>
   </data>
-  <data name="button_TrainingLoad.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
+  <data name="&gt;&gt;panel_OpenWaterSwimming.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="pictureBox_Arrow_Down_Health.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="button_Stopwatch.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;pictureBox_Arrow_Down_Trainings.Name" xml:space="preserve">
+    <value>pictureBox_Arrow_Down_Trainings</value>
   </data>
   <data name="button_Countdown.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
@@ -3573,35 +3570,41 @@
   <data name="button_Cal.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="button_Readiness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 24</value>
+  <data name="button_PAI.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
   </data>
-  <data name="panel_Battery.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="panel_PoolSwimming.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="&gt;&gt;button_Altitude.Parent" xml:space="preserve">
     <value>panel_Altitude</value>
   </data>
-  <data name="&gt;&gt;checkBox_BodyTemp.Name" xml:space="preserve">
-    <value>checkBox_BodyTemp</value>
+  <data name="button_Step.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
   </data>
-  <data name="button_Cal.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
-  </data>
-  <data name="button_Stress.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="button_Readiness.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="button_OpenWaterSwimming.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="checkBox_Battery.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="button_Stress.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="pictureBox_Arrow_Down_Trainings.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_Arrow_Down_System.Name" xml:space="preserve">
+    <value>pictureBox_Arrow_Down_System</value>
+  </data>
+  <data name="button_Alarm.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
   <data name="&gt;&gt;checkBox_Moon.Parent" xml:space="preserve">
     <value>panel_Moon</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Right_Health.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;pictureBox_Del.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="pictureBox_Arrow_Down_Health.Location" type="System.Drawing.Point, System.Drawing">
     <value>131, 2</value>
@@ -3609,29 +3612,29 @@
   <data name="pictureBox_Arrow_Right_Air.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 2</value>
   </data>
-  <data name="pictureBox_Show.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
+  <data name="pictureBox_Arrow_Right_Air.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
   </data>
   <data name="&gt;&gt;button_Countdown.Name" xml:space="preserve">
     <value>button_Countdown</value>
   </data>
-  <data name="button_TrainingLoad.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="pictureBox_Arrow_Right_Trainings.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
   </data>
-  <data name="pictureBox_NotShow.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="panel_PAI.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="checkBox_Cal.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="button_Activities.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>20, 0, 0, 0</value>
+  <data name="pictureBox_Arrow_Right_Activities.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
   </data>
   <data name="&gt;&gt;pictureBox_Arrow_Right_Activities.Parent" xml:space="preserve">
     <value>panel_Activities</value>
   </data>
-  <data name="button_BodyTemp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="pictureBox_Arrow_Down_System.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
   </data>
   <data name="&gt;&gt;panel_BodyTemp.Name" xml:space="preserve">
     <value>panel_BodyTemp</value>
@@ -3639,17 +3642,14 @@
   <data name="button_OpenWaterSwimming.Text" xml:space="preserve">
     <value>Плавание</value>
   </data>
-  <data name="&gt;&gt;button_SPO2.Parent" xml:space="preserve">
-    <value>panel_SPO2</value>
-  </data>
   <data name="panel_System.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 516</value>
   </data>
   <data name="&gt;&gt;checkBox_TrainingLoad.Parent" xml:space="preserve">
     <value>panel_TrainingLoad</value>
   </data>
-  <data name="button_Health.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;button_Stopwatch.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="button_Trainings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -3659,6 +3659,9 @@
   </data>
   <data name="&gt;&gt;pictureBox_NotShow.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tableLayoutPanel_Health.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
   </data>
   <data name="panel_Battery.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3675,14 +3678,14 @@
   <data name="checkBox_BreathTrain.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="button_Activities.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 28</value>
+  <data name="button_SPO2.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
   </data>
   <data name="panel_Stand.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;panel_BreathTrain.Name" xml:space="preserve">
-    <value>panel_BreathTrain</value>
+  <data name="&gt;&gt;checkBox_OpenWaterSwimming.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="tableLayoutPanel_Trainings.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3693,29 +3696,29 @@
   <data name="button_ElementName.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="&gt;&gt;panel_Altitude.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;button_Weather.Parent" xml:space="preserve">
+    <value>panel_Weather</value>
   </data>
-  <data name="checkBox_Moon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 5</value>
+  <data name="&gt;&gt;panel_RecoveryTime.Name" xml:space="preserve">
+    <value>panel_RecoveryTime</value>
   </data>
   <data name="button_Cal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;panel_PAI.Name" xml:space="preserve">
-    <value>panel_PAI</value>
+  <data name="pictureBox_Arrow_Right_System.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 2</value>
   </data>
-  <data name="&gt;&gt;panel_Trainings.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="button_FreeTraining.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;pictureBox_Arrow_Right_Activities.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="tableLayoutPanel_Activities.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_FatBurning" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Stand" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Cal" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_PAI" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Step" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Heart" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="&gt;&gt;button_SPO2.Parent" xml:space="preserve">
+    <value>panel_SPO2</value>
   </data>
-  <data name="button_Countdown.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="&gt;&gt;button_Sunrise.Parent" xml:space="preserve">
+    <value>panel_Sunrise</value>
   </data>
   <data name="button_OutdoorCycling.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -3741,23 +3744,20 @@
   <data name="button_Weather.Text" xml:space="preserve">
     <value>Температура воздуха</value>
   </data>
-  <data name="button_Sunrise.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="&gt;&gt;checkBox_Sunrise.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;checkBox_BodyTemp.Parent" xml:space="preserve">
-    <value>panel_BodyTemp</value>
+  <data name="&gt;&gt;panel_VO2max.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="panel_Health.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>20, 0, 0, 0</value>
+  <data name="&gt;&gt;button_Walking.Name" xml:space="preserve">
+    <value>button_Walking</value>
   </data>
   <data name="&gt;&gt;button_BreathTrain.Name" xml:space="preserve">
     <value>button_BreathTrain</value>
   </data>
-  <data name="&gt;&gt;button_System.Name" xml:space="preserve">
-    <value>button_System</value>
-  </data>
-  <data name="tableLayoutPanel_Health.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
+  <data name="button_Weather.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 24</value>
   </data>
   <data name="panel_Readiness.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 101</value>
@@ -3795,20 +3795,20 @@
   <data name="&gt;&gt;checkBox_Readiness.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tableLayoutPanel_Trainings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 226</value>
+  <data name="checkBox_RecoveryTime.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;button_Altitude.Name" xml:space="preserve">
     <value>button_Altitude</value>
   </data>
-  <data name="panel_BreathTrain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="&gt;&gt;button_System.Name" xml:space="preserve">
+    <value>button_System</value>
   </data>
-  <data name="panel_OutdoorCycling.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 24</value>
+  <data name="tableLayoutPanel_Trainings.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="button_Alarm.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
+  <data name="&gt;&gt;panel_Stress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="button_Air.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3828,14 +3828,14 @@
   <data name="&gt;&gt;panel_Cal.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;pictureBox_NotShow.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="button_Step.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 24</value>
   </data>
   <data name="panel_Sleep.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
   </data>
-  <data name="checkBox_BodyTemp.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;panel_Walking.Name" xml:space="preserve">
+    <value>panel_Walking</value>
   </data>
   <data name="button_FatBurning.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
@@ -3846,11 +3846,11 @@
   <data name="pictureBox_NotShow.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="&gt;&gt;button_OutdoorRunning.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;panel_RecoveryTime.Parent" xml:space="preserve">
+    <value>tableLayoutPanel_Trainings</value>
   </data>
-  <data name="&gt;&gt;panel_Weather.Name" xml:space="preserve">
-    <value>panel_Weather</value>
+  <data name="button_TrainingLoad.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="button_Trainings.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -3861,11 +3861,11 @@
   <data name="checkBox_Walking.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="button_Altimeter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 24</value>
+  <data name="button_Weather.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
   </data>
-  <data name="button_Health.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 0</value>
+  <data name="panel_PAI.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="&gt;&gt;pictureBox_Del.Name" xml:space="preserve">
     <value>pictureBox_Del</value>
@@ -3891,17 +3891,17 @@
   <data name="button_Alarm.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="button_Health.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="&gt;&gt;tableLayoutPanel_Health.Parent" xml:space="preserve">
+    <value>panel_Health</value>
   </data>
   <data name="&gt;&gt;checkBox_SPO2.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button_FatBurning.Parent" xml:space="preserve">
-    <value>panel_FatBurning</value>
+  <data name="panel_Stopwatch.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;panel_Stopwatch.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="panel_VO2max.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 24</value>
   </data>
   <data name="button_Activities.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 0</value>
@@ -3912,26 +3912,26 @@
   <data name="panel_FatBurning.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="&gt;&gt;panel_Stress.Parent" xml:space="preserve">
-    <value>tableLayoutPanel_Health</value>
+  <data name="checkBox_Sleep.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="button_BreathTrain.Text" xml:space="preserve">
-    <value>Дыхание</value>
+  <data name="&gt;&gt;panel_Air.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="button_Alarm.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="button_OutdoorCycling.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;panel_FatBurning.Parent" xml:space="preserve">
+    <value>tableLayoutPanel_Activities</value>
   </data>
-  <data name="button_RecoveryTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 24</value>
+  <data name="button_PAI.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="checkBox_Stress.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
-  <data name="pictureBox_Arrow_Right_Air.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
+  <data name="button_Trainings.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

@@ -403,6 +403,24 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Фонарик *.
+        /// </summary>
+        internal static string FlashLight {
+            get {
+                return ResourceManager.GetString("FlashLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;FlashLightScreen&apos;, native: true });.
+        /// </summary>
+        internal static string FlashLight_function {
+            get {
+                return ResourceManager.GetString("FlashLight_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Пульс.
         /// </summary>
         internal static string HeartRete {
@@ -606,6 +624,24 @@ namespace ControlLibrary.Properties {
         internal static string PhoneMusic {
             get {
                 return ResourceManager.GetString("PhoneMusic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Музыка (на телефоне) *.
+        /// </summary>
+        internal static string PhoneMusic_2 {
+            get {
+                return ResourceManager.GetString("PhoneMusic_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;MusicCommonScreen&apos;, native: true });.
+        /// </summary>
+        internal static string PhoneMusic_2_function {
+            get {
+                return ResourceManager.GetString("PhoneMusic_2_function", resourceCulture);
             }
         }
         

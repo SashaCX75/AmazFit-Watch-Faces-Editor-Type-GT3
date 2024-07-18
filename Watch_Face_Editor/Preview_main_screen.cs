@@ -455,6 +455,11 @@ namespace Watch_Face_Editor
                         DrawShortcuts(gPanel, img_click_weather, showShortcuts,
                             showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                     }
+                    if (img_click_stand != null && index == img_click_stand.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_stand, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
                     if (img_click_spo2 != null && index == img_click_spo2.position)
                     {
                         DrawShortcuts(gPanel, img_click_spo2, showShortcuts,
@@ -1771,7 +1776,8 @@ namespace Watch_Face_Editor
                                 bool addZero = DigitalTime_v2.Group_Minute.Number.zero;
                                 //addZero = true;
                                 if (DigitalTime_v2.Group_Minute.Number.follow && time_v2_hour_offsetX > -1 &&
-                                    DigitalTime_v2.Group_Minute.Number.position > DigitalTime_v2.Group_Hour.Number.position)
+                                    DigitalTime_v2.Group_Minute.position > DigitalTime_v2.Group_Hour.position &&
+                                    DigitalTime_v2.Group_Second.position > DigitalTime_v2.Group_Minute.position)
                                 {
                                     x = time_v2_hour_offsetX;
                                     alignment = 0;
@@ -1933,7 +1939,8 @@ namespace Watch_Face_Editor
                                 bool addZero = DigitalTime_v2.Group_Second.Number.zero;
                                 //addZero = true;
                                 if (DigitalTime_v2.Group_Second.Number.follow && time_v2_minute_offsetX > -1 &&
-                                    DigitalTime_v2.Group_Second.Number.position > DigitalTime_v2.Group_Minute.Number.position)
+                                    DigitalTime_v2.Group_Minute.position > DigitalTime_v2.Group_Hour.position &&
+                                    DigitalTime_v2.Group_Second.position > DigitalTime_v2.Group_Minute.position)
                                 {
                                     x = time_v2_minute_offsetX;
                                     alignment = 0;
@@ -10192,7 +10199,7 @@ namespace Watch_Face_Editor
             int width = src.Width;
             int height = src.Height;
             //int DateLenght = width * value_lenght + spacing * (value_lenght - 1);ElementHumidity
-            if (elementName == "ElementStand") value_lenght = 5;
+            if (elementName == "ElementStand") value_lenght = 4;
             if (elementName == "ElementUVIndex") value_lenght = 2;
             if (elementName == "ElementHumidity") value_lenght = 3;
             if (elementName == "ElementWind") value_lenght = 2;

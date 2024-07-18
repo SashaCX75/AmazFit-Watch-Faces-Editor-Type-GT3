@@ -355,7 +355,30 @@ namespace ControlLibrary
 
                 checkBox_WeatherSet_Temp.Checked = showTemperature;
 
-                this.ForecastData = ForecastData;
+                if (ForecastData != null && ForecastData.Count > 0) this.ForecastData = ForecastData;
+                else
+                {
+                    Dictionary<string, List<int>> ForecastDataTemp = new Dictionary<string, List<int>>();
+                    List<int> high = new List<int>();
+                    List<int> low = new List<int>();
+                    List<int> index = new List<int>();
+                    Random rnd = new Random();
+                    int tempOffset = rnd.Next(-25, 25);
+                    for (int i = 0; i < 9; i++)
+                    {
+                        int maxTemp = rnd.Next(-5, 5) + tempOffset;
+                        int minTemp = maxTemp - rnd.Next(3, 7);
+                        int iconIndex = rnd.Next(0, 25);
+
+                        high.Add(maxTemp);
+                        low.Add(minTemp);
+                        index.Add(iconIndex);
+                    }
+                    ForecastDataTemp.Add("high", high);
+                    ForecastDataTemp.Add("low", low);
+                    ForecastDataTemp.Add("index", index);
+                    this.ForecastData = ForecastDataTemp;
+                }
             }
             finally
             {

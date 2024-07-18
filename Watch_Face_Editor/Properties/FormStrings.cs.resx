@@ -306,6 +306,9 @@
   <data name="Message_ModelConfig_ReadError" xml:space="preserve">
     <value>Při čtení konfigurace modelu došlo k chybě</value>
   </data>
+  <data name="Message_Old_OS" xml:space="preserve">
+    <value>Tento widget není podporován vybraným modelem hodinek.</value>
+  </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Restartujte</value>
   </data>
@@ -371,6 +374,9 @@
   </data>
   <data name="Message_Warning_JS_Exist1" xml:space="preserve">
     <value>V této složce již existuje složka se soubory JS.</value>
+  </data>
+  <data name="Message_Widget_Exists" xml:space="preserve">
+    <value>Tento widget je již na ciferníku.</value>
   </data>
   <data name="Message_Wrong_ColorScheme" xml:space="preserve">
     <value>Pro model je zadáno neznámé barevné schéma:</value>

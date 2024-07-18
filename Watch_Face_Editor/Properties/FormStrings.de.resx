@@ -306,6 +306,9 @@
   <data name="Message_ModelConfig_ReadError" xml:space="preserve">
     <value>Fehler beim Lesen der Modellkonfiguration</value>
   </data>
+  <data name="Message_Old_OS" xml:space="preserve">
+    <value>Dieses Element wird von dem ausgewählten Uhrenmodell nicht unterstützt.</value>
+  </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Neustart</value>
   </data>
@@ -371,6 +374,9 @@
   </data>
   <data name="Message_Warning_JS_Exist1" xml:space="preserve">
     <value>Ein Ordner mit JS-Dateien ist bereits in diesem Ordner vorhanden.</value>
+  </data>
+  <data name="Message_Widget_Exists" xml:space="preserve">
+    <value>Ein solches Element gibt es bereits auf dem Zifferblatt der Uhr.</value>
   </data>
   <data name="Message_Wrong_ColorScheme" xml:space="preserve">
     <value>Es wurde ein unbekanntes Farbschema für das Modell festgelegt:</value>

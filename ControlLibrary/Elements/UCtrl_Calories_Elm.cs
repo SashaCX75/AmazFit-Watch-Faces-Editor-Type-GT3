@@ -314,7 +314,7 @@ namespace ControlLibrary
             highlight_number_target = false;
             highlight_number_target_font = false;
             highlight_text_rotation_target = false;
-            highlight_text_circle_target = true;
+            highlight_text_circle_target = false;
             highlight_pointer = false;
             highlight_circle_scale = false;
             highlight_linear_scale = false;
@@ -342,7 +342,7 @@ namespace ControlLibrary
             highlight_number_target = false;
             highlight_number_target_font = false;
             highlight_text_rotation_target = false;
-            highlight_text_circle_target = true;
+            highlight_text_circle_target = false;
             highlight_pointer = false;
             highlight_circle_scale = false;
             highlight_linear_scale = false;
@@ -370,7 +370,7 @@ namespace ControlLibrary
             highlight_number_target = false;
             highlight_number_target_font = false;
             highlight_text_rotation_target = false;
-            highlight_text_circle_target = true;
+            highlight_text_circle_target = false;
             highlight_pointer = false;
             highlight_circle_scale = false;
             highlight_linear_scale = false;
@@ -482,7 +482,7 @@ namespace ControlLibrary
             highlight_number_target = true;
             highlight_number_target_font = false;
             highlight_text_rotation_target = false;
-            highlight_text_circle_target = true;
+            highlight_text_circle_target = false;
             highlight_pointer = false;
             highlight_circle_scale = false;
             highlight_linear_scale = false;
@@ -594,7 +594,7 @@ namespace ControlLibrary
             highlight_number_target = false;
             highlight_number_target_font = false;
             highlight_text_rotation_target = false;
-            highlight_text_circle_target = true;
+            highlight_text_circle_target = false;
             highlight_pointer = true;
             highlight_circle_scale = false;
             highlight_linear_scale = false;
@@ -622,7 +622,7 @@ namespace ControlLibrary
             highlight_number_target = false;
             highlight_number_target_font = false;
             highlight_text_rotation_target = false;
-            highlight_text_circle_target = true;
+            highlight_text_circle_target = false;
             highlight_pointer = false;
             highlight_circle_scale = true;
             highlight_linear_scale = false;
@@ -650,7 +650,7 @@ namespace ControlLibrary
             highlight_number_target = false;
             highlight_number_target_font = false;
             highlight_text_rotation_target = false;
-            highlight_text_circle_target = true;
+            highlight_text_circle_target = false;
             highlight_pointer = false;
             highlight_circle_scale = false;
             highlight_linear_scale = true;
@@ -678,7 +678,7 @@ namespace ControlLibrary
             highlight_number_target = false;
             highlight_number_target_font = false;
             highlight_text_rotation_target = false;
-            highlight_text_circle_target = true;
+            highlight_text_circle_target = false;
             highlight_pointer = false;
             highlight_circle_scale = false;
             highlight_linear_scale = false;

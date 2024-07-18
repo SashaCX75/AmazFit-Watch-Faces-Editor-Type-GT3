@@ -250,6 +250,13 @@
     <value>hmApp.startApp({url: 'FindPhoneScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
+  <data name="FlashLight" xml:space="preserve">
+    <value>Фонарик *</value>
+  </data>
+  <data name="FlashLight_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'FlashLightScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
   <data name="HeartRete" xml:space="preserve">
     <value>Пульс</value>
   </data>
@@ -325,6 +332,13 @@
   </data>
   <data name="PhoneMusic" xml:space="preserve">
     <value>Музыка (на телефоне)</value>
+  </data>
+  <data name="PhoneMusic_2" xml:space="preserve">
+    <value>Музыка (на телефоне) *</value>
+  </data>
+  <data name="PhoneMusic_2_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'MusicCommonScreen', native: true });</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="PhoneMusic_function" xml:space="preserve">
     <value>hmApp.startApp({url: 'PhoneMusicCtrlScreen', native: true });</value>

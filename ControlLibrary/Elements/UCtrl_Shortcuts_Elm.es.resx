@@ -154,6 +154,75 @@
   <data name="button_Alarm.Text" xml:space="preserve">
     <value>Relojes de alarma</value>
   </data>
+  <data name="button_RecoveryTime.Text" xml:space="preserve">
+    <value>Tiempo de recuperación</value>
+  </data>
+  <data name="button_OpenWaterSwimming.Text" xml:space="preserve">
+    <value>Nadar</value>
+  </data>
+  <data name="button_Walking.Text" xml:space="preserve">
+    <value>Advertencia</value>
+  </data>
+  <data name="button_OutdoorRunning.Text" xml:space="preserve">
+    <value>correr al aire libre</value>
+  </data>
+  <data name="button_PoolSwimming.Text" xml:space="preserve">
+    <value>Nadando en la piscina</value>
+  </data>
+  <data name="button_OutdoorCycling.Text" xml:space="preserve">
+    <value>Ciclismo</value>
+  </data>
+  <data name="button_FreeTraining.Text" xml:space="preserve">
+    <value>Entrenamiento libre</value>
+  </data>
+  <data name="button_TrainingLoad.Text" xml:space="preserve">
+    <value>Carga de entrenamiento</value>
+  </data>
+  <data name="button_Trainings.Text" xml:space="preserve">
+    <value>Entrenamiento</value>
+  </data>
+  <data name="button_Battery.Text" xml:space="preserve">
+    <value>Estadísticas de batería</value>
+  </data>
+  <data name="button_System.Text" xml:space="preserve">
+    <value>Sistema</value>
+  </data>
+  <data name="button_Altitude.Text" xml:space="preserve">
+    <value>Altitud</value>
+  </data>
+  <data name="button_Moon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 24</value>
+  </data>
+  <data name="button_Moon.Text" xml:space="preserve">
+    <value>Salida y puesta de la luna</value>
+  </data>
+  <data name="button_Air.Text" xml:space="preserve">
+    <value>Tiempo</value>
+  </data>
+  <data name="button_FatBurning.Text" xml:space="preserve">
+    <value>Quema de grasa</value>
+  </data>
+  <data name="button_Stand.Text" xml:space="preserve">
+    <value>Estar de Pie</value>
+  </data>
+  <data name="button_Cal.Text" xml:space="preserve">
+    <value>Estadísticas de actividad</value>
+  </data>
+  <data name="button_Activities.Text" xml:space="preserve">
+    <value>Actividades</value>
+  </data>
+  <data name="button_BreathTrain.Text" xml:space="preserve">
+    <value>Respirar</value>
+  </data>
+  <data name="button_Readiness.Text" xml:space="preserve">
+    <value>Preparación</value>
+  </data>
+  <data name="button_BodyTemp.Text" xml:space="preserve">
+    <value>Temperatura corporal</value>
+  </data>
+  <data name="button_Health.Text" xml:space="preserve">
+    <value>Salud</value>
+  </data>
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Atajos</value>
   </data>

@@ -1017,12 +1017,15 @@ namespace Watch_Face_Editor
             WatchFacePreviewSet.SetNumber = userControl_Set.SetNumber;
 
 
-            List<int> high;
-            forecastData.TryGetValue("high", out high);
-            List<int> low;
-            forecastData.TryGetValue("low", out low);
-            List<int> index;
-            forecastData.TryGetValue("index", out index);
+            List<int> high = new List<int>() { -2, 0, 3, -1, -5, -2, -4 };
+            List<int> low = new List<int>() { -3, 0, 1, -5, -6, -5, -6 };
+            List<int> index = new List<int>() { 1, 2, 3, 1, 2, 3, 1 };
+            if (forecastData.Count == 3)
+            {
+                forecastData.TryGetValue("high", out high);
+                forecastData.TryGetValue("low", out low);
+                forecastData.TryGetValue("index", out index); 
+            }
             int minCount = new[] { high.Count, low.Count, index.Count }.Min();
             WatchFacePreviewSet.Weather.forecastData = new List<ForecastData>();
             for (int i = 0; i < minCount; i++)
@@ -9691,18 +9694,21 @@ namespace Watch_Face_Editor
 
                     checkValue.Add("ShowTemperature", ps.ShowTemperature);
 
-                    List<int> high = new List<int>();
-                    List<int> low = new List<int>();
-                    List<int> index = new List<int>();
-                    for (int j = 0; j < ps.forecastData.Count; j++)
+                    if (ps.forecastData != null && ps.forecastData.Count > 0)
                     {
-                        high.Add(ps.forecastData[j].high);
-                        low.Add(ps.forecastData[j].low);
-                        index.Add(ps.forecastData[j].index);
+                        List<int> high = new List<int>();
+                        List<int> low = new List<int>();
+                        List<int> index = new List<int>();
+                        for (int j = 0; j < ps.forecastData.Count; j++)
+                        {
+                            high.Add(ps.forecastData[j].high);
+                            low.Add(ps.forecastData[j].low);
+                            index.Add(ps.forecastData[j].index);
+                        }
+                        forecastData.Add("high", high);
+                        forecastData.Add("low", low);
+                        forecastData.Add("index", index); 
                     }
-                    forecastData.Add("high", high);
-                    forecastData.Add("low", low);
-                    forecastData.Add("index", index);
 
                     switch (i)
                     {

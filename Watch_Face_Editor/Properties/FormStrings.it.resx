@@ -308,6 +308,9 @@ Il numero di immagini per la frequenza cardiaca dovrebbe essere 6.</value>
   <data name="Message_ModelConfig_ReadError" xml:space="preserve">
     <value>Errore durante la lettura della configurazione del modello</value>
   </data>
+  <data name="Message_Old_OS" xml:space="preserve">
+    <value>Questo widget non è supportato dal modello di orologio selezionato.</value>
+  </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Riavvio</value>
   </data>
@@ -373,6 +376,9 @@ Il numero di immagini per la frequenza cardiaca dovrebbe essere 6.</value>
   </data>
   <data name="Message_Warning_JS_Exist1" xml:space="preserve">
     <value>Nella cartella esiste già una cartella con un file JS.</value>
+  </data>
+  <data name="Message_Widget_Exists" xml:space="preserve">
+    <value>Un widget di questo tipo esiste già nel quadrante dell'orologio.</value>
   </data>
   <data name="Message_Wrong_ColorScheme" xml:space="preserve">
     <value>E' specificato per il  modello uno di  schema di colori non conosciuto:</value>
