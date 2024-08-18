@@ -8283,7 +8283,7 @@ namespace Watch_Face_Editor
                     Y = this.Direction.Y,
                     img_First = this.Direction.img_First,
                     image_length = this.Direction.image_length,
-                    shortcut = this.Images.shortcut,
+                    shortcut = this.Direction.shortcut,
 
                     position = this.Direction.position,
                     visible = this.Direction.visible,

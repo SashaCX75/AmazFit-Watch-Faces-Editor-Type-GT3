@@ -117,6 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="tabPage_Edit.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="tabPageConverting.Text" xml:space="preserve">
+    <value>Converting</value>
+  </data>
+  <data name="tabPage_Settings.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="tabPage_Tips.Text" xml:space="preserve">
+    <value>Tips for use</value>
+  </data>
+  <data name="tabPage_About.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
   <data name="Number.HeaderText" xml:space="preserve">
     <value>#</value>
   </data>
@@ -130,6 +145,9 @@
     <value>Image</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="contextMenuStrip_RemoveImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 48</value>
+  </data>
   <data name="удалитьИзображениеToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
   </data>
@@ -141,9 +159,6 @@
   </data>
   <data name="обновитьСписокИзображенийToolStripMenuItem.Text" xml:space="preserve">
     <value>Update image list</value>
-  </data>
-  <data name="contextMenuStrip_RemoveImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 48</value>
   </data>
   <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
     <value>Filename</value>
@@ -174,6 +189,12 @@
   </data>
   <data name="button_SaveJson.Text" xml:space="preserve">
     <value>Save Json</value>
+  </data>
+  <data name="tabPage_Edit_Elements.Text" xml:space="preserve">
+    <value>Editing</value>
+  </data>
+  <data name="groupBox_AddElemets.Text" xml:space="preserve">
+    <value>Add items to watch face</value>
   </data>
   <data name="comboBox_AddBackground.Items" xml:space="preserve">
     <value>Background</value>
@@ -298,9 +319,6 @@
   <data name="comboBox_AddTime.Items4" xml:space="preserve">
     <value>Analog time (Pro)</value>
   </data>
-  <data name="groupBox_AddElemets.Text" xml:space="preserve">
-    <value>Add items to watch face</value>
-  </data>
   <data name="button_CopyAOD.Text" xml:space="preserve">
     <value>Copy items to AOD</value>
   </data>
@@ -313,8 +331,8 @@
   <data name="radioButton_ScreenNormal.Text" xml:space="preserve">
     <value>Main screen</value>
   </data>
-  <data name="tabPage_Edit_Elements.Text" xml:space="preserve">
-    <value>Editing</value>
+  <data name="tabPage_Show_Set.Text" xml:space="preserve">
+    <value>Data for preview</value>
   </data>
   <data name="userCtrl_Set12.ButtonText" xml:space="preserve">
     <value>Values 12</value>
@@ -361,12 +379,6 @@
   <data name="button_JsonPreview_Write.Text" xml:space="preserve">
     <value>Save Preview values</value>
   </data>
-  <data name="tabPage_Show_Set.Text" xml:space="preserve">
-    <value>Data for preview</value>
-  </data>
-  <data name="tabPage_Edit.Text" xml:space="preserve">
-    <value>Edit</value>
-  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>765, 40</value>
   </data>
@@ -400,26 +412,32 @@
   <data name="button_Converting.Text" xml:space="preserve">
     <value>Convert</value>
   </data>
-  <data name="comboBox_ConvertingOutput_Model.Items" xml:space="preserve">
-    <value>Custom size</value>
-  </data>
   <data name="groupBox10.Text" xml:space="preserve">
     <value>Target model</value>
   </data>
-  <data name="comboBox_ConvertingInput_Model.Items" xml:space="preserve">
+  <data name="comboBox_ConvertingOutput_Model.Items" xml:space="preserve">
     <value>Custom size</value>
   </data>
   <data name="groupBox9.Text" xml:space="preserve">
     <value>Initial model</value>
   </data>
-  <data name="tabPageConverting.Text" xml:space="preserve">
-    <value>Converting</value>
+  <data name="comboBox_ConvertingInput_Model.Items" xml:space="preserve">
+    <value>Custom size</value>
+  </data>
+  <data name="checkBox_Del_Confirm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 17</value>
+  </data>
+  <data name="checkBox_Del_Confirm.Text" xml:space="preserve">
+    <value>Request confirmation when deleting a widget</value>
   </data>
   <data name="checkBox_CreateZPK.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 17</value>
   </data>
   <data name="checkBox_CreateZPK.Text" xml:space="preserve">
     <value>Create *.zpk file</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Convert images without loss of quality</value>
   </data>
   <data name="checkBox_Use_ARGB.Size" type="System.Drawing.Size, System.Drawing">
     <value>176, 17</value>
@@ -439,8 +457,8 @@
   <data name="radioButton_ARGB_color.Text" xml:space="preserve">
     <value>Only with the specified number of colors</value>
   </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Convert images without loss of quality</value>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Button highlight type</value>
   </data>
   <data name="button_SavePNG_button.Location" type="System.Drawing.Point, System.Drawing">
     <value>255, 14</value>
@@ -469,23 +487,23 @@
   <data name="checkBox_Buttons_Area.Text" xml:space="preserve">
     <value>Dotted grid</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Button highlight type</value>
-  </data>
   <data name="comboBox_Animation_Preview_Speed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>600, 420</value>
+    <value>610, 428</value>
   </data>
   <data name="button_Reset.Text" xml:space="preserve">
     <value>Reset</value>
   </data>
   <data name="numericUpDown_Gif_Speed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>518, 363</value>
+    <value>530, 363</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.Size" type="System.Drawing.Size, System.Drawing">
     <value>288, 17</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.Text" xml:space="preserve">
     <value>Show all elements of edited zones when saving a gif file</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Watch image</value>
   </data>
   <data name="button_WatchSkin_PathGet.Text" xml:space="preserve">
     <value>Browse</value>
@@ -495,9 +513,6 @@
   </data>
   <data name="checkBox_WatchSkin_Use.Text" xml:space="preserve">
     <value>Use watch image when saving *.png and *.gif</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Watch image</value>
   </data>
   <data name="label355.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 13</value>
@@ -510,6 +525,9 @@
   </data>
   <data name="checkBox_ShowIn12hourFormat.Text" xml:space="preserve">
     <value>If possible, display time in 12-hour format</value>
+  </data>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>Shortcuts highlight type</value>
   </data>
   <data name="button_SavePNG_shortcut.Location" type="System.Drawing.Point, System.Drawing">
     <value>255, 14</value>
@@ -544,9 +562,6 @@
   <data name="checkBox_Shortcuts_Area.Text" xml:space="preserve">
     <value>Dotted grid</value>
   </data>
-  <data name="groupBox8.Text" xml:space="preserve">
-    <value>Shortcuts highlight type</value>
-  </data>
   <data name="checkBox_JsonWarnings.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 17</value>
   </data>
@@ -554,16 +569,16 @@
     <value>Show warning when saving JSON file</value>
   </data>
   <data name="comboBox_Language.Location" type="System.Drawing.Point, System.Drawing">
-    <value>465, 477</value>
-  </data>
-  <data name="label356.Location" type="System.Drawing.Point, System.Drawing">
-    <value>409, 481</value>
+    <value>480, 509</value>
   </data>
   <data name="label356.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 13</value>
   </data>
   <data name="label356.Text" xml:space="preserve">
     <value>Language:</value>
+  </data>
+  <data name="groupBox7.Text" xml:space="preserve">
+    <value>Action after packing the watch face</value>
   </data>
   <data name="radioButton_Settings_Pack_DoNotning.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 17</value>
@@ -583,8 +598,8 @@
   <data name="radioButton_Settings_Pack_Dialog.Text" xml:space="preserve">
     <value>Let me choose</value>
   </data>
-  <data name="groupBox7.Text" xml:space="preserve">
-    <value>Action after packing the watch face</value>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>After openning the project</value>
   </data>
   <data name="button_PreviewStates_PathGet.Text" xml:space="preserve">
     <value>Browse</value>
@@ -613,8 +628,8 @@
   <data name="radioButton_Settings_Open_Dialog.Text" xml:space="preserve">
     <value>Let me choose</value>
   </data>
-  <data name="groupBox6.Text" xml:space="preserve">
-    <value>After openning the project</value>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Action after unpacking the watch face</value>
   </data>
   <data name="radioButton_Settings_AfterUnpack_DoNothing.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 17</value>
@@ -634,8 +649,8 @@
   <data name="radioButton_Settings_AfterUnpack_Dialog.Text" xml:space="preserve">
     <value>Let me choose</value>
   </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Action after unpacking the watch face</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Action if the names of the unpacked watch faces match</value>
   </data>
   <data name="radioButton_Settings_Unpack_Replace.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 17</value>
@@ -655,9 +670,6 @@
   <data name="radioButton_Settings_Unpack_Dialog.Text" xml:space="preserve">
     <value>Let me choose</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Action if the names of the unpacked watch faces match</value>
-  </data>
   <data name="label483.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 39</value>
   </data>
@@ -665,12 +677,6 @@
     <value>Animation speed of animation preview
 (high speed - smoother animation,
 more system load)</value>
-  </data>
-  <data name="tabPage_Settings.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="tabPage_Tips.Text" xml:space="preserve">
-    <value>Tips for use</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>290, 13</value>
@@ -714,9 +720,6 @@ PayPal: sashacx75@gmail.com</value>
   </data>
   <data name="label406.Text" xml:space="preserve">
     <value>Version:</value>
-  </data>
-  <data name="tabPage_About.Text" xml:space="preserve">
-    <value>About</value>
   </data>
   <data name="checkBox_WidgetsArea.Text" xml:space="preserve">
     <value>Highlight editable zones</value>
@@ -768,7 +771,7 @@ PayPal: sashacx75@gmail.com</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAYQBKQGEASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAagBKQGoASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

@@ -133,10 +133,10 @@ namespace ControlLibrary
         public event VisibleOptionsChangedHandler VisibleOptionsChanged;
         public delegate void VisibleOptionsChangedHandler(object sender, EventArgs eventArgs);
 
-        [Browsable(true)]
-        [Description("Происходит при изменении положения параметров в элементе")]
-        public event OptionsMovedHandler OptionsMoved;
-        public delegate void OptionsMovedHandler(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions);
+        //[Browsable(true)]
+        //[Description("Происходит при изменении положения параметров в элементе")]
+        //public event OptionsMovedHandler OptionsMoved;
+        //public delegate void OptionsMovedHandler(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions);
 
         [Browsable(true)]
         [Description("Происходит при изменении выбора элемента")]
@@ -1208,9 +1208,9 @@ namespace ControlLibrary
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
 
-            if (tableLayoutPanel1.Height > 1065)
+            if (tableLayoutPanel1.Height > 1390)
             {
-                float currentDPI = tableLayoutPanel1.Height / 851f;
+                float currentDPI = tableLayoutPanel1.Height / 1112f;
                 button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 

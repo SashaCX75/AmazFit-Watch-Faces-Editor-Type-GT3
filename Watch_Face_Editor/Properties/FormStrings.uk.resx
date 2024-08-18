@@ -240,6 +240,9 @@
   <data name="Message_Delet_Text21" xml:space="preserve">
     <value />
   </data>
+  <data name="Message_Delet_Widget" xml:space="preserve">
+    <value>Ви дійсно хочете видалити віджет?</value>
+  </data>
   <data name="Message_DontDelZip" xml:space="preserve">
     <value>Не можна видалити існуючий файл циферблата.</value>
   </data>

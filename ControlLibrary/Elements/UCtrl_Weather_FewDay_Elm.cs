@@ -102,7 +102,7 @@ namespace ControlLibrary
                 bool tempSate = setValue;
                 setValue = true;
                 panel_Diagram.Enabled = Graph_use;
-                checkBox_Diagram.Checked = false;
+                if (!Graph_use) checkBox_Diagram.Checked = false;
                 setValue = tempSate;
             }
         }

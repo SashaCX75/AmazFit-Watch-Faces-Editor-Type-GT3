@@ -403,6 +403,7 @@ namespace Watch_Face_Editor
 
             if (ProgramSettings.language.Length > 1) comboBox_Language.Text = ProgramSettings.language;
             checkBox_CreateZPK.Checked = ProgramSettings.CreateZPK;
+            checkBox_Del_Confirm.Checked = ProgramSettings.DelConfirm;
 
             Settings_Load = false;
             JSON_Modified = false;
@@ -8359,6 +8360,9 @@ namespace Watch_Face_Editor
             ProgramSettings.Pointer_Center_marker = checkBox_center_marker.Checked;
             ProgramSettings.Show_Widgets_Area = checkBox_WidgetsArea.Checked;
 
+            ProgramSettings.CreateZPK = checkBox_CreateZPK.Checked;
+            ProgramSettings.DelConfirm = checkBox_Del_Confirm.Checked;
+
             //ProgramSettings.language = comboBox_Language.Text;
             if (comboBox_watch_model.SelectedIndex != -1)
             {
@@ -8437,6 +8441,7 @@ namespace Watch_Face_Editor
             if (comboBox_watch_model.SelectedIndex != -1) ProgramSettings.Watch_Model = comboBox_watch_model.Text;
 
             ProgramSettings.CreateZPK = checkBox_CreateZPK.Checked;
+            ProgramSettings.DelConfirm = checkBox_Del_Confirm.Checked;
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
             {
@@ -8982,6 +8987,12 @@ namespace Watch_Face_Editor
 
         private void uCtrl_Elm_DelElement(object sender, EventArgs eventArgs)
         {
+            if (ProgramSettings.DelConfirm)
+            {
+                DialogResult result = MessageBox.Show(Properties.FormStrings.Message_Delet_Widget, Properties.FormStrings.Message_Delet_Caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No) return;
+
+            }
             List<object> Elements = new List<object>();
             string objectName = "";
             objectName = sender.GetType().Name;
@@ -9135,6 +9146,12 @@ namespace Watch_Face_Editor
 
         private void uCtrl_EditableTimePointer_Elm_DelElement(object sender, EventArgs eventArgs)
         {
+            if (ProgramSettings.DelConfirm)
+            {
+                DialogResult result = MessageBox.Show(Properties.FormStrings.Message_Delet_Widget, Properties.FormStrings.Message_Delet_Caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No) return;
+
+            }
             if (Watch_Face != null && Watch_Face.ElementEditablePointers != null)
             {
                 Watch_Face.ElementEditablePointers = null;
@@ -9151,6 +9168,12 @@ namespace Watch_Face_Editor
 
         private void uCtrl_EditableElements_Elm_DelElement(object sender, EventArgs eventArgs)
         {
+            if (ProgramSettings.DelConfirm)
+            {
+                DialogResult result = MessageBox.Show(Properties.FormStrings.Message_Delet_Widget, Properties.FormStrings.Message_Delet_Caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No) return;
+
+            }
             if (Watch_Face != null && Watch_Face.Editable_Elements != null)
             {
                 Watch_Face.Editable_Elements = null;
@@ -9167,6 +9190,12 @@ namespace Watch_Face_Editor
 
         private void uCtrl_Shortcuts_Elm_DelElement(object sender, EventArgs eventArgs)
         {
+            if (ProgramSettings.DelConfirm)
+            {
+                DialogResult result = MessageBox.Show(Properties.FormStrings.Message_Delet_Widget, Properties.FormStrings.Message_Delet_Caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No) return;
+
+            }
             if (Watch_Face != null && Watch_Face.Shortcuts != null)
             {
                 Watch_Face.Shortcuts = null;
@@ -9183,6 +9212,12 @@ namespace Watch_Face_Editor
 
         private void uCtrl_DisconnectAlert_Elm_DelElement(object sender, EventArgs eventArgs)
         {
+            if (ProgramSettings.DelConfirm)
+            {
+                DialogResult result = MessageBox.Show(Properties.FormStrings.Message_Delet_Widget, Properties.FormStrings.Message_Delet_Caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No) return;
+
+            }
             if (Watch_Face != null && Watch_Face.DisconnectAlert != null)
             {
                 Watch_Face.DisconnectAlert = null;
@@ -9199,6 +9234,12 @@ namespace Watch_Face_Editor
 
         private void uCtrl_RepeatingAlert_Elm_DelElement(object sender, EventArgs eventArgs)
         {
+            if (ProgramSettings.DelConfirm)
+            {
+                DialogResult result = MessageBox.Show(Properties.FormStrings.Message_Delet_Widget, Properties.FormStrings.Message_Delet_Caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No) return;
+
+            }
             if (Watch_Face != null && Watch_Face.RepeatAlert != null)
             {
                 Watch_Face.RepeatAlert = null;
@@ -9215,6 +9256,12 @@ namespace Watch_Face_Editor
 
         private void uCtrl_TopImage_Elm_DelElement(object sender, EventArgs eventArgs)
         {
+            if (ProgramSettings.DelConfirm)
+            {
+                DialogResult result = MessageBox.Show(Properties.FormStrings.Message_Delet_Widget, Properties.FormStrings.Message_Delet_Caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No) return;
+
+            }
             if (Watch_Face != null && Watch_Face.TopImage != null)
             {
                 Watch_Face.TopImage = null;
@@ -9231,6 +9278,12 @@ namespace Watch_Face_Editor
 
         private void uCtrl_Buttons_Elm_DelElement(object sender, EventArgs eventArgs)
         {
+            if (ProgramSettings.DelConfirm)
+            {
+                DialogResult result = MessageBox.Show(Properties.FormStrings.Message_Delet_Widget, Properties.FormStrings.Message_Delet_Caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No) return;
+
+            }
             if (Watch_Face != null && Watch_Face.Buttons != null)
             {
                 Watch_Face.Buttons = null;
@@ -22767,6 +22820,8 @@ namespace Watch_Face_Editor
                 }
             }
         }
+
+       
     }
 }
 

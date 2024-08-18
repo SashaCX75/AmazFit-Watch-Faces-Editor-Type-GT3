@@ -373,6 +373,12 @@
   <data name="tabPageConverting.Text" xml:space="preserve">
     <value>Конвертування</value>
   </data>
+  <data name="checkBox_Del_Confirm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 17</value>
+  </data>
+  <data name="checkBox_Del_Confirm.Text" xml:space="preserve">
+    <value>Запитувати підтвердження під при видаленні віджета</value>
+  </data>
   <data name="checkBox_CreateZPK.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 17</value>
   </data>
@@ -428,7 +434,7 @@
     <value>Тип виділення кнопок</value>
   </data>
   <data name="comboBox_Animation_Preview_Speed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>665, 318</value>
+    <value>674, 426</value>
   </data>
   <data name="button_Reset.Text" xml:space="preserve">
     <value>Скинути налаштування</value>
@@ -502,11 +508,14 @@
   <data name="checkBox_JsonWarnings.Text" xml:space="preserve">
     <value>Показувати попередження, при зберіганні файла JSON</value>
   </data>
+  <data name="comboBox_Language.Location" type="System.Drawing.Point, System.Drawing">
+    <value>460, 509</value>
+  </data>
   <data name="label356.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
+    <value>37, 13</value>
   </data>
   <data name="label356.Text" xml:space="preserve">
-    <value>Мова</value>
+    <value>Мова:</value>
   </data>
   <data name="radioButton_Settings_Pack_DoNotning.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 17</value>
@@ -612,38 +621,6 @@
   <data name="tabPage_Settings.Text" xml:space="preserve">
     <value>Налаштування</value>
   </data>
-  <data name="richTextBox_Tips.Text" xml:space="preserve">
-    <value>Before creating a new project, you must create a new folder, and then select it in the editor.
-Image titles do not have to consist only of numbers, you can add short prefixes (for example, date_01, time_01).
-Watch faces created in the editor will be unpacked by the editor. Dials created in the online editor, watch faces from the Zepp program and hand-modified dials may not be decompressed or decompressed partially.
-A set of images to display a single parameter (for example, images for displaying the day of the week or battery charge) should be the same size. If the size of the images is different, the first image in the set must be the largest in height and width. Otherwise, subsequent images will be cropped.
-In order to quickly set the position of the element, you can quickly copy the desired coordinates by double-clicking on the preview and also paste the coordinates into the necessary fields.
-All labels are displayed starting with left characters. Therefore, with a negative spacing, the right characters can overlap with those that go to the left.
-You can change the order in which items are displayed by dragging the desired items in the list above or below with the mouse. For normal operation, shortcuts must be the topmost.
-For shortcuts to work, it is necessary to add an image. You can just add a transparent image.
-For the UV index, you need to use 5 images:
-1 image – UV index value of 1... 2;
-2 image – UV index value of 3... 5;
-3 image – UV index value of 6... 7;
-4 image – UV index value of 8... 10;
-5 image – UV index value of 11+.
-For the pulse, it is necessary to use 6 images that correspond to the pulse zones:
-1 image – rest;
-2 image – warm-up;
-3 image – intense;
-4 image – aerobic;
-5 image – anaerobic;
-6 image – VO2 max.
-For the phases of the moon, it is recommended to use 30 images. Official documents also allow the use of 7 and 13 images, but this option may not display correctly in the editor.
-Images that you don't need can be deleted by selecting them in the list and clicking Del or through the context menu. You can also directly delete them from the folder and use the context menu to refresh the list with images or reopen the project.
-To quickly save changes to your project, you can use ctrl+S.
-If the preview window has become very large and the zoom switches are invisible, you can change the zoom level using the cursor keys "Left", "Right" or the "Collapse" button.
-Animations use a separate list of images. When you select one of the animation elements for editing, you will automatically switch to this list and you can add images to it.
-The file names for frame animation must be in the format Prefix_X. Prefix is any word. X is the number of the animation frame, it must start from 0. Frame numbers are recorded without leading zeros. For example, the first frame might be named "test_anim_0".
-
-
-</value>
-  </data>
   <data name="tabPage_Tips.Text" xml:space="preserve">
     <value>Поради щодо використання</value>
   </data>
@@ -737,7 +714,7 @@ PayPal: sashacx75@gmail.com</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAUQBMgFEATIBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAVwBMgFcATIBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

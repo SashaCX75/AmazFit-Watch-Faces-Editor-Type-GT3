@@ -430,6 +430,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы действительно хотите удалить виджет?.
+        /// </summary>
+        internal static string Message_Delet_Widget {
+            get {
+                return ResourceManager.GetString("Message_Delet_Widget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Невозможно удалить существующий файл циферблата..
         /// </summary>
         internal static string Message_DontDelZip {

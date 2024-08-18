@@ -22131,7 +22131,7 @@ namespace Watch_Face_Editor
                                 }
                             }*/
 
-                            if (objectName.Length == 0)
+                            if (objectName.Length == 0 || objectName == "normal_img0")
                             {
                                 if (firstImgNormal && img.show_level == "ONLY_NORMAL")
                                 {
