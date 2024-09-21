@@ -33,6 +33,7 @@ namespace ControlLibrary
         private bool Month_mode = false;
         private bool Alignments_enabled = true;
         private bool Use_2_color = false;
+        private bool Alpha_mode = false;
 
         public UCtrl_Text_SystemFont_Opt()
         {
@@ -297,15 +298,6 @@ namespace ControlLibrary
         public string GetFont()
         {
             string font = "";
-            //if (fonts_path != null && fonts_path.Length > 5)
-            //{
-            //    if (comboBox_fonts.SelectedIndex > 0)
-            //    {
-            //        string font_fileName = comboBox_fonts.Text;
-            //        if (font_fileName.IndexOf(".ttf") > 0) font_fileName = font_fileName.Substring(0, font_fileName.IndexOf(".ttf") + ".ttf".Length);
-            //        if (File.Exists(Path.Combine(fonts_path, font_fileName))) font = font_fileName;
-            //    } 
-            //}
             if (comboBox_fonts.SelectedIndex > 0)
             {
                 string font_fileName = comboBox_fonts.Text;
@@ -423,6 +415,22 @@ namespace ControlLibrary
                     else checkBox_unit.Text = Properties.Strings.UCtrl_Text_Opt_AmPm_false;
                     checkBox_inEnd.Visible = false;
                 }
+            }
+        }
+
+        /// <summary>Режим доступности прозрачности</summary>
+        [Description("Режим доступности прозрачности")]
+        public virtual bool Alpha
+        {
+            get
+            {
+                return Alpha_mode;
+            }
+            set
+            {
+                Alpha_mode = value;
+                label_alpha.Enabled = Alpha_mode;
+                numericUpDown_Alpha.Enabled = Alpha_mode;
             }
         }
 
@@ -908,6 +916,7 @@ namespace ControlLibrary
             MonthMode = false;
             AlignmentsEnabled = true;
             Use2color = false;
+            Alpha = false;
 
             setValue = false;
         }

@@ -535,6 +535,15 @@ vertically</value>
   <data name="checkBox_Color2.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="numericUpDown_Alpha.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Transparency</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
   </data>

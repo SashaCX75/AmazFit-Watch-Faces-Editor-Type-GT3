@@ -46,18 +46,21 @@ namespace ControlLibrary
             this.label02 = new System.Windows.Forms.Label();
             this.label04 = new System.Windows.Forms.Label();
             this.label05 = new System.Windows.Forms.Label();
+            this.numericUpDown_Alpha = new System.Windows.Forms.NumericUpDown();
+            this.label_alpha = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_iconX)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_iconY)).BeginInit();
             this.contextMenuStrip_Y.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Alpha)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox_icon_image
             // 
-            resources.ApplyResources(this.comboBox_icon_image, "comboBox_icon_image");
             this.comboBox_icon_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_icon_image.DropDownWidth = 135;
             this.comboBox_icon_image.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_icon_image, "comboBox_icon_image");
             this.comboBox_icon_image.Name = "comboBox_icon_image";
             this.comboBox_icon_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_icon_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -67,8 +70,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_iconX
             // 
-            resources.ApplyResources(this.numericUpDown_iconX, "numericUpDown_iconX");
             this.numericUpDown_iconX.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_iconX, "numericUpDown_iconX");
             this.numericUpDown_iconX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -86,13 +89,13 @@ namespace ControlLibrary
             // 
             // contextMenuStrip_X
             // 
-            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_X.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуХToolStripMenuItem,
             this.копироватьToolStripMenuItemX,
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
@@ -115,8 +118,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_iconY
             // 
-            resources.ApplyResources(this.numericUpDown_iconY, "numericUpDown_iconY");
             this.numericUpDown_iconY.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_iconY, "numericUpDown_iconY");
             this.numericUpDown_iconY.Maximum = new decimal(new int[] {
             999,
             0,
@@ -134,13 +137,13 @@ namespace ControlLibrary
             // 
             // contextMenuStrip_Y
             // 
-            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_Y.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуYToolStripMenuItem,
             this.копироватьToolStripMenuItemY,
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem
@@ -181,10 +184,34 @@ namespace ControlLibrary
             resources.ApplyResources(this.label05, "label05");
             this.label05.Name = "label05";
             // 
+            // numericUpDown_Alpha
+            // 
+            resources.ApplyResources(this.numericUpDown_Alpha, "numericUpDown_Alpha");
+            this.numericUpDown_Alpha.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown_Alpha.Name = "numericUpDown_Alpha";
+            this.numericUpDown_Alpha.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown_Alpha.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            // 
+            // label_alpha
+            // 
+            this.label_alpha.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label_alpha, "label_alpha");
+            this.label_alpha.Name = "label_alpha";
+            // 
             // UCtrl_Icon_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.numericUpDown_Alpha);
+            this.Controls.Add(this.label_alpha);
             this.Controls.Add(this.comboBox_icon_image);
             this.Controls.Add(this.numericUpDown_iconX);
             this.Controls.Add(this.numericUpDown_iconY);
@@ -197,6 +224,7 @@ namespace ControlLibrary
             this.contextMenuStrip_X.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_iconY)).EndInit();
             this.contextMenuStrip_Y.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Alpha)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,5 +247,7 @@ namespace ControlLibrary
         private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItemX;
         public System.Windows.Forms.NumericUpDown numericUpDown_iconX;
         public System.Windows.Forms.NumericUpDown numericUpDown_iconY;
+        public System.Windows.Forms.NumericUpDown numericUpDown_Alpha;
+        private System.Windows.Forms.Label label_alpha;
     }
 }

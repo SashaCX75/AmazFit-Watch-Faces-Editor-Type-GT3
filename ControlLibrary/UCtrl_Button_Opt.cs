@@ -215,7 +215,7 @@ namespace ControlLibrary
             
             if (buttonsClickFuncList.Count > 0) button_del.Enabled = true; 
             else button_del.Enabled = false;
-            if (buttonsClickFuncList.Count >= 25) button_add.Enabled = false;
+            if (buttonsClickFuncList.Count >= 30) button_add.Enabled = false;
             else button_add.Enabled = true;
 
             if (rowIndex >= 0 && rowIndex < dataGridView_buttons.Rows.Count)

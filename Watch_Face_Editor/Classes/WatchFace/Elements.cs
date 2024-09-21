@@ -328,6 +328,9 @@ namespace Watch_Face_Editor
         /// <summary>Изображение</summary>
         public string src { get; set; }
 
+        /// <summary>Прозрачность</summary>
+        public int alpha { get; set; } = 255;
+
         /// <summary>Основной экран или AOD</summary>
         public string show_level = "";
     }
@@ -642,6 +645,9 @@ namespace Watch_Face_Editor
         /// <summary>Изображение</summary>
         public string src { get; set; }
 
+        /// <summary>Прозрачность</summary>
+        public int alpha { get; set; } = 255;
+
         /// <summary>Тип статуса</summary>
         public string type { get; set; }
 
@@ -715,6 +721,9 @@ namespace Watch_Face_Editor
 
         /// <summary>Размер шрифта</summary>
         public int text_size { get; set; } = 20;
+
+        /// <summary>Прозрачность</summary>
+        public int alpha { get; set; } = 255;
 
         /// <summary>Стиль переноса слов
         /// WRAP - перенос по словам

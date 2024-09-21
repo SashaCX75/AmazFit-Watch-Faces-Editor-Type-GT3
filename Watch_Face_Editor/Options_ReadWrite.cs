@@ -1357,6 +1357,7 @@ namespace Watch_Face_Editor
 
             uCtrl_Icon_Opt.SettingsClear();
             uCtrl_Icon_Opt.Visible = true;
+            uCtrl_Icon_Opt.Alpha = SelectedModel.versionOS >= 2.1;
 
             uCtrl_Icon_Opt._Icon = img;
 
@@ -1371,6 +1372,7 @@ namespace Watch_Face_Editor
             if (img.src != null) uCtrl_Icon_Opt.SetIcon(img.src);
             uCtrl_Icon_Opt.numericUpDown_iconX.Value = img.x;
             uCtrl_Icon_Opt.numericUpDown_iconY.Value = img.y;
+            uCtrl_Icon_Opt.numericUpDown_Alpha.Value = img.alpha;
 
             PreviewView = true;
         }
@@ -1383,6 +1385,7 @@ namespace Watch_Face_Editor
             uCtrl_Icon_Opt.SettingsClear();
 
             uCtrl_Icon_Opt._Icon = img_status;
+            //uCtrl_Icon_Opt.Alpha = SelectedModel.versionOS >= 2.1;
 
             //userCtrl_Background_Options.SettingsClear();
 
@@ -1392,10 +1395,10 @@ namespace Watch_Face_Editor
                 return;
             }
 
-            if (img_status.src != null)
-                uCtrl_Icon_Opt.SetIcon(img_status.src);
+            if (img_status.src != null) uCtrl_Icon_Opt.SetIcon(img_status.src);
             uCtrl_Icon_Opt.numericUpDown_iconX.Value = img_status.x;
             uCtrl_Icon_Opt.numericUpDown_iconY.Value = img_status.y;
+            //uCtrl_Icon_Opt.numericUpDown_Alpha.Value = img_status.alpha;
 
             PreviewView = true;
         }
@@ -2019,6 +2022,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_SystemFont_Opt.AmPm = AmPmMode;
             uCtrl_Text_SystemFont_Opt.DOWMode = DOWMode;
             uCtrl_Text_SystemFont_Opt.MonthMode = MonthMode;
+            uCtrl_Text_SystemFont_Opt.Alpha = SelectedModel.versionOS >= 3.5;
 
             uCtrl_Text_SystemFont_Opt._ElementWithSystemFont = system_font;
             //uCtrl_Text_SystemFont_Opt.fonts_path = ProjectDir + @"\assets\fonts\";
@@ -2032,6 +2036,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_SystemFont_Opt.numericUpDown_Size.Value = system_font.text_size;
             uCtrl_Text_SystemFont_Opt.numericUpDown_Spacing.Value = system_font.char_space;
             uCtrl_Text_SystemFont_Opt.numericUpDown_LineSpace.Value = system_font.line_space;
+            uCtrl_Text_SystemFont_Opt.numericUpDown_Alpha.Value = system_font.alpha;
 
             uCtrl_Text_SystemFont_Opt.SetColorText(StringToColor(system_font.color));
             uCtrl_Text_SystemFont_Opt.SetColor2Text(StringToColor(system_font.color_2));
@@ -2659,7 +2664,8 @@ namespace Watch_Face_Editor
 
                 icon.src = uCtrl_Icon_Opt.GetIcon();
                 icon.x = (int)uCtrl_Icon_Opt.numericUpDown_iconX.Value;
-                icon.y = (int)uCtrl_Icon_Opt.numericUpDown_iconY.Value; 
+                icon.y = (int)uCtrl_Icon_Opt.numericUpDown_iconY.Value;
+                icon.alpha = (int)uCtrl_Icon_Opt.numericUpDown_Alpha.Value;
             }
             else if (type == "hmUI_widget_IMG_STATUS")
             {
@@ -2669,6 +2675,7 @@ namespace Watch_Face_Editor
                 status.src = uCtrl_Icon_Opt.GetIcon();
                 status.x = (int)uCtrl_Icon_Opt.numericUpDown_iconX.Value;
                 status.y = (int)uCtrl_Icon_Opt.numericUpDown_iconY.Value;
+                status.alpha = (int)uCtrl_Icon_Opt.numericUpDown_Alpha.Value;
             }
 
             JSON_Modified = true;
@@ -2709,6 +2716,7 @@ namespace Watch_Face_Editor
             systemFont.text_size = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_Size.Value;
             systemFont.char_space = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_Spacing.Value;
             systemFont.line_space = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_LineSpace.Value;
+            systemFont.alpha = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_Alpha.Value;
 
             systemFont.color = ColorToString(uCtrl_Text_SystemFont_Opt.GetColorText());
             systemFont.color_2 = ColorToString(uCtrl_Text_SystemFont_Opt.GetColor2Text());

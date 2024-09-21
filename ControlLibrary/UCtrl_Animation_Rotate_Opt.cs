@@ -41,7 +41,7 @@ namespace ControlLibrary
             {
                 comboBox_select_anim.Items.Add(i.ToString());
             }
-            if (count >= 5) button_add.Enabled = false;
+            if (count >= 15) button_add.Enabled = false;
             else button_add.Enabled = true;
             setValue = false;
         }

@@ -16,6 +16,7 @@ namespace ControlLibrary
         private bool setValue; // режим задания параметров
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _Icon;
+        private bool Alpha_mode = false;
 
         public UCtrl_Icon_Opt()
         {
@@ -45,6 +46,22 @@ namespace ControlLibrary
         public int comboBoxGetSelectedIndexIcon()
         {
             return comboBox_icon_image.SelectedIndex;
+        }
+
+        /// <summary>Режим доступности прозрачности</summary>
+        [Description("Режим доступности прозрачности")]
+        public virtual bool Alpha
+        {
+            get
+            {
+                return Alpha_mode;
+            }
+            set
+            {
+                Alpha_mode = value;
+                label_alpha.Enabled = Alpha_mode;
+                numericUpDown_Alpha.Enabled = Alpha_mode;
+            }
         }
 
         #region Standard events
@@ -155,6 +172,8 @@ namespace ControlLibrary
 
             numericUpDown_iconX.Value = 0;
             numericUpDown_iconY.Value = 0;
+
+            Alpha = false;
 
             setValue = false;
         }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -1541,6 +1542,7 @@ namespace Watch_Face_Editor
                                 int space_v = number_font.line_space;
 
                                 Color color = StringToColor(number_font.color);
+                                int alpha = number_font.alpha;
                                 //int align_h = AlignmentToInt(number_font.align_h);
                                 //int align_v = AlignmentVerticalToInt(number_font.align_v);
                                 string align_h = number_font.align_h;
@@ -1585,18 +1587,18 @@ namespace Watch_Face_Editor
                                             drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                         }
 
-                                        Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                        Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                         align_h, align_v, text_style, BBorder);
                                     }
                                     else
                                     {
-                                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                     }
 
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 }
                             }
 
@@ -1710,6 +1712,7 @@ namespace Watch_Face_Editor
                                 int space_v = number_font.line_space;
 
                                 Color color = StringToColor(number_font.color);
+                                int alpha = number_font.alpha;
                                 //int align_h = AlignmentToInt(number_font.align_h);
                                 //int align_v = AlignmentVerticalToInt(number_font.align_v);
                                 string align_h = number_font.align_h;
@@ -1748,18 +1751,18 @@ namespace Watch_Face_Editor
                                             drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                         }
 
-                                        Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                        Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                         align_h, align_v, text_style, BBorder);
                                     }
                                     else
                                     {
-                                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                     }
 
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 }
                             }
 
@@ -1873,6 +1876,7 @@ namespace Watch_Face_Editor
                                 int space_v = number_font.line_space;
 
                                 Color color = StringToColor(number_font.color);
+                                int alpha = number_font.alpha;
                                 //int align_h = AlignmentToInt(number_font.align_h);
                                 //int align_v = AlignmentVerticalToInt(number_font.align_v);
                                 string align_h = number_font.align_h;
@@ -1911,18 +1915,18 @@ namespace Watch_Face_Editor
                                             drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                         }
 
-                                        Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                        Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                         align_h, align_v, text_style, BBorder);
                                     }
                                     else
                                     {
-                                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                     }
 
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 }
                             }
 
@@ -2009,6 +2013,7 @@ namespace Watch_Face_Editor
                             int space_v = number_font.line_space;
 
                             Color color = StringToColor(number_font.color);
+                            int alpha = number_font.alpha;
                             //int align_h = AlignmentToInt(number_font.align_h);
                             //int align_v = AlignmentVerticalToInt(number_font.align_v);
                             string align_h = number_font.align_h;
@@ -2067,18 +2072,18 @@ namespace Watch_Face_Editor
                                         drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                     }
 
-                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                     align_h, align_v, text_style, BBorder);
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 }
 
                             }
                             else
                             {
-                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             }
                         }
 
@@ -2095,6 +2100,7 @@ namespace Watch_Face_Editor
                             int space_v = number_font.line_space;
 
                             Color color = StringToColor(number_font.color);
+                            int alpha = number_font.alpha;
                             //int align_h = AlignmentToInt(number_font.align_h);
                             //int align_v = AlignmentVerticalToInt(number_font.align_v);
                             string align_h = number_font.align_h;
@@ -2155,18 +2161,18 @@ namespace Watch_Face_Editor
                                         drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                     }
 
-                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                     align_h, align_v, text_style, BBorder);
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha,valueStr, align_h, align_v, text_style, BBorder);
                                 }
 
                             }
                             else
                             {
-                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             }
                         }
 
@@ -2499,6 +2505,7 @@ namespace Watch_Face_Editor
                             int space_v = number_font.line_space;
 
                             Color color = StringToColor(number_font.color);
+                            int alpha = number_font.alpha;
                             //int align_h = AlignmentToInt(number_font.align_h);
                             //int align_v = AlignmentVerticalToInt(number_font.align_v);
                             string align_h = number_font.align_h;
@@ -2537,18 +2544,18 @@ namespace Watch_Face_Editor
                                         drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                     }
 
-                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                     align_h, align_v, text_style, BBorder);
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 }
 
                             }
                             else
                             {
-                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             }
                         }
 
@@ -2565,6 +2572,7 @@ namespace Watch_Face_Editor
                             int space_v = number_font.line_space;
 
                             Color color = StringToColor(number_font.color);
+                            int alpha = number_font.alpha;
                             //int align_h = AlignmentToInt(number_font.align_h);
                             //int align_v = AlignmentVerticalToInt(number_font.align_v);
                             string align_h = number_font.align_h;
@@ -2607,18 +2615,18 @@ namespace Watch_Face_Editor
                                         drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                     }
 
-                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                     align_h, align_v, text_style, BBorder);
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 }
 
                             }
                             else
                             {
-                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             }
                         }
 
@@ -2637,6 +2645,7 @@ namespace Watch_Face_Editor
                             if (number_font.unit_type == 1) yearFull = true;
 
                             Color color = StringToColor(number_font.color);
+                            int alpha = number_font.alpha;
                             //int align_h = AlignmentToInt(number_font.align_h);
                             //int align_v = AlignmentVerticalToInt(number_font.align_v);
                             string align_h = number_font.align_h;
@@ -2682,18 +2691,18 @@ namespace Watch_Face_Editor
                                         drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                     }
 
-                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                     align_h, align_v, text_style, BBorder);
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 }
 
                             }
                             else
                             {
-                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             }
                         }
 
@@ -2839,8 +2848,7 @@ namespace Watch_Face_Editor
                             int space_v = number_font.line_space;
 
                             Color color = StringToColor(number_font.color);
-                            //int align_h = AlignmentToInt(number_font.align_h);
-                            //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                            int alpha = number_font.alpha;
                             string align_h = number_font.align_h;
                             string align_v = number_font.align_v;
                             string text_style = number_font.text_style;
@@ -2877,18 +2885,18 @@ namespace Watch_Face_Editor
                                         drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                     }
 
-                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                     align_h, align_v, text_style, BBorder);
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 }
 
                             }
                             else
                             {
-                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             }
                         }
 
@@ -2912,8 +2920,7 @@ namespace Watch_Face_Editor
                                 int space_v = month_font.line_space;
 
                                 Color color = StringToColor(month_font.color);
-                                //int align_h = AlignmentToInt(number_font.align_h);
-                                //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                                int alpha = month_font.alpha;
                                 string align_h = month_font.align_h;
                                 string align_v = month_font.align_v;
                                 string text_style = month_font.text_style;
@@ -2942,18 +2949,18 @@ namespace Watch_Face_Editor
                                             drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                         }
 
-                                        Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                        Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                         align_h, align_v, text_style, BBorder);
                                     }
                                     else
                                     {
-                                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                     }
 
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 }
                             }
                         }
@@ -3121,8 +3128,7 @@ namespace Watch_Face_Editor
                             int space_v = number_font.line_space;
 
                             Color color = StringToColor(number_font.color);
-                            //int align_h = AlignmentToInt(number_font.align_h);
-                            //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                            int alpha = number_font.alpha;
                             string align_h = number_font.align_h;
                             string align_v = number_font.align_v;
                             string text_style = number_font.text_style; 
@@ -3161,18 +3167,18 @@ namespace Watch_Face_Editor
                                         drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                     }
 
-                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                     align_h, align_v, text_style, BBorder);
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 }
 
                             }
                             else
                             {
-                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             }
                         }
 
@@ -3329,10 +3335,9 @@ namespace Watch_Face_Editor
                                 int space_h = dow_font.char_space;
                                 int space_v = dow_font.line_space;
 
-                                Color color = StringToColor(dow_font.color); 
+                                Color color = StringToColor(dow_font.color);
+                                int alpha = dow_font.alpha;
                                 if (dow_font.use_color_2 && strIndex >= 5) color = StringToColor(dow_font.color_2);
-                                //int align_h = AlignmentToInt(number_font.align_h);
-                                //int align_v = AlignmentVerticalToInt(number_font.align_v);
                                 string align_h = dow_font.align_h;
                                 string align_v = dow_font.align_v;
                                 string text_style = dow_font.text_style;
@@ -3361,18 +3366,18 @@ namespace Watch_Face_Editor
                                             drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                         }
 
-                                        Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                        Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                         align_h, align_v, text_style, BBorder);
                                     }
                                     else
                                     {
-                                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                     }
 
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 } 
                             }
                         }
@@ -3406,8 +3411,24 @@ namespace Watch_Face_Editor
                                 if (imageIndex < ListImagesFullName.Count)
                                 {
                                     src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                    //if (SelectedModel.versionOS >= 2.1 && img_status_alarm.alpha != 255)
+                                    //{
+                                    //    int w = src.Width;
+                                    //    int h = src.Height;
+                                    //    // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                    //    ColorMatrix colorMatrix = new ColorMatrix();
+                                    //    colorMatrix.Matrix33 = img_status_alarm.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+
+                                    //    // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                    //    ImageAttributes imgAttributes = new ImageAttributes();
+                                    //    imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                    //    // Указываем прямоугольник, куда будет помещено изображение
+                                    //    Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                    //    gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                    //}
+                                    //else gPanel.DrawImage(src, x, y);
                                     if (src != null) gPanel.DrawImage(src, x, y);
-                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                                 }
                             }
                         }
@@ -3425,8 +3446,24 @@ namespace Watch_Face_Editor
                                 if (imageIndex < ListImagesFullName.Count)
                                 {
                                     src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                    //if (SelectedModel.versionOS >= 2.1 && img_status_bluetooth.alpha != 255)
+                                    //{
+                                    //    int w = src.Width;
+                                    //    int h = src.Height;
+                                    //    // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                    //    ColorMatrix colorMatrix = new ColorMatrix();
+                                    //    colorMatrix.Matrix33 = img_status_bluetooth.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+
+                                    //    // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                    //    ImageAttributes imgAttributes = new ImageAttributes();
+                                    //    imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                    //    // Указываем прямоугольник, куда будет помещено изображение
+                                    //    Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                    //    gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                    //}
+                                    //else gPanel.DrawImage(src, x, y);
                                     if (src != null) gPanel.DrawImage(src, x, y);
-                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                                 }
                             }
                         }
@@ -3444,8 +3481,24 @@ namespace Watch_Face_Editor
                                 if (imageIndex < ListImagesFullName.Count)
                                 {
                                     src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                    //if (SelectedModel.versionOS >= 2.1 && img_status_dnd.alpha != 255)
+                                    //{
+                                    //    int w = src.Width;
+                                    //    int h = src.Height;
+                                    //    // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                    //    ColorMatrix colorMatrix = new ColorMatrix();
+                                    //    colorMatrix.Matrix33 = img_status_dnd.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+
+                                    //    // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                    //    ImageAttributes imgAttributes = new ImageAttributes();
+                                    //    imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                    //    // Указываем прямоугольник, куда будет помещено изображение
+                                    //    Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                    //    gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                    //}
+                                    //else gPanel.DrawImage(src, x, y);
                                     if (src != null) gPanel.DrawImage(src, x, y);
-                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                                 }
                             }
                         }
@@ -3463,8 +3516,24 @@ namespace Watch_Face_Editor
                                 if (imageIndex < ListImagesFullName.Count)
                                 {
                                     src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                    //if (SelectedModel.versionOS >= 2.1 && img_status_lock.alpha != 255)
+                                    //{
+                                    //    int w = src.Width;
+                                    //    int h = src.Height;
+                                    //    // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                    //    ColorMatrix colorMatrix = new ColorMatrix();
+                                    //    colorMatrix.Matrix33 = img_status_lock.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+
+                                    //    // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                    //    ImageAttributes imgAttributes = new ImageAttributes();
+                                    //    imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                    //    // Указываем прямоугольник, куда будет помещено изображение
+                                    //    Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                    //    gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                    //}
+                                    //else gPanel.DrawImage(src, x, y);
                                     if (src != null) gPanel.DrawImage(src, x, y);
-                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                                 }
                             }
                         }
@@ -4335,38 +4404,6 @@ namespace Watch_Face_Editor
 
                 #region ElementMoon
                 case "ElementMoon":
-                    //ElementMoon activityElementMoon = (ElementMoon)element;
-                    //if (!activityElementMoon.visible) return;
-
-                    //img_level = activityElementMoon.Images;
-
-                    //if (img_level != null)
-                    //{
-                    //    elementValue = 100;
-                    //    value_lenght = 3;
-                    //    value_altitude = 100;
-                    //    //progress = 0;
-
-                    //    int year = WatchFacePreviewSet.Date.Year;
-                    //    int month = WatchFacePreviewSet.Date.Month;
-                    //    int day = WatchFacePreviewSet.Date.Day;
-                    //    double moon_age = MoonAge(day, month, year);
-                    //    //int moonPhase = (int)(8 * moon_age / 29);
-
-                    //    imgCount = img_level.image_length;
-                    //    valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29);
-                    //    //valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29.53f);
-                    //    //valueImgIndex = moonPhase - 1;
-                    //    if (valueImgIndex < 0) valueImgIndex = (int)(imgCount - 1);
-                    //    if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-
-
-                    //    DrawActivity(gPanel, img_level, img_prorgess, img_number, font_number, text_rotation, text_circle, img_number_target, font_number_target,
-                    //    text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, value_altitude,
-                    //        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                    //        showCentrHend, "ElementMoon");
-                    //}
-
                     ElementMoon activityElementMoon = (ElementMoon)element;
                     if (!activityElementMoon.visible) return;
 
@@ -4721,7 +4758,7 @@ namespace Watch_Face_Editor
                     //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2") 
                     if (SelectedModel.versionOS >= 1.5) valueStr = Properties.FormStrings.Tip_Background.TrimEnd();
 
-                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
+                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, 255, valueStr,
                     align_h, align_v, text_style, false);
                 }
             }
@@ -4853,7 +4890,7 @@ namespace Watch_Face_Editor
                                     break;
                             }
 
-                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, 255, valueStr,
                             align_h, align_v, text_style, false); 
                         }
                     } 
@@ -4893,7 +4930,7 @@ namespace Watch_Face_Editor
                     //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
                     if (SelectedModel.versionOS >= 1.5) valueStr = Properties.FormStrings.Tip_Pointer.TrimEnd();
 
-                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
+                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, 255, valueStr,
                         align_h, align_v, text_style, false);
                 }
             }
@@ -5268,8 +5305,7 @@ namespace Watch_Face_Editor
                     int space_v = number_font.line_space;
 
                     Color color = StringToColor(number_font.color);
-                    //int align_h = AlignmentToInt(number_font.align_h);
-                    //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                    int alpha = number_font.alpha;
                     string align_h = number_font.align_h;
                     string align_v = number_font.align_v;
                     string text_style = number_font.text_style;
@@ -5336,18 +5372,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -5442,8 +5478,7 @@ namespace Watch_Face_Editor
                     int space_v = numberTarget_font.line_space;
 
                     Color color = StringToColor(numberTarget_font.color);
-                    //int align_h = AlignmentToInt(numberAltitude_font.align_h);
-                    //int align_v = AlignmentVerticalToInt(numberAltitude_font.align_v);
+                    int alpha = numberTarget_font.alpha;
                     string align_h = numberTarget_font.align_h;
                     string align_v = numberTarget_font.align_v;
                     string text_style = numberTarget_font.text_style;
@@ -5495,18 +5530,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -5669,8 +5704,24 @@ namespace Watch_Face_Editor
                     if (imageIndex < ListImagesFullName.Count)
                     {
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
-                        gPanel.DrawImage(src, x, y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, x, y);
                     }
                 }
 
@@ -5727,7 +5778,24 @@ namespace Watch_Face_Editor
                         pos_y = number.iconPosY;
 
                         src = OpenFileStream(ListImagesFullName[image_Index]);
-                        gPanel.DrawImage(src, pos_x, pos_y);
+                        if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(pos_x, pos_y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, pos_x, pos_y);
+                        //gPanel.DrawImage(src, pos_x, pos_y);
                     }
                 }
 
@@ -5743,8 +5811,7 @@ namespace Watch_Face_Editor
                     int space_v = number_font.line_space;
 
                     Color color = StringToColor(number_font.color);
-                    //int align_h = AlignmentToInt(number_font.align_h);
-                    //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                    int alpha = number_font.alpha;
                     string align_h = number_font.align_h;
                     string align_v = number_font.align_v;
                     string text_style = number_font.text_style;
@@ -5789,18 +5856,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -5927,8 +5994,24 @@ namespace Watch_Face_Editor
                         if (imageIndex < ListImagesFullName.Count)
                         {
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            gPanel.DrawImage(src, x, y);
-                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                            {
+                                int w = src.Width;
+                                int h = src.Height;
+                                // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                ColorMatrix colorMatrix = new ColorMatrix();
+                                colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+
+                                // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                ImageAttributes imgAttributes = new ImageAttributes();
+                                imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                // Указываем прямоугольник, куда будет помещено изображение
+                                Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                            }
+                            else gPanel.DrawImage(src, x, y);
+                            //gPanel.DrawImage(src, x, y);
                         }
                     }
                 }
@@ -5989,8 +6072,7 @@ namespace Watch_Face_Editor
                     int space_v = number_font.line_space;
 
                     Color color = StringToColor(number_font.color);
-                    //int align_h = AlignmentToInt(number_font.align_h);
-                    //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                    int alpha = number_font.alpha;
                     string align_h = number_font.align_h;
                     string align_v = number_font.align_v;
                     string text_style = number_font.text_style;
@@ -6028,18 +6110,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -6099,8 +6181,7 @@ namespace Watch_Face_Editor
                     int space_v = numberMin_font.line_space;
 
                     Color color = StringToColor(numberMin_font.color);
-                    //int align_h = AlignmentToInt(numberMin_font.align_h);
-                    //int align_v = AlignmentVerticalToInt(numberMin_font.align_v);
+                    int alpha = numberMin_font.alpha;
                     string align_h = numberMin_font.align_h;
                     string align_v = numberMin_font.align_v;
                     string text_style = numberMin_font.text_style;
@@ -6138,18 +6219,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -6274,8 +6355,7 @@ namespace Watch_Face_Editor
                     int space_v = numberMax_font.line_space;
 
                     Color color = StringToColor(numberMax_font.color);
-                    //int align_h = AlignmentToInt(numberMax_font.align_h);
-                    //int align_v = AlignmentVerticalToInt(numberMax_font.align_v);
+                    int alpha = numberMax_font.alpha;
                     string align_h = numberMax_font.align_h;
                     string align_v = numberMax_font.align_v;
                     string text_style = numberMax_font.text_style;
@@ -6313,18 +6393,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -6404,8 +6484,7 @@ namespace Watch_Face_Editor
                     int space_v = numberMinMax_font.line_space;
 
                     Color color = StringToColor(numberMinMax_font.color);
-                    //int align_h = AlignmentToInt(numberMinMax_font.align_h);
-                    //int align_v = AlignmentVerticalToInt(numberMinMax_font.align_v);
+                    int alpha = numberMinMax_font.alpha;
                     string align_h = numberMinMax_font.align_h;
                     string align_v = numberMinMax_font.align_v;
                     string text_style = numberMinMax_font.text_style;
@@ -6443,18 +6522,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -6485,8 +6564,7 @@ namespace Watch_Face_Editor
                     int space_v = cityName.line_space;
 
                     Color color = StringToColor(cityName.color);
-                    //int align_h = AlignmentToInt(cityName.align_h);
-                    //int align_v = AlignmentVerticalToInt(cityName.align_v);
+                    int alpha = cityName.alpha;
                     string align_h = cityName.align_h;
                     string align_v = cityName.align_v;
                     string text_style = cityName.text_style;
@@ -6516,18 +6594,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
                                 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -6646,8 +6724,7 @@ namespace Watch_Face_Editor
                         int space_v = number_font.line_space;
 
                         Color color = StringToColor(number_font.color);
-                        //int align_h = AlignmentToInt(number_font.align_h);
-                        //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                        int alpha = number_font.alpha;
                         string align_h = number_font.align_h;
                         string align_v = number_font.align_v;
                         string text_style = number_font.text_style;
@@ -6685,18 +6762,18 @@ namespace Watch_Face_Editor
                                     drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                 }
 
-                                Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                 align_h, align_v, text_style, BBorder);
                             }
                             else
                             {
-                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             }
 
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
                     }
 
@@ -6828,8 +6905,7 @@ namespace Watch_Face_Editor
                         int space_v = number_font.line_space;
 
                         Color color = StringToColor(number_font.color);
-                        //int align_h = AlignmentToInt(number_font.align_h);
-                        //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                        int alpha = number_font.alpha;
                         string align_h = number_font.align_h;
                         string align_v = number_font.align_v;
                         string text_style = number_font.text_style;
@@ -6867,18 +6943,18 @@ namespace Watch_Face_Editor
                                     drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                 }
 
-                                Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                 align_h, align_v, text_style, BBorder);
                             }
                             else
                             {
-                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             }
 
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
                     }
 
@@ -7010,8 +7086,7 @@ namespace Watch_Face_Editor
                         int space_v = number_font.line_space;
 
                         Color color = StringToColor(number_font.color);
-                        //int align_h = AlignmentToInt(number_font.align_h);
-                        //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                        int alpha = number_font.alpha;
                         string align_h = number_font.align_h;
                         string align_v = number_font.align_v;
                         string text_style = number_font.text_style;
@@ -7049,18 +7124,18 @@ namespace Watch_Face_Editor
                                     drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                 }
 
-                                Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                 align_h, align_v, text_style, BBorder);
                             }
                             else
                             {
-                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             }
 
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
                     }
 
@@ -7210,8 +7285,7 @@ namespace Watch_Face_Editor
                         int space_v = number_font.line_space;
 
                         Color color = StringToColor(number_font.color);
-                        //int align_h = AlignmentToInt(number_font.align_h);
-                        //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                        int alpha = number_font.alpha;
                         string align_h = number_font.align_h;
                         string align_v = number_font.align_v;
                         string text_style = number_font.text_style;
@@ -7253,18 +7327,18 @@ namespace Watch_Face_Editor
                                     drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                 }
 
-                                Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                 align_h, align_v, text_style, BBorder);
                             }
                             else
                             {
-                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             }
 
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
                     }
 
@@ -7347,8 +7421,7 @@ namespace Watch_Face_Editor
                     int space_v = cityName.line_space;
 
                     Color color = StringToColor(cityName.color);
-                    //int align_h = AlignmentToInt(cityName.align_h);
-                    //int align_v = AlignmentVerticalToInt(cityName.align_v);
+                    int alpha = cityName.alpha;
                     string align_h = cityName.align_h;
                     string align_v = cityName.align_v;
                     string text_style = cityName.text_style;
@@ -7378,18 +7451,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -7403,8 +7476,24 @@ namespace Watch_Face_Editor
                     if (imageIndex < ListImagesFullName.Count)
                     {
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
-                        gPanel.DrawImage(src, x, y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, x, y);
                     }
                 }
 
@@ -7676,6 +7765,7 @@ namespace Watch_Face_Editor
                     int space_v = weather_FewDays.Number_Font_Max.line_space;
 
                     Color color = StringToColor(weather_FewDays.Number_Font_Max.color);
+                    int alpha = weather_FewDays.Number_Font_Max.alpha;
                     string align_h = weather_FewDays.Number_Font_Max.align_h;
                     string align_v = weather_FewDays.Number_Font_Max.align_v;
                     string text_style = weather_FewDays.Number_Font_Max.text_style;
@@ -7730,18 +7820,18 @@ namespace Watch_Face_Editor
                                         drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                     }
 
-                                    Draw_text_userFont(gPanel, posX, posDayY, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                    Draw_text_userFont(gPanel, posX, posDayY, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                     align_h, align_v, text_style, BBorder);
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 }
 
                             }
                             else
                             {
-                                Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             } 
                         }
                     }
@@ -7811,6 +7901,7 @@ namespace Watch_Face_Editor
                     int space_v = weather_FewDays.Number_Font_Average.line_space;
 
                     Color color = StringToColor(weather_FewDays.Number_Font_Average.color);
+                    int alpha = weather_FewDays.Number_Font_Average.alpha;
                     string align_h = weather_FewDays.Number_Font_Average.align_h;
                     string align_v = weather_FewDays.Number_Font_Average.align_v;
                     string text_style = weather_FewDays.Number_Font_Average.text_style;
@@ -7866,18 +7957,18 @@ namespace Watch_Face_Editor
                                         drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                     }
 
-                                    Draw_text_userFont(gPanel, posX, posDayY, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                    Draw_text_userFont(gPanel, posX, posDayY, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                     align_h, align_v, text_style, BBorder);
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 }
 
                             }
                             else
                             {
-                                Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             } 
                         }
                     }
@@ -7947,6 +8038,7 @@ namespace Watch_Face_Editor
                     int space_v = weather_FewDays.Number_Font_Min.line_space;
 
                     Color color = StringToColor(weather_FewDays.Number_Font_Min.color);
+                    int alpha = weather_FewDays.Number_Font_Min.alpha;
                     string align_h = weather_FewDays.Number_Font_Min.align_h;
                     string align_v = weather_FewDays.Number_Font_Min.align_v;
                     string text_style = weather_FewDays.Number_Font_Min.text_style;
@@ -8001,18 +8093,18 @@ namespace Watch_Face_Editor
                                         drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                     }
 
-                                    Draw_text_userFont(gPanel, posX, posDayY, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                    Draw_text_userFont(gPanel, posX, posDayY, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                     align_h, align_v, text_style, BBorder);
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 }
 
                             }
                             else
                             {
-                                Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             } 
                         }
                     }
@@ -8080,6 +8172,7 @@ namespace Watch_Face_Editor
                     int space_v = weather_FewDays.Number_Font_MaxMin.line_space;
 
                     Color color = StringToColor(weather_FewDays.Number_Font_MaxMin.color);
+                    int alpha = weather_FewDays.Number_Font_MaxMin.alpha;
                     string align_h = weather_FewDays.Number_Font_MaxMin.align_h;
                     string align_v = weather_FewDays.Number_Font_MaxMin.align_v;
                     string text_style = weather_FewDays.Number_Font_MaxMin.text_style;
@@ -8131,18 +8224,18 @@ namespace Watch_Face_Editor
                                         drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                     }
 
-                                    Draw_text_userFont(gPanel, posX, posDayY, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                    Draw_text_userFont(gPanel, posX, posDayY, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                     align_h, align_v, text_style, BBorder);
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 }
 
                             }
                             else
                             {
-                                Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                Draw_text(gPanel, posX, posDayY, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             } 
                         }
                     }
@@ -8173,20 +8266,21 @@ namespace Watch_Face_Editor
 
                 if (weather_FewDays.DayOfWeek_Font != null && index == weather_FewDays.DayOfWeek_Font.position && weather_FewDays.DayOfWeek_Font.visible)
                     {
-                        hmUI_widget_TEXT dow_font = weather_FewDays.DayOfWeek_Font;
-                        string[] dowArrey = dow_font.unit_string.Split(',');
+                    hmUI_widget_TEXT dow_font = weather_FewDays.DayOfWeek_Font;
+                    string[] dowArrey = dow_font.unit_string.Split(',');
 
-                        int h = dow_font.h;
-                        int w = dow_font.w;
+                    int h = dow_font.h;
+                    int w = dow_font.w;
 
-                        int size = dow_font.text_size;
-                        int space_h = dow_font.char_space;
-                        int space_v = dow_font.line_space;
+                    int size = dow_font.text_size;
+                    int space_h = dow_font.char_space;
+                    int space_v = dow_font.line_space;
 
-                        Color color_1 = StringToColor(dow_font.color);
-                        Color color_2 = StringToColor(dow_font.color_2);
+                    Color color_1 = StringToColor(dow_font.color);
+                    Color color_2 = StringToColor(dow_font.color_2);
+                    int alpha = dow_font.alpha;
 
-                        string align_h = dow_font.align_h;
+                    string align_h = dow_font.align_h;
                         string align_v = dow_font.align_v;
                         string text_style = dow_font.text_style;
 
@@ -8215,18 +8309,18 @@ namespace Watch_Face_Editor
                                             drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                         }
 
-                                        Draw_text_userFont(gPanel, posX, posY, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                        Draw_text_userFont(gPanel, posX, posY, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                                         align_h, align_v, text_style, BBorder);
                                     }
                                     else
                                     {
-                                        Draw_text(gPanel, posX, posY, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                        Draw_text(gPanel, posX, posY, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                     }
 
                                 }
                                 else
                                 {
-                                    Draw_text(gPanel, posX, posY, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                    Draw_text(gPanel, posX, posY, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                                 }
                             }
 
@@ -8243,8 +8337,24 @@ namespace Watch_Face_Editor
                     if (imageIndex < ListImagesFullName.Count)
                     {
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
-                        gPanel.DrawImage(src, iconPosX, iconPosY);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        if (SelectedModel.versionOS >= 2.1 && weather_FewDays.Icon.alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = weather_FewDays.Icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(iconPosX, iconPosY, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, iconPosX, iconPosY);
+                        //gPanel.DrawImage(src, iconPosX, iconPosY);
                     }
                 }
 
@@ -8316,6 +8426,7 @@ namespace Watch_Face_Editor
                     break;
             }
         }
+        
         /// <summary>Рисуем восход, звкат</summary>
         private void DrawSunrise(Graphics gPanel, hmUI_widget_IMG_LEVEL images, hmUI_widget_IMG_PROGRESS segments,
             hmUI_widget_IMG_NUMBER sunrise, hmUI_widget_TEXT sunrise_font, hmUI_widget_IMG_NUMBER sunrise_rotation, Text_Circle sunrise_circle,
@@ -8436,20 +8547,12 @@ namespace Watch_Face_Editor
                     int space_v = sunrise_font.line_space;
 
                     Color color = StringToColor(sunrise_font.color);
-                    //int align_h = AlignmentToInt(sunrise_font.align_h);
-                    //int align_v = AlignmentVerticalToInt(sunrise_font.align_v);
+                    int alpha = sunrise_font.alpha;
                     string align_h = sunrise_font.align_h;
                     string align_v = sunrise_font.align_v;
                     string text_style = sunrise_font.text_style;
                     //string valueStr = value.ToString();
                     string valueStr = "03:30";
-                    //string unitStr = "";
-                    //if (sunrise_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
-                    //if (sunrise_font.unit_type > 0)
-                    //{
-                    //    if (sunrise_font.unit_type == 2) unitStr = unitStr.ToUpper();
-                    //    valueStr += unitStr;
-                    //}
 
                     if (sunrise_font.centreHorizontally)
                     {
@@ -8475,18 +8578,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -8602,20 +8705,12 @@ namespace Watch_Face_Editor
                     int space_v = sunset_font.line_space;
 
                     Color color = StringToColor(sunset_font.color);
-                    //int align_h = AlignmentToInt(sunset_font.align_h);
-                    //int align_v = AlignmentVerticalToInt(sunset_font.align_v);
+                    int alpha = sunset_font.alpha;
                     string align_h = sunset_font.align_h;
                     string align_v = sunset_font.align_v;
                     string text_style = sunset_font.text_style;
                     //string valueStr = value.ToString();
                     string valueStr = "20:30";
-                    //string unitStr = "";
-                    //if (sunset_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
-                    //if (sunset_font.unit_type > 0)
-                    //{
-                    //    if (sunset_font.unit_type == 2) unitStr = unitStr.ToUpper();
-                    //    valueStr += unitStr;
-                    //}
 
                     if (sunset_font.centreHorizontally)
                     {
@@ -8641,18 +8736,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -8802,8 +8897,24 @@ namespace Watch_Face_Editor
                     if (imageIndex < ListImagesFullName.Count)
                     {
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
-                        gPanel.DrawImage(src, x, y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, x, y);
                     }
                 }
 
@@ -8918,20 +9029,12 @@ namespace Watch_Face_Editor
                     int space_v = sunrise_font.line_space;
 
                     Color color = StringToColor(sunrise_font.color);
-                    //int align_h = AlignmentToInt(sunrise_font.align_h);
-                    //int align_v = AlignmentVerticalToInt(sunrise_font.align_v);
+                    int alpha = sunrise_font.alpha;
                     string align_h = sunrise_font.align_h;
                     string align_v = sunrise_font.align_v;
                     string text_style = sunrise_font.text_style;
                     //string valueStr = value.ToString();
                     string valueStr = "18:30";
-                    //string unitStr = "";
-                    //if (sunrise_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
-                    //if (sunrise_font.unit_type > 0)
-                    //{
-                    //    if (sunrise_font.unit_type == 2) unitStr = unitStr.ToUpper();
-                    //    valueStr += unitStr;
-                    //}
 
                     if (sunrise_font.centreHorizontally)
                     {
@@ -8957,18 +9060,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -9084,20 +9187,12 @@ namespace Watch_Face_Editor
                     int space_v = sunset_font.line_space;
 
                     Color color = StringToColor(sunset_font.color);
-                    //int align_h = AlignmentToInt(sunset_font.align_h);
-                    //int align_v = AlignmentVerticalToInt(sunset_font.align_v);
+                    int alpha = sunset_font.alpha;
                     string align_h = sunset_font.align_h;
                     string align_v = sunset_font.align_v;
                     string text_style = sunset_font.text_style;
                     //string valueStr = value.ToString();
                     string valueStr = "05:30";
-                    //string unitStr = "";
-                    //if (sunset_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
-                    //if (sunset_font.unit_type > 0)
-                    //{
-                    //    if (sunset_font.unit_type == 2) unitStr = unitStr.ToUpper();
-                    //    valueStr += unitStr;
-                    //}
 
                     if (sunset_font.centreHorizontally)
                     {
@@ -9123,18 +9218,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -9284,8 +9379,24 @@ namespace Watch_Face_Editor
                     if (imageIndex < ListImagesFullName.Count)
                     {
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
-                        gPanel.DrawImage(src, x, y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, x, y);
                     }
                 }
 
@@ -9362,8 +9473,7 @@ namespace Watch_Face_Editor
                     int space_v = number_font.line_space;
 
                     Color color = StringToColor(number_font.color);
-                    //int align_h = AlignmentToInt(number_font.align_h);
-                    //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                    int alpha = number_font.alpha;
                     string align_h = number_font.align_h;
                     string align_v = number_font.align_v;
                     string text_style = number_font.text_style;
@@ -9400,18 +9510,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -9459,8 +9569,7 @@ namespace Watch_Face_Editor
                     int space_v = numberAltitude_font.line_space;
 
                     Color color = StringToColor(numberAltitude_font.color);
-                    //int align_h = AlignmentToInt(numberAltitude_font.align_h);
-                    //int align_v = AlignmentVerticalToInt(numberAltitude_font.align_v);
+                    int alpha = numberAltitude_font.alpha;
                     string align_h = numberAltitude_font.align_h;
                     string align_v = numberAltitude_font.align_v;
                     string text_style = numberAltitude_font.text_style;
@@ -9507,18 +9616,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -9568,8 +9677,24 @@ namespace Watch_Face_Editor
                     if (imageIndex < ListImagesFullName.Count)
                     {
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
-                        gPanel.DrawImage(src, x, y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, x, y);
                     }
                 }
 
@@ -9711,19 +9836,11 @@ namespace Watch_Face_Editor
                     int space_v = number_font.line_space;
 
                     Color color = StringToColor(number_font.color);
-                    //int align_h = AlignmentToInt(number_font.align_h);
-                    //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                    int alpha = number_font.alpha;
                     string align_h = number_font.align_h;
                     string align_v = number_font.align_v;
                     string text_style = number_font.text_style;
                     string valueStr = value.ToString();
-                    //string unitStr = "";
-                    //if (number_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
-                    //if (number_font.unit_type > 0)
-                    //{
-                    //    if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
-                    //    valueStr += unitStr;
-                    //}
 
                     if (number_font.centreHorizontally)
                     {
@@ -9749,18 +9866,18 @@ namespace Watch_Face_Editor
                                 drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                             }
 
-                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
                         else
                         {
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
 
                     }
                     else
                     {
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -9851,8 +9968,24 @@ namespace Watch_Face_Editor
                     if (imageIndex < ListImagesFullName.Count)
                     {
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, x, y);
                         gPanel.DrawImage(src, x, y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                     }
                 }
 
@@ -11185,13 +11318,14 @@ namespace Watch_Face_Editor
         /// <param name="spacing_h">Величина отступа</param>
         /// <param name="spacing_v">Межстрочный интервал</param>
         /// <param name="color">Цвет шрифта</param>
+        /// <param name="alpha">Прозрачность</param>
         /// <param name="value">Отображаемые данные</param>
         /// <param name="align_h">Горизонтальное выравнивание</param>
         /// <param name="align_v">Вертикальное выравнивание</param>
         /// <param name="text_style">Стиль вписывания текста</param>
         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
         private void Draw_text(Graphics graphics, int x, int y, int w, int h, float size, int spacing_h, int spacing_v, 
-            Color color, string value, string align_h, string align_v, string text_style, bool BBorder)
+            Color color, int alpha, string value, string align_h, string align_v, string text_style, bool BBorder)
         {
             size = size * 0.99f;
             if (w < 5 || h < 5) return;
@@ -11300,6 +11434,13 @@ namespace Watch_Face_Editor
             }
 
             Logger.WriteLine("Draw value");
+            //if (SelectedModel.versionOS > 3.5 && alpha != 255) {
+            //    color = Color.FromArgb(alpha, color);
+            //    // Устанавливаем параметры сглаживания для текста
+            //    gPanel.TextRenderingHint = TextRenderingHint.AntiAlias;
+            //    gPanel.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            //}
+
             SolidBrush drawBrush = new SolidBrush(color);
 
             try
@@ -11344,7 +11485,22 @@ namespace Watch_Face_Editor
                     }
                     PointY += (float)(1.47 * size + 0.55 * spacing_v);
                 }
-                graphics.DrawImage(bitmap, x, y);
+                if (SelectedModel.versionOS >= 3.5 && alpha != 255)
+                {
+                    // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                    ColorMatrix colorMatrix = new ColorMatrix();
+                    colorMatrix.Matrix33 = alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+
+                    // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                    ImageAttributes imgAttributes = new ImageAttributes();
+                    imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                    // Указываем прямоугольник, куда будет помещено изображение
+                    Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                    graphics.DrawImage(bitmap, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes); 
+                }
+                else graphics.DrawImage(bitmap, x, y);
+                //graphics.DrawImage(bitmap, x, y);
 
                 if (BBorder)
                 {
@@ -11380,13 +11536,14 @@ namespace Watch_Face_Editor
         /// <param name="spacing_h">Величина отступа</param>
         /// <param name="spacing_v">Межстрочный интервал</param>
         /// <param name="color">Цвет шрифта</param>
+        /// <param name="alpha">Прозрачность</param>
         /// <param name="value">Отображаемые данные</param>
         /// <param name="align_h">Горизонтальное выравнивание</param>
         /// <param name="align_v">Вертикальное выравнивание</param>
         /// <param name="text_style">Стиль вписывания текста</param>
         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
         private void Draw_text_userFont(Graphics graphics, int x, int y, int w, int h, Font drawFont, float size, int spacing_h, int spacing_v,
-            Color color, string value, string align_h, string align_v, string text_style, bool BBorder)
+            Color color, int alpha, string value, string align_h, string align_v, string text_style, bool BBorder)
         {
             if (w < 5 || h < 5) return;
             Bitmap bitmap = new Bitmap(Convert.ToInt32(w), Convert.ToInt32(h), PixelFormat.Format32bppArgb);
@@ -11499,6 +11656,7 @@ namespace Watch_Face_Editor
             }
 
             Logger.WriteLine("Draw value");
+            color = Color.FromArgb(alpha, color);
             SolidBrush drawBrush = new SolidBrush(color);
 
             try
@@ -13079,7 +13237,7 @@ namespace Watch_Face_Editor
                 }
             }
 
-            if (button.text.Length > 0) Draw_text(graphics, x, y, width, height, button.text_size, 0, 0, StringToColor(button.color),
+            if (button.text.Length > 0) Draw_text(graphics, x, y, width, height, button.text_size, 0, 0, StringToColor(button.color), 255,
                 button.text, "CENTER_H", "CENTER_V", "ELLIPSIS", false);
 
             if (showButtons)

@@ -37,7 +37,7 @@
     "previewHeight": 306,
     "colorScheme": 3,
     "fixSize": false,
-    "versionOS": 3.5
+    "versionOS": 4.0
   },
   "Active Edge": {
     "name": "Amazfit Active Edge",
@@ -77,7 +77,7 @@
     "previewHeight": 243,
     "colorScheme": 3,
     "fixSize": false,
-    "versionOS": 2
+    "versionOS": 2.1
   },
   "Amazfit Band 7": {
     "name": "Amazfit Band 7",
@@ -118,7 +118,7 @@
     "previewHeight": 288,
     "colorScheme": 2,
     "fixSize": false,
-    "versionOS": 1
+    "versionOS": 1.0
   },
   "Balance": {
     "name": "Amazfit Balance",
@@ -159,7 +159,7 @@
     "previewHeight": 324,
     "colorScheme": 1,
     "fixSize": true,
-    "versionOS": 3.5
+    "versionOS": 4.0
   },
   "Bip 5": {
     "name": "Amazfit Bip 5",
@@ -359,7 +359,7 @@
     "previewHeight": 306,
     "colorScheme": 1,
     "fixSize": true,
-    "versionOS": 2.1
+    "versionOS": 3.5
   },
   "Falcon": {
     "name": "Amazfit Falcon",
@@ -439,7 +439,7 @@
     "previewHeight": 306,
     "colorScheme": 1,
     "fixSize": true,
-    "versionOS": 1
+    "versionOS": 1.0
   },
   "GTR 3 Pro": {
     "name": "Amazfit GTR 3 Pro",
@@ -481,7 +481,7 @@
     "previewHeight": 324,
     "colorScheme": 1,
     "fixSize": true,
-    "versionOS": 1
+    "versionOS": 1.0
   },
   "GTR 4": {
     "name": "Amazfit GTR 4",
@@ -523,7 +523,7 @@
     "previewHeight": 314,
     "colorScheme": 1,
     "fixSize": true,
-    "versionOS": 3
+    "versionOS": 3.5
   },
   "GTR mini": {
     "name": "Amazfit GTR Mini",
@@ -563,7 +563,7 @@
     "previewHeight": 280,
     "colorScheme": 3,
     "fixSize": false,
-    "versionOS": 2
+    "versionOS": 2.0
   },
   "GTS 3": {
     "name": "Amazfit GTS 3",
@@ -603,7 +603,7 @@
     "previewHeight": 306,
     "colorScheme": 1,
     "fixSize": true,
-    "versionOS": 1
+    "versionOS": 1.0
   },
   "GTS 4": {
     "name": "Amazfit GTS 4",
@@ -643,7 +643,7 @@
     "previewHeight": 306,
     "colorScheme": 1,
     "fixSize": true,
-    "versionOS": 2.1
+    "versionOS": 3.5
   },
   "GTS 4 mini": {
     "name": "GTS 4 mini",
@@ -683,7 +683,7 @@
     "previewHeight": 256,
     "colorScheme": 2,
     "fixSize": false,
-    "versionOS": 1
+    "versionOS": 1.0
   },
   "T-Rex 2": {
     "name": "Amazfit T-Rex 2",
@@ -724,6 +724,47 @@
     "colorScheme": 1,
     "fixSize": true,
     "versionOS": 2.1
+  },
+  "T-Rex 3": {
+    "name": "Amazfit T-Rex 3",
+    "designWidth": 480,
+    "deviceSource_ids": [
+      8716544,
+      8716545,
+      8716547
+    ],
+    "background": {
+      "w": 480,
+      "h": 480
+    },
+    "scaling": {
+      "scaling_0_5": {
+        "w": 230,
+        "h": 230
+      },
+      "scaling_1_0": {
+        "w": 482,
+        "h": 482
+      },
+      "scaling_1_5": {
+        "w": 722,
+        "h": 722
+      },
+      "scaling_2_0": {
+        "w": 961,
+        "h": 961
+      },
+      "scaling_2_5": {
+        "w": 1201,
+        "h": 1201
+      }
+    },
+    "maskImage": "mask_gtr_3_pro.png",
+    "watchSkin": "WatchSkin_T_Rex_2.json",
+    "previewHeight": 324,
+    "colorScheme": 1,
+    "fixSize": true,
+    "versionOS": 4.0
   },
   "T-Rex Ultra": {
     "name": "Amazfit T-Rex Ultra",

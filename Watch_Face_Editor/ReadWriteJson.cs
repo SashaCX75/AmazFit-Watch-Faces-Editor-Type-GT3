@@ -2991,7 +2991,7 @@ namespace Watch_Face_Editor
                                     coverPointerProHour + TabInString(6) + "});" + Environment.NewLine;
                             }
 
-                            time_update += Environment.NewLine + TabInString(7) + "if (updateHour) {";
+                            time_update += Environment.NewLine + TabInString(7) + "if (updateMinute) {";
                             time_update += Environment.NewLine + TabInString(8) + "let " + optionNameStart + "hour = hour;";
                             string tempAngleName = optionNameStart + "fullAngle_hour";
                             time_update += Environment.NewLine + TabInString(8) + "let " + tempAngleName +
@@ -3028,7 +3028,8 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
 
                             string tempAngleName = optionNameStart + "fullAngle_minute";
-                            time_update += Environment.NewLine + TabInString(7) + "if (updateMinute) {";
+                            if (AnalogTimePro.SmoothSecond == null || !AnalogTimePro.SmoothSecond.enable) 
+                                time_update += Environment.NewLine + TabInString(7) + "if (updateMinute) {";  // перескакивает между минутами
                             time_update += Environment.NewLine + TabInString(8) + "let " + tempAngleName +
                                 " = " + (AnalogTimePro.Minute.end_angle - AnalogTimePro.Minute.start_angle).ToString() + ";";
 
@@ -3113,15 +3114,12 @@ namespace Watch_Face_Editor
                                     coverPointerProMinute + TabInString(6) + "});" + Environment.NewLine;
                             }
 
-                            ////time_update += Environment.NewLine + TabInString(7) + "let minute_" + optionNameStart + " = minute;";
-                            //time_update += Environment.NewLine + TabInString(7) +
-                            //    "let " + optionNameStart + "angle_minute = " + AnalogTimePro.Minute.start_angle.ToString() + " + " +
-                            //        (AnalogTimePro.Minute.end_angle - AnalogTimePro.Minute.start_angle).ToString() + "*minute/60;";
                             time_update += Environment.NewLine + TabInString(8) +
                                     "if (" + optionNameStart + "analog_clock_pro_minute_pointer_img) " +
                                     optionNameStart + "analog_clock_pro_minute_pointer_img.setProperty(hmUI.prop.ANGLE, " +
                                     optionNameStart + "angle_minute);";
-                            time_update += Environment.NewLine + TabInString(7) + "};" + Environment.NewLine;
+                            if (AnalogTimePro.SmoothSecond == null || !AnalogTimePro.SmoothSecond.enable) 
+                                time_update += Environment.NewLine + TabInString(7) + "};" + Environment.NewLine;  // перескакивает между минутами
 
                         }
 
@@ -3366,7 +3364,7 @@ namespace Watch_Face_Editor
                                         //items += Environment.NewLine + TabInString(8) + "anim_status: 1,";
                                         items += Environment.NewLine + TabInString(8) + "anim_auto_start: 1,";
                                         //items += Environment.NewLine + TabInString(8) + "repeat_count: 1,";
-                                        items += Environment.NewLine + TabInString(8) + "anim_repeat: 1,";
+                                        items += Environment.NewLine + TabInString(8) + "anim_repeat: 0,";
                                         items += Environment.NewLine + TabInString(8) + "anim_auto_destroy: 1,";
                                         items += Environment.NewLine + TabInString(7) + "}";
                                         items += Environment.NewLine + TabInString(7) + optionNameStart +
@@ -4199,6 +4197,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "year_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (DateYear.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart + 
+                                    "year_icon_img.setAlpha(" + DateYear.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
                     }
                     break;
@@ -4365,6 +4366,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "system_clock_img = hmUI.createWidget(hmUI.widget.IMG_STATUS, {" +
                                     optionsStatusAlarm + TabInString(6) + "});" + Environment.NewLine;
+
+                            //if (Statuses.Alarm.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                            //        "system_clock_img.setAlpha(" + Statuses.Alarm.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Bluetooth
@@ -4375,6 +4379,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "system_disconnect_img = hmUI.createWidget(hmUI.widget.IMG_STATUS, {" +
                                     optionsStatusBluetooth + TabInString(6) + "});" + Environment.NewLine;
+
+                            //if (Statuses.Bluetooth.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                            //        "system_disconnect_img.setAlpha(" + Statuses.Bluetooth.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // DND
@@ -4385,6 +4392,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "system_dnd_img = hmUI.createWidget(hmUI.widget.IMG_STATUS, {" +
                                     optionsStatusDND + TabInString(6) + "});" + Environment.NewLine;
+
+                            //if (Statuses.DND.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                            //        "system_dnd_img.setAlpha(" + Statuses.DND.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Lock
@@ -4395,6 +4405,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "system_lock_img = hmUI.createWidget(hmUI.widget.IMG_STATUS, {" +
                                     optionsStatusLock + TabInString(6) + "});" + Environment.NewLine;
+
+                            //if (Statuses.Lock.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                            //        "system_lock_img.setAlpha(" + Statuses.Lock.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -5395,6 +5408,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "step_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Steps.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "step_icon_img.setAlpha(" + Steps.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -5765,6 +5781,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "battery_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Battery.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "battery_icon_img.setAlpha(" + Battery.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -6222,6 +6241,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "calorie_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Calories.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "calorie_icon_img.setAlpha(" + Calories.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -6581,6 +6603,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "heart_rate_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Heart.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart + 
+                                    "heart_rate_icon_img.setAlpha(" + Heart.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -6994,6 +7019,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "pai_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (PAI.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "pai_icon_img.setAlpha(" + PAI.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -7487,6 +7515,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "distance_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Distance.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "distance_icon_img.setAlpha(" + Distance.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
                     }
                     break;
@@ -7919,6 +7950,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "stand_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Stand.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "stand_icon_img.setAlpha(" + Stand.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -8302,6 +8336,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "activity_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Activity.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "activity_icon_img.setAlpha(" + Activity.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -8424,6 +8461,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "spo2_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (SpO2.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "spo2_icon_img.setAlpha(" + SpO2.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
                     }
                     break;
@@ -8565,6 +8605,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "stress_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Stress.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "stress_icon_img.setAlpha(" + Stress.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -9000,6 +9043,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "fat_burning_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (FatBurning.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "fat_burning_icon_img.setAlpha(" + FatBurning.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -10081,6 +10127,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "temperature_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Weather.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "temperature_icon_img.setAlpha(" + Weather.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -10228,6 +10277,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "uvi_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (UVIndex.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "uvi_icon_img.setAlpha(" + UVIndex.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -10368,6 +10420,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "humidity_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Humidity.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "humidity_icon_img.setAlpha(" + Humidity.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -10538,6 +10593,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "altimeter_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Altimeter.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "altimeter_icon_img.setAlpha(" + Altimeter.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -11930,6 +11988,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "compass_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Compass.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "compass_icon_img.setAlpha(" + Compass.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -13997,6 +14058,9 @@ namespace Watch_Face_Editor
                     items += Environment.NewLine + TabInString(7) + optionNameStart + 
                         "forecast_icon_img = " + groupName + ".createWidget(hmUI.widget.IMG, {" + iconOptions + TabInString(7) + "});";
                     items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine;
+
+                    if (weatherFewDays.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                            "forecast_icon_img.setAlpha(" + weatherFewDays.Icon.alpha.ToString() + ");" + Environment.NewLine;
                 }
             }
 
@@ -17294,6 +17358,12 @@ namespace Watch_Face_Editor
                 if (img.w != null) options += TabInString(7 + tabOffset) + "w: " + img.w.ToString() + "," + Environment.NewLine;
                 if (img.h != null) options += TabInString(7 + tabOffset) + "h: " + img.h.ToString() + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "src: '" + img.src + ".png'," + Environment.NewLine;
+
+                if (SelectedModel.versionOS >= 2.1 && img.alpha != 255)
+                {
+                    options += TabInString(7 + tabOffset) + "// alpha: " + img.alpha.ToString() + "," + Environment.NewLine;
+                }
+
                 if (show_level != null && show_level.Length > 0)
                 {
                     if(show_level.StartsWith("hmUI.show_level")) options += TabInString(7 + tabOffset) + "show_level: " + show_level + "," + Environment.NewLine;
@@ -19688,6 +19758,11 @@ namespace Watch_Face_Editor
                 options += TabInString(7) + "src: '" + img_status.src + ".png'," + Environment.NewLine;
                 options += TabInString(7) + "type: hmUI.system_status." + type + "," + Environment.NewLine;
                 options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+
+                //if (SelectedModel.versionOS >= 2.1 && img_status.alpha != 255)
+                //{
+                //    options += TabInString(7) + "// alpha: " + img_status.alpha.ToString() + "," + Environment.NewLine;
+                //}
             }
             return options;
         }
@@ -19696,20 +19771,20 @@ namespace Watch_Face_Editor
         {
             string options = Environment.NewLine;
             if (img_click == null) return options;
-            //if (img_click.src == null) return options;
-            //if (img_click.src.Length > 0)
-            //{
-                options += TabInString(7) + "x: " + img_click.x.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "y: " + img_click.y.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "w: " + img_click.w.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "h: " + img_click.h.ToString() + "," + Environment.NewLine;
+
+            options += TabInString(7) + "x: " + img_click.x.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "y: " + img_click.y.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "w: " + img_click.w.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "h: " + img_click.h.ToString() + "," + Environment.NewLine;
+
             if (img_click.src != null && img_click.src.Length > 0)
             {
                 options += TabInString(7) + "src: '" + img_click.src + ".png'," + Environment.NewLine; 
             }
-                options += TabInString(7) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
-                options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
-            //}
+
+            options += TabInString(7) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
+            options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+
             return options;
         }
 
@@ -19791,6 +19866,10 @@ namespace Watch_Face_Editor
             {
                 options += TabInString(7 + tabOffset) + "font: 'fonts/" + text.font + "'," + Environment.NewLine;
             }
+            if (SelectedModel.versionOS >= 3.5 && text.alpha != 255)
+            {
+                options += TabInString(7 + tabOffset) + "alpha: " + text.alpha.ToString() + "," + Environment.NewLine;
+            }
 
             options += TabInString(7 + tabOffset) + "color: " + text.color + "," + Environment.NewLine;
 
@@ -19838,6 +19917,7 @@ namespace Watch_Face_Editor
             options += TabInString(7 + tabOffset) + "// text_size: " + text.text_size.ToString() + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "// char_space: " + text.char_space.ToString() + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "// line_space: " + text.line_space.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// alpha: " + text.alpha.ToString() + "," + Environment.NewLine;
 
             if (SelectedModel.versionOS >= 2 && text.font != null && text.font.Length > 3)
             {
@@ -19910,6 +19990,10 @@ namespace Watch_Face_Editor
             if (SelectedModel.versionOS >= 2 && text.font != null && text.font.Length > 3)
             {
                 options += TabInString(7 + tabOffset) + "font: 'fonts/" + text.font + "'," + Environment.NewLine;
+            }
+            if (SelectedModel.versionOS >= 3.5 && text.alpha != 255)
+            {
+                options += TabInString(7 + tabOffset) + "alpha: " + text.alpha.ToString() + "," + Environment.NewLine;
             }
 
             options += TabInString(7 + tabOffset) + "color: " + text.color + "," + Environment.NewLine;
@@ -20151,7 +20235,7 @@ namespace Watch_Face_Editor
                 options += TabInString(7) + "}]," + Environment.NewLine;
                 options += TabInString(7) + "anim_fps: " + anim.anim_fps.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "anim_auto_start: 1," + Environment.NewLine;
-                options += TabInString(7) + "anim_repeat: 1," + Environment.NewLine;
+                options += TabInString(7) + "anim_repeat: 0," + Environment.NewLine;
                 options += TabInString(7) + "anim_auto_destroy: 1," + Environment.NewLine;
             }
             return options;
@@ -20294,7 +20378,7 @@ namespace Watch_Face_Editor
                 options += TabInString(7) + "}]," + Environment.NewLine;
                 options += TabInString(7) + "anim_fps: " + anim.anim_fps.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "anim_auto_start: 1," + Environment.NewLine;
-                options += TabInString(7) + "anim_repeat: 1," + Environment.NewLine;
+                options += TabInString(7) + "anim_repeat: 0," + Environment.NewLine;
                 options += TabInString(7) + "anim_auto_destroy: 1," + Environment.NewLine;
             }
             return options;
@@ -21392,6 +21476,7 @@ namespace Watch_Face_Editor
                                         year.Icon.src = img.src;
                                         year.Icon.x = img.x;
                                         year.Icon.y = img.y;
+                                        year.Icon.alpha = img.alpha;
                                         year.Icon.visible = true;
                                         year.Icon.position = offset;
                                     }
@@ -21426,6 +21511,7 @@ namespace Watch_Face_Editor
                                         steps.Icon.src = img.src;
                                         steps.Icon.x = img.x;
                                         steps.Icon.y = img.y;
+                                        steps.Icon.alpha = img.alpha;
                                         steps.Icon.visible = true;
                                         steps.Icon.position = offset;
                                     }
@@ -21456,6 +21542,7 @@ namespace Watch_Face_Editor
                                         battery.Icon.src = img.src;
                                         battery.Icon.x = img.x;
                                         battery.Icon.y = img.y;
+                                        battery.Icon.alpha = img.alpha;
                                         battery.Icon.visible = true;
                                         battery.Icon.position = offset;
                                     }
@@ -21490,6 +21577,7 @@ namespace Watch_Face_Editor
                                         calorie.Icon.src = img.src;
                                         calorie.Icon.x = img.x;
                                         calorie.Icon.y = img.y;
+                                        calorie.Icon.alpha = img.alpha;
                                         calorie.Icon.visible = true;
                                         calorie.Icon.position = offset;
                                     }
@@ -21520,6 +21608,7 @@ namespace Watch_Face_Editor
                                         heart.Icon.src = img.src;
                                         heart.Icon.x = img.x;
                                         heart.Icon.y = img.y;
+                                        heart.Icon.alpha = img.alpha;
                                         heart.Icon.visible = true;
                                         heart.Icon.position = offset;
                                     }
@@ -21552,6 +21641,7 @@ namespace Watch_Face_Editor
                                         pai.Icon.src = img.src;
                                         pai.Icon.x = img.x;
                                         pai.Icon.y = img.y;
+                                        pai.Icon.alpha = img.alpha;
                                         pai.Icon.visible = true;
                                         pai.Icon.position = offset;
                                     }
@@ -21577,6 +21667,7 @@ namespace Watch_Face_Editor
                                         distance.Icon.src = img.src;
                                         distance.Icon.x = img.x;
                                         distance.Icon.y = img.y;
+                                        distance.Icon.alpha = img.alpha;
                                         distance.Icon.visible = true;
                                         distance.Icon.position = offset;
                                     }
@@ -21611,6 +21702,7 @@ namespace Watch_Face_Editor
                                         stand.Icon.src = img.src;
                                         stand.Icon.x = img.x;
                                         stand.Icon.y = img.y;
+                                        stand.Icon.alpha = img.alpha;
                                         stand.Icon.visible = true;
                                         stand.Icon.position = offset;
                                     }
@@ -21641,6 +21733,7 @@ namespace Watch_Face_Editor
                                         activity.Icon.src = img.src;
                                         activity.Icon.x = img.x;
                                         activity.Icon.y = img.y;
+                                        activity.Icon.alpha = img.alpha;
                                         activity.Icon.visible = true;
                                         activity.Icon.position = offset;
                                     }
@@ -21666,6 +21759,7 @@ namespace Watch_Face_Editor
                                         spo2.Icon.src = img.src;
                                         spo2.Icon.x = img.x;
                                         spo2.Icon.y = img.y;
+                                        spo2.Icon.alpha = img.alpha;
                                         spo2.Icon.visible = true;
                                         spo2.Icon.position = offset;
                                     }
@@ -21692,6 +21786,7 @@ namespace Watch_Face_Editor
                                         stress.Icon.src = img.src;
                                         stress.Icon.x = img.x;
                                         stress.Icon.y = img.y;
+                                        stress.Icon.alpha = img.alpha;
                                         stress.Icon.visible = true;
                                         stress.Icon.position = offset;
                                     }
@@ -21726,45 +21821,13 @@ namespace Watch_Face_Editor
                                         fat_burning.Icon.src = img.src;
                                         fat_burning.Icon.x = img.x;
                                         fat_burning.Icon.y = img.y;
+                                        fat_burning.Icon.alpha = img.alpha;
                                         fat_burning.Icon.visible = true;
                                         fat_burning.Icon.position = offset;
                                     }
                                 }
 
 
-
-                                /*if (objectName.EndsWith("temperature_icon_img"))
-                                {
-                                    ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
-                                    if (weather == null)
-                                    {
-                                        elementsList.Add(new ElementWeather());
-                                        weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
-                                    }
-                                    if (weather != null)
-                                    {
-                                        int offset = 1;
-                                        if (weather.Images != null) offset++;
-                                        if (weather.Number != null) offset++;
-                                        if (weather.Number_Font != null) offset++;
-                                        if (weather.Number_Min != null) offset++;
-                                        if (weather.Text_Min_rotation != null) offset++;
-                                        if (weather.Text_Min_circle != null) offset++;
-                                        if (weather.Number_Min_Font != null) offset++;
-                                        if (weather.Number_Max != null) offset++;
-                                        if (weather.Number_Max_Font != null) offset++;
-                                        if (weather.Text_Max_rotation != null) offset++;
-                                        if (weather.Text_Max_circle != null) offset++;
-                                        if (weather.City_Name != null) offset++;
-
-                                        weather.Icon = new hmUI_widget_IMG();
-                                        weather.Icon.src = img.src;
-                                        weather.Icon.x = img.x;
-                                        weather.Icon.y = img.y;
-                                        weather.Icon.visible = true;
-                                        weather.Icon.position = offset;
-                                    }
-                                }*/
 
                                 if (objectName.EndsWith("temperature_icon_img"))
                                 {
@@ -21788,6 +21851,7 @@ namespace Watch_Face_Editor
                                         weather.Icon.src = img.src;
                                         weather.Icon.x = img.x;
                                         weather.Icon.y = img.y;
+                                        weather.Icon.alpha = img.alpha;
                                         weather.Icon.visible = true;
                                         weather.Icon.position = offset;
                                     }
@@ -21822,6 +21886,7 @@ namespace Watch_Face_Editor
                                         wfd_icon.Icon.src = img.src;
                                         wfd_icon.Icon.x = img.x;
                                         wfd_icon.Icon.y = img.y;
+                                        wfd_icon.Icon.alpha = img.alpha;
                                         wfd_icon.Icon.visible = true;
                                         wfd_icon.Icon.position = offset;
 
@@ -21854,6 +21919,7 @@ namespace Watch_Face_Editor
                                         uv_index.Icon.src = img.src;
                                         uv_index.Icon.x = img.x;
                                         uv_index.Icon.y = img.y;
+                                        uv_index.Icon.alpha = img.alpha;
                                         uv_index.Icon.visible = true;
                                         uv_index.Icon.position = offset;
                                     }
@@ -21880,6 +21946,7 @@ namespace Watch_Face_Editor
                                         humidity.Icon.src = img.src;
                                         humidity.Icon.x = img.x;
                                         humidity.Icon.y = img.y;
+                                        humidity.Icon.alpha = img.alpha;
                                         humidity.Icon.visible = true;
                                         humidity.Icon.position = offset;
                                     }
@@ -21906,6 +21973,7 @@ namespace Watch_Face_Editor
                                         altimeter.Icon.src = img.src;
                                         altimeter.Icon.x = img.x;
                                         altimeter.Icon.y = img.y;
+                                        altimeter.Icon.alpha = img.alpha;
                                         altimeter.Icon.visible = true;
                                         altimeter.Icon.position = offset;
                                     }
@@ -21939,6 +22007,7 @@ namespace Watch_Face_Editor
                                         sunrise.Icon.src = img.src;
                                         sunrise.Icon.x = img.x;
                                         sunrise.Icon.y = img.y;
+                                        sunrise.Icon.alpha = img.alpha;
                                         sunrise.Icon.visible = true;
                                         sunrise.Icon.position = offset;
                                     }
@@ -21967,6 +22036,7 @@ namespace Watch_Face_Editor
                                         moon.Icon.src = img.src;
                                         moon.Icon.x = img.x;
                                         moon.Icon.y = img.y;
+                                        moon.Icon.alpha = img.alpha;
                                         moon.Icon.visible = true;
                                         moon.Icon.position = offset;
                                     }
@@ -21994,6 +22064,7 @@ namespace Watch_Face_Editor
                                         wind.Icon.src = img.src;
                                         wind.Icon.x = img.x;
                                         wind.Icon.y = img.y;
+                                        wind.Icon.alpha = img.alpha;
                                         wind.Icon.visible = true;
                                         wind.Icon.position = offset;
                                     }
@@ -22021,6 +22092,7 @@ namespace Watch_Face_Editor
                                         compass.Icon.src = img.src;
                                         compass.Icon.x = img.x;
                                         compass.Icon.y = img.y;
+                                        compass.Icon.alpha = img.alpha;
                                         compass.Icon.visible = true;
                                         compass.Icon.position = offset;
                                     }
@@ -22043,6 +22115,7 @@ namespace Watch_Face_Editor
                                     image.Icon.src = img.src;
                                     image.Icon.x = img.x;
                                     image.Icon.y = img.y;
+                                    image.Icon.alpha = img.alpha;
                                     image.Icon.position = 1;
                                     image.Icon.visible = true;
                                 }
@@ -22073,6 +22146,7 @@ namespace Watch_Face_Editor
                                     topImage.Icon.src = img.src;
                                     topImage.Icon.x = img.x;
                                     topImage.Icon.y = img.y;
+                                    topImage.Icon.alpha = img.alpha;
                                     if (img.show_level == "ONLY_NORMAL | ONLY_AOD") topImage.showInAOD = true;
                                 }
                                 continue;
@@ -32454,6 +32528,7 @@ namespace Watch_Face_Editor
                                 weather.City_Name.text_size = text.text_size;
                                 weather.City_Name.char_space = text.char_space;
                                 weather.City_Name.line_space = text.line_space;
+                                weather.City_Name.alpha = text.alpha;
 
                                 weather.City_Name.align_h = text.align_h;
                                 weather.City_Name.align_v = text.align_v;
@@ -32496,6 +32571,7 @@ namespace Watch_Face_Editor
                                 dateDay.Number_Font.text_size = text.text_size;
                                 dateDay.Number_Font.char_space = text.char_space;
                                 dateDay.Number_Font.line_space = text.line_space;
+                                dateDay.Number_Font.alpha = text.alpha;
 
                                 dateDay.Number_Font.align_h = text.align_h;
                                 dateDay.Number_Font.align_v = text.align_v;
@@ -32542,6 +32618,7 @@ namespace Watch_Face_Editor
                                 dateDay.Day_Month_Font.text_size = text.text_size;
                                 dateDay.Day_Month_Font.char_space = text.char_space;
                                 dateDay.Day_Month_Font.line_space = text.line_space;
+                                dateDay.Day_Month_Font.alpha = text.alpha;
 
                                 dateDay.Day_Month_Font.align_h = text.align_h;
                                 dateDay.Day_Month_Font.align_v = text.align_v;
@@ -32588,6 +32665,7 @@ namespace Watch_Face_Editor
                                 dateDay.Day_Month_Year_Font.text_size = text.text_size;
                                 dateDay.Day_Month_Year_Font.char_space = text.char_space;
                                 dateDay.Day_Month_Year_Font.line_space = text.line_space;
+                                dateDay.Day_Month_Year_Font.alpha = text.alpha;
 
                                 dateDay.Day_Month_Year_Font.align_h = text.align_h;
                                 dateDay.Day_Month_Year_Font.align_v = text.align_v;
@@ -32634,6 +32712,7 @@ namespace Watch_Face_Editor
                                 dateMonth.Number_Font.text_size = text.text_size;
                                 dateMonth.Number_Font.char_space = text.char_space;
                                 dateMonth.Number_Font.line_space = text.line_space;
+                                dateMonth.Number_Font.alpha = text.alpha;
 
                                 dateMonth.Number_Font.align_h = text.align_h;
                                 dateMonth.Number_Font.align_v = text.align_v;
@@ -32680,6 +32759,7 @@ namespace Watch_Face_Editor
                                 dateMonth.Month_Font.text_size = text.text_size;
                                 dateMonth.Month_Font.char_space = text.char_space;
                                 dateMonth.Month_Font.line_space = text.line_space;
+                                dateMonth.Month_Font.alpha = text.alpha;
 
                                 dateMonth.Month_Font.align_h = text.align_h;
                                 dateMonth.Month_Font.align_v = text.align_v;
@@ -32724,6 +32804,7 @@ namespace Watch_Face_Editor
                                 dateYear.Number_Font.text_size = text.text_size;
                                 dateYear.Number_Font.char_space = text.char_space;
                                 dateYear.Number_Font.line_space = text.line_space;
+                                dateYear.Number_Font.alpha = text.alpha;
 
                                 dateYear.Number_Font.align_h = text.align_h;
                                 dateYear.Number_Font.align_v = text.align_v;
@@ -32765,6 +32846,7 @@ namespace Watch_Face_Editor
                                 weekDay.DayOfWeek_Font.text_size = text.text_size;
                                 weekDay.DayOfWeek_Font.char_space = text.char_space;
                                 weekDay.DayOfWeek_Font.line_space = text.line_space;
+                                weekDay.DayOfWeek_Font.alpha = text.alpha;
 
                                 weekDay.DayOfWeek_Font.align_h = text.align_h;
                                 weekDay.DayOfWeek_Font.align_v = text.align_v;
@@ -32824,6 +32906,7 @@ namespace Watch_Face_Editor
                                 time_hour_text.Group_Hour.Number_Font.text_size = text.text_size;
                                 time_hour_text.Group_Hour.Number_Font.char_space = text.char_space;
                                 time_hour_text.Group_Hour.Number_Font.line_space = text.line_space;
+                                time_hour_text.Group_Hour.Number_Font.alpha = text.alpha;
 
                                 time_hour_text.Group_Hour.Number_Font.align_h = text.align_h;
                                 time_hour_text.Group_Hour.Number_Font.align_v = text.align_v;
@@ -32883,6 +32966,7 @@ namespace Watch_Face_Editor
                                 time_minute_text.Group_Minute.Number_Font.text_size = text.text_size;
                                 time_minute_text.Group_Minute.Number_Font.char_space = text.char_space;
                                 time_minute_text.Group_Minute.Number_Font.line_space = text.line_space;
+                                time_minute_text.Group_Minute.Number_Font.alpha = text.alpha;
 
                                 time_minute_text.Group_Minute.Number_Font.align_h = text.align_h;
                                 time_minute_text.Group_Minute.Number_Font.align_v = text.align_v;
@@ -32942,6 +33026,7 @@ namespace Watch_Face_Editor
                                 second_text_font.Group_Second.Number_Font.text_size = text.text_size;
                                 second_text_font.Group_Second.Number_Font.char_space = text.char_space;
                                 second_text_font.Group_Second.Number_Font.line_space = text.line_space;
+                                second_text_font.Group_Second.Number_Font.alpha = text.alpha;
 
                                 second_text_font.Group_Second.Number_Font.align_h = text.align_h;
                                 second_text_font.Group_Second.Number_Font.align_v = text.align_v;
@@ -32962,7 +33047,7 @@ namespace Watch_Face_Editor
                             if (time_hour_min_text == null)
                             {
                                 elementsList.Add(new ElementDigitalTime_v2());
-                                time_hour_min_text = (ElementDigitalTime_v2)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime_v2_");
+                                time_hour_min_text = (ElementDigitalTime_v2)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime_v2");
                             }
                             if (time_hour_min_text != null)
                             {
@@ -33000,6 +33085,7 @@ namespace Watch_Face_Editor
                                 time_hour_min_text.Hour_Min_Font.text_size = text.text_size;
                                 time_hour_min_text.Hour_Min_Font.char_space = text.char_space;
                                 time_hour_min_text.Hour_Min_Font.line_space = text.line_space;
+                                time_hour_min_text.Hour_Min_Font.alpha = text.alpha;
 
                                 time_hour_min_text.Hour_Min_Font.align_h = text.align_h;
                                 time_hour_min_text.Hour_Min_Font.align_v = text.align_v;
@@ -33059,6 +33145,7 @@ namespace Watch_Face_Editor
                                 time_hour_min_sec_text.Hour_Min_Sec_Font.text_size = text.text_size;
                                 time_hour_min_sec_text.Hour_Min_Sec_Font.char_space = text.char_space;
                                 time_hour_min_sec_text.Hour_Min_Sec_Font.line_space = text.line_space;
+                                time_hour_min_sec_text.Hour_Min_Sec_Font.alpha = text.alpha;
 
                                 time_hour_min_sec_text.Hour_Min_Sec_Font.align_h = text.align_h;
                                 time_hour_min_sec_text.Hour_Min_Sec_Font.align_v = text.align_v;
@@ -33106,6 +33193,7 @@ namespace Watch_Face_Editor
                                 compass.Number_Font.text_size = text.text_size;
                                 compass.Number_Font.char_space = text.char_space;
                                 compass.Number_Font.line_space = text.line_space;
+                                compass.Number_Font.alpha = text.alpha;
 
                                 compass.Number_Font.align_h = text.align_h;
                                 compass.Number_Font.align_v = text.align_v;
@@ -33167,6 +33255,7 @@ namespace Watch_Face_Editor
                                 weatherFewDays_week_font.DayOfWeek_Font.text_size = textOptions.text_size;
                                 weatherFewDays_week_font.DayOfWeek_Font.char_space = textOptions.char_space;
                                 weatherFewDays_week_font.DayOfWeek_Font.line_space = textOptions.line_space;
+                                weatherFewDays_week_font.DayOfWeek_Font.alpha = textOptions.alpha;
 
                                 weatherFewDays_week_font.DayOfWeek_Font.unit_string = textOptions.unit_string;
 
@@ -33219,6 +33308,7 @@ namespace Watch_Face_Editor
                                 weatherFewDays.Number_Font_Max.text_size = textOptions.text_size;
                                 weatherFewDays.Number_Font_Max.char_space = textOptions.char_space;
                                 weatherFewDays.Number_Font_Max.line_space = textOptions.line_space;
+                                weatherFewDays.Number_Font_Max.alpha = textOptions.alpha;
 
                                 weatherFewDays.Number_Font_Max.align_h = textOptions.align_h;
                                 weatherFewDays.Number_Font_Max.align_v = textOptions.align_v;
@@ -33269,6 +33359,7 @@ namespace Watch_Face_Editor
                                 weatherFewDays.Number_Font_Average.text_size = textOptions.text_size;
                                 weatherFewDays.Number_Font_Average.char_space = textOptions.char_space;
                                 weatherFewDays.Number_Font_Average.line_space = textOptions.line_space;
+                                weatherFewDays.Number_Font_Average.alpha = textOptions.alpha;
 
                                 weatherFewDays.Number_Font_Average.align_h = textOptions.align_h;
                                 weatherFewDays.Number_Font_Average.align_v = textOptions.align_v;
@@ -33319,6 +33410,7 @@ namespace Watch_Face_Editor
                                 weatherFewDays.Number_Font_Min.text_size = textOptions.text_size;
                                 weatherFewDays.Number_Font_Min.char_space = textOptions.char_space;
                                 weatherFewDays.Number_Font_Min.line_space = textOptions.line_space;
+                                weatherFewDays.Number_Font_Min.alpha = textOptions.alpha;
 
                                 weatherFewDays.Number_Font_Min.align_h = textOptions.align_h;
                                 weatherFewDays.Number_Font_Min.align_v = textOptions.align_v;
@@ -33371,6 +33463,7 @@ namespace Watch_Face_Editor
                                 weatherFewDays.Number_Font_MaxMin.text_size = textOptions.text_size;
                                 weatherFewDays.Number_Font_MaxMin.char_space = textOptions.char_space;
                                 weatherFewDays.Number_Font_MaxMin.line_space = textOptions.line_space;
+                                weatherFewDays.Number_Font_MaxMin.alpha = textOptions.alpha;
 
                                 weatherFewDays.Number_Font_MaxMin.align_h = textOptions.align_h;
                                 weatherFewDays.Number_Font_MaxMin.align_v = textOptions.align_v;
@@ -33426,6 +33519,7 @@ namespace Watch_Face_Editor
 
                                 steps.Number_Font.char_space = text_font.char_space;
                                 steps.Number_Font.line_space = text_font.line_space;
+                                steps.Number_Font.alpha = text_font.alpha;
 
                                 steps.Number_Font.align_h = text_font.align_h;
                                 steps.Number_Font.align_v = text_font.align_v;
@@ -33479,6 +33573,7 @@ namespace Watch_Face_Editor
 
                                 steps.Number_Target_Font.char_space = text_font.char_space;
                                 steps.Number_Target_Font.line_space = text_font.line_space;
+                                steps.Number_Target_Font.alpha = text_font.alpha;
 
                                 steps.Number_Target_Font.align_h = text_font.align_h;
                                 steps.Number_Target_Font.align_v = text_font.align_v;
@@ -33528,6 +33623,7 @@ namespace Watch_Face_Editor
 
                                 battery.Number_Font.char_space = text_font.char_space;
                                 battery.Number_Font.line_space = text_font.line_space;
+                                battery.Number_Font.alpha = text_font.alpha;
 
                                 battery.Number_Font.align_h = text_font.align_h;
                                 battery.Number_Font.align_v = text_font.align_v;
@@ -33581,6 +33677,7 @@ namespace Watch_Face_Editor
 
                                 calorie.Number_Font.char_space = text_font.char_space;
                                 calorie.Number_Font.line_space = text_font.line_space;
+                                calorie.Number_Font.alpha = text_font.alpha;
 
                                 calorie.Number_Font.align_h = text_font.align_h;
                                 calorie.Number_Font.align_v = text_font.align_v;
@@ -33634,6 +33731,7 @@ namespace Watch_Face_Editor
 
                                 calorie.Number_Target_Font.char_space = text_font.char_space;
                                 calorie.Number_Target_Font.line_space = text_font.line_space;
+                                calorie.Number_Target_Font.alpha = text_font.alpha;
 
                                 calorie.Number_Target_Font.align_h = text_font.align_h;
                                 calorie.Number_Target_Font.align_v = text_font.align_v;
@@ -33683,6 +33781,7 @@ namespace Watch_Face_Editor
 
                                 heart.Number_Font.char_space = text_font.char_space;
                                 heart.Number_Font.line_space = text_font.line_space;
+                                heart.Number_Font.alpha = text_font.alpha;
 
                                 heart.Number_Font.align_h = text_font.align_h;
                                 heart.Number_Font.align_v = text_font.align_v;
@@ -33733,6 +33832,7 @@ namespace Watch_Face_Editor
 
                                 pai.Number_Target_Font.char_space = text_font.char_space;
                                 pai.Number_Target_Font.line_space = text_font.line_space;
+                                pai.Number_Target_Font.alpha = text_font.alpha;
 
                                 pai.Number_Target_Font.align_h = text_font.align_h;
                                 pai.Number_Target_Font.align_v = text_font.align_v;
@@ -33777,6 +33877,7 @@ namespace Watch_Face_Editor
 
                                 distance.Number_Font.char_space = text_font.char_space;
                                 distance.Number_Font.line_space = text_font.line_space;
+                                distance.Number_Font.alpha = text_font.alpha;
 
                                 distance.Number_Font.align_h = text_font.align_h;
                                 distance.Number_Font.align_v = text_font.align_v;
@@ -33830,6 +33931,7 @@ namespace Watch_Face_Editor
 
                                 stand.Number_Font.char_space = text_font.char_space;
                                 stand.Number_Font.line_space = text_font.line_space;
+                                stand.Number_Font.alpha = text_font.alpha;
 
                                 stand.Number_Font.align_h = text_font.align_h;
                                 stand.Number_Font.align_v = text_font.align_v;
@@ -33883,6 +33985,7 @@ namespace Watch_Face_Editor
 
                                 stand.Number_Target_Font.char_space = text_font.char_space;
                                 stand.Number_Target_Font.line_space = text_font.line_space;
+                                stand.Number_Target_Font.alpha = text_font.alpha;
 
                                 stand.Number_Target_Font.align_h = text_font.align_h;
                                 stand.Number_Target_Font.align_v = text_font.align_v;
@@ -33932,6 +34035,7 @@ namespace Watch_Face_Editor
 
                                 activity.Number_Font.char_space = text_font.char_space;
                                 activity.Number_Font.line_space = text_font.line_space;
+                                activity.Number_Font.alpha = text_font.alpha;
 
                                 activity.Number_Font.align_h = text_font.align_h;
                                 activity.Number_Font.align_v = text_font.align_v;
@@ -33981,6 +34085,7 @@ namespace Watch_Face_Editor
 
                                 activity.Number_Target_Font.char_space = text_font.char_space;
                                 activity.Number_Target_Font.line_space = text_font.line_space;
+                                activity.Number_Target_Font.alpha = text_font.alpha;
 
                                 activity.Number_Target_Font.align_h = text_font.align_h;
                                 activity.Number_Target_Font.align_v = text_font.align_v;
@@ -34025,6 +34130,7 @@ namespace Watch_Face_Editor
 
                                 spo2.Number_Font.char_space = text_font.char_space;
                                 spo2.Number_Font.line_space = text_font.line_space;
+                                spo2.Number_Font.alpha = text_font.alpha;
 
                                 spo2.Number_Font.align_h = text_font.align_h;
                                 spo2.Number_Font.align_v = text_font.align_v;
@@ -34070,6 +34176,7 @@ namespace Watch_Face_Editor
 
                                 stress.Number_Font.char_space = text_font.char_space;
                                 stress.Number_Font.line_space = text_font.line_space;
+                                stress.Number_Font.alpha = text_font.alpha;
 
                                 stress.Number_Font.align_h = text_font.align_h;
                                 stress.Number_Font.align_v = text_font.align_v;
@@ -34123,6 +34230,7 @@ namespace Watch_Face_Editor
 
                                 fat_burning.Number_Font.char_space = text_font.char_space;
                                 fat_burning.Number_Font.line_space = text_font.line_space;
+                                fat_burning.Number_Font.alpha = text_font.alpha;
 
                                 fat_burning.Number_Font.align_h = text_font.align_h;
                                 fat_burning.Number_Font.align_v = text_font.align_v;
@@ -34176,6 +34284,7 @@ namespace Watch_Face_Editor
 
                                 fat_burning.Number_Target_Font.char_space = text_font.char_space;
                                 fat_burning.Number_Target_Font.line_space = text_font.line_space;
+                                fat_burning.Number_Target_Font.alpha = text_font.alpha;
 
                                 fat_burning.Number_Target_Font.align_h = text_font.align_h;
                                 fat_burning.Number_Target_Font.align_v = text_font.align_v;
@@ -34437,6 +34546,7 @@ namespace Watch_Face_Editor
 
                                 weather.Group_Current.Number_Font.char_space = text_font.char_space;
                                 weather.Group_Current.Number_Font.line_space = text_font.line_space;
+                                weather.Group_Current.Number_Font.alpha = text_font.alpha;
 
                                 weather.Group_Current.Number_Font.align_h = text_font.align_h;
                                 weather.Group_Current.Number_Font.align_v = text_font.align_v;
@@ -34485,6 +34595,7 @@ namespace Watch_Face_Editor
 
                                 weather.Group_Min.Number_Font.char_space = text_font.char_space;
                                 weather.Group_Min.Number_Font.line_space = text_font.line_space;
+                                weather.Group_Min.Number_Font.alpha = text_font.alpha;
 
                                 weather.Group_Min.Number_Font.align_h = text_font.align_h;
                                 weather.Group_Min.Number_Font.align_v = text_font.align_v;
@@ -34533,6 +34644,7 @@ namespace Watch_Face_Editor
 
                                 weather.Group_Max.Number_Font.char_space = text_font.char_space;
                                 weather.Group_Max.Number_Font.line_space = text_font.line_space;
+                                weather.Group_Max.Number_Font.alpha = text_font.alpha;
 
                                 weather.Group_Max.Number_Font.align_h = text_font.align_h;
                                 weather.Group_Max.Number_Font.align_v = text_font.align_v;
@@ -34581,6 +34693,7 @@ namespace Watch_Face_Editor
 
                                 weather.Group_Max_Min.Number_Font.char_space = text_font.char_space;
                                 weather.Group_Max_Min.Number_Font.line_space = text_font.line_space;
+                                weather.Group_Max_Min.Number_Font.alpha = text_font.alpha;
 
                                 weather.Group_Max_Min.Number_Font.align_h = text_font.align_h;
                                 weather.Group_Max_Min.Number_Font.align_v = text_font.align_v;
@@ -34627,6 +34740,7 @@ namespace Watch_Face_Editor
 
                                 uv_index.Number_Font.char_space = text_font.char_space;
                                 uv_index.Number_Font.line_space = text_font.line_space;
+                                uv_index.Number_Font.alpha = text_font.alpha;
 
                                 uv_index.Number_Font.align_h = text_font.align_h;
                                 uv_index.Number_Font.align_v = text_font.align_v;
@@ -34672,6 +34786,7 @@ namespace Watch_Face_Editor
 
                                 humidity.Number_Font.char_space = text_font.char_space;
                                 humidity.Number_Font.line_space = text_font.line_space;
+                                humidity.Number_Font.alpha = text_font.alpha;
 
                                 humidity.Number_Font.align_h = text_font.align_h;
                                 humidity.Number_Font.align_v = text_font.align_v;
@@ -34717,6 +34832,7 @@ namespace Watch_Face_Editor
 
                                 altimeter.Number_Font.char_space = text_font.char_space;
                                 altimeter.Number_Font.line_space = text_font.line_space;
+                                altimeter.Number_Font.alpha = text_font.alpha;
 
                                 altimeter.Number_Font.align_h = text_font.align_h;
                                 altimeter.Number_Font.align_v = text_font.align_v;
@@ -34762,6 +34878,7 @@ namespace Watch_Face_Editor
 
                                 altimeter.Number_Target_Font.char_space = text_font.char_space;
                                 altimeter.Number_Target_Font.line_space = text_font.line_space;
+                                altimeter.Number_Target_Font.alpha = text_font.alpha;
 
                                 altimeter.Number_Target_Font.align_h = text_font.align_h;
                                 altimeter.Number_Target_Font.align_v = text_font.align_v;
@@ -34814,6 +34931,7 @@ namespace Watch_Face_Editor
 
                                 sunrise.Sunrise_Font.char_space = text_font.char_space;
                                 sunrise.Sunrise_Font.line_space = text_font.line_space;
+                                sunrise.Sunrise_Font.alpha = text_font.alpha;
 
                                 sunrise.Sunrise_Font.align_h = text_font.align_h;
                                 sunrise.Sunrise_Font.align_v = text_font.align_v;
@@ -34866,6 +34984,7 @@ namespace Watch_Face_Editor
 
                                 sunrise.Sunset_Font.char_space = text_font.char_space;
                                 sunrise.Sunset_Font.line_space = text_font.line_space;
+                                sunrise.Sunset_Font.alpha = text_font.alpha;
 
                                 sunrise.Sunset_Font.align_h = text_font.align_h;
                                 sunrise.Sunset_Font.align_v = text_font.align_v;
@@ -34913,6 +35032,7 @@ namespace Watch_Face_Editor
 
                                 moon.Sunrise_Font.char_space = text_font.char_space;
                                 moon.Sunrise_Font.line_space = text_font.line_space;
+                                moon.Sunrise_Font.alpha = text_font.alpha;
 
                                 moon.Sunrise_Font.align_h = text_font.align_h;
                                 moon.Sunrise_Font.align_v = text_font.align_v;
@@ -34960,6 +35080,7 @@ namespace Watch_Face_Editor
 
                                 moon.Sunset_Font.char_space = text_font.char_space;
                                 moon.Sunset_Font.line_space = text_font.line_space;
+                                moon.Sunset_Font.alpha = text_font.alpha;
 
                                 moon.Sunset_Font.align_h = text_font.align_h;
                                 moon.Sunset_Font.align_v = text_font.align_v;
@@ -35006,6 +35127,7 @@ namespace Watch_Face_Editor
 
                                 wind.Number_Font.char_space = text_font.char_space;
                                 wind.Number_Font.line_space = text_font.line_space;
+                                wind.Number_Font.alpha = text_font.alpha;
 
                                 wind.Number_Font.align_h = text_font.align_h;
                                 wind.Number_Font.align_v = text_font.align_v;
@@ -35629,6 +35751,7 @@ namespace Watch_Face_Editor
                 if (parametrs.ContainsKey("// y") && Int32.TryParse(parametrs["// y"], out value)) img.y = value;
                 if (parametrs.ContainsKey("// h") && Int32.TryParse(parametrs["// h"], out value)) img.h = value;
                 if (parametrs.ContainsKey("// w") && Int32.TryParse(parametrs["// w"], out value)) img.w = value;
+                if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value)) img.alpha = value;
 
                 if (parametrs.ContainsKey("// show_level"))
                 {
@@ -35649,6 +35772,7 @@ namespace Watch_Face_Editor
                 if (parametrs.ContainsKey("y") && Int32.TryParse(parametrs["y"], out value)) img.y = value;
                 if (parametrs.ContainsKey("h") && Int32.TryParse(parametrs["h"], out value)) img.h = value;
                 if (parametrs.ContainsKey("w") && Int32.TryParse(parametrs["w"], out value)) img.w = value;
+                if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value)) img.alpha = value;
 
                 if (parametrs.ContainsKey("show_level"))
                 {
@@ -37572,6 +37696,7 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("text_size") && Int32.TryParse(parametrs["text_size"], out value)) text.text_size = value;
             if (parametrs.ContainsKey("char_space") && Int32.TryParse(parametrs["char_space"], out value)) text.char_space = value;
             if (parametrs.ContainsKey("line_space") && Int32.TryParse(parametrs["line_space"], out value)) text.line_space = value;
+            if (parametrs.ContainsKey("alpha") && Int32.TryParse(parametrs["alpha"], out value)) text.alpha = value;
 
             if (parametrs.ContainsKey("font"))
             {
@@ -37637,6 +37762,7 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("// text_size") && Int32.TryParse(parametrs["// text_size"], out value)) text.text_size = value;
             if (parametrs.ContainsKey("// char_space") && Int32.TryParse(parametrs["// char_space"], out value)) text.char_space = value;
             if (parametrs.ContainsKey("// line_space") && Int32.TryParse(parametrs["// line_space"], out value)) text.line_space = value;
+            if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value)) text.alpha = value;
 
             if (parametrs.ContainsKey("// font"))
             {

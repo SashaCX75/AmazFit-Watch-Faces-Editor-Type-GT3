@@ -388,4 +388,7 @@
   <data name="label_Color2.Text" xml:space="preserve">
     <value>Колір вихідних</value>
   </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Прозорість</value>
+  </data>
 </root>

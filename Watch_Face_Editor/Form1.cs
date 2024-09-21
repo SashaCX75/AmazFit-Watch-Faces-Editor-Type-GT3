@@ -5534,6 +5534,7 @@ namespace Watch_Face_Editor
 
                 Elements.Insert(0, image);
                 uCtrl_Icon_Opt.SettingsClear();
+                uCtrl_Icon_Opt.Alpha = SelectedModel.versionOS >= 2.1;
                 return true;
             }
             else MessageBox.Show(Properties.FormStrings.Message_Widget_Exists, Properties.FormStrings.Message_Warning_Caption,
@@ -21896,6 +21897,10 @@ namespace Watch_Face_Editor
                         comboBox_ConvertingInput_Model.Text = "454 (T-Rex 2)";
                         comboBox_ConvertingOutput_Model.Text = "480 (GTR 3 Pro)";
                         break;
+                    case "T-Rex 3":
+                        comboBox_ConvertingInput_Model.Text = "480 (T-Rex 2)";
+                        comboBox_ConvertingOutput_Model.Text = "454 (T-Rex 2)";
+                        break;
                     case "T-Rex Ultra":
                         comboBox_ConvertingInput_Model.Text = "454 (T-Rex Ultra)";
                         comboBox_ConvertingOutput_Model.Text = "480 (GTR 3 Pro)";
@@ -22008,6 +22013,7 @@ namespace Watch_Face_Editor
                 case "480 (GTR 3 Pro)":
                 case "480 (Cheetah Pro)":
                 case "480 (Balance)":
+                case "480 (T-Rex 3)":
                     numericUpDown_ConvertingInput_Custom.Value = 480;
                     break;
             }
@@ -22051,6 +22057,7 @@ namespace Watch_Face_Editor
                 case "480 (GTR 3 Pro)":
                 case "480 (Cheetah Pro)":
                 case "480 (Balance)":
+                case "480 (T-Rex 3)":
                     numericUpDown_ConvertingOutput_Custom.Value = 480;
                     break;
             }
@@ -22139,6 +22146,10 @@ namespace Watch_Face_Editor
                     case "480 (Balance)":
                         suffix = "_Balance";
                         DeviceName = "Balance";
+                        break;
+                    case "480 (T-Rex 3)":
+                        suffix = "_T_Rex_3";
+                        DeviceName = "T-Rex 3";
                         break;
                     default:
                         suffix = "_Custom_" + numericUpDown_ConvertingOutput_Custom.Value.ToString();
