@@ -25,6 +25,7 @@ namespace ControlLibrary
         private bool Altitude_mode = false;
         private bool Angle_mode = false;
         private bool Angle_visible_mode = true;
+        private bool Alpha_mode = false;
 
         //private Point location_unit;
         private Point location_unit_miles;
@@ -533,6 +534,24 @@ namespace ControlLibrary
             }
         }
 
+        /// <summary>Режим доступности прозрачности</summary>
+        [Description("Режим доступности прозрачности")]
+        public virtual bool Alpha
+        {
+            get
+            {
+                return Alpha_mode;
+            }
+            set
+            {
+                Alpha_mode = value;
+                label_alpha.Enabled = Alpha_mode;
+                numericUpDown_Alpha.Enabled = Alpha_mode;
+                label_icon_alpha.Enabled = Alpha_mode;
+                numericUpDown_iconAlpha.Enabled = Alpha_mode;
+            }
+        }
+
         /// <summary>Устанавливает надпись "Следовать за..."</summary>
         [Localizable(true)]
         [Description("Устанавливает надпись \"Следовать за...\"")]
@@ -715,6 +734,7 @@ namespace ControlLibrary
             Altitude = false;
             Angle = false;
             AngleVisible = true;
+            Alpha = false;
 
             comboBox_image.Text = null;
             comboBox_icon.Text = null;

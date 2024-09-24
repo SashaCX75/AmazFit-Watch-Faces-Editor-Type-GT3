@@ -162,9 +162,6 @@
   <data name="label05.Text" xml:space="preserve">
     <value>Координати іконки</value>
   </data>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 82</value>
-  </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -230,7 +227,7 @@
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Вставити</value>
   </data>
-  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 82</value>
   </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -298,11 +295,11 @@
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Вставити</value>
   </data>
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 82</value>
+  </data>
   <data name="label_angle.Text" xml:space="preserve">
     <value>Кут</value>
-  </data>
-  <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 48</value>
   </data>
   <data name="копироватьСвойстваToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 22</value>
@@ -316,7 +313,16 @@
   <data name="вставитьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>Вставити властивості</value>
   </data>
+  <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 48</value>
+  </data>
   <data name="label_separator.Text" xml:space="preserve">
     <value>Роздільник</value>
+  </data>
+  <data name="label_alpha.Text" xml:space="preserve">
+    <value>Прозорість</value>
+  </data>
+  <data name="label_icon_alpha.Text" xml:space="preserve">
+    <value>Прозорість іконки</value>
   </data>
 </root>

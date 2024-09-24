@@ -365,8 +365,24 @@ namespace Watch_Face_Editor
                         if (imageIndex < ListImagesFullName.Count)
                         {
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            gPanel.DrawImage(src, x, y);
-                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                            {
+                                int w = src.Width;
+                                int h = src.Height;
+                                // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                ColorMatrix colorMatrix = new ColorMatrix();
+                                colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
+
+                                // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                ImageAttributes imgAttributes = new ImageAttributes();
+                                imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                // Указываем прямоугольник, куда будет помещено изображение
+                                Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                            }
+                            else gPanel.DrawImage(src, x, y);
+                            //gPanel.DrawImage(src, x, y);
                         }
                     } 
                 }
@@ -1616,6 +1632,7 @@ namespace Watch_Face_Editor
                                 bool addZero = DigitalTime_v2.Group_Hour.Number.zero;
                                 //addZero = true;
                                 int value = WatchFacePreviewSet.Time.Hours;
+                                int alpha = DigitalTime_v2.Group_Hour.Number.alpha;
                                 int separator_index = -1;
                                 if (DigitalTime_v2.Group_Hour.Number.unit != null && DigitalTime_v2.Group_Hour.Number.unit.Length > 0)
                                     separator_index = ListImages.IndexOf(DigitalTime_v2.Group_Hour.Number.unit);
@@ -1629,7 +1646,7 @@ namespace Watch_Face_Editor
                                     }
                                 }
 
-                                time_v2_hour_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y, spasing, alignment, value, addZero, 2, separator_index, angle, BBorder, "ElementDigitalTime");
+                                time_v2_hour_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y, spasing, alignment, value, alpha, addZero, 2, separator_index, angle, BBorder, "ElementDigitalTime");
                                 time_v2_minute_offsetX = -1;
                                 time_v2_minute_offsetY = -1;
                                 if (spasing != 0 && separator_index >= 0) time_v2_hour_offsetX -= spasing;
@@ -1639,10 +1656,26 @@ namespace Watch_Face_Editor
                                     imageIndex = ListImages.IndexOf(DigitalTime_v2.Group_Hour.Number.icon);
                                     x = DigitalTime_v2.Group_Hour.Number.iconPosX;
                                     y = DigitalTime_v2.Group_Hour.Number.iconPosY;
+                                    alpha = DigitalTime_v2.Group_Hour.Number.icon_alpha;
 
                                     src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                    if (src != null) gPanel.DrawImage(src, x, y);
-                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                    if (SelectedModel.versionOS >= 2.1 && alpha != 255)
+                                    {
+                                        int w = src.Width;
+                                        int h = src.Height;
+                                        // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                        ColorMatrix colorMatrix = new ColorMatrix();
+                                        colorMatrix.Matrix33 = alpha / 255f; // значение от 0 до 1
+
+                                        // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                        ImageAttributes imgAttributes = new ImageAttributes();
+                                        imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                        // Указываем прямоугольник, куда будет помещено изображение
+                                        Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                        gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                    }
+                                    else if (src != null) gPanel.DrawImage(src, x, y);
                                 }
                             }
                         }
@@ -1778,6 +1811,7 @@ namespace Watch_Face_Editor
                                 int alignment = AlignmentToInt(DigitalTime_v2.Group_Minute.Number.align);
                                 bool addZero = DigitalTime_v2.Group_Minute.Number.zero;
                                 //addZero = true;
+                                int alpha = DigitalTime_v2.Group_Minute.Number.alpha;
                                 if (DigitalTime_v2.Group_Minute.Number.follow && time_v2_hour_offsetX > -1 &&
                                     DigitalTime_v2.Group_Minute.position > DigitalTime_v2.Group_Hour.position &&
                                     DigitalTime_v2.Group_Second.position > DigitalTime_v2.Group_Minute.position)
@@ -1793,7 +1827,7 @@ namespace Watch_Face_Editor
                                 if (DigitalTime_v2.Group_Minute.Number.unit != null && DigitalTime_v2.Group_Minute.Number.unit.Length > 0)
                                     separator_index = ListImages.IndexOf(DigitalTime_v2.Group_Minute.Number.unit);
 
-                                time_v2_minute_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y, spasing, alignment, value, addZero, 2, separator_index, angle, BBorder, "ElementDigitalTime");
+                                time_v2_minute_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y, spasing, alignment, value, alpha, addZero, 2, separator_index, angle, BBorder, "ElementDigitalTime");
                                 time_v2_hour_offsetX = -1;
                                 time_v2_hour_offsetY = -1;
                                 if (spasing != 0 && separator_index >= 0) time_v2_minute_offsetX -= spasing;
@@ -1803,10 +1837,26 @@ namespace Watch_Face_Editor
                                     imageIndex = ListImages.IndexOf(DigitalTime_v2.Group_Minute.Number.icon);
                                     x = DigitalTime_v2.Group_Minute.Number.iconPosX;
                                     y = DigitalTime_v2.Group_Minute.Number.iconPosY;
+                                    alpha = DigitalTime_v2.Group_Minute.Number.icon_alpha;
 
                                     src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                    if (src != null) gPanel.DrawImage(src, x, y);
-                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                    if (SelectedModel.versionOS >= 2.1 && alpha != 255)
+                                    {
+                                        int w = src.Width;
+                                        int h = src.Height;
+                                        // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                        ColorMatrix colorMatrix = new ColorMatrix();
+                                        colorMatrix.Matrix33 = alpha / 255f; // значение от 0 до 1
+
+                                        // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                        ImageAttributes imgAttributes = new ImageAttributes();
+                                        imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                        // Указываем прямоугольник, куда будет помещено изображение
+                                        Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                        gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                    }
+                                    else if (src != null) gPanel.DrawImage(src, x, y);
                                 }
                             } 
                         }
@@ -1942,6 +1992,7 @@ namespace Watch_Face_Editor
                                 int alignment = AlignmentToInt(DigitalTime_v2.Group_Second.Number.align);
                                 bool addZero = DigitalTime_v2.Group_Second.Number.zero;
                                 //addZero = true;
+                                int alpha = DigitalTime_v2.Group_Second.Number.alpha;
                                 if (DigitalTime_v2.Group_Second.Number.follow && time_v2_minute_offsetX > -1 &&
                                     DigitalTime_v2.Group_Minute.position > DigitalTime_v2.Group_Hour.position &&
                                     DigitalTime_v2.Group_Second.position > DigitalTime_v2.Group_Minute.position)
@@ -1959,17 +2010,33 @@ namespace Watch_Face_Editor
 
 
                                 Draw_dagital_text(gPanel, imageIndex, x, y,
-                                                    spasing, alignment, value, addZero, 2, separator_index, angle, BBorder, "ElementDigitalTime");
+                                                    spasing, alignment, value, alpha, addZero, 2, separator_index, angle, BBorder, "ElementDigitalTime");
 
                                 if (DigitalTime_v2.Group_Second.Number.icon != null && DigitalTime_v2.Group_Second.Number.icon.Length > 0)
                                 {
                                     imageIndex = ListImages.IndexOf(DigitalTime_v2.Group_Second.Number.icon);
                                     x = DigitalTime_v2.Group_Second.Number.iconPosX;
                                     y = DigitalTime_v2.Group_Second.Number.iconPosY;
+                                    alpha = DigitalTime_v2.Group_Second.Number.icon_alpha;
 
                                     src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                    if (src != null) gPanel.DrawImage(src, x, y);
-                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                    if (SelectedModel.versionOS >= 2.1 && alpha != 255)
+                                    {
+                                        int w = src.Width;
+                                        int h = src.Height;
+                                        // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                        ColorMatrix colorMatrix = new ColorMatrix();
+                                        colorMatrix.Matrix33 = alpha / 255f; // значение от 0 до 1
+
+                                        // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                        ImageAttributes imgAttributes = new ImageAttributes();
+                                        imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                        // Указываем прямоугольник, куда будет помещено изображение
+                                        Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                        gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                    }
+                                    else if (src != null) gPanel.DrawImage(src, x, y);
                                 }
                             } 
                         }
@@ -2472,13 +2539,14 @@ namespace Watch_Face_Editor
                             int alignment = AlignmentToInt(DateDay.Number.align);
                             bool addZero = DateDay.Number.zero;
                             //addZero = true;
+                            int alpha = DateDay.Number.alpha;
                             int value = WatchFacePreviewSet.Date.Day;
                             int separator_index = -1;
                             if (DateDay.Number.unit != null && DateDay.Number.unit.Length > 0)
                                 separator_index = ListImages.IndexOf(DateDay.Number.unit);
 
                             Draw_dagital_text(gPanel, imageIndex, x, y,
-                                spasing, alignment, value, addZero, 2, separator_index, 0, BBorder, "ElementDateDay");
+                                spasing, alignment, value, alpha, addZero, 2, separator_index, 0, BBorder, "ElementDateDay");
 
                             if (DateDay.Number.icon != null && DateDay.Number.icon.Length > 0)
                             {
@@ -2487,8 +2555,23 @@ namespace Watch_Face_Editor
                                 y = DateDay.Number.iconPosY;
 
                                 src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                if (src != null) gPanel.DrawImage(src, x, y);
-                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                if (SelectedModel.versionOS >= 2.1 && DateDay.Number.alpha != 255)
+                                {
+                                    int w = src.Width;
+                                    int h = src.Height;
+                                    // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                    ColorMatrix colorMatrix = new ColorMatrix();
+                                    colorMatrix.Matrix33 = DateDay.Number.alpha / 255f; // значение от 0 до 1
+
+                                    // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                    ImageAttributes imgAttributes = new ImageAttributes();
+                                    imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                    // Указываем прямоугольник, куда будет помещено изображение
+                                    Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                    gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                }
+                                else if (src != null) gPanel.DrawImage(src, x, y);
                             }
                         }
 
@@ -2815,13 +2898,14 @@ namespace Watch_Face_Editor
                             int alignment = AlignmentToInt(DateMonth.Number.align);
                             bool addZero = DateMonth.Number.zero;
                             //addZero = true;
+                            int alpha = DateMonth.Number.alpha;
                             int value = WatchFacePreviewSet.Date.Month;
                             int separator_index = -1;
                             if (DateMonth.Number.unit != null && DateMonth.Number.unit.Length > 0)
                                 separator_index = ListImages.IndexOf(DateMonth.Number.unit);
 
                             Draw_dagital_text(gPanel, imageIndex, x, y,
-                                spasing, alignment, value, addZero, 2, separator_index, 0, BBorder, "ElementDateMonth");
+                                spasing, alignment, value, alpha, addZero, 2, separator_index, 0, BBorder, "ElementDateMonth");
 
                             if (DateMonth.Number.icon != null && DateMonth.Number.icon.Length > 0)
                             {
@@ -2830,8 +2914,23 @@ namespace Watch_Face_Editor
                                 y = DateMonth.Number.iconPosY;
 
                                 src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                if (src != null) gPanel.DrawImage(src, x, y);
-                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                                {
+                                    int w = src.Width;
+                                    int h = src.Height;
+                                    // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                    ColorMatrix colorMatrix = new ColorMatrix();
+                                    colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
+
+                                    // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                    ImageAttributes imgAttributes = new ImageAttributes();
+                                    imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                    // Указываем прямоугольник, куда будет помещено изображение
+                                    Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                    gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                }
+                                else if (src != null) gPanel.DrawImage(src, x, y);
                             }
                         }
 
@@ -3094,6 +3193,7 @@ namespace Watch_Face_Editor
                         //int alignment = AlignmentToInt(DateYear.Number.align);
                         int alignment = 0;
                         bool addZero = DateYear.Number.zero;
+                        int alpha = DateYear.Number.alpha;
                         int value = WatchFacePreviewSet.Date.Year;
                         if (!addZero) value = value % 100;
                         int separator_index = -1;
@@ -3101,7 +3201,7 @@ namespace Watch_Face_Editor
                             separator_index = ListImages.IndexOf(DateYear.Number.unit);
 
                         Draw_dagital_text(gPanel, imageIndex, x, y,
-                            spasing, alignment, value, addZero, 4, separator_index, 0, BBorder, "ElementDateYear");
+                            spasing, alignment, value, alpha, addZero, 4, separator_index, 0, BBorder, "ElementDateYear");
 
                         if (DateYear.Number.icon != null && DateYear.Number.icon.Length > 0)
                         {
@@ -3110,143 +3210,173 @@ namespace Watch_Face_Editor
                             y = DateYear.Number.iconPosY;
 
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            if (src != null) gPanel.DrawImage(src, x, y);
-                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                        }
-                        }
+                                if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                                {
+                                    int w = src.Width;
+                                    int h = src.Height;
+                                    // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                    ColorMatrix colorMatrix = new ColorMatrix();
+                                    colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
 
-                        if (DateYear.Number_Font != null && index == DateYear.Number_Font.position && DateYear.Number_Font.visible)
+                                    // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                    ImageAttributes imgAttributes = new ImageAttributes();
+                                    imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                    // Указываем прямоугольник, куда будет помещено изображение
+                                    Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                    gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                }
+                                else if (src != null) gPanel.DrawImage(src, x, y);
+                        }
+                     }
+
+                    if (DateYear.Number_Font != null && index == DateYear.Number_Font.position && DateYear.Number_Font.visible)
+                    {
+                        hmUI_widget_TEXT number_font = DateYear.Number_Font;
+                        int x = number_font.x;
+                        int y = number_font.y;
+                        int h = number_font.h;
+                        int w = number_font.w;
+
+                        int size = number_font.text_size;
+                        int space_h = number_font.char_space;
+                        int space_v = number_font.line_space;
+
+                        Color color = StringToColor(number_font.color);
+                        int alpha = number_font.alpha;
+                        string align_h = number_font.align_h;
+                        string align_v = number_font.align_v;
+                        string text_style = number_font.text_style; 
+                        int value = WatchFacePreviewSet.Date.Year;
+                        if (!number_font.padding) value = value % 100;
+                        string valueStr = value.ToString().PadLeft(2, '0');
+                        string unitStr = "year";
+                        //if (number_font.padding) valueStr = valueStr.PadLeft(2, '0');
+                        if (number_font.unit_type > 0)
                         {
-                            hmUI_widget_TEXT number_font = DateYear.Number_Font;
-                            int x = number_font.x;
-                            int y = number_font.y;
-                            int h = number_font.h;
-                            int w = number_font.w;
+                            if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                            valueStr += unitStr;
+                        }
 
-                            int size = number_font.text_size;
-                            int space_h = number_font.char_space;
-                            int space_v = number_font.line_space;
+                        if (number_font.centreHorizontally)
+                        {
+                            x = (SelectedModel.background.w - w) / 2;
+                            align_h = "CENTER_H";
+                        }
+                        if (number_font.centreVertically)
+                        {
+                            y = (SelectedModel.background.h - h) / 2;
+                            align_v = "CENTER_V";
+                        }
 
-                            Color color = StringToColor(number_font.color);
-                            int alpha = number_font.alpha;
-                            string align_h = number_font.align_h;
-                            string align_v = number_font.align_v;
-                            string text_style = number_font.text_style; 
-                            int value = WatchFacePreviewSet.Date.Year;
-                            if (!number_font.padding) value = value % 100;
-                            string valueStr = value.ToString().PadLeft(2, '0');
-                            string unitStr = "year";
-                            //if (number_font.padding) valueStr = valueStr.PadLeft(2, '0');
-                            if (number_font.unit_type > 0)
+                        if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                        {
+                            string font_fileName = FontsList[number_font.font];
+                            //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                            if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
                             {
-                                if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
-                                valueStr += unitStr;
-                            }
-
-                            if (number_font.centreHorizontally)
-                            {
-                                x = (SelectedModel.background.w - w) / 2;
-                                align_h = "CENTER_H";
-                            }
-                            if (number_font.centreVertically)
-                            {
-                                y = (SelectedModel.background.h - h) / 2;
-                                align_v = "CENTER_V";
-                            }
-
-                            if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
-                            {
-                                string font_fileName = FontsList[number_font.font];
-                                //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
-                                if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                Font drawFont = null;
+                                using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
                                 {
-                                    Font drawFont = null;
-                                    using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
-                                    {
-                                        fonts.AddFontFile(font_fileName);
-                                        drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
-                                    }
-
-                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
-                                                    align_h, align_v, text_style, BBorder);
-                                }
-                                else
-                                {
-                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
+                                    fonts.AddFontFile(font_fileName);
+                                    drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
                                 }
 
+                                Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, alpha, valueStr,
+                                                align_h, align_v, text_style, BBorder);
                             }
                             else
                             {
                                 Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                             }
-                        }
 
-                        if (DateYear.Text_rotation != null && DateYear.Text_rotation.img_First != null && DateYear.Text_rotation.img_First.Length > 0 &&
-                                    index == DateYear.Text_rotation.position && DateYear.Text_rotation.visible)
+                        }
+                        else
                         {
-                            value_lenght = 4;
-                            int pos_x = DateYear.Text_rotation.imageX;
-                            int pos_y = DateYear.Text_rotation.imageY;
-                            int spacing = DateYear.Text_rotation.space;
-                            float angle = DateYear.Text_rotation.angle;
-                            bool addZero = DateYear.Text_rotation.zero;
-                            int image_index = ListImages.IndexOf(DateYear.Text_rotation.img_First);
-                            int unit_index = ListImages.IndexOf(DateYear.Text_rotation.unit);
-                            int dot_image_index = ListImages.IndexOf(DateYear.Text_rotation.dot_image);
-                            string horizontal_alignment = DateYear.Text_rotation.align;
-                            bool unit_in_alignment = DateYear.Text_rotation.unit_in_alignment;
-
-                            string valueStr = (WatchFacePreviewSet.Date.Year).ToString();
-                            if (!addZero) valueStr = (WatchFacePreviewSet.Date.Year % 100).ToString();
-                            //if (addZero) valueStr = valueStr.PadLeft(value_lenght, '0');
-
-                            Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
-                                image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
-                                valueStr, value_lenght, BBorder, -1, -1, false, "ElementDateYear");
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, alpha, valueStr, align_h, align_v, text_style, BBorder);
                         }
+                    }
 
-                        if (DateYear.Text_circle != null && DateYear.Text_circle.img_First != null && DateYear.Text_circle.img_First.Length > 0 &&
-                            index == DateYear.Text_circle.position && DateYear.Text_circle.visible)
+                    if (DateYear.Text_rotation != null && DateYear.Text_rotation.img_First != null && DateYear.Text_rotation.img_First.Length > 0 &&
+                                index == DateYear.Text_rotation.position && DateYear.Text_rotation.visible)
+                    {
+                        value_lenght = 4;
+                        int pos_x = DateYear.Text_rotation.imageX;
+                        int pos_y = DateYear.Text_rotation.imageY;
+                        int spacing = DateYear.Text_rotation.space;
+                        float angle = DateYear.Text_rotation.angle;
+                        bool addZero = DateYear.Text_rotation.zero;
+                        int image_index = ListImages.IndexOf(DateYear.Text_rotation.img_First);
+                        int unit_index = ListImages.IndexOf(DateYear.Text_rotation.unit);
+                        int dot_image_index = ListImages.IndexOf(DateYear.Text_rotation.dot_image);
+                        string horizontal_alignment = DateYear.Text_rotation.align;
+                        bool unit_in_alignment = DateYear.Text_rotation.unit_in_alignment;
+
+                        string valueStr = (WatchFacePreviewSet.Date.Year).ToString();
+                        if (!addZero) valueStr = (WatchFacePreviewSet.Date.Year % 100).ToString();
+                        //if (addZero) valueStr = valueStr.PadLeft(value_lenght, '0');
+
+                        Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                            image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                            valueStr, value_lenght, BBorder, -1, -1, false, "ElementDateYear");
+                    }
+
+                    if (DateYear.Text_circle != null && DateYear.Text_circle.img_First != null && DateYear.Text_circle.img_First.Length > 0 &&
+                        index == DateYear.Text_circle.position && DateYear.Text_circle.visible)
+                    {
+                        value_lenght = 4;
+                        int centr_x = DateYear.Text_circle.circle_center_X;
+                        int centr_y = DateYear.Text_circle.circle_center_Y;
+                        int radius = DateYear.Text_circle.radius;
+                        int spacing = DateYear.Text_circle.char_space_angle;
+                        float angle = DateYear.Text_circle.angle;
+                        bool addZero = DateYear.Text_circle.zero;
+                        int image_index = ListImages.IndexOf(DateYear.Text_circle.img_First);
+                        int unit_index = ListImages.IndexOf(DateYear.Text_circle.unit);
+                        int dot_image_index = ListImages.IndexOf(DateYear.Text_circle.dot_image);
+                        string vertical_alignment = DateYear.Text_circle.vertical_alignment;
+                        string horizontal_alignment = DateYear.Text_circle.horizontal_alignment;
+                        bool reverse_direction = DateYear.Text_circle.reverse_direction;
+                        bool unit_in_alignment = DateYear.Text_circle.unit_in_alignment;
+
+                        string valueStr = (WatchFacePreviewSet.Date.Year).ToString();
+                        if (!addZero) valueStr = (WatchFacePreviewSet.Date.Year % 100).ToString();
+                        //if (addZero) valueStr = valueStr.PadLeft(value_lenght, '0');
+
+                        Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                            image_index, unit_index, dot_image_index, vertical_alignment, horizontal_alignment,
+                            reverse_direction, unit_in_alignment, valueStr, value_lenght, BBorder, showCentrHend, -1, -1, false, "ElementDateYear");
+                    }
+
+                    if (icon != null && icon.src != null && icon.src.Length > 0 &&
+                        index == icon.position && icon.visible)
+                    {
+                        int imageIndex = ListImages.IndexOf(icon.src);
+                        int x = icon.x;
+                        int y = icon.y;
+
+                        if (imageIndex < ListImagesFullName.Count)
                         {
-                            value_lenght = 4;
-                            int centr_x = DateYear.Text_circle.circle_center_X;
-                            int centr_y = DateYear.Text_circle.circle_center_Y;
-                            int radius = DateYear.Text_circle.radius;
-                            int spacing = DateYear.Text_circle.char_space_angle;
-                            float angle = DateYear.Text_circle.angle;
-                            bool addZero = DateYear.Text_circle.zero;
-                            int image_index = ListImages.IndexOf(DateYear.Text_circle.img_First);
-                            int unit_index = ListImages.IndexOf(DateYear.Text_circle.unit);
-                            int dot_image_index = ListImages.IndexOf(DateYear.Text_circle.dot_image);
-                            string vertical_alignment = DateYear.Text_circle.vertical_alignment;
-                            string horizontal_alignment = DateYear.Text_circle.horizontal_alignment;
-                            bool reverse_direction = DateYear.Text_circle.reverse_direction;
-                            bool unit_in_alignment = DateYear.Text_circle.unit_in_alignment;
+                            src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                                {
+                                    int w = src.Width;
+                                    int h = src.Height;
+                                    // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                    ColorMatrix colorMatrix = new ColorMatrix();
+                                    colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
 
-                            string valueStr = (WatchFacePreviewSet.Date.Year).ToString();
-                            if (!addZero) valueStr = (WatchFacePreviewSet.Date.Year % 100).ToString();
-                            //if (addZero) valueStr = valueStr.PadLeft(value_lenght, '0');
+                                    // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                    ImageAttributes imgAttributes = new ImageAttributes();
+                                    imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
 
-                            Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
-                                image_index, unit_index, dot_image_index, vertical_alignment, horizontal_alignment,
-                                reverse_direction, unit_in_alignment, valueStr, value_lenght, BBorder, showCentrHend, -1, -1, false, "ElementDateYear");
+                                    // Указываем прямоугольник, куда будет помещено изображение
+                                    Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                    gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                }
+                                else gPanel.DrawImage(src, x, y);
                         }
-
-                        if (icon != null && icon.src != null && icon.src.Length > 0 &&
-                            index == icon.position && icon.visible)
-                        {
-                            int imageIndex = ListImages.IndexOf(icon.src);
-                            int x = icon.x;
-                            int y = icon.y;
-
-                            if (imageIndex < ListImagesFullName.Count)
-                            {
-                                src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                gPanel.DrawImage(src, x, y);
-                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                            }
-                        }
+                    }
                     }
 
                     break;
@@ -3311,8 +3441,23 @@ namespace Watch_Face_Editor
                             if (imageIndex < ListImagesFullName.Count)
                             {
                                 src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                if (src != null) gPanel.DrawImage(src, x, y);
-                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                if (SelectedModel.versionOS >= 2.1 && DateWeek.Images.alpha != 255)
+                                {
+                                    int w = src.Width;
+                                    int h = src.Height;
+                                    // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                    ColorMatrix colorMatrix = new ColorMatrix();
+                                    colorMatrix.Matrix33 = DateWeek.Images.alpha / 255f; // значение от 0 до 1
+
+                                    // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                    ImageAttributes imgAttributes = new ImageAttributes();
+                                    imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                    // Указываем прямоугольник, куда будет помещено изображение
+                                    Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                    gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                }
+                                else if (src != null) gPanel.DrawImage(src, x, y);
                             }
                         }
 
@@ -3411,24 +3556,24 @@ namespace Watch_Face_Editor
                                 if (imageIndex < ListImagesFullName.Count)
                                 {
                                     src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                    //if (SelectedModel.versionOS >= 2.1 && img_status_alarm.alpha != 255)
-                                    //{
-                                    //    int w = src.Width;
-                                    //    int h = src.Height;
-                                    //    // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
-                                    //    ColorMatrix colorMatrix = new ColorMatrix();
-                                    //    colorMatrix.Matrix33 = img_status_alarm.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+                                    if (SelectedModel.versionOS >= 2.1 && img_status_alarm.alpha != 255)
+                                    {
+                                        int w = src.Width;
+                                        int h = src.Height;
+                                        // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                        ColorMatrix colorMatrix = new ColorMatrix();
+                                        colorMatrix.Matrix33 = img_status_alarm.alpha / 255f; // значение от 0 до 1
 
-                                    //    // Создаем объект ImageAttributes и применяем к нему матрицу цветов
-                                    //    ImageAttributes imgAttributes = new ImageAttributes();
-                                    //    imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+                                        // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                        ImageAttributes imgAttributes = new ImageAttributes();
+                                        imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
 
-                                    //    // Указываем прямоугольник, куда будет помещено изображение
-                                    //    Rectangle rect_alpha = new Rectangle(x, y, w, h);
-                                    //    gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
-                                    //}
-                                    //else gPanel.DrawImage(src, x, y);
-                                    if (src != null) gPanel.DrawImage(src, x, y);
+                                        // Указываем прямоугольник, куда будет помещено изображение
+                                        Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                        gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                    }
+                                    else gPanel.DrawImage(src, x, y);
+                                    //if (src != null) gPanel.DrawImage(src, x, y);
                                 }
                             }
                         }
@@ -3446,24 +3591,24 @@ namespace Watch_Face_Editor
                                 if (imageIndex < ListImagesFullName.Count)
                                 {
                                     src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                    //if (SelectedModel.versionOS >= 2.1 && img_status_bluetooth.alpha != 255)
-                                    //{
-                                    //    int w = src.Width;
-                                    //    int h = src.Height;
-                                    //    // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
-                                    //    ColorMatrix colorMatrix = new ColorMatrix();
-                                    //    colorMatrix.Matrix33 = img_status_bluetooth.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+                                    if (SelectedModel.versionOS >= 2.1 && img_status_bluetooth.alpha != 255)
+                                    {
+                                        int w = src.Width;
+                                        int h = src.Height;
+                                        // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                        ColorMatrix colorMatrix = new ColorMatrix();
+                                        colorMatrix.Matrix33 = img_status_bluetooth.alpha / 255f; // значение от 0 до 1
 
-                                    //    // Создаем объект ImageAttributes и применяем к нему матрицу цветов
-                                    //    ImageAttributes imgAttributes = new ImageAttributes();
-                                    //    imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+                                        // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                        ImageAttributes imgAttributes = new ImageAttributes();
+                                        imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
 
-                                    //    // Указываем прямоугольник, куда будет помещено изображение
-                                    //    Rectangle rect_alpha = new Rectangle(x, y, w, h);
-                                    //    gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
-                                    //}
-                                    //else gPanel.DrawImage(src, x, y);
-                                    if (src != null) gPanel.DrawImage(src, x, y);
+                                        // Указываем прямоугольник, куда будет помещено изображение
+                                        Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                        gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                    }
+                                    else gPanel.DrawImage(src, x, y);
+                                    //if (src != null) gPanel.DrawImage(src, x, y);
                                 }
                             }
                         }
@@ -3481,24 +3626,24 @@ namespace Watch_Face_Editor
                                 if (imageIndex < ListImagesFullName.Count)
                                 {
                                     src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                    //if (SelectedModel.versionOS >= 2.1 && img_status_dnd.alpha != 255)
-                                    //{
-                                    //    int w = src.Width;
-                                    //    int h = src.Height;
-                                    //    // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
-                                    //    ColorMatrix colorMatrix = new ColorMatrix();
-                                    //    colorMatrix.Matrix33 = img_status_dnd.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+                                    if (SelectedModel.versionOS >= 2.1 && img_status_dnd.alpha != 255)
+                                    {
+                                        int w = src.Width;
+                                        int h = src.Height;
+                                        // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                        ColorMatrix colorMatrix = new ColorMatrix();
+                                        colorMatrix.Matrix33 = img_status_dnd.alpha / 255f; // значение от 0 до 1
 
-                                    //    // Создаем объект ImageAttributes и применяем к нему матрицу цветов
-                                    //    ImageAttributes imgAttributes = new ImageAttributes();
-                                    //    imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+                                        // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                        ImageAttributes imgAttributes = new ImageAttributes();
+                                        imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
 
-                                    //    // Указываем прямоугольник, куда будет помещено изображение
-                                    //    Rectangle rect_alpha = new Rectangle(x, y, w, h);
-                                    //    gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
-                                    //}
-                                    //else gPanel.DrawImage(src, x, y);
-                                    if (src != null) gPanel.DrawImage(src, x, y);
+                                        // Указываем прямоугольник, куда будет помещено изображение
+                                        Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                        gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                    }
+                                    else gPanel.DrawImage(src, x, y);
+                                    //if (src != null) gPanel.DrawImage(src, x, y);
                                 }
                             }
                         }
@@ -3516,24 +3661,24 @@ namespace Watch_Face_Editor
                                 if (imageIndex < ListImagesFullName.Count)
                                 {
                                     src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                    //if (SelectedModel.versionOS >= 2.1 && img_status_lock.alpha != 255)
-                                    //{
-                                    //    int w = src.Width;
-                                    //    int h = src.Height;
-                                    //    // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
-                                    //    ColorMatrix colorMatrix = new ColorMatrix();
-                                    //    colorMatrix.Matrix33 = img_status_lock.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+                                    if (SelectedModel.versionOS >= 2.1 && img_status_lock.alpha != 255)
+                                    {
+                                        int w = src.Width;
+                                        int h = src.Height;
+                                        // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                        ColorMatrix colorMatrix = new ColorMatrix();
+                                        colorMatrix.Matrix33 = img_status_lock.alpha / 255f; // значение от 0 до 1
 
-                                    //    // Создаем объект ImageAttributes и применяем к нему матрицу цветов
-                                    //    ImageAttributes imgAttributes = new ImageAttributes();
-                                    //    imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+                                        // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                        ImageAttributes imgAttributes = new ImageAttributes();
+                                        imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
 
-                                    //    // Указываем прямоугольник, куда будет помещено изображение
-                                    //    Rectangle rect_alpha = new Rectangle(x, y, w, h);
-                                    //    gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
-                                    //}
-                                    //else gPanel.DrawImage(src, x, y);
-                                    if (src != null) gPanel.DrawImage(src, x, y);
+                                        // Указываем прямоугольник, куда будет помещено изображение
+                                        Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                        gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                    }
+                                    else gPanel.DrawImage(src, x, y);
+                                    //if (src != null) gPanel.DrawImage(src, x, y);
                                 }
                             }
                         }
@@ -5221,7 +5366,23 @@ namespace Watch_Face_Editor
                         if (imageIndex < ListImagesFullName.Count)
                         {
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            if (width > 0 && height > 0) 
+                            if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                            {
+                                int w = src.Width;
+                                int h = src.Height;
+                                // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                ColorMatrix colorMatrix = new ColorMatrix();
+                                colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
+
+                                // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                ImageAttributes imgAttributes = new ImageAttributes();
+                                imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                // Указываем прямоугольник, куда будет помещено изображение
+                                Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                            }
+                            else if (width > 0 && height > 0) 
                             {
                                 Rectangle cropRect = new Rectangle(0, 0, width, height);
                                 Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
@@ -5274,12 +5435,13 @@ namespace Watch_Face_Editor
                     int angle = number.angle;
                     int alignment = AlignmentToInt(number.align);
                     bool addZero = number.zero;
+                    int alpha = number.alpha;
                     int separator_index = -1;
                     if (number.unit != null && number.unit.Length > 0)
                         separator_index = ListImages.IndexOf(number.unit);
 
                     Draw_dagital_text(gPanel, imageIndex, x, y,
-                        spasing, alignment, (int)value, addZero, value_lenght, separator_index, angle, BBorder, elementName);
+                        spasing, alignment, (int)value, alpha, addZero, value_lenght, separator_index, angle, BBorder, elementName);
 
                     if (number.icon != null && number.icon.Length > 0)
                     {
@@ -5288,8 +5450,23 @@ namespace Watch_Face_Editor
                         y = number.iconPosY;
 
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
-                        gPanel.DrawImage(src, x, y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        if (SelectedModel.versionOS >= 2.1 && number.icon_alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = number.icon_alpha / 255f; // значение от 0 до 1
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, x, y);
                     }
                 }
 
@@ -5443,6 +5620,7 @@ namespace Watch_Face_Editor
                     int y = numberTarget.imageY;
                     int spasing = numberTarget.space;
                     int angle = numberTarget.angle;
+                    int alpha = numberTarget.alpha;
                     int alignment = AlignmentToInt(numberTarget.align);
                     bool addZero = numberTarget.zero;
                     int separator_index = -1;
@@ -5450,9 +5628,9 @@ namespace Watch_Face_Editor
                         separator_index = ListImages.IndexOf(numberTarget.unit);
 
                     if (elementName != "ElementAltimeter") Draw_dagital_text(gPanel, imageIndex, x, y,
-                        spasing, alignment, (int)goal, addZero, value_lenght, separator_index, angle, BBorder);
+                        spasing, alignment, (int)goal, alpha, addZero, value_lenght, separator_index, angle, BBorder);
                     else Draw_dagital_text(gPanel, imageIndex, x, y,
-                        spasing, alignment, (int)goal, addZero, 5, separator_index, angle, BBorder);
+                        spasing, alignment, (int)goal, alpha, addZero, 5, separator_index, angle, BBorder);
 
                     if (numberTarget.icon != null && numberTarget.icon.Length > 0)
                     {
@@ -5710,7 +5888,7 @@ namespace Watch_Face_Editor
                             int h = src.Height;
                             // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                             ColorMatrix colorMatrix = new ColorMatrix();
-                            colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
 
                             // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                             ImageAttributes imgAttributes = new ImageAttributes();
@@ -5757,6 +5935,7 @@ namespace Watch_Face_Editor
                     int pos_y = number.imageY;
                     int distance_spasing = number.space;
                     int angle = number.angle;
+                    int alpha = number.alpha;
                     int distance_alignment = AlignmentToInt(number.align);
                     //bool distance_addZero = img_number.zero;
                     bool distance_addZero = false;
@@ -5769,7 +5948,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         distance_spasing, distance_alignment, distance_value, distance_addZero, value_lenght,
-                        distance_separator_index, decumalPoint_index, 2, angle, BBorder);
+                        distance_separator_index, decumalPoint_index, 2, angle, alpha, BBorder);
 
                     if (number.icon != null && number.icon.Length > 0)
                     {
@@ -5784,7 +5963,7 @@ namespace Watch_Face_Editor
                             int h = src.Height;
                             // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                             ColorMatrix colorMatrix = new ColorMatrix();
-                            colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
 
                             // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                             ImageAttributes imgAttributes = new ImageAttributes();
@@ -5941,8 +6120,23 @@ namespace Watch_Face_Editor
                     if (imageIndex < ListImagesFullName.Count)
                     {
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
-                        gPanel.DrawImage(src, x, y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, x, y);
                     }
                 }
 
@@ -6000,7 +6194,7 @@ namespace Watch_Face_Editor
                                 int h = src.Height;
                                 // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                                 ColorMatrix colorMatrix = new ColorMatrix();
-                                colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+                                colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
 
                                 // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                                 ImageAttributes imgAttributes = new ImageAttributes();
@@ -6055,8 +6249,23 @@ namespace Watch_Face_Editor
                         y = number.iconPosY;
 
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
-                        gPanel.DrawImage(src, x, y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        if (SelectedModel.versionOS >= 2.1 && number.icon_alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = number.icon_alpha / 255f; // значение от 0 до 1
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, x, y);
                     }
                 }
 
@@ -6164,8 +6373,23 @@ namespace Watch_Face_Editor
                         y = numberMin.iconPosY;
 
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
-                        gPanel.DrawImage(src, x, y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        if (SelectedModel.versionOS >= 2.1 && number.icon_alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = number.icon_alpha / 255f; // значение от 0 до 1
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, x, y);
                     }
                 }
 
@@ -6338,8 +6562,23 @@ namespace Watch_Face_Editor
                         y = numberMax.iconPosY;
 
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
-                        gPanel.DrawImage(src, x, y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        if (SelectedModel.versionOS >= 2.1 && number.icon_alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = number.icon_alpha / 255f; // значение от 0 до 1
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, x, y);
                     }
                 }
 
@@ -6547,8 +6786,23 @@ namespace Watch_Face_Editor
                     if (imageIndex < ListImagesFullName.Count)
                     {
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
-                        gPanel.DrawImage(src, x, y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, x, y);
                     }
                 }
 
@@ -6815,8 +7069,23 @@ namespace Watch_Face_Editor
                             y = number.iconPosY;
 
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            gPanel.DrawImage(src, x, y);
-                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            if (SelectedModel.versionOS >= 2.1 && number.icon_alpha != 255)
+                            {
+                                int w = src.Width;
+                                int h = src.Height;
+                                // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                ColorMatrix colorMatrix = new ColorMatrix();
+                                colorMatrix.Matrix33 = number.icon_alpha / 255f; // значение от 0 до 1
+
+                                // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                ImageAttributes imgAttributes = new ImageAttributes();
+                                imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                // Указываем прямоугольник, куда будет помещено изображение
+                                Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                            }
+                            else gPanel.DrawImage(src, x, y);
                         }
                     }
                 }
@@ -6996,8 +7265,23 @@ namespace Watch_Face_Editor
                             y = number.iconPosY;
 
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            gPanel.DrawImage(src, x, y);
-                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            if (SelectedModel.versionOS >= 2.1 && number.icon_alpha != 255)
+                            {
+                                int w = src.Width;
+                                int h = src.Height;
+                                // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                ColorMatrix colorMatrix = new ColorMatrix();
+                                colorMatrix.Matrix33 = number.icon_alpha / 255f; // значение от 0 до 1
+
+                                // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                ImageAttributes imgAttributes = new ImageAttributes();
+                                imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                // Указываем прямоугольник, куда будет помещено изображение
+                                Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                            }
+                            else gPanel.DrawImage(src, x, y);
                         }
                     }
                 }
@@ -7177,8 +7461,23 @@ namespace Watch_Face_Editor
                             y = number.iconPosY;
 
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            gPanel.DrawImage(src, x, y);
-                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            if (SelectedModel.versionOS >= 2.1 && number.icon_alpha != 255)
+                            {
+                                int w = src.Width;
+                                int h = src.Height;
+                                // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                ColorMatrix colorMatrix = new ColorMatrix();
+                                colorMatrix.Matrix33 = number.icon_alpha / 255f; // значение от 0 до 1
+
+                                // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                ImageAttributes imgAttributes = new ImageAttributes();
+                                imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                // Указываем прямоугольник, куда будет помещено изображение
+                                Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                            }
+                            else gPanel.DrawImage(src, x, y);
                         }
                     }
                 }
@@ -7383,8 +7682,23 @@ namespace Watch_Face_Editor
                             y = number.iconPosY;
 
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            gPanel.DrawImage(src, x, y);
-                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            if (SelectedModel.versionOS >= 2.1 && number.icon_alpha != 255)
+                            {
+                                int w = src.Width;
+                                int h = src.Height;
+                                // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                ColorMatrix colorMatrix = new ColorMatrix();
+                                colorMatrix.Matrix33 = number.icon_alpha / 255f; // значение от 0 до 1
+
+                                // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                ImageAttributes imgAttributes = new ImageAttributes();
+                                imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                // Указываем прямоугольник, куда будет помещено изображение
+                                Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                            }
+                            else gPanel.DrawImage(src, x, y);
                         }
                     }
                 }
@@ -7403,8 +7717,23 @@ namespace Watch_Face_Editor
                         if (imageIndex < ListImagesFullName.Count)
                         {
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            gPanel.DrawImage(src, x, y);
-                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                            {
+                                int w = src.Width;
+                                int h = src.Height;
+                                // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                ColorMatrix colorMatrix = new ColorMatrix();
+                                colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
+
+                                // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                ImageAttributes imgAttributes = new ImageAttributes();
+                                imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                // Указываем прямоугольник, куда будет помещено изображение
+                                Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                            }
+                            else gPanel.DrawImage(src, x, y);
                         }
                     }
                 }
@@ -7482,7 +7811,7 @@ namespace Watch_Face_Editor
                             int h = src.Height;
                             // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                             ColorMatrix colorMatrix = new ColorMatrix();
-                            colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
 
                             // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                             ImageAttributes imgAttributes = new ImageAttributes();
@@ -7591,7 +7920,23 @@ namespace Watch_Face_Editor
                                 if (image_index < ListImagesFullName.Count)
                                 {
                                     src = OpenFileStream(ListImagesFullName[image_index]);
-                                    gPanel.DrawImage(src, posX, posY);
+                                    if (SelectedModel.versionOS >= 2.1 && weather_FewDays.Images.alpha != 255)
+                                    {
+                                        int w = src.Width;
+                                        int h = src.Height;
+                                        // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                        ColorMatrix colorMatrix = new ColorMatrix();
+                                        colorMatrix.Matrix33 = weather_FewDays.Images.alpha / 255f; // значение от 0 до 1
+
+                                        // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                        ImageAttributes imgAttributes = new ImageAttributes();
+                                        imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                        // Указываем прямоугольник, куда будет помещено изображение
+                                        Rectangle rect_alpha = new Rectangle(posX, posY, w, h);
+                                        gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                                    }
+                                    else gPanel.DrawImage(src, posX, posY);
                                 }
                             } 
                         }
@@ -8259,7 +8604,23 @@ namespace Watch_Face_Editor
                         if (image_index < ListImagesFullName.Count)
                         {
                             src = OpenFileStream(ListImagesFullName[image_index]);
-                            gPanel.DrawImage(src, posX, posY);
+                            if (SelectedModel.versionOS >= 2.1 && weather_FewDays.DayOfWeek_Images.alpha != 255)
+                            {
+                                int w = src.Width;
+                                int h = src.Height;
+                                // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                ColorMatrix colorMatrix = new ColorMatrix();
+                                colorMatrix.Matrix33 = weather_FewDays.DayOfWeek_Images.alpha / 255f; // значение от 0 до 1
+
+                                // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                ImageAttributes imgAttributes = new ImageAttributes();
+                                imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                // Указываем прямоугольник, куда будет помещено изображение
+                                Rectangle rect_alpha = new Rectangle(posX, posY, w, h);
+                                gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                            }
+                            else gPanel.DrawImage(src, posX, posY);
                         }
                     }
                 }
@@ -8343,7 +8704,7 @@ namespace Watch_Face_Editor
                             int h = src.Height;
                             // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                             ColorMatrix colorMatrix = new ColorMatrix();
-                            colorMatrix.Matrix33 = weather_FewDays.Icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+                            colorMatrix.Matrix33 = weather_FewDays.Icon.alpha / 255f; // значение от 0 до 1
 
                             // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                             ImageAttributes imgAttributes = new ImageAttributes();
@@ -8467,8 +8828,23 @@ namespace Watch_Face_Editor
                         if (imageIndex < ListImagesFullName.Count)
                         {
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            gPanel.DrawImage(src, x, y);
-                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                            {
+                                int w = src.Width;
+                                int h = src.Height;
+                                // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                                ColorMatrix colorMatrix = new ColorMatrix();
+                                colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
+
+                                // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                                ImageAttributes imgAttributes = new ImageAttributes();
+                                imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                                // Указываем прямоугольник, куда будет помещено изображение
+                                Rectangle rect_alpha = new Rectangle(x, y, w, h);
+                                gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                            }
+                            else gPanel.DrawImage(src, x, y);
                         }
                     }
                 }
@@ -8509,6 +8885,7 @@ namespace Watch_Face_Editor
                     int pos_y = sunrise.imageY;
                     int sunrise_spasing = sunrise.space;
                     int angl = sunrise.angle;
+                    int alpha = sunrise.alpha;
                     int sunrise_alignment = AlignmentToInt(sunrise.align);
                     //bool distance_addZero = img_number.zero;
                     bool sunrise_addZero = true;
@@ -8521,7 +8898,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         sunrise_spasing, sunrise_alignment, sunrise_value, sunrise_addZero, 4,
-                        sunrise_separator_index, decumalPoint_index, 2, angl, BBorder, "ElementSunrise");
+                        sunrise_separator_index, decumalPoint_index, 2, angl, alpha, BBorder,  "ElementSunrise");
 
                     if (sunrise.icon != null && sunrise.icon.Length > 0)
                     {
@@ -8530,8 +8907,23 @@ namespace Watch_Face_Editor
                         pos_y = sunrise.iconPosY;
 
                         src = OpenFileStream(ListImagesFullName[image_Index]);
-                        gPanel.DrawImage(src, pos_x, pos_y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        if (SelectedModel.versionOS >= 2.1 && sunrise.alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = sunrise.alpha / 255f; // значение от 0 до 1
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(pos_x, pos_y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, pos_x, pos_y);
                     }
                 }
 
@@ -8667,6 +9059,7 @@ namespace Watch_Face_Editor
                     int pos_y = sunset.imageY;
                     int sunset_spasing = sunset.space;
                     int angl = sunset.angle;
+                    int alpha = sunset.alpha;
                     int sunset_alignment = AlignmentToInt(sunset.align);
                     //bool distance_addZero = img_number.zero;
                     bool sunset_addZero = true;
@@ -8679,7 +9072,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         sunset_spasing, sunset_alignment, sunset_value, sunset_addZero, 4,
-                        sunset_separator_index, decumalPoint_index, 2, angl, BBorder, "ElementSunrise");
+                        sunset_separator_index, decumalPoint_index, 2, angl, alpha, BBorder, "ElementSunrise");
 
                     if (sunset.icon != null && sunset.icon.Length > 0)
                     {
@@ -8688,8 +9081,23 @@ namespace Watch_Face_Editor
                         pos_y = sunset.iconPosY;
 
                         src = OpenFileStream(ListImagesFullName[image_Index]);
-                        gPanel.DrawImage(src, pos_x, pos_y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        if (SelectedModel.versionOS >= 2.1 && sunset.icon_alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = sunset.icon_alpha / 255f; // значение от 0 до 1
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(pos_x, pos_y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, pos_x, pos_y);
                     }
                 }
 
@@ -8825,6 +9233,7 @@ namespace Watch_Face_Editor
                     int pos_y = sunset_sunrise.imageY;
                     int sunset_sunrise_spasing = sunset_sunrise.space;
                     int angl = sunset_sunrise.angle;
+                    int alpha = sunset_sunrise.alpha;
                     int sunset_sunrise_alignment = AlignmentToInt(sunset_sunrise.align);
                     //bool distance_addZero = img_number.zero;
                     bool sunset_sunrise_addZero = true;
@@ -8837,7 +9246,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         sunset_sunrise_spasing, sunset_sunrise_alignment, sunset_sunrise_value, sunset_sunrise_addZero, 4,
-                        sunset_sunrise_separator_index, decumalPoint_index, 2, angl, BBorder, "ElementSunrise");
+                        sunset_sunrise_separator_index, decumalPoint_index, 2, angl, alpha, BBorder, "ElementSunrise");
 
                     if (sunset_sunrise.icon != null && sunset_sunrise.icon.Length > 0)
                     {
@@ -8846,8 +9255,23 @@ namespace Watch_Face_Editor
                         pos_y = sunset_sunrise.iconPosY;
 
                         src = OpenFileStream(ListImagesFullName[image_Index]);
-                        gPanel.DrawImage(src, pos_x, pos_y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        if (SelectedModel.versionOS >= 2.1 && sunset_sunrise.icon_alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = sunset_sunrise.icon_alpha / 255f; // значение от 0 до 1
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(pos_x, pos_y, w, h);
+                            gPanel.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else gPanel.DrawImage(src, pos_x, pos_y);
                     }
                 }
 
@@ -8903,7 +9327,7 @@ namespace Watch_Face_Editor
                             int h = src.Height;
                             // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                             ColorMatrix colorMatrix = new ColorMatrix();
-                            colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
 
                             // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                             ImageAttributes imgAttributes = new ImageAttributes();
@@ -8917,8 +9341,6 @@ namespace Watch_Face_Editor
                         //gPanel.DrawImage(src, x, y);
                     }
                 }
-
-
 
             }
 
@@ -8991,6 +9413,7 @@ namespace Watch_Face_Editor
                     int pos_y = sunrise.imageY;
                     int sunrise_spasing = sunrise.space;
                     int angl = sunrise.angle;
+                    int alpha = sunrise.alpha;
                     int sunrise_alignment = AlignmentToInt(sunrise.align);
                     //bool distance_addZero = img_number.zero;
                     bool sunrise_addZero = true;
@@ -9003,7 +9426,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         sunrise_spasing, sunrise_alignment, sunrise_value, sunrise_addZero, 4,
-                        sunrise_separator_index, decumalPoint_index, 2, angl, BBorder, "ElementSunrise");
+                        sunrise_separator_index, decumalPoint_index, 2, angl, alpha, BBorder, "ElementSunrise");
 
                     if (sunrise.icon != null && sunrise.icon.Length > 0)
                     {
@@ -9149,6 +9572,7 @@ namespace Watch_Face_Editor
                     int pos_y = sunset.imageY;
                     int sunset_spasing = sunset.space;
                     int angl = sunset.angle;
+                    int alpha = sunset.alpha;
                     int sunset_alignment = AlignmentToInt(sunset.align);
                     //bool distance_addZero = img_number.zero;
                     bool sunset_addZero = true;
@@ -9161,7 +9585,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         sunset_spasing, sunset_alignment, sunset_value, sunset_addZero, 4,
-                        sunset_separator_index, decumalPoint_index, 2, angl, BBorder, "ElementSunrise");
+                        sunset_separator_index, decumalPoint_index, 2, angl, alpha, BBorder, "ElementSunrise");
 
                     if (sunset.icon != null && sunset.icon.Length > 0)
                     {
@@ -9307,6 +9731,7 @@ namespace Watch_Face_Editor
                     int pos_y = sunset_sunrise.imageY;
                     int sunset_sunrise_spasing = sunset_sunrise.space;
                     int angl = sunset_sunrise.angle;
+                    int alpha = sunset_sunrise.alpha;
                     int sunset_sunrise_alignment = AlignmentToInt(sunset_sunrise.align);
                     //bool distance_addZero = img_number.zero;
                     bool sunset_sunrise_addZero = true;
@@ -9319,7 +9744,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         sunset_sunrise_spasing, sunset_sunrise_alignment, sunset_sunrise_value, sunset_sunrise_addZero, 4,
-                        sunset_sunrise_separator_index, decumalPoint_index, 2, angl, BBorder, "ElementSunrise");
+                        sunset_sunrise_separator_index, decumalPoint_index, 2, angl, alpha, BBorder, "ElementSunrise");
 
                     if (sunset_sunrise.icon != null && sunset_sunrise.icon.Length > 0)
                     {
@@ -9385,7 +9810,7 @@ namespace Watch_Face_Editor
                             int h = src.Height;
                             // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                             ColorMatrix colorMatrix = new ColorMatrix();
-                            colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
 
                             // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                             ImageAttributes imgAttributes = new ImageAttributes();
@@ -9442,12 +9867,13 @@ namespace Watch_Face_Editor
                     int angle = number.angle;
                     int alignment = AlignmentToInt(number.align);
                     bool addZero = number.zero;
+                    int alpha = number.alpha;
                     int separator_index = -1;
                     if (number.unit != null && number.unit.Length > 0)
                         separator_index = ListImages.IndexOf(number.unit);
 
                     Draw_dagital_text(gPanel, imageIndex, x, y,
-                        spasing, alignment, (int)value, addZero, 4, separator_index, angle, BBorder, "ElementAltimeter");
+                        spasing, alignment, (int)value, alpha, addZero, 4, separator_index, angle, BBorder, "ElementAltimeter");
 
                     if (number.icon != null && number.icon.Length > 0)
                     {
@@ -9683,7 +10109,7 @@ namespace Watch_Face_Editor
                             int h = src.Height;
                             // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                             ColorMatrix colorMatrix = new ColorMatrix();
-                            colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
 
                             // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                             ImageAttributes imgAttributes = new ImageAttributes();
@@ -9805,12 +10231,13 @@ namespace Watch_Face_Editor
                     int angle = number.angle;
                     int alignment = AlignmentToInt(number.align);
                     bool addZero = number.zero;
+                    int alpha = number.alpha;
                     int separator_index = -1;
                     if (number.unit != null && number.unit.Length > 0)
                         separator_index = ListImages.IndexOf(number.unit);
 
                     Draw_dagital_text(gPanel, imageIndex, x, y,
-                        spasing, alignment, (int)value, addZero, value_lenght, separator_index, angle, BBorder, "ElementWind");
+                        spasing, alignment, (int)value, alpha, addZero, value_lenght, separator_index, angle, BBorder, "ElementWind");
 
                     if (number.icon != null && number.icon.Length > 0)
                     {
@@ -9974,7 +10401,7 @@ namespace Watch_Face_Editor
                             int h = src.Height;
                             // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                             ColorMatrix colorMatrix = new ColorMatrix();
-                            colorMatrix.Matrix33 = icon.alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+                            colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
 
                             // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                             ImageAttributes imgAttributes = new ImageAttributes();
@@ -10298,6 +10725,7 @@ namespace Watch_Face_Editor
         /// <param name="spacing">Величина отступа</param>
         /// <param name="alignment">Выравнивание</param>
         /// <param name="value">Отображаемая величина</param>
+        /// <param name="alpha">Прозрачность данных</param>
         /// <param name="addZero">Отображать начальные нули</param>
         /// <param name="value_lenght">Количество отображаемых символов</param>
         /// <param name="separator_index">Символ разделителя (единиц измерения)</param>
@@ -10305,7 +10733,7 @@ namespace Watch_Face_Editor
         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
         /// <param name="elementName">Название элемента (при необходимости)</param>
         private int Draw_dagital_text(Graphics graphics, int image_index, int x, int y, int spacing,
-            int alignment, int value, bool addZero, int value_lenght, int separator_index, int angle, bool BBorder, 
+            int alignment, int value, int alpha, bool addZero, int value_lenght, int separator_index, int angle, bool BBorder, 
             string elementName = "")
         {
             if (image_index < 0 || image_index >= ListImagesFullName.Count) return 0;
@@ -10417,8 +10845,23 @@ namespace Watch_Face_Editor
                     {
                         string s = ListImagesFullName[i];
                         src = OpenFileStream(ListImagesFullName[i]);
-                        graphics.DrawImage(src, PointX + offsetX, PointY);
-                        //PointX = PointX + src.Width + spacing;
+                        if (SelectedModel.versionOS >= 2.1 && alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = alpha / 255f; // значение от 0 до 1
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(PointX + offsetX, PointY, w, h);
+                            graphics.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else graphics.DrawImage(src, PointX + offsetX, PointY);
                         PointX = PointX + width + spacing;
                         //src.Dispose();
                     }
@@ -10430,8 +10873,23 @@ namespace Watch_Face_Editor
             if (separator_index > -1)
             {
                 src = OpenFileStream(ListImagesFullName[separator_index]);
-                graphics.DrawImage(src, PointX + offsetX, PointY);
-                //graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
+                if (SelectedModel.versionOS >= 2.1 && alpha != 255)
+                {
+                    int w = src.Width;
+                    int h = src.Height;
+                    // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                    ColorMatrix colorMatrix = new ColorMatrix();
+                    colorMatrix.Matrix33 = alpha / 255f; // значение от 0 до 1
+
+                    // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                    ImageAttributes imgAttributes = new ImageAttributes();
+                    imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                    // Указываем прямоугольник, куда будет помещено изображение
+                    Rectangle rect_alpha = new Rectangle(PointX + offsetX, PointY, w, h);
+                    graphics.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                }
+                else graphics.DrawImage(src, PointX + offsetX, PointY);
                 result = result + src.Width + spacing;
             }
             src.Dispose();
@@ -11489,7 +11947,7 @@ namespace Watch_Face_Editor
                 {
                     // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                     ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.Matrix33 = alpha / 255f; // Прозрачность 50% (значение от 0 до 1)
+                    colorMatrix.Matrix33 = alpha / 255f; // значение от 0 до 1
 
                     // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                     ImageAttributes imgAttributes = new ImageAttributes();
@@ -12436,10 +12894,11 @@ namespace Watch_Face_Editor
         /// <param name="decimalPoint_index">Символ десятичного разделителя</param>
         /// <param name="decCount">Число знаков после запятой</param>
         /// <param name="angle">Угол наклона текста</param>
+        /// <param name="alpha">Прозрачность</param>
         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
         private int Draw_dagital_text_decimal(Graphics graphics, int image_index, int x, int y, int spacing,
             int alignment, float value, bool addZero, int value_lenght, int separator_index,
-            int decimalPoint_index, int decCount, int angle, bool BBorder, string elementName = "")
+            int decimalPoint_index, int decCount, int angle,int alpha, bool BBorder, string elementName = "")
         {
             Logger.WriteLine("* Draw_dagital_text");
             if (SelectedModel.versionOS < 2) angle = 0;
@@ -12500,8 +12959,6 @@ namespace Watch_Face_Editor
                     i = image_index + _number;
                     if (i < ListImagesFullName.Count)
                     {
-                        //src = OpenFileStream(ListImagesFullName[i]);
-                        //DateLenghtReal = DateLenghtReal + src.Width + spacing;
                         DateLenghtReal = DateLenghtReal + width + spacing;
                     }
                 }
@@ -12511,7 +12968,6 @@ namespace Watch_Face_Editor
                     {
                         src = OpenFileStream(ListImagesFullName[decimalPoint_index]);
                         DateLenghtReal = DateLenghtReal + src.Width + spacing;
-                        //src.Dispose();
                     }
                 }
 
@@ -12522,25 +12978,6 @@ namespace Watch_Face_Editor
                 DateLenghtReal = DateLenghtReal + src.Width + spacing;
             }
             DateLenghtReal = DateLenghtReal - spacing;
-
-
-            //int PointX = 0;
-            //int PointY = y;
-            //switch (alignment)
-            //{
-            //    case 0:
-            //        PointX = x;
-            //        break;
-            //    case 1:
-            //        PointX = x + DateLenght / 2 - DateLenghtReal / 2;
-            //        break;
-            //    case 2:
-            //        PointX = x + DateLenght - DateLenghtReal;
-            //        break;
-            //    default:
-            //        PointX = x;
-            //        break;
-            //}
 
             int PointX = x;
             int offsetX = 0;
@@ -12562,8 +12999,6 @@ namespace Watch_Face_Editor
             }
 
             Matrix transformMatrix = graphics.Transform;
-            //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" ||
-            //    ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
             if (SelectedModel.versionOS >= 2)
             {
                 int pivot_point_offset_x = 0;
@@ -12585,8 +13020,23 @@ namespace Watch_Face_Editor
                     if (i < ListImagesFullName.Count)
                     {
                         src = OpenFileStream(ListImagesFullName[i]);
-                        graphics.DrawImage(src, PointX + offsetX, PointY);
-                        //PointX = PointX + src.Width + spacing;
+                        if (SelectedModel.versionOS >= 2.1 && alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = alpha / 255f; // значение от 0 до 1
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(PointX + offsetX, PointY, w, h);
+                            graphics.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else graphics.DrawImage(src, PointX + offsetX, PointY);
                         PointX = PointX + width + spacing;
                     }
                 }
@@ -12595,7 +13045,23 @@ namespace Watch_Face_Editor
                     if (decimalPoint_index >= 0 && decimalPoint_index < ListImagesFullName.Count)
                     {
                         src = OpenFileStream(ListImagesFullName[decimalPoint_index]);
-                        graphics.DrawImage(src, PointX + offsetX, PointY);
+                        if (SelectedModel.versionOS >= 2.1 && alpha != 255)
+                        {
+                            int w = src.Width;
+                            int h = src.Height;
+                            // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
+                            ColorMatrix colorMatrix = new ColorMatrix();
+                            colorMatrix.Matrix33 = alpha / 255f; // значение от 0 до 1
+
+                            // Создаем объект ImageAttributes и применяем к нему матрицу цветов
+                            ImageAttributes imgAttributes = new ImageAttributes();
+                            imgAttributes.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                            // Указываем прямоугольник, куда будет помещено изображение
+                            Rectangle rect_alpha = new Rectangle(PointX + offsetX, PointY, w, h);
+                            graphics.DrawImage(src, rect_alpha, 0, 0, w, h, GraphicsUnit.Pixel, imgAttributes);
+                        }
+                        else graphics.DrawImage(src, PointX + offsetX, PointY);
                         PointX = PointX + src.Width + spacing;
                     }
                 }

@@ -329,4 +329,10 @@
   <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 48</value>
   </data>
+  <data name="label_alpha.Text" xml:space="preserve">
+    <value>Transparency</value>
+  </data>
+  <data name="label_icon_alpha.Text" xml:space="preserve">
+    <value>Icon transparency</value>
+  </data>
 </root>

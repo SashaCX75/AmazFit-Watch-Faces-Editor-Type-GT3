@@ -18,6 +18,7 @@ namespace ControlLibrary
         private bool Angle_mode = false;
         private bool Separator_mode = false;
         private bool Icon_show = true;
+        private bool Alpha_mode = false;
 
         private Point location_unit;
         private Point location_unit_imperial;
@@ -329,6 +330,24 @@ namespace ControlLibrary
             }
         }
 
+        /// <summary>Режим доступности прозрачности</summary>
+        [Description("Режим доступности прозрачности")]
+        public virtual bool Alpha
+        {
+            get
+            {
+                return Alpha_mode;
+            }
+            set
+            {
+                Alpha_mode = value;
+                label_alpha.Enabled = Alpha_mode;
+                numericUpDown_Alpha.Enabled = Alpha_mode;
+                label_icon_alpha.Enabled = Alpha_mode;
+                numericUpDown_iconAlpha.Enabled = Alpha_mode;
+            }
+        }
+
         [Browsable(true)]
         [Description("Происходит при изменении выбора элемента")]
         public event ValueChangedHandler ValueChanged;
@@ -494,6 +513,7 @@ namespace ControlLibrary
             Imperial_unit = true;
             IconShow = true;
             Separator = false;
+            Alpha = false;
 
             comboBox_image.Text = null;
             comboBox_icon.Text = null;

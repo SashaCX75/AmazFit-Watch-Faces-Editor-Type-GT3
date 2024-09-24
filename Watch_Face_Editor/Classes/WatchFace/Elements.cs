@@ -85,12 +85,6 @@ namespace Watch_Face_Editor
         /// <summary>Y координата иконки</summary>
         public int iconPosY { get; set; }
 
-        /// <summary>Высота иконки</summary>
-        //public int iconHeight { get; set; }
-
-        /// <summary>Ширина иконки</summary>
-        //public int iconWidth { get; set; }
-
         /// <summary>Символ "-"</summary>
         public string negative_image { get; set; }
 
@@ -112,6 +106,15 @@ namespace Watch_Face_Editor
 
         /// <summary>Учитывать единици ищмерения при выравнивании</summary>
         public bool unit_in_alignment { get; set; }
+
+        /// <summary>Прозрачность</summary>
+        public int alpha { get; set; } = 255;
+
+        /// <summary>Прозрачность иконки</summary>
+        public int icon_alpha { get; set; } = 255;
+
+        /// <summary>Прозрачность иконки</summary>
+        public int iconAlpha { get; set; } = 255;
 
         /// <summary>Основной экран или AOD</summary>
         public string show_level = "";
@@ -295,6 +298,9 @@ namespace Watch_Face_Editor
 
         /// <summary>Изображение ошибки</summary>
         public string img_error { get; set; }
+
+        /// <summary>Прозрачность</summary>
+        public int alpha { get; set; } = 255;
 
         /// <summary>Тип активности</summary>
         public string type { get; set; }

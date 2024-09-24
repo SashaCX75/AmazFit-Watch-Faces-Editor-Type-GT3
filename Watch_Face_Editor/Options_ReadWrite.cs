@@ -1140,6 +1140,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Opt.PaddingZero = _padingZero;
             uCtrl_Text_Opt.AngleVisible = _angleVisible;
             uCtrl_Text_Opt.Visible = true;
+            uCtrl_Text_Opt.Alpha = SelectedModel.versionOS >= 2.1;
             if (!_optionalSymbol)
             {
                 if (img_number.dot_image != null)
@@ -1177,6 +1178,8 @@ namespace Watch_Face_Editor
             //uCtrl_Text_Opt.SetImageDecimalPointOrMinus
             uCtrl_Text_Opt.numericUpDown_spacing.Value = img_number.space;
             uCtrl_Text_Opt.numericUpDown_angle.Value = img_number.angle;
+            uCtrl_Text_Opt.numericUpDown_Alpha.Value = img_number.alpha;
+            uCtrl_Text_Opt.numericUpDown_iconAlpha.Value = img_number.icon_alpha;
 
             uCtrl_Text_Opt.SetAlignment(img_number.align);
 
@@ -1385,7 +1388,7 @@ namespace Watch_Face_Editor
             uCtrl_Icon_Opt.SettingsClear();
 
             uCtrl_Icon_Opt._Icon = img_status;
-            //uCtrl_Icon_Opt.Alpha = SelectedModel.versionOS >= 2.1;
+            uCtrl_Icon_Opt.Alpha = SelectedModel.versionOS >= 2.1;
 
             //userCtrl_Background_Options.SettingsClear();
 
@@ -1398,7 +1401,7 @@ namespace Watch_Face_Editor
             if (img_status.src != null) uCtrl_Icon_Opt.SetIcon(img_status.src);
             uCtrl_Icon_Opt.numericUpDown_iconX.Value = img_status.x;
             uCtrl_Icon_Opt.numericUpDown_iconY.Value = img_status.y;
-            //uCtrl_Icon_Opt.numericUpDown_Alpha.Value = img_status.alpha;
+            uCtrl_Icon_Opt.numericUpDown_Alpha.Value = img_status.alpha;
 
             PreviewView = true;
         }
@@ -1923,6 +1926,7 @@ namespace Watch_Face_Editor
             uCtrl_Images_Opt.ImagesCountEnable = imagesCountEnable;
             uCtrl_Images_Opt.Shortcut = shortcut;
             uCtrl_Images_Opt.ErrorMode = error_mode;
+            uCtrl_Images_Opt.Alpha = SelectedModel.versionOS >= 2.1;
 
             uCtrl_Images_Opt._ElementWithImages = img_level;
 
@@ -1942,6 +1946,7 @@ namespace Watch_Face_Editor
             if (img_level.image_length > 0)
                 uCtrl_Images_Opt.numericUpDown_pictures_count.Value = img_level.image_length;
             if (!imagesCountEnable) uCtrl_Images_Opt.numericUpDown_pictures_count.Value = imagesCount;
+            uCtrl_Images_Opt.numericUpDown_Alpha.Value = img_level.alpha;
 
             if (error_mode && img_level.img_error != null)
                 uCtrl_Images_Opt.SetImageError(img_level.img_error);
@@ -2463,6 +2468,8 @@ namespace Watch_Face_Editor
             img_number.imageY = (int)uCtrl_Text_Opt.numericUpDown_imageY.Value;
             img_number.space = (int)uCtrl_Text_Opt.numericUpDown_spacing.Value;
             img_number.angle = (int)uCtrl_Text_Opt.numericUpDown_angle.Value;
+            img_number.alpha = (int)uCtrl_Text_Opt.numericUpDown_Alpha.Value;
+            img_number.icon_alpha = (int)uCtrl_Text_Opt.numericUpDown_iconAlpha.Value;
             if (!uCtrl_Text_Opt.Altitude) img_number.dot_image = uCtrl_Text_Opt.GetImageDecimalPoint();
             else img_number.negative_image = uCtrl_Text_Opt.GetImageDecimalPoint();
             img_number.unit = uCtrl_Text_Opt.GetUnit();
@@ -2565,6 +2572,7 @@ namespace Watch_Face_Editor
             img_level.img_First = uCtrl_Images_Opt.GetImage();
             img_level.X = (int)uCtrl_Images_Opt.numericUpDown_imageX.Value;
             img_level.Y = (int)uCtrl_Images_Opt.numericUpDown_imageY.Value;
+            img_level.alpha = (int)uCtrl_Images_Opt.numericUpDown_Alpha.Value;
             img_level.image_length = (int)uCtrl_Images_Opt.numericUpDown_pictures_count.Value;
             img_level.shortcut = uCtrl_Images_Opt.checkBox_shortcut.Checked;
             img_level.img_error = uCtrl_Images_Opt.GetImageError();
@@ -4221,6 +4229,8 @@ namespace Watch_Face_Editor
             img_number.imageY = (int)uCtrl_Text_Opt.numericUpDown_imageY.Value;
             img_number.space = (int)uCtrl_Text_Opt.numericUpDown_spacing.Value;
             img_number.angle = (int)uCtrl_Text_Opt.numericUpDown_angle.Value;
+            img_number.alpha = (int)uCtrl_Text_Opt.numericUpDown_Alpha.Value;
+            img_number.icon_alpha = (int)uCtrl_Text_Opt.numericUpDown_iconAlpha.Value;
             if (!uCtrl_Text_Opt.Altitude) img_number.dot_image = uCtrl_Text_Opt.GetImageDecimalPoint();
             else img_number.negative_image = uCtrl_Text_Opt.GetImageDecimalPoint();
             img_number.unit = uCtrl_Text_Opt.GetUnit();
@@ -4269,6 +4279,8 @@ namespace Watch_Face_Editor
             }
             uCtrl_Text_Opt.numericUpDown_spacing.Value = img_number.space;
             if (_angleVisible && SelectedModel.versionOS >= 2) uCtrl_Text_Opt.numericUpDown_angle.Value = img_number.angle;
+            uCtrl_Text_Opt.numericUpDown_Alpha.Value = img_number.alpha;
+            uCtrl_Text_Opt.numericUpDown_iconAlpha.Value = img_number.icon_alpha;
 
             uCtrl_Text_Opt.SetAlignment(img_number.align);
 
@@ -4354,6 +4366,7 @@ namespace Watch_Face_Editor
             img_level.X = (int)uCtrl_Images_Opt.numericUpDown_imageX.Value;
             img_level.Y = (int)uCtrl_Images_Opt.numericUpDown_imageY.Value;
             img_level.image_length = (int)uCtrl_Images_Opt.numericUpDown_pictures_count.Value;
+            img_level.alpha = (int)uCtrl_Images_Opt.numericUpDown_Alpha.Value;
             img_level.shortcut = uCtrl_Images_Opt.checkBox_shortcut.Checked;
 
             WidgetProperty.Add("hmUI_widget_IMG_LEVEL", img_level);
@@ -4382,6 +4395,7 @@ namespace Watch_Face_Editor
             if (img_level.image_length > 0)
                 uCtrl_Images_Opt.numericUpDown_pictures_count.Value = img_level.image_length;
             //if (!imagesCountEnable) uCtrl_Images_Opt.numericUpDown_pictures_count.Value = imagesCount;
+            uCtrl_Images_Opt.numericUpDown_Alpha.Value = img_level.alpha;
 
             uCtrl_Images_Opt.checkBox_shortcut.Checked = img_level.shortcut;
 

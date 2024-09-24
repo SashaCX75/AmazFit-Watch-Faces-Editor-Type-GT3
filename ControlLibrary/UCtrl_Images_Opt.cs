@@ -18,6 +18,7 @@ namespace ControlLibrary
         private bool imagesCountEnable = true;
         private bool shortcutEnable;
         private bool ImageError_mode;
+        private bool Alpha_mode = false;
 
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _ElementWithImages;
@@ -83,6 +84,22 @@ namespace ControlLibrary
                 comboBox_error.Visible = ImageError_mode;
                 label_error.Visible = ImageError_mode;
                 checkBox_shortcut.Visible = !ImageError_mode;
+            }
+        }
+
+        /// <summary>Режим доступности прозрачности</summary>
+        [Description("Режим доступности прозрачности")]
+        public virtual bool Alpha
+        {
+            get
+            {
+                return Alpha_mode;
+            }
+            set
+            {
+                Alpha_mode = value;
+                label_alpha.Enabled = Alpha_mode;
+                numericUpDown_Alpha.Enabled = Alpha_mode;
             }
         }
 
@@ -268,7 +285,8 @@ namespace ControlLibrary
 
             numericUpDown_pictures_count.Value = imagesCount;
 
-            ErrorMode = false;
+            ErrorMode = false; 
+            Alpha = false;
 
             setValue = false;
         }

@@ -72,6 +72,10 @@ namespace ControlLibrary
             this.context_WidgetProperty = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.копироватьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьСвойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.numericUpDown_Alpha = new System.Windows.Forms.NumericUpDown();
+            this.label_alpha = new System.Windows.Forms.Label();
+            this.numericUpDown_iconAlpha = new System.Windows.Forms.NumericUpDown();
+            this.label_icon_alpha = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageX)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).BeginInit();
@@ -81,6 +85,8 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_spacing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_angle)).BeginInit();
             this.context_WidgetProperty.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Alpha)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_iconAlpha)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox_image
@@ -452,11 +458,58 @@ namespace ControlLibrary
             this.вставитьСвойстваToolStripMenuItem.Name = "вставитьСвойстваToolStripMenuItem";
             this.вставитьСвойстваToolStripMenuItem.Click += new System.EventHandler(this.вставитьСвойстваToolStripMenuItem_Click);
             // 
+            // numericUpDown_Alpha
+            // 
+            resources.ApplyResources(this.numericUpDown_Alpha, "numericUpDown_Alpha");
+            this.numericUpDown_Alpha.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown_Alpha.Name = "numericUpDown_Alpha";
+            this.numericUpDown_Alpha.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown_Alpha.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            // 
+            // label_alpha
+            // 
+            resources.ApplyResources(this.label_alpha, "label_alpha");
+            this.label_alpha.BackColor = System.Drawing.Color.Transparent;
+            this.label_alpha.Name = "label_alpha";
+            // 
+            // numericUpDown_iconAlpha
+            // 
+            resources.ApplyResources(this.numericUpDown_iconAlpha, "numericUpDown_iconAlpha");
+            this.numericUpDown_iconAlpha.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown_iconAlpha.Name = "numericUpDown_iconAlpha";
+            this.numericUpDown_iconAlpha.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown_iconAlpha.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            // 
+            // label_icon_alpha
+            // 
+            resources.ApplyResources(this.label_icon_alpha, "label_icon_alpha");
+            this.label_icon_alpha.BackColor = System.Drawing.Color.Transparent;
+            this.label_icon_alpha.Name = "label_icon_alpha";
+            // 
             // UCtrl_Text_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ContextMenuStrip = this.context_WidgetProperty;
+            this.Controls.Add(this.numericUpDown_iconAlpha);
+            this.Controls.Add(this.numericUpDown_Alpha);
+            this.Controls.Add(this.label_alpha);
             this.Controls.Add(this.numericUpDown_angle);
             this.Controls.Add(this.label_angle);
             this.Controls.Add(this.comboBox_unit_miles);
@@ -487,6 +540,7 @@ namespace ControlLibrary
             this.Controls.Add(this.label1084);
             this.Controls.Add(this.label1085);
             this.Controls.Add(this.label1086);
+            this.Controls.Add(this.label_icon_alpha);
             this.Name = "UCtrl_Text_Opt";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageX)).EndInit();
             this.contextMenuStrip_X.ResumeLayout(false);
@@ -497,6 +551,8 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_spacing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_angle)).EndInit();
             this.context_WidgetProperty.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Alpha)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_iconAlpha)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -545,5 +601,9 @@ namespace ControlLibrary
         private System.Windows.Forms.ContextMenuStrip context_WidgetProperty;
         private System.Windows.Forms.ToolStripMenuItem копироватьСвойстваToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem вставитьСвойстваToolStripMenuItem;
+        public System.Windows.Forms.NumericUpDown numericUpDown_Alpha;
+        private System.Windows.Forms.Label label_alpha;
+        public System.Windows.Forms.NumericUpDown numericUpDown_iconAlpha;
+        private System.Windows.Forms.Label label_icon_alpha;
     }
 }

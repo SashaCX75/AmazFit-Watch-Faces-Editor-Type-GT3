@@ -15,6 +15,7 @@ using System.Windows.Forms.VisualStyles;
 using static System.Net.Mime.MediaTypeNames;
 using static Microsoft.WindowsAPICodePack.Shell.PropertySystem.SystemProperties.System;
 using Microsoft.WindowsAPICodePack.Sensors;
+using System.Security.Cryptography;
 
 namespace Watch_Face_Editor
 {
@@ -773,6 +774,7 @@ namespace Watch_Face_Editor
 
             }
 
+            // Верхнее изображение
             if (Watch_Face.TopImage != null && Watch_Face.TopImage.visible)
             {
                 if (Watch_Face.TopImage.Icon != null)
@@ -789,6 +791,9 @@ namespace Watch_Face_Editor
                         variables += TabInString(4) + "let image_top_img = ''" + Environment.NewLine;
                         items += Environment.NewLine + TabInString(6) + "image_top_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                 iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                        if (img_icon.alpha != 255) items += Environment.NewLine + TabInString(6) +
+                                "image_top_img.setAlpha(" + img_icon.alpha.ToString() + ");" + Environment.NewLine;
                     }
                 }
             }
@@ -2517,6 +2522,9 @@ namespace Watch_Face_Editor
                                     optionNameStart + "digital_clock_img_time = hmUI.createWidget(hmUI.widget.IMG_TIME, {" +
                                         options + TabInString(6) + "});" + Environment.NewLine;
 
+                                if (DigitalTime_v2.Group_Hour.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "digital_clock_img_time.setAlpha(" + DigitalTime_v2.Group_Hour.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                                 if (optionsHour_separator_v2.Length > 5)
                                 {
                                     variables += TabInString(4) + "let " + optionNameStart +
@@ -2524,6 +2532,9 @@ namespace Watch_Face_Editor
                                     items += Environment.NewLine + TabInString(6) +
                                         optionNameStart + "digital_clock_hour_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                             optionsHour_separator_v2 + TabInString(6) + "});" + Environment.NewLine;
+
+                                    if (DigitalTime_v2.Group_Hour.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                            "digital_clock_hour_separator_img.setAlpha(" + DigitalTime_v2.Group_Hour.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                                 }
 
                                 if (optionsMinute_separator_v2.Length > 5)
@@ -2533,6 +2544,9 @@ namespace Watch_Face_Editor
                                     items += Environment.NewLine + TabInString(6) +
                                         optionNameStart + "digital_clock_minute_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                             optionsMinute_separator_v2 + TabInString(6) + "});" + Environment.NewLine;
+
+                                    if (DigitalTime_v2.Group_Minute.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                            "digital_clock_minute_separator_img.setAlpha(" + DigitalTime_v2.Group_Minute.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                                 }
 
                                 if (optionsSecond_separator_v2.Length > 5)
@@ -2542,6 +2556,9 @@ namespace Watch_Face_Editor
                                     items += Environment.NewLine + TabInString(6) +
                                         optionNameStart + "digital_clock_second_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                             optionsSecond_separator_v2 + TabInString(6) + "});" + Environment.NewLine;
+
+                                    if (DigitalTime_v2.Group_Second.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                            "digital_clock_second_separator_img.setAlpha(" + DigitalTime_v2.Group_Second.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                                 }
 
                                 fullTime_v2 = true;
@@ -2562,6 +2579,9 @@ namespace Watch_Face_Editor
                                         optionNameStart + "digital_clock_img_time_hour = hmUI.createWidget(hmUI.widget.IMG_TIME, {" +
                                             optionsHour_v2 + TabInString(6) + "});" + Environment.NewLine;
 
+                                    if (DigitalTime_v2.Group_Hour.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                            "digital_clock_img_time_hour.setAlpha(" + DigitalTime_v2.Group_Hour.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                                     if (optionsHour_separator_v2.Length > 5)
                                     {
                                         variables += TabInString(4) + "let " + optionNameStart +
@@ -2569,6 +2589,9 @@ namespace Watch_Face_Editor
                                         items += Environment.NewLine + TabInString(6) +
                                             optionNameStart + "digital_clock_hour_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                                 optionsHour_separator_v2 + TabInString(6) + "});" + Environment.NewLine;
+
+                                        if (DigitalTime_v2.Group_Hour.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                                "digital_clock_hour_separator_img.setAlpha(" + DigitalTime_v2.Group_Hour.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                                     } 
                                 }
                             }
@@ -2585,6 +2608,9 @@ namespace Watch_Face_Editor
                                         optionNameStart + "digital_clock_img_time_minute = hmUI.createWidget(hmUI.widget.IMG_TIME, {" +
                                             optionsMinute_v2 + TabInString(6) + "});" + Environment.NewLine;
 
+                                    if (DigitalTime_v2.Group_Minute.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                            "digital_clock_img_time_minute.setAlpha(" + DigitalTime_v2.Group_Minute.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                                     if (optionsMinute_separator_v2.Length > 5)
                                     {
                                         variables += TabInString(4) + "let " + optionNameStart +
@@ -2592,6 +2618,9 @@ namespace Watch_Face_Editor
                                         items += Environment.NewLine + TabInString(6) +
                                             optionNameStart + "digital_clock_minute_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                                 optionsMinute_separator_v2 + TabInString(6) + "});" + Environment.NewLine;
+
+                                        if (DigitalTime_v2.Group_Minute.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                                "digital_clock_minute_separator_img.setAlpha(" + DigitalTime_v2.Group_Minute.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                                     } 
                                 }
                             }
@@ -2608,6 +2637,9 @@ namespace Watch_Face_Editor
                                         optionNameStart + "digital_clock_img_time_second = hmUI.createWidget(hmUI.widget.IMG_TIME, {" +
                                             optionsSecond_v2 + TabInString(6) + "});" + Environment.NewLine;
 
+                                    if (DigitalTime_v2.Group_Second.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                            "digital_clock_img_time_second.setAlpha(" + DigitalTime_v2.Group_Second.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                                     if (optionsSecond_separator_v2.Length > 5)
                                     {
                                         variables += TabInString(4) + "let " + optionNameStart +
@@ -2615,6 +2647,9 @@ namespace Watch_Face_Editor
                                         items += Environment.NewLine + TabInString(6) +
                                             optionNameStart + "digital_clock_second_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                                 optionsSecond_separator_v2 + TabInString(6) + "});" + Environment.NewLine;
+
+                                        if (DigitalTime_v2.Group_Second.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                                "digital_clock_second_separator_img.setAlpha(" + DigitalTime_v2.Group_Second.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                                     } 
                                 }
                             }
@@ -3515,6 +3550,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "date_img_date_day = hmUI.createWidget(hmUI.widget.IMG_DATE, {" +
                                     optionsNumberDay + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (DateDay.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "date_img_date_day.setAlpha(" + DateDay.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (optionsNumberDay_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -3522,6 +3560,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "date_day_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         optionsNumberDay_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (DateDay.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "date_day_separator_img.setAlpha(" + DateDay.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -3898,6 +3939,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "date_img_date_month = hmUI.createWidget(hmUI.widget.IMG_DATE, {" +
                                     optionsNumberMonth + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (DateMonth.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "date_img_date_month.setAlpha(" + DateMonth.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (optionsNumberMonth_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -3905,6 +3949,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "date_month_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         optionsNumberMonth_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (DateMonth.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "date_month_separator_img.setAlpha(" + DateMonth.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -4037,6 +4084,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "date_img_date_month_img = hmUI.createWidget(hmUI.widget.IMG_DATE, {" +
                                     optionsImagesMonth + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (DateMonth.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "date_img_date_month_img.setAlpha(" + DateMonth.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
                     }
                     break;
@@ -4097,6 +4147,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "date_img_date_year = hmUI.createWidget(hmUI.widget.IMG_DATE, {" +
                                     optionsNumberYear + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (DateYear.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "date_img_date_year.setAlpha(" + DateYear.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (optionsNumberYear_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -4104,6 +4157,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "date_year_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         optionsNumberYear_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (DateYear.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "date_year_separator_img.setAlpha(" + DateYear.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -4238,6 +4294,7 @@ namespace Watch_Face_Editor
 
                     for (int index = 1; index <= 5; index++)
                     {
+                        // Pointer
                         if (index == pointerPositionWeek && optionsPointerWeek.Length > 5)
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
@@ -4247,6 +4304,7 @@ namespace Watch_Face_Editor
                                     optionsPointerWeek + TabInString(6) + "});" + Environment.NewLine;
                         }
 
+                        // Images
                         if (index == imagesPositionWeek && optionsImagesWeek.Length > 5)
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
@@ -4254,6 +4312,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "date_img_date_week_img = hmUI.createWidget(hmUI.widget.IMG_WEEK, {" +
                                     optionsImagesWeek + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (DateWeek.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "date_img_date_week_img.setAlpha(" + DateWeek.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Number_Font
@@ -4367,8 +4428,8 @@ namespace Watch_Face_Editor
                                 optionNameStart + "system_clock_img = hmUI.createWidget(hmUI.widget.IMG_STATUS, {" +
                                     optionsStatusAlarm + TabInString(6) + "});" + Environment.NewLine;
 
-                            //if (Statuses.Alarm.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
-                            //        "system_clock_img.setAlpha(" + Statuses.Alarm.alpha.ToString() + ");" + Environment.NewLine;
+                            if (Statuses.Alarm.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "system_clock_img.setAlpha(" + Statuses.Alarm.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Bluetooth
@@ -4380,8 +4441,8 @@ namespace Watch_Face_Editor
                                 optionNameStart + "system_disconnect_img = hmUI.createWidget(hmUI.widget.IMG_STATUS, {" +
                                     optionsStatusBluetooth + TabInString(6) + "});" + Environment.NewLine;
 
-                            //if (Statuses.Bluetooth.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
-                            //        "system_disconnect_img.setAlpha(" + Statuses.Bluetooth.alpha.ToString() + ");" + Environment.NewLine;
+                            if (Statuses.Bluetooth.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "system_disconnect_img.setAlpha(" + Statuses.Bluetooth.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // DND
@@ -4393,8 +4454,8 @@ namespace Watch_Face_Editor
                                 optionNameStart + "system_dnd_img = hmUI.createWidget(hmUI.widget.IMG_STATUS, {" +
                                     optionsStatusDND + TabInString(6) + "});" + Environment.NewLine;
 
-                            //if (Statuses.DND.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
-                            //        "system_dnd_img.setAlpha(" + Statuses.DND.alpha.ToString() + ");" + Environment.NewLine;
+                            if (Statuses.DND.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "system_dnd_img.setAlpha(" + Statuses.DND.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Lock
@@ -4406,8 +4467,8 @@ namespace Watch_Face_Editor
                                 optionNameStart + "system_lock_img = hmUI.createWidget(hmUI.widget.IMG_STATUS, {" +
                                     optionsStatusLock + TabInString(6) + "});" + Environment.NewLine;
 
-                            //if (Statuses.Lock.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
-                            //        "system_lock_img.setAlpha(" + Statuses.Lock.alpha.ToString() + ");" + Environment.NewLine;
+                            if (Statuses.Lock.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "system_lock_img.setAlpha(" + Statuses.Lock.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -5089,6 +5150,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "step_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Steps.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "step_image_progress_img_level.setAlpha(" + Steps.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Segments
@@ -5110,6 +5174,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "step_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Steps.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "step_current_text_img.setAlpha(" + Steps.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -5117,6 +5184,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "step_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Steps.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "step_current_separator_img.setAlpha(" + Steps.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -5173,6 +5243,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "step_target_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Steps.Number_Target.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "step_target_text_img.setAlpha(" + Steps.Number_Target.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberTargetOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -5180,6 +5253,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "step_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Steps.Number_Target.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "step_target_separator_img.setAlpha(" + Steps.Number_Target.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -5506,6 +5582,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "battery_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Battery.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "battery_image_progress_img_level.setAlpha(" + Battery.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Segments
@@ -5527,6 +5606,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "battery_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Battery.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "battery_text_text_img.setAlpha(" + Battery.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -5534,6 +5616,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "battery_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Battery.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "battery_text_separator_img.setAlpha(" + Battery.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -5908,6 +5993,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "calorie_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Calories.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "calorie_image_progress_img_level.setAlpha(" + Calories.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Segments
@@ -5929,6 +6017,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "calorie_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Calories.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "calorie_current_text_img.setAlpha(" + Calories.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -5936,6 +6027,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "calorie_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Calories.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "calorie_current_separator_img.setAlpha(" + Calories.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -5990,6 +6084,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "calorie_target_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Calories.Number_Target.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "calorie_target_text_img.setAlpha(" + Calories.Number_Target.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberTargetOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -5997,6 +6094,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "calorie_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Calories.Number_Target.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "calorie_target_separator_img.setAlpha(" + Calories.Number_Target.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -6339,6 +6439,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "heart_rate_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Heart.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "heart_rate_image_progress_img_level.setAlpha(" + Heart.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Segments
@@ -6360,6 +6463,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "heart_rate_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Heart.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "heart_rate_text_text_img.setAlpha(" + Heart.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -6367,6 +6473,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "heart_rate_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Heart.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "heart_rate_text_separator_img.setAlpha(" + Heart.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -6639,12 +6748,6 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
-                    //if (PAI.Number_Font != null && PAI.Number_Font.visible)
-                    //{
-                    //    numberFontPosition = PAI.Number_Font.position;
-                    //    hmUI_widget_TEXT text = PAI.Number_Font;
-                    //    numberFontOptions = TEXT_FONT_Options(text, "PAI_DAILY", show_level);
-                    //}
 
                     if (PAI.Number_Target != null && PAI.Number_Target.visible)
                     {
@@ -6716,6 +6819,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "pai_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (PAI.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "pai_image_progress_img_level.setAlpha(" + PAI.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Segments
@@ -6737,6 +6843,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "pai_day_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (PAI.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "pai_day_text_img.setAlpha(" + PAI.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -6744,6 +6853,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "pai_day_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (PAI.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "pai_day_separator_img.setAlpha(" + PAI.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -6781,6 +6893,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "pai_weekly_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (PAI.Number_Target.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "pai_weekly_text_img.setAlpha(" + PAI.Number_Target.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberTargetOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -6788,6 +6903,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "pai_weekly_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (PAI.Number_Target.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "pai_weekly_separator_img.setAlpha(" + PAI.Number_Target.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -7083,6 +7201,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "distance_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Distance.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "distance_text_text_img.setAlpha(" + Distance.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -7090,6 +7211,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "distance_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Distance.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "distance_text_separator_img.setAlpha(" + Distance.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -7640,6 +7764,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "stand_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Stand.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "stand_image_progress_img_level.setAlpha(" + Stand.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Segments
@@ -7661,6 +7788,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "stand_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Stand.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "stand_current_text_img.setAlpha(" + Stand.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -7668,6 +7798,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "stand_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Stand.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "stand_current_text_img.setAlpha(" + Stand.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -7725,6 +7858,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "stand_target_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Stand.Number_Target.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "stand_target_text_img.setAlpha(" + Stand.Number_Target.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberTargetOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -7732,6 +7868,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "stand_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Stand.Number_Target.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "stand_target_separator_img.setAlpha(" + Stand.Number_Target.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -8047,6 +8186,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "activity_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Activity.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "activity_image_progress_img_level.setAlpha(" + Activity.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Segments
@@ -8068,6 +8210,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "activity_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Activity.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "activity_current_text_img.setAlpha(" + Activity.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -8075,6 +8220,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "activity_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Activity.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "activity_current_separator_img.setAlpha(" + Activity.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -8115,6 +8263,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "activity_target_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Activity.Number_Target.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "activity_target_text_img.setAlpha(" + Activity.Number_Target.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberTargetOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -8122,6 +8273,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "activity_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Activity.Number_Target.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "activity_target_separator_img.setAlpha(" + Activity.Number_Target.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -8399,6 +8553,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "spo2_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (SpO2.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "spo2_text_text_img.setAlpha(" + SpO2.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -8406,6 +8563,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "spo2_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (SpO2.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "spo2_text_separator_img.setAlpha(" + SpO2.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -8527,6 +8687,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "stress_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Stress.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "stress_image_progress_img_level.setAlpha(" + Stress.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Segments
@@ -8548,6 +8711,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "stress_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Stress.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "stress_text_text_img.setAlpha(" + Stress.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -8555,6 +8721,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "stress_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Stress.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "stress_text_separator_img.setAlpha(" + Stress.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -8732,6 +8901,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "fat_burning_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (FatBurning.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "fat_burning_image_progress_img_level.setAlpha(" + FatBurning.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Segments
@@ -8753,6 +8925,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "fat_burning_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (FatBurning.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "fat_burning_current_text_img.setAlpha(" + FatBurning.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -8760,6 +8935,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "fat_burning_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (FatBurning.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "fat_burning_current_separator_img.setAlpha(" + FatBurning.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -8816,6 +8994,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "fat_burning_target_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (FatBurning.Number_Target.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "fat_burning_target_text_img.setAlpha(" + FatBurning.Number_Target.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberTargetOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -8823,6 +9004,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "fat_burning_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (FatBurning.Number_Target.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "fat_burning_target_separator_img.setAlpha(" + FatBurning.Number_Target.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -9726,6 +9910,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "weather_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Weather.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "weather_image_progress_img_level.setAlpha(" + Weather.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Number
@@ -9737,6 +9924,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "temperature_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Weather.Group_Current.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "temperature_current_text_img.setAlpha(" + Weather.Group_Current.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -9744,6 +9934,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "temperature_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Weather.Group_Current.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "temperature_current_separator_img.setAlpha(" + Weather.Group_Current.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
 
                             if (Weather.Group_Current.Number.imperial_unit != null && Weather.Group_Current.Number.imperial_unit.Length > 0)
@@ -9822,6 +10015,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "temperature_low_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberMinOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Weather.Group_Min.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "temperature_low_text_img.setAlpha(" + Weather.Group_Min.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberMinOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -9829,6 +10025,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "temperature_low_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberMinOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Weather.Group_Min.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "temperature_low_separator_img.setAlpha(" + Weather.Group_Min.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
 
                             if (Weather.Group_Min.Number.imperial_unit != null && Weather.Group_Min.Number.imperial_unit.Length > 0)
@@ -9907,6 +10106,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "temperature_high_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberMaxOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Weather.Group_Max.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "temperature_high_text_img.setAlpha(" + Weather.Group_Max.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberMaxOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -9914,6 +10116,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "temperature_high_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberMaxOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Weather.Group_Max.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "temperature_high_separator_img.setAlpha(" + Weather.Group_Max.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
 
                             if (Weather.Group_Max.Number.imperial_unit != null && Weather.Group_Max.Number.imperial_unit.Length > 0)
@@ -9992,6 +10197,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "temperature_max_min_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberMaxMinOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Weather.Group_Max_Min.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "temperature_max_min_text_img.setAlpha(" + Weather.Group_Max_Min.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberMaxMinOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -9999,6 +10207,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "temperature_max_min_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Weather.Group_Max_Min.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "temperature_max_min_separator_img.setAlpha(" + Weather.Group_Max_Min.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
 
                             if (Weather.Group_Max_Min.Number.imperial_unit != null && Weather.Group_Max_Min.Number.imperial_unit.Length > 0)
@@ -10199,6 +10410,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "uvi_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (UVIndex.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "uvi_image_progress_img_level.setAlpha(" + UVIndex.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Segments
@@ -10220,6 +10434,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "uvi_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (UVIndex.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "uvi_text_text_img.setAlpha(" + UVIndex.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -10227,6 +10444,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "uvi_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (UVIndex.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "uvi_text_separator_img.setAlpha(" + UVIndex.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -10342,6 +10562,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "humidity_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Humidity.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "humidity_image_progress_img_level.setAlpha(" + Humidity.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Segments
@@ -10363,6 +10586,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "humidity_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Humidity.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "humidity_text_text_img.setAlpha(" + Humidity.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -10370,6 +10596,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "humidity_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Humidity.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "humidity_text_separator_img.setAlpha(" + Humidity.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -10490,6 +10719,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "altimeter_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Altimeter.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "altimeter_text_text_img.setAlpha(" + Altimeter.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -10497,6 +10729,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "altimeter_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Altimeter.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "altimeter_text_separator_img.setAlpha(" + Altimeter.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -10537,6 +10772,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "altitude_target_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Altimeter.Number_Target.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "altitude_target_text_img.setAlpha(" + Altimeter.Number_Target.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberTargetOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -10544,6 +10782,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "altitude_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Altimeter.Number_Target.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "altitude_target_separator_img.setAlpha(" + Altimeter.Number_Target.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -10724,6 +10965,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "sun_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Sunrise.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "sun_image_progress_img_level.setAlpha(" + Sunrise.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Segments
@@ -10745,6 +10989,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "sun_high_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Sunrise.Sunrise.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "sun_high_text_img.setAlpha(" + Sunrise.Sunrise.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -10752,6 +10999,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "sun_high_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Sunrise.Sunrise.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "sun_high_separator_img.setAlpha(" + Sunrise.Sunrise.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -10793,6 +11043,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "sun_low_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Sunrise.Sunset.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "sun_low_text_img.setAlpha(" + Sunrise.Sunset.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberTargetOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -10800,6 +11053,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "sun_low_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Sunrise.Sunset.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "sun_low_separator_img.setAlpha(" + Sunrise.Sunset.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -10841,6 +11097,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "sun_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberSunCurrentOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Sunrise.Sunset_Sunrise.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "sun_current_text_img.setAlpha(" + Sunrise.Sunset_Sunrise.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberSunCurrentOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -10848,6 +11107,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "sun_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberSunCurrentOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Sunrise.Sunset_Sunrise.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "sun_current_separator_img.setAlpha(" + Sunrise.Sunset_Sunrise.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -10897,6 +11159,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "sun_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Sunrise.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "sun_icon_img.setAlpha(" + Sunrise.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -10968,6 +11233,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "wind_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Wind.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "wind_image_progress_img_level.setAlpha(" + Wind.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Segments
@@ -10989,6 +11257,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "wind_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Wind.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "wind_text_text_img.setAlpha(" + Wind.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -10996,6 +11267,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "wind_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Wind.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "wind_text_separator_img.setAlpha(" + Wind.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -11046,6 +11320,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "wind_direction_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     directionOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Wind.Direction.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "wind_direction_image_progress_img_level.setAlpha(" + Wind.Direction.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         // Icon
@@ -11056,6 +11333,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "wind_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Wind.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "wind_icon_img.setAlpha(" + Wind.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -11156,6 +11436,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "moon_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Moon.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "moon_image_progress_img_level.setAlpha(" + Moon.Images.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
                         //// Segments
@@ -11177,6 +11460,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "moon_high_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Moon.Sunrise.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "moon_high_text_img.setAlpha(" + Moon.Sunrise.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -11184,6 +11470,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "moon_high_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Moon.Sunrise.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "moon_high_separator_img.setAlpha(" + Moon.Sunrise.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -11225,6 +11514,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "moon_low_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Moon.Sunset.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "moon_low_text_img.setAlpha(" + Moon.Sunset.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberTargetOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -11232,6 +11524,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "moon_low_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Moon.Sunset.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "moon_low_separator_img.setAlpha(" + Moon.Sunset.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -11273,6 +11568,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "moon_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberMoonCurrentOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Moon.Sunset_Sunrise.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "moon_current_text_img.setAlpha(" + Moon.Sunset_Sunrise.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (numberMoonCurrentOptions_separator.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -11280,6 +11578,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "moon_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberMoonCurrentOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Moon.Sunset_Sunrise.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "moon_current_separator_img.setAlpha(" + Moon.Sunset_Sunrise.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -11301,6 +11602,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "moon_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (Moon.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "moon_icon_img.setAlpha(" + Moon.Icon.alpha.ToString() + ");" + Environment.NewLine;
                         }
 
 
@@ -11328,6 +11632,9 @@ namespace Watch_Face_Editor
                         items += Environment.NewLine + TabInString(6) +
                             optionNameStart + "image_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                 iconOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                        if (Image.Icon.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                "image_img.setAlpha(" + Image.Icon.alpha.ToString() + ");" + Environment.NewLine;
                     }
                     break;
                 #endregion
@@ -11426,6 +11733,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "compass_direction_img_level = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     imagesOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Compass.Images.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "compass_direction_img_level.setAlpha(" + Compass.Images.alpha.ToString() + ");" + Environment.NewLine;
+
                             compass_update += TabInString(8) + "// Compass Images" + Environment.NewLine;
                             if (compass_update.IndexOf("compass_direction_angle = parseInt") < 0)
                                 compass_update += TabInString(8) + "let compass_direction_angle = parseInt(compass.direction_angle);" + Environment.NewLine;
@@ -11464,6 +11774,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "compass_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Compass.Number.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "compass_text_img.setAlpha(" + Compass.Number.alpha.ToString() + ");" + Environment.NewLine;
+
                             compass_update += TabInString(8) + "// Compass Number" + Environment.NewLine;
                             if (compass_update.IndexOf("compass_direction_angle = parseInt") < 0)
                                 compass_update += TabInString(8) + "let compass_direction_angle = parseInt(compass.direction_angle);" + Environment.NewLine;
@@ -11486,6 +11799,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "compass_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Compass.Number.icon_alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "compass_separator_img.setAlpha(" + Compass.Number.icon_alpha.ToString() + ");" + Environment.NewLine;
                             }
                         }
 
@@ -12592,6 +12908,10 @@ namespace Watch_Face_Editor
                     //items += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.VISIBLE, false);";
                     items += Environment.NewLine + TabInString(7) + "};";
                     items += Environment.NewLine + TabInString(6) + "};";
+
+                    if (images.alpha != 255) items += Environment.NewLine + TabInString(6) + variableName + "[i]" +
+                            ".setAlpha(" + images.alpha.ToString() + ");" + Environment.NewLine;
+
                     items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
                     #endregion
 
@@ -12656,6 +12976,10 @@ namespace Watch_Face_Editor
                     //items += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.VISIBLE, false);";
                     items += Environment.NewLine + TabInString(7) + "};";
                     items += Environment.NewLine + TabInString(6) + "};";
+
+                    if (dow_images.alpha != 255) items += Environment.NewLine + TabInString(6) + variableName + "[i]" +
+                            ".setAlpha(" + dow_images.alpha.ToString() + ");" + Environment.NewLine;
+
                     items += Environment.NewLine + TabInString(6) + "//end of ignored block" + Environment.NewLine;
                     #endregion
 
@@ -13073,6 +13397,10 @@ namespace Watch_Face_Editor
                         items += Environment.NewLine + TabInString(9) + "show_level: hmUI.show_level." + show_level + ",";
                     }
                     items += Environment.NewLine + TabInString(8) + "});";
+
+                    if (img_number.alpha != 255) items += Environment.NewLine + TabInString(8) + variableName + "[i]" +
+                            ".setAlpha(" + img_number.alpha.ToString() + ");" + Environment.NewLine;
+
                     //items += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.VISIBLE, false);";
                     if (img_number.imperial_unit != null && img_number.imperial_unit.Length > 0 && 
                         img_number.unit != null && img_number.unit != img_number.imperial_unit)
@@ -13335,6 +13663,10 @@ namespace Watch_Face_Editor
                         items += Environment.NewLine + TabInString(9) + "show_level: hmUI.show_level." + show_level + ",";
                     }
                     items += Environment.NewLine + TabInString(8) + "});";
+
+                    if (img_number.alpha != 255) items += Environment.NewLine + TabInString(8) + variableName + "[i]" +
+                            ".setAlpha(" + img_number.alpha.ToString() + ");" + Environment.NewLine;
+
                     //items += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.VISIBLE, false);";
                     if (img_number.imperial_unit != null && img_number.imperial_unit.Length > 0 &&
                         img_number.unit != null && img_number.unit != img_number.imperial_unit)
@@ -13597,6 +13929,10 @@ namespace Watch_Face_Editor
                         items += Environment.NewLine + TabInString(9) + "show_level: hmUI.show_level." + show_level + ",";
                     }
                     items += Environment.NewLine + TabInString(8) + "});";
+
+                    if (img_number.alpha != 255) items += Environment.NewLine + TabInString(8) + variableName + "[i]" +
+                            ".setAlpha(" + img_number.alpha.ToString() + ");" + Environment.NewLine;
+
                     //items += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.VISIBLE, false);";
                     if (img_number.imperial_unit != null && img_number.imperial_unit.Length > 0 &&
                         img_number.unit != null && img_number.unit != img_number.imperial_unit)
@@ -13864,6 +14200,10 @@ namespace Watch_Face_Editor
                         items += Environment.NewLine + TabInString(9) + "show_level: hmUI.show_level." + show_level + ",";
                     }
                     items += Environment.NewLine + TabInString(8) + "});";
+
+                    if (img_number.alpha != 255) items += Environment.NewLine + TabInString(8) + variableName + "[i]" +
+                            ".setAlpha(" + img_number.alpha.ToString() + ");" + Environment.NewLine;
+
                     //items += Environment.NewLine + TabInString(8) + variableName + "[i].setProperty(hmUI.prop.VISIBLE, false);";
                     if (img_number.imperial_unit != null && img_number.imperial_unit.Length > 0 &&
                         img_number.unit != null && img_number.unit != img_number.imperial_unit)
@@ -17385,6 +17725,11 @@ namespace Watch_Face_Editor
                 if (img.w != null) options += TabInString(7 + tabOffset) + "// w: " + img.w.ToString() + "," + Environment.NewLine;
                 if (img.h != null) options += TabInString(7 + tabOffset) + "// h: " + img.h.ToString() + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "// src: '" + img.src + ".png'," + Environment.NewLine;
+
+                if (SelectedModel.versionOS >= 2.1 && img.alpha != 255)
+                {
+                    options += TabInString(7 + tabOffset) + "// alpha: " + img.alpha.ToString() + "," + Environment.NewLine;
+                }
                 if (show_level != null && show_level.Length > 0)
                 {
                     if (show_level.StartsWith("hmUI.show_level")) options += TabInString(7 + tabOffset) + "// show_level: " + show_level + "," + Environment.NewLine;
@@ -17423,6 +17768,11 @@ namespace Watch_Face_Editor
                 options += TabInString(7 + tabOffset) + "// y: " + img_level.Y.ToString() + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "// image_array: " + img_array + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "// image_length: " + img_level.image_length.ToString() + "," + Environment.NewLine;
+
+                if (SelectedModel.versionOS >= 2.1 && img_level.alpha != 255)
+                {
+                    options += TabInString(7 + tabOffset) + "// alpha: " + img_level.alpha.ToString() + "," + Environment.NewLine;
+                }
 
                 //if (img_level.shortcut)
                 //{
@@ -17467,6 +17817,10 @@ namespace Watch_Face_Editor
                 options += TabInString(7 + tabOffset) + "x: " + img_number.iconPosX.ToString() + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "y: " + img_number.iconPosY.ToString() + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "src: '" + img_number.icon + ".png'," + Environment.NewLine;
+                if (SelectedModel.versionOS >= 2.1 && img_number.alpha != 255)
+                {
+                    options += TabInString(7 + tabOffset) + "// alpha: " + img_number.alpha.ToString() + "," + Environment.NewLine;
+                }
                 options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
             }
             return options;
@@ -17557,6 +17911,11 @@ namespace Watch_Face_Editor
                     options += TabInString(7 + tabOffset) + "dot_image: " + dot_path + "," + Environment.NewLine;
                 }
 
+                if (SelectedModel.versionOS >= 2.1 && img_number.alpha != 255)
+                {
+                    options += TabInString(7 + tabOffset) + "// alpha: " + img_number.alpha.ToString() + "," + Environment.NewLine;
+                }
+
                 options += TabInString(7 + tabOffset) + "align_h: hmUI.align." + img_number.align.ToUpper() + "," + Environment.NewLine;
 
 
@@ -17642,6 +18001,11 @@ namespace Watch_Face_Editor
                     options += TabInString(7 + tabOffset) + "// separator_image: " + separator_image + "," + Environment.NewLine;
                 }
 
+                if (SelectedModel.versionOS >= 2.1 && img_number.alpha != 255)
+                {
+                    options += TabInString(7 + tabOffset) + "// alpha: " + img_number.alpha.ToString() + "," + Environment.NewLine;
+                }
+
                 options += TabInString(7 + tabOffset) + "// align_h: hmUI.align." + img_number.align.ToUpper() + "," + Environment.NewLine;
 
 
@@ -17696,6 +18060,12 @@ namespace Watch_Face_Editor
                     options += TabInString(7) + "hour_unit_tc: " + hour_unit + "," + Environment.NewLine;
                     options += TabInString(7) + "hour_unit_en: " + hour_unit + "," + Environment.NewLine;
                 }
+
+                if (SelectedModel.versionOS >= 2.1 && img_number_hour.alpha != 255)
+                {
+                    options += TabInString(7) + "// alpha: " + img_number_hour.alpha.ToString() + "," + Environment.NewLine;
+                }
+
                 options += TabInString(7) + "hour_align: hmUI.align." + img_number_hour.align.ToUpper() + "," + Environment.NewLine;
 
                 //options += TabInString(7) + "show_level: hmUI.show_level." + img_number_hour.show_level + "," + Environment.NewLine;
@@ -17747,6 +18117,11 @@ namespace Watch_Face_Editor
                     options += TabInString(7) + "minute_unit_tc: " + minute_unit + "," + Environment.NewLine;
                     options += TabInString(7) + "minute_unit_en: " + minute_unit + "," + Environment.NewLine;
                 }
+
+                if (SelectedModel.versionOS >= 2.1 && img_number_minute.alpha != 255)
+                {
+                    options += TabInString(7) + "// alpha: " + img_number_minute.alpha.ToString() + "," + Environment.NewLine;
+                }
                 options += TabInString(7) + "minute_align: hmUI.align." + img_number_minute.align.ToUpper() + "," + Environment.NewLine;
 
                 //options += TabInString(7) + "show_level: hmUI.show_level." + img_number_hour.show_level + "," + Environment.NewLine;
@@ -17797,6 +18172,11 @@ namespace Watch_Face_Editor
                     options += TabInString(7) + "second_unit_sc: " + second_unit + "," + Environment.NewLine;
                     options += TabInString(7) + "second_unit_tc: " + second_unit + "," + Environment.NewLine;
                     options += TabInString(7) + "second_unit_en: " + second_unit + "," + Environment.NewLine;
+                }
+
+                if (SelectedModel.versionOS >= 2.1 && img_number_second.alpha != 255)
+                {
+                    options += TabInString(7) + "// alpha: " + img_number_second.alpha.ToString() + "," + Environment.NewLine;
                 }
                 options += TabInString(7) + "second_align: hmUI.align." + img_number_second.align.ToUpper() + "," + Environment.NewLine;
 
@@ -18221,6 +18601,11 @@ namespace Watch_Face_Editor
                 options += TabInString(7 + tabOffset) + "day_align: hmUI.align." + img_number_day.align.ToUpper() + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "day_is_character: false," + Environment.NewLine;
 
+                if (SelectedModel.versionOS >= 2.1 && img_number_day.alpha != 255)
+                {
+                    options += TabInString(7 + tabOffset) + "// alpha: " + img_number_day.alpha.ToString() + "," + Environment.NewLine;
+                }
+
                 if (show_level.Length > 0)
                 {
                     options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
@@ -18272,6 +18657,11 @@ namespace Watch_Face_Editor
                 }
                 options += TabInString(7 + tabOffset) + "month_align: hmUI.align." + img_number_month.align.ToUpper() + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "month_is_character: false," + Environment.NewLine;
+
+                if (SelectedModel.versionOS >= 2.1 && img_number_month.alpha != 255)
+                {
+                    options += TabInString(7 + tabOffset) + "// alpha: " + img_number_month.alpha.ToString() + "," + Environment.NewLine;
+                }
 
                 if (show_level.Length > 0)
                 {
@@ -18325,6 +18715,11 @@ namespace Watch_Face_Editor
                 options += TabInString(7 + tabOffset) + "year_align: hmUI.align." + img_number_year.align.ToUpper() + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "year_is_character: false," + Environment.NewLine;
 
+                if (SelectedModel.versionOS >= 2.1 && img_number_year.alpha != 255)
+                {
+                    options += TabInString(7 + tabOffset) + "// alpha: " + img_number_year.alpha.ToString() + "," + Environment.NewLine;
+                }
+
                 if (show_level.Length > 0)
                 {
                     options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
@@ -18363,6 +18758,11 @@ namespace Watch_Face_Editor
                 options += TabInString(7 + tabOffset) + "month_sc_array: " + month_array + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "month_tc_array: " + month_array + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "month_en_array: " + month_array + "," + Environment.NewLine;
+
+                if (SelectedModel.versionOS >= 2.1 && img_month.alpha != 255)
+                {
+                    options += TabInString(7 + tabOffset) + "// alpha: " + img_month.alpha.ToString() + "," + Environment.NewLine;
+                }
 
                 options += TabInString(7 + tabOffset) + "month_is_character: true ," + Environment.NewLine;
 
@@ -18405,6 +18805,11 @@ namespace Watch_Face_Editor
                 options += TabInString(7 + tabOffset) + "week_tc: " + week_array + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "week_sc: " + week_array + "," + Environment.NewLine;
 
+                if (SelectedModel.versionOS >= 2.1 && img_week.alpha != 255)
+                {
+                    options += TabInString(7 + tabOffset) + "// alpha: " + img_week.alpha.ToString() + "," + Environment.NewLine;
+                }
+
                 if (show_level.Length > 0)
                 {
                     options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
@@ -18442,6 +18847,11 @@ namespace Watch_Face_Editor
                 options += TabInString(7 + tabOffset) + "y: " + img_level.Y.ToString() + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "image_array: " + img_array + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "image_length: " + img_level.image_length.ToString() + "," + Environment.NewLine;
+
+                if (SelectedModel.versionOS >= 2.1 && img_level.alpha != 255)
+                {
+                    options += TabInString(7 + tabOffset) + "// alpha: " + img_level.alpha.ToString() + "," + Environment.NewLine;
+                }
 
                 if (img_level.shortcut)
                 {
@@ -20965,6 +21375,7 @@ namespace Watch_Face_Editor
                                         digitalTime.Group_Hour.Number.icon = img.src;
                                         digitalTime.Group_Hour.Number.iconPosX = img.x;
                                         digitalTime.Group_Hour.Number.iconPosY = img.y;
+                                        digitalTime.Group_Hour.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -20977,6 +21388,7 @@ namespace Watch_Face_Editor
                                         digitalTime.Group_Minute.Number.icon = img.src;
                                         digitalTime.Group_Minute.Number.iconPosX = img.x;
                                         digitalTime.Group_Minute.Number.iconPosY = img.y;
+                                        digitalTime.Group_Minute.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -20989,6 +21401,7 @@ namespace Watch_Face_Editor
                                         digitalTime.Group_Second.Number.icon = img.src;
                                         digitalTime.Group_Second.Number.iconPosX = img.x;
                                         digitalTime.Group_Second.Number.iconPosY = img.y;
+                                        digitalTime.Group_Second.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21001,6 +21414,7 @@ namespace Watch_Face_Editor
                                         dateDay.Number.icon = img.src;
                                         dateDay.Number.iconPosX = img.x;
                                         dateDay.Number.iconPosY = img.y;
+                                        dateDay.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21013,6 +21427,7 @@ namespace Watch_Face_Editor
                                         dateMonth.Number.icon = img.src;
                                         dateMonth.Number.iconPosX = img.x;
                                         dateMonth.Number.iconPosY = img.y;
+                                        dateMonth.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21025,6 +21440,7 @@ namespace Watch_Face_Editor
                                         dateYear.Number.icon = img.src;
                                         dateYear.Number.iconPosX = img.x;
                                         dateYear.Number.iconPosY = img.y;
+                                        dateYear.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21037,6 +21453,7 @@ namespace Watch_Face_Editor
                                         steps.Number.icon = img.src;
                                         steps.Number.iconPosX = img.x;
                                         steps.Number.iconPosY = img.y;
+                                        steps.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21049,6 +21466,7 @@ namespace Watch_Face_Editor
                                         steps.Number_Target.icon = img.src;
                                         steps.Number_Target.iconPosX = img.x;
                                         steps.Number_Target.iconPosY = img.y;
+                                        steps.Number_Target.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21061,6 +21479,7 @@ namespace Watch_Face_Editor
                                         battery.Number.icon = img.src;
                                         battery.Number.iconPosX = img.x;
                                         battery.Number.iconPosY = img.y;
+                                        battery.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21073,6 +21492,7 @@ namespace Watch_Face_Editor
                                         calorie.Number.icon = img.src;
                                         calorie.Number.iconPosX = img.x;
                                         calorie.Number.iconPosY = img.y;
+                                        calorie.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21085,6 +21505,7 @@ namespace Watch_Face_Editor
                                         calorie.Number_Target.icon = img.src;
                                         calorie.Number_Target.iconPosX = img.x;
                                         calorie.Number_Target.iconPosY = img.y;
+                                        calorie.Number_Target.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21097,6 +21518,7 @@ namespace Watch_Face_Editor
                                         heart.Number.icon = img.src;
                                         heart.Number.iconPosX = img.x;
                                         heart.Number.iconPosY = img.y;
+                                        heart.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21109,6 +21531,7 @@ namespace Watch_Face_Editor
                                         pai_day.Number.icon = img.src;
                                         pai_day.Number.iconPosX = img.x;
                                         pai_day.Number.iconPosY = img.y;
+                                        pai_day.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21121,6 +21544,7 @@ namespace Watch_Face_Editor
                                         pai_weekly.Number_Target.icon = img.src;
                                         pai_weekly.Number_Target.iconPosX = img.x;
                                         pai_weekly.Number_Target.iconPosY = img.y;
+                                        pai_weekly.Number_Target.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21133,6 +21557,7 @@ namespace Watch_Face_Editor
                                         distance.Number.icon = img.src;
                                         distance.Number.iconPosX = img.x;
                                         distance.Number.iconPosY = img.y;
+                                        distance.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21145,6 +21570,7 @@ namespace Watch_Face_Editor
                                         stand.Number.icon = img.src;
                                         stand.Number.iconPosX = img.x;
                                         stand.Number.iconPosY = img.y;
+                                        stand.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21157,6 +21583,7 @@ namespace Watch_Face_Editor
                                         stand.Number_Target.icon = img.src;
                                         stand.Number_Target.iconPosX = img.x;
                                         stand.Number_Target.iconPosY = img.y;
+                                        stand.Number_Target.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21169,6 +21596,7 @@ namespace Watch_Face_Editor
                                         activity.Number.icon = img.src;
                                         activity.Number.iconPosX = img.x;
                                         activity.Number.iconPosY = img.y;
+                                        activity.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21181,6 +21609,7 @@ namespace Watch_Face_Editor
                                         activity.Number_Target.icon = img.src;
                                         activity.Number_Target.iconPosX = img.x;
                                         activity.Number_Target.iconPosY = img.y;
+                                        activity.Number_Target.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21193,6 +21622,7 @@ namespace Watch_Face_Editor
                                         spo2.Number.icon = img.src;
                                         spo2.Number.iconPosX = img.x;
                                         spo2.Number.iconPosY = img.y;
+                                        spo2.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21205,6 +21635,7 @@ namespace Watch_Face_Editor
                                         stress.Number.icon = img.src;
                                         stress.Number.iconPosX = img.x;
                                         stress.Number.iconPosY = img.y;
+                                        stress.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21217,6 +21648,7 @@ namespace Watch_Face_Editor
                                         fat_burning.Number.icon = img.src;
                                         fat_burning.Number.iconPosX = img.x;
                                         fat_burning.Number.iconPosY = img.y;
+                                        fat_burning.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21229,6 +21661,7 @@ namespace Watch_Face_Editor
                                         fat_burning.Number_Target.icon = img.src;
                                         fat_burning.Number_Target.iconPosX = img.x;
                                         fat_burning.Number_Target.iconPosY = img.y;
+                                        fat_burning.Number_Target.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21279,6 +21712,7 @@ namespace Watch_Face_Editor
                                         weather.Group_Current.Number.icon = img.src;
                                         weather.Group_Current.Number.iconPosX = img.x;
                                         weather.Group_Current.Number.iconPosY = img.y;
+                                        weather.Group_Current.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21291,6 +21725,7 @@ namespace Watch_Face_Editor
                                         weather.Group_Min.Number.icon = img.src;
                                         weather.Group_Min.Number.iconPosX = img.x;
                                         weather.Group_Min.Number.iconPosY = img.y;
+                                        weather.Group_Min.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21303,6 +21738,7 @@ namespace Watch_Face_Editor
                                         weather.Group_Max.Number.icon = img.src;
                                         weather.Group_Max.Number.iconPosX = img.x;
                                         weather.Group_Max.Number.iconPosY = img.y;
+                                        weather.Group_Max.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21315,6 +21751,7 @@ namespace Watch_Face_Editor
                                         weather.Group_Max_Min.Number.icon = img.src;
                                         weather.Group_Max_Min.Number.iconPosX = img.x;
                                         weather.Group_Max_Min.Number.iconPosY = img.y;
+                                        weather.Group_Max_Min.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21327,6 +21764,7 @@ namespace Watch_Face_Editor
                                         uv_index.Number.icon = img.src;
                                         uv_index.Number.iconPosX = img.x;
                                         uv_index.Number.iconPosY = img.y;
+                                        uv_index.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21339,6 +21777,7 @@ namespace Watch_Face_Editor
                                         humidity.Number.icon = img.src;
                                         humidity.Number.iconPosX = img.x;
                                         humidity.Number.iconPosY = img.y;
+                                        humidity.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21351,6 +21790,7 @@ namespace Watch_Face_Editor
                                         altimeter.Number.icon = img.src;
                                         altimeter.Number.iconPosX = img.x;
                                         altimeter.Number.iconPosY = img.y;
+                                        altimeter.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21363,6 +21803,7 @@ namespace Watch_Face_Editor
                                         sunrise.Sunrise.icon = img.src;
                                         sunrise.Sunrise.iconPosX = img.x;
                                         sunrise.Sunrise.iconPosY = img.y;
+                                        sunrise.Sunrise.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21375,6 +21816,7 @@ namespace Watch_Face_Editor
                                         sunset.Sunset.icon = img.src;
                                         sunset.Sunset.iconPosX = img.x;
                                         sunset.Sunset.iconPosY = img.y;
+                                        sunset.Sunset.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21387,6 +21829,7 @@ namespace Watch_Face_Editor
                                         sunset.Sunset_Sunrise.icon = img.src;
                                         sunset.Sunset_Sunrise.iconPosX = img.x;
                                         sunset.Sunset_Sunrise.iconPosY = img.y;
+                                        sunset.Sunset_Sunrise.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21399,6 +21842,7 @@ namespace Watch_Face_Editor
                                         moon.Sunrise.icon = img.src;
                                         moon.Sunrise.iconPosX = img.x;
                                         moon.Sunrise.iconPosY = img.y;
+                                        moon.Sunrise.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21411,6 +21855,7 @@ namespace Watch_Face_Editor
                                         moon.Sunset.icon = img.src;
                                         moon.Sunset.iconPosX = img.x;
                                         moon.Sunset.iconPosY = img.y;
+                                        moon.Sunset.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21423,6 +21868,7 @@ namespace Watch_Face_Editor
                                         moon.Sunset_Sunrise.icon = img.src;
                                         moon.Sunset_Sunrise.iconPosX = img.x;
                                         moon.Sunset_Sunrise.iconPosY = img.y;
+                                        moon.Sunset_Sunrise.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21436,6 +21882,7 @@ namespace Watch_Face_Editor
                                         wind.Number.icon = img.src;
                                         wind.Number.iconPosX = img.x;
                                         wind.Number.iconPosY = img.y;
+                                        wind.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -21448,6 +21895,7 @@ namespace Watch_Face_Editor
                                         compass.Number.icon = img.src;
                                         compass.Number.iconPosX = img.x;
                                         compass.Number.iconPosY = img.y;
+                                        compass.Number.icon_alpha = img.alpha;
                                     }
                                 }
 
@@ -25458,20 +25906,8 @@ namespace Watch_Face_Editor
 
                             if (digitalTime.AmPm != null) offset++;
 
-                            //if (digitalTime.Hour_Font != null) offset++;
-                            //if (digitalTime.Minute_Font != null) offset++;
-                            //if (digitalTime.Second_Font != null) offset++;
-
                             if (digitalTime.Hour_Min_Font != null) offset++;
                             if (digitalTime.Hour_Min_Sec_Font != null) offset++;
-
-                            //if (digitalTime.Hour_rotation != null) offset++;
-                            //if (digitalTime.Minute_rotation != null) offset++;
-                            //if (digitalTime.Second_rotation != null) offset++;
-
-                            //if (digitalTime.Hour_circle != null) offset++;
-                            //if (digitalTime.Minute_circle != null) offset++;
-                            //if (digitalTime.Second_circle != null) offset++;
 
                             if (img_time.Group_Hour != null && img_time.Group_Hour.Number != null)
                             {
@@ -25859,6 +26295,7 @@ namespace Watch_Face_Editor
                                 steps.Images.X = imgLevel.X;
                                 steps.Images.Y = imgLevel.Y;
                                 steps.Images.shortcut = imgLevel.shortcut;
+                                steps.Images.alpha = imgLevel.alpha;
                                 steps.Images.visible = true;
                                 steps.Images.position = offset;
                             }
@@ -25891,6 +26328,7 @@ namespace Watch_Face_Editor
                                 battery.Images.image_length = imgLevel.image_length;
                                 battery.Images.X = imgLevel.X;
                                 battery.Images.Y = imgLevel.Y;
+                                battery.Images.alpha = imgLevel.alpha;
                                 battery.Images.visible = true;
                                 battery.Images.position = offset;
                             }
@@ -25928,6 +26366,7 @@ namespace Watch_Face_Editor
                                 calorie.Images.X = imgLevel.X;
                                 calorie.Images.Y = imgLevel.Y;
                                 calorie.Images.shortcut = imgLevel.shortcut;
+                                calorie.Images.alpha = imgLevel.alpha;
                                 calorie.Images.visible = true;
                                 calorie.Images.position = offset;
                             }
@@ -25962,6 +26401,7 @@ namespace Watch_Face_Editor
                                 heart.Images.X = imgLevel.X;
                                 heart.Images.Y = imgLevel.Y;
                                 heart.Images.shortcut = imgLevel.shortcut;
+                                heart.Images.alpha = imgLevel.alpha;
                                 heart.Images.visible = true;
                                 heart.Images.position = offset;
                                 if (imgLevel.image_length != 6)
@@ -25999,6 +26439,7 @@ namespace Watch_Face_Editor
                                 pai.Images.X = imgLevel.X;
                                 pai.Images.Y = imgLevel.Y;
                                 pai.Images.shortcut = imgLevel.shortcut;
+                                pai.Images.alpha = imgLevel.alpha;
                                 pai.Images.visible = true;
                                 pai.Images.position = offset;
                             }
@@ -26036,6 +26477,7 @@ namespace Watch_Face_Editor
                                 stand.Images.X = imgLevel.X;
                                 stand.Images.Y = imgLevel.Y;
                                 stand.Images.shortcut = imgLevel.shortcut;
+                                stand.Images.alpha = imgLevel.alpha;
                                 stand.Images.visible = true;
                                 stand.Images.position = offset;
                             }
@@ -26069,6 +26511,7 @@ namespace Watch_Face_Editor
                                 activity.Images.X = imgLevel.X;
                                 activity.Images.Y = imgLevel.Y;
                                 activity.Images.shortcut = imgLevel.shortcut;
+                                activity.Images.alpha = imgLevel.alpha;
                                 activity.Images.visible = true;
                                 activity.Images.position = offset;
                             }
@@ -26098,6 +26541,7 @@ namespace Watch_Face_Editor
                                 stress.Images.X = imgLevel.X;
                                 stress.Images.Y = imgLevel.Y;
                                 stress.Images.shortcut = imgLevel.shortcut;
+                                stress.Images.alpha = imgLevel.alpha;
                                 stress.Images.visible = true;
                                 stress.Images.position = offset;
                             }
@@ -26135,6 +26579,7 @@ namespace Watch_Face_Editor
                                 fat_burning.Images.X = imgLevel.X;
                                 fat_burning.Images.Y = imgLevel.Y;
                                 fat_burning.Images.shortcut = imgLevel.shortcut;
+                                fat_burning.Images.alpha = imgLevel.alpha;
                                 fat_burning.Images.visible = true;
                                 fat_burning.Images.position = offset;
                             }
@@ -26204,6 +26649,7 @@ namespace Watch_Face_Editor
                                 weather.Images.X = imgLevel.X;
                                 weather.Images.Y = imgLevel.Y;
                                 weather.Images.shortcut = imgLevel.shortcut;
+                                weather.Images.alpha = imgLevel.alpha;
                                 weather.Images.visible = true;
                                 weather.Images.position = offset;
                             }
@@ -26233,6 +26679,7 @@ namespace Watch_Face_Editor
                                 uv_index.Images.X = imgLevel.X;
                                 uv_index.Images.Y = imgLevel.Y;
                                 uv_index.Images.shortcut = imgLevel.shortcut;
+                                uv_index.Images.alpha = imgLevel.alpha;
                                 uv_index.Images.visible = true;
                                 uv_index.Images.position = offset;
                             }
@@ -26262,6 +26709,7 @@ namespace Watch_Face_Editor
                                 humidity.Images.X = imgLevel.X;
                                 humidity.Images.Y = imgLevel.Y;
                                 humidity.Images.shortcut = imgLevel.shortcut;
+                                humidity.Images.alpha = imgLevel.alpha;
                                 humidity.Images.visible = true;
                                 humidity.Images.position = offset;
                             }
@@ -26298,6 +26746,7 @@ namespace Watch_Face_Editor
                                 sunrise.Images.X = imgLevel.X;
                                 sunrise.Images.Y = imgLevel.Y;
                                 sunrise.Images.shortcut = imgLevel.shortcut;
+                                sunrise.Images.alpha = imgLevel.alpha;
                                 sunrise.Images.visible = true;
                                 sunrise.Images.position = offset;
                             }
@@ -26328,6 +26777,7 @@ namespace Watch_Face_Editor
                                 wind.Images.X = imgLevel.X;
                                 wind.Images.Y = imgLevel.Y;
                                 wind.Images.shortcut = imgLevel.shortcut;
+                                wind.Images.alpha = imgLevel.alpha;
                                 wind.Images.visible = true;
                                 wind.Images.position = offset;
                             }
@@ -26358,6 +26808,7 @@ namespace Watch_Face_Editor
                                 wind.Direction.X = imgLevel.X;
                                 wind.Direction.Y = imgLevel.Y;
                                 wind.Direction.shortcut = imgLevel.shortcut;
+                                wind.Direction.alpha = imgLevel.alpha;
                                 wind.Direction.visible = true;
                                 wind.Direction.position = offset;
                             }
@@ -26389,6 +26840,7 @@ namespace Watch_Face_Editor
                                 moon.Images.X = imgLevel.X;
                                 moon.Images.Y = imgLevel.Y;
                                 moon.Images.shortcut = imgLevel.shortcut;
+                                moon.Images.alpha = imgLevel.alpha;
                                 moon.Images.visible = true;
                                 moon.Images.position = offset;
                             }
@@ -26419,6 +26871,7 @@ namespace Watch_Face_Editor
                                 compass.Images.X = imgLevel.X;
                                 compass.Images.Y = imgLevel.Y;
                                 compass.Images.shortcut = imgLevel.shortcut;
+                                compass.Images.alpha = imgLevel.alpha;
                                 compass.Images.visible = true;
                                 compass.Images.position = offset;
                             }
@@ -26463,6 +26916,7 @@ namespace Watch_Face_Editor
                                 weatherFewDays.Images.X = imgLevelOptions.X;
                                 weatherFewDays.Images.Y = imgLevelOptions.Y;
                                 weatherFewDays.Images.shortcut = false;
+                                weatherFewDays.Images.alpha = imgLevelOptions.alpha;
                                 //weatherFewDays_img.Images.shortcut = imgLevelOptions.shortcut;
                                 weatherFewDays.Images.visible = true;
                                 weatherFewDays.Images.position = offset;
@@ -26500,6 +26954,7 @@ namespace Watch_Face_Editor
                                 weatherFewDays_img.DayOfWeek_Images.X = imgLevelOptions.X;
                                 weatherFewDays_img.DayOfWeek_Images.Y = imgLevelOptions.Y;
                                 weatherFewDays_img.DayOfWeek_Images.shortcut = false;
+                                weatherFewDays_img.DayOfWeek_Images.alpha = imgLevelOptions.alpha;
                                 //weatherFewDays_img.DayOfWeek_Images.shortcut = imgLevelOptions.shortcut;
                                 weatherFewDays_img.DayOfWeek_Images.visible = true;
                                 weatherFewDays_img.DayOfWeek_Images.position = offset;
@@ -26987,6 +27442,7 @@ namespace Watch_Face_Editor
                                 steps.Number.invalid_image = imgNumber.invalid_image;
                                 steps.Number.dot_image = imgNumber.dot_image;
                                 steps.Number.align = imgNumber.align;
+                                steps.Number.alpha = imgNumber.alpha;
                                 steps.Number.visible = true;
                                 steps.Number.position = offset;
                             }
@@ -27031,6 +27487,7 @@ namespace Watch_Face_Editor
                                 steps.Number_Target.invalid_image = imgNumber.invalid_image;
                                 steps.Number_Target.dot_image = imgNumber.dot_image;
                                 steps.Number_Target.align = imgNumber.align;
+                                steps.Number_Target.alpha = imgNumber.alpha;
                                 steps.Number_Target.visible = true;
                                 steps.Number_Target.position = offset;
                             }
@@ -27071,6 +27528,7 @@ namespace Watch_Face_Editor
                                 battery.Number.invalid_image = imgNumber.invalid_image;
                                 battery.Number.dot_image = imgNumber.dot_image;
                                 battery.Number.align = imgNumber.align;
+                                battery.Number.alpha = imgNumber.alpha;
                                 battery.Number.visible = true;
                                 battery.Number.position = offset;
                             }
@@ -27115,6 +27573,7 @@ namespace Watch_Face_Editor
                                 calorie.Number.invalid_image = imgNumber.invalid_image;
                                 calorie.Number.dot_image = imgNumber.dot_image;
                                 calorie.Number.align = imgNumber.align;
+                                calorie.Number.alpha = imgNumber.alpha;
                                 calorie.Number.visible = true;
                                 calorie.Number.position = offset;
                             }
@@ -27159,6 +27618,7 @@ namespace Watch_Face_Editor
                                 calorie.Number_Target.invalid_image = imgNumber.invalid_image;
                                 calorie.Number_Target.dot_image = imgNumber.dot_image;
                                 calorie.Number_Target.align = imgNumber.align;
+                                calorie.Number_Target.alpha = imgNumber.alpha;
                                 calorie.Number_Target.visible = true;
                                 calorie.Number_Target.position = offset;
                             }
@@ -27199,6 +27659,7 @@ namespace Watch_Face_Editor
                                 heart.Number.invalid_image = imgNumber.invalid_image;
                                 heart.Number.dot_image = imgNumber.dot_image;
                                 heart.Number.align = imgNumber.align;
+                                heart.Number.alpha = imgNumber.alpha;
                                 heart.Number.visible = true;
                                 heart.Number.position = offset;
                             }
@@ -27240,6 +27701,7 @@ namespace Watch_Face_Editor
                                 pai.Number.invalid_image = imgNumber.invalid_image;
                                 pai.Number.dot_image = imgNumber.dot_image;
                                 pai.Number.align = imgNumber.align;
+                                pai.Number.alpha = imgNumber.alpha;
                                 pai.Number.visible = true;
                                 pai.Number.position = offset;
                             }
@@ -27281,6 +27743,7 @@ namespace Watch_Face_Editor
                                 pai.Number_Target.invalid_image = imgNumber.invalid_image;
                                 pai.Number_Target.dot_image = imgNumber.dot_image;
                                 pai.Number_Target.align = imgNumber.align;
+                                pai.Number_Target.alpha = imgNumber.alpha;
                                 pai.Number_Target.visible = true;
                                 pai.Number_Target.position = offset;
                             }
@@ -27316,6 +27779,7 @@ namespace Watch_Face_Editor
                                 distance.Number.invalid_image = imgNumber.invalid_image;
                                 distance.Number.dot_image = imgNumber.dot_image;
                                 distance.Number.align = imgNumber.align;
+                                distance.Number.alpha = imgNumber.alpha;
                                 distance.Number.visible = true;
                                 distance.Number.position = offset;
                             }
@@ -27360,6 +27824,7 @@ namespace Watch_Face_Editor
                                 stand.Number.invalid_image = imgNumber.invalid_image;
                                 stand.Number.dot_image = imgNumber.dot_image;
                                 stand.Number.align = imgNumber.align;
+                                stand.Number.alpha = imgNumber.alpha;
                                 stand.Number.visible = true;
                                 stand.Number.position = offset;
                             }
@@ -27404,6 +27869,7 @@ namespace Watch_Face_Editor
                                 stand.Number_Target.invalid_image = imgNumber.invalid_image;
                                 stand.Number_Target.dot_image = imgNumber.dot_image;
                                 stand.Number_Target.align = imgNumber.align;
+                                stand.Number_Target.alpha = imgNumber.alpha;
                                 stand.Number_Target.visible = true;
                                 stand.Number_Target.position = offset;
                             }
@@ -27444,6 +27910,7 @@ namespace Watch_Face_Editor
                                 activity.Number.invalid_image = imgNumber.invalid_image;
                                 activity.Number.dot_image = imgNumber.dot_image;
                                 activity.Number.align = imgNumber.align;
+                                activity.Number.alpha = imgNumber.alpha;
                                 activity.Number.visible = true;
                                 activity.Number.position = offset;
                             }
@@ -27484,6 +27951,7 @@ namespace Watch_Face_Editor
                                 activity.Number_Target.invalid_image = imgNumber.invalid_image;
                                 activity.Number_Target.dot_image = imgNumber.dot_image;
                                 activity.Number_Target.align = imgNumber.align;
+                                activity.Number_Target.alpha = imgNumber.alpha;
                                 activity.Number_Target.visible = true;
                                 activity.Number_Target.position = offset;
                             }
@@ -27519,6 +27987,7 @@ namespace Watch_Face_Editor
                                 spo2.Number.invalid_image = imgNumber.invalid_image;
                                 spo2.Number.dot_image = imgNumber.dot_image;
                                 spo2.Number.align = imgNumber.align;
+                                spo2.Number.alpha = imgNumber.alpha;
                                 spo2.Number.visible = true;
                                 spo2.Number.position = offset;
                             }
@@ -27555,6 +28024,7 @@ namespace Watch_Face_Editor
                                 stress.Number.invalid_image = imgNumber.invalid_image;
                                 stress.Number.dot_image = imgNumber.dot_image;
                                 stress.Number.align = imgNumber.align;
+                                stress.Number.alpha = imgNumber.alpha;
                                 stress.Number.visible = true;
                                 stress.Number.position = offset;
                             }
@@ -27599,6 +28069,7 @@ namespace Watch_Face_Editor
                                 fat_burning.Number.invalid_image = imgNumber.invalid_image;
                                 fat_burning.Number.dot_image = imgNumber.dot_image;
                                 fat_burning.Number.align = imgNumber.align;
+                                fat_burning.Number.alpha = imgNumber.alpha;
                                 fat_burning.Number.visible = true;
                                 fat_burning.Number.position = offset;
                             }
@@ -27643,6 +28114,7 @@ namespace Watch_Face_Editor
                                 fat_burning.Number_Target.invalid_image = imgNumber.invalid_image;
                                 fat_burning.Number_Target.dot_image = imgNumber.dot_image;
                                 fat_burning.Number_Target.align = imgNumber.align;
+                                fat_burning.Number_Target.alpha = imgNumber.alpha;
                                 fat_burning.Number_Target.visible = true;
                                 fat_burning.Number_Target.position = offset;
                             }
@@ -27815,6 +28287,7 @@ namespace Watch_Face_Editor
                                 weather.Group_Current.Number.invalid_image = imgNumber.invalid_image;
                                 weather.Group_Current.Number.dot_image = imgNumber.dot_image;
                                 weather.Group_Current.Number.align = imgNumber.align;
+                                weather.Group_Current.Number.alpha = imgNumber.alpha;
                                 weather.Group_Current.Number.visible = true;
                                 //weather.Group_Current.Number.position = offset;
 
@@ -27855,6 +28328,7 @@ namespace Watch_Face_Editor
                                 weather.Group_Min.Number.invalid_image = imgNumber.invalid_image;
                                 weather.Group_Min.Number.dot_image = imgNumber.dot_image;
                                 weather.Group_Min.Number.align = imgNumber.align;
+                                weather.Group_Min.Number.alpha = imgNumber.alpha;
                                 weather.Group_Min.Number.visible = true;
                                 //weather.Group_Min.Number.position = offset;
 
@@ -27895,6 +28369,7 @@ namespace Watch_Face_Editor
                                 weather.Group_Max.Number.invalid_image = imgNumber.invalid_image;
                                 weather.Group_Max.Number.dot_image = imgNumber.dot_image;
                                 weather.Group_Max.Number.align = imgNumber.align;
+                                weather.Group_Max.Number.alpha = imgNumber.alpha;
                                 weather.Group_Max.Number.visible = true;
                                 //weather.Group_Max.Number.position = offset;
 
@@ -27935,6 +28410,7 @@ namespace Watch_Face_Editor
                                 weather.Group_Max_Min.Number.invalid_image = imgNumber.invalid_image;
                                 weather.Group_Max_Min.Number.dot_image = imgNumber.dot_image;
                                 weather.Group_Max_Min.Number.align = imgNumber.align;
+                                weather.Group_Max_Min.Number.alpha = imgNumber.alpha;
                                 weather.Group_Max_Min.Number.visible = true;
                                 //weather.Group_Max_Min.Number.position = offset;
 
@@ -27973,6 +28449,7 @@ namespace Watch_Face_Editor
                                 uv_index.Number.invalid_image = imgNumber.invalid_image;
                                 uv_index.Number.dot_image = imgNumber.dot_image;
                                 uv_index.Number.align = imgNumber.align;
+                                uv_index.Number.alpha = imgNumber.alpha;
                                 uv_index.Number.visible = true;
                                 uv_index.Number.position = offset;
                             }
@@ -28009,6 +28486,7 @@ namespace Watch_Face_Editor
                                 humidity.Number.invalid_image = imgNumber.invalid_image;
                                 humidity.Number.dot_image = imgNumber.dot_image;
                                 humidity.Number.align = imgNumber.align;
+                                humidity.Number.alpha = imgNumber.alpha;
                                 humidity.Number.visible = true;
                                 humidity.Number.position = offset;
                             }
@@ -28045,6 +28523,7 @@ namespace Watch_Face_Editor
                                 altimeter.Number.invalid_image = imgNumber.invalid_image;
                                 altimeter.Number.dot_image = imgNumber.dot_image;
                                 altimeter.Number.align = imgNumber.align;
+                                altimeter.Number.alpha = imgNumber.alpha;
                                 altimeter.Number.visible = true;
                                 altimeter.Number.position = offset;
                             }
@@ -28081,6 +28560,7 @@ namespace Watch_Face_Editor
                                 altimeter.Number_Target.invalid_image = imgNumber.invalid_image;
                                 altimeter.Number_Target.dot_image = imgNumber.dot_image;
                                 altimeter.Number_Target.align = imgNumber.align;
+                                altimeter.Number_Target.alpha = imgNumber.alpha;
                                 altimeter.Number_Target.visible = true;
                                 altimeter.Number_Target.position = offset;
                             }
@@ -28124,6 +28604,7 @@ namespace Watch_Face_Editor
                                 sunrise.Sunrise.invalid_image = imgNumber.invalid_image;
                                 sunrise.Sunrise.dot_image = imgNumber.dot_image;
                                 sunrise.Sunrise.align = imgNumber.align;
+                                sunrise.Sunrise.alpha = imgNumber.alpha;
                                 sunrise.Sunrise.visible = true;
                                 sunrise.Sunrise.position = offset;
                             }
@@ -28167,6 +28648,7 @@ namespace Watch_Face_Editor
                                 sunrise.Sunset.invalid_image = imgNumber.invalid_image;
                                 sunrise.Sunset.dot_image = imgNumber.dot_image;
                                 sunrise.Sunset.align = imgNumber.align;
+                                sunrise.Sunset.alpha = imgNumber.alpha;
                                 sunrise.Sunset.visible = true;
                                 sunrise.Sunset.position = offset;
                             }
@@ -28210,6 +28692,7 @@ namespace Watch_Face_Editor
                                 sunrise.Sunset_Sunrise.invalid_image = imgNumber.invalid_image;
                                 sunrise.Sunset_Sunrise.dot_image = imgNumber.dot_image;
                                 sunrise.Sunset_Sunrise.align = imgNumber.align;
+                                sunrise.Sunset_Sunrise.alpha = imgNumber.alpha;
                                 sunrise.Sunset_Sunrise.visible = true;
                                 sunrise.Sunset_Sunrise.position = offset;
                             }
@@ -28248,6 +28731,7 @@ namespace Watch_Face_Editor
                                 moon.Sunrise.invalid_image = imgNumber.invalid_image;
                                 moon.Sunrise.dot_image = imgNumber.dot_image;
                                 moon.Sunrise.align = imgNumber.align;
+                                moon.Sunrise.alpha = imgNumber.alpha;
                                 moon.Sunrise.visible = true;
                                 moon.Sunrise.position = offset;
                             }
@@ -28286,6 +28770,7 @@ namespace Watch_Face_Editor
                                 moon.Sunset.invalid_image = imgNumber.invalid_image;
                                 moon.Sunset.dot_image = imgNumber.dot_image;
                                 moon.Sunset.align = imgNumber.align;
+                                moon.Sunset.alpha = imgNumber.alpha;
                                 moon.Sunset.visible = true;
                                 moon.Sunset.position = offset;
                             }
@@ -28324,6 +28809,7 @@ namespace Watch_Face_Editor
                                 moon.Sunset_Sunrise.invalid_image = imgNumber.invalid_image;
                                 moon.Sunset_Sunrise.dot_image = imgNumber.dot_image;
                                 moon.Sunset_Sunrise.align = imgNumber.align;
+                                moon.Sunset_Sunrise.alpha = imgNumber.alpha;
                                 moon.Sunset_Sunrise.visible = true;
                                 moon.Sunset_Sunrise.position = offset;
                             }
@@ -28361,6 +28847,7 @@ namespace Watch_Face_Editor
                                 wind.Number.invalid_image = imgNumber.invalid_image;
                                 wind.Number.dot_image = imgNumber.dot_image;
                                 wind.Number.align = imgNumber.align;
+                                wind.Number.alpha = imgNumber.alpha;
                                 wind.Number.visible = true;
                                 wind.Number.position = offset;
                             }
@@ -28398,6 +28885,7 @@ namespace Watch_Face_Editor
                                 compass.Number.invalid_image = imgNumber.invalid_image;
                                 compass.Number.dot_image = imgNumber.dot_image;
                                 compass.Number.align = imgNumber.align;
+                                compass.Number.alpha = imgNumber.alpha;
                                 compass.Number.visible = true;
                                 compass.Number.position = offset;
                             }
@@ -28449,6 +28937,7 @@ namespace Watch_Face_Editor
                                 weatherFewDays.Number_Max.invalid_image = imgNumberOptions.invalid_image;
                                 weatherFewDays.Number_Max.dot_image = imgNumberOptions.dot_image;
                                 weatherFewDays.Number_Max.align = imgNumberOptions.align;
+                                weatherFewDays.Number_Max.alpha = imgNumberOptions.alpha;
                                 weatherFewDays.Number_Max.visible = true;
                                 weatherFewDays.Number_Max.position = offset;
                             }
@@ -28492,6 +28981,7 @@ namespace Watch_Face_Editor
                                 weatherFewDays.Number_Average.invalid_image = imgNumberOptions.invalid_image;
                                 weatherFewDays.Number_Average.dot_image = imgNumberOptions.dot_image;
                                 weatherFewDays.Number_Average.align = imgNumberOptions.align;
+                                weatherFewDays.Number_Average.alpha = imgNumberOptions.alpha;
                                 weatherFewDays.Number_Average.visible = true;
                                 weatherFewDays.Number_Average.position = offset;
                             }
@@ -28535,6 +29025,7 @@ namespace Watch_Face_Editor
                                 weatherFewDays.Number_Min.invalid_image = imgNumberOptions.invalid_image;
                                 weatherFewDays.Number_Min.dot_image = imgNumberOptions.dot_image;
                                 weatherFewDays.Number_Min.align = imgNumberOptions.align;
+                                weatherFewDays.Number_Min.alpha = imgNumberOptions.alpha;
                                 weatherFewDays.Number_Min.visible = true;
                                 weatherFewDays.Number_Min.position = offset;
                             }
@@ -28579,6 +29070,7 @@ namespace Watch_Face_Editor
                                 weatherFewDays.Number_MaxMin.dot_image = imgNumberOptions.dot_image;
                                 weatherFewDays.Number_MaxMin.separator_image = imgNumberOptions.separator_image;
                                 weatherFewDays.Number_MaxMin.align = imgNumberOptions.align;
+                                weatherFewDays.Number_MaxMin.alpha = imgNumberOptions.alpha;
                                 weatherFewDays.Number_MaxMin.visible = true;
                                 weatherFewDays.Number_MaxMin.position = offset;
                             }
@@ -36214,6 +36706,8 @@ namespace Watch_Face_Editor
                     elementDigitalTime.Group_Hour.Number.space = value;
                 if (parametrs.ContainsKey("hour_angle") && Int32.TryParse(parametrs["hour_angle"], out value))
                     elementDigitalTime.Group_Hour.Number.angle = value;
+                if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value))
+                    elementDigitalTime.Group_Hour.Number.alpha = value;
                 if (parametrs.ContainsKey("hour_zero"))
                 {
                     //if (parametrs["hour_zero"] == "1") elementDigitalTime.hour.zero = true;
@@ -36257,6 +36751,8 @@ namespace Watch_Face_Editor
                     elementDigitalTime.Group_Minute.Number.space = value;
                 if (parametrs.ContainsKey("minute_angle") && Int32.TryParse(parametrs["minute_angle"], out value))
                     elementDigitalTime.Group_Minute.Number.angle = value;
+                if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value))
+                    elementDigitalTime.Group_Minute.Number.alpha = value;
                 if (parametrs.ContainsKey("minute_zero"))
                 {
                     //if (parametrs["minute_zero"] == "1") elementDigitalTime.minute.zero = true;
@@ -36306,6 +36802,8 @@ namespace Watch_Face_Editor
                     elementDigitalTime.Group_Second.Number.space = value;
                 if (parametrs.ContainsKey("second_angle") && Int32.TryParse(parametrs["second_angle"], out value))
                     elementDigitalTime.Group_Second.Number.angle = value;
+                if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value))
+                    elementDigitalTime.Group_Second.Number.alpha = value;
                 if (parametrs.ContainsKey("second_zero"))
                 {
                     //if (parametrs["second_zero"] == "1") elementDigitalTime.second.zero = true;
@@ -36844,6 +37342,7 @@ namespace Watch_Face_Editor
                         imgName = Path.GetFileNameWithoutExtension(imgName);
                         dayNumber.unit = imgName;
                     }
+                    if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value)) dayNumber.alpha = value;
 
                     if (parametrs.ContainsKey("show_level"))
                     {
@@ -36895,6 +37394,7 @@ namespace Watch_Face_Editor
                         imgName = Path.GetFileNameWithoutExtension(imgName);
                         monthNumber.unit = imgName;
                     }
+                    if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value)) monthNumber.alpha = value;
                     monthNumber.visible = true;
                     monthNumber.position = index;
                     monthNumber.type = "MONTH";
@@ -36940,6 +37440,7 @@ namespace Watch_Face_Editor
                         imgName = Path.GetFileNameWithoutExtension(imgName);
                         yearNumber.unit = imgName;
                     }
+                    if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value)) yearNumber.alpha = value;
                     yearNumber.visible = true;
                     yearNumber.position = index;
                     yearNumber.type = "YEAR";
@@ -37073,6 +37574,7 @@ namespace Watch_Face_Editor
 
                 if (parametrs.ContainsKey("x") && Int32.TryParse(parametrs["x"], out value)) imgWeek.X = value;
                 if (parametrs.ContainsKey("y") && Int32.TryParse(parametrs["y"], out value)) imgWeek.Y = value;
+                if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value)) imgWeek.alpha = value;
 
                 if (parametrs.ContainsKey("show_level"))
                 {
@@ -37103,6 +37605,7 @@ namespace Watch_Face_Editor
                 if (parametrs.ContainsKey("y") && Int32.TryParse(parametrs["y"], out value)) imgLevel.Y = value;
                 if (parametrs.ContainsKey("image_length") && Int32.TryParse(parametrs["image_length"], out value)) imgLevel.image_length = value;
                 if (parametrs.ContainsKey("shortcut")) imgLevel.shortcut = StringToBool(parametrs["shortcut"]);
+                if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value)) imgLevel.alpha = value;
 
                 if (parametrs.ContainsKey("type"))
                 {
@@ -37145,6 +37648,7 @@ namespace Watch_Face_Editor
                 if (parametrs.ContainsKey("// y") && Int32.TryParse(parametrs["// y"], out value)) imgLevel.Y = value;
                 if (parametrs.ContainsKey("// image_length") && Int32.TryParse(parametrs["// image_length"], out value)) imgLevel.image_length = value;
                 if (parametrs.ContainsKey("// shortcut")) imgLevel.shortcut = StringToBool(parametrs["// shortcut"]);
+                if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value)) imgLevel.alpha = value;
 
                 if (parametrs.ContainsKey("// type"))
                 {
@@ -37254,7 +37758,8 @@ namespace Watch_Face_Editor
                 if (parametrs.ContainsKey("h_space") && Int32.TryParse(parametrs["h_space"], out value)) imgNumber.space = value;
                 if (parametrs.ContainsKey("angle") && Int32.TryParse(parametrs["angle"], out value)) imgNumber.angle = value;
                 if (parametrs.ContainsKey("padding")) imgNumber.zero = StringToBool(parametrs["padding"]);
-                if (parametrs.ContainsKey("align_h")) imgNumber.align = parametrs["align_h"].Replace("hmUI.align.","");
+                if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value)) imgNumber.alpha = value;
+                if (parametrs.ContainsKey("align_h")) imgNumber.align = parametrs["align_h"].Replace("hmUI.align.", "");
                 if (parametrs.ContainsKey("unit_en") && parametrs["unit_en"].Length > 0) 
                 {
                     imgName = parametrs["unit_en"].Replace("'", "").Replace("\"", "");
@@ -37631,6 +38136,7 @@ namespace Watch_Face_Editor
 
                 if (parametrs.ContainsKey("x") && Int32.TryParse(parametrs["x"], out value)) img_status.x = value;
                 if (parametrs.ContainsKey("y") && Int32.TryParse(parametrs["y"], out value)) img_status.y = value;
+                if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value)) img_status.alpha = value;
 
                 if (parametrs.ContainsKey("type"))
                 {
