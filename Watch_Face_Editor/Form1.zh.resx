@@ -260,7 +260,7 @@
     <value>日期</value>
   </data>
   <data name="comboBox_AddDate.Items1" xml:space="preserve">
-    <value>日</value>
+    <value>天</value>
   </data>
   <data name="comboBox_AddDate.Items2" xml:space="preserve">
     <value>月</value>
@@ -284,7 +284,7 @@
     <value>可编辑指针</value>
   </data>
   <data name="comboBox_AddTime.Items4" xml:space="preserve">
-    <value>模拟指针（Pro）</value>
+    <value>模拟指针(Pro)</value>
   </data>
   <data name="groupBox_AddElemets.Text" xml:space="preserve">
     <value>将项目添加到表盘</value>
@@ -687,7 +687,7 @@ PayPal: sashacx75@gmail.com</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
-        DQAAAk1TRnQBSQFMAgEBBgEAAVQBKAFcASgBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAVQBKAFkASgBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -2049,5 +2049,17 @@ PayPal: sashacx75@gmail.com</value>
   </data>
   <data name="radioButton_ARGB_forced.Text" xml:space="preserve">
     <value>强制使用ARGB格式</value>
+  </data>
+  <data name="checkBox_CreateZPK.Text" xml:space="preserve">
+    <value>创建 *.zpk 文件</value>
+  </data>
+  <data name="checkBox_Del_Confirm.Text" xml:space="preserve">
+    <value>删除小部件时请求确认</value>
+  </data>
+  <data name="comboBox_AddAir.Items8" xml:space="preserve">
+    <value>天气(预报)</value>
+  </data>
+  <data name="comboBox_AddSystem.Items12" xml:space="preserve">
+    <value>指南针</value>
   </data>
 </root>

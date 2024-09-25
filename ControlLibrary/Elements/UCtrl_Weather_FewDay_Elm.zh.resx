@@ -117,109 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_Stopwatch.Text" xml:space="preserve">
-    <value>秒表</value>
+  <data name="button_Number_Average_Font.Text" xml:space="preserve">
+    <value>字体值(平均值)</value>
   </data>
-  <data name="button_Countdown.Text" xml:space="preserve">
-    <value>倒计时</value>
+  <data name="button_Number_MaxMin_Font.Text" xml:space="preserve">
+    <value>字体值(最大/最小)</value>
   </data>
-  <data name="button_Sleep.Text" xml:space="preserve">
-    <value>睡眠</value>
+  <data name="button_Number_Average.Text" xml:space="preserve">
+    <value>数值(平均值)</value>
   </data>
-  <data name="button_SPO2.Text" xml:space="preserve">
-    <value>血氧饱和度</value>
+  <data name="button_Number_MaxMin.Text" xml:space="preserve">
+    <value>数值(最大/最小)</value>
   </data>
-  <data name="button_Sunrise.Text" xml:space="preserve">
-    <value>日出/日落</value>
+  <data name="button_Settings.Text" xml:space="preserve">
+    <value>常规设置</value>
   </data>
-  <data name="button_Step.Text" xml:space="preserve">
-    <value>步数</value>
+  <data name="button_Font_DOW.Text" xml:space="preserve">
+    <value>星期几字体</value>
   </data>
-  <data name="button_Heart.Text" xml:space="preserve">
-    <value>心率</value>
+  <data name="button_Number_Max_Font.Text" xml:space="preserve">
+    <value>字体值(最大值)</value>
   </data>
-  <data name="button_Stress.Text" xml:space="preserve">
-    <value>压力水平</value>
+  <data name="button_Number_Min_Font.Text" xml:space="preserve">
+    <value>字体值(最小)</value>
   </data>
-  <data name="button_Weather.Text" xml:space="preserve">
-    <value>气温</value>
+  <data name="button_Images_DOW.Text" xml:space="preserve">
+    <value>星期几</value>
   </data>
-  <data name="button_Altimeter.Text" xml:space="preserve">
-    <value>气压</value>
+  <data name="button_Images.Text" xml:space="preserve">
+    <value>图像</value>
   </data>
-  <data name="button_Alarm.Text" xml:space="preserve">
-    <value>闹钟</value>
+  <data name="button_Diagram.Text" xml:space="preserve">
+    <value>温度图</value>
+  </data>
+  <data name="button_Icon.Text" xml:space="preserve">
+    <value>图标</value>
+  </data>
+  <data name="button_Number_Min.Text" xml:space="preserve">
+    <value>数值(最小值)</value>
+  </data>
+  <data name="button_Number_Max.Text" xml:space="preserve">
+    <value>数值(最大值)</value>
   </data>
   <data name="button_ElementName.Text" xml:space="preserve">
-    <value>快捷方式</value>
-  </data>
-  <data name="button_PAI.Text" xml:space="preserve">
-    <value>PAI</value>
-  </data>
-  <data name="button_Activities.Text" xml:space="preserve">
-    <value>活力</value>
-  </data>
-  <data name="button_Air.Text" xml:space="preserve">
-    <value>空气</value>
-  </data>
-  <data name="button_Altitude.Text" xml:space="preserve">
-    <value>海拔</value>
-  </data>
-  <data name="button_Battery.Text" xml:space="preserve">
-    <value>电池统计</value>
-  </data>
-  <data name="button_BodyTemp.Text" xml:space="preserve">
-    <value>体温</value>
-  </data>
-  <data name="button_BreathTrain.Text" xml:space="preserve">
-    <value>呼吸训练</value>
-  </data>
-  <data name="button_Cal.Text" xml:space="preserve">
-    <value>活动统计</value>
-  </data>
-  <data name="button_FatBurning.Text" xml:space="preserve">
-    <value>燃烧脂肪</value>
-  </data>
-  <data name="button_FreeTraining.Text" xml:space="preserve">
-    <value>自由训练</value>
-  </data>
-  <data name="button_Health.Text" xml:space="preserve">
-    <value>健康</value>
-  </data>
-  <data name="button_Moon.Text" xml:space="preserve">
-    <value>月升/月落</value>
-  </data>
-  <data name="button_OpenWaterSwimming.Text" xml:space="preserve">
-    <value>野泳</value>
-  </data>
-  <data name="button_OutdoorCycling.Text" xml:space="preserve">
-    <value>骑行</value>
-  </data>
-  <data name="button_OutdoorRunning.Text" xml:space="preserve">
-    <value>户外跑</value>
-  </data>
-  <data name="button_PoolSwimming.Text" xml:space="preserve">
-    <value>泳池游泳</value>
-  </data>
-  <data name="button_Readiness.Text" xml:space="preserve">
-    <value>预备</value>
-  </data>
-  <data name="button_RecoveryTime.Text" xml:space="preserve">
-    <value>恢复时间</value>
-  </data>
-  <data name="button_Stand.Text" xml:space="preserve">
-    <value>站立</value>
-  </data>
-  <data name="button_System.Text" xml:space="preserve">
-    <value>系统</value>
-  </data>
-  <data name="button_TrainingLoad.Text" xml:space="preserve">
-    <value>训练负荷</value>
-  </data>
-  <data name="button_Trainings.Text" xml:space="preserve">
-    <value>训练</value>
-  </data>
-  <data name="button_Walking.Text" xml:space="preserve">
-    <value>健走</value>
+    <value>天气(预报)</value>
   </data>
 </root>
