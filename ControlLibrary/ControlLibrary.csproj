@@ -2189,6 +2189,9 @@
     <EmbeddedResource Include="UCtrl_JS_script_Opt.uk.resx">
       <DependentUpon>UCtrl_JS_script_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_JS_script_Opt.zh.resx">
+      <DependentUpon>UCtrl_JS_script_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Linear_Scale_Opt.cs.resx">
       <DependentUpon>UCtrl_Linear_Scale_Opt.cs</DependentUpon>
     </EmbeddedResource>
