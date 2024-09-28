@@ -117,7 +117,128 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label7.Text" xml:space="preserve">
+    <value>指针大小</value>
+  </data>
+  <data name="label06.Text" xml:space="preserve">
+    <value>线条宽度</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>水平偏移</value>
+  </data>
+  <data name="comboBox_min_pointType.Items" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="comboBox_min_pointType.Items1" xml:space="preserve">
+    <value>正方形 1</value>
+  </data>
+  <data name="comboBox_min_pointType.Items2" xml:space="preserve">
+    <value>正方形 2</value>
+  </data>
+  <data name="comboBox_min_pointType.Items3" xml:space="preserve">
+    <value>圆形 1</value>
+  </data>
+  <data name="comboBox_min_pointType.Items4" xml:space="preserve">
+    <value>圆形 2</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>指针类型</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 13</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>线条颜色</value>
+  </data>
+  <data name="groupBox_min.Text" xml:space="preserve">
+    <value>        最低温度</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>图形高度</value>
+  </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>0</value>
+    <value>垂直偏移</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>指针大小</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>线条宽度</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>水平偏移</value>
+  </data>
+  <data name="comboBox_max_pointType.Items" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="comboBox_max_pointType.Items1" xml:space="preserve">
+    <value>正方形 1</value>
+  </data>
+  <data name="comboBox_max_pointType.Items2" xml:space="preserve">
+    <value>正方形 2</value>
+  </data>
+  <data name="comboBox_max_pointType.Items3" xml:space="preserve">
+    <value>圆形 1</value>
+  </data>
+  <data name="comboBox_max_pointType.Items4" xml:space="preserve">
+    <value>圆形 2</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>指针类型</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 13</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>线条颜色</value>
+  </data>
+  <data name="groupBox_max.Text" xml:space="preserve">
+    <value>        最高温度</value>
+  </data>
+  <data name="checkBox_graph_fullScreen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 17</value>
+  </data>
+  <data name="checkBox_graph_fullScreen.Text" xml:space="preserve">
+    <value>全屏图形</value>
+  </data>
+  <data name="checkBox_position_on_graph.Text" xml:space="preserve">
+    <value>将数据放置在图形点上</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>指针大小</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>线条宽度</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>水平偏移</value>
+  </data>
+  <data name="comboBox_average_pointType.Items" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="comboBox_average_pointType.Items1" xml:space="preserve">
+    <value>正方形 1</value>
+  </data>
+  <data name="comboBox_average_pointType.Items2" xml:space="preserve">
+    <value>正方形 2</value>
+  </data>
+  <data name="comboBox_average_pointType.Items3" xml:space="preserve">
+    <value>圆形 1</value>
+  </data>
+  <data name="comboBox_average_pointType.Items4" xml:space="preserve">
+    <value>圆形 2</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>指针类型</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 13</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>线条颜色</value>
+  </data>
+  <data name="groupBox_average.Text" xml:space="preserve">
+    <value>        平均温度</value>
   </data>
 </root>

@@ -340,4 +340,13 @@
   <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>复制属性</value>
   </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>透明度</value>
+  </data>
+  <data name="label_Color2.Text" xml:space="preserve">
+    <value>周末颜色</value>
+  </data>
+  <data name="label_Month.Text" xml:space="preserve">
+    <value>月份名称字体</value>
+  </data>
 </root>

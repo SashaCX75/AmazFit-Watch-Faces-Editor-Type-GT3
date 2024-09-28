@@ -331,4 +331,7 @@
   <data name="button_Set.Text" xml:space="preserve">
     <value>值</value>
   </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>指南针</value>
+  </data>
 </root>

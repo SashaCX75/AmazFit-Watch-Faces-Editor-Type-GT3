@@ -156,4 +156,70 @@
   <data name="button_PAI.Text" xml:space="preserve">
     <value>PAI</value>
   </data>
+  <data name="button_Activities.Text" xml:space="preserve">
+    <value>活力</value>
+  </data>
+  <data name="button_Air.Text" xml:space="preserve">
+    <value>空气</value>
+  </data>
+  <data name="button_Altitude.Text" xml:space="preserve">
+    <value>海拔</value>
+  </data>
+  <data name="button_Battery.Text" xml:space="preserve">
+    <value>电池统计</value>
+  </data>
+  <data name="button_BodyTemp.Text" xml:space="preserve">
+    <value>体温</value>
+  </data>
+  <data name="button_BreathTrain.Text" xml:space="preserve">
+    <value>呼吸训练</value>
+  </data>
+  <data name="button_Cal.Text" xml:space="preserve">
+    <value>活动统计</value>
+  </data>
+  <data name="button_FatBurning.Text" xml:space="preserve">
+    <value>燃烧脂肪</value>
+  </data>
+  <data name="button_FreeTraining.Text" xml:space="preserve">
+    <value>自由训练</value>
+  </data>
+  <data name="button_Health.Text" xml:space="preserve">
+    <value>健康</value>
+  </data>
+  <data name="button_Moon.Text" xml:space="preserve">
+    <value>月升/月落</value>
+  </data>
+  <data name="button_OpenWaterSwimming.Text" xml:space="preserve">
+    <value>野泳</value>
+  </data>
+  <data name="button_OutdoorCycling.Text" xml:space="preserve">
+    <value>骑行</value>
+  </data>
+  <data name="button_OutdoorRunning.Text" xml:space="preserve">
+    <value>户外跑</value>
+  </data>
+  <data name="button_PoolSwimming.Text" xml:space="preserve">
+    <value>泳池游泳</value>
+  </data>
+  <data name="button_Readiness.Text" xml:space="preserve">
+    <value>预备</value>
+  </data>
+  <data name="button_RecoveryTime.Text" xml:space="preserve">
+    <value>恢复时间</value>
+  </data>
+  <data name="button_Stand.Text" xml:space="preserve">
+    <value>站立</value>
+  </data>
+  <data name="button_System.Text" xml:space="preserve">
+    <value>系统</value>
+  </data>
+  <data name="button_TrainingLoad.Text" xml:space="preserve">
+    <value>训练负荷</value>
+  </data>
+  <data name="button_Trainings.Text" xml:space="preserve">
+    <value>训练</value>
+  </data>
+  <data name="button_Walking.Text" xml:space="preserve">
+    <value>健走</value>
+  </data>
 </root>

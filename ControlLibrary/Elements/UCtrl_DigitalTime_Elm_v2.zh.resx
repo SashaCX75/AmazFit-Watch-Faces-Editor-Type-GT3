@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_Number_Max_Min_Font.Text" xml:space="preserve">
-    <value>字体值</value>
+  <data name="button_Number_Seconds_Font.Text" xml:space="preserve">
+    <value>秒钟字体</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button_Text_Max_Min_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="button_Seconds_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
         EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
@@ -137,10 +137,10 @@
         4MYSebY3darLRvTCTW3TmbMVquoNr1ZmWoWICBcAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button_Text_Max_Min_circle.Text" xml:space="preserve">
-    <value>圆上值</value>
+  <data name="button_Seconds_circle.Text" xml:space="preserve">
+    <value>圆圈上的秒钟数</value>
   </data>
-  <data name="button_Text_Max_Min_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="button_Seconds_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
         EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
@@ -156,19 +156,19 @@
         KOoAAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="button_Text_Max_Min_rotation.Text" xml:space="preserve">
-    <value>角度值</value>
+  <data name="button_Seconds_rotation.Text" xml:space="preserve">
+    <value>角度下的秒钟数</value>
   </data>
-  <data name="button_Number_Max_Min.Text" xml:space="preserve">
-    <value>数值</value>
+  <data name="button_Number_Seconds.Text" xml:space="preserve">
+    <value>秒钟</value>
   </data>
-  <data name="button_Max_Min.Text" xml:space="preserve">
-    <value>温度(最高/最低)</value>
+  <data name="button_Seconds.Text" xml:space="preserve">
+    <value>秒钟</value>
   </data>
-  <data name="button_Number_Max_Font.Text" xml:space="preserve">
-    <value>字体值</value>
+  <data name="button_Number_Minutes_Font.Text" xml:space="preserve">
+    <value>分钟字体</value>
   </data>
-  <data name="button_Text_Max_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="button_Minutes_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
         EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
@@ -184,10 +184,10 @@
         4MYSebY3darLRvTCTW3TmbMVquoNr1ZmWoWICBcAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button_Text_Max_circle.Text" xml:space="preserve">
-    <value>圆上值（最大值）</value>
+  <data name="button_Minutes_circle.Text" xml:space="preserve">
+    <value>圆圈上的分钟数</value>
   </data>
-  <data name="button_Text_Max_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="button_Minutes_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
         EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
@@ -203,16 +203,19 @@
         KOoAAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="button_Text_Max_rotation.Text" xml:space="preserve">
-    <value>角度值（最大值）</value>
+  <data name="button_Minutes_rotation.Text" xml:space="preserve">
+    <value>角度下的分钟数</value>
   </data>
-  <data name="button_Number_Max.Text" xml:space="preserve">
-    <value>数值</value>
+  <data name="button_Number_Minutes.Text" xml:space="preserve">
+    <value>分钟</value>
   </data>
-  <data name="button_Number_Min_Font.Text" xml:space="preserve">
-    <value>字体值</value>
+  <data name="button_Minutes.Text" xml:space="preserve">
+    <value>分钟</value>
   </data>
-  <data name="button_Text_Min_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="button_Number_Hours_Font.Text" xml:space="preserve">
+    <value>小时字体</value>
+  </data>
+  <data name="button_Hours_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
         EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
@@ -228,10 +231,10 @@
         4MYSebY3darLRvTCTW3TmbMVquoNr1ZmWoWICBcAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button_Text_Min_circle.Text" xml:space="preserve">
-    <value>圆上值（最小值）</value>
+  <data name="button_Hours_circle.Text" xml:space="preserve">
+    <value>圆圈上的小时数</value>
   </data>
-  <data name="button_Text_Min_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="button_Hours_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
         EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
@@ -247,135 +250,22 @@
         KOoAAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="button_Text_Min_rotation.Text" xml:space="preserve">
-    <value>角度值（最小值）</value>
-    <comment>button_Text_Min_rotation.Text</comment>
+  <data name="button_Hours_rotation.Text" xml:space="preserve">
+    <value>角度下的小时数</value>
   </data>
-  <data name="button_Number_Min.Text" xml:space="preserve">
-    <value>数值</value>
+  <data name="button_Number_Hours.Text" xml:space="preserve">
+    <value>小时</value>
   </data>
-  <data name="button_Min.Text" xml:space="preserve">
-    <value>温度(最低)</value>
+  <data name="button_Hours.Text" xml:space="preserve">
+    <value>小时</value>
   </data>
-  <data name="button_Text_Current_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
-        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
-        z2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZ
-        xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
-        ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
-        FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
-        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
-        AAABAUlEQVQ4T5WSDRHCMBSDJ2ESkIADkIADkIADkIADkDIH4IA5GA5Gvrdm10G3g9xl17VN3k9flaPv
-        +6DQ8StuE1l36azmUwIHL5FbrXgRVyL7Z7ERw0hcixPY9SAeh2URZEOQiQliNhD/AoSYPMXaNfNZMnAp
-        xk6UNLThRs1zQEyGdzE3eYhkEdFpWAlkdRVpIoEwM9iLFGhMfmAg5oID5NFBlMFiI34a+BAS+evZhNHA
-        EQzXvCQGNzEM/CSGJ29JDGh8W3pGap3ri8Gwjc+IgGj/DBJKnnGEO4zJflgWEZHFYnnOhAsMzSntUQqz
-        4MYSebY3darLRvTCTW3TmbMVquoNr1ZmWoWICBcAAAAASUVORK5CYII=
-</value>
+  <data name="button_Hour_Min_Font.Text" xml:space="preserve">
+    <value>时 : 分</value>
   </data>
-  <data name="button_Text_Current_circle.Text" xml:space="preserve">
-    <value>圆上值</value>
+  <data name="button_Hour_Min_Sec_Font.Text" xml:space="preserve">
+    <value>时 : 分 : 秒</value>
   </data>
-  <data name="button_Number_Current_Font.Text" xml:space="preserve">
-    <value>字体值</value>
-  </data>
-  <data name="button_Number_Current.Text" xml:space="preserve">
-    <value>数值</value>
-  </data>
-  <data name="button_Text_Current_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
-        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
-        z2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZ
-        xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
-        ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
-        FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
-        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
-        AAAA50lEQVQ4T6XSPWoCQQDF8YG1C+IFVHIHtfAEeoGks5EIIqbICTyBvZW9WAlpPUKwsI5HsDARG2X9
-        v1lW1nFn/Xrwk92R91gXTRiGT0k9vEf0YUwJM3TwooNbkhyo6R6/2GCECjKTHFAW+EQTc+iLH3SRx0Xc
-        gR5WCOydMVPsccAWbziLO1DAP94xhMotvEJPlkMDO6jUdweUMf4Ql91UsYZ3oA4dDOzdeeKyXnQbH2kD
-        yhLf0eUpyXJZByTwDej3TqJLm7SyjW9AfyS9MMVbVnwDcTLLStZAEZll5doTfMFbVk4DjwvNEZW8Chyw
-        KOoAAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="button_Text_Current_rotation.Text" xml:space="preserve">
-    <value>角度值</value>
-  </data>
-  <data name="button_Current.Text" xml:space="preserve">
-    <value>温度(当前)</value>
-  </data>
-  <data name="button_Text_CityName.Text" xml:space="preserve">
-    <value>城市名称</value>
-  </data>
-  <data name="button_Icon.Text" xml:space="preserve">
-    <value>图标</value>
-  </data>
-  <data name="button_Images.Text" xml:space="preserve">
-    <value>图像</value>
-  </data>
-  <data name="button_Images.ToolTip" xml:space="preserve">
-    <value>1. 多云
-2. 阵雨
-3. 阵雪
-4. 晴
-5. 阴
-6. 小雨
-7. 小雪
-8. 中雨
-9. 中雪
-10. 大雪
-11. 大雨
-12. 沙尘暴
-13. 雨夹雪
-14. 雾
-15. 霾
-16. 雷阵雨
-17. 暴雪
-18. 浮尘
-19. 特大暴雨
-20. 雨加冰雹
-21. 雷阵雨伴有冰雹
-22. 大暴雨
-23. 扬沙
-24. 强沙尘暴
-25. 暴雨
-26. 未知天气
-27. 夜间多云
-28. 夜间阵雨
-29. 夜间阵雨</value>
-  </data>
-  <data name="panel_Images.ToolTip" xml:space="preserve">
-    <value>1. 多云
-2. 阵雨
-3. 阵雪
-4. 晴
-5. 阴
-6. 小雨
-7. 小雪
-8. 中雨
-9. 中雪
-10. 大雪
-11. 大雨
-12. 沙尘暴
-13. 雨夹雪
-14. 雾
-15. 霾
-16. 雷阵雨
-17. 暴雪
-18. 浮尘
-19. 特大暴雨
-20. 雨加冰雹
-21. 雷阵雨伴有冰雹
-22. 大暴雨
-23. 扬沙
-24. 强沙尘暴
-25. 暴雨
-26. 未知天气
-27. 夜间多云
-28. 夜间阵雨
-29. 夜间阵雨</value>
-  </data>
-  <data name="button_Max.Text" xml:space="preserve">
-    <value>温度(最高)</value>
+  <data name="button_ElementName.Text" xml:space="preserve">
+    <value>数字时间</value>
   </data>
 </root>

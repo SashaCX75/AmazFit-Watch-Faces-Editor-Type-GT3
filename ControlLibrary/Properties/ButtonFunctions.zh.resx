@@ -174,6 +174,9 @@
   <data name="FindPhone" xml:space="preserve">
     <value>电话搜索</value>
   </data>
+  <data name="FlashLight" xml:space="preserve">
+    <value>手电筒*</value>
+  </data>
   <data name="HeartRete" xml:space="preserve">
     <value>心率</value>
   </data>
@@ -208,6 +211,9 @@
     <value>手机 *</value>
   </data>
   <data name="PhoneMusic" xml:space="preserve">
+    <value>音乐 (手机) *</value>
+  </data>
+  <data name="PhoneMusic_2" xml:space="preserve">
     <value>音乐 (手机) *</value>
   </data>
   <data name="PowerHint" xml:space="preserve">
@@ -293,6 +299,9 @@
   </data>
   <data name="Weather" xml:space="preserve">
     <value>天气</value>
+  </data>
+  <data name="WeatherInformer" xml:space="preserve">
+    <value>天气预报*</value>
   </data>
   <data name="WeekActivity" xml:space="preserve">
     <value>本周活动*</value>
