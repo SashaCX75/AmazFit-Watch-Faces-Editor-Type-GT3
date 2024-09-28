@@ -17819,7 +17819,7 @@ namespace Watch_Face_Editor
                 options += TabInString(7 + tabOffset) + "src: '" + img_number.icon + ".png'," + Environment.NewLine;
                 if (SelectedModel.versionOS >= 2.1 && img_number.alpha != 255)
                 {
-                    options += TabInString(7 + tabOffset) + "// alpha: " + img_number.alpha.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "// alpha: " + img_number.icon_alpha.ToString() + "," + Environment.NewLine;
                 }
                 options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
             }

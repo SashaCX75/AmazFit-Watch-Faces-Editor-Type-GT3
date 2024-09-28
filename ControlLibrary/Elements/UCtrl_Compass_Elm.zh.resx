@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_Number_Font.Text" xml:space="preserve">
-    <value>Data ve fontu</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_Text_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -137,9 +134,6 @@
         4MYSebY3darLRvTCTW3TmbMVquoNr1ZmWoWICBcAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button_Text_circle.Text" xml:space="preserve">
-    <value>Údaje o kruhu</value>
-  </data>
   <data name="button_Text_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
@@ -156,15 +150,6 @@
         KOoAAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="button_Text_rotation.Text" xml:space="preserve">
-    <value>Údaje v úhlu</value>
-  </data>
-  <data name="button_Images.Text" xml:space="preserve">
-    <value>Obrázky</value>
-  </data>
-  <data name="button_Number.Text" xml:space="preserve">
-    <value>Číselné hodnoty</value>
-  </data>
   <data name="button_Pointer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
@@ -179,13 +164,7 @@
         iPeuhskzxIDw3tUw4faNM7i5iXU7AR+D/8oPVDlNAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="button_Pointer.Text" xml:space="preserve">
-    <value>Ukazatel</value>
-  </data>
-  <data name="button_Icon.Text" xml:space="preserve">
-    <value>Ikona</value>
-  </data>
   <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Kompas</value>
+    <value>0</value>
   </data>
 </root>
