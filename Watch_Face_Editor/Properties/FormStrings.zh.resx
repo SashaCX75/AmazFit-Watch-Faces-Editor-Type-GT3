@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Dialog_FontFilter" xml:space="preserve">
+    <value>字体文件 (*.ttf) | *.ttf</value>
+  </data>
   <data name="Dialog_Title_Dial_Settings" xml:space="preserve">
     <value>选择一个表盘设置文件</value>
+  </data>
+  <data name="Dialog_Title_Font_Add" xml:space="preserve">
+    <value>选择字体文件</value>
   </data>
   <data name="Dialog_Title_Image" xml:space="preserve">
     <value>选择图像文件</value>
@@ -183,8 +189,35 @@
   <data name="Form_PreviewX" xml:space="preserve">
     <value>预览 [X =</value>
   </data>
+  <data name="Img_Convert_Error_NoPalette" xml:space="preserve">
+    <value>缺少选取色彩显示方式</value>
+  </data>
+  <data name="Img_Convert_Error_Not32bit" xml:space="preserve">
+    <value>图片不得为单色，且必须采用32位格式</value>
+  </data>
+  <data name="Img_Convert_Error_NotSave1" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="Img_Convert_Error_NotSave2" xml:space="preserve">
+    <value>尚未保存。</value>
+  </data>
+  <data name="Img_Convert_Error_ReadErr" xml:space="preserve">
+    <value>图像处理错误</value>
+  </data>
+  <data name="Img_Convert_Error_SaveImg" xml:space="preserve">
+    <value>尝试保存图像？</value>
+  </data>
+  <data name="Img_Convert_Error_WrongImg" xml:space="preserve">
+    <value>源文件格式不正确。</value>
+  </data>
   <data name="Message_AnimationAOD_Text" xml:space="preserve">
     <value>无法将动画添加到AOD屏幕。</value>
+  </data>
+  <data name="Message_ARGB_Line1" xml:space="preserve">
+    <value>将图像转换为ARGB格式需要更长的时间。</value>
+  </data>
+  <data name="Message_ARGB_Line2" xml:space="preserve">
+    <value>您确定要将图像转换为ARGB格式吗？</value>
   </data>
   <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
     <value>已创建一个新的表盘。</value>
@@ -207,11 +240,20 @@
   <data name="Message_Delet_Text21" xml:space="preserve">
     <value>？</value>
   </data>
+  <data name="Message_Delet_Widget" xml:space="preserve">
+    <value>您真的要删除该小部件吗？</value>
+  </data>
+  <data name="Message_DontDelZip" xml:space="preserve">
+    <value>无法删除现有的表盘文件。</value>
+  </data>
   <data name="Message_EditableElementsAOD_Text" xml:space="preserve">
     <value>不能将可编辑元素添加到AOD屏幕。</value>
   </data>
   <data name="Message_EditablePointerAOD_Text" xml:space="preserve">
     <value>不能向AOD屏幕添加可编辑指针。</value>
+  </data>
+  <data name="Message_ElementAOD_Text" xml:space="preserve">
+    <value>您无法将此元素添加到AOD屏幕。</value>
   </data>
   <data name="Message_ErrorReadJS" xml:space="preserve">
     <value>无法识别表盘的结构</value>
@@ -219,17 +261,26 @@
   <data name="Message_Error_Caption" xml:space="preserve">
     <value>错误</value>
   </data>
+  <data name="Message_Error_Font" xml:space="preserve">
+    <value>添加字体时出错</value>
+  </data>
   <data name="Message_Error_Image_Text1" xml:space="preserve">
     <value>无法打开图像：</value>
   </data>
   <data name="Message_Error_Image_Text2" xml:space="preserve">
     <value>。您没有读取文件的权限，或者图像已损坏。</value>
   </data>
+  <data name="Message_Error_InWidget" xml:space="preserve">
+    <value>小部件出错：</value>
+  </data>
   <data name="Message_GoToFile_Caption" xml:space="preserve">
     <value>去文件夹</value>
   </data>
   <data name="Message_GoToFile_Text" xml:space="preserve">
     <value>去文件夹?</value>
+  </data>
+  <data name="Message_HR_Image_Count_Error" xml:space="preserve">
+    <value>心率的图像数量应为6。</value>
   </data>
   <data name="Message_Image32bit" xml:space="preserve">
     <value>图像不得为单色，且必须为32位格式</value>
@@ -251,6 +302,15 @@
   </data>
   <data name="Message_LoadPreviewStates_Text" xml:space="preserve">
     <value>下载具有一组预览设置的现有文件PreviewState.json？</value>
+  </data>
+  <data name="Message_ModelConfig_Error" xml:space="preserve">
+    <value>找不到模型配置：</value>
+  </data>
+  <data name="Message_ModelConfig_ReadError" xml:space="preserve">
+    <value>读取模型配置时出错</value>
+  </data>
+  <data name="Message_Old_OS" xml:space="preserve">
+    <value>所选手表型号不支持此小部件。</value>
   </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>重新启动</value>
@@ -300,6 +360,12 @@
   <data name="Message_Warning_Caption" xml:space="preserve">
     <value>警告</value>
   </data>
+  <data name="Message_Warning_Font_Exist1" xml:space="preserve">
+    <value>项目已具有字体：</value>
+  </data>
+  <data name="Message_Warning_Font_Exist2" xml:space="preserve">
+    <value>用新字体替换它？</value>
+  </data>
   <data name="Message_Warning_Image_Exist1" xml:space="preserve">
     <value>该项目已有一个图像：</value>
   </data>
@@ -309,11 +375,23 @@
   <data name="Message_Warning_Information" xml:space="preserve">
     <value>信息</value>
   </data>
+  <data name="Message_Warning_JS_Exist1" xml:space="preserve">
+    <value>此文件夹中已存在包含JS文件的文件夹。</value>
+  </data>
+  <data name="Message_Widget_Exists" xml:space="preserve">
+    <value>此小部件已经存在于表盘中。</value>
+  </data>
+  <data name="Message_Wrong_ColorScheme" xml:space="preserve">
+    <value>指定了模型的未知配色方案：</value>
+  </data>
   <data name="Message_Wrong_Original_Image" xml:space="preserve">
     <value>无效的源图像格式</value>
   </data>
   <data name="Message_Wrong_Preview_Exists" xml:space="preserve">
     <value>未能创建预览图像。也许这样的图像已经出现了。</value>
+  </data>
+  <data name="Month_StrArray" xml:space="preserve">
+    <value>Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec</value>
   </data>
   <data name="Tip_Background" xml:space="preserve">
     <value>背景</value>

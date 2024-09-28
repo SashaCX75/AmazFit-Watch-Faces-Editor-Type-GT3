@@ -413,6 +413,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ElementsString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ElementsString.zh.resx" />
     <EmbeddedResource Include="Properties\FormStrings.cs.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FormStrings.cs.Designer.cs</LastGenOutput>

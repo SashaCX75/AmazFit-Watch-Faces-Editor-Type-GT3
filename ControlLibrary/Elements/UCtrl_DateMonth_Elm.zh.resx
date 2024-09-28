@@ -190,4 +190,7 @@
   <data name="button_Number_Font.Text" xml:space="preserve">
     <value>字体值</value>
   </data>
+  <data name="button_Month_Font.Text" xml:space="preserve">
+    <value>月份字体</value>
+  </data>
 </root>

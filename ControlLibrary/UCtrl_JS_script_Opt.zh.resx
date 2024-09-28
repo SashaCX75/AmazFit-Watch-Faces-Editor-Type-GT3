@@ -137,43 +137,53 @@
     <value>185, 48</value>
   </data>
   <data name="checkBox_user_script_start.Text" xml:space="preserve">
-    <value>开头的用户脚本（在创建小部件之前插入）</value>
+    <value>开头的用户脚本（在创建小部件
+之前插入）</value>
   </data>
   <data name="checkBox_user_script.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 48</value>
   </data>
   <data name="checkBox_user_script.Text" xml:space="preserve">
-    <value>用户脚本（该小部件的位置决定了脚本在代码中的位置）</value>
+    <value>用户脚本（该小部件的位置决定了
+脚本在代码中的位置）</value>
   </data>
   <data name="checkBox_user_script_end.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 48</value>
   </data>
   <data name="checkBox_user_script_end.Text" xml:space="preserve">
-    <value>最后的用户脚本（在创建小部件之后插入，在 WIDGET_DELEGATE 之前）</value>
+    <value>最后的用户脚本（在创建小部件
+之后插入，在 WIDGET_DELEGATE
+ 之前）</value>
   </data>
   <data name="checkBox_user_script_beforeShortcuts.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 48</value>
   </data>
   <data name="checkBox_user_script_beforeShortcuts.Text" xml:space="preserve">
-    <value>快捷方式之前的用户脚本（插入快捷方式小部件之前）</value>
+    <value>快捷方式之前的用户脚本（插入快捷
+方式小部件之前）</value>
   </data>
   <data name="checkBox_resume_call.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 48</value>
   </data>
   <data name="checkBox_resume_call.Text" xml:space="preserve">
-    <value>函数resume_call（插入到WIDGET_DELEGATE小部件的resume_call中）</value>
+    <value>函数resume_call（插入到
+WIDGET_DELEGATE小部件
+的resume_call中）</value>
   </data>
   <data name="checkBox_pause_call.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 48</value>
   </data>
   <data name="checkBox_pause_call.Text" xml:space="preserve">
-    <value>函数pause_call（插入到WIDGET_DELEGATE小部件的pause_call中）</value>
+    <value>函数pause_call（插入到
+WIDGET_DELEGATE小部件
+的pause_call中）</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 31</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>右键单击开关将在默认程序中打开文件</value>
+    <value>右键单击开关将在默认程序中
+打开文件</value>
   </data>
   <data name="button_user_functions_Create.ToolTip" xml:space="preserve">
     <value>创建 *.js 文件</value>
