@@ -2555,13 +2555,13 @@ namespace Watch_Face_Editor
                                 y = DateDay.Number.iconPosY;
 
                                 src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                if (SelectedModel.versionOS >= 2.1 && DateDay.Number.alpha != 255)
+                                if (SelectedModel.versionOS >= 2.1 && DateDay.Number.icon_alpha != 255)
                                 {
                                     int w = src.Width;
                                     int h = src.Height;
                                     // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                                     ColorMatrix colorMatrix = new ColorMatrix();
-                                    colorMatrix.Matrix33 = DateDay.Number.alpha / 255f; // значение от 0 до 1
+                                    colorMatrix.Matrix33 = DateDay.Number.icon_alpha / 255f; // значение от 0 до 1
 
                                     // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                                     ImageAttributes imgAttributes = new ImageAttributes();
@@ -2914,13 +2914,13 @@ namespace Watch_Face_Editor
                                 y = DateMonth.Number.iconPosY;
 
                                 src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                                if (SelectedModel.versionOS >= 2.1 && DateMonth.Number.icon_alpha != 255)
                                 {
                                     int w = src.Width;
                                     int h = src.Height;
                                     // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                                     ColorMatrix colorMatrix = new ColorMatrix();
-                                    colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
+                                    colorMatrix.Matrix33 = DateMonth.Number.icon_alpha / 255f; // значение от 0 до 1
 
                                     // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                                     ImageAttributes imgAttributes = new ImageAttributes();
@@ -3210,13 +3210,13 @@ namespace Watch_Face_Editor
                             y = DateYear.Number.iconPosY;
 
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                                if (SelectedModel.versionOS >= 2.1 && DateYear.Number.icon_alpha != 255)
                                 {
                                     int w = src.Width;
                                     int h = src.Height;
                                     // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                                     ColorMatrix colorMatrix = new ColorMatrix();
-                                    colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
+                                    colorMatrix.Matrix33 = DateYear.Number.icon_alpha / 255f; // значение от 0 до 1
 
                                     // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                                     ImageAttributes imgAttributes = new ImageAttributes();
@@ -5366,13 +5366,13 @@ namespace Watch_Face_Editor
                         if (imageIndex < ListImagesFullName.Count)
                         {
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                            if (SelectedModel.versionOS >= 2.1 && images.alpha != 255)
                             {
                                 int w = src.Width;
                                 int h = src.Height;
                                 // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                                 ColorMatrix colorMatrix = new ColorMatrix();
-                                colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
+                                colorMatrix.Matrix33 = images.alpha / 255f; // значение от 0 до 1
 
                                 // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                                 ImageAttributes imgAttributes = new ImageAttributes();
@@ -5827,6 +5827,7 @@ namespace Watch_Face_Editor
                     bool inversion = circleScale.inversion;
                     Color color = StringToColor(circleScale.color);
                     float fullAngle = endAngle - startAngle;
+                    int alpha = circleScale.alpha;
 
                     string flatness = circleScale.line_cap;
                     int lineCap = 3;
@@ -5844,10 +5845,10 @@ namespace Watch_Face_Editor
                     }
 
                     DrawScaleCircle(gPanel, x, y, radius, width, lineCap, startAngle, fullAngle, progress,
-                        color, inversion, showProgressArea, showCentrHend);
+                        color, inversion, alpha, showProgressArea, showCentrHend);
 
                     if (mirror) DrawScaleCircle(gPanel, x, y, radius, width, lineCap, startAngle, -fullAngle, progress,
-                         color, inversion, showProgressArea, showCentrHend);
+                         color, inversion, alpha, showProgressArea, showCentrHend);
                 }
 
                 if (linearScale != null && index == linearScale.position && linearScale.visible)
@@ -5860,16 +5861,17 @@ namespace Watch_Face_Editor
                     bool mirror = linearScale.mirror;
                     bool inversion = linearScale.inversion;
                     bool vertical = linearScale.vertical;
+                    int alpha = linearScale.alpha;
                     Color color = StringToColor(linearScale.color);
                     int pointer_index = -1;
                     if (linearScale.pointer != null && linearScale.pointer.Length > 0)
                         pointer_index = ListImages.IndexOf(linearScale.pointer);
 
                     DrawScaleLinear(gPanel, x, y, lenght, width, line_cap, pointer_index, vertical, progress,
-                        color, inversion, showProgressArea);
+                        color, inversion, alpha, showProgressArea);
 
                     if (mirror) DrawScaleLinear(gPanel, x, y, -lenght, width, line_cap, pointer_index, vertical, progress,
-                        color, inversion, showProgressArea);
+                        color, inversion, alpha, showProgressArea);
                 }
 
                 if (icon != null && icon.src != null && icon.src.Length > 0 &&
@@ -5957,13 +5959,13 @@ namespace Watch_Face_Editor
                         pos_y = number.iconPosY;
 
                         src = OpenFileStream(ListImagesFullName[image_Index]);
-                        if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                        if (SelectedModel.versionOS >= 2.1 && number.icon_alpha != 255)
                         {
                             int w = src.Width;
                             int h = src.Height;
                             // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                             ColorMatrix colorMatrix = new ColorMatrix();
-                            colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
+                            colorMatrix.Matrix33 = number.icon_alpha / 255f; // значение от 0 до 1
 
                             // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                             ImageAttributes imgAttributes = new ImageAttributes();
@@ -6188,13 +6190,13 @@ namespace Watch_Face_Editor
                         if (imageIndex < ListImagesFullName.Count)
                         {
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                            if (SelectedModel.versionOS >= 2.1 && images.alpha != 255)
                             {
                                 int w = src.Width;
                                 int h = src.Height;
                                 // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                                 ColorMatrix colorMatrix = new ColorMatrix();
-                                colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
+                                colorMatrix.Matrix33 = images.alpha / 255f; // значение от 0 до 1
 
                                 // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                                 ImageAttributes imgAttributes = new ImageAttributes();
@@ -7717,13 +7719,13 @@ namespace Watch_Face_Editor
                         if (imageIndex < ListImagesFullName.Count)
                         {
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                            if (SelectedModel.versionOS >= 2.1 && images.alpha != 255)
                             {
                                 int w = src.Width;
                                 int h = src.Height;
                                 // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                                 ColorMatrix colorMatrix = new ColorMatrix();
-                                colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
+                                colorMatrix.Matrix33 = images.alpha / 255f; // значение от 0 до 1
 
                                 // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                                 ImageAttributes imgAttributes = new ImageAttributes();
@@ -8828,13 +8830,13 @@ namespace Watch_Face_Editor
                         if (imageIndex < ListImagesFullName.Count)
                         {
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            if (SelectedModel.versionOS >= 2.1 && icon.alpha != 255)
+                            if (SelectedModel.versionOS >= 2.1 && images.alpha != 255)
                             {
                                 int w = src.Width;
                                 int h = src.Height;
                                 // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                                 ColorMatrix colorMatrix = new ColorMatrix();
-                                colorMatrix.Matrix33 = icon.alpha / 255f; // значение от 0 до 1
+                                colorMatrix.Matrix33 = images.alpha / 255f; // значение от 0 до 1
 
                                 // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                                 ImageAttributes imgAttributes = new ImageAttributes();
@@ -8907,13 +8909,13 @@ namespace Watch_Face_Editor
                         pos_y = sunrise.iconPosY;
 
                         src = OpenFileStream(ListImagesFullName[image_Index]);
-                        if (SelectedModel.versionOS >= 2.1 && sunrise.alpha != 255)
+                        if (SelectedModel.versionOS >= 2.1 && sunrise.icon_alpha != 255)
                         {
                             int w = src.Width;
                             int h = src.Height;
                             // Создаем матрицу цветов для изменения прозрачности (альфа-канал)
                             ColorMatrix colorMatrix = new ColorMatrix();
-                            colorMatrix.Matrix33 = sunrise.alpha / 255f; // значение от 0 до 1
+                            colorMatrix.Matrix33 = sunrise.icon_alpha / 255f; // значение от 0 до 1
 
                             // Создаем объект ImageAttributes и применяем к нему матрицу цветов
                             ImageAttributes imgAttributes = new ImageAttributes();
@@ -13109,10 +13111,11 @@ namespace Watch_Face_Editor
         /// <param name="position">Отображаемая величина от 0 до 1</param>
         /// <param name="color">Цвет шкалы</param>
         /// <param name="inversion">Инверсия шкалы</param>
+        /// <param name="alpha">Прозрачность</param>
         /// <param name="showProgressArea">Подсвечивать полную длину шкалы</param>
         private void DrawScaleCircle(Graphics graphics, int x, int y, float radius, float width,
             int lineCap, float startAngle, float fullAngle, float position, Color color,
-            bool inversion, bool showProgressArea, bool showCentrHend)
+            bool inversion, int alpha, bool showProgressArea, bool showCentrHend)
         {
             if (radius <= width) return;
             Logger.WriteLine("* DrawScaleCircle");
@@ -13125,7 +13128,16 @@ namespace Watch_Face_Editor
                 position = 1 - position;
             }
             float valueAngle = fullAngle * position;
-            //if (valueAngle == 0) return;
+            
+            TextRenderingHint antiAlias = graphics.TextRenderingHint;
+            SmoothingMode smoothingMode = graphics.SmoothingMode;
+            if (SelectedModel.versionOS >= 2.1 && alpha != 255)
+            {
+                color = Color.FromArgb(alpha, color);
+                // Устанавливаем параметры сглаживания для текста
+                graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            }
             Pen pen = new Pen(color, width);
 
             switch (lineCap)
@@ -13152,14 +13164,8 @@ namespace Watch_Face_Editor
                     break;
             }
 
-            //int srcX = (int)Math.Round(x - radius - width / 2, MidpointRounding.AwayFromZero);
-            //int srcY = (int)Math.Round(y - radius - width / 2, MidpointRounding.AwayFromZero);
-            //int srcX = (int)(x - radius - width / 2);
-            //int srcY = (int)(y - radius - width / 2);
             int srcX = (int)(x - radius);
             int srcY = (int)(y - radius);
-            //int arcX = (int)(x - radius);
-            //int arcY = (int)(y - radius);
             int arcX = (int)(x - radius + width / 2);
             int arcY = (int)(y - radius + width / 2);
             float CircleWidth = 2 * radius - width;
@@ -13207,6 +13213,9 @@ namespace Watch_Face_Editor
             //    src = OpenFileStream(ListImagesFullName[pointerIndex]);
             //    graphics.DrawImage(src, new Rectangle(srcX, srcX, src.Width, src.Height));
             //}
+
+            graphics.TextRenderingHint = antiAlias;
+            graphics.SmoothingMode = smoothingMode;
 
             if (showProgressArea)
             {
@@ -13276,18 +13285,29 @@ namespace Watch_Face_Editor
         /// <param name="position">Отображаемая величина от 0 до 1</param>
         /// <param name="color">Цвет шкалы</param>
         /// <param name="inversion">Инверсия шкалы</param>
+        /// <param name="alpha">Прозрачность</param>
         /// <param name="showProgressArea">Подсвечивать полную длину шкалы</param>
         private void DrawScaleLinear(Graphics graphics, int x, int y, int lenght, int width, string lineCap, int pointer_index,
-            bool vertical, float position, Color color, bool inversion, bool showProgressArea)
+            bool vertical, float position, Color color, bool inversion, int alpha, bool showProgressArea)
         {
             Logger.WriteLine("* DrawScaleLinear");
             if (lineCap == "Rounded")
             {
-                DrawScaleLinearRounded(graphics, x, y, lenght, width, lineCap, pointer_index, vertical, position, color, inversion, showProgressArea);
+                DrawScaleLinearRounded(graphics, x, y, lenght, width, lineCap, pointer_index, vertical, position, color, inversion, alpha, showProgressArea);
                 return;
             }
             var src = new Bitmap(1, 1);
             if (position > 1) position = 1;
+
+            TextRenderingHint antiAlias = graphics.TextRenderingHint;
+            SmoothingMode smoothingMode = graphics.SmoothingMode;
+            if (SelectedModel.versionOS >= 2.1 && alpha != 255)
+            {
+                color = Color.FromArgb(alpha, color);
+                // Устанавливаем параметры сглаживания для текста
+                graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            }
             if (!vertical)
             {
                 if (inversion)
@@ -13311,6 +13331,9 @@ namespace Watch_Face_Editor
                         int pos_y = y + width/2 - src.Height / 2;
                         graphics.DrawImage(src, pos_x, pos_y);
                     }
+
+                    graphics.TextRenderingHint = antiAlias;
+                    graphics.SmoothingMode = smoothingMode;
 
                     if (showProgressArea)
                     {
@@ -13352,6 +13375,9 @@ namespace Watch_Face_Editor
                         graphics.DrawImage(src, pos_x, pos_y);
                     }
 
+                    graphics.TextRenderingHint = antiAlias;
+                    graphics.SmoothingMode = smoothingMode;
+
                     if (showProgressArea)
                     {
                         HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent20, Color.White, Color.Transparent);
@@ -13385,13 +13411,24 @@ namespace Watch_Face_Editor
         /// <param name="position">Отображаемая величина от 0 до 1</param>
         /// <param name="color">Цвет шкалы</param>
         /// <param name="inversion">Инверсия шкалы</param>
+        /// <param name="alpha">Прозрачность</param>
         /// <param name="showProgressArea">Подсвечивать полную длину шкалы</param>
         private void DrawScaleLinearRounded(Graphics graphics, int x, int y, int lenght, int width, string lineCap, int pointer_index,
-            bool vertical, float position, Color color, bool inversion, bool showProgressArea)
+            bool vertical, float position, Color color, bool inversion, int alpha, bool showProgressArea)
         {
             Logger.WriteLine("* DrawScaleLinear");
             var src = new Bitmap(1, 1);
             if (position > 1) position = 1;
+
+            TextRenderingHint antiAlias = graphics.TextRenderingHint;
+            SmoothingMode smoothingMode = graphics.SmoothingMode;
+            if (SelectedModel.versionOS >= 2.1 && alpha != 255)
+            {
+                color = Color.FromArgb(alpha, color);
+                // Устанавливаем параметры сглаживания для текста
+                graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            }
             if (!vertical)
             {
                 if (inversion)
@@ -13403,32 +13440,44 @@ namespace Watch_Face_Editor
                 try
                 {
                     int realLenght = (int)(lenght * position);
-                    Brush br = new SolidBrush(color); 
-                    Rectangle rc = new Rectangle();
+                    Pen pen = new Pen(color, width);
                     if (Math.Abs(realLenght) > width)
                     {
-                        int radius = width / 2;
-                        rc = new Rectangle(x + radius, y, realLenght - width, width);
-                        Rectangle rcStart = new Rectangle(x, y, width, width);
-                        Rectangle rcEnd = new Rectangle(x + realLenght - width, y, width, width);
-                        if (realLenght < 0)
-                        {
-                            rc = new Rectangle(x + realLenght + radius, y, -realLenght - width, width);
-                            rcStart = new Rectangle(x + realLenght, y, width, width);
-                            rcEnd = new Rectangle(x - width, y, width, width);
-                        }
-                        graphics.FillRectangle(br, rc);
-                        //br = new SolidBrush(Color.Red);
-                        graphics.FillEllipse(br, rcStart);
-                        //br = new SolidBrush(Color.Blue);
-                        graphics.FillEllipse(br, rcEnd); 
+                        pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+                        pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+                        if (realLenght > 0) graphics.DrawLine(pen, x + width / 2, y + width / 2, x + realLenght - width / 2, y + width / 2);
+                        else graphics.DrawLine(pen, x - width / 2, y + width / 2, x + realLenght + width / 2, y + width / 2);
                     }
-                    else
-                    {
-                        rc = new Rectangle(x, y, realLenght, width);
-                        //br = new SolidBrush(Color.Green);
-                        graphics.FillEllipse(br, rc);
-                    }
+                    else graphics.DrawLine(pen, x, y + width / 2, x + realLenght, y + width / 2);
+                    //Brush br = new SolidBrush(color); 
+                    //Rectangle rc = new Rectangle();
+                    //if (Math.Abs(realLenght) > width)
+                    //{
+                    //    int radius = width / 2;
+                    //    rc = new Rectangle(x + radius, y, realLenght - width, width);
+                    //    Rectangle rcStart = new Rectangle(x, y, width, width);
+                    //    Rectangle rcEnd = new Rectangle(x + realLenght - width, y, width, width);
+                    //    if (realLenght < 0)
+                    //    {
+                    //        rc = new Rectangle(x + realLenght + radius, y, -realLenght - width, width);
+                    //        rcStart = new Rectangle(x + realLenght, y, width, width);
+                    //        rcEnd = new Rectangle(x - width, y, width, width);
+                    //    }
+                    //    graphics.FillRectangle(br, rc);
+                    //    //br = new SolidBrush(Color.Red);
+                    //    graphics.FillEllipse(br, rcStart);
+                    //    //br = new SolidBrush(Color.Blue);
+                    //    graphics.FillEllipse(br, rcEnd); 
+                    //}
+                    //else
+                    //{
+                    //    rc = new Rectangle(x, y, realLenght, width);
+                    //    //br = new SolidBrush(Color.Green);
+                    //    graphics.FillEllipse(br, rc);
+                    //}
+
+                    graphics.TextRenderingHint = antiAlias;
+                    graphics.SmoothingMode = smoothingMode;
 
                     if (pointer_index >= 0 && pointer_index < ListImagesFullName.Count)
                     {
@@ -13442,7 +13491,7 @@ namespace Watch_Face_Editor
                     {
                         HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent20, Color.White, Color.Transparent);
 
-                        rc = new Rectangle(x, y, lenght, width);
+                        Rectangle rc = new Rectangle(x, y, lenght, width);
                         if (lenght < 0) rc = new Rectangle(x + lenght, y, -lenght, width);
                         graphics.FillRectangle(myHatchBrush, rc);
 
@@ -13465,32 +13514,44 @@ namespace Watch_Face_Editor
                 try
                 {
                     int realLenght = (int)(lenght * position);
-                    Brush br = new SolidBrush(color);
-                    Rectangle rc = new Rectangle();
+                    Pen pen = new Pen(color, width);
                     if (Math.Abs(realLenght) > width)
                     {
-                        int radius = width / 2;
-                        rc = new Rectangle(x, y + radius, width, realLenght - width);
-                        Rectangle rcStart = new Rectangle(x, y, width, width);
-                        Rectangle rcEnd = new Rectangle(x, y + realLenght - width, width, width);
-                        if (realLenght < 0)
-                        {
-                            rc = new Rectangle(x, y + realLenght + radius, width, -realLenght - width);
-                            rcStart = new Rectangle(x, y + realLenght, width, width);
-                            rcEnd = new Rectangle(x, y - width, width, width);
-                        }
-                        graphics.FillRectangle(br, rc);
-                        //br = new SolidBrush(Color.Red);
-                        graphics.FillEllipse(br, rcStart);
-                        //br = new SolidBrush(Color.Blue);
-                        graphics.FillEllipse(br, rcEnd);
+                        pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+                        pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+                        if (realLenght > 0) graphics.DrawLine(pen, x + width / 2, y + width / 2, x + width / 2, y + realLenght - width / 2);
+                        else graphics.DrawLine(pen, x + width / 2, y - width / 2, x + width / 2, y + realLenght + width / 2);
                     }
-                    else
-                    {
-                        rc = new Rectangle(x, y, width, realLenght);
-                        //br = new SolidBrush(Color.Green);
-                        graphics.FillEllipse(br, rc);
-                    }
+                    else graphics.DrawLine(pen, x + width / 2, y, x + width / 2, y);
+                    //Brush br = new SolidBrush(color);
+                    //Rectangle rc = new Rectangle();
+                    //if (Math.Abs(realLenght) > width)
+                    //{
+                    //    int radius = width / 2;
+                    //    rc = new Rectangle(x, y + radius, width, realLenght - width);
+                    //    Rectangle rcStart = new Rectangle(x, y, width, width);
+                    //    Rectangle rcEnd = new Rectangle(x, y + realLenght - width, width, width);
+                    //    if (realLenght < 0)
+                    //    {
+                    //        rc = new Rectangle(x, y + realLenght + radius, width, -realLenght - width);
+                    //        rcStart = new Rectangle(x, y + realLenght, width, width);
+                    //        rcEnd = new Rectangle(x, y - width, width, width);
+                    //    }
+                    //    graphics.FillRectangle(br, rc);
+                    //    //br = new SolidBrush(Color.Red);
+                    //    graphics.FillEllipse(br, rcStart);
+                    //    //br = new SolidBrush(Color.Blue);
+                    //    graphics.FillEllipse(br, rcEnd);
+                    //}
+                    //else
+                    //{
+                    //    rc = new Rectangle(x, y, width, realLenght);
+                    //    //br = new SolidBrush(Color.Green);
+                    //    graphics.FillEllipse(br, rc);
+                    //}
+
+                    graphics.TextRenderingHint = antiAlias;
+                    graphics.SmoothingMode = smoothingMode;
 
                     if (pointer_index >= 0 && pointer_index < ListImagesFullName.Count)
                     {
@@ -13504,7 +13565,7 @@ namespace Watch_Face_Editor
                     {
                         HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent20, Color.White, Color.Transparent);
 
-                        rc = new Rectangle(x, y, width, lenght);
+                        Rectangle rc = new Rectangle(x, y, width, lenght);
                         if (lenght < 0) rc = new Rectangle(x, y + lenght, width, -lenght);
                         graphics.FillRectangle(myHatchBrush, rc);
 

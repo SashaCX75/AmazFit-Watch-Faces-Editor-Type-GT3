@@ -5328,6 +5328,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "step_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Steps.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "step_circle_scale.setAlpha(" + Steps.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (circle_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -5336,6 +5339,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "step_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Steps.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "step_circle_scale_mirror.setAlpha(" + Steps.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
 
                                 //items += TabInString(7) + optionNameStart +
                                 //    "step_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
@@ -5413,6 +5419,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(7) +
                                 optionNameStart + "step_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
 
+                            if (Steps.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "step_linear_scale.setAlpha(" + Steps.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (linear_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -5423,6 +5432,9 @@ namespace Watch_Face_Editor
 
                                 items += TabInString(7) + optionNameStart +
                                     "step_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                                if (Steps.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "step_linear_scale_mirror.setAlpha(" + Steps.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
                             }
 
                             items += TabInString(6) + "};" + Environment.NewLine;
@@ -5690,6 +5702,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "battery_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Battery.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "battery_circle_scale.setAlpha(" + Battery.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (circle_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -5698,6 +5713,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "battery_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Battery.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "battery_circle_scale_mirror.setAlpha(" + Battery.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
                             }
 
 
@@ -5788,6 +5806,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(7) +
                                 optionNameStart + "battery_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
 
+                            if (Battery.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "battery_linear_scale.setAlpha(" + Battery.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (linear_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -5798,6 +5819,9 @@ namespace Watch_Face_Editor
 
                                 items += TabInString(7) + optionNameStart +
                                     "battery_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                                if (Battery.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "battery_linear_scale_mirror.setAlpha(" + Battery.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
                             }
 
                             items += TabInString(6) + "};" + Environment.NewLine;
@@ -6167,6 +6191,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "calorie_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Calories.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "calorie_circle_scale.setAlpha(" + Calories.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (circle_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -6175,6 +6202,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "calorie_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Calories.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "calorie_circle_scale_mirror.setAlpha(" + Calories.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
                             }
 
 
@@ -6264,6 +6294,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(7) +
                                 optionNameStart + "calorie_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
 
+                            if (Calories.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "calorie_linear_scale.setAlpha(" + Calories.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (linear_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -6274,6 +6307,9 @@ namespace Watch_Face_Editor
 
                                 items += TabInString(7) + optionNameStart +
                                     "calorie_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                                if (Calories.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "calorie_linear_scale_mirror.setAlpha(" + Calories.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
                             }
 
                             items += TabInString(6) + "};" + Environment.NewLine;
@@ -6546,6 +6582,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "heart_rate_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Heart.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "heart_rate_circle_scale.setAlpha(" + Heart.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (circle_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -6554,6 +6593,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "heart_rate_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Heart.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "heart_rate_circle_scale_mirror.setAlpha(" + Heart.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
                             }
 
 
@@ -6631,6 +6673,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(7) +
                                 optionNameStart + "heart_rate_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
 
+                            if (Heart.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "heart_rate_linear_scale.setAlpha(" + Heart.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (linear_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -6641,6 +6686,9 @@ namespace Watch_Face_Editor
 
                                 items += TabInString(7) + optionNameStart +
                                     "heart_rate_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                                if (Heart.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "heart_rate_linear_scale_mirror.setAlpha(" + Heart.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
                             }
 
                             items += TabInString(6) + "};" + Environment.NewLine;
@@ -6976,6 +7024,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "pai_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (PAI.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "pai_circle_scale.setAlpha(" + PAI.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (circle_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -6984,6 +7035,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "pai_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (PAI.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "pai_circle_scale_mirror.setAlpha(" + PAI.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
                             }
 
 
@@ -7059,6 +7113,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(7) +
                                 optionNameStart + "pai_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
 
+                            if (PAI.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "pai_linear_scale.setAlpha(" + PAI.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (linear_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -7069,6 +7126,9 @@ namespace Watch_Face_Editor
 
                                 items += TabInString(7) + optionNameStart +
                                     "pai_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                                if (PAI.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "pai_linear_scale_mirror.setAlpha(" + PAI.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
                             }
 
                             items += TabInString(6) + "};" + Environment.NewLine;
@@ -7944,6 +8004,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "stand_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Stand.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "stand_circle_scale.setAlpha(" + Stand.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (circle_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -7952,6 +8015,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "stand_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Stand.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "stand_circle_scale_mirror.setAlpha(" + Stand.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
                             }
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales STAND');" + Environment.NewLine;
@@ -8021,6 +8087,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(7) +
                                 optionNameStart + "stand_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
 
+                            if (Stand.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "stand_linear_scale.setAlpha(" + Stand.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (linear_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -8031,6 +8100,9 @@ namespace Watch_Face_Editor
 
                                 items += TabInString(7) + optionNameStart +
                                     "stand_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                                if (Stand.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "stand_linear_scale_mirror.setAlpha(" + Stand.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
                             }
 
                             items += TabInString(6) + "};" + Environment.NewLine;
@@ -8332,6 +8404,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "activity_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (Activity.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "activity_circle_scale.setAlpha(" + Activity.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (circle_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -8340,6 +8415,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "activity_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (Activity.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "activity_circle_scale_mirror.setAlpha(" + Activity.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
                             }
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales ACTIVITY');" + Environment.NewLine;
@@ -8414,6 +8492,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(7) +
                                 optionNameStart + "activity_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
 
+                            if (Activity.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "activity_linear_scale.setAlpha(" + Activity.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (linear_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -8424,6 +8505,9 @@ namespace Watch_Face_Editor
 
                                 items += TabInString(7) + optionNameStart +
                                     "activity_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                                if (Activity.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "activity_linear_scale_mirror.setAlpha(" + Activity.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
                             }
 
                             items += TabInString(6) + "};" + Environment.NewLine;
@@ -9079,6 +9163,9 @@ namespace Watch_Face_Editor
                                 optionNameStart + "fat_burning_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(6) + "});" + Environment.NewLine;
 
+                            if (FatBurning.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "fat_burning_circle_scale.setAlpha(" + FatBurning.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (circle_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -9087,6 +9174,9 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "fat_burning_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                                if (FatBurning.Circle_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "fat_burning_circle_scale_mirror.setAlpha(" + FatBurning.Circle_Scale.alpha.ToString() + ");" + Environment.NewLine;
                             }
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales FAT_BURNING');" + Environment.NewLine;
@@ -9156,6 +9246,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(7) +
                                 optionNameStart + "fat_burning_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
 
+                            if (FatBurning.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "fat_burning_linear_scale.setAlpha(" + FatBurning.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
+
                             if (linear_scale.mirror)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
@@ -9166,6 +9259,9 @@ namespace Watch_Face_Editor
 
                                 items += TabInString(7) + optionNameStart +
                                     "fat_burning_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                                if (FatBurning.Linear_Scale.alpha != 255) items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                        "fat_burning_linear_scale_mirror.setAlpha(" + FatBurning.Linear_Scale.alpha.ToString() + ");" + Environment.NewLine;
                             }
 
                             items += TabInString(6) + "};" + Environment.NewLine;
@@ -18949,6 +19045,7 @@ namespace Watch_Face_Editor
             options += TabInString(7 + tabOffset) + "// color: " + circle_scale.color + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "// mirror: " + circle_scale.mirror.ToString() + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "// inversion: " + circle_scale.inversion.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// alpha: " + circle_scale.alpha.ToString() + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "// type: hmUI.data_type." + type.ToUpper() + "," + Environment.NewLine; 
             options += TabInString(7 + tabOffset) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
             options += TabInString(6 + tabOffset) + "// });" + Environment.NewLine;
@@ -19025,6 +19122,7 @@ namespace Watch_Face_Editor
             options += TabInString(7 + tabOffset) + "// vertical: " + linear_scale.vertical.ToString() + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "// mirror: " + linear_scale.mirror.ToString() + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "// inversion: " + linear_scale.inversion.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// alpha: " + linear_scale.alpha.ToString() + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "// type: hmUI.data_type." + type.ToUpper() + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
             options += TabInString(6 + tabOffset) + "// });" + Environment.NewLine;
@@ -32257,6 +32355,7 @@ namespace Watch_Face_Editor
                                 steps.Circle_Scale.line_cap = circle_Scale.line_cap;
                                 steps.Circle_Scale.mirror = circle_Scale.mirror;
                                 steps.Circle_Scale.inversion = circle_Scale.inversion;
+                                steps.Circle_Scale.alpha = circle_Scale.alpha;
                                 steps.Circle_Scale.visible = true;
                                 steps.Circle_Scale.position = offset;
                             }
@@ -32295,6 +32394,7 @@ namespace Watch_Face_Editor
                                 battery.Circle_Scale.line_cap = circle_Scale.line_cap;
                                 battery.Circle_Scale.mirror = circle_Scale.mirror;
                                 battery.Circle_Scale.inversion = circle_Scale.inversion;
+                                battery.Circle_Scale.alpha = circle_Scale.alpha;
                                 battery.Circle_Scale.visible = true;
                                 battery.Circle_Scale.position = offset;
                             }
@@ -32337,6 +32437,7 @@ namespace Watch_Face_Editor
                                 calorie.Circle_Scale.line_cap = circle_Scale.line_cap;
                                 calorie.Circle_Scale.mirror = circle_Scale.mirror;
                                 calorie.Circle_Scale.inversion = circle_Scale.inversion;
+                                calorie.Circle_Scale.alpha = circle_Scale.alpha;
                                 calorie.Circle_Scale.visible = true;
                                 calorie.Circle_Scale.position = offset;
                             }
@@ -32375,6 +32476,7 @@ namespace Watch_Face_Editor
                                 heart.Circle_Scale.line_cap = circle_Scale.line_cap;
                                 heart.Circle_Scale.mirror = circle_Scale.mirror;
                                 heart.Circle_Scale.inversion = circle_Scale.inversion;
+                                heart.Circle_Scale.alpha = circle_Scale.alpha;
                                 heart.Circle_Scale.visible = true;
                                 heart.Circle_Scale.position = offset;
                             }
@@ -32414,6 +32516,7 @@ namespace Watch_Face_Editor
                                 pai.Circle_Scale.line_cap = circle_Scale.line_cap;
                                 pai.Circle_Scale.mirror = circle_Scale.mirror;
                                 pai.Circle_Scale.inversion = circle_Scale.inversion;
+                                pai.Circle_Scale.alpha = circle_Scale.alpha;
                                 pai.Circle_Scale.visible = true;
                                 pai.Circle_Scale.position = offset;
                             }
@@ -32456,6 +32559,7 @@ namespace Watch_Face_Editor
                                 stand.Circle_Scale.line_cap = circle_Scale.line_cap;
                                 stand.Circle_Scale.mirror = circle_Scale.mirror;
                                 stand.Circle_Scale.inversion = circle_Scale.inversion;
+                                stand.Circle_Scale.alpha = circle_Scale.alpha;
                                 stand.Circle_Scale.visible = true;
                                 stand.Circle_Scale.position = offset;
                             }
@@ -32494,6 +32598,7 @@ namespace Watch_Face_Editor
                                 activity.Circle_Scale.line_cap = circle_Scale.line_cap;
                                 activity.Circle_Scale.mirror = circle_Scale.mirror;
                                 activity.Circle_Scale.inversion = circle_Scale.inversion;
+                                activity.Circle_Scale.alpha = circle_Scale.alpha;
                                 activity.Circle_Scale.visible = true;
                                 activity.Circle_Scale.position = offset;
                             }
@@ -32536,6 +32641,7 @@ namespace Watch_Face_Editor
                                 fat_burning.Circle_Scale.line_cap = circle_Scale.line_cap;
                                 fat_burning.Circle_Scale.mirror = circle_Scale.mirror;
                                 fat_burning.Circle_Scale.inversion = circle_Scale.inversion;
+                                fat_burning.Circle_Scale.alpha = circle_Scale.alpha;
                                 fat_burning.Circle_Scale.visible = true;
                                 fat_burning.Circle_Scale.position = offset;
                             }
@@ -32583,6 +32689,7 @@ namespace Watch_Face_Editor
                                 steps.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 steps.Linear_Scale.mirror = linear_Scale.mirror;
                                 steps.Linear_Scale.inversion = linear_Scale.inversion;
+                                steps.Linear_Scale.alpha = linear_Scale.alpha;
                                 steps.Linear_Scale.vertical = linear_Scale.vertical;
                                 steps.Linear_Scale.pointer = linear_Scale.pointer;
                                 steps.Linear_Scale.visible = true;
@@ -32621,6 +32728,7 @@ namespace Watch_Face_Editor
                                 battery.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 battery.Linear_Scale.mirror = linear_Scale.mirror;
                                 battery.Linear_Scale.inversion = linear_Scale.inversion;
+                                battery.Linear_Scale.alpha = linear_Scale.alpha;
                                 battery.Linear_Scale.vertical = linear_Scale.vertical;
                                 battery.Linear_Scale.pointer = linear_Scale.pointer;
                                 battery.Linear_Scale.visible = true;
@@ -32663,6 +32771,7 @@ namespace Watch_Face_Editor
                                 calorie.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 calorie.Linear_Scale.mirror = linear_Scale.mirror;
                                 calorie.Linear_Scale.inversion = linear_Scale.inversion;
+                                calorie.Linear_Scale.alpha = linear_Scale.alpha;
                                 calorie.Linear_Scale.vertical = linear_Scale.vertical;
                                 calorie.Linear_Scale.pointer = linear_Scale.pointer;
                                 calorie.Linear_Scale.visible = true;
@@ -32701,6 +32810,7 @@ namespace Watch_Face_Editor
                                 heart.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 heart.Linear_Scale.mirror = linear_Scale.mirror;
                                 heart.Linear_Scale.inversion = linear_Scale.inversion;
+                                heart.Linear_Scale.alpha = linear_Scale.alpha;
                                 heart.Linear_Scale.vertical = linear_Scale.vertical;
                                 heart.Linear_Scale.pointer = linear_Scale.pointer;
                                 heart.Linear_Scale.visible = true;
@@ -32740,6 +32850,7 @@ namespace Watch_Face_Editor
                                 pai.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 pai.Linear_Scale.mirror = linear_Scale.mirror;
                                 pai.Linear_Scale.inversion = linear_Scale.inversion;
+                                pai.Linear_Scale.alpha = linear_Scale.alpha;
                                 pai.Linear_Scale.vertical = linear_Scale.vertical;
                                 pai.Linear_Scale.pointer = linear_Scale.pointer;
                                 pai.Linear_Scale.visible = true;
@@ -32782,6 +32893,7 @@ namespace Watch_Face_Editor
                                 stand.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 stand.Linear_Scale.mirror = linear_Scale.mirror;
                                 stand.Linear_Scale.inversion = linear_Scale.inversion;
+                                stand.Linear_Scale.alpha = linear_Scale.alpha;
                                 stand.Linear_Scale.vertical = linear_Scale.vertical;
                                 stand.Linear_Scale.pointer = linear_Scale.pointer;
                                 stand.Linear_Scale.visible = true;
@@ -32820,6 +32932,7 @@ namespace Watch_Face_Editor
                                 activity.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 activity.Linear_Scale.mirror = linear_Scale.mirror;
                                 activity.Linear_Scale.inversion = linear_Scale.inversion;
+                                activity.Linear_Scale.alpha = linear_Scale.alpha;
                                 activity.Linear_Scale.vertical = linear_Scale.vertical;
                                 activity.Linear_Scale.pointer = linear_Scale.pointer;
                                 activity.Linear_Scale.visible = true;
@@ -32862,6 +32975,7 @@ namespace Watch_Face_Editor
                                 fat_burning.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 fat_burning.Linear_Scale.mirror = linear_Scale.mirror;
                                 fat_burning.Linear_Scale.inversion = linear_Scale.inversion;
+                                fat_burning.Linear_Scale.alpha = linear_Scale.alpha;
                                 fat_burning.Linear_Scale.vertical = linear_Scale.vertical;
                                 fat_burning.Linear_Scale.pointer = linear_Scale.pointer;
                                 fat_burning.Linear_Scale.visible = true;
@@ -38050,6 +38164,8 @@ namespace Watch_Face_Editor
                 element_Circle_Scale.radius = value;
             if (parametrs.ContainsKey("// line_width") && Int32.TryParse(parametrs["// line_width"], out value))
                 element_Circle_Scale.line_width = value;
+            if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value))
+                element_Circle_Scale.alpha = value;
             if (parametrs.ContainsKey("// line_cap") && parametrs["// line_cap"].Length > 3)
                 element_Circle_Scale.line_cap = parametrs["// line_cap"];
 
@@ -38092,6 +38208,8 @@ namespace Watch_Face_Editor
                 element_Linear_Scale.lenght = value;
             if (parametrs.ContainsKey("// line_width") && Int32.TryParse(parametrs["// line_width"], out value))
                 element_Linear_Scale.line_width = value;
+            if (parametrs.ContainsKey("// alpha") && Int32.TryParse(parametrs["// alpha"], out value))
+                element_Linear_Scale.alpha = value;
             if (parametrs.ContainsKey("// line_cap") && parametrs["// line_cap"].Length > 3)
                 element_Linear_Scale.line_cap = parametrs["// line_cap"];
 

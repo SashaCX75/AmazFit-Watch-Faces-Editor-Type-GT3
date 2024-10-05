@@ -328,4 +328,7 @@
   <data name="context_WidgetProperty.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 48</value>
   </data>
+  <data name="label_alpha.Text" xml:space="preserve">
+    <value>Прозорість</value>
+  </data>
 </root>

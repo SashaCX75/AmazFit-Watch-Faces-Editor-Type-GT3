@@ -585,6 +585,9 @@ namespace Watch_Face_Editor
         /// <summary>Инверсия шкалы</summary>
         public bool inversion { get; set; }
 
+        /// <summary>Прозрачность</summary>
+        public int alpha { get; set; } = 255;
+
         /// <summary>Основной экран или AOD</summary>
         public string show_level = "";
 
@@ -631,6 +634,9 @@ namespace Watch_Face_Editor
 
         /// <summary>Горизонтальная или вертикальная шкала</summary>
         public bool vertical { get; set; }
+
+        /// <summary>Прозрачность</summary>
+        public int alpha { get; set; } = 255;
 
         /// <summary>Основной экран или AOD</summary>
         public string show_level = "";

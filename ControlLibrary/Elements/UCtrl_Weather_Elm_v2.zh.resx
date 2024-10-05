@@ -209,6 +209,9 @@
   <data name="button_Number_Max.Text" xml:space="preserve">
     <value>数值</value>
   </data>
+  <data name="button_Max.Text" xml:space="preserve">
+    <value>温度(最高)</value>
+  </data>
   <data name="button_Number_Min_Font.Text" xml:space="preserve">
     <value>字体值</value>
   </data>
@@ -249,7 +252,6 @@
   </data>
   <data name="button_Text_Min_rotation.Text" xml:space="preserve">
     <value>角度值（最小值）</value>
-    <comment>button_Text_Min_rotation.Text</comment>
   </data>
   <data name="button_Number_Min.Text" xml:space="preserve">
     <value>数值</value>
@@ -375,7 +377,7 @@
 28. 夜间阵雨
 29. 夜间阵雨</value>
   </data>
-  <data name="button_Max.Text" xml:space="preserve">
-    <value>温度(最高)</value>
+  <data name="button_ElementName.Text" xml:space="preserve">
+    <value>天气</value>
   </data>
 </root>

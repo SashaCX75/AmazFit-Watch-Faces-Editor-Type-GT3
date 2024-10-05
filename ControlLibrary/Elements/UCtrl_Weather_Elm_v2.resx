@@ -125,9 +125,6 @@
   <data name="pictureBox_Arrow_Right_Max.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="button_Images.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
   <data name="button_Number_Min_Font.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -160,8 +157,8 @@
   <data name="&gt;&gt;checkBox_Text_Min_rotation.Name" xml:space="preserve">
     <value>checkBox_Text_Min_rotation</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel_Max_Min.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="pictureBox_Arrow_Down.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
   </data>
   <data name="&gt;&gt;pictureBox_Arrow_Down_Min.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -212,29 +209,17 @@
   <data name="checkBox_Text_Current_circle.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
-  <data name="panel_Number_Max.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="checkBox_Text_Max_rotation.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;button_Text_Current_circle.Parent" xml:space="preserve">
     <value>panel_Text_circle</value>
   </data>
-  <data name="button_Current.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
   <data name="tableLayoutPanel_Max_Min.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;panel_Number_Max_Min_Font.Parent" xml:space="preserve">
-    <value>tableLayoutPanel_Max_Min</value>
-  </data>
   <data name="checkBox_Number_Max_Min.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="button_Current.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
   </data>
   <data name="button_Number_Min.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
@@ -261,11 +246,11 @@
   <data name="button_Text_Max_rotation.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 24</value>
   </data>
-  <data name="tableLayoutPanel_Max_Min.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="panel_Text_Max_rotation.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 770</value>
+  <data name="button_Number_Min.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;checkBox_Number_Current.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -275,6 +260,9 @@
   </data>
   <data name="tableLayoutPanel_Max.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_Number_Max_Font" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Text_Max_circle" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Text_Max_rotation" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Number_Max" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="checkBox_Number_Max.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;panel_Text_circle.Name" xml:space="preserve">
     <value>panel_Text_circle</value>
@@ -288,14 +276,14 @@
   <data name="pictureBox_Arrow_Right_Max_Min.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 2</value>
   </data>
+  <data name="button_Images.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="button_Text_Min_circle.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
-  <data name="checkBox_Text_Current_circle.ToolTip" xml:space="preserve">
+  <data name="checkBox_Number_Max_Min_Font.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="tableLayoutPanel_Current.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
   </data>
   <data name="&gt;&gt;button_Min.Name" xml:space="preserve">
     <value>button_Min</value>
@@ -318,23 +306,26 @@
   <data name="tableLayoutPanel_Min.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="panel_Number_Min.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="tableLayoutPanel_Current.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
+    <value>Single</value>
   </data>
   <data name="checkBox_Number_Min.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="checkBox_Text_Current_circle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 14</value>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 770</value>
   </data>
-  <data name="button_Text_Max_Min_rotation.Text" xml:space="preserve">
-    <value>Данные под углом</value>
+  <data name="&gt;&gt;checkBox_Text_CityName.Parent" xml:space="preserve">
+    <value>panel_Text_CityName</value>
   </data>
   <data name="checkBox_Number_Max.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="button_Number_Max_Font.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;button_Text_Max_Min_circle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="panel_Text_Max_Min_circle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -345,11 +336,8 @@
   <data name="button_ElementName.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
   </data>
-  <data name="pictureBox_Arrow_Right_Max_Min.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="button_ElementName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 28</value>
+  <data name="button_Number_Min_Font.Text" xml:space="preserve">
+    <value>Данные шрифтом</value>
   </data>
   <data name="&gt;&gt;checkBox_Text_Max_Min_rotation.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -378,11 +366,8 @@
   <data name="&gt;&gt;pictureBox_Arrow_Down_Min.Parent" xml:space="preserve">
     <value>panel_Min</value>
   </data>
-  <data name="button_Icon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 0</value>
-  </data>
-  <data name="pictureBox_Arrow_Right_Max.ToolTip" xml:space="preserve">
-    <value />
+  <data name="button_Max.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="tableLayoutPanel_Current.RowCount" type="System.Int32, mscorlib">
     <value>4</value>
@@ -390,14 +375,11 @@
   <data name="&gt;&gt;pictureBox_Arrow_Right_Max.Parent" xml:space="preserve">
     <value>panel_Max</value>
   </data>
-  <data name="button_Number_Min_Font.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
+  <data name="pictureBox_Arrow_Right_Max_Min.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;pictureBox_NotShow.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tableLayoutPanel_Current.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
-    <value>Single</value>
   </data>
   <data name="pictureBox_Arrow_Down_Min.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -408,23 +390,26 @@
   <data name="&gt;&gt;button_Number_Current_Font.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="pictureBox_Arrow_Right_Min.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;checkBox_Number_Max_Font.Parent" xml:space="preserve">
+    <value>panel_Number_Max_Font</value>
   </data>
   <data name="panel_Number_Min_Font.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="button_Number_Max_Font.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+  <data name="&gt;&gt;panel_Icon.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="button_Text_Max_Min_rotation.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
+  <data name="&gt;&gt;tableLayoutPanel_Min.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="button_Number_Min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel_Max_Min.Parent" xml:space="preserve">
-    <value>panel_Max_Min</value>
+  <data name="checkBox_Number_Max.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;pictureBox_Arrow_Right_Min.Name" xml:space="preserve">
     <value>pictureBox_Arrow_Right_Min</value>
@@ -438,8 +423,11 @@
   <data name="checkBox_Number_Min.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="checkBox_Text_Max_Min_circle.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;panel_Text_Max_Min_rotation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_Text_circle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="button_Text_Min_rotation.ToolTip" xml:space="preserve">
     <value />
@@ -453,11 +441,11 @@
   <data name="&gt;&gt;panel_Number_Max_Font.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="pictureBox_Show.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
+  <data name="panel_Text_Max_Min_circle.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
   </data>
-  <data name="&gt;&gt;checkBox_Number_Current.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="panel_Text_Max_Min_rotation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 24</value>
   </data>
   <data name="panel_Number_Max_Min_Font.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 26</value>
@@ -471,23 +459,48 @@
   <data name="panel_Text_Min_rotation.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
   </data>
-  <data name="panel_Text_Max_rotation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 24</value>
-  </data>
   <data name="&gt;&gt;checkBox_Number_Max_Min_Font.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBox_Text_Min_rotation.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
-  <data name="pictureBox_Arrow_Right_Current.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
+  <data name="button_Current.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="&gt;&gt;button_Number_Max_Min.Name" xml:space="preserve">
     <value>button_Number_Max_Min</value>
   </data>
-  <data name="panel_Text_CityName.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="panel_Images.ToolTip" xml:space="preserve">
+    <value>1. Облачно
+2. Дождь
+3. Дождь со снегом
+4. Солнечно
+5. Пасмурно
+6. Лёгкий дождь
+7. Лёгкий снег
+8. Небольшой дождь
+9. Небольшой снег
+10. Сильный снег
+11. Сильный дождь
+12. Песчаная буря
+13. Мокрый снег
+14. Туман
+15. Дымка
+16. Дождь с грозой
+17. Метель
+18. Пыльно
+19. Мощный ливень
+20. Дождь с градом
+21. Ливень с градом
+22. Сильный ливень
+23. Ветер с песком
+24. Сильная песчаная буря
+25. Ливень
+26. Неизвестная погода
+27. Облачно ночью
+28. Дождь ночью
+29. Ясно ночью</value>
   </data>
   <data name="&gt;&gt;checkBox_Icon.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -510,29 +523,23 @@
   <data name="button_Text_CityName.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="tableLayoutPanel_Min.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;panel_Current.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
-  <data name="checkBox_Number_Max_Min_Font.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 14</value>
+  <data name="tableLayoutPanel_Max.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 28</value>
   </data>
   <data name="tableLayoutPanel_Min.RowCount" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="tableLayoutPanel1.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="panel_Number_Min_Font.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panel_Text_Max_Min_rotation.ToolTip" xml:space="preserve">
-    <value />
+  <data name="button_Text_Min_circle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
   </data>
   <data name="&gt;&gt;panel_Number_Max_Min.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panel_Max.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="button_Text_Max_rotation.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;pictureBox_Arrow_Right.Parent" xml:space="preserve">
     <value>$this</value>
@@ -543,8 +550,8 @@
   <data name="button_Text_Max_Min_circle.Text" xml:space="preserve">
     <value>Данные по кругу</value>
   </data>
-  <data name="panel_Text_Max_Min_rotation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 24</value>
+  <data name="pictureBox_Show.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;checkBox_Text_Max_Min_circle.Parent" xml:space="preserve">
     <value>panel_Text_Max_Min_circle</value>
@@ -555,14 +562,11 @@
   <data name="&gt;&gt;panel_Number_Min.Name" xml:space="preserve">
     <value>panel_Number_Min</value>
   </data>
-  <data name="panel_Images.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 521</value>
+  <data name="&gt;&gt;pictureBox_Arrow_Down_Max_Min.Name" xml:space="preserve">
+    <value>pictureBox_Arrow_Down_Max_Min</value>
   </data>
-  <data name="&gt;&gt;panel_Max_Min.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;button_Number_Min.Name" xml:space="preserve">
-    <value>button_Number_Min</value>
+  <data name="tableLayoutPanel_Min.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;panel_Images.Name" xml:space="preserve">
     <value>panel_Images</value>
@@ -594,23 +598,20 @@
   <data name="&gt;&gt;panel_Text_Min_rotation.Name" xml:space="preserve">
     <value>panel_Text_Min_rotation</value>
   </data>
-  <data name="&gt;&gt;checkBox_Text_Current_circle.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="button_Icon.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
   </data>
   <data name="button_Number_Min.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 24</value>
   </data>
-  <data name="button_Icon.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
+  <data name="&gt;&gt;button_Number_Min_Font.Name" xml:space="preserve">
+    <value>button_Number_Min_Font</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;panel_Icon.Name" xml:space="preserve">
+    <value>panel_Icon</value>
   </data>
   <data name="button_Max_Min.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
-  </data>
-  <data name="panel_Text_Max_rotation.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;panel_Images.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -618,17 +619,17 @@
   <data name="&gt;&gt;button_Icon.Name" xml:space="preserve">
     <value>button_Icon</value>
   </data>
+  <data name="&gt;&gt;button_Number_Max.Parent" xml:space="preserve">
+    <value>panel_Number_Max</value>
+  </data>
   <data name="button_Max_Min.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Down.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Images.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="checkBox_Number_Min_Font.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="panel_Text_Min_circle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 24</value>
   </data>
   <data name="&gt;&gt;button_Images.Parent" xml:space="preserve">
     <value>panel_Images</value>
@@ -648,38 +649,32 @@
   <data name="&gt;&gt;panel_Text_CityName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="panel_Current.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
   <data name="tableLayoutPanel_Min.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_Number_Min_Font" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Text_Min_circle" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Text_Min_rotation" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Number_Min" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="pictureBox_Arrow_Down_Max_Min.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="&gt;&gt;button_Text_Max_Min_rotation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="checkBox_Images.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;button_Max_Min.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button_Text_Max_rotation.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="checkBox_Number_Max_Font.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
-  </data>
-  <data name="checkBox_Number_Current.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="panel_Text_Max_circle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="pictureBox_Arrow_Right.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_Number_Max_Min_Font.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="button_Text_Current_rotation.ToolTip" xml:space="preserve">
-    <value />
+  <data name="panel_Min.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>20, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;button_Text_Current_rotation.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -689,6 +684,9 @@
   </data>
   <data name="&gt;&gt;button_Current.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Text_Min_circle.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;panel_Text_CityName.Name" xml:space="preserve">
     <value>panel_Text_CityName</value>
@@ -702,11 +700,11 @@
   <data name="&gt;&gt;checkBox_Number_Min.Name" xml:space="preserve">
     <value>checkBox_Number_Min</value>
   </data>
-  <data name="pictureBox_Arrow_Right_Current.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 2</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>UCtrl_Weather_Elm_v2</value>
   </data>
-  <data name="button_ElementName.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="pictureBox_NotShow.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;button_Min.Parent" xml:space="preserve">
     <value>panel_Min</value>
@@ -717,8 +715,14 @@
   <data name="&gt;&gt;button_Text_Min_circle.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;panel_Max_Min.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="pictureBox_Arrow_Right_Current.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="pictureBox_Arrow_Right_Max.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 2</value>
   </data>
   <data name="&gt;&gt;button_Current.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -744,14 +748,14 @@
   <data name="checkBox_Text_CityName.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="panel_Current.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="checkBox_Text_Current_circle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_Current.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 28</value>
   </data>
   <data name="checkBox_Number_Min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="panel_Number_Max_Font.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="button_Text_Max_rotation.Text" xml:space="preserve">
     <value>Данные под углом</value>
@@ -774,14 +778,11 @@
   <data name="button_Text_Min_circle.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="button_Text_Current_circle.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="&gt;&gt;tableLayoutPanel_Current.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="checkBox_Number_Max.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="button_Number_Max_Min.ToolTip" xml:space="preserve">
-    <value />
+  <data name="checkBox_Text_Max_Min_rotation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
@@ -795,8 +796,11 @@
   <data name="&gt;&gt;checkBox_Text_Max_Min_circle.Name" xml:space="preserve">
     <value>checkBox_Text_Max_Min_circle</value>
   </data>
-  <data name="&gt;&gt;checkBox_Number_Current.Name" xml:space="preserve">
-    <value>checkBox_Number_Current</value>
+  <data name="tableLayoutPanel_Max.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;panel_Number_Max_Min_Font.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_Text_Max_Min_rotation.Name" xml:space="preserve">
     <value>checkBox_Text_Max_Min_rotation</value>
@@ -807,20 +811,11 @@
   <data name="panel_Number_Min.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="checkBox_Text_CityName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 5</value>
-  </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Right.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="pictureBox_Show.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
   </data>
   <data name="tableLayoutPanel_Min.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
     <value>Single</value>
-  </data>
-  <data name="panel_Text_Min_circle.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
   </data>
   <data name="button_Number_Max.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 24</value>
@@ -846,8 +841,8 @@
   <data name="&gt;&gt;pictureBox_Arrow_Right_Max_Min.Parent" xml:space="preserve">
     <value>panel_Max_Min</value>
   </data>
-  <data name="tableLayoutPanel_Min.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="button_Text_CityName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="button_ElementName.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -858,12 +853,6 @@
   <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="&gt;&gt;pictureBox_NotShow.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="checkBox_Number_Max_Min_Font.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_Text_Min_rotation.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
@@ -873,32 +862,23 @@
   <data name="button_Number_Max_Min.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
   </data>
-  <data name="button_ElementName.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;button_Number_Current.Parent" xml:space="preserve">
     <value>panel_Number</value>
   </data>
-  <data name="tableLayoutPanel_Min.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 101</value>
+  <data name="panel_Text_Max_rotation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 24</value>
   </data>
-  <data name="&gt;&gt;button_ElementName.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="tableLayoutPanel_Max.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="pictureBox_Arrow_Down_Current.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
+  <data name="button_Number_Max_Font.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="button_Number_Current.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
-  <data name="pictureBox_Arrow_Down.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
-  </data>
   <data name="&gt;&gt;tableLayoutPanel_Max.Name" xml:space="preserve">
     <value>tableLayoutPanel_Max</value>
-  </data>
-  <data name="pictureBox_NotShow.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="&gt;&gt;button_Text_Current_rotation.Name" xml:space="preserve">
     <value>button_Text_Current_rotation</value>
@@ -918,8 +898,8 @@
   <data name="&gt;&gt;tableLayoutPanel_Max.Parent" xml:space="preserve">
     <value>panel_Max</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel_Current.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;pictureBox_Show.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;button_Number_Min.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -930,14 +910,11 @@
   <data name="&gt;&gt;button_Text_Min_circle.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;panel_Max_Min.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="checkBox_Text_CityName.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="button_Number_Max_Min.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
-  </data>
-  <data name="&gt;&gt;panel_Text_Max_Min_rotation.Parent" xml:space="preserve">
-    <value>tableLayoutPanel_Max_Min</value>
   </data>
   <data name="button_Text_Max_Min_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -985,11 +962,8 @@
   <data name="checkBox_Text_Min_rotation.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="checkBox_Number_Max_Font.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Right.Name" xml:space="preserve">
-    <value>pictureBox_Arrow_Right</value>
+  <data name="&gt;&gt;button_Text_Max_Min_rotation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel_Number.Name" xml:space="preserve">
     <value>panel_Number</value>
@@ -997,11 +971,11 @@
   <data name="&gt;&gt;panel_Number_Font.Name" xml:space="preserve">
     <value>panel_Number_Font</value>
   </data>
-  <data name="pictureBox_Arrow_Down.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
+  <data name="checkBox_Text_Current_circle.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="checkBox_Number_Max_Font.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;checkBox_Text_Current_circle.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="button_Number_Current.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -1011,9 +985,6 @@
   </data>
   <data name="button_Images.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="tableLayoutPanel_Max.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="pictureBox_Arrow_Down_Max_Min.ToolTip" xml:space="preserve">
     <value />
@@ -1036,11 +1007,8 @@
   <data name="&gt;&gt;pictureBox_Arrow_Down_Current.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panel_Max.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Number_Max.Name" xml:space="preserve">
-    <value>checkBox_Number_Max</value>
+  <data name="tableLayoutPanel_Current.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
   </data>
   <data name="button_Max_Min.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>20, 0, 0, 0</value>
@@ -1054,17 +1022,8 @@
   <data name="&gt;&gt;tableLayoutPanel_Max.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;panel_Images.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>UCtrl_Weather_Elm_v2</value>
-  </data>
   <data name="button_Min.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
-  </data>
-  <data name="button_Number_Max_Min.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 24</value>
   </data>
   <data name="checkBox_Text_Max_circle.ToolTip" xml:space="preserve">
     <value />
@@ -1078,11 +1037,11 @@
   <data name="checkBox_Text_Current_rotation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="&gt;&gt;panel_Number.Parent" xml:space="preserve">
+    <value>tableLayoutPanel_Current</value>
+  </data>
   <data name="panel_Icon.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="&gt;&gt;checkBox_Text_CityName.Name" xml:space="preserve">
-    <value>checkBox_Text_CityName</value>
   </data>
   <data name="&gt;&gt;checkBox_Text_Max_Min_rotation.Parent" xml:space="preserve">
     <value>panel_Text_Max_Min_rotation</value>
@@ -1090,14 +1049,11 @@
   <data name="button_Number_Current_Font.Text" xml:space="preserve">
     <value>Данные шрифтом</value>
   </data>
-  <data name="tableLayoutPanel_Max.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 28</value>
+  <data name="&gt;&gt;button_Text_Current_circle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="panel_Text_Max_circle.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
-  </data>
-  <data name="&gt;&gt;button_Max.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel_Text_Max_rotation.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1108,6 +1064,9 @@
   <data name="tableLayoutPanel_Current.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 28</value>
   </data>
+  <data name="checkBox_Number_Max_Font.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="button_Text_Max_Min_circle.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
   </data>
@@ -1117,20 +1076,17 @@
   <data name="checkBox_Number_Min.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="checkBox_Images.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="checkBox_Text_Current_rotation.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="tableLayoutPanel_Max_Min.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
     <value>Single</value>
   </data>
-  <data name="&gt;&gt;panel_Number_Max_Font.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="button_Number_Max_Min_Font.Text" xml:space="preserve">
     <value>Данные шрифтом</value>
-  </data>
-  <data name="&gt;&gt;button_Icon.Parent" xml:space="preserve">
-    <value>panel_Icon</value>
   </data>
   <data name="&gt;&gt;panel_Text_Max_Min_circle.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Max_Min</value>
@@ -1150,11 +1106,14 @@
   <data name="pictureBox_Arrow_Down_Min.Location" type="System.Drawing.Point, System.Drawing">
     <value>131, 2</value>
   </data>
+  <data name="button_Number_Min_Font.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
   <data name="button_Icon.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;tableLayoutPanel_Current.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;checkBox_Text_CityName.Name" xml:space="preserve">
+    <value>checkBox_Text_CityName</value>
   </data>
   <data name="&gt;&gt;checkBox_Text_Min_circle.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1168,20 +1127,20 @@
   <data name="&gt;&gt;tableLayoutPanel_Current.Parent" xml:space="preserve">
     <value>panel_Current</value>
   </data>
-  <data name="&gt;&gt;button_Number_Max_Min_Font.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="tableLayoutPanel_Max_Min.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 28</value>
   </data>
   <data name="pictureBox_NotShow.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="button_Max_Min.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 0</value>
+  <data name="panel_Number_Max_Font.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;panel_Text_Min_rotation.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Min</value>
   </data>
-  <data name="pictureBox_Arrow_Down_Max.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 2</value>
+  <data name="&gt;&gt;panel_Text_Min_circle.Name" xml:space="preserve">
+    <value>panel_Text_Min_circle</value>
   </data>
   <data name="button_Text_Max_Min_rotation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1192,20 +1151,17 @@
   <data name="checkBox_Icon.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="&gt;&gt;checkBox_Text_Max_circle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="button_Text_Current_circle.Text" xml:space="preserve">
     <value>Данные по кругу</value>
-  </data>
-  <data name="&gt;&gt;pictureBox_Show.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panel_Text_circle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="checkBox_Text_Min_circle.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_Number_Min_Font.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="&gt;&gt;button_Number_Current_Font.Parent" xml:space="preserve">
     <value>panel_Number_Font</value>
@@ -1228,17 +1184,11 @@
   <data name="&gt;&gt;button_Max.Name" xml:space="preserve">
     <value>button_Max</value>
   </data>
-  <data name="button_Max_Min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBox_Text_CityName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="pictureBox_Arrow_Right.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel_Min.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_ElementName.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="tableLayoutPanel_Max.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1255,11 +1205,11 @@
   <data name="button_Number_Max_Min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="pictureBox_Arrow_Down.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;pictureBox_Arrow_Down_Current.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="pictureBox_Arrow_Right_Max_Min.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
+  <data name="panel_Max.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="panel_Text_Max_rotation.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -1267,14 +1217,14 @@
   <data name="&gt;&gt;button_Current.Name" xml:space="preserve">
     <value>button_Current</value>
   </data>
+  <data name="checkBox_Text_Min_circle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="button_Text_Max_circle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;toolTip_Weather.Name" xml:space="preserve">
     <value>toolTip_Weather</value>
-  </data>
-  <data name="&gt;&gt;button_Text_Max_circle.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;checkBox_Text_Max_rotation.Name" xml:space="preserve">
     <value>checkBox_Text_Max_rotation</value>
@@ -1285,36 +1235,11 @@
   <data name="button_Text_Current_rotation.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 24</value>
   </data>
-  <data name="button_Images.ToolTip" xml:space="preserve">
-    <value>1. Облачно
-2. Дождь
-3. Дождь со снегом
-4. Солнечно
-5. Пасмурно
-6. Лёгкий дождь
-7. Лёгкий снег
-8. Небольшой дождь
-9. Небольшой снег
-10. Сильный снег
-11. Сильный дождь
-12. Песчаная буря
-13. Мокрый снег
-14. Туман
-15. Дымка
-16. Дождь с грозой
-17. Метель
-18. Пыльно
-19. Мощный ливень
-20. Дождь с градом
-21. Ливень с градом
-22. Сильный ливень
-23. Ветер с песком
-24. Сильная песчаная буря
-25. Ливень
-26. Неизвестная погода
-27. Облачно ночью
-28. Дождь ночью
-29. Ясно ночью</value>
+  <data name="&gt;&gt;panel_Number_Min.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pictureBox_Arrow_Right.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="pictureBox_Arrow_Right.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 2</value>
@@ -1325,11 +1250,8 @@
   <data name="checkBox_Text_Max_rotation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;panel_Icon.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="button_Number_Max_Min_Font.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 24</value>
+  <data name="&gt;&gt;checkBox_Text_Max_rotation.Parent" xml:space="preserve">
+    <value>panel_Text_Max_rotation</value>
   </data>
   <data name="&gt;&gt;button_Text_CityName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1358,8 +1280,8 @@
   <data name="pictureBox_Arrow_Right_Min.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 2</value>
   </data>
-  <data name="button_Icon.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="&gt;&gt;checkBox_Number_Max.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1373,11 +1295,14 @@
   <data name="&gt;&gt;panel_Text_Max_Min_circle.Name" xml:space="preserve">
     <value>panel_Text_Max_Min_circle</value>
   </data>
-  <data name="checkBox_Images.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="panel_Number_Max.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 24</value>
   </data>
   <data name="panel_Min.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="checkBox_Text_Current_circle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
   </data>
   <data name="pictureBox_Arrow_Right_Max_Min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1397,14 +1322,11 @@
   <data name="&gt;&gt;panel_Text_Max_Min_circle.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;button_Text_Current_circle.Name" xml:space="preserve">
+    <value>button_Text_Current_circle</value>
+  </data>
   <data name="&gt;&gt;panel_Min.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
-  </data>
-  <data name="checkBox_Text_Max_Min_rotation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Text_CityName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1412,39 +1334,11 @@
   <data name="panel_Text_CityName.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;panel_Number_Max.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="panel_Text_circle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 24</value>
   </data>
-  <data name="panel_Images.ToolTip" xml:space="preserve">
-    <value>1. Облачно
-2. Дождь
-3. Дождь со снегом
-4. Солнечно
-5. Пасмурно
-6. Лёгкий дождь
-7. Лёгкий снег
-8. Небольшой дождь
-9. Небольшой снег
-10. Сильный снег
-11. Сильный дождь
-12. Песчаная буря
-13. Мокрый снег
-14. Туман
-15. Дымка
-16. Дождь с грозой
-17. Метель
-18. Пыльно
-19. Мощный ливень
-20. Дождь с градом
-21. Ливень с градом
-22. Сильный ливень
-23. Ветер с песком
-24. Сильная песчаная буря
-25. Ливень
-26. Неизвестная погода
-27. Облачно ночью
-28. Дождь ночью
-29. Ясно ночью</value>
+  <data name="&gt;&gt;panel_Text_Max_Min_rotation.Name" xml:space="preserve">
+    <value>panel_Text_Max_Min_rotation</value>
   </data>
   <data name="button_Number_Current_Font.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -1458,17 +1352,17 @@
   <data name="button_Min.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 28</value>
   </data>
+  <data name="&gt;&gt;panel_Number_Font.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="pictureBox_Show.Location" type="System.Drawing.Point, System.Drawing">
     <value>163, 2</value>
   </data>
   <data name="checkBox_Number_Min_Font.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;button_Images.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBox_Images.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 5</value>
+  <data name="button_Max.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 28</value>
   </data>
   <data name="&gt;&gt;button_Min.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -1485,9 +1379,6 @@
   <data name="&gt;&gt;tableLayoutPanel_Min.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;checkBox_Text_CityName.Parent" xml:space="preserve">
-    <value>panel_Text_CityName</value>
-  </data>
   <data name="panel_Text_Max_Min_circle.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
   </data>
@@ -1497,25 +1388,25 @@
   <data name="pictureBox_Arrow_Down_Current.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;button_Text_Current_circle.Name" xml:space="preserve">
-    <value>button_Text_Current_circle</value>
+  <data name="panel_Max_Min.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="button_Current.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="tableLayoutPanel_Max.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 101</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel_Current.Name" xml:space="preserve">
-    <value>tableLayoutPanel_Current</value>
+  <data name="&gt;&gt;pictureBox_NotShow.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="checkBox_Number_Max_Min_Font.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="tableLayoutPanel_Min.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="&gt;&gt;button_ElementName.Name" xml:space="preserve">
     <value>button_ElementName</value>
   </data>
-  <data name="&gt;&gt;panel_Text_circle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="pictureBox_NotShow.ToolTip" xml:space="preserve">
+  <data name="pictureBox_Del.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="button_Number_Max.Text" xml:space="preserve">
@@ -1523,6 +1414,9 @@
   </data>
   <data name="panel_Number_Font.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="panel_Text_CityName.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="&gt;&gt;pictureBox_Del.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1533,11 +1427,8 @@
   <data name="button_Max_Min.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="pictureBox_Arrow_Right_Current.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_Max_Min" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Max" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Min" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Current" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Text_CityName" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Icon" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Images" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="panel_Text_Max_Min_rotation.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;pictureBox_Arrow_Down_Max.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1554,8 +1445,8 @@
   <data name="checkBox_Images.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel_Max_Min.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_ElementName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 28</value>
   </data>
   <data name="&gt;&gt;panel_Text_Max_Min_rotation.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1575,11 +1466,8 @@
   <data name="panel_Current.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 129</value>
   </data>
-  <data name="&gt;&gt;button_Number_Max_Min.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBox_Text_Max_circle.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;button_ElementName.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;button_Number_Min_Font.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1599,8 +1487,11 @@
   <data name="checkBox_Text_Max_circle.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
-  <data name="&gt;&gt;panel_Text_rotation.Name" xml:space="preserve">
-    <value>panel_Text_rotation</value>
+  <data name="button_Number_Current_Font.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="button_Text_Max_Min_circle.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
@@ -1608,14 +1499,11 @@
   <data name="pictureBox_Arrow_Down_Current.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
   </data>
-  <data name="panel_Icon.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>20, 0, 0, 0</value>
-  </data>
   <data name="&gt;&gt;panel_Text_Max_circle.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="button_Text_Max_circle.Text" xml:space="preserve">
-    <value>Данные по кругу</value>
+  <data name="button_Number_Max_Min.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="button_Number_Max_Min.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1623,11 +1511,20 @@
   <data name="&gt;&gt;pictureBox_Arrow_Right_Current.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="checkBox_Text_Max_Min_circle.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="button_Number_Current_Font.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
   <data name="checkBox_Number_Current.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="button_Number_Current_Font.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_Max.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="panel_Number_Max_Min_Font.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1638,14 +1535,14 @@
   <data name="panel_Number_Max_Font.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="panel_Text_Min_rotation.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panel_Text_Max_Min_rotation.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 51</value>
   </data>
   <data name="button_Text_CityName.Text" xml:space="preserve">
     <value>Название города</value>
+  </data>
+  <data name="&gt;&gt;panel_Number_Font.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="button_Number_Max.ToolTip" xml:space="preserve">
     <value />
@@ -1653,20 +1550,20 @@
   <data name="tableLayoutPanel_Current.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_Text_circle" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Number_Font" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Number" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Text_rotation" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <data name="checkBox_Text_Max_Min_circle.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="button_Number_Max_Font.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="checkBox_Number_Max_Min.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBox_Text_Max_Min_circle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="pictureBox_Arrow_Right_Current.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
   </data>
-  <data name="panel_Text_CityName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>20, 0, 0, 0</value>
-  </data>
-  <data name="button_Number_Current_Font.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="tableLayoutPanel_Max.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
+    <value>Single</value>
   </data>
   <data name="checkBox_Text_Max_Min_rotation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1674,11 +1571,8 @@
   <data name="button_Text_Current_circle.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="checkBox_Text_Max_rotation.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBox_Del.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;button_Number_Min_Font.Parent" xml:space="preserve">
+    <value>panel_Number_Min_Font</value>
   </data>
   <data name="pictureBox_NotShow.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
@@ -1686,23 +1580,26 @@
   <data name="button_Text_Min_rotation.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="panel_Text_CityName.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
+  <data name="button_Number_Max_Min.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;button_Text_Min_circle.Name" xml:space="preserve">
     <value>button_Text_Min_circle</value>
   </data>
-  <data name="checkBox_Text_Min_circle.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="button_Text_Max_rotation.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="button_Text_CityName.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="&gt;&gt;button_Number_Min_Font.Parent" xml:space="preserve">
-    <value>panel_Number_Min_Font</value>
+  <data name="pictureBox_Arrow_Right_Current.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 2</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Right_Max.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="pictureBox_Arrow_Down_Max.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="panel_Number_Max_Min.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="checkBox_Number_Current_Font.ToolTip" xml:space="preserve">
     <value />
@@ -1722,11 +1619,17 @@
   <data name="&gt;&gt;button_Number_Min_Font.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;button_Text_Max_circle.Parent" xml:space="preserve">
+    <value>panel_Text_Max_circle</value>
+  </data>
   <data name="button_Number_Max_Min_Font.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
   <data name="&gt;&gt;panel_Number_Min.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="panel_Text_Max_circle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;pictureBox_Arrow_Right_Max.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1737,32 +1640,32 @@
   <data name="tableLayoutPanel_Max_Min.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_Number_Max_Min_Font" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Text_Max_Min_circle" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Text_Max_Min_rotation" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Number_Max_Min" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Down_Current.Name" xml:space="preserve">
-    <value>pictureBox_Arrow_Down_Current</value>
-  </data>
   <data name="button_Text_Min_circle.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
-  <data name="pictureBox_Arrow_Right_Max_Min.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
+  <data name="panel_Text_Min_rotation.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="button_Text_Min_circle.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
+  <data name="panel_Number_Max.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBox_Text_Max_Min_circle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
+  </data>
   <data name="checkBox_Number_Current.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="button_Number_Current.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
-  </data>
-  <data name="button_Images.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
+  <data name="&gt;&gt;button_Images.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;checkBox_Number_Max_Min.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel_Text_Max_Min_rotation.Name" xml:space="preserve">
-    <value>panel_Text_Max_Min_rotation</value>
+  <data name="&gt;&gt;panel_Number_Max.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="panel_Text_Max_circle.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
@@ -1770,8 +1673,11 @@
   <data name="panel_Images.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>20, 0, 0, 0</value>
   </data>
-  <data name="checkBox_Icon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;panel_Max.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Icon.Name" xml:space="preserve">
+    <value>checkBox_Icon</value>
   </data>
   <data name="&gt;&gt;panel_Text_Min_circle.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1788,8 +1694,14 @@
   <data name="pictureBox_Arrow_Right_Min.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
   </data>
+  <data name="&gt;&gt;panel_Number.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="button_Min.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;button_Number_Max_Font.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="panel_Text_Max_rotation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1803,9 +1715,6 @@
   <data name="checkBox_Number_Max.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;button_Text_CityName.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;pictureBox_Arrow_Right_Min.Parent" xml:space="preserve">
     <value>panel_Min</value>
   </data>
@@ -1818,23 +1727,20 @@
   <data name="&gt;&gt;pictureBox_Arrow_Right_Max_Min.Name" xml:space="preserve">
     <value>pictureBox_Arrow_Right_Max_Min</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Down_Max_Min.Name" xml:space="preserve">
-    <value>pictureBox_Arrow_Down_Max_Min</value>
+  <data name="panel_Min.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 131</value>
   </data>
-  <data name="pictureBox_Show.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="checkBox_Icon.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="&gt;&gt;panel_Text_Max_Min_rotation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_Text_Max_circle.Name" xml:space="preserve">
-    <value>button_Text_Max_circle</value>
+  <data name="button_Number_Min.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
   </data>
   <data name="button_Min.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 0</value>
   </data>
-  <data name="&gt;&gt;panel_Number.Parent" xml:space="preserve">
-    <value>tableLayoutPanel_Current</value>
+  <data name="button_Text_Current_rotation.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;checkBox_Icon.Parent" xml:space="preserve">
     <value>panel_Icon</value>
@@ -1851,8 +1757,8 @@
   <data name="&gt;&gt;pictureBox_Arrow_Right_Max_Min.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="button_Max.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="panel_Images.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 521</value>
   </data>
   <data name="&gt;&gt;button_Number_Current.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1866,11 +1772,11 @@
   <data name="button_Number_Max_Min.Text" xml:space="preserve">
     <value>Цифровые значения</value>
   </data>
-  <data name="&gt;&gt;panel_Number_Min_Font.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="button_Number_Max_Min_Font.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 24</value>
   </data>
-  <data name="pictureBox_Show.ToolTip" xml:space="preserve">
-    <value />
+  <data name="tableLayoutPanel_Current.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="panel_Min.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 129</value>
@@ -1884,8 +1790,8 @@
   <data name="panel_Max_Min.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>20, 0, 0, 0</value>
   </data>
-  <data name="tableLayoutPanel_Max_Min.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 28</value>
+  <data name="&gt;&gt;button_Max.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel_Max_Min.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1893,17 +1799,14 @@
   <data name="checkBox_Text_Max_rotation.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="button_Text_Max_rotation.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
   <data name="&gt;&gt;button_Number_Max_Min.Parent" xml:space="preserve">
     <value>panel_Number_Max_Min</value>
   </data>
   <data name="&gt;&gt;checkBox_Text_Max_rotation.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tableLayoutPanel_Max_Min.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;panel_Number_Max_Min_Font.Parent" xml:space="preserve">
+    <value>tableLayoutPanel_Max_Min</value>
   </data>
   <data name="&gt;&gt;toolTip_Weather.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1917,17 +1820,14 @@
   <data name="&gt;&gt;pictureBox_Arrow_Right_Current.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel_Text_rotation.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="checkBox_Text_Min_circle.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
   <data name="&gt;&gt;button_Text_Max_rotation.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel_Number_Max_Min_Font.Name" xml:space="preserve">
-    <value>panel_Number_Max_Min_Font</value>
+  <data name="button_Images.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
   </data>
   <data name="button_Text_Current_rotation.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -1938,8 +1838,8 @@
   <data name="&gt;&gt;panel_Number_Max_Min.Name" xml:space="preserve">
     <value>panel_Number_Max_Min</value>
   </data>
-  <data name="panel_Number_Max_Min.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="button_Current.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="panel_Max_Min.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1950,11 +1850,14 @@
   <data name="&gt;&gt;checkBox_Number_Max_Min_Font.Parent" xml:space="preserve">
     <value>panel_Number_Max_Min_Font</value>
   </data>
-  <data name="button_Min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="pictureBox_Arrow_Right_Max_Min.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
   </data>
-  <data name="&gt;&gt;panel_Text_rotation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;pictureBox_Arrow_Down_Current.Name" xml:space="preserve">
+    <value>pictureBox_Arrow_Down_Current</value>
+  </data>
+  <data name="checkBox_Number_Max_Min_Font.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;checkBox_Number_Max_Min_Font.Name" xml:space="preserve">
     <value>checkBox_Number_Max_Min_Font</value>
@@ -1977,29 +1880,32 @@
   <data name="&gt;&gt;checkBox_Text_Max_Min_rotation.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkBox_Icon.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_Text_Max_rotation.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
-  <data name="pictureBox_Arrow_Down_Min.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
+  <data name="panel_Max.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 129</value>
   </data>
-  <data name="&gt;&gt;checkBox_Text_Current_circle.Parent" xml:space="preserve">
-    <value>panel_Text_circle</value>
+  <data name="checkBox_Number_Max_Min_Font.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
   </data>
-  <data name="panel_Text_CityName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 24</value>
+  <data name="&gt;&gt;button_Max.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="button_Number_Max_Font.Text" xml:space="preserve">
+    <value>Данные шрифтом</value>
+  </data>
+  <data name="panel_Text_CityName.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="checkBox_Number_Current.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;panel_Text_Max_circle.Name" xml:space="preserve">
     <value>panel_Text_Max_circle</value>
   </data>
   <data name="button_Max.Text" xml:space="preserve">
     <value>Температура (макс)</value>
-  </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Down.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="button_ElementName.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -2010,16 +1916,13 @@
   <data name="button_ElementName.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
-  <data name="panel_Min.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>20, 0, 0, 0</value>
+  <data name="tableLayoutPanel1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="button_Text_Current_rotation.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
   <data name="pictureBox_Arrow_Down_Max_Min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_ElementName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;panel_Text_Max_Min_circle.ZOrder" xml:space="preserve">
@@ -2030,9 +1933,6 @@
   </data>
   <data name="panel_Number_Max_Min_Font.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
-  </data>
-  <data name="panel_Number_Max_Min.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="button_Text_CityName.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -2049,8 +1949,8 @@
   <data name="&gt;&gt;button_Number_Max_Min.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="checkBox_Text_CityName.ToolTip" xml:space="preserve">
-    <value />
+  <data name="panel_Min.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;panel_Text_Max_rotation.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Max</value>
@@ -2061,9 +1961,6 @@
   <data name="tableLayoutPanel_Current.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="pictureBox_Arrow_Down_Current.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;panel_Text_Max_circle.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -2073,8 +1970,8 @@
   <data name="button_Text_Current_circle.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="panel_Text_Max_circle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="pictureBox_Arrow_Down_Current.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
   </data>
   <data name="&gt;&gt;checkBox_Text_Current_circle.Name" xml:space="preserve">
     <value>checkBox_Text_Current_circle</value>
@@ -2082,8 +1979,8 @@
   <data name="checkBox_Text_Min_circle.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="&gt;&gt;panel_Text_circle.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="checkBox_Icon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="checkBox_Number_Max_Min_Font.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2100,8 +1997,11 @@
   <data name="&gt;&gt;pictureBox_Arrow_Right_Min.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="button_Max.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
+  <data name="panel_Number_Min.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="&gt;&gt;button_Number_Max_Min.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBox_Text_CityName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2112,11 +2012,8 @@
   <data name="&gt;&gt;button_Number_Max_Font.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="pictureBox_Arrow_Down_Max.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="panel_Text_Max_Min_circle.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
+  <data name="&gt;&gt;panel_Text_rotation.Name" xml:space="preserve">
+    <value>panel_Text_rotation</value>
   </data>
   <data name="button_Number_Current_Font.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
@@ -2142,14 +2039,17 @@
   <data name="button_Text_Max_Min_rotation.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 24</value>
   </data>
+  <data name="button_Text_Max_circle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 24</value>
+  </data>
   <data name="panel_Number_Max_Font.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
   </data>
   <data name="button_Text_Max_Min_rotation.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="pictureBox_Arrow_Down_Current.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
+  <data name="&gt;&gt;pictureBox_Arrow_Right.Name" xml:space="preserve">
+    <value>pictureBox_Arrow_Right</value>
   </data>
   <data name="button_Number_Current.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2190,8 +2090,8 @@
   <data name="panel_Text_circle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Down.Name" xml:space="preserve">
-    <value>pictureBox_Arrow_Down</value>
+  <data name="panel_Min.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;button_Current.Parent" xml:space="preserve">
     <value>panel_Current</value>
@@ -2199,8 +2099,8 @@
   <data name="tableLayoutPanel_Current.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 101</value>
   </data>
-  <data name="panel_Text_Max_Min_rotation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="checkBox_Text_Max_circle.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="panel_Number.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 1</value>
@@ -2217,8 +2117,8 @@
   <data name="pictureBox_Arrow_Down_Max.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="button_Number_Min_Font.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="&gt;&gt;panel_Text_Max_Min_rotation.Parent" xml:space="preserve">
+    <value>tableLayoutPanel_Max_Min</value>
   </data>
   <data name="button_Images.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 24</value>
@@ -2229,20 +2129,17 @@
   <data name="tableLayoutPanel1.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
     <value>Single</value>
   </data>
-  <data name="button_Number_Min.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
   <data name="button_Current.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
-  <data name="&gt;&gt;panel_Text_Min_circle.Name" xml:space="preserve">
-    <value>panel_Text_Min_circle</value>
+  <data name="&gt;&gt;checkBox_Text_CityName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel_Text_Max_rotation.Name" xml:space="preserve">
     <value>panel_Text_Max_rotation</value>
   </data>
-  <data name="&gt;&gt;button_Text_Max_Min_circle.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="pictureBox_Arrow_Right_Current.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
   </data>
   <data name="&gt;&gt;panel_Text_Min_rotation.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -2250,8 +2147,11 @@
   <data name="panel_Number.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="panel_Text_circle.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
+  <data name="button_Text_Max_circle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
+  </data>
+  <data name="button_Icon.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="button_Number_Current.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -2262,8 +2162,11 @@
   <data name="&gt;&gt;panel_Number_Min.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Min</value>
   </data>
-  <data name="&gt;&gt;panel_Current.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="button_Max_Min.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 0</value>
+  </data>
+  <data name="button_Min.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="checkBox_Number_Min_Font.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2292,11 +2195,11 @@
   <data name="panel_Number_Min_Font.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 26</value>
   </data>
-  <data name="checkBox_Text_Current_circle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;button_Text_Max_circle.Name" xml:space="preserve">
+    <value>button_Text_Max_circle</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Right.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="button_Text_Max_rotation.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="button_Text_Max_circle.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -2307,26 +2210,29 @@
   <data name="button_Text_Min_rotation.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
+  <data name="&gt;&gt;button_Number_Min.Name" xml:space="preserve">
+    <value>button_Number_Min</value>
+  </data>
   <data name="panel_Number_Font.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 26</value>
   </data>
   <data name="checkBox_Number_Current_Font.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox_Text_Min_circle.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="&gt;&gt;button_Text_Max_Min_circle.Parent" xml:space="preserve">
     <value>panel_Text_Max_Min_circle</value>
   </data>
-  <data name="tableLayoutPanel_Max_Min.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;button_Number_Max_Font.Parent" xml:space="preserve">
+    <value>panel_Number_Max_Font</value>
   </data>
   <data name="checkBox_Number_Max_Min.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="panel_Number_Max_Min.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 1</value>
-  </data>
-  <data name="panel_Min.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
   </data>
   <data name="tableLayoutPanel_Min.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2337,20 +2243,17 @@
   <data name="&gt;&gt;checkBox_Number_Max_Min.Parent" xml:space="preserve">
     <value>panel_Number_Max_Min</value>
   </data>
-  <data name="button_Number_Current_Font.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="panel_Text_CityName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 24</value>
   </data>
-  <data name="tableLayoutPanel_Current.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="pictureBox_Arrow_Down_Current.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="tableLayoutPanel_Max.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
-    <value>Single</value>
+  <data name="&gt;&gt;tableLayoutPanel_Max_Min.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;panel_Text_rotation.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Current</value>
-  </data>
-  <data name="pictureBox_Arrow_Down.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
   </data>
   <data name="pictureBox_Arrow_Down_Current.Location" type="System.Drawing.Point, System.Drawing">
     <value>131, 2</value>
@@ -2361,14 +2264,17 @@
   <data name="&gt;&gt;pictureBox_NotShow.Name" xml:space="preserve">
     <value>pictureBox_NotShow</value>
   </data>
+  <data name="button_Text_Max_Min_rotation.Text" xml:space="preserve">
+    <value>Данные под углом</value>
+  </data>
   <data name="panel_Max_Min.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 391</value>
   </data>
   <data name="panel_Icon.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 24</value>
   </data>
-  <data name="button_Text_Max_circle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
+  <data name="checkBox_Images.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 5</value>
   </data>
   <data name="button_Text_Max_Min_circle.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -2385,8 +2291,8 @@
   <data name="button_Text_Current_circle.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 24</value>
   </data>
-  <data name="&gt;&gt;panel_Max_Min.Name" xml:space="preserve">
-    <value>panel_Max_Min</value>
+  <data name="&gt;&gt;panel_Text_circle.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="checkBox_Text_Max_Min_circle.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
@@ -2397,17 +2303,23 @@
   <data name="pictureBox_Arrow_Down.Location" type="System.Drawing.Point, System.Drawing">
     <value>131, 2</value>
   </data>
+  <data name="panel_Images.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
   <data name="panel_Text_rotation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="button_Max.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="&gt;&gt;checkBox_Number_Max_Min.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="panel_Min.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 131</value>
+  <data name="button_ElementName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="checkBox_Text_Max_Min_circle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 14</value>
+  <data name="button_Number_Current.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
+  </data>
+  <data name="pictureBox_Show.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="panel_Number_Max_Min_Font.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
@@ -2427,8 +2339,8 @@
   <data name="pictureBox_Arrow_Right.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="&gt;&gt;button_Number_Min_Font.Name" xml:space="preserve">
-    <value>button_Number_Min_Font</value>
+  <data name="button_Number_Min.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="&gt;&gt;panel_Number_Min_Font.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Min</value>
@@ -2436,20 +2348,23 @@
   <data name="button_Number_Current.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 24</value>
   </data>
-  <data name="button_Text_Current_circle.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="panel_Number_Max_Min.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="button_Text_CityName.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 24</value>
   </data>
-  <data name="&gt;&gt;button_Text_Current_circle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;panel_Number_Min_Font.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="button_Text_Max_rotation.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
-  <data name="&gt;&gt;panel_Icon.Name" xml:space="preserve">
-    <value>panel_Icon</value>
+  <data name="panel_Text_circle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_Arrow_Right_Max.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;button_Number_Max.Name" xml:space="preserve">
     <value>button_Number_Max</value>
@@ -2472,8 +2387,8 @@
   <data name="checkBox_Text_Min_rotation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBox_Number_Max_Min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="panel_Max.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
   </data>
   <data name="&gt;&gt;checkBox_Images.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2487,8 +2402,8 @@
   <data name="&gt;&gt;button_Number_Max_Min_Font.Name" xml:space="preserve">
     <value>button_Number_Max_Min_Font</value>
   </data>
-  <data name="&gt;&gt;checkBox_Text_Max_rotation.Parent" xml:space="preserve">
-    <value>panel_Text_Max_rotation</value>
+  <data name="tableLayoutPanel_Max_Min.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;button_Number_Min.Parent" xml:space="preserve">
     <value>panel_Number_Min</value>
@@ -2496,8 +2411,8 @@
   <data name="&gt;&gt;panel_Number_Min_Font.Name" xml:space="preserve">
     <value>panel_Number_Min_Font</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel_Max_Min.Name" xml:space="preserve">
-    <value>tableLayoutPanel_Max_Min</value>
+  <data name="&gt;&gt;button_Number_Max_Min_Font.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;button_Max_Min.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -2510,6 +2425,9 @@
   </data>
   <data name="&gt;&gt;button_Text_Max_Min_rotation.Parent" xml:space="preserve">
     <value>panel_Text_Max_Min_rotation</value>
+  </data>
+  <data name="pictureBox_Arrow_Right_Max.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
   </data>
   <data name="button_Text_Current_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2533,8 +2451,8 @@
   <data name="&gt;&gt;pictureBox_Show.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;panel_Number_Min_Font.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="panel_Icon.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>20, 0, 0, 0</value>
   </data>
   <data name="panel_Max_Min.ToolTip" xml:space="preserve">
     <value />
@@ -2542,14 +2460,14 @@
   <data name="&gt;&gt;checkBox_Text_Max_circle.Parent" xml:space="preserve">
     <value>panel_Text_Max_circle</value>
   </data>
-  <data name="panel_Text_Min_circle.ToolTip" xml:space="preserve">
-    <value />
+  <data name="panel_Text_rotation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="panel_Icon.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;checkBox_Number_Max_Min.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;panel_Max_Min.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="panel_Text_circle.ToolTip" xml:space="preserve">
     <value />
@@ -2557,8 +2475,11 @@
   <data name="pictureBox_Del.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
   </data>
-  <data name="tableLayoutPanel_Min.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
+  <data name="checkBox_Text_Max_Min_rotation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_Number_Max.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="button_Current.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>20, 0, 0, 0</value>
@@ -2569,8 +2490,11 @@
   <data name="button_Current.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 0</value>
   </data>
-  <data name="checkBox_Text_Max_Min_rotation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 14</value>
+  <data name="pictureBox_Arrow_Down_Max.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 2</value>
+  </data>
+  <data name="button_Text_Min_rotation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
   </data>
   <data name="button_Text_Max_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2609,20 +2533,20 @@
   <data name="button_Text_Max_Min_circle.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
-  <data name="panel_Text_rotation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;panel_Max.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="button_Number_Max_Font.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="checkBox_Number_Max_Min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;panel_Text_rotation.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel_Max_Min.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBox_Text_Max_Min_circle.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="checkBox_Text_Min_circle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;checkBox_Number_Current.Name" xml:space="preserve">
+    <value>checkBox_Number_Current</value>
   </data>
   <data name="checkBox_Icon.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2633,32 +2557,29 @@
   <data name="button_Number_Max.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
-  <data name="pictureBox_Show.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
   <data name="&gt;&gt;panel_Images.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="button_Max_Min.Text" xml:space="preserve">
     <value>Температура (макс/мин)</value>
   </data>
-  <data name="button_Current.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 28</value>
+  <data name="pictureBox_Arrow_Down.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
   </data>
-  <data name="panel_Number_Max.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 24</value>
+  <data name="&gt;&gt;button_Text_Max_circle.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;panel_Number_Font.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Text_Current_rotation.Parent" xml:space="preserve">
-    <value>panel_Text_rotation</value>
-  </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Right_Current.Name" xml:space="preserve">
-    <value>pictureBox_Arrow_Right_Current</value>
-  </data>
-  <data name="pictureBox_Arrow_Down_Current.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="pictureBox_Show.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_Max_Min" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Max" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Min" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Current" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Text_CityName" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Icon" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Images" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="tableLayoutPanel_Max_Min.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="button_Text_Current_circle.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="panel_Text_Min_rotation.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 51</value>
@@ -2669,6 +2590,9 @@
   <data name="button_Text_Min_circle.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="&gt;&gt;tableLayoutPanel_Max_Min.Name" xml:space="preserve">
+    <value>tableLayoutPanel_Max_Min</value>
+  </data>
   <data name="button_Number_Min.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -2678,11 +2602,11 @@
   <data name="checkBox_Text_Current_circle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;checkBox_Text_Min_rotation.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;tableLayoutPanel_Current.Name" xml:space="preserve">
+    <value>tableLayoutPanel_Current</value>
   </data>
-  <data name="button_Number_Current_Font.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
+  <data name="&gt;&gt;pictureBox_Arrow_Down.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="panel_Min.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -2690,17 +2614,17 @@
   <data name="button_Text_Max_Min_circle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBox_Text_Max_Min_circle.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="button_Number_Max_Min.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 24</value>
   </data>
-  <data name="panel_Number.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 24</value>
+  <data name="&gt;&gt;panel_Number_Max_Font.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="panel_Max.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="pictureBox_Arrow_Down_Max_Min.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;pictureBox_Arrow_Right.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBox_Number_Current.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
@@ -2711,8 +2635,8 @@
   <data name="&gt;&gt;pictureBox_NotShow.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="panel_Images.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="checkBox_Number_Max_Font.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;checkBox_Text_Current_circle.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2723,26 +2647,35 @@
   <data name="button_Images.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 0</value>
   </data>
+  <data name="&gt;&gt;checkBox_Text_Current_circle.Parent" xml:space="preserve">
+    <value>panel_Text_circle</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_Arrow_Right_Max.Name" xml:space="preserve">
+    <value>pictureBox_Arrow_Right_Max</value>
+  </data>
   <data name="button_Text_Max_circle.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;checkBox_Icon.Name" xml:space="preserve">
-    <value>checkBox_Icon</value>
+  <data name="&gt;&gt;checkBox_Images.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBox_Number_Current_Font.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="button_Icon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 0</value>
   </data>
-  <data name="button_Text_Min_circle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
+  <data name="pictureBox_Show.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
   </data>
-  <data name="&gt;&gt;button_Max.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="button_Text_Min_rotation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="button_Number_Max_Font.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Text_Max_circle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBox_Text_Min_circle.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel_Text_rotation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="button_Text_Max_Min_circle.ToolTip" xml:space="preserve">
     <value />
@@ -2750,14 +2683,20 @@
   <data name="&gt;&gt;panel_Number_Max.Parent" xml:space="preserve">
     <value>tableLayoutPanel_Max</value>
   </data>
+  <data name="&gt;&gt;checkBox_Number_Min_Font.Parent" xml:space="preserve">
+    <value>panel_Number_Min_Font</value>
+  </data>
   <data name="panel_Images.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 24</value>
   </data>
   <data name="button_Text_Min_circle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Right_Max.Name" xml:space="preserve">
-    <value>pictureBox_Arrow_Right_Max</value>
+  <data name="button_Max_Min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBox_Arrow_Right_Max_Min.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
   </data>
   <data name="&gt;&gt;button_Icon.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2771,8 +2710,8 @@
   <data name="&gt;&gt;button_Text_CityName.Name" xml:space="preserve">
     <value>button_Text_CityName</value>
   </data>
-  <data name="&gt;&gt;button_Text_Min_rotation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="panel_Min.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
   </data>
   <data name="panel_Images.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2792,27 +2731,14 @@
   <data name="&gt;&gt;panel_Text_CityName.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
-  <data name="button_Text_Min_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
-        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
-        z2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZ
-        xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
-        ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
-        FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
-        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
-        AAABAUlEQVQ4T5WSDRHCMBSDJ2ESkIADkIADkIADkIADkDIH4IA5GA5Gvrdm10G3g9xl17VN3k9flaPv
-        +6DQ8StuE1l36azmUwIHL5FbrXgRVyL7Z7ERw0hcixPY9SAeh2URZEOQiQliNhD/AoSYPMXaNfNZMnAp
-        xk6UNLThRs1zQEyGdzE3eYhkEdFpWAlkdRVpIoEwM9iLFGhMfmAg5oID5NFBlMFiI34a+BAS+evZhNHA
-        EQzXvCQGNzEM/CSGJ29JDGh8W3pGap3ri8Gwjc+IgGj/DBJKnnGEO4zJflgWEZHFYnnOhAsMzSntUQqz
-        4MYSebY3darLRvTCTW3TmbMVquoNr1ZmWoWICBcAAAAASUVORK5CYII=
-</value>
+  <data name="panel_Text_Min_circle.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
   </data>
-  <data name="panel_Text_Min_circle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 24</value>
+  <data name="&gt;&gt;pictureBox_Arrow_Down.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;panel_Number.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_Images.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="checkBox_Text_CityName.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
@@ -2823,14 +2749,8 @@
   <data name="&gt;&gt;checkBox_Text_Max_Min_circle.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panel_Text_Max_rotation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;button_Images.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="button_Text_CityName.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="&gt;&gt;pictureBox_Arrow_Right_Current.Name" xml:space="preserve">
+    <value>pictureBox_Arrow_Right_Current</value>
   </data>
   <data name="checkBox_Icon.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2844,8 +2764,8 @@
   <data name="&gt;&gt;checkBox_Number_Current.Parent" xml:space="preserve">
     <value>panel_Number</value>
   </data>
-  <data name="&gt;&gt;button_Text_Max_circle.Parent" xml:space="preserve">
-    <value>panel_Text_Max_circle</value>
+  <data name="pictureBox_Arrow_Down_Min.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="button_Text_Max_circle.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
@@ -2853,38 +2773,44 @@
   <data name="button_Icon.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="panel_Max.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 129</value>
+  <data name="button_Number_Max_Font.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 24</value>
   </data>
   <data name="pictureBox_Show.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="button_Max.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 28</value>
+  <data name="panel_Number.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 24</value>
   </data>
-  <data name="button_Text_Max_rotation.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="pictureBox_Arrow_Down_Current.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="checkBox_Number_Max_Min_Font.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
-  <data name="&gt;&gt;panel_Number_Min.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_Number_Min_Font.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
   </data>
-  <data name="&gt;&gt;button_Text_Max_Min_circle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="checkBox_Text_CityName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 5</value>
+  </data>
+  <data name="button_Text_Current_rotation.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="button_Max_Min.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="tableLayoutPanel_Min.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Text_Current_rotation.Name" xml:space="preserve">
+    <value>checkBox_Text_Current_rotation</value>
+  </data>
   <data name="panel_Text_Min_rotation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="&gt;&gt;checkBox_Number_Max_Font.Parent" xml:space="preserve">
-    <value>panel_Number_Max_Font</value>
-  </data>
-  <data name="button_Min.Text" xml:space="preserve">
-    <value>Температура (мин)</value>
+  <data name="tableLayoutPanel_Current.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="button_Text_Min_circle.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 24</value>
@@ -2892,17 +2818,17 @@
   <data name="panel_Number_Min.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
   </data>
-  <data name="checkBox_Text_Min_rotation.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;checkBox_Text_Current_rotation.Parent" xml:space="preserve">
+    <value>panel_Text_rotation</value>
   </data>
-  <data name="button_Text_Min_rotation.Text" xml:space="preserve">
-    <value>Данные под углом</value>
+  <data name="panel_Text_Min_circle.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tableLayoutPanel_Current.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="pictureBox_Arrow_Down_Current.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="panel_Max_Min.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -2928,8 +2854,11 @@
   <data name="panel_Text_Min_rotation.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
   </data>
-  <data name="pictureBox_Arrow_Right_Max.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
+  <data name="button_ElementName.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;button_Text_Max_rotation.Name" xml:space="preserve">
+    <value>button_Text_Max_rotation</value>
   </data>
   <data name="pictureBox_Arrow_Right_Max.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
@@ -2956,16 +2885,19 @@
         4MYSebY3darLRvTCTW3TmbMVquoNr1ZmWoWICBcAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="&gt;&gt;checkBox_Number_Current_Font.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="&gt;&gt;button_Text_Current_rotation.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panel_Max_Min.TabIndex" type="System.Int32, mscorlib">
-    <value>43</value>
+  <data name="button_Text_Max_circle.Text" xml:space="preserve">
+    <value>Данные по кругу</value>
   </data>
   <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBox_Text_Min_circle.ToolTip" xml:space="preserve">
+  <data name="checkBox_Text_Min_rotation.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="&gt;&gt;pictureBox_Arrow_Right_Min.Type" xml:space="preserve">
@@ -2983,14 +2915,14 @@
   <data name="panel_Number_Font.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
   </data>
-  <data name="&gt;&gt;panel_Number_Max_Min_Font.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;panel_Number_Max_Min_Font.Name" xml:space="preserve">
+    <value>panel_Number_Max_Min_Font</value>
   </data>
   <data name="&gt;&gt;button_Text_CityName.Parent" xml:space="preserve">
     <value>panel_Text_CityName</value>
   </data>
-  <data name="panel_Current.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="tableLayoutPanel_Max_Min.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;checkBox_Number_Min.Parent" xml:space="preserve">
     <value>panel_Number_Min</value>
@@ -2998,8 +2930,36 @@
   <data name="&gt;&gt;pictureBox_Del.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="checkBox_Images.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="button_Images.ToolTip" xml:space="preserve">
+    <value>1. Облачно
+2. Дождь
+3. Дождь со снегом
+4. Солнечно
+5. Пасмурно
+6. Лёгкий дождь
+7. Лёгкий снег
+8. Небольшой дождь
+9. Небольшой снег
+10. Сильный снег
+11. Сильный дождь
+12. Песчаная буря
+13. Мокрый снег
+14. Туман
+15. Дымка
+16. Дождь с грозой
+17. Метель
+18. Пыльно
+19. Мощный ливень
+20. Дождь с градом
+21. Ливень с градом
+22. Сильный ливень
+23. Ветер с песком
+24. Сильная песчаная буря
+25. Ливень
+26. Неизвестная погода
+27. Облачно ночью
+28. Дождь ночью
+29. Ясно ночью</value>
   </data>
   <data name="&gt;&gt;panel_Number_Max.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3010,11 +2970,11 @@
   <data name="panel_Text_Min_rotation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;button_Number_Max_Font.Parent" xml:space="preserve">
-    <value>panel_Number_Max_Font</value>
+  <data name="pictureBox_NotShow.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="button_Min.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="&gt;&gt;checkBox_Number_Max.Name" xml:space="preserve">
+    <value>checkBox_Number_Max</value>
   </data>
   <data name="&gt;&gt;checkBox_Number_Max_Font.Name" xml:space="preserve">
     <value>checkBox_Number_Max_Font</value>
@@ -3028,14 +2988,14 @@
   <data name="&gt;&gt;panel_Text_CityName.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;checkBox_Number_Max_Min.Name" xml:space="preserve">
-    <value>checkBox_Number_Max_Min</value>
-  </data>
-  <data name="checkBox_Number_Max.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="pictureBox_Arrow_Right_Max.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="button_Number_Max_Min_Font.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="&gt;&gt;button_Text_Max_Min_circle.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="panel_Number.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -3043,62 +3003,93 @@
   <data name="&gt;&gt;button_Text_Min_circle.Parent" xml:space="preserve">
     <value>panel_Text_Min_circle</value>
   </data>
+  <data name="&gt;&gt;panel_Number_Min_Font.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="tableLayoutPanel_Min.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 28</value>
   </data>
   <data name="button_Max.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="checkBox_Text_Max_circle.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="panel_Text_circle.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
   </data>
-  <data name="&gt;&gt;button_Text_Max_rotation.Name" xml:space="preserve">
-    <value>button_Text_Max_rotation</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Number_Min_Font.Parent" xml:space="preserve">
-    <value>panel_Number_Min_Font</value>
-  </data>
-  <data name="panel_Min.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="button_Current.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="panel_Text_Max_Min_rotation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="button_Text_Max_circle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+  <data name="button_Text_CityName.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;button_Icon.Parent" xml:space="preserve">
+    <value>panel_Icon</value>
+  </data>
+  <data name="panel_Current.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tableLayoutPanel_Min.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 101</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_Arrow_Right.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="button_Max.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="checkBox_Text_Max_Min_circle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;pictureBox_Del.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panel_Text_circle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 24</value>
+  <data name="button_Text_Min_rotation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="panel_Number_Max.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 1</value>
+  <data name="&gt;&gt;tableLayoutPanel_Current.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_Number_Max_Font.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;checkBox_Text_Min_circle.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;checkBox_Number_Max_Min.Name" xml:space="preserve">
+    <value>checkBox_Number_Max_Min</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Down_Current.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;button_Text_Min_rotation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel_Max_Min.Parent" xml:space="preserve">
+    <value>panel_Max_Min</value>
   </data>
   <data name="&gt;&gt;panel_Min.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;checkBox_Text_Min_rotation.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="checkBox_Number_Max.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
-  <data name="tableLayoutPanel_Max.ToolTip" xml:space="preserve">
-    <value />
+  <data name="button_Text_Min_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
+        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
+        z2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZ
+        xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
+        ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
+        FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
+        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
+        AAABAUlEQVQ4T5WSDRHCMBSDJ2ESkIADkIADkIADkIADkDIH4IA5GA5Gvrdm10G3g9xl17VN3k9flaPv
+        +6DQ8StuE1l36azmUwIHL5FbrXgRVyL7Z7ERw0hcixPY9SAeh2URZEOQiQliNhD/AoSYPMXaNfNZMnAp
+        xk6UNLThRs1zQEyGdzE3eYhkEdFpWAlkdRVpIoEwM9iLFGhMfmAg5oID5NFBlMFiI34a+BAS+evZhNHA
+        EQzXvCQGNzEM/CSGJ29JDGh8W3pGap3ri8Gwjc+IgGj/DBJKnnGEO4zJflgWEZHFYnnOhAsMzSntUQqz
+        4MYSebY3darLRvTCTW3TmbMVquoNr1ZmWoWICBcAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="pictureBox_Arrow_Right.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="button_Images.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;checkBox_Number_Current.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="panel_Number_Max_Min_Font.ToolTip" xml:space="preserve">
     <value />
@@ -3106,8 +3097,8 @@
   <data name="&gt;&gt;checkBox_Number_Max_Font.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button_Number_Max.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="&gt;&gt;button_Images.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_Text_Min_rotation.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3115,26 +3106,29 @@
   <data name="tableLayoutPanel_Max.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="button_Number_Max_Font.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="tableLayoutPanel_Current.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pictureBox_Arrow_Down.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="pictureBox_Arrow_Down_Max.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="button_Number_Min.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="button_Text_Current_circle.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
-  <data name="panel_Current.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="panel_Number_Min.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="panel_Number_Max.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 1</value>
+  </data>
+  <data name="button_Min.Text" xml:space="preserve">
+    <value>Температура (мин)</value>
   </data>
   <data name="button_Text_Max_circle.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
-  <data name="&gt;&gt;button_Number_Max.Parent" xml:space="preserve">
-    <value>panel_Number_Max</value>
+  <data name="pictureBox_Arrow_Right_Min.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="pictureBox_Arrow_Down_Max_Min.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -3142,8 +3136,11 @@
   <data name="&gt;&gt;button_Text_Max_Min_circle.Name" xml:space="preserve">
     <value>button_Text_Max_Min_circle</value>
   </data>
-  <data name="button_Number_Max_Min.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="button_Min.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_Number_Current_Font.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
   </data>
   <data name="panel_Text_Max_Min_circle.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 76</value>
@@ -3151,8 +3148,8 @@
   <data name="button_Number_Max_Font.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="pictureBox_Arrow_Right_Max.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 2</value>
+  <data name="panel_Text_CityName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>20, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;checkBox_Text_Min_circle.Parent" xml:space="preserve">
     <value>panel_Text_Min_circle</value>
@@ -3160,20 +3157,20 @@
   <data name="&gt;&gt;checkBox_Text_Max_rotation.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button_Number_Min_Font.Text" xml:space="preserve">
-    <value>Данные шрифтом</value>
+  <data name="panel_Current.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="button_Number_Current_Font.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="button_Number_Max_Font.Text" xml:space="preserve">
-    <value>Данные шрифтом</value>
+  <data name="&gt;&gt;pictureBox_Arrow_Down.Name" xml:space="preserve">
+    <value>pictureBox_Arrow_Down</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
   </data>
-  <data name="panel_Min.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="pictureBox_Arrow_Down_Max_Min.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="checkBox_Number_Max_Font.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3184,20 +3181,23 @@
   <data name="panel_Number_Max_Min.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 24</value>
   </data>
-  <data name="&gt;&gt;button_Number_Max_Font.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="pictureBox_Arrow_Down.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
   </data>
-  <data name="&gt;&gt;checkBox_Text_Current_rotation.Name" xml:space="preserve">
-    <value>checkBox_Text_Current_rotation</value>
+  <data name="&gt;&gt;panel_Images.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button_Text_CityName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="panel_Text_Max_rotation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBox_Text_Max_circle.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBox_Text_CityName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="button_Text_Current_rotation.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="button_Text_Min_rotation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
+  <data name="button_Text_Min_rotation.Text" xml:space="preserve">
+    <value>Данные под углом</value>
   </data>
   <data name="&gt;&gt;button_Number_Max.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3205,22 +3205,19 @@
   <data name="checkBox_Icon.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 5</value>
   </data>
-  <data name="tableLayoutPanel_Current.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
+  <data name="&gt;&gt;button_Text_CityName.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="button_Number_Min.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
+  <data name="panel_Number_Min.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="&gt;&gt;panel_Number_Font.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;panel_Max_Min.Name" xml:space="preserve">
+    <value>panel_Max_Min</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>zh</value>
-  </metadata>
   <metadata name="toolTip_Weather.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
 </root>

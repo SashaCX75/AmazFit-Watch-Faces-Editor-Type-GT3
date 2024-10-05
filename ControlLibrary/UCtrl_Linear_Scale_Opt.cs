@@ -19,6 +19,8 @@ namespace ControlLibrary
         public Object _LinearScale;
         public Dictionary<string, Object> WidgetProperty = new Dictionary<string, Object>();
 
+        private bool Alpha_mode = false;
+
         public UCtrl_Linear_Scale_Opt()
         {
             InitializeComponent();
@@ -144,6 +146,22 @@ namespace ControlLibrary
         public int GetSelectedIndexLineCap()
         {
             return comboBox_scaleLinear_lineCap.SelectedIndex;
+        }
+
+        /// <summary>Режим доступности прозрачности</summary>
+        [Description("Режим доступности прозрачности")]
+        public virtual bool Alpha
+        {
+            get
+            {
+                return Alpha_mode;
+            }
+            set
+            {
+                Alpha_mode = value;
+                label_alpha.Enabled = Alpha_mode;
+                numericUpDown_Alpha.Enabled = Alpha_mode;
+            }
         }
 
         [Browsable(true)]
@@ -460,6 +478,8 @@ namespace ControlLibrary
 
             checkBox_mirror.Checked = false;
             checkBox_inversion.Checked = false;
+
+            Alpha = false;
 
             setValue = false;
         }
