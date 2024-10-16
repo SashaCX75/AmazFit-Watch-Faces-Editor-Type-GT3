@@ -281,4 +281,7 @@
   <data name="label_error.Text" xml:space="preserve">
     <value>Chybový obrázek</value>
   </data>
+  <data name="label_alpha.Text" xml:space="preserve">
+    <value>Průhlednost</value>
+  </data>
 </root>

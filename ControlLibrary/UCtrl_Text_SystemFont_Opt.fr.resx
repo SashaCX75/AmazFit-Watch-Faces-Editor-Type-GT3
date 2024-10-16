@@ -406,4 +406,7 @@ verticalement</value>
   <data name="label_Color2.Text" xml:space="preserve">
     <value>Couleur du week-end</value>
   </data>
+  <data name="label_alpha.Text" xml:space="preserve">
+    <value>Transparence</value>
+  </data>
 </root>

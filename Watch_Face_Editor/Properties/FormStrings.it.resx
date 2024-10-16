@@ -241,6 +241,9 @@ L'immagine non deve essere monocromatica e deve essere in formato 32bit</value>
   <data name="Message_Delet_Text21" xml:space="preserve">
     <value>?</value>
   </data>
+  <data name="Message_Delet_Widget" xml:space="preserve">
+    <value>Vuoi davvero eliminare il widget?</value>
+  </data>
   <data name="Message_DontDelZip" xml:space="preserve">
     <value>Non è possibile eliminare un file di quadrante dell'orologio esistente.</value>
   </data>

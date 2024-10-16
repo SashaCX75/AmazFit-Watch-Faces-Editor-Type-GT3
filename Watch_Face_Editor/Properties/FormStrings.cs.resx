@@ -240,6 +240,9 @@
   <data name="Message_Delet_Text21" xml:space="preserve">
     <value>?</value>
   </data>
+  <data name="Message_Delet_Widget" xml:space="preserve">
+    <value>Opravdu chcete widget smazat?</value>
+  </data>
   <data name="Message_DontDelZip" xml:space="preserve">
     <value>Není možné odstranit existující soubor ciferníku.</value>
   </data>

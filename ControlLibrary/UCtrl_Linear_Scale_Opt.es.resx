@@ -279,4 +279,7 @@ disminuirá la cantidad de progreso.</value>
   <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>Copiar propiedades</value>
   </data>
+  <data name="label_alpha.Text" xml:space="preserve">
+    <value>Transparencia</value>
+  </data>
 </root>

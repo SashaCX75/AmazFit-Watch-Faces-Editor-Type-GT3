@@ -324,4 +324,7 @@
   <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>Eigenschaften kopieren</value>
   </data>
+  <data name="label_alpha.Text" xml:space="preserve">
+    <value>Transparenz</value>
+  </data>
 </root>

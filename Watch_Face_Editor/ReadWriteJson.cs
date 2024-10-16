@@ -26503,7 +26503,7 @@ namespace Watch_Face_Editor
                                 heart.Images.visible = true;
                                 heart.Images.position = offset;
                                 if (imgLevel.image_length != 6)
-                                    MessageBox.Show("Количество изображений для отображения пульса должно быть равным 6.",
+                                    MessageBox.Show(Properties.FormStrings.Message_HR_Image_Count_Error,
                                         Properties.FormStrings.Message_Warning_Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }

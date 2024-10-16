@@ -284,4 +284,10 @@
   <data name="копироватьСвойстваToolStripMenuItem.Text" xml:space="preserve">
     <value>Copiar propiedades</value>
   </data>
+  <data name="label_alpha.Text" xml:space="preserve">
+    <value>Transparencia</value>
+  </data>
+  <data name="label_icon_alpha.Text" xml:space="preserve">
+    <value>Transparencia de iconos</value>
+  </data>
 </root>

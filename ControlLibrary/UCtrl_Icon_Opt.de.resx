@@ -239,4 +239,7 @@
   <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Kopieren</value>
   </data>
+  <data name="label_alpha.Text" xml:space="preserve">
+    <value>Transparenz</value>
+  </data>
 </root>

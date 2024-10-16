@@ -290,4 +290,7 @@
   <data name="label_error.Text" xml:space="preserve">
     <value>Immagine in caso di errore</value>
   </data>
+  <data name="label_alpha.Text" xml:space="preserve">
+    <value>Trasparenza</value>
+  </data>
 </root>

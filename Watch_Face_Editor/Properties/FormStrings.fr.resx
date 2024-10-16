@@ -240,6 +240,9 @@
   <data name="Message_Delet_Text21" xml:space="preserve">
     <value>?</value>
   </data>
+  <data name="Message_Delet_Widget" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir supprimer le widget ?</value>
+  </data>
   <data name="Message_DontDelZip" xml:space="preserve">
     <value>Il n'est pas possible de supprimer un fichier de cadran de montre existant.</value>
   </data>

@@ -266,4 +266,7 @@
   <data name="label02.Text" xml:space="preserve">
     <value>Souřadnice</value>
   </data>
+  <data name="label_alpha.Text" xml:space="preserve">
+    <value>Průhlednost</value>
+  </data>
 </root>

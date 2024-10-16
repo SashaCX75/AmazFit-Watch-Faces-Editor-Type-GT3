@@ -91,10 +91,10 @@ namespace ControlLibrary
             // 
             // comboBox_image
             // 
-            resources.ApplyResources(this.comboBox_image, "comboBox_image");
             this.comboBox_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_image.DropDownWidth = 135;
             this.comboBox_image.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_image, "comboBox_image");
             this.comboBox_image.Name = "comboBox_image";
             this.comboBox_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -104,10 +104,10 @@ namespace ControlLibrary
             // 
             // comboBox_icon
             // 
-            resources.ApplyResources(this.comboBox_icon, "comboBox_icon");
             this.comboBox_icon.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_icon.DropDownWidth = 135;
             this.comboBox_icon.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_icon, "comboBox_icon");
             this.comboBox_icon.Name = "comboBox_icon";
             this.comboBox_icon.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_icon.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -117,8 +117,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_imageX
             // 
-            resources.ApplyResources(this.numericUpDown_imageX, "numericUpDown_imageX");
             this.numericUpDown_imageX.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_imageX, "numericUpDown_imageX");
             this.numericUpDown_imageX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -136,13 +136,13 @@ namespace ControlLibrary
             // 
             // contextMenuStrip_X
             // 
-            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_X.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуХToolStripMenuItem,
             this.копироватьToolStripMenuItemX,
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
@@ -165,8 +165,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_imageY
             // 
-            resources.ApplyResources(this.numericUpDown_imageY, "numericUpDown_imageY");
             this.numericUpDown_imageY.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_imageY, "numericUpDown_imageY");
             this.numericUpDown_imageY.Maximum = new decimal(new int[] {
             999,
             0,
@@ -184,13 +184,13 @@ namespace ControlLibrary
             // 
             // contextMenuStrip_Y
             // 
-            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_Y.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуYToolStripMenuItem,
             this.копироватьToolStripMenuItemY,
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem
@@ -213,8 +213,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_iconX
             // 
-            resources.ApplyResources(this.numericUpDown_iconX, "numericUpDown_iconX");
             this.numericUpDown_iconX.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_iconX, "numericUpDown_iconX");
             this.numericUpDown_iconX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -232,8 +232,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_iconY
             // 
-            resources.ApplyResources(this.numericUpDown_iconY, "numericUpDown_iconY");
             this.numericUpDown_iconY.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_iconY, "numericUpDown_iconY");
             this.numericUpDown_iconY.Maximum = new decimal(new int[] {
             999,
             0,
@@ -291,10 +291,10 @@ namespace ControlLibrary
             // 
             // comboBox_unit
             // 
-            resources.ApplyResources(this.comboBox_unit, "comboBox_unit");
             this.comboBox_unit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_unit.DropDownWidth = 135;
             this.comboBox_unit.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_unit, "comboBox_unit");
             this.comboBox_unit.Name = "comboBox_unit";
             this.comboBox_unit.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_unit.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -304,13 +304,13 @@ namespace ControlLibrary
             // 
             // comboBox_alignment
             // 
-            resources.ApplyResources(this.comboBox_alignment, "comboBox_alignment");
             this.comboBox_alignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_alignment.FormattingEnabled = true;
             this.comboBox_alignment.Items.AddRange(new object[] {
             resources.GetString("comboBox_alignment.Items"),
             resources.GetString("comboBox_alignment.Items1"),
             resources.GetString("comboBox_alignment.Items2")});
+            resources.ApplyResources(this.comboBox_alignment, "comboBox_alignment");
             this.comboBox_alignment.Name = "comboBox_alignment";
             this.comboBox_alignment.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
@@ -326,10 +326,10 @@ namespace ControlLibrary
             // 
             // comboBox_unit_miles
             // 
-            resources.ApplyResources(this.comboBox_unit_miles, "comboBox_unit_miles");
             this.comboBox_unit_miles.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_unit_miles.DropDownWidth = 135;
             this.comboBox_unit_miles.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_unit_miles, "comboBox_unit_miles");
             this.comboBox_unit_miles.Name = "comboBox_unit_miles";
             this.comboBox_unit_miles.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_unit_miles.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -362,10 +362,10 @@ namespace ControlLibrary
             // 
             // comboBox_imageError
             // 
-            resources.ApplyResources(this.comboBox_imageError, "comboBox_imageError");
             this.comboBox_imageError.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_imageError.DropDownWidth = 135;
             this.comboBox_imageError.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_imageError, "comboBox_imageError");
             this.comboBox_imageError.Name = "comboBox_imageError";
             this.comboBox_imageError.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_imageError.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -375,10 +375,10 @@ namespace ControlLibrary
             // 
             // comboBox_imageDecimalPoint
             // 
-            resources.ApplyResources(this.comboBox_imageDecimalPoint, "comboBox_imageDecimalPoint");
             this.comboBox_imageDecimalPoint.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_imageDecimalPoint.DropDownWidth = 135;
             this.comboBox_imageDecimalPoint.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_imageDecimalPoint, "comboBox_imageDecimalPoint");
             this.comboBox_imageDecimalPoint.Name = "comboBox_imageDecimalPoint";
             this.comboBox_imageDecimalPoint.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_imageDecimalPoint.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -437,25 +437,25 @@ namespace ControlLibrary
             // 
             // context_WidgetProperty
             // 
-            resources.ApplyResources(this.context_WidgetProperty, "context_WidgetProperty");
             this.context_WidgetProperty.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.копироватьСвойстваToolStripMenuItem,
             this.вставитьСвойстваToolStripMenuItem});
             this.context_WidgetProperty.Name = "context_WidgetProperty";
+            resources.ApplyResources(this.context_WidgetProperty, "context_WidgetProperty");
             this.context_WidgetProperty.Opening += new System.ComponentModel.CancelEventHandler(this.context_WidgetProperty_Opening);
             // 
             // копироватьСвойстваToolStripMenuItem
             // 
-            resources.ApplyResources(this.копироватьСвойстваToolStripMenuItem, "копироватьСвойстваToolStripMenuItem");
             this.копироватьСвойстваToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.copy_prop;
             this.копироватьСвойстваToolStripMenuItem.Name = "копироватьСвойстваToolStripMenuItem";
+            resources.ApplyResources(this.копироватьСвойстваToolStripMenuItem, "копироватьСвойстваToolStripMenuItem");
             this.копироватьСвойстваToolStripMenuItem.Click += new System.EventHandler(this.копироватьСвойстваToolStripMenuItem_Click);
             // 
             // вставитьСвойстваToolStripMenuItem
             // 
-            resources.ApplyResources(this.вставитьСвойстваToolStripMenuItem, "вставитьСвойстваToolStripMenuItem");
             this.вставитьСвойстваToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.paste_prop;
             this.вставитьСвойстваToolStripMenuItem.Name = "вставитьСвойстваToolStripMenuItem";
+            resources.ApplyResources(this.вставитьСвойстваToolStripMenuItem, "вставитьСвойстваToolStripMenuItem");
             this.вставитьСвойстваToolStripMenuItem.Click += new System.EventHandler(this.вставитьСвойстваToolStripMenuItem_Click);
             // 
             // numericUpDown_Alpha
@@ -476,8 +476,8 @@ namespace ControlLibrary
             // 
             // label_alpha
             // 
-            resources.ApplyResources(this.label_alpha, "label_alpha");
             this.label_alpha.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label_alpha, "label_alpha");
             this.label_alpha.Name = "label_alpha";
             // 
             // numericUpDown_iconAlpha
@@ -498,8 +498,8 @@ namespace ControlLibrary
             // 
             // label_icon_alpha
             // 
-            resources.ApplyResources(this.label_icon_alpha, "label_icon_alpha");
             this.label_icon_alpha.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label_icon_alpha, "label_icon_alpha");
             this.label_icon_alpha.Name = "label_icon_alpha";
             // 
             // UCtrl_Text_Opt

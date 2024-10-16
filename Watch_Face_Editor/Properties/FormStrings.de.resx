@@ -240,6 +240,9 @@
   <data name="Message_Delet_Text21" xml:space="preserve">
     <value>?</value>
   </data>
+  <data name="Message_Delet_Widget" xml:space="preserve">
+    <value>Willst du das Widget wirklich löschen?</value>
+  </data>
   <data name="Message_DontDelZip" xml:space="preserve">
     <value>Es ist nicht möglich, eine bestehende Zifferblattdatei zu löschen.</value>
   </data>
