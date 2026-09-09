@@ -408,7 +408,7 @@ namespace Watch_Face_Editor
         {
             uCtrl_EditableElements_Opt.SettingsElementClear();
             uCtrl_EditableElements_Opt.ResetHighlightState();
-            ShowElemenrOptions("EditableElements");
+            ShowElemenOptions("EditableElements");
             if (Watch_Face == null) return;
             if (index < 0) return;
             EditableElements editableElements = (EditableElements)uCtrl_EditableElements_Opt._EditableElemets;
@@ -1075,7 +1075,7 @@ namespace Watch_Face_Editor
 
         private void uCtrl_EditableElements_Opt_SelectChanged(object sender, EventArgs eventArgs)
         {
-            ShowElemenrOptions("EditableElements");
+            ShowElemenOptions("EditableElements");
             //string selectElement = uCtrl_EditableElements_Opt.selectedElement;
 
             if (!PreviewView) return;

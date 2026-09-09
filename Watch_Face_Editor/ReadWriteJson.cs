@@ -44,6 +44,38 @@ namespace Watch_Face_Editor
             string onDigitalCrown = "";
             if (Watch_Face == null) return;
 
+            if (Watch_Face?.ScreenNormal?.Background?.BackgroundColor != null)
+            {
+                Watch_Face.ScreenNormal.Background.BackgroundColor.h = SelectedModel.background.h;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.w = SelectedModel.background.w;
+            }
+            if (Watch_Face?.ScreenNormal?.Background?.BackgroundImage != null)
+            {
+                Watch_Face.ScreenNormal.Background.BackgroundImage.h = SelectedModel.background.h;
+                Watch_Face.ScreenNormal.Background.BackgroundImage.w = SelectedModel.background.w;
+            }
+            if (Watch_Face?.ScreenNormal?.Background?.Editable_Background != null)
+            {
+                Watch_Face.ScreenNormal.Background.Editable_Background.h = SelectedModel.background.h;
+                Watch_Face.ScreenNormal.Background.Editable_Background.w = SelectedModel.background.w;
+            }
+
+            if (Watch_Face?.ScreenAOD?.Background?.BackgroundColor != null)
+            {
+                Watch_Face.ScreenAOD.Background.BackgroundColor.h = SelectedModel.background.h;
+                Watch_Face.ScreenAOD.Background.BackgroundColor.w = SelectedModel.background.w;
+            }
+            if (Watch_Face?.ScreenAOD?.Background?.BackgroundImage != null)
+            {
+                Watch_Face.ScreenAOD.Background.BackgroundImage.h = SelectedModel.background.h;
+                Watch_Face.ScreenAOD.Background.BackgroundImage.w = SelectedModel.background.w;
+            }
+            if (Watch_Face?.ScreenAOD?.Background?.Editable_Background != null)
+            {
+                Watch_Face.ScreenAOD.Background.Editable_Background.h = SelectedModel.background.h;
+                Watch_Face.ScreenAOD.Background.Editable_Background.w = SelectedModel.background.w;
+            }
+
             bool bg_img = false;
             bool bg_color = false;
             // элементы основного экрана
@@ -18616,7 +18648,7 @@ namespace Watch_Face_Editor
                 {
                     if (SelectedModel.versionOS >= 2 && elementSleep.Score.font != null && elementSleep.Score.font.Length > 3)
                     {
-                        string cacheName = "// FontName: " + elementSleep.DurationSleep_total.font + "; FontSize: " + elementSleep.Score.text_size.ToString();
+                        string cacheName = "// FontName: " + elementSleep.Score.font + "; FontSize: " + elementSleep.Score.text_size.ToString();
                         //if (elementSleep.Score.unit_type > 0)
                         //    cacheName = "// FontName: " + elementSleep.Score.font + "; FontSize: " + elementSleep.Score.text_size.ToString() + "; Cache: full";
                         if (fonts_cache.IndexOf(cacheName) < 0)
@@ -27083,8 +27115,13 @@ namespace Watch_Face_Editor
                                     if (hrv != null)
                                     {
                                         int offset = 1;
+                                        if (hrv.Images != null) offset++;
+                                        if (hrv.Segments != null) offset++;
                                         if (hrv.Number != null) offset++;
                                         if (hrv.Number_Font != null) offset++;
+                                        if (hrv.Pointer != null) offset++;
+                                        if (hrv.Circle_Scale != null) offset++;
+                                        //if (hrv.Icon != null) offset++;
 
                                         hrv.Icon = new hmUI_widget_IMG();
                                         hrv.Icon.src = img.src;
@@ -34396,8 +34433,12 @@ namespace Watch_Face_Editor
                             if (hrv != null)
                             {
                                 int offset = 1;
+                                if (hrv.Images != null) offset++;
+                                if (hrv.Segments != null) offset++;
                                 //if (hrv.Number != null) offset++;
                                 if (hrv.Number_Font != null) offset++;
+                                if (hrv.Pointer != null) offset++;
+                                if (hrv.Circle_Scale != null) offset++;
                                 if (hrv.Icon != null) offset++;
 
                                 hrv.Number = new hmUI_widget_IMG_NUMBER();
@@ -43535,8 +43576,12 @@ namespace Watch_Face_Editor
                             if (hrv != null)
                             {
                                 int offset = 1;
+                                if (hrv.Images != null) offset++;
+                                if (hrv.Segments != null) offset++;
                                 if (hrv.Number != null) offset++;
-                                //if (floor.Number_Font != null) offset++;
+                                //if (hrv.Number_Font != null) offset++;
+                                if (hrv.Pointer != null) offset++;
+                                if (hrv.Circle_Scale != null) offset++;
                                 if (hrv.Icon != null) offset++;
 
                                 hrv.Number_Font = new hmUI_widget_TEXT();

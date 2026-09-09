@@ -371,6 +371,30 @@ Il numero di immagini per la frequenza cardiaca dovrebbe essere 6.</value>
   <data name="Message_Save_new_JSON" xml:space="preserve">
     <value>Il progetto attuale non è stato ancora salvato. Vuoi salvarlo?</value>
   </data>
+  <data name="Message_SendInfo_Caption" xml:space="preserve">
+    <value>Trasmissione di informazioni tecniche</value>
+  </data>
+  <data name="Message_SendInfo_Text1" xml:space="preserve">
+    <value>L'applicazione può inviare al server informazioni tecniche sul sistema ai fini della raccolta di dati statistici e dell'analisi della compatibilità:</value>
+  </data>
+  <data name="Message_SendInfo_Text2" xml:space="preserve">
+    <value>     • versione dell'app</value>
+  </data>
+  <data name="Message_SendInfo_Text3" xml:space="preserve">
+    <value>     • versione di Windows</value>
+  </data>
+  <data name="Message_SendInfo_Text4" xml:space="preserve">
+    <value>     • lingua del sistema</value>
+  </data>
+  <data name="Message_SendInfo_Text5" xml:space="preserve">
+    <value>     • versioni dei componenti .NET installati</value>
+  </data>
+  <data name="Message_SendInfo_Text6" xml:space="preserve">
+    <value>I file personali e gli altri dati dell'utente non vengono trasmessi.</value>
+  </data>
+  <data name="Message_SendInfo_Text7" xml:space="preserve">
+    <value>È possibile disattivare la trasmissione dei dati nelle impostazioni.</value>
+  </data>
   <data name="Message_ShortcutsAOD_Text" xml:space="preserve">
     <value>Non è possibile aggiungere shortcuts alla schermata AOD.</value>
   </data>

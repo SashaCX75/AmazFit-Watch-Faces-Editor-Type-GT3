@@ -462,6 +462,30 @@
   <data name="Message_Save_new_JSON" xml:space="preserve">
     <value>Поточний проект ще не збережено. Ви хочете зберегти його?</value>
   </data>
+  <data name="Message_SendInfo_Caption" xml:space="preserve">
+    <value>Передача технічної інформації</value>
+  </data>
+  <data name="Message_SendInfo_Text1" xml:space="preserve">
+    <value>Додаток може надсилати на сервер технічну інформацію про систему для збору статистичних даних та аналізу сумісності:</value>
+  </data>
+  <data name="Message_SendInfo_Text2" xml:space="preserve">
+    <value>     • версія додатка</value>
+  </data>
+  <data name="Message_SendInfo_Text3" xml:space="preserve">
+    <value>     • версія Windows</value>
+  </data>
+  <data name="Message_SendInfo_Text4" xml:space="preserve">
+    <value>     • мова системи</value>
+  </data>
+  <data name="Message_SendInfo_Text5" xml:space="preserve">
+    <value>     • версії встановлених компонентів .NET</value>
+  </data>
+  <data name="Message_SendInfo_Text6" xml:space="preserve">
+    <value>Особисті файли та інші дані користувачів не передаються.</value>
+  </data>
+  <data name="Message_SendInfo_Text7" xml:space="preserve">
+    <value>Ви можете вимкнути передачу інформації в налаштуваннях.</value>
+  </data>
   <data name="Message_ShortcutsAOD_Text" xml:space="preserve">
     <value>Ви не можете додавати ярлики до екрану AOD.</value>
   </data>

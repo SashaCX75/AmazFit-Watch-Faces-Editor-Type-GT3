@@ -1856,6 +1856,7 @@ namespace ControlLibrary
             numericUpDown_zone_W.Value = 100;
             numericUpDown_zone_H.Value = 100;
 
+            checkBox_display_first.Checked = false;
             checkBox_showInAOD.Checked = false;
             checkBox_edit_mode.Checked = false;
 

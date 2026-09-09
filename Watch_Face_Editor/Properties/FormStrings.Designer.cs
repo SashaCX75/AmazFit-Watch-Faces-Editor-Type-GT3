@@ -1105,6 +1105,78 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Передача технической информации.
+        /// </summary>
+        internal static string Message_SendInfo_Caption {
+            get {
+                return ResourceManager.GetString("Message_SendInfo_Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Приложение может отправлять на сервер техническую информацию о системе для сбора статистики и анализа совместимости:.
+        /// </summary>
+        internal static string Message_SendInfo_Text1 {
+            get {
+                return ResourceManager.GetString("Message_SendInfo_Text1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на      • версия приложения.
+        /// </summary>
+        internal static string Message_SendInfo_Text2 {
+            get {
+                return ResourceManager.GetString("Message_SendInfo_Text2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на      • версия Windows.
+        /// </summary>
+        internal static string Message_SendInfo_Text3 {
+            get {
+                return ResourceManager.GetString("Message_SendInfo_Text3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на      • язык системы.
+        /// </summary>
+        internal static string Message_SendInfo_Text4 {
+            get {
+                return ResourceManager.GetString("Message_SendInfo_Text4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на      • версии установленных компонентов .NET.
+        /// </summary>
+        internal static string Message_SendInfo_Text5 {
+            get {
+                return ResourceManager.GetString("Message_SendInfo_Text5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Личные файлы и другие пользовательские данные не передаются..
+        /// </summary>
+        internal static string Message_SendInfo_Text6 {
+            get {
+                return ResourceManager.GetString("Message_SendInfo_Text6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы можете отключить передачу информации в настройках..
+        /// </summary>
+        internal static string Message_SendInfo_Text7 {
+            get {
+                return ResourceManager.GetString("Message_SendInfo_Text7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вы не можете добавлять ярлыки на экран AOD..
         /// </summary>
         internal static string Message_ShortcutsAOD_Text {

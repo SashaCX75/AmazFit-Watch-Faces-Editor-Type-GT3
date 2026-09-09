@@ -462,6 +462,30 @@
   <data name="Message_Save_new_JSON" xml:space="preserve">
     <value>Das aktuelle Projekt ist noch nicht gespeichert worden. Möchten Sie es speichern?</value>
   </data>
+  <data name="Message_SendInfo_Caption" xml:space="preserve">
+    <value>Übermittlung technischer Informationen</value>
+  </data>
+  <data name="Message_SendInfo_Text1" xml:space="preserve">
+    <value>Die App übermittelt möglicherweise technische Informationen über das System an den Server, um Statistiken zu erstellen und die Kompatibilität zu analysieren:</value>
+  </data>
+  <data name="Message_SendInfo_Text2" xml:space="preserve">
+    <value>     • App Version</value>
+  </data>
+  <data name="Message_SendInfo_Text3" xml:space="preserve">
+    <value>     • Windows Version</value>
+  </data>
+  <data name="Message_SendInfo_Text4" xml:space="preserve">
+    <value>     • Systemsprache</value>
+  </data>
+  <data name="Message_SendInfo_Text5" xml:space="preserve">
+    <value>     • Versionen der installierten .NET-Komponenten</value>
+  </data>
+  <data name="Message_SendInfo_Text6" xml:space="preserve">
+    <value>Persönliche Dateien und andere Benutzerdaten werden nicht übertragen.</value>
+  </data>
+  <data name="Message_SendInfo_Text7" xml:space="preserve">
+    <value>Das Senden von Informationen kann in den Einstellungen deaktiviert werden.</value>
+  </data>
   <data name="Message_ShortcutsAOD_Text" xml:space="preserve">
     <value>Sie können dem AOD-Bildschirm keine Verknüpfungen hinzufügen.</value>
   </data>

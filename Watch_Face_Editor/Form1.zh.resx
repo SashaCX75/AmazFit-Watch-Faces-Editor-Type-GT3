@@ -1810,7 +1810,7 @@ PayPal: sashacx75@gmail.com</value>
   <data name="button_SavePNG.Text" xml:space="preserve">
     <value>保存 PNG</value>
   </data>
-  <data name="checkBox_CircleScaleImage.Text" xml:space="preserve">
+  <data name="checkBox_CircleScaleArea.Text" xml:space="preserve">
     <value>突出显示圆形和线条进度占用的整个空间</value>
   </data>
   <data name="label_ConvertingHelp03.Text" xml:space="preserve">

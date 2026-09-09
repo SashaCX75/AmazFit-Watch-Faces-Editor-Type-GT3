@@ -359,6 +359,7 @@ namespace Watch_Face_Editor
             this.radioButton_3days = new System.Windows.Forms.RadioButton();
             this.radioButton_1day = new System.Windows.Forms.RadioButton();
             this.tabPage_Settings = new System.Windows.Forms.TabPage();
+            this.checkBox_SendSystemInfo = new System.Windows.Forms.CheckBox();
             this.button_createZAB = new System.Windows.Forms.Button();
             this.checkBox_DevelopmentMode = new System.Windows.Forms.CheckBox();
             this.label_AutoSave = new System.Windows.Forms.Label();
@@ -448,7 +449,7 @@ namespace Watch_Face_Editor
             this.checkBox_center_marker = new System.Windows.Forms.CheckBox();
             this.button_CreatePreview = new System.Windows.Forms.Button();
             this.button_RefreshPreview = new System.Windows.Forms.Button();
-            this.checkBox_CircleScaleImage = new System.Windows.Forms.CheckBox();
+            this.checkBox_CircleScaleArea = new System.Windows.Forms.CheckBox();
             this.checkBox_Show_Shortcuts = new System.Windows.Forms.CheckBox();
             this.checkBox_crop = new System.Windows.Forms.CheckBox();
             this.checkBox_border = new System.Windows.Forms.CheckBox();
@@ -2257,12 +2258,14 @@ namespace Watch_Face_Editor
             this.uCtrl_Text_Widgets_Opt.DelFont_Click += new ControlLibrary.UCtrl_Text_Widgets_Opt.DelFont_ClickHandler(this.uCtrl_Text_Widgets_Opt_DelFont_Click);
             this.uCtrl_Text_Widgets_Opt.WidgetProperty_Copy += new ControlLibrary.UCtrl_Text_Widgets_Opt.WidgetProperty_Copy_Handler(this.uCtrl_Text_Widgets_Opt_WidgetProperty_Copy);
             this.uCtrl_Text_Widgets_Opt.WidgetProperty_Paste += new ControlLibrary.UCtrl_Text_Widgets_Opt.WidgetProperty_Paste_Handler(this.uCtrl_Text_Widgets_Opt_WidgetProperty_Paste);
+            this.uCtrl_Text_Widgets_Opt.CustomColorsChanged += new ControlLibrary.UCtrl_Text_Widgets_Opt.CustomColorsChangedHandler(this.uCtrl_Text_Widgets_Opt_CustomColorsChanged);
             // 
             // uCtrl_SleepChart_Opt
             // 
             resources.ApplyResources(this.uCtrl_SleepChart_Opt, "uCtrl_SleepChart_Opt");
             this.uCtrl_SleepChart_Opt.Name = "uCtrl_SleepChart_Opt";
             this.uCtrl_SleepChart_Opt.ValueChanged += new ControlLibrary.UCtrl_SleepChart_Opt.ValueChangedHandler(this.uCtrl_SleepChart_Opt_ValueChanged);
+            this.uCtrl_SleepChart_Opt.CustomColorsChanged += new ControlLibrary.UCtrl_SleepChart_Opt.CustomColorsChangedHandler(this.uCtrl_Text_Widgets_Opt_CustomColorsChanged);
             // 
             // uCtrl_Switch_BG_Color_Opt
             // 
@@ -2274,6 +2277,7 @@ namespace Watch_Face_Editor
             this.uCtrl_Switch_BG_Color_Opt.СhangeColor += new ControlLibrary.UCtrl_Switch_BG_Color_Opt.СhangeColorHandler(this.uCtrl_Switch_BG_Color_Opt_СhangeColor);
             this.uCtrl_Switch_BG_Color_Opt.SelectColor += new ControlLibrary.UCtrl_Switch_BG_Color_Opt.SelectColorHandler(this.uCtrl_Switch_BG_Color_Opt_SelectColor);
             this.uCtrl_Switch_BG_Color_Opt.EditToast += new ControlLibrary.UCtrl_Switch_BG_Color_Opt.EditToastHandler(this.uCtrl_Switch_BG_Color_Opt_EditToast);
+            this.uCtrl_Switch_BG_Color_Opt.CustomColorsChanged += new ControlLibrary.UCtrl_Switch_BG_Color_Opt.CustomColorsChangedHandler(this.uCtrl_Text_Widgets_Opt_CustomColorsChanged);
             // 
             // uCtrl_Switch_Background_Opt
             // 
@@ -2285,12 +2289,14 @@ namespace Watch_Face_Editor
             this.uCtrl_Switch_Background_Opt.СhangeImage += new ControlLibrary.UCtrl_Switch_Background_Opt.СhangeImageHandler(this.uCtrl_Switch_Background_Opt_СhangeImage);
             this.uCtrl_Switch_Background_Opt.SelectImage += new ControlLibrary.UCtrl_Switch_Background_Opt.SelectImageHandler(this.uCtrl_Switch_Background_Opt_SelectImage);
             this.uCtrl_Switch_Background_Opt.EditToast += new ControlLibrary.UCtrl_Switch_Background_Opt.EditToastHandler(this.uCtrl_Switch_Background_Opt_EditToast);
+            this.uCtrl_Switch_Background_Opt.CustomColorsChanged += new ControlLibrary.UCtrl_Switch_Background_Opt.CustomColorsChangedHandler(this.uCtrl_Text_Widgets_Opt_CustomColorsChanged);
             // 
             // uCtrl_TemperatureGraph_Opt
             // 
             resources.ApplyResources(this.uCtrl_TemperatureGraph_Opt, "uCtrl_TemperatureGraph_Opt");
             this.uCtrl_TemperatureGraph_Opt.Name = "uCtrl_TemperatureGraph_Opt";
             this.uCtrl_TemperatureGraph_Opt.ValueChanged += new ControlLibrary.UCtrl_TemperatureGraph_Opt.ValueChangedHandler(this.uCtrl_TemperatureGraph_Opt_ValueChanged);
+            this.uCtrl_TemperatureGraph_Opt.CustomColorsChanged += new ControlLibrary.UCtrl_TemperatureGraph_Opt.CustomColorsChangedHandler(this.uCtrl_Text_Widgets_Opt_CustomColorsChanged);
             // 
             // uCtrl_Weather_FewDays_Opt
             // 
@@ -2312,6 +2318,7 @@ namespace Watch_Face_Editor
             this.uCtrl_ButtonOne_Opt.ValueChanged += new ControlLibrary.UCtrl_ButtonOne_Opt.ValueChangedHandler(this.uCtrl_ButtonOne_Opt_ValueChanged);
             this.uCtrl_ButtonOne_Opt.WidgetProperty_Copy += new ControlLibrary.UCtrl_ButtonOne_Opt.WidgetProperty_Copy_Handler(this.uCtrl_ButtonOne_Opt_WidgetProperty_Copy);
             this.uCtrl_ButtonOne_Opt.WidgetProperty_Paste += new ControlLibrary.UCtrl_ButtonOne_Opt.WidgetProperty_Paste_Handler(this.uCtrl_ButtonOne_Opt_WidgetProperty_Paste);
+            this.uCtrl_ButtonOne_Opt.CustomColorsChanged += new ControlLibrary.UCtrl_ButtonOne_Opt.CustomColorsChangedHandler(this.uCtrl_Text_Widgets_Opt_CustomColorsChanged);
             // 
             // uCtrl_Button_Opt
             // 
@@ -2323,6 +2330,7 @@ namespace Watch_Face_Editor
             this.uCtrl_Button_Opt.SelectButton += new ControlLibrary.UCtrl_Button_Opt.SelectButtonHandler(this.uCtrl_Button_Opt_SelectButton);
             this.uCtrl_Button_Opt.ScriptChanged += new ControlLibrary.UCtrl_Button_Opt.ScriptChangedHandler(this.uCtrl_Button_Opt_ScriptChanged);
             this.uCtrl_Button_Opt.VisibleButtonChanged += new ControlLibrary.UCtrl_Button_Opt.VisibleButtonChangedHandler(this.uCtrl_Button_Opt_VisibleButtonChanged);
+            this.uCtrl_Button_Opt.CustomColorsChanged += new ControlLibrary.UCtrl_Button_Opt.CustomColorsChangedHandler(this.uCtrl_Text_Widgets_Opt_CustomColorsChanged);
             // 
             // uCtrl_Text_Rotate_Opt
             // 
@@ -2438,6 +2446,7 @@ namespace Watch_Face_Editor
             this.uCtrl_Text_SystemFont_Opt.DelFont_Click += new ControlLibrary.UCtrl_Text_SystemFont_Opt.DelFont_ClickHandler(this.uCtrl_Text_SystemFont_Opt_DelFont_Click);
             this.uCtrl_Text_SystemFont_Opt.WidgetProperty_Copy += new ControlLibrary.UCtrl_Text_SystemFont_Opt.WidgetProperty_Copy_Handler(this.uCtrl_Text_SystemFont_Opt_WidgetProperty_Copy);
             this.uCtrl_Text_SystemFont_Opt.WidgetProperty_Paste += new ControlLibrary.UCtrl_Text_SystemFont_Opt.WidgetProperty_Paste_Handler(this.uCtrl_Text_SystemFont_Opt_WidgetProperty_Paste);
+            this.uCtrl_Text_SystemFont_Opt.CustomColorsChanged += new ControlLibrary.UCtrl_Text_SystemFont_Opt.CustomColorsChangedHandler(this.uCtrl_Text_Widgets_Opt_CustomColorsChanged);
             // 
             // uCtrl_Text_Weather_Opt
             // 
@@ -2483,6 +2492,7 @@ namespace Watch_Face_Editor
             this.uCtrl_Linear_Scale_Opt.ValueChanged += new ControlLibrary.UCtrl_Linear_Scale_Opt.ValueChangedHandler(this.uCtrl_Linear_Scale_Opt_ValueChanged);
             this.uCtrl_Linear_Scale_Opt.WidgetProperty_Copy += new ControlLibrary.UCtrl_Linear_Scale_Opt.WidgetProperty_Copy_Handler(this.uCtrl_Linear_Scale_Opt_WidgetProperty_Copy);
             this.uCtrl_Linear_Scale_Opt.WidgetProperty_Paste += new ControlLibrary.UCtrl_Linear_Scale_Opt.WidgetProperty_Paste_Handler(this.uCtrl_Linear_Scale_Opt_WidgetProperty_Paste);
+            this.uCtrl_Linear_Scale_Opt.CustomColorsChanged += new ControlLibrary.UCtrl_Linear_Scale_Opt.CustomColorsChangedHandler(this.uCtrl_Text_Widgets_Opt_CustomColorsChanged);
             // 
             // uCtrl_Circle_Scale_Opt
             // 
@@ -2494,6 +2504,7 @@ namespace Watch_Face_Editor
             this.uCtrl_Circle_Scale_Opt.ValueChanged += new ControlLibrary.UCtrl_Circle_Scale_Opt.ValueChangedHandler(this.uCtrl_Circle_Scale_Opt_ValueChanged);
             this.uCtrl_Circle_Scale_Opt.WidgetProperty_Copy += new ControlLibrary.UCtrl_Circle_Scale_Opt.WidgetProperty_Copy_Handler(this.uCtrl_Circle_Scale_Opt_WidgetProperty_Copy);
             this.uCtrl_Circle_Scale_Opt.WidgetProperty_Paste += new ControlLibrary.UCtrl_Circle_Scale_Opt.WidgetProperty_Paste_Handler(this.uCtrl_Circle_Scale_Opt_WidgetProperty_Paste);
+            this.uCtrl_Circle_Scale_Opt.CustomColorsChanged += new ControlLibrary.UCtrl_Circle_Scale_Opt.CustomColorsChangedHandler(this.uCtrl_Text_Widgets_Opt_CustomColorsChanged);
             // 
             // uCtrl_Images_Opt
             // 
@@ -2564,6 +2575,7 @@ namespace Watch_Face_Editor
             this.userCtrl_Background_Options.Name = "userCtrl_Background_Options";
             this.userCtrl_Background_Options.ValueChanged += new ControlLibrary.UCtrl_Background_Opt.ValueChangedHandler(this.userCtrl_Background_Options_ValueChanged);
             this.userCtrl_Background_Options.InformationChanged += new ControlLibrary.UCtrl_Background_Opt.InformationChangedHandler(this.userCtrl_Background_Options_InformationChanged);
+            this.userCtrl_Background_Options.CustomColorsChanged += new ControlLibrary.UCtrl_Background_Opt.CustomColorsChangedHandler(this.uCtrl_Text_Widgets_Opt_CustomColorsChanged);
             // 
             // uCtrl_EditableElements_Opt
             // 
@@ -3720,6 +3732,7 @@ namespace Watch_Face_Editor
             // 
             // tabPage_Settings
             // 
+            this.tabPage_Settings.Controls.Add(this.checkBox_SendSystemInfo);
             this.tabPage_Settings.Controls.Add(this.button_createZAB);
             this.tabPage_Settings.Controls.Add(this.checkBox_DevelopmentMode);
             this.tabPage_Settings.Controls.Add(this.label_AutoSave);
@@ -3747,6 +3760,15 @@ namespace Watch_Face_Editor
             this.tabPage_Settings.Controls.Add(this.label483);
             resources.ApplyResources(this.tabPage_Settings, "tabPage_Settings");
             this.tabPage_Settings.Name = "tabPage_Settings";
+            // 
+            // checkBox_SendSystemInfo
+            // 
+            resources.ApplyResources(this.checkBox_SendSystemInfo, "checkBox_SendSystemInfo");
+            this.checkBox_SendSystemInfo.Checked = true;
+            this.checkBox_SendSystemInfo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_SendSystemInfo.Name = "checkBox_SendSystemInfo";
+            this.checkBox_SendSystemInfo.UseVisualStyleBackColor = true;
+            this.checkBox_SendSystemInfo.CheckedChanged += new System.EventHandler(this.checkBox_UnvisibleSettings_CheckedChanged);
             // 
             // button_createZAB
             // 
@@ -3946,6 +3968,7 @@ namespace Watch_Face_Editor
             0,
             0,
             0});
+            this.numericUpDown_Gif_Speed.ValueChanged += new System.EventHandler(this.numericUpDown_Gif_Speed_ValueChanged);
             // 
             // checkBox_AllWidgetsInGif
             // 
@@ -4474,12 +4497,12 @@ namespace Watch_Face_Editor
             this.button_RefreshPreview.UseVisualStyleBackColor = true;
             this.button_RefreshPreview.Click += new System.EventHandler(this.button_RefreshPreview_Click);
             // 
-            // checkBox_CircleScaleImage
+            // checkBox_CircleScaleArea
             // 
-            resources.ApplyResources(this.checkBox_CircleScaleImage, "checkBox_CircleScaleImage");
-            this.checkBox_CircleScaleImage.Name = "checkBox_CircleScaleImage";
-            this.checkBox_CircleScaleImage.UseVisualStyleBackColor = true;
-            this.checkBox_CircleScaleImage.CheckedChanged += new System.EventHandler(this.checkBox_VisibleSettings_CheckedChanged);
+            resources.ApplyResources(this.checkBox_CircleScaleArea, "checkBox_CircleScaleArea");
+            this.checkBox_CircleScaleArea.Name = "checkBox_CircleScaleArea";
+            this.checkBox_CircleScaleArea.UseVisualStyleBackColor = true;
+            this.checkBox_CircleScaleArea.CheckedChanged += new System.EventHandler(this.checkBox_VisibleSettings_CheckedChanged);
             // 
             // checkBox_Show_Shortcuts
             // 
@@ -4653,7 +4676,7 @@ namespace Watch_Face_Editor
             this.Controls.Add(this.button_pack_zip);
             this.Controls.Add(this.button_CreatePreview);
             this.Controls.Add(this.button_RefreshPreview);
-            this.Controls.Add(this.checkBox_CircleScaleImage);
+            this.Controls.Add(this.checkBox_CircleScaleArea);
             this.Controls.Add(this.pictureBox_Preview);
             this.Controls.Add(this.checkBox_Show_Shortcuts);
             this.Controls.Add(this.checkBox_crop);
@@ -4914,7 +4937,7 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.Button button_pack_zip;
         private System.Windows.Forms.Button button_CreatePreview;
         private System.Windows.Forms.Button button_RefreshPreview;
-        private System.Windows.Forms.CheckBox checkBox_CircleScaleImage;
+        private System.Windows.Forms.CheckBox checkBox_CircleScaleArea;
         private System.Windows.Forms.PictureBox pictureBox_Preview;
         private System.Windows.Forms.CheckBox checkBox_Show_Shortcuts;
         public System.Windows.Forms.CheckBox checkBox_crop;
@@ -5322,6 +5345,7 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.Panel panel_Choosing_FileSharing;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckBox checkBox_GitHub_AskConfirmation;
+        private System.Windows.Forms.CheckBox checkBox_SendSystemInfo;
     }
 }
 

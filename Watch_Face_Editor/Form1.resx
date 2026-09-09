@@ -8672,6 +8672,9 @@
   <data name="checkBox_AddPreviewQR.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="checkBox_AddPreviewQR.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="checkBox_AddPreviewQR.Location" type="System.Drawing.Point, System.Drawing">
     <value>151, 79</value>
   </data>
@@ -9047,6 +9050,9 @@
   <data name="checkBox_GitHub_AskConfirmation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox_GitHub_AskConfirmation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="checkBox_GitHub_AskConfirmation.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 117</value>
   </data>
@@ -9101,6 +9107,9 @@
   <data name="&gt;&gt;btnUploadToGitHub.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="pictureBox_GitHub_help.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="pictureBox_GitHub_help.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 2</value>
   </data>
@@ -9124,6 +9133,9 @@
   </data>
   <data name="lblStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lblStatus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lblStatus.Location" type="System.Drawing.Point, System.Drawing">
     <value>104, 8</value>
@@ -9230,6 +9242,9 @@
   <data name="label_owner.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label_owner.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label_owner.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 32</value>
   </data>
@@ -9257,6 +9272,9 @@
   <data name="label_filePath.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label_filePath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label_filePath.Location" type="System.Drawing.Point, System.Drawing">
     <value>264, 75</value>
   </data>
@@ -9283,6 +9301,9 @@
   </data>
   <data name="label_token.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label_token.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label_token.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 75</value>
@@ -9352,6 +9373,9 @@
   </data>
   <data name="label_repoName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label_repoName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label_repoName.Location" type="System.Drawing.Point, System.Drawing">
     <value>264, 32</value>
@@ -9878,6 +9902,36 @@
   <data name="&gt;&gt;tabPage_Test.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="checkBox_SendSystemInfo.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_SendSystemInfo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBox_SendSystemInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>427, 544</value>
+  </data>
+  <data name="checkBox_SendSystemInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 17</value>
+  </data>
+  <data name="checkBox_SendSystemInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>64</value>
+  </data>
+  <data name="checkBox_SendSystemInfo.Text" xml:space="preserve">
+    <value>Передавать информацию о системе</value>
+  </data>
+  <data name="&gt;&gt;checkBox_SendSystemInfo.Name" xml:space="preserve">
+    <value>checkBox_SendSystemInfo</value>
+  </data>
+  <data name="&gt;&gt;checkBox_SendSystemInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_SendSystemInfo.Parent" xml:space="preserve">
+    <value>tabPage_Settings</value>
+  </data>
+  <data name="&gt;&gt;checkBox_SendSystemInfo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="button_createZAB.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
@@ -9906,7 +9960,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;button_createZAB.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="checkBox_DevelopmentMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -9933,7 +9987,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;checkBox_DevelopmentMode.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label_AutoSave.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9963,7 +10017,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;label_AutoSave.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="numericUpDown_AutoSave_Time.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -9987,7 +10041,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;numericUpDown_AutoSave_Time.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="checkBox_AutoSave.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10017,7 +10071,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;checkBox_AutoSave.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="checkBox_Del_Confirm.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10047,7 +10101,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;checkBox_Del_Confirm.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="checkBox_CreateZPK.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10077,7 +10131,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;checkBox_CreateZPK.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="numericUpDown_ARGB_color_count.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -10224,7 +10278,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="button_SavePNG_button.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
@@ -10368,7 +10422,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="comboBox_Animation_Preview_Speed.Items" xml:space="preserve">
     <value>10</value>
@@ -10407,7 +10461,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;comboBox_Animation_Preview_Speed.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="button_Reset.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
@@ -10437,7 +10491,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;button_Reset.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="numericUpDown_Gif_Speed.Location" type="System.Drawing.Point, System.Drawing">
     <value>595, 363</value>
@@ -10458,7 +10512,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;numericUpDown_Gif_Speed.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10491,7 +10545,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;checkBox_AllWidgetsInGif.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="button_WatchSkin_PathGet.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -10602,7 +10656,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="label355.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10632,7 +10686,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;label355.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="checkBox_ShowIn12hourFormat.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10662,7 +10716,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;checkBox_ShowIn12hourFormat.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="button_SavePNG_shortcut.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
@@ -10839,7 +10893,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;groupBox8.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="checkBox_JsonWarnings.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10848,7 +10902,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBox_JsonWarnings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>427, 544</value>
+    <value>427, 567</value>
   </data>
   <data name="checkBox_JsonWarnings.Size" type="System.Drawing.Size, System.Drawing">
     <value>323, 17</value>
@@ -10872,7 +10926,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;checkBox_JsonWarnings.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="comboBox_Language.Items" xml:space="preserve">
     <value>Čeština</value>
@@ -10920,7 +10974,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;comboBox_Language.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="label356.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -10950,7 +11004,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;label356.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="radioButton_Settings_Pack_DoNotning.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -11064,7 +11118,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;groupBox7.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="button_PreviewStates_PathGet.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -11265,7 +11319,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="radioButton_Settings_AfterUnpack_DoNothing.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -11379,7 +11433,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="radioButton_Settings_Unpack_Replace.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -11493,7 +11547,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="label483.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -11525,7 +11579,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;label483.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="tabPage_Settings.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -17012,31 +17066,31 @@ Ukrainian - kartoris82</value>
   <data name="&gt;&gt;button_RefreshPreview.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="checkBox_CircleScaleImage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="checkBox_CircleScaleArea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBox_CircleScaleImage.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="checkBox_CircleScaleArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 399</value>
   </data>
-  <data name="checkBox_CircleScaleImage.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="checkBox_CircleScaleArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 35</value>
   </data>
-  <data name="checkBox_CircleScaleImage.TabIndex" type="System.Int32, mscorlib">
+  <data name="checkBox_CircleScaleArea.TabIndex" type="System.Int32, mscorlib">
     <value>99</value>
   </data>
-  <data name="checkBox_CircleScaleImage.Text" xml:space="preserve">
+  <data name="checkBox_CircleScaleArea.Text" xml:space="preserve">
     <value>Подсвечивать полную шкалу для кругового и линейного прогресса</value>
   </data>
-  <data name="&gt;&gt;checkBox_CircleScaleImage.Name" xml:space="preserve">
-    <value>checkBox_CircleScaleImage</value>
+  <data name="&gt;&gt;checkBox_CircleScaleArea.Name" xml:space="preserve">
+    <value>checkBox_CircleScaleArea</value>
   </data>
-  <data name="&gt;&gt;checkBox_CircleScaleImage.Type" xml:space="preserve">
+  <data name="&gt;&gt;checkBox_CircleScaleArea.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBox_CircleScaleImage.Parent" xml:space="preserve">
+  <data name="&gt;&gt;checkBox_CircleScaleArea.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;checkBox_CircleScaleImage.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;checkBox_CircleScaleArea.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
   <data name="checkBox_Show_Shortcuts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -17380,7 +17434,7 @@ Ukrainian - kartoris82</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAQQBSgEEAUoBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAYABSgGAAUoBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -17686,6 +17740,9 @@ Ukrainian - kartoris82</value>
   </data>
   <data name="button_DownloadQR.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
+  </data>
+  <data name="button_DownloadQR.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="button_DownloadQR.Location" type="System.Drawing.Point, System.Drawing">
     <value>209, 622</value>

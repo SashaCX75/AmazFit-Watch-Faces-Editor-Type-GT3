@@ -21,6 +21,7 @@ namespace ControlLibrary
         private bool Editable_background_mode;
         public Object _Background;
         private long ID;
+        private int[] CustomColors = { }; // пользовательские цвета
 
         [Description("Отображается на экране AOD")]
         public bool AOD
@@ -69,6 +70,11 @@ namespace ControlLibrary
         [Description("Происходит при изменении выбора элемента")]
         public event InformationChangedHandler InformationChanged;
         public delegate void InformationChangedHandler(object sender, EventArgs eventArgs);
+
+        [Browsable(true)]
+        [Description("Происходит при изменении пользовательских цветов")]
+        public event CustomColorsChangedHandler CustomColorsChanged;
+        public delegate void CustomColorsChangedHandler(int[] customColors);
 
         private void button_GenerateID_Click(object sender, EventArgs e)
         {
@@ -131,39 +137,26 @@ namespace ControlLibrary
 
         private void comboBox_Background_color_Click(object sender, EventArgs e)
         {
-            Program_Settings ProgramSettings = new Program_Settings();
             ColorDialog colorDialog = new ColorDialog();
             ComboBox comboBox_color = sender as ComboBox;
             colorDialog.Color = comboBox_color.BackColor;
             colorDialog.FullOpen = true;
 
-            // читаем пользовательские цвета из настроек
-            if (File.Exists(Application.StartupPath + @"\Settings.json"))
-            {
-                ProgramSettings = JsonConvert.DeserializeObject<Program_Settings>
-                            (File.ReadAllText(Application.StartupPath + @"\Settings.json"), new JsonSerializerSettings
-                            {
-                                    //DefaultValueHandling = DefaultValueHandling.Ignore,
-                                    NullValueHandling = NullValueHandling.Ignore
-                            });
-            }
-            colorDialog.CustomColors = ProgramSettings.CustomColors;
+            colorDialog.CustomColors = CustomColors;
 
 
-            if (colorDialog.ShowDialog() == DialogResult.Cancel)
-                return;
+            if (colorDialog.ShowDialog() == DialogResult.Cancel) return;
+
             // установка цвета формы
             comboBox_color.BackColor = colorDialog.Color;
-            if (ProgramSettings.CustomColors != colorDialog.CustomColors)
+            if (CustomColors != colorDialog.CustomColors)
             {
-                ProgramSettings.CustomColors = colorDialog.CustomColors;
+                CustomColors = colorDialog.CustomColors;
 
-                string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
+                if (CustomColorsChanged != null && !setValue)
                 {
-                    //DefaultValueHandling = DefaultValueHandling.Ignore,
-                    NullValueHandling = NullValueHandling.Ignore
-                });
-                File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+                    CustomColorsChanged(CustomColors);
+                }
             }
 
             if (ValueChanged != null && !setValue)
@@ -351,9 +344,10 @@ namespace ControlLibrary
         }
 
         /// <summary>Очищает выпадающие списки с картинками, сбрасывает данные на значения по умолчанию</summary>
-        public void SettingsClear()
+        public void SettingsClear(int[] customColors)
         {
             setValue = true;
+            CustomColors = customColors;
 
             comboBox_Background_image.Text = null;
             comboBox_Preview_image.Text = null;
@@ -368,79 +362,79 @@ namespace ControlLibrary
     }
 }
 
-public class Program_Settings
-{
-    public bool Settings_Unpack_Dialog = true;
-    public bool Settings_Unpack_Save = false;
-    public bool Settings_Unpack_Replace = false;
+//public class Program_Settings
+//{
+//    public bool Settings_Unpack_Dialog = true;
+//    public bool Settings_Unpack_Save = false;
+//    public bool Settings_Unpack_Replace = false;
 
-    public bool Settings_Pack_Dialog = false;
-    public bool Settings_Pack_GoToFile = true;
-    public bool Settings_Pack_DoNotning = false;
+//    public bool Settings_Pack_Dialog = false;
+//    public bool Settings_Pack_GoToFile = true;
+//    public bool Settings_Pack_DoNotning = false;
 
-    public bool Settings_AfterUnpack_Dialog = false;
-    public bool Settings_AfterUnpack_Download = true;
-    public bool Settings_AfterUnpack_DoNothing = false;
+//    public bool Settings_AfterUnpack_Dialog = false;
+//    public bool Settings_AfterUnpack_Download = true;
+//    public bool Settings_AfterUnpack_DoNothing = false;
 
-    public bool Settings_Open_Dialog = false;
-    public bool Settings_Open_Download = true;
-    public bool Settings_Open_DoNotning = false;
-    public bool Settings_Open_Download_Your_File = false;
-    public string PreviewStates_Path = "";
+//    public bool Settings_Open_Dialog = false;
+//    public bool Settings_Open_Download = true;
+//    public bool Settings_Open_DoNotning = false;
+//    public bool Settings_Open_Download_Your_File = false;
+//    public string PreviewStates_Path = "";
 
-    public string Watch_Model = "Balance 2";
+//    public string Watch_Model = "Balance 2";
 
-    public bool ShowBorder = false;
-    public bool Crop = true;
-    public bool Pointer_Center_marker = true;
-    public bool Show_Warnings = true;
-    public bool Show_Shortcuts = true;
-    public bool Show_Buttons = true;
-    public bool Show_CircleScale_Area = false;
-    public bool Show_Widgets_Area = true;
+//    public bool ShowBorder = false;
+//    public bool Crop = true;
+//    public bool Pointer_Center_marker = true;
+//    public bool Show_Warnings = true;
+//    public bool Show_Shortcuts = true;
+//    public bool Show_Buttons = true;
+//    public bool Show_CircleScale_Area = false;
+//    public bool Show_Widgets_Area = true;
 
-    public bool Shortcuts_Area = true;
-    public bool Shortcuts_Border = true;
-    //public bool Shortcuts_Image = false;
-    public bool Shortcuts_In_Gif = true;
+//    public bool Shortcuts_Area = true;
+//    public bool Shortcuts_Border = true;
+//    //public bool Shortcuts_Image = false;
+//    public bool Shortcuts_In_Gif = true;
 
-    public bool Buttons_Area = true;
-    public bool Buttons_Border = true;
-    //public bool Buttons_Image = false;
-    public bool Buttons_In_Gif = true;
+//    public bool Buttons_Area = true;
+//    public bool Buttons_Border = true;
+//    //public bool Buttons_Image = false;
+//    public bool Buttons_In_Gif = true;
 
-    public bool Use_ARGB_encoding = false;
-    public bool ARGB_encoding_color = false;
-    public bool ARGB_encoding_forced = true;
-    public int ARGB_encoding_color_count = 255;
+//    public bool Use_ARGB_encoding = false;
+//    public bool ARGB_encoding_color = false;
+//    public bool ARGB_encoding_forced = true;
+//    public int ARGB_encoding_color_count = 255;
 
-    public float Scale = 1f;
-    public float Gif_Speed = 1f;
-    public int Animation_Preview_Speed = 4;
+//    public float Scale = 1f;
+//    public float Gif_Speed = 1f;
+//    public int Animation_Preview_Speed = 4;
 
-    public bool DrawAllWidgets = false;
+//    public bool DrawAllWidgets = false;
 
-    public bool ShowIn12hourFormat = true;
-    public bool CreateZPK = false;
-    public bool DelConfirm = false;
-    public bool AutoSave = false;
-    public int AutoSaveTime = 0;
-    public bool DevelopmentMode = false;
+//    public bool ShowIn12hourFormat = true;
+//    public bool CreateZPK = false;
+//    public bool DelConfirm = false;
+//    public bool AutoSave = false;
+//    public int AutoSaveTime = 0;
+//    public bool DevelopmentMode = false;
 
-    public int[] CustomColors = { };
+//    public int[] CustomColors = { };
 
-    public string language { get; set; }
+//    public string language { get; set; }
 
-    public int Splitter_Pos = 0;
+//    public int Splitter_Pos = 0;
 
-    public bool WatchSkin_Use = false;
+//    public bool WatchSkin_Use = false;
 
-    public string model_config = @"\model_config\configurations.json";
+//    public string model_config = @"\model_config\configurations.json";
 
-    public string CacheFonts_light = "0123456789 _-.,:;`'%°\\\\/";
-    public string CacheFonts_full = "0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz " +
-            "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя  ҐЄІЇґєії " + "_-.,:;`'%°\\\\/";
-}
+//    public string CacheFonts_light = "0123456789 _-.,:;`'%°\\\\/";
+//    public string CacheFonts_full = "0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz " +
+//            "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя  ҐЄІЇґєії " + "_-.,:;`'%°\\\\/";
+//}
 
 public class LastColor
 {

@@ -1243,15 +1243,8 @@ namespace Watch_Face_Editor
             else btnUploadToFilePost.Enabled = false;
             if (Settings_Load) return;
 
-            //ProgramSettings.FilePost_API_key = textBox_FilePost_API_key.Text;
             ProgramSettings.FilePost_API_key = SecretStorage.Encrypt(textBox_FilePost_API_key.Text);
-
-            string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
-            {
-                //DefaultValueHandling = DefaultValueHandling.Ignore,
-                NullValueHandling = NullValueHandling.Ignore
-            });
-            File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+            Save_Settings();
         }
 
         private void textBox_GitHub_TextChanged(object sender, EventArgs e)
@@ -1267,12 +1260,7 @@ namespace Watch_Face_Editor
             ProgramSettings.GitHub_filePath = textBox_GitHub_filePath.Text;
             ProgramSettings.GitHub_AskConfirmation = checkBox_GitHub_AskConfirmation.Checked;
 
-            string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
-            {
-                //DefaultValueHandling = DefaultValueHandling.Ignore,
-                NullValueHandling = NullValueHandling.Ignore
-            });
-            File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+            Save_Settings();
         }
 
         private void radioButton_FileSharing_CheckedChanged(object sender, EventArgs e)
@@ -1312,13 +1300,7 @@ namespace Watch_Face_Editor
             {
                 textBox_ZeppPlayerPath.Text = openFileDialog.FileName;
                 ProgramSettings.ZeppPlayerPath = openFileDialog.FileName;
-
-                string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
-                {
-                    //DefaultValueHandling = DefaultValueHandling.Ignore,
-                    NullValueHandling = NullValueHandling.Ignore
-                });
-                File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+                Save_Settings();
             }
         }
 

@@ -7962,7 +7962,8 @@ namespace Watch_Face_Editor
                     string align_h = cityName.align_h;
                     string align_v = cityName.align_v;
                     string text_style = cityName.text_style;
-                    string valueStr = "City Name";
+                    //string valueStr = "City Name";
+                    string valueStr = ProgramSettings.City_Name;
 
                     if (cityName.centreHorizontally)
                     {
@@ -8939,7 +8940,8 @@ namespace Watch_Face_Editor
                     string align_h = cityName.align_h;
                     string align_v = cityName.align_v;
                     string text_style = cityName.text_style;
-                    string valueStr = "City Name";
+                    //string valueStr = "City Name";
+                    string valueStr = ProgramSettings.City_Name;
 
                     if (cityName.centreHorizontally)
                     {
@@ -13032,7 +13034,7 @@ namespace Watch_Face_Editor
                     Button buttonPrev = worldClock.ButtonPrev;
                     hmUI_widget_IMG icon = worldClock.Icon;
 
-                    if (time != null && time.visible)
+                    if (time != null && index == time.position && time.visible)
                     {
                         int x = time.x;
                         int y = time.y;
@@ -13214,7 +13216,8 @@ namespace Watch_Face_Editor
                         string align_h = cityName.align_h;
                         string align_v = cityName.align_v;
                         string text_style = cityName.text_style;
-                        string valueStr = "City Name GMT";
+                        //string valueStr = "City Name GMT";
+                        string valueStr = ProgramSettings.City_Name + " GMT";
 
                         if (cityName.centreHorizontally)
                         {
