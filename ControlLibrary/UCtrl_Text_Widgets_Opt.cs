@@ -618,7 +618,6 @@ namespace ControlLibrary
 
         private void comboBox_Color_Click(object sender, EventArgs e)
         {
-            Program_Settings ProgramSettings = new Program_Settings();
             ColorDialog colorDialog = new ColorDialog();
             ComboBox comboBox_color = sender as ComboBox;
             colorDialog.Color = comboBox_color.BackColor;
