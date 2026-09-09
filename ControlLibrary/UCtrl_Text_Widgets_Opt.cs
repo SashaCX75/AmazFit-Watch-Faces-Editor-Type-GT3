@@ -17,6 +17,7 @@ namespace ControlLibrary
         private bool setValue; // режим задания параметров
         public Object _TextWidgets; // Общий виджет
         //public Object _Text;  // конкретный выбранный виджет
+        private int[] CustomColors = { }; // пользовательские цвета
 
         private bool Font_mode;
         public Dictionary<string, Object> WidgetProperty = new Dictionary<string, Object>();
@@ -340,6 +341,11 @@ namespace ControlLibrary
         public event WidgetProperty_Paste_Handler WidgetProperty_Paste;
         public delegate void WidgetProperty_Paste_Handler(object sender, EventArgs eventArgs, int rowIndex);
 
+        [Browsable(true)]
+        [Description("Происходит при изменении пользовательских цветов")]
+        public event CustomColorsChangedHandler CustomColorsChanged;
+        public delegate void CustomColorsChangedHandler(int[] customColors);
+
         public void UpdateTextList(List<String> textsList, List<bool> widgetsVisibleList, int rowIndex = 0)
         {
             setValue = true;
@@ -623,17 +629,7 @@ namespace ControlLibrary
             colorDialog.Color = comboBox_color.BackColor;
             colorDialog.FullOpen = true;
 
-            // читаем пользовательские цвета из настроек
-            if (File.Exists(Application.StartupPath + @"\Settings.json"))
-            {
-                ProgramSettings = JsonConvert.DeserializeObject<Program_Settings>
-                            (File.ReadAllText(Application.StartupPath + @"\Settings.json"), new JsonSerializerSettings
-                            {
-                                //DefaultValueHandling = DefaultValueHandling.Ignore,
-                                NullValueHandling = NullValueHandling.Ignore
-                            });
-            }
-            colorDialog.CustomColors = ProgramSettings.CustomColors;
+            colorDialog.CustomColors = CustomColors;
 
 
             if (colorDialog.ShowDialog() == DialogResult.Cancel)
@@ -641,16 +637,14 @@ namespace ControlLibrary
             // установка цвета формы
             comboBox_color.BackColor = colorDialog.Color;
             LastColor.last_color = colorDialog.Color;
-            if (ProgramSettings.CustomColors != colorDialog.CustomColors)
+            if (CustomColors != colorDialog.CustomColors)
             {
-                ProgramSettings.CustomColors = colorDialog.CustomColors;
+                CustomColors = colorDialog.CustomColors;
 
-                string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
+                if (CustomColorsChanged != null && !setValue)
                 {
-                    //DefaultValueHandling = DefaultValueHandling.Ignore,
-                    NullValueHandling = NullValueHandling.Ignore
-                });
-                File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+                    CustomColorsChanged(CustomColors);
+                }
             }
 
             int rowIndex = -1;
@@ -705,9 +699,10 @@ namespace ControlLibrary
         #region Settings Set/Clear
 
         /// <summary>Сбрасывает данные на значения по умолчанию</summary>
-        public void SettingsClear()
+        public void SettingsClear(int[] customColors)
         {
             setValue = true;
+            CustomColors = customColors;
 
             comboBox_alignmentHorizontal.SelectedIndex = 0;
             comboBox_alignmentVertical.SelectedIndex = 0;

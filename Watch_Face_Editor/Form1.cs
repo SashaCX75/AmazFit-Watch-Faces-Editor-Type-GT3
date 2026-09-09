@@ -30,6 +30,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using ZXing;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace Watch_Face_Editor
 {
@@ -98,9 +99,8 @@ namespace Watch_Face_Editor
                                     //DefaultValueHandling = DefaultValueHandling.Ignore,
                                     NullValueHandling = NullValueHandling.Ignore
                                 });
-                    //Logger.WriteLine("Чтение Settings.json");
                 }
-                else
+                else // если файла настроек нет то создаем его с настройками по умолчанию
                 {
                     Logger.WriteLine("Create Settings");
                     Properties.Settings.Default.FormLocation = centrPosition;
@@ -112,7 +112,7 @@ namespace Watch_Face_Editor
                         //DefaultValueHandling = DefaultValueHandling.Ignore,
                         NullValueHandling = NullValueHandling.Ignore
                     });
-                    //File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, new UTF8Encoding(false));
+                    
                     File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
                 }
                 Logger.WriteLine("FormLocation = " + Properties.Settings.Default.FormLocation.ToString());
@@ -136,21 +136,30 @@ namespace Watch_Face_Editor
                 }
 
 #if DEBUG
-                const string subkey = @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\";
+                //const string subkey = @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\";
 
-                using (var ndpKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(subkey))
+                //using (var ndpKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(subkey))
+                //{
+                //    if (ndpKey != null && ndpKey.GetValue("Release") != null)
+                //    {
+                //        Console.WriteLine($".NET Framework Version: {CheckFor45PlusVersion((int)ndpKey.GetValue("Release"))}");
+                //        Logger.WriteLine($".NET Framework Version: {CheckFor45PlusVersion((int)ndpKey.GetValue("Release"))}");
+                //    }
+                //    else
+                //    {
+                //        Console.WriteLine(".NET Framework Version 4.5 or later is not detected.");
+                //        Logger.WriteLine(".NET Framework Version 4.5 or later is not detected.");
+                //    }
+                //}
+                List<string> dotNetVersions = DotNetVersions.GetAllVersions();
+
+                Logger.WriteLine("* Check DotNetVersions");
+                foreach (string line in dotNetVersions)
                 {
-                    if (ndpKey != null && ndpKey.GetValue("Release") != null)
-                    {
-                        Console.WriteLine($".NET Framework Version: {CheckFor45PlusVersion((int)ndpKey.GetValue("Release"))}");
-                        Logger.WriteLine($".NET Framework Version: {CheckFor45PlusVersion((int)ndpKey.GetValue("Release"))}");
-                    }
-                    else
-                    {
-                        Console.WriteLine(".NET Framework Version 4.5 or later is not detected.");
-                        Logger.WriteLine(".NET Framework Version 4.5 or later is not detected.");
-                    }
+                    Console.WriteLine(line);
+                    Logger.WriteLine(line);
                 }
+                Logger.WriteLine("* Check DotNetVersions (end)");
 #endif
 
                 if (ProgramSettings == null) ProgramSettings = new Program_Settings();
@@ -336,12 +345,6 @@ namespace Watch_Face_Editor
                 SendMessage(windowPtr, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
             }
 
-            /*// Set window location
-            if (Properties.Settings.Default.FormLocation != null)
-            {
-                this.Location = Properties.Settings.Default.FormLocation;
-            }*/
-
             Logger.WriteLine("Form1_Load");
 
             PreviewView = false;
@@ -370,7 +373,6 @@ namespace Watch_Face_Editor
             }
             if (AvailableConfigurations.ContainsKey(ProgramSettings.Watch_Model)) 
             { 
-                //SelectedModel = AvailableConfigurations[ProgramSettings.Watch_Model];
                 comboBox_watch_model.Text = ProgramSettings.Watch_Model;
             }
             else
@@ -382,24 +384,10 @@ namespace Watch_Face_Editor
                 comboBox_watch_model.SelectedIndex = 0;
             }
 
-
-            checkBox_WatchSkin_Use.Checked = ProgramSettings.WatchSkin_Use;
-            textBox_WatchSkin_Path.Enabled = ProgramSettings.WatchSkin_Use;
-            textBox_WatchSkin_Path.Text = @"\Skin\" + SelectedModel.watchSkin; // времмено оставить
             if(SelectedModel.watchSkin == null || SelectedModel.watchSkin.Length == 0)
             {
                 textBox_WatchSkin_Path.Text = "";
             }
-
-            textBox_PreviewStates_Path.Text = ProgramSettings.PreviewStates_Path;
-
-            Logger.WriteLine("Set checkBox");
-            checkBox_border.Checked = ProgramSettings.ShowBorder;
-            checkBox_crop.Checked = ProgramSettings.Crop;
-            checkBox_Show_Shortcuts.Checked = ProgramSettings.Show_Shortcuts;
-            checkBox_CircleScaleImage.Checked = ProgramSettings.Show_CircleScale_Area;
-            checkBox_center_marker.Checked = ProgramSettings.Pointer_Center_marker;
-            checkBox_WidgetsArea.Checked = ProgramSettings.Show_Widgets_Area;
 
             label_version.Text = "v " +
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." +
@@ -410,6 +398,15 @@ namespace Watch_Face_Editor
             //label_version.Text = currentDPI.ToString();
 
             Logger.WriteLine("Set Settings");
+
+            radioButton_Settings_Unpack_Dialog.Checked = ProgramSettings.Settings_Unpack_Dialog;
+            radioButton_Settings_Unpack_Replace.Checked = ProgramSettings.Settings_Unpack_Replace;
+            radioButton_Settings_Unpack_Save.Checked = ProgramSettings.Settings_Unpack_Save;
+
+            radioButton_Settings_Pack_Dialog.Checked = ProgramSettings.Settings_Pack_Dialog;
+            radioButton_Settings_Pack_DoNotning.Checked = ProgramSettings.Settings_Pack_DoNotning;
+            radioButton_Settings_Pack_GoToFile.Checked = ProgramSettings.Settings_Pack_GoToFile;
+
             radioButton_Settings_AfterUnpack_Dialog.Checked = ProgramSettings.Settings_AfterUnpack_Dialog;
             radioButton_Settings_AfterUnpack_DoNothing.Checked = ProgramSettings.Settings_AfterUnpack_DoNothing;
             radioButton_Settings_AfterUnpack_Download.Checked = ProgramSettings.Settings_AfterUnpack_Download;
@@ -419,15 +416,16 @@ namespace Watch_Face_Editor
             radioButton_Settings_Open_Download.Checked = ProgramSettings.Settings_Open_Download;
             radioButton_Settings_Open_Download_Your_File.Checked = ProgramSettings.Settings_Open_Download_Your_File;
 
-            radioButton_Settings_Pack_Dialog.Checked = ProgramSettings.Settings_Pack_Dialog;
-            radioButton_Settings_Pack_DoNotning.Checked = ProgramSettings.Settings_Pack_DoNotning;
-            radioButton_Settings_Pack_GoToFile.Checked = ProgramSettings.Settings_Pack_GoToFile;
+            textBox_PreviewStates_Path.Text = ProgramSettings.PreviewStates_Path;
+            //ProgramSettings.Watch_Model меняем при чтении списка моделей
 
-            radioButton_Settings_Unpack_Dialog.Checked = ProgramSettings.Settings_Unpack_Dialog;
-            radioButton_Settings_Unpack_Replace.Checked = ProgramSettings.Settings_Unpack_Replace;
-            radioButton_Settings_Unpack_Save.Checked = ProgramSettings.Settings_Unpack_Save;
-            numericUpDown_Gif_Speed.Value = (decimal)ProgramSettings.Gif_Speed;
-            comboBox_Animation_Preview_Speed.SelectedIndex = ProgramSettings.Animation_Preview_Speed;
+            checkBox_border.Checked = ProgramSettings.ShowBorder;
+            checkBox_crop.Checked = ProgramSettings.Crop;
+            checkBox_center_marker.Checked = ProgramSettings.Pointer_Center_marker;
+            checkBox_Show_Shortcuts.Checked = ProgramSettings.Show_Shortcuts;
+            checkBox_Show_Buttons.Checked = ProgramSettings.Show_Buttons;
+            checkBox_CircleScaleArea.Checked = ProgramSettings.Show_CircleScale_Area;
+            checkBox_WidgetsArea.Checked = ProgramSettings.Show_Widgets_Area;
 
             checkBox_Shortcuts_Area.Checked = ProgramSettings.Shortcuts_Area;
             checkBox_Shortcuts_Border.Checked = ProgramSettings.Shortcuts_Border;
@@ -436,30 +434,25 @@ namespace Watch_Face_Editor
 
             checkBox_Buttons_Area.Checked = ProgramSettings.Buttons_Area;
             checkBox_Buttons_Border.Checked = ProgramSettings.Buttons_Border;
+            //checkBox_Buttons_Image.Checked = ProgramSettings.Buttons_Image;
             checkBox_Buttons_In_Gif.Checked = ProgramSettings.Buttons_In_Gif;
 
             checkBox_Use_ARGB.Checked = ProgramSettings.Use_ARGB_encoding;
             radioButton_ARGB_color.Checked = ProgramSettings.ARGB_encoding_color;
-
-            checkBox_ShowIn12hourFormat.Checked = ProgramSettings.ShowIn12hourFormat;
-            checkBox_AllWidgetsInGif.Checked = ProgramSettings.DrawAllWidgets;
             numericUpDown_ARGB_color_count.Value = ProgramSettings.ARGB_encoding_color_count;
             radioButton_ARGB_forced.Checked = ProgramSettings.ARGB_encoding_forced;
-            checkBox_DevelopmentMode.Checked = ProgramSettings.DevelopmentMode;
 
-            if (ProgramSettings.language.Length > 1) comboBox_Language.Text = ProgramSettings.language;
+            //ProgramSettings.Scale меняем при открытии предпросмотра
+
+            numericUpDown_Gif_Speed.Value = (decimal)ProgramSettings.Gif_Speed;
+            comboBox_Animation_Preview_Speed.SelectedIndex = ProgramSettings.Animation_Preview_Speed;
+
+            checkBox_AllWidgetsInGif.Checked = ProgramSettings.DrawAllWidgets;
+
+            checkBox_ShowIn12hourFormat.Checked = ProgramSettings.ShowIn12hourFormat;
+
             checkBox_CreateZPK.Checked = ProgramSettings.CreateZPK;
             checkBox_Del_Confirm.Checked = ProgramSettings.DelConfirm;
-
-            textBox_ZeppPlayerPath.Text = ProgramSettings.ZeppPlayerPath;
-            //textBox_FilePost_API_key.Text = ProgramSettings.FilePost_API_key;
-            textBox_FilePost_API_key.Text = SecretStorage.Decrypt(ProgramSettings.FilePost_API_key);
-            textBox_GitHub_owner.Text = ProgramSettings.GitHub_owner;
-            textBox_GitHub_token.Text = SecretStorage.Decrypt(ProgramSettings.GitHub_token);
-            textBox_GitHub_repoName.Text = ProgramSettings.GitHub_repoName;
-            textBox_GitHub_filePath.Text = ProgramSettings.GitHub_filePath;
-            checkBox_GitHub_AskConfirmation.Checked = ProgramSettings.GitHub_AskConfirmation;
-
             checkBox_AutoSave.Checked = ProgramSettings.AutoSave;
             numericUpDown_AutoSave_Time.Value = ProgramSettings.AutoSaveTime;
             if (ProgramSettings.AutoSave)
@@ -472,6 +465,27 @@ namespace Watch_Face_Editor
                 else timer_AutoSave.Enabled = false;
             }
             else timer_AutoSave.Enabled = false;
+            checkBox_DevelopmentMode.Checked = ProgramSettings.DevelopmentMode;
+
+            textBox_ZeppPlayerPath.Text = ProgramSettings.ZeppPlayerPath;
+            //textBox_FilePost_API_key.Text = ProgramSettings.FilePost_API_key;
+            textBox_FilePost_API_key.Text = SecretStorage.Decrypt(ProgramSettings.FilePost_API_key);
+            textBox_GitHub_owner.Text = ProgramSettings.GitHub_owner;
+            textBox_GitHub_token.Text = SecretStorage.Decrypt(ProgramSettings.GitHub_token);
+            textBox_GitHub_repoName.Text = ProgramSettings.GitHub_repoName;
+            textBox_GitHub_filePath.Text = ProgramSettings.GitHub_filePath;
+            checkBox_GitHub_AskConfirmation.Checked = ProgramSettings.GitHub_AskConfirmation;
+
+            //ProgramSettings.CustomColors передаем цвета при открытии свойст виджета
+
+            if (ProgramSettings.language.Length > 1) comboBox_Language.Text = ProgramSettings.language;
+
+            checkBox_WatchSkin_Use.Checked = ProgramSettings.WatchSkin_Use;
+            textBox_WatchSkin_Path.Enabled = ProgramSettings.WatchSkin_Use;
+            textBox_WatchSkin_Path.Text = @"\Skin\" + SelectedModel.watchSkin; // времмено оставить
+
+            checkBox_SendSystemInfo.Checked = ProgramSettings.SendSystemInfo;
+
 
             Settings_Load = false;
             JSON_Modified = false;
@@ -506,8 +520,6 @@ namespace Watch_Face_Editor
                     richTextBox_Tips.Rtf = Properties.Resources.tips_en;
                     break;
             }
-            
-            //richTextBox_Tips.Rtf = richTextBox_Tips.Text;
 
 
             StartJsonPreview();
@@ -588,6 +600,8 @@ namespace Watch_Face_Editor
             fitText(button_SaveGIF);
             fitText(button_SavePNG);
             Logger.WriteLine("* Form1_Shown(end)");
+
+            FirstSendSystemInfo();
 
             if (StartFileNameJson != null && StartFileNameJson.Length > 0)
             {
@@ -716,6 +730,14 @@ namespace Watch_Face_Editor
         private void Save_Settings()
         {
             if (Settings_Load) return;
+            ProgramSettings.Settings_Unpack_Dialog = radioButton_Settings_Unpack_Dialog.Checked;
+            ProgramSettings.Settings_Unpack_Replace = radioButton_Settings_Unpack_Replace.Checked;
+            ProgramSettings.Settings_Unpack_Save = radioButton_Settings_Unpack_Save.Checked;
+
+            ProgramSettings.Settings_Pack_Dialog = radioButton_Settings_Pack_Dialog.Checked;
+            ProgramSettings.Settings_Pack_DoNotning = radioButton_Settings_Pack_DoNotning.Checked;
+            ProgramSettings.Settings_Pack_GoToFile = radioButton_Settings_Pack_GoToFile.Checked;
+
             ProgramSettings.Settings_AfterUnpack_Dialog = radioButton_Settings_AfterUnpack_Dialog.Checked;
             ProgramSettings.Settings_AfterUnpack_DoNothing = radioButton_Settings_AfterUnpack_DoNothing.Checked;
             ProgramSettings.Settings_AfterUnpack_Download = radioButton_Settings_AfterUnpack_Download.Checked;
@@ -723,43 +745,62 @@ namespace Watch_Face_Editor
             ProgramSettings.Settings_Open_Dialog = radioButton_Settings_Open_Dialog.Checked;
             ProgramSettings.Settings_Open_DoNotning = radioButton_Settings_Open_DoNotning.Checked;
             ProgramSettings.Settings_Open_Download = radioButton_Settings_Open_Download.Checked;
+            ProgramSettings.Settings_Open_Download_Your_File = radioButton_Settings_Open_Download_Your_File.Checked;
+            //ProgramSettings.PreviewStates_Path меняем при выборе файла в диалоге выбора файла
 
-            ProgramSettings.Settings_Pack_Dialog = radioButton_Settings_Pack_Dialog.Checked;
-            ProgramSettings.Settings_Pack_DoNotning = radioButton_Settings_Pack_DoNotning.Checked;
-            ProgramSettings.Settings_Pack_GoToFile = radioButton_Settings_Pack_GoToFile.Checked;
+            //ProgramSettings.Watch_Model меняем при смене модели в comboBox_watch_model
+            if (comboBox_watch_model.SelectedIndex != -1) ProgramSettings.Watch_Model = comboBox_watch_model.Text;
 
-            ProgramSettings.Settings_Unpack_Dialog = radioButton_Settings_Unpack_Dialog.Checked;
-            ProgramSettings.Settings_Unpack_Replace = radioButton_Settings_Unpack_Replace.Checked;
-            ProgramSettings.Settings_Unpack_Save = radioButton_Settings_Unpack_Save.Checked;
+            ProgramSettings.ShowBorder = checkBox_border.Checked;
+            ProgramSettings.Crop = checkBox_crop.Checked;
+            ProgramSettings.Pointer_Center_marker = checkBox_center_marker.Checked;
+            //ProgramSettings.Show_Warnings = checkBox_Show_Warnings.Checked; не используем
+            ProgramSettings.Show_Shortcuts = checkBox_Show_Shortcuts.Checked;
+            ProgramSettings.Show_Buttons = checkBox_Show_Buttons.Checked;
+            ProgramSettings.Show_CircleScale_Area = checkBox_CircleScaleArea.Checked;
+            ProgramSettings.Show_Widgets_Area = checkBox_WidgetsArea.Checked;
 
-            ProgramSettings.ShowIn12hourFormat = checkBox_ShowIn12hourFormat.Checked;
-            ProgramSettings.WatchSkin_Use = checkBox_WatchSkin_Use.Checked;
-            ProgramSettings.DrawAllWidgets = checkBox_AllWidgetsInGif.Checked;
+            ProgramSettings.Shortcuts_Area = checkBox_Shortcuts_Area.Checked;
+            ProgramSettings.Shortcuts_Border = checkBox_Shortcuts_Border.Checked;
+            ProgramSettings.Shortcuts_In_Gif = checkBox_Shortcuts_In_Gif.Checked;
+
+            ProgramSettings.Buttons_Area = checkBox_Buttons_Area.Checked;
+            ProgramSettings.Buttons_Border = checkBox_Buttons_Border.Checked;
+            ProgramSettings.Buttons_In_Gif = checkBox_Buttons_In_Gif.Checked;
 
             ProgramSettings.Use_ARGB_encoding = checkBox_Use_ARGB.Checked;
             ProgramSettings.ARGB_encoding_color = radioButton_ARGB_color.Checked;
             ProgramSettings.ARGB_encoding_forced = radioButton_ARGB_forced.Checked;
             ProgramSettings.ARGB_encoding_color_count = (int)numericUpDown_ARGB_color_count.Value;
-            ProgramSettings.DevelopmentMode = checkBox_DevelopmentMode.Checked;
 
-            ProgramSettings.Shortcuts_Area = checkBox_Shortcuts_Area.Checked;
-            ProgramSettings.Shortcuts_Border = checkBox_Shortcuts_Border.Checked;
-            //ProgramSettings.Shortcuts_Image = checkBox_Shortcuts_Image.Checked;
-            ProgramSettings.Show_Shortcuts = checkBox_Show_Shortcuts.Checked;
+            //ProgramSettings.Scale меняем при смене масштаба
+            //ProgramSettings.Gif_Speed меняем при выборе скорости в numericUpDown_Gif_Speed
+            //ProgramSettings.Animation_Preview_Speed меняем при выборе скорости в comboBox_Animation_Preview_Speed
 
-            ProgramSettings.Buttons_Area = checkBox_Buttons_Area.Checked;
-            ProgramSettings.Buttons_Border = checkBox_Buttons_Border.Checked;
-            ProgramSettings.Show_Buttons = checkBox_Show_Buttons.Checked;
+            ProgramSettings.DrawAllWidgets = checkBox_AllWidgetsInGif.Checked;
 
-            ProgramSettings.ShowBorder = checkBox_border.Checked;
-            ProgramSettings.Crop = checkBox_crop.Checked;
-            ProgramSettings.Show_CircleScale_Area = checkBox_CircleScaleImage.Checked;
-            ProgramSettings.Pointer_Center_marker = checkBox_center_marker.Checked;
-            ProgramSettings.Show_Widgets_Area = checkBox_WidgetsArea.Checked;
+            ProgramSettings.ShowIn12hourFormat = checkBox_ShowIn12hourFormat.Checked;
 
-            if (comboBox_watch_model.SelectedIndex != -1) ProgramSettings.Watch_Model = comboBox_watch_model.Text;
             ProgramSettings.CreateZPK = checkBox_CreateZPK.Checked;
             ProgramSettings.DelConfirm = checkBox_Del_Confirm.Checked;
+            ProgramSettings.AutoSave = checkBox_AutoSave.Checked;
+            ProgramSettings.AutoSaveTime = (int)numericUpDown_AutoSave_Time.Value;
+            ProgramSettings.DevelopmentMode = checkBox_DevelopmentMode.Checked;
+
+            //ProgramSettings.ZeppPlayerPath меняем при выборе файла в диалоге выбора файла
+            //ProgramSettings.FilePost_API_key меняем при вводе текста в textBox_FilePost_API_key
+            //ProgramSettings.GitHub_owner меняем при вводе текста в textBox_GitHub_owner
+            //ProgramSettings.GitHub_repoName меняем при вводе текста в textBox_GitHub_repoName
+            //ProgramSettings.GitHub_filePath меняем при вводе текста в textBox_GitHub_filePath
+            //ProgramSettings.GitHub_token меняем при вводе текста в textBox_GitHub_token
+            //ProgramSettings.GitHub_AskConfirmation меняем при изменении состояния checkBox_GitHub_AskConfirmation
+
+            //ProgramSettings.CustomColors меняем цвет в форме настроек
+
+            //ProgramSettings.language меняем язык в comboBox_Language
+
+            ProgramSettings.WatchSkin_Use = checkBox_WatchSkin_Use.Checked;
+            ProgramSettings.SendSystemInfo = checkBox_SendSystemInfo.Checked;
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
             {
@@ -780,11 +821,7 @@ namespace Watch_Face_Editor
             if (Settings_Load) return;
             ProgramSettings.language = comboBox_Language.Text;
             SetLanguage();
-            string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore
-            });
-            File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+            Save_Settings();
             if (!Settings_Load)
             {
                 if (MessageBox.Show(Properties.FormStrings.Message_Restart_Text1 + Environment.NewLine +
@@ -800,11 +837,14 @@ namespace Watch_Face_Editor
         {
             if (Settings_Load) return;
             ProgramSettings.Animation_Preview_Speed = comboBox_Animation_Preview_Speed.SelectedIndex;
-            string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore
-            });
-            File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+            Save_Settings();
+        }
+
+        private void numericUpDown_Gif_Speed_ValueChanged(object sender, EventArgs e)
+        {
+            if (Settings_Load) return;
+            ProgramSettings.Gif_Speed = (float)numericUpDown_Gif_Speed.Value;
+            Save_Settings();
         }
 
         // устанавливаем заголовок окна
@@ -898,13 +938,6 @@ namespace Watch_Face_Editor
                 if (fullfilename.IndexOf(Application.StartupPath) == 0)
                     fullfilename = fullfilename.Remove(0, Application.StartupPath.Length);
                 textBox_WatchSkin_Path.Text = fullfilename;
-
-                string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
-                {
-                    //DefaultValueHandling = DefaultValueHandling.Ignore,
-                    NullValueHandling = NullValueHandling.Ignore
-                });
-                File.WriteAllText("Settings.json", JSON_String, Encoding.UTF8);
 
                 Logger.WriteLine("* WatchSkin_PathGet_Click_END");
             }
@@ -1947,7 +1980,7 @@ namespace Watch_Face_Editor
             }
         }
 
-        private void ShowElemenrOptions(string optionsName)
+        private void ShowElemenOptions(string optionsName)
         {
             bool updatePreview = false;
             if (uCtrl_EditableBackground_Opt.Visible) updatePreview = true;
@@ -2245,8 +2278,8 @@ namespace Watch_Face_Editor
             uCtrl_RepeatingAlert_Elm.SettingsClear();
             uCtrl_TopImage_Elm.SettingsClear();
             uCtrl_Buttons_Elm.SettingsClear();
-            uCtrl_Switch_Background_Opt.SettingsClear();
-            uCtrl_Switch_BG_Color_Opt.SettingsClear();
+            uCtrl_Switch_Background_Opt.SettingsClear(ProgramSettings.CustomColors);
+            uCtrl_Switch_BG_Color_Opt.SettingsClear(ProgramSettings.CustomColors);
         }
 
         private void uCtrl_Background_Elm_SelectChanged(object sender, EventArgs eventArgs)
@@ -2282,7 +2315,7 @@ namespace Watch_Face_Editor
                     if (Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show) Editable_background_ShowOnAOD = true;
                 }
             }
-            ShowElemenrOptions("Background");
+            ShowElemenOptions("Background");
             Read_Background_Options(background, editable_background, Editable_background_ShowOnAOD, preview, id);
         }
 
@@ -2324,7 +2357,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = digitalTime.Hour;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2333,7 +2366,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = digitalTime.Minute;
                             Read_ImgNumber_Options(img_number, false, true, Properties.FormStrings.FollowMinute, false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2342,7 +2375,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = digitalTime.Second;
                             Read_ImgNumber_Options(img_number, false, true, Properties.FormStrings.FollowSecond, false, false, true, true);
-                            ShowElemenrOptions("Text"); 
+                            ShowElemenOptions("Text"); 
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2351,7 +2384,7 @@ namespace Watch_Face_Editor
                         {
                             hmUI_widget_IMG_TIME_am_pm am_pm = digitalTime.AmPm;
                             Read_AM_PM_Options(am_pm);
-                            ShowElemenrOptions("AmPm");
+                            ShowElemenOptions("AmPm");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2361,7 +2394,7 @@ namespace Watch_Face_Editor
                         {
                             text = digitalTime.Hour_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2370,7 +2403,7 @@ namespace Watch_Face_Editor
                         {
                             text = digitalTime.Minute_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2379,7 +2412,7 @@ namespace Watch_Face_Editor
                         {
                             text = digitalTime.Second_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2388,7 +2421,7 @@ namespace Watch_Face_Editor
                         {
                             text = digitalTime.Hour_min_Font;
                             Read_Text_Options(text, true, true, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2397,7 +2430,7 @@ namespace Watch_Face_Editor
                         {
                             text = digitalTime.Hour_min_sec_Font;
                             Read_Text_Options(text, true, true, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2407,7 +2440,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = digitalTime.Hour_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2416,7 +2449,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = digitalTime.Minute_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2425,7 +2458,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = digitalTime.Second_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2435,7 +2468,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = digitalTime.Hour_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2444,7 +2477,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = digitalTime.Minute_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2453,7 +2486,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = digitalTime.Second_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2503,7 +2536,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = digitalTime.Group_Hour.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2512,7 +2545,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = digitalTime.Group_Minute.Number;
                             Read_ImgNumber_Options(img_number, false, true, Properties.FormStrings.FollowMinute, false, false, true, false);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2521,7 +2554,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = digitalTime.Group_Second.Number;
                             Read_ImgNumber_Options(img_number, false, true, Properties.FormStrings.FollowSecond, false, false, true, false);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2530,7 +2563,7 @@ namespace Watch_Face_Editor
                         {
                             hmUI_widget_IMG_TIME_am_pm am_pm = digitalTime.AmPm;
                             Read_AM_PM_Options(am_pm);
-                            ShowElemenrOptions("AmPm");
+                            ShowElemenOptions("AmPm");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2540,7 +2573,7 @@ namespace Watch_Face_Editor
                         {
                             text = digitalTime.Group_Hour.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2549,7 +2582,7 @@ namespace Watch_Face_Editor
                         {
                             text = digitalTime.Group_Minute.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2558,7 +2591,7 @@ namespace Watch_Face_Editor
                         {
                             text = digitalTime.Group_Second.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2567,7 +2600,7 @@ namespace Watch_Face_Editor
                         {
                             text = digitalTime.Hour_Min_Font;
                             Read_Text_Options(text, true, true, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2576,7 +2609,7 @@ namespace Watch_Face_Editor
                         {
                             text = digitalTime.Hour_Min_Sec_Font;
                             Read_Text_Options(text, true, true, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2586,7 +2619,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = digitalTime.Group_Hour.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2595,7 +2628,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = digitalTime.Group_Minute.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2604,7 +2637,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = digitalTime.Group_Second.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2614,7 +2647,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = digitalTime.Group_Hour.Text_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2623,7 +2656,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = digitalTime.Group_Minute.Text_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2632,7 +2665,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = digitalTime.Group_Second.Text_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2681,7 +2714,7 @@ namespace Watch_Face_Editor
                             img_pointer = analogTime.Hour;
                             Read_ImgPointer_Options(img_pointer, false);
                             uCtrl_Pointer_Opt.TimeMode = true;
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2691,7 +2724,7 @@ namespace Watch_Face_Editor
                             img_pointer = analogTime.Minute;
                             Read_ImgPointer_Options(img_pointer, false);
                             uCtrl_Pointer_Opt.TimeMode = true;
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2701,7 +2734,7 @@ namespace Watch_Face_Editor
                             img_pointer = analogTime.Second;
                             Read_ImgPointer_Options(img_pointer, false);
                             uCtrl_Pointer_Opt.TimeMode = true;
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2745,7 +2778,7 @@ namespace Watch_Face_Editor
                             img_pointer = analogTime.Hour;
                             Read_ImgPointer_Options(img_pointer, false);
                             uCtrl_Pointer_Opt.TimeMode = false;
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2755,7 +2788,7 @@ namespace Watch_Face_Editor
                             img_pointer = analogTime.Minute;
                             Read_ImgPointer_Options(img_pointer, false);
                             uCtrl_Pointer_Opt.TimeMode = false;
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2765,7 +2798,7 @@ namespace Watch_Face_Editor
                             img_pointer = analogTime.Second;
                             Read_ImgPointer_Options(img_pointer, false);
                             uCtrl_Pointer_Opt.TimeMode = false;
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2777,7 +2810,7 @@ namespace Watch_Face_Editor
                             Read_Smooth_Second_Options(smoothSecond);
                             uCtrl_SmoothSeconds_Opt.AOD = radioButton_ScreenIdle.Checked;
                             if (radioButton_ScreenIdle.Checked && smoothSecond == null) uCtrl_SmoothSeconds_Opt.radioButton_type2.Checked = true;
-                            ShowElemenrOptions("SmoothSecond");
+                            ShowElemenOptions("SmoothSecond");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2825,7 +2858,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = timeCircle.Hour;
                             Read_CircleScale_Options(circle_scale/*, false*/);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2834,7 +2867,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = timeCircle.Minute;
                             Read_CircleScale_Options(circle_scale/*, false*/);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2843,7 +2876,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = timeCircle.Second;
                             Read_CircleScale_Options(circle_scale/*, false*/);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2896,7 +2929,7 @@ namespace Watch_Face_Editor
                         {
                             text = worldClock.Time;
                             Read_Text_Options(text, true, true, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2905,7 +2938,7 @@ namespace Watch_Face_Editor
                         {
                             text = worldClock.TimeZone;
                             Read_Text_Options(text, false, false, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2915,7 +2948,7 @@ namespace Watch_Face_Editor
                             text = worldClock.CityName;
                             Read_Text_Options(text, true, false);
                             uCtrl_Text_SystemFont_Opt.SityName = true;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2924,7 +2957,7 @@ namespace Watch_Face_Editor
                         {
                             text = worldClock.TimeDifference;
                             Read_Text_Options(text, false, false, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2933,7 +2966,7 @@ namespace Watch_Face_Editor
                         {
                             button = worldClock.ButtonPrev;
                             Read_ButtonOne_Options(button);
-                            ShowElemenrOptions("ButtonOne");
+                            ShowElemenOptions("ButtonOne");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2942,7 +2975,7 @@ namespace Watch_Face_Editor
                         {
                             button = worldClock.ButtonNext;
                             Read_ButtonOne_Options(button);
-                            ShowElemenrOptions("ButtonOne");
+                            ShowElemenOptions("ButtonOne");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2951,7 +2984,7 @@ namespace Watch_Face_Editor
                         {
                             icon = worldClock.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2974,7 +3007,7 @@ namespace Watch_Face_Editor
                 //if (SpO2.Number == null) SpO2.Number = new hmUI_widget_IMG_NUMBER();
                 //img_number = SpO2.Number;
                 Read_EditablePointers_Options(editablePointers);
-                ShowElemenrOptions("EditableTimePointer");
+                ShowElemenOptions("EditableTimePointer");
 
             }
         }
@@ -2993,7 +3026,7 @@ namespace Watch_Face_Editor
                 //if (SpO2.Number == null) SpO2.Number = new hmUI_widget_IMG_NUMBER();
                 //img_number = SpO2.Number;
                 Read_EditableElements_Options(editableElement);
-                ShowElemenrOptions("EditableElements");
+                ShowElemenOptions("EditableElements");
 
             }
         }
@@ -3041,7 +3074,7 @@ namespace Watch_Face_Editor
             string text = File.ReadAllText(fileName);
 
             string autosave_FileName = fileName + ".temp";
-            if (File.Exists(autosave_FileName))
+            if (File.Exists(autosave_FileName) && ProgramSettings.AutoSave)
             {
                 DialogResult dr = MessageBox.Show(Properties.FormStrings.Message_Load_AutoSave,
                        Properties.FormStrings.Message_AutoSave_Caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -3121,6 +3154,50 @@ namespace Watch_Face_Editor
             FormText();
 
             groupBox_AddElemets.Enabled = true;
+
+            SendSystemInformation();
+        }
+
+        private void FirstSendSystemInfo()
+        {
+            Logger.WriteLine("* FirstSendSystemInfo (start)");
+            string AppFolder = Path.Combine( Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData), "Watch_Face_Editor_(ZeppOS)");
+            string DeviceIdFile = Path.Combine(AppFolder, "device_id.txt");
+            if (!File.Exists(DeviceIdFile))
+            {
+                Logger.WriteLine("First start");
+                DeviceRegistration.GetDeviceId();
+                MessageBox.Show(
+                    Properties.FormStrings.Message_SendInfo_Text1 + Environment.NewLine + 
+                    Properties.FormStrings.Message_SendInfo_Text2 + Environment.NewLine + 
+                    Properties.FormStrings.Message_SendInfo_Text3 + Environment.NewLine +
+                    Properties.FormStrings.Message_SendInfo_Text4 + Environment.NewLine +
+                    Properties.FormStrings.Message_SendInfo_Text5 + Environment.NewLine + Environment.NewLine +
+                    Properties.FormStrings.Message_SendInfo_Text6 + Environment.NewLine + Environment.NewLine +
+                    Properties.FormStrings.Message_SendInfo_Text7 + Environment.NewLine,
+                    Properties.FormStrings.Message_SendInfo_Caption, 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information
+                );
+            }
+            Logger.WriteLine("* FirstSendSystemInfo (end)");
+        }
+
+        private async void SendSystemInformation()
+        {
+            if (!ProgramSettings.SendSystemInfo) return;
+            //string version =
+            //    System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." +
+            //    System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString() + "." +
+            //    System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Build.ToString() +"." +
+            //    System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Revision.ToString();
+
+            bool result = await DeviceRegistration.RegisterAsync(ProgramSettings.language);
+            Logger.WriteLine(
+                result
+                    ? "The device has been registered"
+                    : "Unable to register the device");
+
         }
 
         private string GetNewFormatDeviceName(string formatName)
@@ -3722,7 +3799,7 @@ namespace Watch_Face_Editor
             Preview_screen(gPanel, scale, checkBox_crop.Checked, checkBox_WebW.Checked, checkBox_WebB.Checked,
                 checkBox_border.Checked, checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked,
                 checkBox_Shortcuts_Border.Checked, checkBox_Shortcuts_Image.Checked, checkBox_Show_Buttons.Checked,
-                checkBox_Buttons_Area.Checked, checkBox_Buttons_Border.Checked, true, checkBox_CircleScaleImage.Checked,
+                checkBox_Buttons_Area.Checked, checkBox_Buttons_Border.Checked, true, checkBox_CircleScaleArea.Checked,
                 checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, false, -1, showEeditMode, edit_mode);
             pictureBox_Preview.BackgroundImage = bitmap;
             gPanel.Dispose();
@@ -3776,11 +3853,6 @@ namespace Watch_Face_Editor
 
                 formPreview.pictureBox_Preview.Resize += (object senderResize, EventArgs eResize) =>
                 {
-                    //if (Form_Preview.Watch_Model != comboBox_watch_model.Text)
-                    //{
-                    //    if (comboBox_watch_model.SelectedIndex == -1) Form_Preview.Watch_Model = "GTR 3";
-                    //    else Form_Preview.Watch_Model = comboBox_watch_model.Text;
-                    //}
                     float scalePreviewResize = 1.0f;
                     if (formPreview.radioButton_small.Checked) scalePreviewResize = 0.5f;
                     if (formPreview.radioButton_large.Checked) scalePreviewResize = 1.5f;
@@ -3791,44 +3863,9 @@ namespace Watch_Face_Editor
                     if (formPreview.radioButton_x5.Checked) scalePreviewResize = 5.0f;
 
                     ProgramSettings.Scale = scalePreviewResize;
-                    string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
-                    {
-                        //DefaultValueHandling = DefaultValueHandling.Ignore,
-                        NullValueHandling = NullValueHandling.Ignore
-                    });
-                    File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+                    Save_Settings();
 
-                    #region BackgroundImage 
-                    //Bitmap bitmapPreviewResize = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-                    //switch (ProgramSettings.Watch_Model)
-                    //{
-                    //    case "GTR 3 Pro":
-                    //        bitmapPreviewResize = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
-                    //        break;
-                    //    case "GTS 3":
-                    //    case "GTS 4":
-                    //        bitmapPreviewResize = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
-                    //        break;
-                    //    case "GTR 4":
-                    //        bitmapPreviewResize = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
-                    //        break;
-                    //    case "Amazfit Band 7":
-                    //        bitmapPreviewResize = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
-                    //        break;
-                    //    case "GTS 4 mini":
-                    //        bitmapPreviewResize = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
-                    //        break;
-                    //    case "Falcon":
-                    //    case "GTR mini":
-                    //        bitmapPreviewResize = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
-                    //        break;
-                    //}
-                    /*// StartBlock :: Kartun
-                    Logger.WriteLine($"BackgroundImage for {ProgramSettings.Watch_Model}");
-                    //Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
-                    Logger.WriteLine($"Loaded configuration: {currPlatform}");
-                    bitmapPreviewResize = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
-                    // EndBlock :: Kartun*/
+                    #region BackgroundImage
                     Bitmap bitmapPreviewResize = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
                     Graphics gPanelPreviewResize = Graphics.FromImage(bitmapPreviewResize);
                     #endregion
@@ -3855,7 +3892,7 @@ namespace Watch_Face_Editor
                         checkBox_WebW.Checked, checkBox_WebB.Checked, checkBox_border.Checked,
                         checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked, checkBox_Shortcuts_Border.Checked,
                         checkBox_Shortcuts_Image.Checked, checkBox_Show_Buttons.Checked, checkBox_Buttons_Area.Checked,
-                        checkBox_Buttons_Border.Checked, true,checkBox_CircleScaleImage.Checked, 
+                        checkBox_Buttons_Border.Checked, true,checkBox_CircleScaleArea.Checked, 
                         checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link_aod, false, false, -1, showEeditMode, edit_mode);
                     formPreview.pictureBox_Preview.BackgroundImage = bitmapPreviewResize;
                     gPanelPreviewResize.Dispose();
@@ -3878,11 +3915,6 @@ namespace Watch_Face_Editor
                 };
             }
 
-            //if (Form_Preview.Watch_Model != comboBox_watch_model.Text)
-            //{
-            //    if (comboBox_watch_model.SelectedIndex == -1) Form_Preview.Watch_Model = "GTR 3";
-            //    else Form_Preview.Watch_Model = comboBox_watch_model.Text;
-            //}
             formPreview.radioButton_CheckedChanged(sender, e);
             float scale = 1.0f;
 
@@ -3915,7 +3947,7 @@ namespace Watch_Face_Editor
             Preview_screen(gPanel, scale, checkBox_crop.Checked, checkBox_WebW.Checked, checkBox_WebB.Checked,
                 checkBox_border.Checked, checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked,
                 checkBox_Shortcuts_Border.Checked, checkBox_Shortcuts_Image.Checked, checkBox_Show_Buttons.Checked,
-                checkBox_Buttons_Area.Checked, checkBox_Buttons_Border.Checked, true, checkBox_CircleScaleImage.Checked,
+                checkBox_Buttons_Area.Checked, checkBox_Buttons_Border.Checked, true, checkBox_CircleScaleArea.Checked,
                 checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, false, -1, showEeditMode, edit_mode);
             formPreview.pictureBox_Preview.BackgroundImage = bitmap;
             gPanel.Dispose();
@@ -10057,14 +10089,7 @@ namespace Watch_Face_Editor
         private void checkBox_AutoSave_CheckedChanged(object sender, EventArgs e)
         {
 
-            ProgramSettings.AutoSave = checkBox_AutoSave.Checked;
-
-            string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
-            {
-                //DefaultValueHandling = DefaultValueHandling.Ignore,
-                NullValueHandling = NullValueHandling.Ignore
-            });
-            File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+            Save_Settings();
 
             numericUpDown_AutoSave_Time.Enabled = ProgramSettings.AutoSave;
             if (ProgramSettings.AutoSave)
@@ -10081,14 +10106,7 @@ namespace Watch_Face_Editor
 
         private void numericUpDown_AutoSave_Time_ValueChanged(object sender, EventArgs e)
         {
-            ProgramSettings.AutoSaveTime = (int)numericUpDown_AutoSave_Time.Value;
-
-            string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
-            {
-                //DefaultValueHandling = DefaultValueHandling.Ignore,
-                NullValueHandling = NullValueHandling.Ignore
-            });
-            File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+            Save_Settings();
 
             if (ProgramSettings.AutoSaveTime > 0)
             {
@@ -12719,10 +12737,11 @@ namespace Watch_Face_Editor
                 app.platforms.Add(new Platform() { name = SelectedModel.name, deviceSource = id });
             }
 
-            if (ProgramSettings.DevelopmentMode) app.packageInfo.mode = "development";
+            if (ProgramSettings.DevelopmentMode) app.packageInfo.mode = "preview";
 
 #if DEBUG
-            app.packageInfo.mode = "development";
+            //app.packageInfo.mode = "development";
+            app.packageInfo.mode = "preview";
 #endif
             int timeStamp = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
             app.packageInfo.timeStamp = timeStamp;
@@ -13093,15 +13112,6 @@ namespace Watch_Face_Editor
             if (Watch_Face != null && Watch_Face.WatchFace_Info != null && Watch_Face.WatchFace_Info.Preview != null) return;
             if (FileName != null && ProjectDir != null) // проект уже сохранен
             {
-                // формируем картинку для предпросмотра
-                /*// StartBlock :: Kartun
-                Logger.WriteLine($"* button_CreatePreview_Click for {ProgramSettings.Watch_Model}");
-                Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
-                Logger.WriteLine($"Loaded configuration: {currPlatform}");
-                bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
-                mask = new Bitmap(Application.StartupPath + @"\Mask\" + currPlatform.maskImage);
-                PreviewHeight = currPlatform.previewHeight;
-                // EndBlock :: Kartun*/
                 Bitmap bitmap = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
                 int PreviewHeight = SelectedModel.previewHeight;
@@ -13804,6 +13814,14 @@ namespace Watch_Face_Editor
                                 if (user_script_AOD.Length > 5) Elements.Add(new ElementScript());
                             }
                             script_AOD = (ElementScript)Elements.Find(e => e.GetType().Name == "ElementScript");
+                        }
+
+                        if (script == null)
+                        {
+                            if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                            if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                            Watch_Face.ScreenNormal.Elements.Add(new ElementScript());
+                            script = (ElementScript)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementScript");
                         }
 
                         string jsDir = Path.Combine(projectPath, "JS");
@@ -14844,7 +14862,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = dateDay.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -14853,7 +14871,7 @@ namespace Watch_Face_Editor
                         {
                             text = dateDay.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -14863,7 +14881,7 @@ namespace Watch_Face_Editor
                             text = dateDay.Day_Month_Font;
                             Read_Text_Options(text, false, true, true);
                             uCtrl_Text_SystemFont_Opt.DayMonthYear = true;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -14873,7 +14891,7 @@ namespace Watch_Face_Editor
                             text = dateDay.Day_Month_Year_Font;
                             Read_Text_Options(text, true, true, true);
                             uCtrl_Text_SystemFont_Opt.DayMonthYear = true;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -14882,7 +14900,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = dateDay.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -14891,7 +14909,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = dateDay.Text_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -14900,7 +14918,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = dateDay.Pointer;
                             Read_ImgPointer_Options(img_pointer, true);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -14949,7 +14967,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = dateMonth.Images;
                             Read_ImgLevel_Options(img_level, 12, false);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -14958,7 +14976,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = dateMonth.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -14967,7 +14985,7 @@ namespace Watch_Face_Editor
                         {
                             text = dateMonth.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -14976,7 +14994,7 @@ namespace Watch_Face_Editor
                         {
                             text = dateMonth.Month_Font;
                             Read_Text_Options(text, false, false, false, false, false, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -14985,7 +15003,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = dateMonth.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -14994,7 +15012,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = dateMonth.Text_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15003,7 +15021,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = dateMonth.Pointer;
                             Read_ImgPointer_Options(img_pointer, true);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15054,7 +15072,7 @@ namespace Watch_Face_Editor
                             img_number = dateYear.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
                             uCtrl_Text_Opt.Year = true;
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15064,7 +15082,7 @@ namespace Watch_Face_Editor
                             text = dateYear.Number_Font;
                             Read_Text_Options(text, true, true);
                             uCtrl_Text_SystemFont_Opt.Year = true;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15073,7 +15091,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = dateYear.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, true, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15082,7 +15100,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = dateYear.Text_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, true, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15091,7 +15109,7 @@ namespace Watch_Face_Editor
                         {
                             icon = dateYear.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15137,7 +15155,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = dateWeek.Images;
                             Read_ImgLevel_Options(img_level, 7, false);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15146,7 +15164,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = dateWeek.Pointer;
                             Read_ImgPointer_Options(img_pointer, true);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15157,7 +15175,7 @@ namespace Watch_Face_Editor
                             Read_Text_Options(text, false, false, false, false, true);
                             if (text.unit_string.Length == 0) uCtrl_Text_SystemFont_Opt_ValueChanged(sender, eventArgs);
                             uCtrl_Text_SystemFont_Opt.Use2color = true;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15185,7 +15203,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Step;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15194,7 +15212,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Cal;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15203,7 +15221,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Heart;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15212,7 +15230,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.PAI;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15221,7 +15239,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Battery;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15230,7 +15248,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Sunrise;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15239,7 +15257,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Moon;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15248,7 +15266,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.BodyTemp;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15257,7 +15275,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Weather;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15266,7 +15284,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Stand;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15275,7 +15293,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.SPO2;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15284,7 +15302,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Altimeter;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15293,7 +15311,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Stress;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15302,7 +15320,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Countdown;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15311,7 +15329,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Stopwatch;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15320,7 +15338,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Alarm;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15329,7 +15347,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Sleep;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15338,7 +15356,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Altitude;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15347,7 +15365,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Readiness;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15356,7 +15374,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.OutdoorRunning;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15365,7 +15383,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.Walking;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15374,7 +15392,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.OutdoorCycling;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15383,7 +15401,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.FreeTraining;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15392,7 +15410,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.PoolSwimming;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15401,7 +15419,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.OpenWaterSwimming;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15410,7 +15428,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.TrainingLoad;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15419,7 +15437,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.VO2max;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15428,7 +15446,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.RecoveryTime;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15437,7 +15455,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.BreathTrain;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15446,7 +15464,7 @@ namespace Watch_Face_Editor
                         {
                             img_click = shortcuts.FatBurning;
                             Read_Shortcuts_Options(img_click);
-                            ShowElemenrOptions("Shortcut");
+                            ShowElemenOptions("Shortcut");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15490,7 +15508,7 @@ namespace Watch_Face_Editor
                         {
                             img_status = statuses.Alarm;
                             Read_Statuses_Options(img_status);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15499,7 +15517,7 @@ namespace Watch_Face_Editor
                         {
                             img_status = statuses.Bluetooth;
                             Read_Statuses_Options(img_status);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15508,7 +15526,7 @@ namespace Watch_Face_Editor
                         {
                             img_status = statuses.DND;
                             Read_Statuses_Options(img_status);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15517,7 +15535,7 @@ namespace Watch_Face_Editor
                         {
                             img_status = statuses.Lock;
                             Read_Statuses_Options(img_status);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15563,7 +15581,7 @@ namespace Watch_Face_Editor
                         {
                             frame_animation = animation.Frame_Animation_List;
                             Read_FrameAnimation_Options(frame_animation);
-                            ShowElemenrOptions("FrameAnimation");
+                            ShowElemenOptions("FrameAnimation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15572,7 +15590,7 @@ namespace Watch_Face_Editor
                         {
                             motion_animation = animation.Motion_Animation_List;
                             Read_MotionAnimation_Options(motion_animation);
-                            ShowElemenrOptions("MotionAnimation");
+                            ShowElemenOptions("MotionAnimation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15581,7 +15599,7 @@ namespace Watch_Face_Editor
                         {
                             rotate_animation = animation.Rotate_Animation_List;
                             Read_RotateAnimation_Options(rotate_animation);
-                            ShowElemenrOptions("RotateAnimation");
+                            ShowElemenOptions("RotateAnimation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15636,7 +15654,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = steps.Images;
                             Read_ImgLevel_Options(img_level, 10, true, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15645,7 +15663,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = steps.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 10, false);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15654,7 +15672,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = steps.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15663,7 +15681,7 @@ namespace Watch_Face_Editor
                         {
                             text = steps.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15672,7 +15690,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = steps.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15681,7 +15699,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = steps.Text_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15690,7 +15708,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = steps.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15699,7 +15717,7 @@ namespace Watch_Face_Editor
                         {
                             text = steps.Number_Target_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15708,7 +15726,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = steps.Text_rotation_Target;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15717,7 +15735,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = steps.Text_circle_Target;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15726,7 +15744,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = steps.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15735,7 +15753,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = steps.Circle_Scale;
                             Read_CircleScale_Options(circle_scale);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15744,7 +15762,7 @@ namespace Watch_Face_Editor
                         {
                             linear_scale = steps.Linear_Scale;
                             Read_LinearScale_Options(linear_scale);
-                            ShowElemenrOptions("Linear_Scale");
+                            ShowElemenOptions("Linear_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15753,7 +15771,7 @@ namespace Watch_Face_Editor
                         {
                             icon = steps.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15806,7 +15824,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = battery.Images;
                             Read_ImgLevel_Options(img_level, 10, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15815,7 +15833,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = battery.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 10, false);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15824,7 +15842,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = battery.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15833,7 +15851,7 @@ namespace Watch_Face_Editor
                         {
                             text = battery.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15842,7 +15860,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = battery.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15851,7 +15869,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = battery.Text_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15860,7 +15878,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = battery.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15869,7 +15887,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = battery.Circle_Scale;
                             Read_CircleScale_Options(circle_scale);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15878,7 +15896,7 @@ namespace Watch_Face_Editor
                         {
                             linear_scale = battery.Linear_Scale;
                             Read_LinearScale_Options(linear_scale);
-                            ShowElemenrOptions("Linear_Scale");
+                            ShowElemenOptions("Linear_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15887,7 +15905,7 @@ namespace Watch_Face_Editor
                         {
                             icon = battery.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15940,7 +15958,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = heart.Images;
                             Read_ImgLevel_Options(img_level, 6, false, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15949,7 +15967,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = heart.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 6, true);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15959,7 +15977,7 @@ namespace Watch_Face_Editor
                             img_number = heart.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             uCtrl_Text_Opt.ImageError = true;
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15968,7 +15986,7 @@ namespace Watch_Face_Editor
                         {
                             text = heart.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15977,7 +15995,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = heart.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15986,7 +16004,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = heart.Text_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -15995,7 +16013,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = heart.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16004,7 +16022,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = heart.Circle_Scale;
                             Read_CircleScale_Options(circle_scale);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16013,7 +16031,7 @@ namespace Watch_Face_Editor
                         {
                             linear_scale = heart.Linear_Scale;
                             Read_LinearScale_Options(linear_scale);
-                            ShowElemenrOptions("Linear_Scale");
+                            ShowElemenOptions("Linear_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16022,7 +16040,7 @@ namespace Watch_Face_Editor
                         {
                             icon = heart.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16075,7 +16093,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = calories.Images;
                             Read_ImgLevel_Options(img_level, 10, true, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16084,7 +16102,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = calories.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 10, false);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16093,7 +16111,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = calories.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16102,7 +16120,7 @@ namespace Watch_Face_Editor
                         {
                             text = calories.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16111,7 +16129,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = calories.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16120,7 +16138,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = calories.Text_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16129,7 +16147,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = calories.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16138,7 +16156,7 @@ namespace Watch_Face_Editor
                         {
                             text = calories.Number_Target_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16147,7 +16165,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = calories.Text_rotation_Target;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16156,7 +16174,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = calories.Text_circle_Target;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16165,7 +16183,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = calories.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16174,7 +16192,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = calories.Circle_Scale;
                             Read_CircleScale_Options(circle_scale);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16183,7 +16201,7 @@ namespace Watch_Face_Editor
                         {
                             linear_scale = calories.Linear_Scale;
                             Read_LinearScale_Options(linear_scale);
-                            ShowElemenrOptions("Linear_Scale");
+                            ShowElemenOptions("Linear_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16192,7 +16210,7 @@ namespace Watch_Face_Editor
                         {
                             icon = calories.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16245,7 +16263,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = pai.Images;
                             Read_ImgLevel_Options(img_level, 10, true, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16254,7 +16272,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = pai.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 10, false);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16263,7 +16281,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = pai.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16281,7 +16299,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = pai.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16290,7 +16308,7 @@ namespace Watch_Face_Editor
                         {
                             text = pai.Number_Target_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16299,7 +16317,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = pai.Text_rotation_Target;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16308,7 +16326,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = pai.Text_circle_Target;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16317,7 +16335,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = pai.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16326,7 +16344,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = pai.Circle_Scale;
                             Read_CircleScale_Options(circle_scale);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16335,7 +16353,7 @@ namespace Watch_Face_Editor
                         {
                             linear_scale = pai.Linear_Scale;
                             Read_LinearScale_Options(linear_scale);
-                            ShowElemenrOptions("Linear_Scale");
+                            ShowElemenOptions("Linear_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16344,7 +16362,7 @@ namespace Watch_Face_Editor
                         {
                             icon = pai.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16392,7 +16410,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = distance.Number;
                             Read_ImgNumber_Options(img_number, true, false, "", false, true, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16401,7 +16419,7 @@ namespace Watch_Face_Editor
                         {
                             text = distance.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16410,7 +16428,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = distance.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, true, false, false, false, true, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16419,7 +16437,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = distance.Text_circle;
                             Read_TextCircle_Options(text_circle, true, false, false, false, true, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16428,7 +16446,7 @@ namespace Watch_Face_Editor
                         {
                             icon = distance.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16481,7 +16499,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = stand.Images;
                             Read_ImgLevel_Options(img_level, 10, true, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16490,7 +16508,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = stand.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 10, false);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16499,7 +16517,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = stand.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16508,7 +16526,7 @@ namespace Watch_Face_Editor
                         {
                             text = stand.Number_Font;
                             Read_Text_Options(text, false, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16517,7 +16535,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = stand.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16526,7 +16544,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = stand.Text_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16535,7 +16553,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = stand.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16544,7 +16562,7 @@ namespace Watch_Face_Editor
                         {
                             text = stand.Number_Target_Font;
                             Read_Text_Options(text, false, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16553,7 +16571,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = stand.Text_rotation_Target;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16562,7 +16580,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = stand.Text_circle_Target;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16571,7 +16589,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = stand.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16580,7 +16598,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = stand.Circle_Scale;
                             Read_CircleScale_Options(circle_scale);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16589,7 +16607,7 @@ namespace Watch_Face_Editor
                         {
                             linear_scale = stand.Linear_Scale;
                             Read_LinearScale_Options(linear_scale);
-                            ShowElemenrOptions("Linear_Scale");
+                            ShowElemenOptions("Linear_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16598,7 +16616,7 @@ namespace Watch_Face_Editor
                         {
                             icon = stand.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16649,7 +16667,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = activity.Images;
                             Read_ImgLevel_Options(img_level, 10, true, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16658,7 +16676,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = activity.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 10, false);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16667,7 +16685,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = activity.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16685,7 +16703,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = activity.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16703,7 +16721,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = activity.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16712,7 +16730,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = activity.Circle_Scale;
                             Read_CircleScale_Options(circle_scale);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16721,7 +16739,7 @@ namespace Watch_Face_Editor
                         {
                             linear_scale = activity.Linear_Scale;
                             Read_LinearScale_Options(linear_scale);
-                            ShowElemenrOptions("Linear_Scale");
+                            ShowElemenOptions("Linear_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16730,7 +16748,7 @@ namespace Watch_Face_Editor
                         {
                             icon = activity.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16778,7 +16796,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = SpO2.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", true, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16787,7 +16805,7 @@ namespace Watch_Face_Editor
                         {
                             text = SpO2.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16796,7 +16814,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = SpO2.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16805,7 +16823,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = SpO2.Text_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16814,7 +16832,7 @@ namespace Watch_Face_Editor
                         {
                             icon = SpO2.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16863,7 +16881,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = stress.Images;
                             Read_ImgLevel_Options(img_level, 10, true, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16872,7 +16890,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = stress.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 10, false);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16881,7 +16899,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = stress.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16890,7 +16908,7 @@ namespace Watch_Face_Editor
                         {
                             text = stress.Number_Font;
                             Read_Text_Options(text, false, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16899,7 +16917,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = stress.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16908,7 +16926,7 @@ namespace Watch_Face_Editor
                         {
                             icon = stress.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16961,7 +16979,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = fat_burning.Images;
                             Read_ImgLevel_Options(img_level, 10, true, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16970,7 +16988,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = fat_burning.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 10, false);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16979,7 +16997,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = fat_burning.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16988,7 +17006,7 @@ namespace Watch_Face_Editor
                         {
                             text = fat_burning.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -16997,7 +17015,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = fat_burning.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17006,7 +17024,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = fat_burning.Text_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17015,7 +17033,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = fat_burning.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17024,7 +17042,7 @@ namespace Watch_Face_Editor
                         {
                             text = fat_burning.Number_Target_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17033,7 +17051,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = fat_burning.Text_rotation_Target;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17042,7 +17060,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = fat_burning.Text_circle_Target;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17051,7 +17069,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = fat_burning.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17060,7 +17078,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = fat_burning.Circle_Scale;
                             Read_CircleScale_Options(circle_scale);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17069,7 +17087,7 @@ namespace Watch_Face_Editor
                         {
                             linear_scale = fat_burning.Linear_Scale;
                             Read_LinearScale_Options(linear_scale);
-                            ShowElemenrOptions("Linear_Scale");
+                            ShowElemenOptions("Linear_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17078,7 +17096,7 @@ namespace Watch_Face_Editor
                         {
                             icon = fat_burning.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17129,7 +17147,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = weather.Images;
                             Read_ImgLevel_Options(img_level, 29, false, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17138,7 +17156,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = weather.Number;
                             Read_ImgNumberWeather_Options(img_number);
-                            ShowElemenrOptions("Text_Weather");
+                            ShowElemenOptions("Text_Weather");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17147,7 +17165,7 @@ namespace Watch_Face_Editor
                         {
                             text = weather.Number_Font;
                             Read_Text_Options(text, true, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17156,7 +17174,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = weather.Number_Min;
                             Read_ImgNumberWeather_Options(img_number);
-                            ShowElemenrOptions("Text_Weather");
+                            ShowElemenOptions("Text_Weather");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17165,7 +17183,7 @@ namespace Watch_Face_Editor
                         {
                             text = weather.Number_Min_Font;
                             Read_Text_Options(text, true, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17174,7 +17192,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = weather.Text_Min_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, true, false, false, true, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17183,7 +17201,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = weather.Text_Min_circle;
                             Read_TextCircle_Options(text_circle, false, true, false, false, true, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17192,7 +17210,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = weather.Number_Max;
                             Read_ImgNumberWeather_Options(img_number);
-                            ShowElemenrOptions("Text_Weather");
+                            ShowElemenOptions("Text_Weather");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17201,7 +17219,7 @@ namespace Watch_Face_Editor
                         {
                             text = weather.Number_Max_Font;
                             Read_Text_Options(text, true, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17210,7 +17228,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = weather.Text_Max_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, true, false, false, true, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17219,7 +17237,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = weather.Text_Max_circle;
                             Read_TextCircle_Options(text_circle, false, true, false, false, true, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17228,7 +17246,7 @@ namespace Watch_Face_Editor
                         {
                             text = weather.Number_Min_Max_Font;
                             Read_Text_Options(text, true, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17237,7 +17255,7 @@ namespace Watch_Face_Editor
                         {
                             text = weather.City_Name;
                             Read_Text_Options(text, false, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17246,7 +17264,7 @@ namespace Watch_Face_Editor
                         {
                             icon = weather.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17294,7 +17312,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = weather.Group_Current.Number;
                             Read_ImgNumberWeather_Options(img_number);
-                            ShowElemenrOptions("Text_Weather");
+                            ShowElemenOptions("Text_Weather");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17303,7 +17321,7 @@ namespace Watch_Face_Editor
                         {
                             text = weather.Group_Current.Number_Font;
                             Read_Text_Options(text, true, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17312,7 +17330,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = weather.Group_Current.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, true, false, false, true, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17321,7 +17339,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = weather.Group_Current.Text_circle;
                             Read_TextCircle_Options(text_circle, false, true, false, false, true, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17331,7 +17349,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = weather.Group_Min.Number;
                             Read_ImgNumberWeather_Options(img_number);
-                            ShowElemenrOptions("Text_Weather");
+                            ShowElemenOptions("Text_Weather");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17340,7 +17358,7 @@ namespace Watch_Face_Editor
                         {
                             text = weather.Group_Min.Number_Font;
                             Read_Text_Options(text, true, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17349,7 +17367,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = weather.Group_Min.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, true, false, false, true, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17358,7 +17376,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = weather.Group_Min.Text_circle;
                             Read_TextCircle_Options(text_circle, false, true, false, false, true, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17368,7 +17386,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = weather.Group_Max.Number;
                             Read_ImgNumberWeather_Options(img_number);
-                            ShowElemenrOptions("Text_Weather");
+                            ShowElemenOptions("Text_Weather");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17377,7 +17395,7 @@ namespace Watch_Face_Editor
                         {
                             text = weather.Group_Max.Number_Font;
                             Read_Text_Options(text, true, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17386,7 +17404,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = weather.Group_Max.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, true, false, false, true, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17395,7 +17413,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = weather.Group_Max.Text_circle;
                             Read_TextCircle_Options(text_circle, false, true, false, false, true, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17406,7 +17424,7 @@ namespace Watch_Face_Editor
                             img_number = weather.Group_Max_Min.Number;
                             Read_ImgNumberWeather_Options(img_number);
                             uCtrl_Text_Weather_Opt.Separator = true;
-                            ShowElemenrOptions("Text_Weather");
+                            ShowElemenOptions("Text_Weather");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17415,7 +17433,7 @@ namespace Watch_Face_Editor
                         {
                             text = weather.Group_Max_Min.Number_Font;
                             Read_Text_Options(text, true, true, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17425,7 +17443,7 @@ namespace Watch_Face_Editor
                             text_rotation = weather.Group_Max_Min.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, true, false, false, true, true);
                             uCtrl_Text_Rotate_Opt.Separator = true;
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17435,7 +17453,7 @@ namespace Watch_Face_Editor
                             text_circle = weather.Group_Max_Min.Text_circle;
                             Read_TextCircle_Options(text_circle, false, true, false, false, true, true); 
                             uCtrl_Text_Circle_Opt.Separator = true;
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17445,7 +17463,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = weather.Images;
                             Read_ImgLevel_Options(img_level, 29, false, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17455,7 +17473,7 @@ namespace Watch_Face_Editor
                             text = weather.City_Name;
                             Read_Text_Options(text, true, false);
                             uCtrl_Text_SystemFont_Opt.SityName = true;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17464,7 +17482,7 @@ namespace Watch_Face_Editor
                         {
                             icon = weather.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17511,14 +17529,14 @@ namespace Watch_Face_Editor
                         if (weather.FewDays == null) weather.FewDays = new FewDays();
                         fewDays = weather.FewDays;
                         Read_WeatherFewDay_Options(fewDays);
-                        ShowElemenrOptions("WeatherFewDays");
+                        ShowElemenOptions("WeatherFewDays");
                         break;
                     case "Images":
                         if (uCtrl_Weather_FewDay_Elm.checkBox_Images.Checked)
                         {
                             img_level = weather.Images;
                             Read_ImgLevel_Options(img_level, 29, false, false);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17527,7 +17545,7 @@ namespace Watch_Face_Editor
                         {
                             diagram = weather.Diagram;
                             Read_WeatherDiagram_Options(diagram);
-                            ShowElemenrOptions("WeatherDiagram");
+                            ShowElemenOptions("WeatherDiagram");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17540,7 +17558,7 @@ namespace Watch_Face_Editor
                             //ShowElemenrOptions("Text_Weather");
                             Read_ImgNumber_Rotate_Options(img_number, false, true, false, false, true, false);
                             uCtrl_Text_Rotate_Opt.Unit_alignment = false;
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17550,7 +17568,7 @@ namespace Watch_Face_Editor
                             text = weather.Number_Font_Max;
                             Read_Text_Options(text, true, false);
                             uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17563,7 +17581,7 @@ namespace Watch_Face_Editor
                             //ShowElemenrOptions("Text_Weather");
                             Read_ImgNumber_Rotate_Options(img_number, false, true, false, false, true, false);
                             uCtrl_Text_Rotate_Opt.Unit_alignment = false;
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17573,7 +17591,7 @@ namespace Watch_Face_Editor
                             text = weather.Number_Font_Min;
                             Read_Text_Options(text, true, false);
                             uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17584,7 +17602,7 @@ namespace Watch_Face_Editor
                             Read_ImgNumber_Rotate_Options(img_number, false, true, false, false, true, false);
                             uCtrl_Text_Rotate_Opt.Separator = true;
                             uCtrl_Text_Rotate_Opt.Unit_alignment = false;
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17594,7 +17612,7 @@ namespace Watch_Face_Editor
                             text = weather.Number_Font_MaxMin;
                             Read_Text_Options(text, true, false, true);
                             uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17607,7 +17625,7 @@ namespace Watch_Face_Editor
                             //ShowElemenrOptions("Text_Weather");
                             Read_ImgNumber_Rotate_Options(img_number, false, true, false, false, true, false);
                             uCtrl_Text_Rotate_Opt.Unit_alignment = false;
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17617,7 +17635,7 @@ namespace Watch_Face_Editor
                             text = weather.Number_Font_Average;
                             Read_Text_Options(text, true, false);
                             uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17626,7 +17644,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = weather.DayOfWeek_Images;
                             Read_ImgLevel_Options(img_level, 7, false);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17638,7 +17656,7 @@ namespace Watch_Face_Editor
                             uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
                             uCtrl_Text_SystemFont_Opt.Use2color = true;
                             uCtrl_Text_SystemFont_Opt_ValueChanged(sender, eventArgs);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17647,7 +17665,7 @@ namespace Watch_Face_Editor
                         {
                             icon = weather.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17696,7 +17714,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = uv_index.Images;
                             Read_ImgLevel_Options(img_level, 5, false, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17705,7 +17723,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = uv_index.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 5, true);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17714,7 +17732,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = uv_index.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", true, false, false, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17723,7 +17741,7 @@ namespace Watch_Face_Editor
                         {
                             text = uv_index.Number_Font;
                             Read_Text_Options(text, false, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17732,7 +17750,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = uv_index.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17741,7 +17759,7 @@ namespace Watch_Face_Editor
                         {
                             icon = uv_index.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17790,7 +17808,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = humidity.Images;
                             Read_ImgLevel_Options(img_level, 10, true, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17799,7 +17817,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = humidity.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 10, false);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17808,7 +17826,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = humidity.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, false, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17817,7 +17835,7 @@ namespace Watch_Face_Editor
                         {
                             text = humidity.Number_Font;
                             Read_Text_Options(text, true, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17826,7 +17844,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = humidity.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17835,7 +17853,7 @@ namespace Watch_Face_Editor
                         {
                             icon = humidity.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17882,7 +17900,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = altimeter.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17891,7 +17909,7 @@ namespace Watch_Face_Editor
                         {
                             text = altimeter.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17900,7 +17918,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = altimeter.Pressure;
                             Read_ImgNumber_Options(img_number, false, false, "", true, false, false, true, false, false, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17909,7 +17927,7 @@ namespace Watch_Face_Editor
                         {
                             text = altimeter.Pressure_Font;
                             Read_Text_Options(text, true, false, true, false, false, false, 1);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17918,7 +17936,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = altimeter.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, true, false, true, false, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17927,7 +17945,7 @@ namespace Watch_Face_Editor
                         {
                             text = altimeter.Number_Target_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17936,7 +17954,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = altimeter.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17945,7 +17963,7 @@ namespace Watch_Face_Editor
                         {
                             icon = altimeter.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -17996,7 +18014,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = sunrise.Images;
                             Read_ImgLevel_Options(img_level, 2, true, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18005,7 +18023,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = sunrise.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 2, true);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18014,7 +18032,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = sunrise.Sunrise;
                             Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18023,7 +18041,7 @@ namespace Watch_Face_Editor
                         {
                             text = sunrise.Sunrise_Font;
                             Read_Text_Options(text, false, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18032,7 +18050,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = sunrise.Sunrise_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, true, false, true, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18041,7 +18059,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = sunrise.Sunrise_circle;
                             Read_TextCircle_Options(text_circle, false, false, true, false, true, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18050,7 +18068,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = sunrise.Sunset;
                             Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18059,7 +18077,7 @@ namespace Watch_Face_Editor
                         {
                             text = sunrise.Sunset_Font;
                             Read_Text_Options(text, false, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18068,7 +18086,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = sunrise.Sunset_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, true, false, true, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18077,7 +18095,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = sunrise.Sunset_circle;
                             Read_TextCircle_Options(text_circle, false, false, true, false, true, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18086,7 +18104,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = sunrise.Sunset_Sunrise;
                             Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18095,7 +18113,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = sunrise.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18104,7 +18122,7 @@ namespace Watch_Face_Editor
                         {
                             icon = sunrise.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18153,7 +18171,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = wind.Images;
                             Read_ImgLevel_Options(img_level, 10, true, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18162,7 +18180,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = wind.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 10, false);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18171,7 +18189,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = wind.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, false, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18180,7 +18198,7 @@ namespace Watch_Face_Editor
                         {
                             text = wind.Number_Font;
                             Read_Text_Options(text, false, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18189,7 +18207,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = wind.Wind_Speed;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, false, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18198,7 +18216,7 @@ namespace Watch_Face_Editor
                         {
                             text = wind.Wind_Speed_Font;
                             Read_Text_Options(text, true, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18207,7 +18225,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = wind.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18216,7 +18234,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = wind.Direction;
                             Read_ImgLevel_Options(img_level, 8, false, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18225,7 +18243,7 @@ namespace Watch_Face_Editor
                         {
                             icon = wind.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18276,7 +18294,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = moon.Images;
                             Read_ImgLevel_Options(img_level, 30, true, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18294,7 +18312,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = moon.Sunrise;
                             Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18303,7 +18321,7 @@ namespace Watch_Face_Editor
                         {
                             text = moon.Sunrise_Font;
                             Read_Text_Options(text, false, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18330,7 +18348,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = moon.Sunset;
                             Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18339,7 +18357,7 @@ namespace Watch_Face_Editor
                         {
                             text = moon.Sunset_Font;
                             Read_Text_Options(text, false, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18366,7 +18384,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = moon.Sunset_Sunrise;
                             Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18375,7 +18393,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = moon.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18384,7 +18402,7 @@ namespace Watch_Face_Editor
                         {
                             icon = moon.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18434,7 +18452,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = compass.Images;
                             Read_ImgLevel_Options(img_level, 8, false, false, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18443,7 +18461,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = compass.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", true, false, true, true, false, false, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18452,7 +18470,7 @@ namespace Watch_Face_Editor
                         {
                             text = compass.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18461,7 +18479,7 @@ namespace Watch_Face_Editor
                         {
                             text_rotation = compass.Text_rotation;
                             Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_rotation");
+                            ShowElemenOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18470,7 +18488,7 @@ namespace Watch_Face_Editor
                         {
                             text_circle = compass.Text_circle;
                             Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
-                            ShowElemenrOptions("Text_circle");
+                            ShowElemenOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18480,7 +18498,7 @@ namespace Watch_Face_Editor
                             img_pointer = compass.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
                             uCtrl_Pointer_Opt.TimeMode = true;
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18489,7 +18507,7 @@ namespace Watch_Face_Editor
                         {
                             icon = compass.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18535,7 +18553,7 @@ namespace Watch_Face_Editor
                             alarmClock.Number.zero = true;
                             img_number = alarmClock.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18545,7 +18563,7 @@ namespace Watch_Face_Editor
                             alarmClock.Number_Font.padding = true;
                             text = alarmClock.Number_Font;
                             Read_Text_Options(text, false, false);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18554,7 +18572,7 @@ namespace Watch_Face_Editor
                         {
                             icon = alarmClock.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18603,7 +18621,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = trainingLoad.Images;
                             Read_ImgLevel_Options(img_level, 3, false, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18612,7 +18630,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = trainingLoad.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 3, true);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18621,7 +18639,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = trainingLoad.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", true, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18630,7 +18648,7 @@ namespace Watch_Face_Editor
                         {
                             text = trainingLoad.Number_Font;
                             Read_Text_Options(text, false, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18639,7 +18657,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = trainingLoad.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18648,7 +18666,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = trainingLoad.Circle_Scale;
                             Read_CircleScale_Options(circle_scale, false);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18657,7 +18675,7 @@ namespace Watch_Face_Editor
                         {
                             icon = trainingLoad.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18707,7 +18725,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = vo2max.Images;
                             Read_ImgLevel_Options(img_level, 7, false, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18716,7 +18734,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = vo2max.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 7, true);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18725,7 +18743,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = vo2max.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", true, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18734,7 +18752,7 @@ namespace Watch_Face_Editor
                         {
                             text = vo2max.Number_Font;
                             Read_Text_Options(text, false, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18743,7 +18761,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = vo2max.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18752,7 +18770,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = vo2max.Circle_Scale;
                             Read_CircleScale_Options(circle_scale, false);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18761,7 +18779,7 @@ namespace Watch_Face_Editor
                         {
                             icon = vo2max.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18810,7 +18828,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = aqi.Images;
                             Read_ImgLevel_Options(img_level, 6, false, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18819,7 +18837,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = aqi.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 6, true);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18828,7 +18846,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = aqi.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", true, false, false, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18837,7 +18855,7 @@ namespace Watch_Face_Editor
                         {
                             text = aqi.Number_Font;
                             Read_Text_Options(text, false, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18846,7 +18864,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = aqi.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18855,7 +18873,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = aqi.Circle_Scale;
                             Read_CircleScale_Options(circle_scale, false);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18864,7 +18882,7 @@ namespace Watch_Face_Editor
                         {
                             icon = aqi.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18910,7 +18928,7 @@ namespace Watch_Face_Editor
                             img_number = bodyTemp.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", true, true, true, true, false, false, false, true);
                             //Read_ImgNumber_Options(img_number, true, false, "", false, true, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18919,7 +18937,7 @@ namespace Watch_Face_Editor
                         {
                             text = bodyTemp.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18928,7 +18946,7 @@ namespace Watch_Face_Editor
                         {
                             icon = bodyTemp.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18973,7 +18991,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = floor.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", true, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18982,7 +19000,7 @@ namespace Watch_Face_Editor
                         {
                             text = floor.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -18991,7 +19009,7 @@ namespace Watch_Face_Editor
                         {
                             icon = floor.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19040,7 +19058,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = readiness.Images;
                             Read_ImgLevel_Options(img_level, 10, true, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19049,7 +19067,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = readiness.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 10, false);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19058,7 +19076,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = readiness.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", true, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19067,7 +19085,7 @@ namespace Watch_Face_Editor
                         {
                             text = readiness.Number_Font;
                             Read_Text_Options(text, false, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19076,7 +19094,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = readiness.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19085,7 +19103,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = readiness.Circle_Scale;
                             Read_CircleScale_Options(circle_scale, false);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19094,7 +19112,7 @@ namespace Watch_Face_Editor
                         {
                             icon = readiness.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19143,7 +19161,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = hrv.Images;
                             Read_ImgLevel_Options(img_level, 10, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19152,7 +19170,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = hrv.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 10, false);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19161,7 +19179,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = hrv.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", true, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19170,7 +19188,7 @@ namespace Watch_Face_Editor
                         {
                             text = hrv.Number_Font;
                             Read_Text_Options(text, true, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19179,7 +19197,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = hrv.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19188,7 +19206,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = hrv.Circle_Scale;
                             Read_CircleScale_Options(circle_scale, false);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19197,7 +19215,7 @@ namespace Watch_Face_Editor
                         {
                             icon = hrv.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19246,7 +19264,7 @@ namespace Watch_Face_Editor
                         {
                             img_level = brainingLoad.Images;
                             Read_ImgLevel_Options(img_level, 10, true, true);
-                            ShowElemenrOptions("Images");
+                            ShowElemenOptions("Images");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19255,7 +19273,7 @@ namespace Watch_Face_Editor
                         {
                             img_prorgess = brainingLoad.Segments;
                             Read_ImgProrgess_Options(img_prorgess, 10, false);
-                            ShowElemenrOptions("Segments");
+                            ShowElemenOptions("Segments");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19264,7 +19282,7 @@ namespace Watch_Face_Editor
                         {
                             img_number = brainingLoad.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", true, false, true, true);
-                            ShowElemenrOptions("Text");
+                            ShowElemenOptions("Text");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19273,7 +19291,7 @@ namespace Watch_Face_Editor
                         {
                             text = brainingLoad.Number_Font;
                             Read_Text_Options(text, false, true);
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19282,7 +19300,7 @@ namespace Watch_Face_Editor
                         {
                             img_pointer = brainingLoad.Pointer;
                             Read_ImgPointer_Options(img_pointer, false);
-                            ShowElemenrOptions("Pointer");
+                            ShowElemenOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19291,7 +19309,7 @@ namespace Watch_Face_Editor
                         {
                             circle_scale = brainingLoad.Circle_Scale;
                             Read_CircleScale_Options(circle_scale, false);
-                            ShowElemenrOptions("Circle_Scale");
+                            ShowElemenOptions("Circle_Scale");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19300,7 +19318,7 @@ namespace Watch_Face_Editor
                         {
                             icon = brainingLoad.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19345,7 +19363,7 @@ namespace Watch_Face_Editor
                         {
                             sleepChart = sleep.SleepChartSettings;
                             Read_SleepChartSettings_Options(sleepChart);
-                            ShowElemenrOptions("SleepChart");
+                            ShowElemenOptions("SleepChart");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19355,7 +19373,7 @@ namespace Watch_Face_Editor
                             text = sleep.StartSleep;
                             Read_Text_Options(text, true, true, true, true);
                             //uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19365,7 +19383,7 @@ namespace Watch_Face_Editor
                             text = sleep.EndSleep;
                             Read_Text_Options(text, true, true, true, true);
                             //uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19375,7 +19393,7 @@ namespace Watch_Face_Editor
                             text = sleep.DurationSleep_total;
                             Read_Text_Options(text, false, true, true);
                             //uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19385,7 +19403,7 @@ namespace Watch_Face_Editor
                             text = sleep.DurationSleep;
                             Read_Text_Options(text, false, true, true);
                             //uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19395,7 +19413,7 @@ namespace Watch_Face_Editor
                             text = sleep.WakeUp;
                             Read_Text_Options(text, false, true, true);
                             //uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19405,7 +19423,7 @@ namespace Watch_Face_Editor
                             text = sleep.WakeUpCount;
                             Read_Text_Options(text, false, false);
                             //uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19415,7 +19433,7 @@ namespace Watch_Face_Editor
                             text = sleep.Score;
                             Read_Text_Options(text, false, false);
                             //uCtrl_Text_SystemFont_Opt.AlignmentsEnabled = false;
-                            ShowElemenrOptions("SystemFont");
+                            ShowElemenOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19424,7 +19442,7 @@ namespace Watch_Face_Editor
                         {
                             icon = sleep.Icon;
                             Read_Icon_Options(icon);
-                            ShowElemenrOptions("Icon");
+                            ShowElemenOptions("Icon");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -19460,7 +19478,7 @@ namespace Watch_Face_Editor
 
                 //textWidgetsList = textWidgets.Text;
                 Read_TextWidgets_Options(textWidgets);
-                ShowElemenrOptions("TextWidgets");
+                ShowElemenOptions("TextWidgets");
 
             }
         }
@@ -19492,7 +19510,7 @@ namespace Watch_Face_Editor
 
                 icon = image.Icon;
                 Read_Icon_Options(icon);
-                ShowElemenrOptions("Icon");
+                ShowElemenOptions("Icon");
 
             }
         }
@@ -19521,7 +19539,7 @@ namespace Watch_Face_Editor
             if (script != null)
             {
                 Read_Script_Options(script);
-                ShowElemenrOptions("Script");
+                ShowElemenOptions("Script");
 
             }
         }
@@ -19536,7 +19554,7 @@ namespace Watch_Face_Editor
             if (disconnectAlert != null)
             {
                 Read_DisconnectAlert_Options(disconnectAlert);
-                ShowElemenrOptions("DisconnectAlert");
+                ShowElemenOptions("DisconnectAlert");
 
             }
         }
@@ -19551,7 +19569,7 @@ namespace Watch_Face_Editor
             if (repeatingAlert != null)
             {
                 Read_RepeatingAlert_Options(repeatingAlert);
-                ShowElemenrOptions("RepeatingAlert");
+                ShowElemenOptions("RepeatingAlert");
 
             }
         }
@@ -19569,7 +19587,7 @@ namespace Watch_Face_Editor
 
                 icon = topImage.Icon;
                 Read_Icon_Options(icon);
-                ShowElemenrOptions("Icon");
+                ShowElemenOptions("Icon");
 
             }
         }
@@ -19587,7 +19605,7 @@ namespace Watch_Face_Editor
 
                 buttonsList = buttons.Button;
                 Read_Button_Options(buttonsList);
-                ShowElemenrOptions("Buttons");
+                ShowElemenOptions("Buttons");
 
             }
         }
@@ -19602,7 +19620,7 @@ namespace Watch_Face_Editor
             if (switchBG != null)
             {
                 Read_SwitchBG_Options(switchBG);
-                ShowElemenrOptions("SwitchBG");
+                ShowElemenOptions("SwitchBG");
             }
         }
 
@@ -19616,7 +19634,7 @@ namespace Watch_Face_Editor
             if (switchBG_Color != null)
             {
                 Read_SwitchBG_Color_Options(switchBG_Color);
-                ShowElemenrOptions("SwitchBG_Color");
+                ShowElemenOptions("SwitchBG_Color");
             }
         }
 
@@ -28497,13 +28515,7 @@ namespace Watch_Face_Editor
                 //    fullfilename = fullfilename.Remove(0, Application.StartupPath.Length);
                 textBox_PreviewStates_Path.Text = fullfilename;
                 ProgramSettings.PreviewStates_Path = fullfilename;
-
-                string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
-                {
-                    //DefaultValueHandling = DefaultValueHandling.Ignore,
-                    NullValueHandling = NullValueHandling.Ignore
-                });
-                File.WriteAllText("Settings.json", JSON_String, Encoding.UTF8);
+                Save_Settings();
 
                 Logger.WriteLine("* WatchSkin_PathGet_Click_END");
             }
@@ -28745,34 +28757,34 @@ namespace Watch_Face_Editor
         }
 
         // Checking the version using >= enables forward compatibility.
-        string CheckFor45PlusVersion(int releaseKey)
-        {
-            if (releaseKey >= 533320)
-                return "4.8.1 or later";
-            if (releaseKey >= 528040)
-                return "4.8";
-            if (releaseKey >= 461808)
-                return "4.7.2";
-            if (releaseKey >= 461308)
-                return "4.7.1";
-            if (releaseKey >= 460798)
-                return "4.7";
-            if (releaseKey >= 394802)
-                return "4.6.2";
-            if (releaseKey >= 394254)
-                return "4.6.1";
-            if (releaseKey >= 393295)
-                return "4.6";
-            if (releaseKey >= 379893)
-                return "4.5.2";
-            if (releaseKey >= 378675)
-                return "4.5.1";
-            if (releaseKey >= 378389)
-                return "4.5";
-            // This code should never execute. A non-null release key should mean
-            // that 4.5 or later is installed.
-            return "No 4.5 or later version detected";
-        }
+        //string CheckFor45PlusVersion(int releaseKey)
+        //{
+        //    if (releaseKey >= 533320)
+        //        return "4.8.1 or later";
+        //    if (releaseKey >= 528040)
+        //        return "4.8";
+        //    if (releaseKey >= 461808)
+        //        return "4.7.2";
+        //    if (releaseKey >= 461308)
+        //        return "4.7.1";
+        //    if (releaseKey >= 460798)
+        //        return "4.7";
+        //    if (releaseKey >= 394802)
+        //        return "4.6.2";
+        //    if (releaseKey >= 394254)
+        //        return "4.6.1";
+        //    if (releaseKey >= 393295)
+        //        return "4.6";
+        //    if (releaseKey >= 379893)
+        //        return "4.5.2";
+        //    if (releaseKey >= 378675)
+        //        return "4.5.1";
+        //    if (releaseKey >= 378389)
+        //        return "4.5";
+        //    // This code should never execute. A non-null release key should mean
+        //    // that 4.5 or later is installed.
+        //    return "No 4.5 or later version detected";
+        //}
 
 
         static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
@@ -29150,8 +29162,6 @@ namespace Watch_Face_Editor
                 }
             }
         }
-
-
     }
 }
 
@@ -29415,5 +29425,358 @@ public static class FileDownloader
             default:
                 return ".bin";
         }
+    }
+}
+
+public static class DotNetVersions
+{
+    public static List<string> GetAllVersions()
+    {
+        var result = new List<string>();
+
+        // ============================================================
+        // .NET Framework
+        // ============================================================
+
+        result.Add(".NET Framework:");
+
+        var frameworkVersions = GetFrameworkVersions();
+
+        if (frameworkVersions.Count > 0)
+        {
+            foreach (string version in frameworkVersions)
+                result.Add("  " + version);
+        }
+        else
+        {
+            result.Add("  Не установлен");
+        }
+
+
+        // ============================================================
+        // .NET / .NET Core
+        // ============================================================
+
+        var coreVersions = GetCoreVersions();
+
+        AddRuntimeGroup(
+            result,
+            ".NET:",
+            coreVersions,
+            "Microsoft.NETCore.App");
+
+        AddRuntimeGroup(
+            result,
+            "ASP.NET Core:",
+            coreVersions,
+            "Microsoft.AspNetCore.App");
+
+        AddRuntimeGroup(
+            result,
+            "Windows Desktop:",
+            coreVersions,
+            "Microsoft.WindowsDesktop.App");
+
+
+        return result;
+    }
+
+
+    // ================================================================
+    // .NET Framework
+    // ================================================================
+
+    private static List<string> GetFrameworkVersions()
+    {
+        var versions = new List<string>();
+
+        // Проверяем оба представления реестра.
+        var registryViews = new[]
+        {
+            RegistryView.Registry64,
+            RegistryView.Registry32
+        };
+
+        foreach (RegistryView view in registryViews)
+        {
+            using (var baseKey = RegistryKey.OpenBaseKey(
+                RegistryHive.LocalMachine,
+                view))
+            {
+                // ----------------------------------------------------
+                // .NET Framework 1.0
+                // ----------------------------------------------------
+
+                using (var key = baseKey.OpenSubKey(
+                    @"SOFTWARE\Microsoft\.NETFramework\Policy\v1.0"))
+                {
+                    if (key != null)
+                        AddVersion(versions, "1.0");
+                }
+
+
+                // ----------------------------------------------------
+                // .NET Framework 1.1
+                // ----------------------------------------------------
+
+                using (var key = baseKey.OpenSubKey(
+                    @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v1.1.4322"))
+                {
+                    if (key != null)
+                        AddVersion(versions, "1.1");
+                }
+
+
+                // ----------------------------------------------------
+                // .NET Framework 2.0
+                // ----------------------------------------------------
+
+                using (var key = baseKey.OpenSubKey(
+                    @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v2.0.50727"))
+                {
+                    if (key != null)
+                    {
+                        object install = key.GetValue("Install");
+
+                        if (install == null || Convert.ToInt32(install) == 1)
+                            AddVersion(versions, "2.0");
+                    }
+                }
+
+
+                // ----------------------------------------------------
+                // .NET Framework 3.0
+                // ----------------------------------------------------
+
+                using (var key = baseKey.OpenSubKey(
+                    @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.0"))
+                {
+                    if (key != null)
+                    {
+                        object install = key.GetValue("Install");
+
+                        if (install == null || Convert.ToInt32(install) == 1)
+                            AddVersion(versions, "3.0");
+                    }
+                }
+
+
+                // ----------------------------------------------------
+                // .NET Framework 3.5
+                // ----------------------------------------------------
+
+                using (var key = baseKey.OpenSubKey(
+                    @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5"))
+                {
+                    if (key != null)
+                    {
+                        object install = key.GetValue("Install");
+
+                        if (install == null || Convert.ToInt32(install) == 1)
+                            AddVersion(versions, "3.5");
+                    }
+                }
+
+
+                // ----------------------------------------------------
+                // .NET Framework 4.x
+                // ----------------------------------------------------
+
+                using (var key = baseKey.OpenSubKey(
+                    @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"))
+                {
+                    if (key != null)
+                    {
+                        object releaseValue = key.GetValue("Release");
+
+                        if (releaseValue != null)
+                        {
+                            int release = Convert.ToInt32(releaseValue);
+
+                            string version =
+                                CheckFor45PlusVersion(release);
+
+                            AddVersion(versions, version);
+                        }
+                    }
+                }
+            }
+        }
+
+        return versions;
+    }
+
+
+    // ================================================================
+    // .NET Core / .NET 5+
+    // ================================================================
+
+    private static List<string> GetCoreVersions()
+    {
+        var versions = new List<string>();
+
+        try
+        {
+            var psi = new ProcessStartInfo
+            {
+                FileName = "dotnet",
+                Arguments = "--list-runtimes",
+
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+
+                CreateNoWindow = true
+            };
+
+            using (var process = Process.Start(psi))
+            {
+                if (process == null)
+                    return versions;
+
+                string output =
+                    process.StandardOutput.ReadToEnd();
+
+                process.WaitForExit();
+
+                string[] lines = output.Split(
+                    new[] { '\r', '\n' },
+                    StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (string line in lines)
+                {
+                    // Пример строки:
+                    //
+                    // Microsoft.NETCore.App 8.0.18
+                    // [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]
+
+                    string[] parts = line.Split(
+                        new[] { ' ' },
+                        StringSplitOptions.RemoveEmptyEntries);
+
+                    if (parts.Length >= 2)
+                    {
+                        string runtime = parts[0];
+                        string version = parts[1];
+
+                        string item =
+                            runtime + " " + version;
+
+                        if (!versions.Contains(item))
+                            versions.Add(item);
+                    }
+                }
+            }
+        }
+        catch
+        {
+            // dotnet не установлен или недоступен.
+        }
+
+        return versions;
+    }
+
+
+    // ================================================================
+    // Добавление группы Runtime
+    // ================================================================
+
+    private static void AddRuntimeGroup(
+        List<string> result,
+        string title,
+        List<string> runtimes,
+        string runtimeName)
+    {
+        var items = new List<string>();
+
+        foreach (string runtime in runtimes)
+        {
+            if (runtime.StartsWith(
+                runtimeName + " ",
+                StringComparison.OrdinalIgnoreCase))
+            {
+                items.Add(runtime);
+            }
+        }
+
+        if (items.Count == 0)
+            return;
+
+        result.Add("");
+        result.Add(title);
+
+        foreach (string item in items)
+        {
+            // Убираем название runtime из строки.
+            // Например:
+            //
+            // Microsoft.NETCore.App 8.0.18
+            //
+            // превращается в:
+            //
+            // 8.0.18
+
+            string version = item.Substring(
+                runtimeName.Length).Trim();
+
+            result.Add("  " + version);
+        }
+    }
+
+
+    // ================================================================
+    // Добавление версии без дубликатов
+    // ================================================================
+
+    private static void AddVersion(
+        List<string> versions,
+        string version)
+    {
+        if (!versions.Contains(version))
+            versions.Add(version);
+    }
+
+
+    // ================================================================
+    // Определение версии .NET Framework 4.x
+    // ================================================================
+
+    private static string CheckFor45PlusVersion(
+        int releaseKey)
+    {
+        if (releaseKey >= 533320)
+            return "4.8.1 or later";
+
+        if (releaseKey >= 528040)
+            return "4.8";
+
+        if (releaseKey >= 461808)
+            return "4.7.2";
+
+        if (releaseKey >= 461308)
+            return "4.7.1";
+
+        if (releaseKey >= 460798)
+            return "4.7";
+
+        if (releaseKey >= 394802)
+            return "4.6.2";
+
+        if (releaseKey >= 394254)
+            return "4.6.1";
+
+        if (releaseKey >= 393295)
+            return "4.6";
+
+        if (releaseKey >= 379893)
+            return "4.5.2";
+
+        if (releaseKey >= 378675)
+            return "4.5.1";
+
+        if (releaseKey >= 378389)
+            return "4.5";
+
+        return "Unknown";
     }
 }

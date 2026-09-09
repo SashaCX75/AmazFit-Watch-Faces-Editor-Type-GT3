@@ -462,6 +462,30 @@
   <data name="Message_Save_new_JSON" xml:space="preserve">
     <value>The current project has not yet been saved. Do you want to save it?</value>
   </data>
+  <data name="Message_SendInfo_Caption" xml:space="preserve">
+    <value>Sending technical information</value>
+  </data>
+  <data name="Message_SendInfo_Text1" xml:space="preserve">
+    <value>The app may send technical information about the system to the server for the purposes of collecting statistics and analysing compatibility:</value>
+  </data>
+  <data name="Message_SendInfo_Text2" xml:space="preserve">
+    <value>     • app version</value>
+  </data>
+  <data name="Message_SendInfo_Text3" xml:space="preserve">
+    <value>     • Windows version</value>
+  </data>
+  <data name="Message_SendInfo_Text4" xml:space="preserve">
+    <value>     • system language</value>
+  </data>
+  <data name="Message_SendInfo_Text5" xml:space="preserve">
+    <value>     • versions of the installed .NET components</value>
+  </data>
+  <data name="Message_SendInfo_Text6" xml:space="preserve">
+    <value>Personal files and other user data are not transferred.</value>
+  </data>
+  <data name="Message_SendInfo_Text7" xml:space="preserve">
+    <value>You can disable the sending of information in the settings.</value>
+  </data>
   <data name="Message_ShortcutsAOD_Text" xml:space="preserve">
     <value>You cannot add shortcuts to the AOD screen.</value>
   </data>

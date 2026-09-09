@@ -14,7 +14,9 @@
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>publish\</PublishUrl>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>C:\Users\User\Downloads\Новая папка\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -28,8 +30,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -214,6 +214,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\App_WatchFace.cs" />
+    <Compile Include="Classes\DeviceRegistration.cs" />
+    <Compile Include="Classes\SystemInfo.cs" />
     <Compile Include="Classes\WatchFace\Elements.cs" />
     <Compile Include="Classes\WatchFace\Enum.cs" />
     <Compile Include="Classes\WatchFace\WATCH_FACE.cs" />
@@ -403,6 +405,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.it.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

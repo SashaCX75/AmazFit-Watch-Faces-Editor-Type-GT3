@@ -24,6 +24,7 @@ namespace ControlLibrary
         private float apiLevel = 0;
         private int _width = -1;
         private int _height = -1;
+        private int[] CustomColors = { }; // пользовательские цвета
 
         public UCtrl_Button_Opt()
         {
@@ -105,6 +106,11 @@ namespace ControlLibrary
         [Description("Происходит при изменении видимости кнопки")]
         public event VisibleButtonChangedHandler VisibleButtonChanged;
         public delegate void VisibleButtonChangedHandler(int rowIndex, bool visible);
+
+        [Browsable(true)]
+        [Description("Происходит при изменении пользовательских цветов")]
+        public event CustomColorsChangedHandler CustomColorsChanged;
+        public delegate void CustomColorsChangedHandler(int[] customColors);
 
         public void SetNormalImage(string value)
         {
@@ -606,39 +612,26 @@ namespace ControlLibrary
 
         private void comboBox_color_Click(object sender, EventArgs e)
         {
-            Program_Settings ProgramSettings = new Program_Settings();
             ColorDialog colorDialog = new ColorDialog();
             ComboBox comboBox_color = sender as ComboBox;
             colorDialog.Color = comboBox_color.BackColor;
             colorDialog.FullOpen = true;
 
-            // читаем пользовательские цвета из настроек
-            if (File.Exists(Application.StartupPath + @"\Settings.json"))
-            {
-                ProgramSettings = JsonConvert.DeserializeObject<Program_Settings>
-                            (File.ReadAllText(Application.StartupPath + @"\Settings.json"), new JsonSerializerSettings
-                            {
-                                //DefaultValueHandling = DefaultValueHandling.Ignore,
-                                NullValueHandling = NullValueHandling.Ignore
-                            });
-            }
-            colorDialog.CustomColors = ProgramSettings.CustomColors;
+            colorDialog.CustomColors = CustomColors;
 
 
             if (colorDialog.ShowDialog() == DialogResult.Cancel)
                 return;
             // установка цвета формы
             comboBox_color.BackColor = colorDialog.Color;
-            if (ProgramSettings.CustomColors != colorDialog.CustomColors)
+            if (CustomColors != colorDialog.CustomColors)
             {
-                ProgramSettings.CustomColors = colorDialog.CustomColors;
+                CustomColors = colorDialog.CustomColors;
 
-                string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
+                if (CustomColorsChanged != null && !setValue)
                 {
-                    //DefaultValueHandling = DefaultValueHandling.Ignore,
-                    NullValueHandling = NullValueHandling.Ignore
-                });
-                File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+                    CustomColorsChanged(CustomColors);
+                }
             }
 
             int rowIndex = -1;
@@ -697,9 +690,10 @@ namespace ControlLibrary
         }
 
         /// <summary>Очищает выпадающие списки с картинками, сбрасывает данные на значения по умолчанию</summary>
-        public void SettingsClear(float api_level, int width, int height)
+        public void SettingsClear(float api_level, int width, int height, int[] customColors)
         {
             setValue = true;
+            CustomColors = customColors;
 
             comboBox_normal_image.Text = null;
             comboBox_press_image.Text = null;

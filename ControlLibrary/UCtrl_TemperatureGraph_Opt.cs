@@ -17,6 +17,7 @@ namespace ControlLibrary
     {
         private bool setValue; // режим задания параметров
         public Object _Diagram;
+        private int[] CustomColors = { }; // пользовательские цвета
 
         public UCtrl_TemperatureGraph_Opt()
         {
@@ -69,39 +70,26 @@ namespace ControlLibrary
 
         private void comboBox_color_Click(object sender, EventArgs e)
         {
-            Program_Settings ProgramSettings = new Program_Settings();
             ColorDialog colorDialog = new ColorDialog();
             ComboBox comboBox_color = sender as ComboBox;
             colorDialog.Color = comboBox_color.BackColor;
             colorDialog.FullOpen = true;
 
-            // читаем пользовательские цвета из настроек
-            if (File.Exists(Application.StartupPath + @"\Settings.json"))
-            {
-                ProgramSettings = JsonConvert.DeserializeObject<Program_Settings>
-                            (File.ReadAllText(Application.StartupPath + @"\Settings.json"), new JsonSerializerSettings
-                            {
-                                //DefaultValueHandling = DefaultValueHandling.Ignore,
-                                NullValueHandling = NullValueHandling.Ignore
-                            });
-            }
-            colorDialog.CustomColors = ProgramSettings.CustomColors;
+            colorDialog.CustomColors = CustomColors;
 
 
             if (colorDialog.ShowDialog() == DialogResult.Cancel)
                 return;
             // установка цвета формы
             comboBox_color.BackColor = colorDialog.Color;
-            if (ProgramSettings.CustomColors != colorDialog.CustomColors)
+            if (CustomColors != colorDialog.CustomColors)
             {
-                ProgramSettings.CustomColors = colorDialog.CustomColors;
+                CustomColors = colorDialog.CustomColors;
 
-                string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
+                if (CustomColorsChanged != null && !setValue)
                 {
-                    //DefaultValueHandling = DefaultValueHandling.Ignore,
-                    NullValueHandling = NullValueHandling.Ignore
-                });
-                File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+                    CustomColorsChanged(CustomColors);
+                }
             }
 
             if (ValueChanged != null && !setValue)
@@ -184,6 +172,11 @@ namespace ControlLibrary
         public event ValueChangedHandler ValueChanged;
         public delegate void ValueChangedHandler(object sender, EventArgs eventArgs);
 
+        [Browsable(true)]
+        [Description("Происходит при изменении пользовательских цветов")]
+        public event CustomColorsChangedHandler CustomColorsChanged;
+        public delegate void CustomColorsChangedHandler(int[] customColors);
+
         #region Standard events
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
@@ -238,9 +231,10 @@ namespace ControlLibrary
         #region Settings Set/Clear
 
         /// <summary>Очищает выпадающие списки с картинками, сбрасывает данные на значения по умолчанию</summary>
-        public void SettingsClear()
+        public void SettingsClear(int[] customColors)
         {
             setValue = true;
+            CustomColors = customColors;
 
             numericUpDown_posY.Value = 30;
             numericUpDown_height.Value = 200;

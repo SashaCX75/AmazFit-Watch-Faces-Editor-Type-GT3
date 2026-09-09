@@ -19,6 +19,7 @@ namespace ControlLibrary
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _CircleScale;
         public Dictionary<string, Object> WidgetProperty = new Dictionary<string, Object>();
+        private int[] CustomColors = { }; // пользовательские цвета
 
         private bool LineCap_mode = false;
         private bool Alpha_mode = false;
@@ -33,23 +34,12 @@ namespace ControlLibrary
 
         private void comboBox_scaleCircle_color_Click(object sender, EventArgs e)
         {
-            Program_Settings ProgramSettings = new Program_Settings();
             ColorDialog colorDialog = new ColorDialog();
             ComboBox comboBox_color = sender as ComboBox;
             colorDialog.Color = comboBox_color.BackColor;
             colorDialog.FullOpen = true;
 
-            // читаем пользовательские цвета из настроек
-            if (File.Exists(Application.StartupPath + @"\Settings.json"))
-            {
-                ProgramSettings = JsonConvert.DeserializeObject<Program_Settings>
-                            (File.ReadAllText(Application.StartupPath + @"\Settings.json"), new JsonSerializerSettings
-                            {
-                                //DefaultValueHandling = DefaultValueHandling.Ignore,
-                                NullValueHandling = NullValueHandling.Ignore
-                            });
-            }
-            colorDialog.CustomColors = ProgramSettings.CustomColors;
+            colorDialog.CustomColors = CustomColors;
 
 
             if (colorDialog.ShowDialog() == DialogResult.Cancel)
@@ -57,16 +47,14 @@ namespace ControlLibrary
             // установка цвета формы
             comboBox_color.BackColor = colorDialog.Color;
             LastColor.last_color = colorDialog.Color;
-            if (ProgramSettings.CustomColors != colorDialog.CustomColors)
+            if (CustomColors != colorDialog.CustomColors)
             {
-                ProgramSettings.CustomColors = colorDialog.CustomColors;
+                CustomColors = colorDialog.CustomColors;
 
-                string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
+                if (CustomColorsChanged != null && !setValue)
                 {
-                    //DefaultValueHandling = DefaultValueHandling.Ignore,
-                    NullValueHandling = NullValueHandling.Ignore
-                });
-                File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+                    CustomColorsChanged(CustomColors);
+                }
             }
 
             if (ValueChanged != null && !setValue)
@@ -199,6 +187,11 @@ namespace ControlLibrary
         [Description("Происходит при вставке свойст виджета")]
         public event WidgetProperty_Paste_Handler WidgetProperty_Paste;
         public delegate void WidgetProperty_Paste_Handler(object sender, EventArgs eventArgs);
+
+        [Browsable(true)]
+        [Description("Происходит при изменении пользовательских цветов")]
+        public event CustomColorsChangedHandler CustomColorsChanged;
+        public delegate void CustomColorsChangedHandler(int[] customColors);
 
         #region Standard events
 
@@ -385,9 +378,10 @@ namespace ControlLibrary
         #region Settings Set/Clear
 
         /// <summary>Очищает выпадающие списки с картинками, сбрасывает данные на значения по умолчанию</summary>
-        public void SettingsClear()
+        public void SettingsClear(int[] customColors)
         {
             setValue = true;
+            CustomColors = customColors;
 
             numericUpDown_scaleCircleX.Value = 0;
             numericUpDown_scaleCircleY.Value = 0;

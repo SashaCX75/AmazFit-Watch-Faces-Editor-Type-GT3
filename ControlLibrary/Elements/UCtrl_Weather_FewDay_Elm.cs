@@ -1108,9 +1108,15 @@ namespace ControlLibrary
         {
             Dictionary<string, int> elementOptions = new Dictionary<string, int>();
             int count = tableLayoutPanel1.RowCount;
-            for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
+            for (int i = 0; i < count; i++)
             {
                 Control panel = tableLayoutPanel1.GetControlFromPosition(0, i);
+                if (panel == null) 
+                {
+                    count++;
+                    continue;
+                    //panel = tableLayoutPanel1.GetControlFromPosition(0, i);
+                }
                 switch (panel.Name)
                 {
                     case "panel_Images":

@@ -1350,7 +1350,7 @@ namespace Watch_Face_Editor
             string preview = "", long id = 0)
         {
             PreviewView = false;
-            userCtrl_Background_Options.SettingsClear();
+            userCtrl_Background_Options.SettingsClear(ProgramSettings.CustomColors);
             userCtrl_Background_Options.Editable_background = Editable_background;
 
             if (preview != null && preview.Length > 0) userCtrl_Background_Options.SetPreview(preview);
@@ -2035,6 +2035,7 @@ namespace Watch_Face_Editor
             uCtrl_EditableElements_Opt.SetZoneCount(editableElements.Watchface_edit_group.Count);
             uCtrl_EditableElements_Opt.SetZoneIndex(editableElements.selected_zone);
 
+            uCtrl_EditableElements_Opt.checkBox_display_first.Checked = editableElements.display_first;
             uCtrl_EditableElements_Opt.checkBox_showInAOD.Checked = editableElements.AOD_show;
             uCtrl_EditableElements_Opt.checkBox_edit_mode.Checked = editableElements.showEeditMode;
 
@@ -2121,7 +2122,7 @@ namespace Watch_Face_Editor
         {
             PreviewView = false;
 
-            uCtrl_Circle_Scale_Opt.SettingsClear();
+            uCtrl_Circle_Scale_Opt.SettingsClear(ProgramSettings.CustomColors);
             uCtrl_Circle_Scale_Opt.LineCap = SelectedModel.versionOS >= 2;
             uCtrl_Circle_Scale_Opt.Alpha = SelectedModel.versionOS >= 2.1;
             if (!inverseMode) uCtrl_Circle_Scale_Opt.Inverse = false;
@@ -2160,7 +2161,7 @@ namespace Watch_Face_Editor
         {
             PreviewView = false;
 
-            uCtrl_Linear_Scale_Opt.SettingsClear();
+            uCtrl_Linear_Scale_Opt.SettingsClear(ProgramSettings.CustomColors);
 
             uCtrl_Linear_Scale_Opt.Visible = true;
 
@@ -2303,7 +2304,7 @@ namespace Watch_Face_Editor
         {
             PreviewView = false;
 
-            uCtrl_Text_SystemFont_Opt.SettingsClear();
+            uCtrl_Text_SystemFont_Opt.SettingsClear(ProgramSettings.CustomColors);
             uCtrl_Text_SystemFont_Opt.Visible = true;
             if (SelectedModel.versionOS >= 2) uCtrl_Text_SystemFont_Opt.UserFont = true;
             //uCtrl_Text_SystemFont_Opt.NumberValue = numberValue;
@@ -2491,7 +2492,7 @@ namespace Watch_Face_Editor
         {
             PreviewView = false;
 
-            uCtrl_Button_Opt.SettingsClear(SelectedModel.versionOS, SelectedModel.background.w, SelectedModel.background.h);
+            uCtrl_Button_Opt.SettingsClear(SelectedModel.versionOS, SelectedModel.background.w, SelectedModel.background.h, ProgramSettings.CustomColors);
             uCtrl_Button_Opt.Visible = true;
 
             //List<Button> buttonsList = Watch_Face.Buttons.Button;
@@ -2508,7 +2509,7 @@ namespace Watch_Face_Editor
         {
             PreviewView = false;
 
-            uCtrl_Text_Widgets_Opt.SettingsClear();
+            uCtrl_Text_Widgets_Opt.SettingsClear(ProgramSettings.CustomColors);
             uCtrl_Text_Widgets_Opt.Visible = true;
             if (SelectedModel.versionOS >= 2) uCtrl_Text_Widgets_Opt.UserFont = true;
             uCtrl_Text_Widgets_Opt._TextWidgets = textWidgets;
@@ -2528,7 +2529,7 @@ namespace Watch_Face_Editor
         {
             PreviewView = false;
 
-            uCtrl_ButtonOne_Opt.SettingsClear();
+            uCtrl_ButtonOne_Opt.SettingsClear(ProgramSettings.CustomColors);
             uCtrl_ButtonOne_Opt.Visible = true;
             uCtrl_ButtonOne_Opt._Button = button;
 
@@ -2554,7 +2555,7 @@ namespace Watch_Face_Editor
         {
             PreviewView = false;
 
-            uCtrl_Switch_Background_Opt.SettingsClear();
+            uCtrl_Switch_Background_Opt.SettingsClear(ProgramSettings.CustomColors);
             uCtrl_Switch_Background_Opt.Visible = true;
             uCtrl_Switch_Background_Opt.AddBackgroundImages(switchBG.bg_list, switchBG.toast_list, switchBG.select_index);
 
@@ -2587,7 +2588,7 @@ namespace Watch_Face_Editor
         {
             PreviewView = false;
 
-            uCtrl_Switch_BG_Color_Opt.SettingsClear();
+            uCtrl_Switch_BG_Color_Opt.SettingsClear(ProgramSettings.CustomColors);
             uCtrl_Switch_BG_Color_Opt.Visible = true;
             List<Color> listColors = switchBG_Color.color_list.Select(StringToColor).ToList();
             uCtrl_Switch_BG_Color_Opt.AddBackgroundColors(listColors, switchBG_Color.toast_list, switchBG_Color.select_index);
@@ -2649,7 +2650,7 @@ namespace Watch_Face_Editor
         {
             PreviewView = false;
 
-            uCtrl_TemperatureGraph_Opt.SettingsClear();
+            uCtrl_TemperatureGraph_Opt.SettingsClear(ProgramSettings.CustomColors);
             uCtrl_TemperatureGraph_Opt.Visible = true;
 
             uCtrl_TemperatureGraph_Opt._Diagram = diagram;
@@ -4381,6 +4382,13 @@ namespace Watch_Face_Editor
             }
         }
 
+        private void uCtrl_Text_Widgets_Opt_CustomColorsChanged(int[] customColors)
+        {
+            if (Settings_Load) return;
+            ProgramSettings.CustomColors = customColors;
+            Save_Settings();
+        }
+
         private void uCtrl_ButtonOne_Opt_ValueChanged(object sender, EventArgs eventArgs)
         {
             if (!PreviewView) return;
@@ -5670,6 +5678,7 @@ namespace Watch_Face_Editor
 
             WidgetProperty.Add("hmUI_widget_TEXT", systemFont);
             uCtrl_Text_SystemFont_Opt.WidgetProperty = WidgetProperty;
+            uCtrl_Text_Widgets_Opt.WidgetProperty = WidgetProperty;
         }
 
         private void uCtrl_Text_SystemFont_Opt_WidgetProperty_Paste(object sender, EventArgs eventArgs)
@@ -5755,6 +5764,7 @@ namespace Watch_Face_Editor
             systemFont.mode = uCtrl_Text_Widgets_Opt.GetMode();
 
             WidgetProperty.Add("hmUI_widget_TEXT", systemFont);
+            uCtrl_Text_SystemFont_Opt.WidgetProperty = WidgetProperty;
             uCtrl_Text_Widgets_Opt.WidgetProperty = WidgetProperty;
         }
 
@@ -5814,7 +5824,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Widgets_Opt.numericUpDown_Width.Value = system_font.w;
             uCtrl_Text_Widgets_Opt.numericUpDown_Height.Value = system_font.h;
 
-            uCtrl_Text_Widgets_Opt.SetTextStr(system_font.textStr);
+            if (system_font.textStr.Length > 0) uCtrl_Text_Widgets_Opt.SetTextStr(system_font.textStr);
 
             uCtrl_Text_Widgets_Opt.numericUpDown_Size.Value = system_font.text_size;
             uCtrl_Text_Widgets_Opt.numericUpDown_Spacing.Value = system_font.char_space;
@@ -5837,10 +5847,11 @@ namespace Watch_Face_Editor
             uCtrl_Text_Widgets_Opt.numericUpDown_start_angle.Value = system_font.start_angle;
             uCtrl_Text_Widgets_Opt.numericUpDown_end_angle.Value = system_font.end_angle;
             uCtrl_Text_Widgets_Opt.SetMode(system_font.mode);
+            string textStr = uCtrl_Text_Widgets_Opt.GetTextStr();
 
             PreviewView = true;
             uCtrl_Text_Widgets_Opt_ValueChanged(sender, eventArgs, rowIndex);
-            uCtrl_Text_Widgets_Opt_TextStrChanged(system_font.textStr, rowIndex);
+            uCtrl_Text_Widgets_Opt_TextStrChanged(textStr, rowIndex);
         }
 
         private void uCtrl_Text_Circle_Opt_WidgetProperty_Copy(object sender, EventArgs eventArgs)

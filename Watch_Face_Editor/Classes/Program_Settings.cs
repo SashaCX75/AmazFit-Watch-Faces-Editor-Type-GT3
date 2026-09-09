@@ -24,6 +24,7 @@ namespace Watch_Face_Editor
         public bool Settings_Open_Download = true;
         public bool Settings_Open_DoNotning = false;
         public bool Settings_Open_Download_Your_File = false;
+
         public string PreviewStates_Path = "";
 
         public string Watch_Model = "Balance 2";
@@ -31,7 +32,7 @@ namespace Watch_Face_Editor
         public bool ShowBorder = false;
         public bool Crop = true;
         public bool Pointer_Center_marker = true;
-        public bool Show_Warnings = true;
+        //public bool Show_Warnings = true;
         public bool Show_Shortcuts = true;
         public bool Show_Buttons = true;
         public bool Show_CircleScale_Area = false;
@@ -58,7 +59,10 @@ namespace Watch_Face_Editor
 
         public bool DrawAllWidgets = false;
 
+        public string City_Name = "City Name";
+
         public bool ShowIn12hourFormat = true;
+
         public bool CreateZPK = false;
         public bool DelConfirm = false;
         public bool AutoSave = false;
@@ -77,9 +81,8 @@ namespace Watch_Face_Editor
 
         public string language { get; set; }
 
-        public int Splitter_Pos = 0;
-
         public bool WatchSkin_Use = false;
+        public bool SendSystemInfo = true;
 
         public string model_config = @"\model_config\configurations.json";
 
